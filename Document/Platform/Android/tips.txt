@@ -1,0 +1,1 @@
+adb -d shell dumpsys meminfo com.studiokun.immortalracer2

@@ -1,0 +1,11 @@
+<Root>
+  <NameSpace>EGE</NameSpace>
+  <Author>Deen</Author>
+  <Copyright>...</Copyright>
+  <Version>1.0.0.0</Version>
+  <PrecompileHeader>EGEGraphic.h</PrecompileHeader>
+  <OutputFileName>GraphicSerialization</OutputFileName>
+  <InputDirs>
+    ../../../../EasyGameEngine/Include/Interface/Module/Graphic;
+  </InputDirs>
+</Root>

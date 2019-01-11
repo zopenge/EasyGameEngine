@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by deen (deen) -->
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ui.root.xsd">
+	<Application metafile="GUIWorld.metaui" stringtable="">
+	<VBox>
+		<Image></Image>
+	</VBox>
+		<HBox>
+			<Button name="01" title="01">
+				<Font id="1">
+				</Font>
+			</Button>
+			<Button name="02" title="01"/>
+			<Button name="03" title="01"/>
+		</HBox>
+	</Application>
+</Root>

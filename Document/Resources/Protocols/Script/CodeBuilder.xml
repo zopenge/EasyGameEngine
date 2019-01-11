@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ConfigFiles>
+    <string>GenEngineSerialization.xml</string>
+    <string>GenGraphicSerialization.xml</string>
+    <string>GenScriptDebuggerCode.xml</string>
+    <string>GenScriptSerialization.xml</string>
+    <string>GenPlatformSerialization.xml</string>
+    <string>GenSDKFrameworkRC.xml</string>
+    <string>GenFrameworkSerialization.xml</string>
+    <string>GenZeroFlareScript.xml</string>
+  </ConfigFiles>
+  <OutputPaths>
+    <string>.\GenEGEEngine</string>
+    <string>.\GenEGEGraphic</string>
+    <string>.\GenEGEScript</string>
+    <string>.\GenEGEPlatform</string>
+    <string>.\GenSDKFramework</string>
+    <string>.\GenEGEFramework</string>
+    <string>.\GenZeroFlare</string>
+  </OutputPaths>
+  <EnableSerialization>false</EnableSerialization>
+  <EnableScriptCode>true</EnableScriptCode>
+</Config>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 被2011 rel. 2 sp1 (TeaM DJiNN) 使用XMLSpy vTeaM DJiNN编辑的 (http://www.altova.com) by -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://your_namespace" targetNamespace="http://your_namespace" elementFormDefault="qualified" attributeFormDefault="unqualified" id="sprite">
+	<xs:element name="F2DSprite">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="texture" type="xs:string" use="required"/>
+			<xs:attribute name="offsetx" type="xs:float" use="required"/>
+			<xs:attribute name="offsety" type="xs:float" use="required"/>
+			<xs:attribute name="uvl" type="xs:float" use="required"/>
+			<xs:attribute name="uvt" type="xs:float" use="required"/>
+			<xs:attribute name="uvr" type="xs:float" use="required"/>
+			<xs:attribute name="uvb" type="xs:float" use="required"/>
+			<xs:attribute name="sizex" type="xs:float" use="required"/>
+			<xs:attribute name="sizey" type="xs:float" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- Particle Root -->
+	<xs:element name="Root">
+		<xs:annotation>
+			<xs:documentation>The root tag of sprite file</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="F2DSprite" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

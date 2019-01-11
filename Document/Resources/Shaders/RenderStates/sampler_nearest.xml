@@ -1,0 +1,3 @@
+<Root>
+	<SamplerState filter="nearest" address_u="repeat" address_v="repeat" address_w="repeat"/>
+</Root>

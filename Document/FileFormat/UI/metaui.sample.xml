@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by deen (deen) -->
+<Root dir="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="meta.ui.root.xsd">
+	<Configure>
+		<MaxTextureSize>1024</MaxTextureSize>
+	</Configure>
+	<Resources>
+		<Textures>
+			<Texture id="1" filename="" modified_time="" md5=""/>
+			<Texture id="2" filename="" modified_time="" md5=""/>
+		</Textures>
+		<Fonts>
+			<Font id="1" filename="" modified_time="" md5="">
+				<Size>10</Size>
+			</Font>
+			<Font id="2" filename="" modified_time="" md5="">
+				<Size>10</Size>
+			</Font>
+		</Fonts>
+	</Resources>
+	<UIControls>
+		<Images>
+			<Image name="1" texture="0"/>
+			<Image name="2" texture="1"/>
+			<Image name="3" texture="1"/>
+			<Image name="4" texture="1"/>
+		</Images>
+		<Buttons>
+			<Button name="1">
+				<Font id="1"/>
+				<State left="0" top="0" right="0" bottom="0">
+					<Up image="1"/>
+					<Down image="2"/>
+					<Hover image="3"/>
+					<Disable image="4"/>
+				</State>
+			</Button>
+		</Buttons>
+		<ScrollBars>
+			<ScrollBar name="1" type="horz">
+				<SideButton button="1"/>
+				<BlockButton button="1"/>
+				<BackgroundButton button="1"/>
+			</ScrollBar>
+		</ScrollBars>
+		<ProgressBars>
+			<ProgressBar name="1" type="vert">
+				<BackgroundImage image="1"/>
+				<FrameImage image="1"/>
+			</ProgressBar>
+		</ProgressBars>
+		<EditBoxs>
+			<EditBox name="1" image="1" type=""/>
+		</EditBoxs>
+	</UIControls>
+</Root>

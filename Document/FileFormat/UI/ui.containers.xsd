@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 被2011 rel. 2 sp1 (TeaM DJiNN) 使用XMLSpy vTeaM DJiNN编辑的 (http://www.altova.com) by -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Deen (PS) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="ContainerType">
+		<xs:restriction base="xs:string">
+		<xs:enumeration value="HBox"></xs:enumeration>
+		<xs:enumeration value="VBox"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- HBox -->
+	<xs:attributeGroup name="HBoxAttributeGroup"/>
+	<!-- VBox -->
+	<xs:attributeGroup name="VBoxAttributeGroup"/>
+</xs:schema>

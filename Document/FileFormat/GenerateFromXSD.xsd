@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 被2011 rel. 2 sp1 (TeaM DJiNN) 使用XMLSpy vTeaM DJiNN编辑的 (http://www.altova.com) by -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://your_namespace" targetNamespace="http://your_namespace" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:attributeGroup name="AttributeGroup">
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="display_name" type="xs:string" use="optional"/>
+		<xs:attribute name="comment" type="xs:string" use="optional"/>
+	</xs:attributeGroup>
+	<xs:element name="enumeration_item">
+		<xs:complexType>
+			<xs:attributeGroup ref="AttributeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="enumeration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="enumeration_item" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="AttributeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="variable">
+		<xs:complexType>
+			<xs:attributeGroup ref="AttributeGroup"/>
+			<xs:attribute name="type" type="xs:string" use="required"/>
+			<xs:attribute name="min" type="xs:float" use="optional"/>
+			<xs:attribute name="max" type="xs:float" use="optional"/>
+			<xs:attribute name="default" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="struct">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="variable" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="struct" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="AttributeGroup"/>
+			<xs:attribute name="is_serializable" type="xs:boolean" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="function">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="variable" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="struct" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="AttributeGroup"/>
+			<xs:attribute name="ret_type" type="xs:string" use="required"/>
+			<xs:attribute name="is_const" type="xs:boolean" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="class">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="enumeration" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="function" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="AttributeGroup"/>
+			<xs:attribute name="parent" type="xs:string" use="optional" default="IObject"/>
+			<xs:attribute name="is_interface" type="xs:boolean" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Root"/>
+</xs:schema>

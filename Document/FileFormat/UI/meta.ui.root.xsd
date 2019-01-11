@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 被2011 rel. 2 sp1 (TeaM DJiNN) 使用XMLSpy vTeaM DJiNN编辑的 (http://www.altova.com) by -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by deen (deen) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="RasterizationFilter">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="nearest"/>
+			<xs:enumeration value="linear"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ScrollBarType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="horz"/>
+			<xs:enumeration value="vert"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ProgressBarType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="horz"/>
+			<xs:enumeration value="vert"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="Root">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Configure">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="MaxTextureSize" type="xs:unsignedLong"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Resources">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Textures">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Texture" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="id" type="xs:unsignedLong" use="required"/>
+												<xs:attribute name="filename" type="xs:string" use="required"/>
+												<xs:attribute name="modified_time" type="xs:string" use="optional"/>
+												<xs:attribute name="md5" type="xs:string" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Fonts">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Font" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Size" type="xs:unsignedLong"/>
+												</xs:sequence>
+												<xs:attribute name="id" type="xs:unsignedLong" use="required"/>
+												<xs:attribute name="filename" type="xs:string" use="required"/>
+												<xs:attribute name="modified_time" type="xs:string" use="optional"/>
+												<xs:attribute name="md5" type="xs:string" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="UIControls">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Images">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Image" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="name" type="xs:string" use="required"/>
+												<xs:attribute name="texture" type="xs:string" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Buttons">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Button" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Font">
+														<xs:complexType>
+															<xs:attribute name="id" type="xs:unsignedLong" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="State">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Up">
+																	<xs:complexType>
+																		<xs:attribute name="image" type="xs:string" use="required"/>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Down">
+																	<xs:complexType>
+																		<xs:attribute name="image" type="xs:string" use="required"/>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Hover">
+																	<xs:complexType>
+																		<xs:attribute name="image" type="xs:string" use="required"/>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Disable">
+																	<xs:complexType>
+																		<xs:attribute name="image" type="xs:string" use="required"/>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="name" type="xs:string" use="required"/>
+												<xs:attribute name="style" type="xs:string" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ScrollBars">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ScrollBar" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="SideButton">
+														<xs:complexType>
+															<xs:attribute name="button" type="xs:string" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BlockButton">
+														<xs:complexType>
+															<xs:attribute name="button" type="xs:string" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="BackgroundButton">
+														<xs:complexType>
+															<xs:attribute name="button" type="xs:string" use="required"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="name" type="xs:string" use="required"/>
+												<xs:attribute name="type" type="ScrollBarType" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ProgressBars">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ProgressBar" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="BackgroundImage">
+														<xs:complexType>
+															<xs:attribute name="image" type="xs:string" use="required"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="FrameImage">
+														<xs:complexType>
+															<xs:attribute name="image" type="xs:string" use="required"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="name" type="xs:string" use="required"/>
+												<xs:attribute name="type" type="ProgressBarType" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="EditBoxs">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="EditBox" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="name" type="xs:string" use="required"/>
+												<xs:attribute name="image" type="xs:string" use="required"/>
+												<xs:attribute name="type" type="xs:string" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="dir" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

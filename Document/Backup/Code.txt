@@ -1,0 +1,75 @@
+// ---- dbgheap.c ----
+
+/*
+ * The following values are non-zero, constant, odd,
+ * large, and atypical
+ *      Non-zero values help find bugs assuming zero
+ *      filled data.
+ *      Constant values are good so that memory filling
+ *      is deterministic (to help make bugs reproducable).
+ *      Of course it is bad if the constant filling of
+ *      weird values masks a bug.
+ *      Mathematically odd numbers are good for finding
+ *      bugs assuming a cleared lower bit.
+ *      Large numbers (byte values at least) are less
+ *      typical, and are good at finding bad addresses.
+ *      Atypical values (i.e. not too often) are good
+ *      since they typically cause early detection in code.
+ *      For the case of no-man's land and free blocks, if
+ *      you store to any of these locations, the memory
+ *      integrity checker will detect it.
+ */
+
+static unsigned char _bNoMansLandFill = 0xFD;
+  /* fill no-man's land with this */
+static unsigned char _bDeadLandFill   = 0xDD;
+  /* fill free objects with this */
+static unsigned char _bCleanLandFill  = 0xCD;
+  /* fill new objects with this */
+static unsigned char _bAlignLandFill  = 0xBD;
+  /* fill no-man's land for aligned routines */
+
+
+// ---- dbgint.h ----
+
+/*
+ * For diagnostic purpose, blocks are allocated with
+ *  extra information and
+ * stored in a doubly-linked list.  This makes all blocks
+ *  registered with
+ * how big they are, when they were allocated, and what
+ *  they are used for.
+ */
+
+#define nNoMansLandSize 4
+
+typedef struct _CrtMemBlockHeader
+{
+        struct _CrtMemBlockHeader * pBlockHeaderNext;
+        struct _CrtMemBlockHeader * pBlockHeaderPrev;
+        char *                      szFileName;
+        int                         nLine;
+#ifdef _WIN64
+        /* These items are reversed on Win64 to eliminate
+   *  gaps in the struct
+         * and ensure that sizeof(struct)%16 == 0, so
+   *  16-byte alignment is
+         * maintained in the debug heap.
+         */
+        int                         nBlockUse;
+        size_t                      nDataSize;
+#else  /* _WIN64 */
+        size_t                      nDataSize;
+        int                         nBlockUse;
+#endif  /* _WIN64 */
+        long                        lRequest;
+        unsigned char               gap[nNoMansLandSize];
+        /* followed by:
+         *  unsigned char       data[nDataSize];
+         *  unsigned char       anotherGap[nNoMansLandSize];
+         */
+} _CrtMemBlockHeader;
+
+#define pbData(pblock) \
+    ((unsigned char *)((_CrtMemBlockHeader *)pblock + 1))
+#define pHdr(pbData) (((_CrtMemBlockHeader *)pbData)-1)

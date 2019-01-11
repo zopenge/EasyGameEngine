@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--用XMLSpy v2011 rel. 2 sp1产生的 XML文件(http://www.altova.com)-->
+<Root xsi:schemaLocation="http://your_namespace GenerateFromXSD.xsd" xmlns="http://your_namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<enumeration name="_SCENE_TYPE">
+		<enumeration_item name="_SCENE_TYPE_UNKNOWN" display_name="Unknown"/>
+		<enumeration_item name="_SCENE_TYPE_SIMPLE" display_name="Simple"/>
+		<enumeration_item name="_SCENE_TYPE_COMPLEX" display_name="Complex"/>
+	</enumeration>
+	<enumeration name="_SCENE_SORT">
+		<enumeration_item name="_SCENE_SORT_UNKNOWN" display_name="xUnknown"/>
+		<enumeration_item name="_SCENE_SORT_SIMPLE" display_name="xSimple"/>
+		<enumeration_item name="_SCENE_SORT_COMPLEX" display_name="xComplex"/>
+	</enumeration>
+	<struct name="SceneInfo" is_serializable="true">
+		<variable type="_ubool" name="mIsExist" display_name="IsExist" default="false"/>
+		<variable type="_ubool" name="mIsPlaying" display_name="IsPlaying" default="false"/>
+		<variable type="_SCENE_TYPE" name="mSceneType" display_name="SceneType" default="_SCENE_TYPE_UNKNOWN" comment="The type of scene"/>
+		<variable type="_dword" name="mValue" display_name="Value" default="100" min="100" max="4000"/>
+		<struct name="SceneInfoEmbedded">
+			<variable type="WString" name="mName" display_name="Name" default="NA" comment="Name of embedded"/>
+		</struct>
+	</struct>
+	<class name="IScene" is_interface="true" parent="IObject">
+		<enumeration name="_SCENE_TYPE"></enumeration>
+		<function name="GetInfo" ret_type="SceneInfo&amp;" is_const="true" comment="Get scene info"/>
+		<function name="GetSceneType" ret_type="_SCENE_TYPE" is_const="true" comment="Get scene type"/>
+	</class>
+</Root>

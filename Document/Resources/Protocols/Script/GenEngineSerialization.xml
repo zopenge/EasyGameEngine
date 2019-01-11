@@ -1,0 +1,14 @@
+<Root>
+  <NameSpace>EGE</NameSpace>
+  <Author>Deen</Author>
+  <Copyright>...</Copyright>
+  <Version>1.0.0.0</Version>
+  <PrecompileHeader>EGEEngine.h</PrecompileHeader>
+  <OutputFileName>EngineSerialization</OutputFileName>
+  <InputFiles>
+    ../../../../EasyGameEngine/Include/EGE_Enums.h;
+  </InputFiles>
+  <InputDirs>
+    ../../../../EasyGameEngine/Include/Interface/Engine;
+  </InputDirs>
+</Root>

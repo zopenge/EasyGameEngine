@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 被2011 rel. 2 sp1 (TeaM DJiNN) 使用XMLSpy vTeaM DJiNN编辑的 (http://www.altova.com) by -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Deen (PS) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- Font -->
+	<xs:attributeGroup name="FontAttributeGroup">
+		<xs:attribute name="id" type="xs:int" use="required"/>
+		<xs:attribute name="size" type="xs:int" use="optional"/>
+	</xs:attributeGroup>
+	<xs:group name="FontGroup">
+		<xs:choice>
+			<xs:element name="Font" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Size" type="xs:int" minOccurs="0"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="FontAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:group>
+	<!-- Button -->
+	<xs:attributeGroup name="ButtonAttributeGroup">
+		<xs:attribute name="res" type="xs:string" use="required"/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="title" type="xs:string" use="required"/>
+	</xs:attributeGroup>
+	<xs:group name="ButtonGroup">
+		<xs:all/>
+	</xs:group>
+	<!-- Controls -->
+	<xs:group name="ControlsGroup">
+		<xs:sequence>
+			<xs:element name="Image" maxOccurs="unbounded"/>
+			<xs:element name="Button" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:group ref="FontGroup" minOccurs="0"/>
+					<xs:attributeGroup ref="ButtonAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="EditBox" maxOccurs="unbounded" />
+			<xs:element name="ScrollBar" maxOccurs="unbounded"/>
+			<xs:element name="ProgressBar" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+</xs:schema>

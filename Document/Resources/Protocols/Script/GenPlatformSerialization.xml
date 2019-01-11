@@ -1,0 +1,11 @@
+<Root>
+  <NameSpace>EGE</NameSpace>
+  <Author>Deen</Author>
+  <Copyright>...</Copyright>
+  <Version>1.0.0.0</Version>
+  <PrecompileHeader>EGEPlatform.h</PrecompileHeader>
+  <OutputFileName>PlatformSerialization</OutputFileName>
+  <InputDirs>
+    ../../../../EasyGameEngine/Include/Platform;
+  </InputDirs>
+</Root>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemDefinitionGroup>
+    <Link>
+      <LibraryDependencies>EGEFramework;EGEGameKit;EGEEngine;EGEGraphic;EGENetwork;EGEPhysx;EGEScript;EGESound;EGEStorage;EGEPlatform;libfreetype-android;libwebp-android;libpng-android;libjpeg-android;libgif-android;libwebm-android;lib7z-android;lua-android;luasocket-android;curl-android;libpcre-android;libvorbis-android;libogg-android;libzip-android;zlib-android;glsl_optimizer-android;openal-android;google-breakpad-android;c-ares-android;%(LibraryDependencies)</LibraryDependencies>
+    </Link>
+    <Lib />
+  </ItemDefinitionGroup>
+</Project>

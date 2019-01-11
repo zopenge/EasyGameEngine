@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <Declaration>
+    <Variable qualifier="attribute" precision="highp" type="vec4" name="cPosition"/>
+    <Variable qualifier="attribute" precision="highp" type="vec3" name="cNormal"/>
+    <Variable qualifier="attribute" precision="highp" type="vec4" name="cTangent"/>
+    <Variable qualifier="attribute" precision="lowp" type="vec4" name="cColor0"/>
+    <Variable qualifier="attribute" precision="lowp" type="vec4" name="cColor1"/>
+    <Variable qualifier="attribute" precision="mediump" type="vec2" name="cTexCoords0"/>
+    <Variable qualifier="attribute" precision="mediump" type="vec2" name="cTexCoords1"/>
+    <Variable qualifier="attribute" precision="highp" type="vec4" name="cBlendIndices" />
+    <Variable qualifier="attribute" precision="highp" type="vec4" name="cBlendWeight" />
+    <Variable qualifier="uniform" type="sampler2D" name="cDiffuse"/>
+    <Variable qualifier="uniform" type="sampler2D" name="cNormalMap"/>
+    <Variable qualifier="uniform" type="sampler2D" name="cSpecularMap"/>
+    <Variable qualifier="uniform" type="sampler2D" name="cBakeLightMap"/>
+    <Variable qualifier="uniform" type="sampler2D" name="cColorMaskMap"/>
+    <Variable qualifier="uniform" type="sampler2D" name="cShadowMap"/>
+    <Variable qualifier="uniform" type="sampler2D" name="cLightProjMap0"/>
+    <Variable qualifier="uniform" type="sampler2D" name="cLightProjMap1"/>
+    <Variable qualifier="uniform" type="sampler2D" name="cLightProjMap2"/>
+    <Variable qualifier="uniform" type="sampler2D" name="cLightProjMap3 "/>
+    <Variable qualifier="uniform" type="sampler2D" name="cBRDFRampMap"/>
+    <Variable qualifier="uniform" type="sampler2D" name="cMirrorMap"/>
+    <Variable qualifier="uniform" type="sampler2D" name="cSphereEnvMap"/>
+	<Variable qualifier="uniform" type="sampler2D" name="cMaterialMap"/>
+	<Variable qualifier="uniform" type="sampler2D" name="cBRDFApproxMap"/>
+    <Variable qualifier="uniform" type="samplerCube" name="cTexCubeEnv"/>
+    <Variable qualifier="uniform" type="vec2" name="cDiffuseTexSize"/>
+    <Variable qualifier="uniform" type="vec2" name="cNormalMapTexSize"/>
+    <Variable qualifier="uniform" type="vec2" name="cSpecularMapTexSize"/>
+    <Variable qualifier="uniform" type="vec2" name="cBakeLightMapTexSize"/>
+    <Variable qualifier="uniform" type="vec2" name="cColorMaskMapTexSize"/>
+    <Variable qualifier="uniform" type="vec2" name="cShadowMapTexSize"/>
+    <Variable qualifier="uniform" type="vec2" name="cLightProjMapTexSize0"/>
+    <Variable qualifier="uniform" type="vec2" name="cLightProjMapTexSize1"/>
+    <Variable qualifier="uniform" type="vec2" name="cLightProjMapTexSize2"/>
+    <Variable qualifier="uniform" type="vec2" name="cLightProjMapTexSize3"/>
+    <Variable qualifier="uniform" type="vec2" name="cBRDFRampMapTexSize"/>
+    <Variable qualifier="uniform" type="vec2" name="cMirrorMapTexSize"/>
+    <Variable qualifier="uniform" type="vec2" name="cSphereEnvMapTexSize"/>	
+	<Variable qualifier="uniform" type="vec2" name="cMaterialMapTexSize"/>
+	<Variable qualifier="uniform" type="vec2" name="cBRDFApproxMapTexSize"/>
+    <Variable qualifier="uniform" type="mat4" name="uMWVPTransform"/>
+    <Variable qualifier="uniform" type="mat4" name="uMWVTransform"/>
+    <Variable qualifier="uniform" type="mat4" name="uWVTransform"/>
+    <Variable qualifier="uniform" type="mat4" name="uMTransform"/>
+    <Variable qualifier="uniform" type="mat3" name="uNormalMatrix"/>
+    <Variable qualifier="uniform" type="mat3" name="uMRotation"/>
+    <Variable qualifier="uniform" type="vec3" name="uBoneTransform0" array_number="41"/>
+    <Variable qualifier="uniform" type="vec3" name="uBoneTransform1" array_number="41"/>
+    <Variable qualifier="uniform" type="vec3" name="uBoneTransform2" array_number="41"/>
+    <Variable qualifier="uniform" type="vec3" name="uBoneTransform3" array_number="41"/>
+    <Variable qualifier="uniform" type="vec4" name="uTextureColor"/>
+    <Variable qualifier="uniform" type="float" name="uStrokeSize"/>
+    <Variable qualifier="uniform" type="vec4" name="uStrokeColor"/>
+    <Variable qualifier="uniform" type="vec4" name="uVertexColor"/>
+    <Variable qualifier="uniform" type="vec4" name="uDiffuseMapColor"/>
+    <Variable qualifier="uniform" type="vec3" name="uEyePosition"/>
+    <Variable qualifier="uniform" type="float" name="uDiscardAlphaValue"/>
+    <Variable qualifier="uniform" type="vec2" name="uLightMapRange"/>
+    <Variable qualifier="uniform" type="float" name="uMirrorFactor"/>
+    <Variable qualifier="uniform" type="vec2" name="uMirrorRange"/>
+    <Variable qualifier="uniform" type="float" name="uMirrorFresnelPower"/>
+    <Variable qualifier="uniform" type="vec4" name="uMirrorPlane"/>
+    <Variable qualifier="uniform" type="float" name="uMirrorAttenuationDistance"/>
+    <Variable qualifier="uniform" type="vec4" name="uLightAttenuation"/>
+    <Variable qualifier="uniform" type="vec4" name="uLightRange"/>
+    <Variable qualifier="uniform" type="vec4" name="uProjTexturePower"/>
+    <Variable qualifier="uniform" type="float" name="uMetallic"/>
+    <Variable qualifier="uniform" type="float" name="uRoughness"/>
+	<Variable qualifier="uniform" type="float" name="uSpecularTermFactor"/>
+	<Variable qualifier="uniform" type="float" name="uAmbientFactor"/>
+	<Variable qualifier="uniform" type="vec2" name="uAmbientRange"/>
+	<Variable qualifier="uniform" type="float" name="uAnisotropic"/>
+	<Variable qualifier="uniform" type="float" name="uEnvironmentFactor"/>
+	<Variable qualifier="uniform" type="vec2" name="uBRDFRampRange"/>
+	<Variable qualifier="uniform" type="float" name="uBRDFFresnelFactor"/>
+	<Variable qualifier="uniform" type="float" name="uGlassFactor"/>
+    <Variable qualifier="uniform" type="vec4" name="uLightColor0"/>
+    <Variable qualifier="uniform" type="vec4" name="uLightColor1"/>
+    <Variable qualifier="uniform" type="vec4" name="uLightColor2"/>
+    <Variable qualifier="uniform" type="vec4" name="uLightColor3"/>
+    <Variable qualifier="uniform" type="vec3" name="uLightPosition0"/>
+    <Variable qualifier="uniform" type="vec3" name="uLightPosition1"/>
+    <Variable qualifier="uniform" type="vec3" name="uLightPosition2"/>
+    <Variable qualifier="uniform" type="vec3" name="uLightPosition3"/>
+    <Variable qualifier="uniform" type="mat4" name="uLightBiasTransform0"/>
+    <Variable qualifier="uniform" type="mat4" name="uLightBiasTransform1"/>
+    <Variable qualifier="uniform" type="mat4" name="uLightBiasTransform2"/>
+    <Variable qualifier="uniform" type="mat4" name="uLightBiasTransform3"/>
+    <Variable qualifier="uniform" type="vec4" name="uFogColor"/>
+    <Variable qualifier="uniform" type="vec2" name="uFogRange"/>
+    <Variable qualifier="uniform" type="vec2" name="uStepSize"/>
+	<Variable qualifier="uniform" type="float" name="uUVOffsetX"/>
+	<Variable qualifier="uniform" type="float" name="uUVOffsetY"/>
+	<Variable qualifier="uniform" type="vec2" name="uOverlayMaskPosMin"/>
+	<Variable qualifier="uniform" type="vec3" name="uOverlayMaskPosXDir"/>
+	<Variable qualifier="uniform" type="vec3" name="uOverlayMaskPosYDir"/>
+	<Variable qualifier="uniform" type="vec2" name="uOverlayMaskUVMin"/>
+	<Variable qualifier="uniform" type="vec2" name="uOverlayMaskUVRange"/>
+  </Declaration>
+  <Macros>
+    <!-- Common variables as macros -->
+    <Macro name="vVertexColor0" varying="true" type="vec4" default="cColor0.zyxw * uVertexColor"/>
+    <Macro name="vVertexColor0Alpha" varying="true" type="float" default="cColor0.w * uVertexColor.w"/>
+    <Macro name="vVertexColor" varying="true" type="vec4" default="uVertexColor"/>
+    <Macro name="vMirrorFactor" varying="true" type="float" default="uMirrorFactor"/>
+    <Macro name="vMirrorRange" varying="true" type="vec2" default="uMirrorRange"/>
+    <Macro name="vGaussianBlurCoordinate11" varying="true" type="vec2" default="cTexCoords0"/>
+    <Macro name="vGaussianBlurCoordinate00" varying="true" type="vec2" default="cTexCoords0"/>
+    <Macro name="vGaussianBlurCoordinate02" varying="true" type="vec2" default="cTexCoords0"/>
+    <Macro name="vGaussianBlurCoordinate20" varying="true" type="vec2" default="cTexCoords0"/>
+    <Macro name="vGaussianBlurCoordinate22" varying="true" type="vec2" default="cTexCoords0"/>
+    <Macro name="vMirrorAttenuation" varying="true" type="float" default="1.0"/>
+    <Macro name="vPositionGL" varying="true" type="vec3" default="cPosition.xyz"/>
+    <Macro name="vNormal" varying="true" type="vec4" default="cNormal"/>
+    <Macro name="vTangent" varying="true" type="vec3" default="cTangent.xyz"/>
+    <Macro name="vColor0" varying="true" type="vec4" default="cColor0.zyxw"/>
+    <Macro name="vColor1" varying="true" type="vec4" default="cColor1.zyxw"/>
+    <Macro name="vUV0" varying="true" type="vec2" default="cTexCoords0"/>
+    <Macro name="vUV1" varying="true" type="vec2" default="cTexCoords1"/>
+    <Macro name="vPositionScale" varying="true" type="vec4" default="cPosition"/>
+    <Macro name="vPositionSkin" varying="true" type="vec4" default="cPosition"/>
+    <Macro name="vNormalSkin" varying="true" type="vec3" default="cNormal.xyz"/>
+    <Macro name="vTangentSkin" varying="true" type="vec3" default="cTangent.xyz"/>
+    <Macro name="GL_OVERLAY_POS_DONE">
+      <Code>gl_Position = cPosition * uMWVPTransform;</Code>
+    </Macro>
+    <Macro name="GL_POS_DONE">
+		<Code>
+        <![CDATA[
+		 #if _GEN_SPHERE_MAP_
+			${highp}$ vec4 pos_view = $vPositionSkin() * uMWVTransform;
+			pos_view = pos_view / length( pos_view.xyz );
+			pos_view.xyz = pos_view.xyz / ( pos_view.z - 1.0 );
+			gl_Position = vec4( -pos_view.x, pos_view.y, pos_view.z, 1.0 );
+		 #else
+			gl_Position = $vPositionSkin() * uMWVPTransform;
+		 #endif
+          ]]>
+      </Code>
+    </Macro>
+    <Macro name="GL_COLOR_DONE" in0="Color">
+      <Code>gl_FragColor = (@Color);</Code>
+    </Macro>
+    <!-- Position vec4 operations as macros -->
+    <Macro name="vPositionWorld" varying="true" type="vec4">
+      <Code>#name = $vPositionSkin() * uMTransform;</Code>
+    </Macro>
+    <Macro name="vPositionGL" varying="true" type="vec3">
+      <Code>#name = ($vPositionSkin() * uMWVPTransform).xyw;</Code>
+    </Macro>
+    <Macro name="vNormalWorld" varying="true" type="vec3">
+      <Code>#name = normalize( $vNormalSkin() * uMRotation );</Code>
+    </Macro>
+    <!-- Tangent vec3 operations as macros -->
+    <Macro name="vTangent" varying="true" type="vec3">
+      <Code>#name = normalize( $vTangentSkin() * uMRotation );</Code>
+    </Macro>
+    <Macro name="vBiTangent" varying="true" type="vec3">
+      <Code>#name = normalize( cross( $vNormalWorld(), $vTangent() ) * cTangent.w );</Code>
+    </Macro>
+    <Macro name="PositionSkin">
+      <Code>
+        <![CDATA[
+			#if _WITH_BONE_ANIMATION_
+				${highp}$ vec4 pos;
+				$GetPositionWithSkin( $vPositionScale(), cBlendIndices, cBlendWeight, uBoneTransform0, uBoneTransform1, uBoneTransform2, uBoneTransform3, out:pos );
+				$vPositionSkin() = pos;
+			#else
+				$vPositionSkin() = $vPositionScale();
+			#endif
+          ]]>
+      </Code>
+    </Macro>
+    <!-- Normal vec3 operations as macros -->
+    <Macro name="NormalSkin">
+      <Code>
+        <![CDATA[
+          #if _WITH_BONE_ANIMATION_
+          ${highp}$ vec3 normal;
+          $GetNormalWithSkin( cNormal, cBlendWeight, out:normal );
+          $vNormalSkin() = normalize( normal );
+          #else
+          $vNormalSkin() = cNormal.xyz;
+          #endif
+          ]]>
+      </Code>
+    </Macro>
+    <Macro name="TangentSkin">
+      <Code>
+        <![CDATA[
+          #if _WITH_BONE_ANIMATION_
+          ${highp}$ vec3 tangent;
+          $GetTangentWithSkin( cTangent.xyz, cBlendWeight, out:tangent );
+          $vTangentSkin() = normalize( tangent );
+          #else
+          $vTangentSkin() = cTangent.xyz;
+          #endif
+          ]]>
+      </Code>
+    </Macro>
+    <!-- Matrix_TBN mat3 operations as macros -->
+    <Macro name="vMatTBN" varying="true" type="mat3">
+      <Code>#name = mat3( $vTangent(), $vBiTangent(), $vNormalWorld() );</Code>
+    </Macro>
+    <Macro name="vMatTBNInvert" varying="true" type="mat3">
+      <Code>#name = mat3( $vTangent().x, $vBiTangent().x, $vNormalWorld().x, $vTangent().y, $vBiTangent().y, $vNormalWorld().y, $vTangent().z, $vBiTangent().z, $vNormalWorld().z );</Code>
+    </Macro>
+    <!-- LightDirection vec3 operations as macros -->
+    <Macro name="vPosToLightDir0" varying="true" type="vec3">
+      <Code>
+        <![CDATA[
+			#if _GL_DIRECTIONAL_0
+				#name = uLightPosition0;
+			#else
+				#name = uLightPosition0 - $vPositionWorld().xyz;
+			#endif
+		]]>
+      </Code>
+    </Macro>
+    <Macro name="vPosToLightDir1" varying="true" type="vec3">
+      <Code>
+        <![CDATA[
+			#if _GL_DIRECTIONAL_1
+				#name = uLightPosition1;
+			#else
+				#name = uLightPosition1 - $vPositionWorld().xyz;
+			#endif
+		]]>
+      </Code>
+    </Macro>
+    <Macro name="vPosToLightDir2" varying="true" type="vec3">
+      <Code>
+        <![CDATA[
+			#if _GL_DIRECTIONAL_2
+				#name = uLightPosition2;
+			#else
+				#name = uLightPosition2 - $vPositionWorld().xyz;
+			#endif
+		]]>
+      </Code>
+    </Macro>
+    <Macro name="vPosToLightDir3" varying="true" type="vec3">
+      <Code>
+        <![CDATA[
+			#if _GL_DIRECTIONAL_3
+				#name = uLightPosition3;
+			#else
+				#name = uLightPosition3 - $vPositionWorld().xyz;
+			#endif
+		]]>
+      </Code>
+    </Macro>
+    <Macro name="vPosToLightDirTBN0" varying="true" type="vec3">
+      <Code>#name = $vPosToLightDir0() * $vMatTBN();</Code>
+    </Macro>
+    <Macro name="vPosToLightDirTBN1" varying="true" type="vec3">
+      <Code>#name = $vPosToLightDir1() * $vMatTBN();</Code>
+    </Macro>
+    <Macro name="vPosToLightDirTBN2" varying="true" type="vec3">
+      <Code>#name = $vPosToLightDir2() * $vMatTBN();</Code>
+    </Macro>
+    <Macro name="vPosToLightDirTBN3" varying="true" type="vec3">
+      <Code>#name = $vPosToLightDir3() * $vMatTBN();</Code>
+    </Macro>
+    <!-- EyeDirection vec3 operations as macros -->
+    <Macro name="vPosToEyeDir" varying="true" type="vec3">
+      <Code>#name = uEyePosition - $vPositionWorld().xyz;</Code>
+    </Macro>
+    <Macro name="vPosToEyeDirTBN" varying="true" type="vec3">
+      <Code>#name = $vPosToEyeDir() * $vMatTBN();</Code>
+    </Macro>
+    <Macro name="vViewTangent" varying="true" type="vec3">
+      <Code>#name = cross( $vNormalWorld(), $vPosToEyeDir() );</Code>
+    </Macro>
+
+    <!-- Specular float operations as macros -->
+
+    <Macro name="vLightAttenuationFactor0" varying="true" type="float">
+      <Code>
+        <![CDATA[
+			float lightdistance0 = distance( uLightPosition0.xyz, $vPositionWorld().xyz );
+			#name = ( uLightRange[0] - max( 0.0, lightdistance0 - uLightAttenuation[0] * uLightRange[0] ) ) / uLightRange[0];
+			#name = min( max( #name, 0.0 ), 1.0 );
+			]]>
+      </Code>
+    </Macro>
+    <Macro name="vLightAttenuationFactor1" varying="true" type="float">
+      <Code>
+        <![CDATA[
+			float lightdistance1 = distance( uLightPosition1.xyz, $vPositionWorld().xyz );
+			#name = ( uLightRange[1] - max( 0.0, lightdistance1 - uLightAttenuation[1] * uLightRange[1] ) ) / uLightRange[1];
+			#name = min( max( #name, 0.0 ), 1.0 );
+			]]>
+      </Code>
+    </Macro>
+    <Macro name="vLightAttenuationFactor2" varying="true" type="float">
+      <Code>
+        <![CDATA[
+			float lightdistance2 = distance( uLightPosition2.xyz, $vPositionWorld().xyz );
+			#name = ( uLightRange[2] - max( 0.0, lightdistance2 - uLightAttenuation[2] * uLightRange[2] ) ) / uLightRange[2];
+			#name = min( max( #name, 0.0 ), 1.0 );
+			]]>
+      </Code>
+    </Macro>
+    <Macro name="vLightAttenuationFactor3" varying="true" type="float">
+      <Code>
+        <![CDATA[
+			float lightdistance3 = distance( uLightPosition3.xyz, $vPositionWorld().xyz );
+			#name = ( uLightRange[3] - max( 0.0, lightdistance3 - uLightAttenuation[3] * uLightRange[3] ) ) / uLightRange[3];
+			#name = min( max( #name, 0.0 ), 1.0 );
+			]]>
+      </Code>
+    </Macro>
+
+    <Macro name="vLightProjTexcoord0" varying="true" type="vec3">
+      <Code>#name = (uLightBiasTransform0 * $vPositionSkin()).xyw;</Code>
+    </Macro>
+    <Macro name="vLightProjTexcoord1" varying="true" type="vec3">
+      <Code>#name = (uLightBiasTransform1 * $vPositionSkin()).xyw;</Code>
+    </Macro>
+    <Macro name="vLightProjTexcoord2" varying="true" type="vec3">
+      <Code>#name = (uLightBiasTransform2 * $vPositionSkin()).xyw;</Code>
+    </Macro>
+    <Macro name="vLightProjTexcoord3" varying="true" type="vec3">
+      <Code>#name = (uLightBiasTransform3 * $vPositionSkin()).xyw;</Code>
+    </Macro>
+	
+	<Macro name="Square" in0="Value" out0="Sqr_Value">
+      <Code>
+        <![CDATA[
+			float @Sqr_Value = @Value * @Value;
+          ]]>
+      </Code>
+    </Macro>
+	
+	<Macro name="Fresnel_OPT" in0="Value" out0="Fresnel">
+      <Code>
+        <![CDATA[
+			float @Fresnel = exp2( -8.35 * @Value );
+          ]]>
+      </Code>
+    </Macro>
+
+    <Macro name="CalculateLightInfo" in0="Index" in1="Normal" in2="Tangent" in3="BiTangent" in4="Viewdir" in5="ViewReflectdir" out0="LightDir" out1="HalfVector" out2="DotNL" out3="DotNH" out4="DotXH" out5="DotYH" out6="DotLH" out7="DotRL" out8="DotNLNC">
+      <Code>
+        <![CDATA[
+			#if _LIGHT_@Index
+				#if _NORMAL_MAP_
+					//vec3 @LightDir@Index = normalize( $vPosToLightDirTBN@Index() );
+					vec3 @LightDir@Index = normalize( $vPosToLightDir@Index() );
+				#else
+					vec3 @LightDir@Index = normalize( $vPosToLightDir@Index() );
+				#endif
+				vec3 @HalfVector@Index = normalize( @LightDir@Index + @Viewdir );
+				float @DotNLNC@Index = dot( @Normal, @LightDir@Index );
+				float @DotNL@Index = clamp( @DotNLNC@Index, 0.0, 1.0 );
+				float @DotNH@Index = clamp( dot( @Normal, @HalfVector@Index ), 0.0, 1.0 );
+				float @DotXH@Index = dot( @Tangent, @HalfVector@Index );
+				float @DotYH@Index = dot( @BiTangent, @HalfVector@Index );
+				float @DotLH@Index = clamp( dot( @LightDir@Index, @HalfVector@Index ), 0.0, 1.0 );
+				float @DotRL@Index = dot( @ViewReflectdir, @LightDir@Index);
+			#endif
+          ]]>
+      </Code>
+    </Macro>
+	
+	<Macro name="DisneyDiffuse" in0="Index" in1="DotNL" in2="DotLH" in3="Roughness" in4="Fresnel_DotNV" out0="DisneyDiffuse">
+      <Code>
+        <![CDATA[
+			$Fresnel_OPT( @DotNL@Index, Fresnel_DotNL@Index );
+			float Fd90@Index = 0.5 + 2.0 * @DotLH@Index * @DotLH@Index * @Roughness;
+			float DisneyDiffuse@Index = (1.0 + (Fd90@Index - 1.0) * Fresnel_DotNL@Index) * ( 1.0 + (Fd90@Index - 1.0) * @Fresnel_DotNV);
+          ]]>
+      </Code>
+    </Macro>
+	
+	<Macro name="DBlinnApprox" in0="Index" in1="DotRL" in2="Roughness" out0="DApprox">
+      <Code>
+        <![CDATA[
+			float DAa@Index = @Roughness * @Roughness;
+			float DAa2@Index = clamp( DAa@Index * DAa@Index, 0.0001, 1.0 );
+			float rcp_DAa2@Index = 1.0 / DAa2@Index;
+			float DAc@Index = 0.72134752 * rcp_DAa2@Index + 0.39674113;
+			float @DApprox@Index = rcp_DAa2@Index * exp2( DAc@Index * DotRL@Index - DAc@Index );
+          ]]>
+      </Code>
+    </Macro>
+
+	<Macro name="DGGXaniso" in0="Index" in1="DotNH" in2="DotXH" in3="DotYH" in4="AnisoAspect" in5="Roughness" out0="DApprox">
+		<Code>
+        <![CDATA[
+			float DAa@Index = @Roughness * @Roughness;
+			float DAax@Index = DAa@Index / @AnisoAspect;
+			float DAay@Index = DAa@Index * @AnisoAspect;
+			float DAdx@Index = @DotXH@Index / DAax@Index;
+			float DAdy@Index = @DotYH@Index / DAay@Index;
+			float DAd@Index = DAdx@Index * DAdx@Index + DAdy@Index * DAdy@Index + @DotNH@Index * @DotNH@Index;
+			float @DApprox@Index = 1.0 / ( DAax@Index * DAay@Index * DAd@Index * DAd@Index );
+          ]]>
+		</Code>
+	</Macro>
+	
+	<Macro name="CalculateBRDFApprox" in0="Index" in1="DotNV" in2="DotRL" in3="DotNL" in4="DotLH" in5="DotNH" in6="DotXH" in7="DotYH" in8="DotNLNC" in9="AnisoAspect" in10="Roughness" in11="EnvBRDF" in12="DiffuseColor" in13="SrcDiffuseColor" in14="Fresnel_DotNV" out0="ResultColor">
+		<Code>
+        <![CDATA[
+			#if _LIGHT_@Index ^^ ( _PHYSICALLY_BASED_LIGHTING@Index || _BRDF_RAMPTEX_LIGHTING@Index )
+				vec3 light_result_color@Index = vec3( 0.0 );
+				
+				#if _ANISOTROPIC_
+					$DGGXaniso( @Index, @DotNH, @DotXH, @DotYH, @AnisoAspect, @Roughness, DApprox );
+				#else
+					#if _CUBE_MAP_ || _SPHERE_MAP_
+						$DBlinnApprox( @Index, @DotRL, @Roughness, DApprox );
+					#else
+						$DBlinnApprox( @Index, @DotNH, @Roughness, DApprox );
+					#endif
+				#endif
+				
+				vec3 specular_term@Index = @EnvBRDF.xyz * ( DApprox@Index * 0.318309886 );
+				#if _SPECULAR_TERM_FACTOR_
+					specular_term@Index *= uSpecularTermFactor;
+				#endif
+					
+				#if _PHYSICALLY_BASED_LIGHTING@Index
+					$DisneyDiffuse( @Index, @DotNL, @DotLH, @Roughness, @Fresnel_DotNV, DisneyDiffuse );
+					
+					light_result_color@Index += @DiffuseColor.xyz * DisneyDiffuse@Index;
+					#if _SPECULAR_TERM_
+						light_result_color@Index += specular_term@Index;
+					#endif
+					light_result_color@Index *= @DotNL@Index;
+				#elif _BRDF_RAMPTEX_LIGHTING@Index
+					vec2 brdf_ramptex_uv@Index;
+					#if _BRDF_RAMP_MAP_
+						brdf_ramptex_uv@Index = vec2( @DotNLNC@Index * 0.5 + 0.5, @DotNV );
+						$TEXTURE2D_VEC2(cBRDFRampMap, brdf_ramptex_uv@Index, brdf_ramptex_color@Index);
+						#if _BRDF_RAMP_RANGE_
+							float brdf_ramp_range@Index = uBRDFRampRange.y - uBRDFRampRange.x;
+							
+							brdf_ramptex_color@Index.x = brdf_ramp_range@Index * brdf_ramptex_color@Index.x + uBRDFRampRange.x;
+							brdf_ramptex_color@Index.y = brdf_ramp_range@Index * brdf_ramptex_color@Index.y + uBRDFRampRange.x;
+							brdf_ramptex_color@Index.z = brdf_ramp_range@Index * brdf_ramptex_color@Index.z + uBRDFRampRange.x;
+						#endif
+						light_result_color@Index += @SrcDiffuseColor.xyz * brdf_ramptex_color@Index.xyz;
+					#endif
+					#if _SPECULAR_TERM_
+						light_result_color@Index += specular_term@Index * @DotNL@Index;
+					#endif
+				#else
+					
+				#endif
+				
+				#if _USE_LIGHT_COLOR_@Index
+					light_result_color@Index *= uLightColor@Index.xyz;
+				#endif
+				#if _GLA_@Index
+					light_result_color@Index *= $vLightAttenuationFactor@Index();
+				#endif
+				
+				@ResultColor.xyz += light_result_color@Index;
+			#endif
+          ]]>
+      </Code>
+	</Macro>
+	
+	<!-- unity -->
+	<Macro name="CalculateBRDFUnity" in0="Index" in1="DotNL" in2="DotNH" in3="DotLH" in4="Roughness" in5="DiffuceColor" in6="SpecularColor" out0="ResultColor">
+      <Code>
+        <![CDATA[
+			#if _LIGHT_@Index ^^ _PHYSICALLY_BASED_LIGHTING@Index
+				float roughness@Index = 1.0 - @Roughness;
+				//float specularPower@Index = 10.0 / log2((1.0-roughness@Index)* 0.968 + 0.03 );
+				//specularPower@Index = specularPower@Index * specularPower@Index;
+				
+				float visibilyty_k@Index = (roughness@Index * roughness@Index ) / 2.0;
+				float gL@Index = @DotNL@Index * ( 1.0 - visibilyty_k@Index ) + visibilyty_k@Index;
+				float gV@Index = DotNV * ( 1.0 - visibilyty_k@Index ) + visibilyty_k@Index;
+				float visibilyty_term@Index = 1.0 / ( gL@Index * gV@Index + 0.0001 );
+				float sd_a@Index = roughness@Index * roughness@Index;
+				float sd_a2@Index = sd_a@Index * sd_a@Index;
+				float d_term@Index = @DotNH@Index * DotNH@Index * ( sd_a2@Index - 1.0 ) + 1.0;
+				d_term@Index = sd_a2@Index / ( 3.1415926 * d_term@Index * d_term@Index );
+								
+				$Fresnel_OPT( @DotNL@Index, Fresnel_DotNL@Index );
+				$Fresnel_OPT( DotNV, Fresnel_DotNV@Index );
+				float fd90 = 0.5 + 2.0 * @DotLH@Index * @DotLH@Index * roughness@Index;
+				float disneyDiffuse@Index = ( 1.0 + (fd90 - 1.0) * Fresnel_DotNL@Index) * ( 1.0 + (fd90 - 1.0) * Fresnel_DotNV@Index);
+				float specularTerm@Index = max( 0.0, (visibilyty_term@Index * d_term@Index * 3.1415926 / 4.0 ) );
+				
+				vec3 light_result_color@Index = @DiffuceColor.xyz * disneyDiffuse@Index;
+				light_result_color@Index += @SpecularColor * specularTerm@Index;
+				light_result_color@Index *= @DotNL@Index;
+				
+				#if _USE_LIGHT_COLOR_@Index
+					light_result_color@Index *= uLightColor@Index.xyz;
+				#endif
+				#if _GLA_@Index
+					light_result_color@Index *= $vLightAttenuationFactor@Index();
+				#endif
+				
+				@ResultColor.xyz += light_result_color@Index;
+			#endif
+			
+          ]]>
+      </Code>
+    </Macro>
+	
+	<Macro name="EnvBRDFApproxUnreal" in0="SpecularColor" in1="Roughness" in2="Fresnel_DotNV" out0="EnvBRDF">
+      <Code>
+        <![CDATA[
+			vec4 env_brdf_c0 = vec4( -1.0, -0.0275, -0.572, 0.022 );
+			vec4 env_brdf_c1 = vec4( 1.0, 0.0425, 1.04, -0.04 );
+			vec4 env_brdf_r = env_brdf_c0 * @Roughness + env_brdf_c1;
+			float env_brdf_a004 = min( env_brdf_r.x * env_brdf_r.x, @Fresnel_DotNV ) * env_brdf_r.x + env_brdf_r.y;
+			vec2 env_brdf_AB = vec2( -1.04, 1.04 ) * env_brdf_a004 + env_brdf_r.zw;				
+			vec3 @EnvBRDF = @SpecularColor.xyz * env_brdf_AB.x + vec3( env_brdf_AB.y );
+          ]]>
+      </Code>
+    </Macro>
+	
+	<Macro name="EnvBRDFApproxFromTex" in0="SpecularColor" in1="Roughness" in2="DotNV" out0="EnvBRDF">
+      <Code>
+        <![CDATA[
+			vec2 brdf_approx_uv;
+			#if _BRDF_FRESNEL_FACTOR_
+				brdf_approx_uv.x = mix( 0.0, @DotNV, uBRDFFresnelFactor );
+			#else
+				brdf_approx_uv.x = @DotNV;
+			#endif
+			brdf_approx_uv.y = 1.0 - @Roughness;
+			$TEXTURE2D_VEC2(cBRDFApproxMap, brdf_approx_uv, out:brdf_approx_color);
+			vec3 @EnvBRDF = @SpecularColor.xyz * brdf_approx_color.x + vec3( brdf_approx_color.y );
+          ]]>
+      </Code>
+    </Macro>
+
+    <Macro name="CalculateProjTextureColor" in0="Index" in1="ProjTexColor">
+      <Code>
+        <![CDATA[
+			#if _LIGHT_@Index ^^ _GL_PROJTEX_SPOT_@Index
+				vec2 proj_coords@Index = $vLightProjTexcoord@Index().xy / $vLightProjTexcoord@Index().z;
+				vec4 @ProjTexColor@Index = texture2D(cLightProjMap@Index, proj_coords@Index) * uProjTexturePower[@Index];
+				#if _USE_LIGHT_COLOR_@Index
+					@ProjTexColor@Index.xyz *= uLightColor@Index.xyz;
+				#endif
+				@ProjTexColor@Index.xyzw *= max(0.0, $vLightProjTexcoord@Index().z) / $vLightProjTexcoord@Index().z;
+			#endif
+          ]]>
+      </Code>
+    </Macro>
+
+    <Macro name="AddProjTextureColor" in0="Index" in1="ProjTexColor" in2="OldTexColor" out0="TexColor">
+      <Code>
+        <![CDATA[
+			#if _LIGHT_@Index ^^ _GL_PROJTEX_SPOT_@Index
+				#if _GL_PROJTEX_OPERATION_ADD_@Index
+					@TexColor.xyz += @ProjTexColor@Index.xyz * @ProjTexColor@Index.w;
+				#elif _GL_PROJTEX_OPERATION_MUL_@Index
+					@ProjTexColor@Index.xyz = @ProjTexColor@Index.xyz * @ProjTexColor@Index.w + vec3( 1.0 - @ProjTexColor@Index.w );
+					@TexColor.xyz *= @ProjTexColor@Index.xyz;
+				#elif _GL_PROJTEX_OPERATION_ORIGIN_@Index
+					@ProjTexColor@Index.xyz *= @ProjTexColor@Index.w;
+					@ProjTexColor@Index.xyz += vec3( 1.0 );
+					@TexColor.xyz = min( @TexColor.xyz * @ProjTexColor@Index.xyz, @OldTexColor.xyz );
+				#elif _GL_PROJTEX_OPERATION_COLOR_DODGE_@Index
+					@TexColor.xyz += ( @TexColor.xyz * @ProjTexColor@Index.xyz * @ProjTexColor@Index.w ) / ( vec3( 1.0 ) - @ProjTexColor@Index.xyz );
+				#endif
+			#endif
+          ]]>
+      </Code>
+    </Macro>
+
+    <Macro name="vFogFactor" varying="true" type="float">
+      <Code>#name = max( 0.0, abs(($vPositionSkin() * uMWVTransform).z) - uFogRange.x ) / ( uFogRange.y - uFogRange.x );</Code>
+    </Macro>
+
+    <Macro name="vGaussianBlurCoordinate11" varying="true" type="vec2">
+      <Code>#name = cTexCoords0.xy;</Code>
+    </Macro>
+    <Macro name="vGaussianBlurCoordinate00" varying="true" type="vec2">
+      <Code>#name = cTexCoords0.xy + vec2( -uStepSize.x, -uStepSize.y );</Code>
+    </Macro>
+    <Macro name="vGaussianBlurCoordinate02" varying="true" type="vec2">
+      <Code>#name = cTexCoords0.xy + vec2( uStepSize.x, -uStepSize.y );</Code>
+    </Macro>
+    <Macro name="vGaussianBlurCoordinate20" varying="true" type="vec2">
+      <Code>#name = cTexCoords0.xy + vec2( uStepSize.x, uStepSize.y );</Code>
+    </Macro>
+    <Macro name="vGaussianBlurCoordinate22" varying="true" type="vec2">
+      <Code>#name = cTexCoords0.xy + vec2( -uStepSize.x, uStepSize.y );</Code>
+    </Macro>
+    <Macro name="vMirrorAttenuation" varying="true" type="float">
+      <Code>
+        <![CDATA[
+			float obj_mirror_distance = dot( uMirrorPlane.xyz, $vPositionWorld().xyz ) + uMirrorPlane.w;
+			#name = obj_mirror_distance / abs( obj_mirror_distance );
+			#if _MIRROR_ATTENUATION_
+				#name = 1.0 - min( abs( obj_mirror_distance ) / uMirrorAttenuationDistance, 1.0 );
+			#endif
+			]]>
+      </Code>
+    </Macro>
+    <Macro name="vMirrorFactorByEye" varying="true" type="float">
+      <Code>
+        <![CDATA[
+			float mn_dot_pe = dot( uMirrorPlane.xyz, vPosToEyeDir.xyz );
+			float abs_mn_dot_pe = abs( mn_dot_pe );
+			#name = clamp( mn_dot_pe / abs_mn_dot_pe, 0.0, 1.0 );
+			]]>
+      </Code>
+    </Macro>
+    <Macro name="vMirrorFactor" varying="true" type="float">
+      <Code>
+        <![CDATA[
+			float mn_dot_pe1 = dot( uMirrorPlane.xyz, vPosToEyeDir.xyz );
+			float abs_mn_dot_pe1 = abs( mn_dot_pe1 );
+			#name = uMirrorFactor * clamp( mn_dot_pe1 / abs_mn_dot_pe1, 0.0, 1.0 );
+			]]>
+      </Code>
+    </Macro>
+    <Macro name="vMirrorRange" varying="true" type="vec2">
+      <Code>
+        <![CDATA[
+			float mn_dot_pe2 = dot( uMirrorPlane.xyz, vPosToEyeDir.xyz );
+			float abs_mn_dot_pe2 = abs( mn_dot_pe2 );
+			#name = uMirrorRange * clamp( mn_dot_pe2 / abs_mn_dot_pe2, 0.0, 1.0 );
+			]]>
+      </Code>
+    </Macro>
+    <!-- Common fucntions as macros -->
+    <Macro name="TransposeMat3" in0="m" out0="Transposed_m">
+      <Code>@Transposed_m = mat3(@m[0][0], @m[1][0], @m[2][0], @m[0][1], @m[1][1], @m[2][1], @m[0][2], @m[1][2], @m[2][2]);</Code>
+    </Macro>
+    <Macro name="TransposeMat4" in0="m" out0="Transposed_m">
+      <Code>@Transposed_m = mat4(@m[0][0], @m[1][0], @m[2][0], @m[3][0], @m[0][1], @m[1][1], @m[2][1], @m[3][1], @m[0][2], @m[1][2], @m[2][2], @m[3][2], @m[0][3], @m[1][3], @m[2][3], @m[3][3] );</Code>
+    </Macro>
+    <Macro name="GetPositionWithSkin" in0="Position" in1="BlendIndices" in2="BlendWeight" in3="BoneTransformRow0" in4="BoneTransformRow1" in5="BoneTransformRow2" in6="BoneTransformRow3" out0="TransformedPosition">
+      <Code>
+        <![CDATA[
+            ${highp}$ ivec4 indices = ivec4(@BlendIndices);
+            
+            ${highp}$ vec3 b_0_0_row = @BoneTransformRow0[indices[0]];
+            ${highp}$ vec3 b_0_1_row = @BoneTransformRow0[indices[1]];
+            ${highp}$ vec3 b_0_2_row = @BoneTransformRow0[indices[2]];
+            ${highp}$ vec3 b_0_3_row = @BoneTransformRow0[indices[3]];
+
+            ${highp}$ vec3 b_1_0_row = @BoneTransformRow1[indices[0]];
+            ${highp}$ vec3 b_1_1_row = @BoneTransformRow1[indices[1]];
+            ${highp}$ vec3 b_1_2_row = @BoneTransformRow1[indices[2]];
+            ${highp}$ vec3 b_1_3_row = @BoneTransformRow1[indices[3]];
+            
+            ${highp}$ vec3 b_2_0_row = @BoneTransformRow2[indices[0]];
+            ${highp}$ vec3 b_2_1_row = @BoneTransformRow2[indices[1]];
+            ${highp}$ vec3 b_2_2_row = @BoneTransformRow2[indices[2]];
+            ${highp}$ vec3 b_2_3_row = @BoneTransformRow2[indices[3]];
+            
+            ${highp}$ vec3 b_3_0_row = @BoneTransformRow3[indices[0]];
+            ${highp}$ vec3 b_3_1_row = @BoneTransformRow3[indices[1]];
+            ${highp}$ vec3 b_3_2_row = @BoneTransformRow3[indices[2]];
+            ${highp}$ vec3 b_3_3_row = @BoneTransformRow3[indices[3]];
+            
+			mat4 bone_transform_0 = mat4( vec4( b_0_0_row.x, b_1_0_row.x, b_2_0_row.x, b_3_0_row.x ), vec4( b_0_0_row.y, b_1_0_row.y, b_2_0_row.y, b_3_0_row.y ), vec4( b_0_0_row.z, b_1_0_row.z, b_2_0_row.z, b_3_0_row.z ), vec4( 0.0, 0.0, 0.0, 1.0 ) );
+			mat4 bone_transform_1 = mat4( vec4( b_0_1_row.x, b_1_1_row.x, b_2_1_row.x, b_3_1_row.x ), vec4( b_0_1_row.y, b_1_1_row.y, b_2_1_row.y, b_3_1_row.y ), vec4( b_0_1_row.z, b_1_1_row.z, b_2_1_row.z, b_3_1_row.z ), vec4( 0.0, 0.0, 0.0, 1.0 ) );
+			mat4 bone_transform_2 = mat4( vec4( b_0_2_row.x, b_1_2_row.x, b_2_2_row.x, b_3_2_row.x ), vec4( b_0_2_row.y, b_1_2_row.y, b_2_2_row.y, b_3_2_row.y ), vec4( b_0_2_row.z, b_1_2_row.z, b_2_2_row.z, b_3_2_row.z ), vec4( 0.0, 0.0, 0.0, 1.0 ) );
+			mat4 bone_transform_3 = mat4( vec4( b_0_3_row.x, b_1_3_row.x, b_2_3_row.x, b_3_3_row.x ), vec4( b_0_3_row.y, b_1_3_row.y, b_2_3_row.y, b_3_3_row.y ), vec4( b_0_3_row.z, b_1_3_row.z, b_2_3_row.z, b_3_3_row.z ), vec4( 0.0, 0.0, 0.0, 1.0 ) );
+            
+            @TransformedPosition = vec4( 0.0, 0.0, 0.0, @Position.w );
+            @TransformedPosition.xyz += ( @Position * bone_transform_0 ).xyz * @BlendWeight[0];
+            @TransformedPosition.xyz += ( @Position * bone_transform_1 ).xyz * @BlendWeight[1];
+            @TransformedPosition.xyz += ( @Position * bone_transform_2 ).xyz * @BlendWeight[2];
+            @TransformedPosition.xyz += ( @Position * bone_transform_3 ).xyz * @BlendWeight[3];
+            ]]>
+      </Code>
+    </Macro>
+    <Macro name="GetNormalWithSkin" in0="Normal" in1="BlendWeight" out0="TransformedNormal">
+      <Code>
+        <![CDATA[
+            mat3 bone_rotation_0 = mat3( vec3( b_0_0_row.x, b_1_0_row.x, b_2_0_row.x ), vec3( b_0_0_row.y, b_1_0_row.y, b_2_0_row.y ), vec3( b_0_0_row.z, b_1_0_row.z, b_2_0_row.z ) );
+			mat3 bone_rotation_1 = mat3( vec3( b_0_1_row.x, b_1_1_row.x, b_2_1_row.x ), vec3( b_0_1_row.y, b_1_1_row.y, b_2_1_row.y ), vec3( b_0_1_row.z, b_1_1_row.z, b_2_1_row.z ) );
+			mat3 bone_rotation_2 = mat3( vec3( b_0_2_row.x, b_1_2_row.x, b_2_2_row.x ), vec3( b_0_2_row.y, b_1_2_row.y, b_2_2_row.y ), vec3( b_0_2_row.z, b_1_2_row.z, b_2_2_row.z ) );
+			mat3 bone_rotation_3 = mat3( vec3( b_0_3_row.x, b_1_3_row.x, b_2_3_row.x ), vec3( b_0_3_row.y, b_1_3_row.y, b_2_3_row.y ), vec3( b_0_3_row.z, b_1_3_row.z, b_2_3_row.z ) );
+			
+            @TransformedNormal = vec3( 0.0, 0.0, 0.0 );
+            @TransformedNormal += ( @Normal.xyz * bone_rotation_0 ) * @BlendWeight[0];
+			@TransformedNormal += ( @Normal.xyz * bone_rotation_1 ) * @BlendWeight[1];
+			@TransformedNormal += ( @Normal.xyz * bone_rotation_2 ) * @BlendWeight[2];
+			@TransformedNormal += ( @Normal.xyz * bone_rotation_3 ) * @BlendWeight[3];
+            ]]>
+      </Code>
+    </Macro>
+    <Macro name="GetTangentWithSkin" in0="Tangent" in1="BlendWeight" out0="TransformedTangent">
+      <Code>
+        <![CDATA[
+			@TransformedTangent = vec3( 0.0, 0.0, 0.0 );
+			@TransformedTangent += ( @Tangent.xyz * bone_rotation_0 ) * @BlendWeight[0];
+			@TransformedTangent += ( @Tangent.xyz * bone_rotation_1 ) * @BlendWeight[1];
+			@TransformedTangent += ( @Tangent.xyz * bone_rotation_2 ) * @BlendWeight[2];
+			@TransformedTangent += ( @Tangent.xyz * bone_rotation_3 ) * @BlendWeight[3];
+            ]]>
+      </Code>
+    </Macro>
+    <Macro name="MixColor" in0="TexColor" in1="BlendColor" out0="Color">
+      <Code>@Color = vec4(mix(@TexColor, @BlendColor, @BlendColor.w).rgb, @TexColor.w);</Code>
+    </Macro>
+    <Macro name="GreyColor" in0="TexColor" out0="Color">
+      <Code>
+        <![CDATA[
+            float grey = (@TexColor.x + @TexColor.y + @TexColor.z) / 3.0;
+            @Color = vec4(grey, grey, grey, @TexColor.w);
+          ]]>
+      </Code>
+    </Macro>
+    <!-- Common macros -->
+    <Macro name="TEXTURE2D" in0="Sampler" out0="TexColor">
+      <Code>${lowp}$ vec4 @TexColor = texture2D(@Sampler, $vUV0())</Code>
+    </Macro>
+    <Macro name="TEXTURE2D_UV" in0="Sampler" in1="UV" out0="TexColor">
+      <Code>${lowp}$ vec4 @TexColor = texture2D(@Sampler, $vUV@UV())</Code>
+    </Macro>
+    <Macro name="TEXTURE2D_VEC2" in0="Sampler" in1="VEC2" out0="TexColor">
+      <Code>${lowp}$ vec4 @TexColor = texture2D(@Sampler, @VEC2)</Code>
+    </Macro>
+    <Macro name="GET_TEXTURE2D" in0="Sampler" >
+      <Code>texture2D(@Sampler, $vUV0())</Code>
+    </Macro>
+    <Macro name="GET_TEXTURE2D_W" in0="Sampler" >
+      <Code>texture2D(@Sampler, $vUV0()).w</Code>
+    </Macro>
+    <Macro name="TEXTURECUBE" in0="UV" out0="TexColor">
+      <Code>${lowp}$ vec4 @TexColor = textureCube(cTexCubeEnv, @UV)</Code>
+    </Macro>
+	<Macro name="TextureCubeWithMipmap" in0="UV" in1="Mipmap" out0="TexColor">
+      <Code>${lowp}$ vec4 @TexColor = textureCube(cTexCubeEnv, @UV, @Mipmap)</Code>
+    </Macro>
+    <Macro name="GetTexture2D0" out0="TexColor">
+      <Code>
+        <![CDATA[
+            $TEXTURE2D(0, out:@TexColor);
+			#if _TEXTURE0_COLOR_OPERATION_ADD_
+				@TexColor += uDiffuseMapColor.xyz;
+			#elif _TEXTURE0_COLOR_OPERATION_SUB_
+				@TexColor -= uDiffuseMapColor.xyz;
+			#elif _TEXTURE0_COLOR_OPERATION_MUL_
+				@TexColor *= uDiffuseMapColor.xyz;
+			#elif _TEXTURE0_COLOR_OPERATION_MIX_
+				$MixColor(@TexColor, vec4(uDiffuseMapColor.xyz, 0.5), out:@TexColor);
+			#elif _TEXTURE0_COLOR_OPERATION_GREY_
+				$GreyColor(@TexColor, out:@TexColor);
+			#endif
+          ]]>
+      </Code>
+    </Macro>
+  </Macros>
+</Root>

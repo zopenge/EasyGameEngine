@@ -1,0 +1,11 @@
+<Root>
+  <NameSpace>EGE</NameSpace>
+  <Author>Deen</Author>
+  <Copyright>...</Copyright>
+  <Version>1.0.0.0</Version>
+  <PrecompileHeader>EGEScript.h</PrecompileHeader>
+  <OutputFileName>ScriptSerialization</OutputFileName>
+  <InputDirs>
+    ../../../../EasyGameEngine/Include/Interface/Module/Script;
+  </InputDirs>
+</Root>

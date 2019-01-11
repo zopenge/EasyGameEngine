@@ -1,0 +1,12 @@
+<Root>
+  <NameSpace>SDKFramework</NameSpace>
+  <Author>Deen</Author>
+  <Copyright>...</Copyright>
+  <Version>1.0.0.0</Version>
+  <PrecompileHeader>SDKFramework.h</PrecompileHeader>
+  <OutputFileName>SDKFrameworkRC</OutputFileName>
+  <RegisterFunctionName>RegisterSDKFrameworkRC</RegisterFunctionName>
+  <InputFiles>
+    ../../../../Framework/Projects/SDKFramework/SDKFramework.windows/resource.h;
+  </InputFiles>
+</Root>

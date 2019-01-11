@@ -1,0 +1,1 @@
+"../PackageBuilder.exe" SourceDir="resCS2" TargetDir="" PatchDir="D:\Output\resCS2_24" AssetFileName="assets.xml" OutputFileName="D:\Output\doc_FatalRace\res_cs2_online_updata\resCS2_24_assets_2.0.0_20170105_cmcc.7z" PasswordForManifestFile="Kun!teaM" VersionString="2.0.0" CompressionMethod="NoneCompression" GO QUIT

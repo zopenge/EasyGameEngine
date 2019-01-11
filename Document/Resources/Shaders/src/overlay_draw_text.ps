@@ -1,0 +1,12 @@
+#include "common.inc"
+
+uniform sampler2D uDiffuse;
+
+varying vec2 vUV0;
+varying vec4 vColor0;
+
+void main ()
+{
+	vec4 tex_color = Texture2D(cDiffuse, vUV0);
+	gl_FragColor = vec4(vColor0.xyz, vColor0.w * tex_color.w);
+}

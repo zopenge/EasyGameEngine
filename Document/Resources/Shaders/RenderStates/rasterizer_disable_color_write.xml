@@ -1,0 +1,3 @@
+<Root>
+	<RasterizerState enable_red_color_write="false" enable_green_color_write="false" enable_blue_color_write="false" enable_alpha_color_write="false" fill_mode="SOLID" cull_mode="NONE"/>
+</Root>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 被2011 rel. 2 sp1 (TeaM DJiNN) 使用XMLSpy vTeaM DJiNN编辑的 (http://www.altova.com) by -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://your_namespace" targetNamespace="http://your_namespace" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:attributeGroup name="PropertyAttributeGroup">
+		<xs:attribute name="property_name" type="xs:string" use="required"/>
+		<xs:attribute name="comment" type="xs:string" use="optional"/>
+		<xs:attribute name="display_name" type="xs:string" use="optional"/>
+		<xs:attribute name="is_export" type="xs:boolean" use="optional"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="AttributeGroup">
+		<xs:attributeGroup ref="PropertyAttributeGroup"/>
+		<xs:attribute name="var_name" type="xs:string" use="required"/>
+		<xs:attribute name="is_important" type="xs:boolean" use="optional"/>
+		<xs:attribute name="is_member" type="xs:boolean" use="optional"/>
+	</xs:attributeGroup>
+	<xs:element name="EnumerationItem">
+		<xs:complexType>
+			<xs:attributeGroup ref="PropertyAttributeGroup"/>
+			<xs:attribute name="enum_name" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Attributes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="_ubool" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attributeGroup ref="AttributeGroup"/>
+						<xs:attribute name="default" type="xs:boolean" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="_dword" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attributeGroup ref="AttributeGroup"/>
+						<xs:attribute name="default" type="xs:int" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="_float" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attributeGroup ref="AttributeGroup"/>
+						<xs:attribute name="default" type="xs:float" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="WString" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attributeGroup ref="AttributeGroup"/>
+						<xs:attribute name="default" type="xs:string" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Enumeration" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="EnumerationItem" minOccurs="1" maxOccurs="unbounded"/>
+						</xs:sequence>
+						<xs:attributeGroup ref="AttributeGroup"/>
+						<xs:attribute name="enum_type" type="xs:string" use="required"/>
+						<xs:attribute name="default" type="xs:string" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="UserDefined" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attributeGroup ref="AttributeGroup"/>
+						<xs:attribute name="default" type="xs:string" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Code">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Attributes" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="Text" type="xs:string"/>
+			</xs:sequence>
+			<xs:attribute name="depend_attribute" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Model2D">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Attributes" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="Code" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Model3D">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Attributes" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="Code" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DoAction">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Attributes" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="Code" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Model2D" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="Model3D" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OnProcess">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DoAction" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OnInitializeProperties">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DoAction" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OnUpdateProperties">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DoAction" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OnTick">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DoAction" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OnRemove">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DoAction" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Member">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Attributes" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Root">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Member" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="OnProcess" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="OnInitializeProperties" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="OnUpdateProperties" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="OnTick" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="OnRemove" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,18 @@
+<Root>
+  <NameSpace>EGEFramework</NameSpace>
+  <Author>Deen</Author>
+  <Copyright>...</Copyright>
+  <Version>1.0.0.0</Version>
+  <PrecompileHeader>EGEFramework.h</PrecompileHeader>
+  <OutputFileName>FScriptRegisterClasses</OutputFileName>
+  <RegisterFunctionName>RegisterEGEScript</RegisterFunctionName>
+  <PreloadModules>
+    <PreloadModule enable_boolean="enable_debugger" name="mobdebug" file="../../../../EasyGameEngine/Source/External/ZeroBraneStudio/lualibs/mobdebug/mobdebug.lua"/>
+    <PreloadModule name="baseclass" file="../../../../EasyGameEngine/Source/External/ZeroBraneStudio/lualibs/mobdebug/baseclass.lua"/>
+  </PreloadModules>
+  <InputDirs>
+    ../../../../EasyGameEngine/Include;
+    ../../../../Framework/Include/EGEFramework;
+    ../../../../Framework/Source/EGEFramework/FScript;
+  </InputDirs>
+</Root>

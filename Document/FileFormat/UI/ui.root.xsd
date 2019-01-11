@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 被2011 rel. 2 sp1 (TeaM DJiNN) 使用XMLSpy vTeaM DJiNN编辑的 (http://www.altova.com) by -->
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by deen (deen) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="ui.controls.xsd"/>
+	<xs:include schemaLocation="ui.containers.xsd"/>
+	<xs:element name="Root">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Application">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="HBox" minOccurs="0">
+								<xs:complexType>
+									<xs:group ref="ControlsGroup"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="VBox" minOccurs="0">
+								<xs:complexType>
+									<xs:group ref="ControlsGroup"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:all>
+						<xs:attribute name="stringtable" type="xs:string" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

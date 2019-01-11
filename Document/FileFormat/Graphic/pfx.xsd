@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 被2011 rel. 2 sp1 (TeaM DJiNN) 使用XMLSpy vTeaM DJiNN编辑的 (http://www.altova.com) by -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://your_namespace" targetNamespace="http://your_namespace" elementFormDefault="qualified" attributeFormDefault="unqualified" id="pfx">
+	<xs:simpleType name="EmitterType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Point"/>
+			<xs:enumeration value="Cone"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RenderType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown"/>
+			<xs:enumeration value="Overlay"/>
+			<xs:enumeration value="ScreenAlignedBillboard"/>
+			<xs:enumeration value="ViewpointOrientedBillboard"/>
+			<xs:enumeration value="AxialBillboard"/>
+			<xs:enumeration value="Geometry"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Emitter attribute group -->
+	<xs:simpleType name="PercentageFloat">
+		<xs:restriction base="xs:float">
+			<xs:minInclusive value="0.0"/>
+			<xs:maxInclusive value="1.0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attributeGroup name="PercentageFloatRangeGroup">
+		<xs:attribute name="min" type="PercentageFloat" use="required"/>
+		<xs:attribute name="max" type="PercentageFloat" use="required"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="IntegerRangeGroup">
+		<xs:attribute name="min" type="xs:unsignedLong" use="required"/>
+		<xs:attribute name="max" type="xs:unsignedLong" use="required"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="FloatRangeGroup">
+		<xs:attribute name="min" type="xs:float" use="required"/>
+		<xs:attribute name="max" type="xs:float" use="required"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="XYZGroup">
+		<xs:attribute name="x" type="xs:float" use="required"/>
+		<xs:attribute name="y" type="xs:float" use="required"/>
+		<xs:attribute name="z" type="xs:float" use="required"/>
+	</xs:attributeGroup>
+	<!-- Emitter element group -->
+	<xs:element name="DelayFrames">
+		<xs:complexType>
+			<xs:attributeGroup ref="IntegerRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Life">
+		<xs:complexType>
+			<xs:attributeGroup ref="IntegerRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Number">
+		<xs:complexType>
+			<xs:attributeGroup ref="IntegerRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SizeX">
+		<xs:complexType>
+			<xs:attributeGroup ref="FloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SizeY">
+		<xs:complexType>
+			<xs:attributeGroup ref="FloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SizeZ">
+		<xs:complexType>
+			<xs:attributeGroup ref="FloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SpeedX">
+		<xs:complexType>
+			<xs:attributeGroup ref="FloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SpeedY">
+		<xs:complexType>
+			<xs:attributeGroup ref="FloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SpeedZ">
+		<xs:complexType>
+			<xs:attributeGroup ref="FloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SpeedAccX">
+		<xs:complexType>
+			<xs:attributeGroup ref="FloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SpeedAccY">
+		<xs:complexType>
+			<xs:attributeGroup ref="FloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SpeedAccZ">
+		<xs:complexType>
+			<xs:attributeGroup ref="FloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RotationX">
+		<xs:complexType>
+			<xs:attributeGroup ref="FloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RotationY">
+		<xs:complexType>
+			<xs:attributeGroup ref="FloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RotationZ">
+		<xs:complexType>
+			<xs:attributeGroup ref="FloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ColorR">
+		<xs:complexType>
+			<xs:attributeGroup ref="PercentageFloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ColorG">
+		<xs:complexType>
+			<xs:attributeGroup ref="PercentageFloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ColorB">
+		<xs:complexType>
+			<xs:attributeGroup ref="PercentageFloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ColorA">
+		<xs:complexType>
+			<xs:attributeGroup ref="PercentageFloatRangeGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Position">
+		<xs:complexType>
+			<xs:attributeGroup ref="XYZGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Rotation">
+		<xs:complexType>
+			<xs:attributeGroup ref="XYZGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- Particle -->
+	<xs:element name="PFX">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Emitter" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- KeyFrame-integer value -->
+	<xs:element name="KeyFrameIntegerValue">
+		<xs:complexType>
+			<xs:attribute name="time" type="xs:unsignedLong"/>
+			<xs:attribute name="value" type="xs:int"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- KeyFrame-float value -->
+	<xs:element name="KeyFrameFloatValue">
+		<xs:complexType>
+			<xs:attribute name="time" type="xs:unsignedLong"/>
+			<xs:attribute name="value" type="xs:float"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- Particle Emitter Updater - Position -->
+	<xs:element name="EmitterUpdaterPositionX">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KeyFrameFloatValue" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EmitterUpdaterPositionY">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KeyFrameFloatValue" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EmitterUpdaterPositionZ">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KeyFrameFloatValue" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- Particle Emitter Updater - Rotation -->
+	<xs:element name="EmitterUpdaterRotationX">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KeyFrameFloatValue" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EmitterUpdaterRotationY">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KeyFrameFloatValue" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EmitterUpdaterRotationZ">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KeyFrameFloatValue" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- Particle Emitter Updater - Color -->
+	<xs:element name="EmitterUpdaterColorR">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KeyFrameIntegerValue" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EmitterUpdaterColorG">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KeyFrameIntegerValue" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EmitterUpdaterColorB">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KeyFrameIntegerValue" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="EmitterUpdaterColorA">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="KeyFrameIntegerValue" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- Particle Emitter Updater -->
+	<xs:element name="EmitterUpdater">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="EmitterUpdaterPositionX" maxOccurs="1"/>
+				<xs:element ref="EmitterUpdaterPositionY" maxOccurs="1"/>
+				<xs:element ref="EmitterUpdaterPositionZ" maxOccurs="1"/>
+				<xs:element ref="EmitterUpdaterRotationX" maxOccurs="1"/>
+				<xs:element ref="EmitterUpdaterRotationY" maxOccurs="1"/>
+				<xs:element ref="EmitterUpdaterRotationZ" maxOccurs="1"/>
+				<xs:element ref="EmitterUpdaterColorR" maxOccurs="1"/>
+				<xs:element ref="EmitterUpdaterColorG" maxOccurs="1"/>
+				<xs:element ref="EmitterUpdaterColorB" maxOccurs="1"/>
+				<xs:element ref="EmitterUpdaterColorA" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- Particle Emitter -->
+	<xs:element name="Emitter">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="DelayFrames" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="Life" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="Number" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="SizeX" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="SizeY" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="SizeZ" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="SpeedX" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="SpeedY" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="SpeedZ" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="SpeedAccX" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="SpeedAccY" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="SpeedAccZ" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="RotationX" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="RotationY" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="RotationZ" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="ColorR" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="ColorG" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="ColorB" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="ColorA" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="Position" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="Rotation" minOccurs="1" maxOccurs="1"/>
+				<xs:element ref="EmitterUpdater" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="type" type="EmitterType" use="required"/>
+			<xs:attribute name="render_type" type="RenderType" use="required"/>
+			<xs:attribute name="resource_type" type="xs:string" use="required"/>
+			<xs:attribute name="resource_name" type="xs:string" use="required"/>
+			<xs:attribute name="max_particles_number" type="xs:unsignedLong" use="required"/>
+			<xs:attribute name="FPS" type="xs:float" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- Particle Root -->
+	<xs:element name="Root">
+		<xs:annotation>
+			<xs:documentation>The root tag of particle file</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PFX" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

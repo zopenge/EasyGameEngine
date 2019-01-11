@@ -1,0 +1,13 @@
+REM %1 : FTP_URL=ftp://%USERNAME%:%PASSWORD%@%SITE%:%PORT%
+REM %2 : FTP_RESOURCE_PATH=
+REM %3 : LATEST_RESOURCE_PATH=
+REM %4 : MANIFEST_FILENAME=
+REM %5 : CDN_WEBSITE=
+REM %6 : TOOL_FILE_CONVERTER_FILE_PATH=
+REM %7 : TOOL_FILE_FTP_FILE_PATH=
+REM %8 : ENCRYPTION_TYPE=
+REM %9 : ENCRYPTION_KEY=
+
+"%EGE_DIR%\Build\GenDiff\GenDiffFiles.bat" ftp://racegame:racegame@CC@112.90.242.202:21 /resActDiabloDemo .\resActDiabloDemo ActDiabloDemo_manifest.xml http://sxupdate.racegame.appget.cn/resActDiabloDemo "%EGE_DIR%\Tools\Bin\FileConverter_d.Win32.exe" "C:\Program Files (x86)\FlashFXP\FLASHFXP.EXE" "AES" "CK_Che__EGE_Core"
+
+start http://druid.punchbox.info/cdn_clear/backend.php

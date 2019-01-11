@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root>
+	<F2DSprite name="BUBBLE" texture="BUBBLE.tga" offsetx="0" offsety="0" uvl="0.0" uvt="0.0" uvr="1" uvb="1" sizex="64" sizey="64"/>
+</Root>

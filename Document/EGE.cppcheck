@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="1">
+    <includedir>
+        <dir name="../EasyGameEngine/Include/"/>
+        <dir name="../Framework/Include/"/>
+    </includedir>
+    <paths>
+        <dir name="../EasyGameEngine/Source/Engine"/>
+        <dir name="../EasyGameEngine/Source/Module"/>
+        <dir name="../EasyGameEngine/Source/Platform"/>
+        <dir name="../Framework/Source/EGEFramework"/>
+        <dir name="../Framework/Source/EGEGameKit"/>
+    </paths>
+</project>

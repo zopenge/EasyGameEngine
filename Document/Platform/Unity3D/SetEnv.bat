@@ -1,0 +1,1 @@
+setx U3D_DIR "%~dp0

@@ -1,0 +1,227 @@
+syntax = "proto2";
+
+package NetworkPacket;
+
+option optimize_for = LITE_RUNTIME;
+
+//!	The constant value
+enum Constant
+{
+	KEEP_ALIVE_CHECK_INTERVAL	= 60000;
+}
+
+//!	The message type
+enum MessageType
+{
+	MT_KEEP_ALIVE							= 1;
+	MT_LOGIN								= 2;
+	MT_LOGOUT								= 3;
+
+	MT_RUNTIME_INFO							= 100;
+	MT_RUNTIME_THREADS_INFO					= 101;
+
+	MT_LOGGER_STRING						= 200;
+	MT_LOGGER_STRING_IN_ZLIB				= 201;
+
+	MT_DEVICE_TEXTURE_RESOURCES				= 300;
+	MT_DEVICE_TEXTURE_CHANGE_SAMPLER_FILTER	= 301;
+	MT_DEVICE_SHADER_RESOURCES				= 310;
+	MT_DEVICE_SHADER_UPDATE					= 311;
+
+	MT_DEVICE_MEM_RESOURCES					= 400;
+
+	MT_DEVICE_GUI_RESOURCES					= 500;
+
+	MT_DEVICE_PERFORMANCE					= 600;
+	MT_DEVICE_PERFORMANCE_PARTICLES			= 601;
+	MT_DEVICE_PERFORMANCE_GLOBAL_SHADER		= 602;
+}
+
+//!	The texture type
+enum TextureType
+{
+	TT_TEX2D 		= 1;
+	TT_TEXCUBEMAP 	= 2;
+}
+
+//! The sampler filter type
+enum SamplerType
+{
+	_SF_UNKNOWN	= 1;
+	_SF_NEAREST	= 2;
+	_SF_LINEAR	= 3;
+}
+
+//!	The keep alive info
+message KeepAliveInfo
+{
+	required uint32	number = 1;
+}
+
+//! The unique ID
+message UID
+{
+	required uint32	data1 = 1;
+	required uint32	data2 = 2;
+	required uint32	data3 = 3;
+	required uint32	data4 = 4;
+}
+
+//!	The device info
+message DeviceInfo
+{
+	required UID	uid				= 1;
+	required uint32	process_id		= 2;
+	required string	brand_name		= 3;
+	required string	device_name		= 4;
+	required string	cpu_name		= 5;
+	required uint32	cpu_core_number	= 6;
+	required string	gpu_name		= 7;
+	required uint32	gpu_core_number	= 8;
+	required uint64	smem_size		= 9;
+	required uint64	vmem_size		= 10;
+}
+
+//!	The device run time info
+message DeviceRunTimeInfo
+{
+	required UID	uid			= 1;
+	required float	fps			= 2;
+	required uint64	smem_size	= 3;
+	required uint64	vmem_size	= 4;
+	required float	cpu_usage	= 5;
+	required float	gpu_usage	= 6;
+}
+
+//!	The Login info
+message LoginInfo
+{
+	required DeviceInfo	device	= 1;
+}
+
+//!	The Logout info
+message LogoutInfo
+{
+	required DeviceInfo	device	= 1;
+}
+
+//! The thread info
+message ThreadInfo
+{
+	required uint64	id			= 1;
+	required string	name		= 2;
+	required float	cpu_usage	= 3;
+}
+
+//! The threads info
+message ThreadsInfo
+{
+	required UID		uid		= 1;
+	repeated ThreadInfo	threads	= 2;
+}
+
+//! The log-string info
+message LogStringInfo
+{
+	required UID	uid				= 1;
+	required bool	has_compressed	= 2;
+	required bytes	log				= 3;
+}
+
+//!	The texture resource info
+message TextureResInfo
+{
+	required string			res_name				= 1;
+	required TextureType	type					= 2;
+	required uint32			res_id					= 3;
+	required uint32			width					= 4;
+	required uint32			height					= 5;
+	required uint32			mipmaps					= 6;
+	required uint32			size_in_bytes			= 7;
+	required uint32			pixel_format			= 8;
+	required SamplerType	sampler_filter_type		= 9;
+}
+
+//!	The texture change sampler filter
+message TextureChangeSamplerFilter
+{
+	required uint32			res_id					= 1;
+	required SamplerType	sampler_filter_type		= 2;
+}
+
+//!	The device texture resources info
+message DeviceTexResources
+{
+	required UID			uid			= 1;
+	repeated TextureResInfo	textures	= 2;
+}
+
+//!	The mem resource info
+message DeviceMemResInfo
+{
+	required string	file_name		= 1;
+	required uint32	line_number		= 2;
+	required uint32	size_in_bytes	= 3;
+	optional uint32	number			= 4;
+}
+
+//!	The mem resources info
+message DeviceMemResources
+{
+	optional UID				uid					= 1;
+	optional uint32				min_size			= 2;
+	optional uint32				total_alloc_size	= 3;
+	optional uint32				total_alloc_number	= 4;
+	repeated DeviceMemResInfo	resources			= 5;
+}
+
+//!	The shader resource info
+message ShaderResInfo
+{
+	required string	name	= 1;
+	required uint32	key		= 2;
+	required string	vs_code	= 3;
+	required string	ps_code	= 4;
+}
+
+//!	The device shader resources info
+message DeviceShaderResources
+{
+	required UID			uid		= 1;
+	repeated ShaderResInfo	shaders	= 2;
+}
+
+//!	The GUI resource info
+message GUIResInfo
+{
+	required string	gui_controls	= 1;
+}
+
+//!	The performance info
+message PerformanceInfo
+{
+	required UID	uid						= 1;
+    required uint64	file_open_count			= 2;
+    required uint64	file_read_count			= 3;
+    required uint64	file_read_bytes			= 4;
+    required uint64	file_write_count		= 5;
+    required uint64	file_write_bytes		= 6;
+
+    required uint64	gl_api_count			= 7;
+    required uint64	gl_dp_count				= 8;
+    required uint64	gl_compressed_tex_count	= 9;
+    required uint64	gl_tex_count			= 10;
+    required uint64	gl_tex_bytes			= 11;
+}
+
+//!	The performance - particles info
+message PerformanceParticlesInfo
+{
+	required bool	enable	= 1;
+}
+
+//!	The performance - global shader info
+message PerformanceGlobalShaderInfo
+{
+	required string	name	= 1;
+}

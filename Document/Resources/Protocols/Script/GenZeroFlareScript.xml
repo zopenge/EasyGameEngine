@@ -1,0 +1,17 @@
+<Root>
+  <NameSpace>ZeroFlare</NameSpace>
+  <Author>Deen</Author>
+  <Copyright>...</Copyright>
+  <Version>1.0.0.0</Version>
+  <PrecompileHeader>ZeroFlarePCH.h</PrecompileHeader>
+  <OutputFileName>ZFAppScriptRegister</OutputFileName>
+  <RegisterFunctionName>RegisterZFAppScript</RegisterFunctionName>
+  <InputFiles>
+    ../../../../Framework/Source/ZeroFlare/AppScript/ZFAppScript.h;
+  </InputFiles>
+  <InputDirs>
+    ../../../../EasyGameEngine/Include;
+    ../../../../Framework/Include/EGEFramework;
+    ../../../../Framework/Source/ZeroFlare/AppScript/ZF2DSprite;
+  </InputDirs>
+</Root>
