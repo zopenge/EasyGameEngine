@@ -35,6 +35,7 @@ struct private_key_class
  * JS Export Functions
  */
 void _exit(int code);
+void _login(const char *token);
 
 void *_malloc(int size);
 void _free(void *buffer);
@@ -515,6 +516,8 @@ any login(const char *token)
     // Copy token
     __global__->token = allocString(token);
 
+    _login(__global__->token);
+    
 #ifdef DEBUG
 
     consoleLog(token);
