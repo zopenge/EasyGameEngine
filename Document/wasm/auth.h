@@ -7,6 +7,8 @@ extern "C"
 {
 #endif
 
+    void initGlobal(const char *jsPath, int jsFileSize);
+
     void requestFileSize();
 
     void onRecvFileSize(const char *path, int size);
