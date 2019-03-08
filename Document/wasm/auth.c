@@ -394,7 +394,7 @@ struct GlobalInfo
     // Attributes to save engine abilities
     unsigned int _attributes;
 
-    // Internal RAS keys
+    // Internal RSA keys
     struct public_key_class pub;
     struct private_key_class priv;
 
