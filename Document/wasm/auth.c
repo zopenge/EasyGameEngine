@@ -540,7 +540,7 @@ any encodeString(const char *string)
         char c = string[i];
         if (c < 0)
         {
-            encrypted[index++] = rsa_modExp(randomUint(1, 19), pub->exponent, pub->modulus);
+            encrypted[index++] = rsa_modExp(randomUint(1, 7), pub->exponent, pub->modulus);
             encrypted[index++] = rsa_modExp(-c, pub->exponent, pub->modulus);
         }
         else
@@ -568,7 +568,7 @@ any decodeString(const long long *buffer)
     for (int i = 0; i < size; i++)
     {
         long long c = rsa_modExp(buffer[1 + i], priv->exponent, priv->modulus);
-        if (c <= 19)
+        if (c <= 7)
         {
             i++;
             decrypted[index++] = -rsa_modExp(buffer[1 + i], priv->exponent, priv->modulus);
