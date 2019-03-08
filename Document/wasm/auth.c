@@ -6,10 +6,6 @@
 /**
  * Typedef
  */
-typedef const char *string;
-typedef int any;
-typedef int boolean;
-typedef unsigned int _uint;
 
 #define false 0
 #define true 1
@@ -34,19 +30,26 @@ struct private_key_class
 /**
  * JS Export Functions
  */
-void _exit(int code);
-void _login(const char *token);
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+    void _exit(int code);
+    void _login(const char *token);
 
-void *_malloc(int size);
-void _free(void *buffer);
+    void *_malloc(int size);
+    void _free(void *buffer);
 
-void _consoleNumber(int number);
-void _consoleBuffer(void *buffer);
-void _consoleLog(const char *offset, int len);
+    void _consoleNumber(int number);
+    void _consoleBuffer(void *buffer);
+    void _consoleLog(const char *offset, int len);
 
-void _runScript(const char *script, int len);
+    void _runScript(const char *script, int len);
 
-void _requestFileSize(const char *path);
+    void _requestFileSize(const char *path);
+#ifdef __cplusplus
+}
+#endif
 
 #define MALLOC(size) _malloc(size);
 #define FREE(buffer)    \
@@ -151,7 +154,7 @@ int toLower(int c)
 }
 
 // Thanks for sharing code: https://github.com/torvalds/linux/blob/master/lib/string.c
-int stringCompare(const char *s1, const char *s2, boolean ignoreCase)
+int stringCompare(const char *s1, const char *s2, int ignoreCase)
 {
     int c1, c2;
 
@@ -303,6 +306,8 @@ long long rsa_modExp(long long b, long long e, long long m)
     {
         return (b * rsa_modExp(b, (e - 1), m) % m);
     }
+
+    return 0;
 }
 
 // Calling this function will generate a public and private key and store them in the pointers
@@ -331,7 +336,7 @@ void rsaGenKeys(long long p, long long q, struct public_key_class *pub, struct p
     priv->exponent = d;
 }
 
-int rsaGetEncryptSize(const char *message, unsigned long message_size)
+int rsaGetEncryptSize(const char *message, int message_size)
 {
     int encrypted_size = 0;
     for (int i = 0; i < message_size; i++)
@@ -387,7 +392,7 @@ struct GlobalInfo
     unsigned int seeds[4];
 
     // Attributes to save engine abilities
-    _uint _attributes;
+    unsigned int _attributes;
 
     // Internal RAS keys
     struct public_key_class pub;
@@ -474,13 +479,13 @@ unsigned int randomUint(_min, _max)
  */
 
 // Download file
-any requestFileSize()
+void requestFileSize()
 {
     _requestFileSize(__global__->jsPath);
 }
 
 // Recv file content
-any onRecvFileSize(const char *path, int size)
+void onRecvFileSize(const char *path, int size)
 {
 #ifdef DEBUG
     consoleLog(__global__->jsPath);
@@ -511,13 +516,13 @@ any onRecvFileSize(const char *path, int size)
 }
 
 // Login to get token
-any login(const char *token)
+void login(const char *token)
 {
     // Copy token
     __global__->token = allocString(token);
 
     _login(__global__->token);
-    
+
 #ifdef DEBUG
 
     consoleLog(token);
@@ -526,7 +531,7 @@ any login(const char *token)
 }
 
 // Encode string
-any encodeString(const char *string)
+long long *encodeString(const char *string)
 {
     int length = stringLength(string);
     int encrypted_size = rsaGetEncryptSize(string, length);
@@ -556,11 +561,11 @@ any encodeString(const char *string)
 }
 
 // Decode string
-any decodeString(const long long *buffer)
+char *decodeString(const long long *buffer)
 {
     struct private_key_class *priv = &__global__->priv;
 
-    long long size = rsa_modExp(buffer[0], priv->exponent, priv->modulus);
+    int size = (int)rsa_modExp(buffer[0], priv->exponent, priv->modulus);
     if (!size)
         return NULL;
 
@@ -574,11 +579,11 @@ any decodeString(const long long *buffer)
         if (c <= 7)
         {
             i++;
-            decrypted[index++] = -rsa_modExp(buffer[1 + i], priv->exponent, priv->modulus);
+            decrypted[index++] = (char)-rsa_modExp(buffer[1 + i], priv->exponent, priv->modulus);
         }
         else
         {
-            decrypted[index++] = c;
+            decrypted[index++] = (char)c;
         }
     }
 
@@ -587,17 +592,17 @@ any decodeString(const long long *buffer)
     return decrypted;
 }
 
-any getAttributes()
+unsigned int getAttributes()
 {
     return __global__->_attributes;
 }
 
-any getRandomValue()
+unsigned int getRandomValue()
 {
     return random();
 }
 
-any eval(const char *script)
+void eval(const char *script)
 {
     runScript(script);
 }
