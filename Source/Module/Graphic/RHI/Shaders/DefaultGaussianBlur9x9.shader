@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Shader version="1.2">
+  <Declaration>
+		<Variable qualifier="uniform" type="mat4" name="rViewProjection"/>
+		<Variable qualifier="uniform" type="sampler2D" name="cTexSampler0"/>
+    <Variable qualifier="uniform" type="vec4" name="cBlurColor"/>
+    <Variable qualifier="uniform" type="vec2" name="cTextureSize"/>
+    <Variable qualifier="uniform" type="float" name="cBlurRate"/>
+    <Variable qualifier="attribute" type="vec4" name="cPosition"/>
+		<Variable qualifier="attribute" type="vec4" name="cColor0"/>
+		<Variable qualifier="attribute" type="vec2" name="cTexCoords0"/>
+		<Variable qualifier="varying" precision="lowp" type="vec2" name="sUV"/>
+    <Variable qualifier="varying" precision="lowp" type="vec2" name="sTextureSize"/>
+    <Variable qualifier="varying" precision="lowp" type="float" name="sBlurRate"/>
+    <Variable qualifier="varying" precision="lowp" type="vec4" name="sBlurColor"/>
+  </Declaration>
+	<VSMain>
+		<Code>
+			<Text>
+        sBlurColor = cBlurColor;
+        sUV = cTexCoords0;
+        sTextureSize = cTextureSize;
+        sBlurRate = cBlurRate;
+      </Text>
+			<ReturnOp>cPosition * rViewProjection</ReturnOp>
+		</Code>
+	</VSMain>
+  <PSMain>
+    <Declaration>
+      <Precision type="float">lowp</Precision>
+    </Declaration>
+		<Code>
+      <Variable precision="lowp" type="vec2" name="new_uv" default_value=""/>
+      <Text>
+        new_uv.x = (sUV.x + (-4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-4.0 / sTextureSize.y));
+        float tmpvar_1;
+        tmpvar_1 = texture2D (cTexSampler0, new_uv).w;
+        new_uv.x = (sUV.x + (-3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-4.0 / sTextureSize.y));
+        float tmpvar_2;
+        tmpvar_2 = (tmpvar_1 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-4.0 / sTextureSize.y));
+        float tmpvar_3;
+        tmpvar_3 = (tmpvar_2 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-1.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-4.0 / sTextureSize.y));
+        float tmpvar_4;
+        tmpvar_4 = (tmpvar_3 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (0.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-4.0 / sTextureSize.y));
+        float tmpvar_5;
+        tmpvar_5 = (tmpvar_4 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (1.0/(sTextureSize.x)));
+        new_uv.y = (sUV.y + (-4.0 / sTextureSize.y));
+        float tmpvar_6;
+        tmpvar_6 = (tmpvar_5 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-4.0 / sTextureSize.y));
+        float tmpvar_7;
+        tmpvar_7 = (tmpvar_6 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-4.0 / sTextureSize.y));
+        float tmpvar_8;
+        tmpvar_8 = (tmpvar_7 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-4.0 / sTextureSize.y));
+        float tmpvar_9;
+        tmpvar_9 = (tmpvar_8 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-3.0 / sTextureSize.y));
+        float tmpvar_10;
+        tmpvar_10 = (tmpvar_9 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-3.0 / sTextureSize.y));
+        float tmpvar_11;
+        tmpvar_11 = (tmpvar_10 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-3.0 / sTextureSize.y));
+        float tmpvar_12;
+        tmpvar_12 = (tmpvar_11 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-1.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-3.0 / sTextureSize.y));
+        float tmpvar_13;
+        tmpvar_13 = (tmpvar_12 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (0.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-3.0 / sTextureSize.y));
+        float tmpvar_14;
+        tmpvar_14 = (tmpvar_13 + (texture2D (cTexSampler0, new_uv).w * 4.0));
+        new_uv.x = (sUV.x + (1.0/(sTextureSize.x)));
+        new_uv.y = (sUV.y + (-3.0 / sTextureSize.y));
+        float tmpvar_15;
+        tmpvar_15 = (tmpvar_14 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-3.0 / sTextureSize.y));
+        float tmpvar_16;
+        tmpvar_16 = (tmpvar_15 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-3.0 / sTextureSize.y));
+        float tmpvar_17;
+        tmpvar_17 = (tmpvar_16 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-3.0 / sTextureSize.y));
+        float tmpvar_18;
+        tmpvar_18 = (tmpvar_17 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-2.0 / sTextureSize.y));
+        float tmpvar_19;
+        tmpvar_19 = (tmpvar_18 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-2.0 / sTextureSize.y));
+        float tmpvar_20;
+        tmpvar_20 = (tmpvar_19 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-2.0 / sTextureSize.y));
+        float tmpvar_21;
+        tmpvar_21 = (tmpvar_20 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (-1.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-2.0 / sTextureSize.y));
+        float tmpvar_22;
+        tmpvar_22 = (tmpvar_21 + (texture2D (cTexSampler0, new_uv).w * 4.0));
+        new_uv.x = (sUV.x + (0.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-2.0 / sTextureSize.y));
+        float tmpvar_23;
+        tmpvar_23 = (tmpvar_22 + (texture2D (cTexSampler0, new_uv).w * 8.0));
+        new_uv.x = (sUV.x + (1.0/(sTextureSize.x)));
+        new_uv.y = (sUV.y + (-2.0 / sTextureSize.y));
+        float tmpvar_24;
+        tmpvar_24 = (tmpvar_23 + (texture2D (cTexSampler0, new_uv).w * 4.0));
+        new_uv.x = (sUV.x + (2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-2.0 / sTextureSize.y));
+        float tmpvar_25;
+        tmpvar_25 = (tmpvar_24 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-2.0 / sTextureSize.y));
+        float tmpvar_26;
+        tmpvar_26 = (tmpvar_25 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-2.0 / sTextureSize.y));
+        float tmpvar_27;
+        tmpvar_27 = (tmpvar_26 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-1.0 / sTextureSize.y));
+        float tmpvar_28;
+        tmpvar_28 = (tmpvar_27 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-1.0 / sTextureSize.y));
+        float tmpvar_29;
+        tmpvar_29 = (tmpvar_28 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (-2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-1.0 / sTextureSize.y));
+        float tmpvar_30;
+        tmpvar_30 = (tmpvar_29 + (texture2D (cTexSampler0, new_uv).w * 4.0));
+        new_uv.x = (sUV.x + (-1.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-1.0 / sTextureSize.y));
+        float tmpvar_31;
+        tmpvar_31 = (tmpvar_30 + (texture2D (cTexSampler0, new_uv).w * 8.0));
+        new_uv.x = (sUV.x + (0.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-1.0 / sTextureSize.y));
+        float tmpvar_32;
+        tmpvar_32 = (tmpvar_31 + (texture2D (cTexSampler0, new_uv).w * 16.0));
+        new_uv.x = (sUV.x + (1.0/(sTextureSize.x)));
+        new_uv.y = (sUV.y + (-1.0 / sTextureSize.y));
+        float tmpvar_33;
+        tmpvar_33 = (tmpvar_32 + (texture2D (cTexSampler0, new_uv).w * 8.0));
+        new_uv.x = (sUV.x + (2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-1.0 / sTextureSize.y));
+        float tmpvar_34;
+        tmpvar_34 = (tmpvar_33 + (texture2D (cTexSampler0, new_uv).w * 4.0));
+        new_uv.x = (sUV.x + (3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-1.0 / sTextureSize.y));
+        float tmpvar_35;
+        tmpvar_35 = (tmpvar_34 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (-1.0 / sTextureSize.y));
+        float tmpvar_36;
+        tmpvar_36 = (tmpvar_35 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (0.0 / sTextureSize.y));
+        float tmpvar_37;
+        tmpvar_37 = (tmpvar_36 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (-3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (0.0 / sTextureSize.y));
+        float tmpvar_38;
+        tmpvar_38 = (tmpvar_37 + (texture2D (cTexSampler0, new_uv).w * 4.0));
+        new_uv.x = (sUV.x + (-2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (0.0 / sTextureSize.y));
+        float tmpvar_39;
+        tmpvar_39 = (tmpvar_38 + (texture2D (cTexSampler0, new_uv).w * 8.0));
+        new_uv.x = (sUV.x + (-1.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (0.0 / sTextureSize.y));
+        float tmpvar_40;
+        tmpvar_40 = (tmpvar_39 + (texture2D (cTexSampler0, new_uv).w * 16.0));
+        new_uv.x = (sUV.x + (0.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (0.0 / sTextureSize.y));
+        float tmpvar_41;
+        tmpvar_41 = (tmpvar_40 + (texture2D (cTexSampler0, new_uv).w * 32.0));
+        new_uv.x = (sUV.x + (1.0/(sTextureSize.x)));
+        new_uv.y = (sUV.y + (0.0 / sTextureSize.y));
+        float tmpvar_42;
+        tmpvar_42 = (tmpvar_41 + (texture2D (cTexSampler0, new_uv).w * 16.0));
+        new_uv.x = (sUV.x + (2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (0.0 / sTextureSize.y));
+        float tmpvar_43;
+        tmpvar_43 = (tmpvar_42 + (texture2D (cTexSampler0, new_uv).w * 8.0));
+        new_uv.x = (sUV.x + (3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (0.0 / sTextureSize.y));
+        float tmpvar_44;
+        tmpvar_44 = (tmpvar_43 + (texture2D (cTexSampler0, new_uv).w * 4.0));
+        new_uv.x = (sUV.x + (4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (0.0 / sTextureSize.y));
+        float tmpvar_45;
+        tmpvar_45 = (tmpvar_44 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (-4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (1.0/(sTextureSize.y)));
+        float tmpvar_46;
+        tmpvar_46 = (tmpvar_45 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (1.0/(sTextureSize.y)));
+        float tmpvar_47;
+        tmpvar_47 = (tmpvar_46 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (-2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (1.0/(sTextureSize.y)));
+        float tmpvar_48;
+        tmpvar_48 = (tmpvar_47 + (texture2D (cTexSampler0, new_uv).w * 4.0));
+        new_uv.x = (sUV.x + (-1.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (1.0/(sTextureSize.y)));
+        float tmpvar_49;
+        tmpvar_49 = (tmpvar_48 + (texture2D (cTexSampler0, new_uv).w * 8.0));
+        new_uv.x = (sUV.x + (0.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (1.0/(sTextureSize.y)));
+        float tmpvar_50;
+        tmpvar_50 = (tmpvar_49 + (texture2D (cTexSampler0, new_uv).w * 16.0));
+        new_uv.x = (sUV.x + (1.0/(sTextureSize.x)));
+        new_uv.y = (sUV.y + (1.0/(sTextureSize.y)));
+        float tmpvar_51;
+        tmpvar_51 = (tmpvar_50 + (texture2D (cTexSampler0, new_uv).w * 8.0));
+        new_uv.x = (sUV.x + (2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (1.0/(sTextureSize.y)));
+        float tmpvar_52;
+        tmpvar_52 = (tmpvar_51 + (texture2D (cTexSampler0, new_uv).w * 4.0));
+        new_uv.x = (sUV.x + (3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (1.0/(sTextureSize.y)));
+        float tmpvar_53;
+        tmpvar_53 = (tmpvar_52 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (1.0/(sTextureSize.y)));
+        float tmpvar_54;
+        tmpvar_54 = (tmpvar_53 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (2.0 / sTextureSize.y));
+        float tmpvar_55;
+        tmpvar_55 = (tmpvar_54 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (2.0 / sTextureSize.y));
+        float tmpvar_56;
+        tmpvar_56 = (tmpvar_55 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (2.0 / sTextureSize.y));
+        float tmpvar_57;
+        tmpvar_57 = (tmpvar_56 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (-1.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (2.0 / sTextureSize.y));
+        float tmpvar_58;
+        tmpvar_58 = (tmpvar_57 + (texture2D (cTexSampler0, new_uv).w * 4.0));
+        new_uv.x = (sUV.x + (0.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (2.0 / sTextureSize.y));
+        float tmpvar_59;
+        tmpvar_59 = (tmpvar_58 + (texture2D (cTexSampler0, new_uv).w * 8.0));
+        new_uv.x = (sUV.x + (1.0/(sTextureSize.x)));
+        new_uv.y = (sUV.y + (2.0 / sTextureSize.y));
+        float tmpvar_60;
+        tmpvar_60 = (tmpvar_59 + (texture2D (cTexSampler0, new_uv).w * 4.0));
+        new_uv.x = (sUV.x + (2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (2.0 / sTextureSize.y));
+        float tmpvar_61;
+        tmpvar_61 = (tmpvar_60 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (2.0 / sTextureSize.y));
+        float tmpvar_62;
+        tmpvar_62 = (tmpvar_61 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (2.0 / sTextureSize.y));
+        float tmpvar_63;
+        tmpvar_63 = (tmpvar_62 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (3.0 / sTextureSize.y));
+        float tmpvar_64;
+        tmpvar_64 = (tmpvar_63 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (3.0 / sTextureSize.y));
+        float tmpvar_65;
+        tmpvar_65 = (tmpvar_64 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (3.0 / sTextureSize.y));
+        float tmpvar_66;
+        tmpvar_66 = (tmpvar_65 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-1.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (3.0 / sTextureSize.y));
+        float tmpvar_67;
+        tmpvar_67 = (tmpvar_66 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (0.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (3.0 / sTextureSize.y));
+        float tmpvar_68;
+        tmpvar_68 = (tmpvar_67 + (texture2D (cTexSampler0, new_uv).w * 4.0));
+        new_uv.x = (sUV.x + (1.0/(sTextureSize.x)));
+        new_uv.y = (sUV.y + (3.0 / sTextureSize.y));
+        float tmpvar_69;
+        tmpvar_69 = (tmpvar_68 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (3.0 / sTextureSize.y));
+        float tmpvar_70;
+        tmpvar_70 = (tmpvar_69 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (3.0 / sTextureSize.y));
+        float tmpvar_71;
+        tmpvar_71 = (tmpvar_70 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (3.0 / sTextureSize.y));
+        float tmpvar_72;
+        tmpvar_72 = (tmpvar_71 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (4.0 / sTextureSize.y));
+        float tmpvar_73;
+        tmpvar_73 = (tmpvar_72 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (4.0 / sTextureSize.y));
+        float tmpvar_74;
+        tmpvar_74 = (tmpvar_73 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (4.0 / sTextureSize.y));
+        float tmpvar_75;
+        tmpvar_75 = (tmpvar_74 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (-1.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (4.0 / sTextureSize.y));
+        float tmpvar_76;
+        tmpvar_76 = (tmpvar_75 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (0.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (4.0 / sTextureSize.y));
+        float tmpvar_77;
+        tmpvar_77 = (tmpvar_76 + (texture2D (cTexSampler0, new_uv).w * 2.0));
+        new_uv.x = (sUV.x + (1.0/(sTextureSize.x)));
+        new_uv.y = (sUV.y + (4.0 / sTextureSize.y));
+        float tmpvar_78;
+        tmpvar_78 = (tmpvar_77 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (2.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (4.0 / sTextureSize.y));
+        float tmpvar_79;
+        tmpvar_79 = (tmpvar_78 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (3.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (4.0 / sTextureSize.y));
+        float tmpvar_80;
+        tmpvar_80 = (tmpvar_79 + texture2D (cTexSampler0, new_uv).w);
+        new_uv.x = (sUV.x + (4.0 / sTextureSize.x));
+        new_uv.y = (sUV.y + (4.0 / sTextureSize.y));
+        vec4 tmpvar_81;
+        tmpvar_81.xyz = sBlurColor.xyz;
+        tmpvar_81.w = (((tmpvar_80 + texture2D (cTexSampler0, new_uv).w) * sBlurRate) / 280.0);
+      </Text>
+      <ReturnOp>tmpvar_81</ReturnOp>
+    </Code>
+	</PSMain>
+</Shader>
