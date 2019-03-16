@@ -16,11 +16,11 @@ namespace EGE
 class anyPlatformString
 {
 protected:
-	//!	Compare two characters.
-	//!	@param		c1				The character 1.
-	//!	@param		c2				The character 2.
-	//!	@param		ignorecase		True indicates case insensitive.
-	//!	@return		True indicates it's equal.
+	//! Compare two characters.
+	//! @param		c1				The character 1.
+	//! @param		c2				The character 2.
+	//! @param		ignorecase		True indicates case insensitive.
+	//! @return		True indicates it's equal.
 	template< typename CharType >
 	static _ubool Equal( CharType c1, CharType c2, _ubool ignorecase );
 
@@ -31,56 +31,56 @@ public:
 	template< class CharType >
 	static _ubool IsBlank( const CharType* string );
 	//! Determine the path is a full path or not, a full path will begin with "X:" or "\\"
-	//!	@param		path		The path.
+	//! @param		path		The path.
 	//! @return		True if full path, false otherwise.
 	template< class CharType >
 	static _ubool IsFullpath( const CharType* path );
 
-	//!	Trim string from left to right.
-	//!	@param		string			The string buffer.	
-	//!	@param		stringlength	The string buffer length.
-	//!	@param		character		The character what you want to trim.
-	//!	@param		ignorecase		True indicates case insensitive.
-	//!	@return		The trimmed string.
+	//! Trim string from left to right.
+	//! @param		string			The string buffer.	
+	//! @param		stringlength	The string buffer length.
+	//! @param		character		The character what you want to trim.
+	//! @param		ignorecase		True indicates case insensitive.
+	//! @return		The trimmed string.
 	template< typename CharType >
 	static CharType* TrimStringLeft( CharType* string, _dword& stringlength, CharType character, _ubool ignorecase );
-	//!	Trim string from right to left.
-	//!	@param		string			The string buffer.	
-	//!	@param		stringlength	The string buffer length.
-	//!	@param		character		The character what you want to trim.
-	//!	@param		ignorecase		True indicates case insensitive.
-	//!	@return		The trimmed string.
+	//! Trim string from right to left.
+	//! @param		string			The string buffer.	
+	//! @param		stringlength	The string buffer length.
+	//! @param		character		The character what you want to trim.
+	//! @param		ignorecase		True indicates case insensitive.
+	//! @return		The trimmed string.
 	template< typename CharType >
 	static CharType* TrimStringRight( CharType* string, _dword& stringlength, CharType character, _ubool ignorecase );
 
-	//!	Trim string from left to right.
-	//!	@param		string			The string buffer.	
-	//!	@param		stringlength	The string buffer length.
-	//!	@param		charset			The substring what you want to trim.
-	//!	@param		ignorecase		True indicates case insensitive.
-	//!	@return		The trimmed string.
+	//! Trim string from left to right.
+	//! @param		string			The string buffer.	
+	//! @param		stringlength	The string buffer length.
+	//! @param		charset			The substring what you want to trim.
+	//! @param		ignorecase		True indicates case insensitive.
+	//! @return		The trimmed string.
 	template< typename CharType >
 	static CharType* TrimStringLeft( CharType* string, _dword& stringlength, const CharType* charset, _ubool ignorecase );
-	//!	Trim string from right to left.
-	//!	@param		string			The string buffer.	
-	//!	@param		stringlength	The string buffer length.
-	//!	@param		charset			The substring what you want to trim.
-	//!	@param		ignorecase		True indicates case insensitive.
-	//!	@return		The trimmed string.
+	//! Trim string from right to left.
+	//! @param		string			The string buffer.	
+	//! @param		stringlength	The string buffer length.
+	//! @param		charset			The substring what you want to trim.
+	//! @param		ignorecase		True indicates case insensitive.
+	//! @return		The trimmed string.
 	template< typename CharType >
 	static CharType* TrimStringRight( CharType* string, _dword& stringlength, const CharType* charset, _ubool ignorecase );
 
 	//! Search a character in the string from left to right.
 	//! @param		string			The string buffer.
 	//! @param		character		The character to be searched.
-	//!	@param		ignorecase		True indicates case insensitive.
+	//! @param		ignorecase		True indicates case insensitive.
 	//! @return		The index of the first occurrence of the character or -1 indicates cant find.
 	template< typename CharType >
 	static _dword SearchL2R( const CharType* string, CharType character, _ubool ignorecase );
 	//! Search a character in the string from right to left.
 	//! @param		string			The string buffer.
 	//! @param		character		The character to be searched.
-	//!	@param		ignorecase		True indicates case insensitive.
+	//! @param		ignorecase		True indicates case insensitive.
 	//! @return		The index of the first occurrence of the character or -1 indicates cant find.
 	template< typename CharType >
 	static _dword SearchR2L( const CharType* string, CharType character, _ubool ignorecase );
@@ -88,82 +88,82 @@ public:
 	//! Search a substring in the string from left to right.
 	//! @param		string			The string buffer.
 	//! @param		substring		The substring to be searched.
-	//!	@param		ignorecase		True indicates case insensitive.
-	//!	@param		endindex		The end index of searching.
+	//! @param		ignorecase		True indicates case insensitive.
+	//! @param		endindex		The end index of searching.
 	//! @return		The index of the first occurrence of the substring or -1 indicates cant find.
 	template< typename CharType >
 	static _dword SearchL2R( const CharType* string, const CharType* substring, _ubool ignorecase, _dword* endindex );
 	//! Search a substring in the string from right to left.
 	//! @param		string			The string buffer.
 	//! @param		substring		The substring to be searched.
-	//!	@param		ignorecase		True indicates case insensitive.
-	//!	@param		startindex		The start index of searching.
+	//! @param		ignorecase		True indicates case insensitive.
+	//! @param		startindex		The start index of searching.
 	//! @return		The index of the first occurrence of the substring or -1 indicates cant find.
 	template< typename CharType >
 	static _dword SearchR2L( const CharType* string, const CharType* substring, _ubool ignorecase, _dword* startindex );
 
-	//!	Copy string.
-	//!	@param		desbuffer		The dest string buffer.	
-	//!	@param		srcbuffer		The src string buffer.	
-	//!	@param		number			The number of characters to be copied, -1 indicates auto-detected.	
-	//!	@return		The dest string buffer.
+	//! Copy string.
+	//! @param		desbuffer		The dest string buffer.	
+	//! @param		srcbuffer		The src string buffer.	
+	//! @param		number			The number of characters to be copied, -1 indicates auto-detected.	
+	//! @return		The dest string buffer.
 	template< typename CharType >
 	static CharType* CopyString( CharType* desbuffer, const CharType* srcbuffer, _dword number = -1 );
 
-	//!	Append string.
-	//!	@param		desbuffer		The dest string buffer.	
-	//!	@param		srcbuffer		The src string buffer.
-	//!	@return		The dest string buffer.
+	//! Append string.
+	//! @param		desbuffer		The dest string buffer.	
+	//! @param		srcbuffer		The src string buffer.
+	//! @return		The dest string buffer.
 	template< typename CharType >
 	static CharType* AppendString( CharType* desbuffer, const CharType* srcbuffer );
 
-	//!	Compare two string.
-	//!	@param		string1			The string 1.
-	//!	@param		string2			The string 2.
-	//!	@param		ignorecase		True indicates case insensitive.
-	//!	@return		-1				The string 1 is smaller than string 2. <br>
-	//!				 0				The string 1 is equal to string 2. <br>
-	//!				 1				The string 1 is bigger than string 2.
+	//! Compare two string.
+	//! @param		string1			The string 1.
+	//! @param		string2			The string 2.
+	//! @param		ignorecase		True indicates case insensitive.
+	//! @return		-1				The string 1 is smaller than string 2. <br>
+	//! 			 0				The string 1 is equal to string 2. <br>
+	//! 			 1				The string 1 is bigger than string 2.
 	template< typename CharType >
 	static _int CompareString( const CharType* string1, const CharType* string2, _ubool ignorecase = _false );
-	//!	Compare two characters in case insensitive mode.
-	//!	@param		c1				The character 1.
-	//!	@param		c2				The character 2.
-	//!	@param		ignorecase		True indicates case insensitive.
-	//!	@return		-1				The character 1 is smaller than character 2. <br>
-	//!				 0				The character 1 is equal to character 2. <br>
-	//!				 1				The character 1 is bigger than character 2.
+	//! Compare two characters in case insensitive mode.
+	//! @param		c1				The character 1.
+	//! @param		c2				The character 2.
+	//! @param		ignorecase		True indicates case insensitive.
+	//! @return		-1				The character 1 is smaller than character 2. <br>
+	//! 			 0				The character 1 is equal to character 2. <br>
+	//! 			 1				The character 1 is bigger than character 2.
 	template< typename CharType >
 	static _int CompareCase( CharType c1, CharType c2, _ubool ignorecase = _false );
 	//! Compare	two strings with wildcards.
 	//! @param		string			The first string will to be searched.
 	//! @param		matchstring		The second string with wildcards to search.
-	//!	@param		ignorecase		True indicates case insensitive.
+	//! @param		ignorecase		True indicates case insensitive.
 	//! @return		True if the string meets the wildcard, false otherwise.
-	//!	@remarks	Wildcards must in the second string, otherwise it will be normal character.<br>
-	//!				<b>'*'</b> meets zero or more character.<br>
-	//!				<b>'?'</b> meets exactly one character.<br>
-	//!				'*' must not adjacent with other wildcards together, otherwise will get wrong result.
-	//!				For example, "Hello" will meets "He??o" or "H*o" or "*Hello".
+	//! @remarks	Wildcards must in the second string, otherwise it will be normal character.<br>
+	//! 			<b>'*'</b> meets zero or more character.<br>
+	//! 			<b>'?'</b> meets exactly one character.<br>
+	//! 			'*' must not adjacent with other wildcards together, otherwise will get wrong result.
+	//! 			For example, "Hello" will meets "He??o" or "H*o" or "*Hello".
 	template< typename CharType >
 	static _ubool CompareWildcard( const CharType* string, const CharType* matchstring, _ubool ignorecase );
 
-	//!	Get string length.
-	//!	@param		string			The string.
-	//!	@return		The string length of string.
+	//! Get string length.
+	//! @param		string			The string.
+	//! @return		The string length of string.
 	template< typename CharType >
 	static _dword StringLength( const CharType* string );
 
-	//!	Convert string to lowercase.
-	//!	@param		string			The string.
+	//! Convert string to lowercase.
+	//! @param		string			The string.
 	//! @param		number			The number of characters to convert.
-	//!	@return		The converted string.
+	//! @return		The converted string.
 	template< typename CharType >
 	static CharType* LowercaseString( CharType* string, _dword number = -1 );
-	//!	Convert string to uppercase.
-	//!	@param		string			The string.
+	//! Convert string to uppercase.
+	//! @param		string			The string.
 	//! @param		number			The number of characters to convert.
-	//!	@return		The converted string.
+	//! @return		The converted string.
 	template< typename CharType >
 	static CharType* UppercaseString( CharType* string, _dword number = -1 );
 

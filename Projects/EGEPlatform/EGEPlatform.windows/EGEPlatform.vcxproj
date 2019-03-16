@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugStatic|Win32">
+      <Configuration>DebugStatic</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseStatic|Win32">
+      <Configuration>ReleaseStatic</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4C0C4378-E2B3-40E7-1111-1283FDE510DE}</ProjectGuid>
+    <RootNamespace>EGEPlatform</RootNamespace>
+    <SccProjectName>
+    </SccProjectName>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>EGEPlatform-windows</ProjectName>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Win32_Lib_Release.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Win32_Lib_Debug.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" />
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">$(VCInstallDir)\CRT\src;$(IncludePath)</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">$(VCInstallDir)\CRT\src;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\Source\Platform;..\..\..\Source\External\zlib;..\..\..\Source\External\pthread\include;..\..\..\Source\External\math-neon;..\..\..\Source\External\crt\dbgheap;..\..\..\Source\External\expression_parser;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>EGEPlatform.h</PrecompiledHeaderFile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PreprocessorDefinitions>ONLY_MSPACES;_CRTBLD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <DisableSpecificWarnings>4996;4091</DisableSpecificWarnings>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <AdditionalLibraryDirectories>..\..\..\Source\External\pthread\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\Source\Platform;..\..\..\Source\External\zlib;..\..\..\Source\External\pthread\include;..\..\..\Source\External\math-neon;..\..\..\Source\External\crt\dbgheap;..\..\..\Source\External\expression_parser;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>EGEPlatform.h</PrecompiledHeaderFile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PreprocessorDefinitions>ONLY_MSPACES;_CRTBLD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <DisableSpecificWarnings>4996;4091</DisableSpecificWarnings>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <AdditionalLibraryDirectories>..\..\..\Source\External\pthread\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Source\External\crt\dbgheap\dbgheap.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\uchar\uchar.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\adler32.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\compress.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\crc32.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\deflate.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\gzclose.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\gzlib.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\gzread.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\gzwrite.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\infback.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\inffast.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\inflate.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\inftrees.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\trees.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\uncompr.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\zutil.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\DeferredProcessor.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Address.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OrientedBox2D.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\AxisAlignedBox.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Box.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\CallStack.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\CallStack\winCallStack.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Camera.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Camera2D.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Clipboard.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Color.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\CRC.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\DebugSymbol\winDebugSymbol.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\DirectoryRecorder.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\EulerAngles.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\File.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\FileFinder.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\FileMapping.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\FileSystem.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\FlagsObject.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\FPSTimer.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Frustum.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Intersection.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\KernelObject.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Library.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Library\winLibrary.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Lock.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Maths.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Matrix2.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Matrix3.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Matrix3x4.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Matrix4.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Matrix4Adjustor.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\MD5.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Memory.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Path.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\PersistenceThread.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Pipe.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Plane.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatform.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformConverter.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformCPU.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformDebugging.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformEndian.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformLanguage.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformMemory.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformNetwork.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformProcess.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformString.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformTime.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatform.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformClipboard.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformConsole.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformConverter.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformCPU.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformDebugging.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformDevice.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformEndian.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformEnvironment.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformGPU.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformIO.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformKernel.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformLanguage.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformMemory.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformNetwork.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformProcess.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformResource.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformString.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformTime.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformVersion.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Polygon2D.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Precision.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Quaternion.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Random.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Ratio.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Ray.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Serializer.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Sphere.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\StringFormatter.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\SyncObject.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\TempDir.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Thread.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Time.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Timer.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Transform2D.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Transform3D.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Triangle.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Triangle2D.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\UID.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\ValueEncoder.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Variable.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Vector2.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Vector3.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Vector4.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Version.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Viewport.cpp" />
+    <ClCompile Include="..\..\..\Source\EGEPlatform.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Include\Platform\Camera2D.h" />
+    <ClInclude Include="..\..\..\Include\Platform\DeferredProcessor.h" />
+    <ClInclude Include="..\..\..\Include\Platform\FPSTimer.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Interpolation.h" />
+    <ClInclude Include="..\..\..\Include\Platform\OrientedBox2D.h" />
+    <ClInclude Include="..\..\..\Include\Platform\OS\ios\IOSHeaders.h" />
+    <ClInclude Include="..\..\..\Include\Platform\OS\NetworkOSHeader.h" />
+    <ClInclude Include="..\..\..\Include\Platform\OS\windows\Win32Headers.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Path.h" />
+    <ClInclude Include="..\..\..\Include\Platform\PlatformConfig.h" />
+    <ClInclude Include="..\..\..\Include\Platform\PlatformGlobal.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Polygon2D.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Precision.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Random.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Ratio.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Serializer.h" />
+    <ClInclude Include="..\..\..\Include\Platform\TempDir.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Timer.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Address.h" />
+    <ClInclude Include="..\..\..\Include\Platform\AxisAlignedBox.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Box.h" />
+    <ClInclude Include="..\..\..\Include\Platform\CallStack.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Camera.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Clipboard.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Color.h" />
+    <ClInclude Include="..\..\..\Include\Platform\CRC.h" />
+    <ClInclude Include="..\..\..\Include\Platform\DebugSymbol.h" />
+    <ClInclude Include="..\..\..\Include\Platform\DirectoryRecorder.h" />
+    <ClInclude Include="..\..\..\Include\Platform\EulerAngles.h" />
+    <ClInclude Include="..\..\..\Include\Platform\File.h" />
+    <ClInclude Include="..\..\..\Include\Platform\FileFinder.h" />
+    <ClInclude Include="..\..\..\Include\Platform\FileMapping.h" />
+    <ClInclude Include="..\..\..\Include\Platform\FileSystem.h" />
+    <ClInclude Include="..\..\..\Include\Platform\FlagsObject.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Frustum.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Intersection.h" />
+    <ClInclude Include="..\..\..\Include\Platform\KernelObject.h" />
+    <ClInclude Include="..\..\..\Include\Platform\KeyCodes.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Library.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Lock.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Maths.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Matrix2.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Matrix3.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Matrix3x4.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Matrix4.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Matrix4Adjustor.h" />
+    <ClInclude Include="..\..\..\Include\Platform\MD5.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Memory.h" />
+    <ClInclude Include="..\..\..\Include\Platform\PersistenceThread.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Pipe.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Plane.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Platform.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Quaternion.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Ray.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Sphere.h" />
+    <ClInclude Include="..\..\..\Include\Platform\StringFormatter.h" />
+    <ClInclude Include="..\..\..\Include\Platform\SyncObject.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Thread.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Time.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Transform2D.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Transform3D.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Triangle.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Triangle2D.h" />
+    <ClInclude Include="..\..\..\Include\Platform\UID.h" />
+    <ClInclude Include="..\..\..\Include\Platform\ValueEncoder.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Variable.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Vector2.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Vector3.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Vector4.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Version.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Viewport.h" />
+    <ClInclude Include="..\..\..\Source\EGEPlatform.h" />
+    <ClInclude Include="..\..\..\Source\External\crt\dbgheap\dbgint.h" />
+    <ClInclude Include="..\..\..\Source\External\uchar\inttypes.h" />
+    <ClInclude Include="..\..\..\Source\External\uchar\uchar.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\crc32.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\deflate.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\gzguts.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\inffast.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\inffixed.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\inflate.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\inftrees.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\trees.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\zconf.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\zlib.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\zutil.h" />
+    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatform.h" />
+    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformConverter.h" />
+    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformCPU.h" />
+    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformEndian.h" />
+    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformLanguage.h" />
+    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformMemory.h" />
+    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformNetwork.h" />
+    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformProcess.h" />
+    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformString.h" />
+    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformTime.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -33,33 +33,33 @@ public:
 	inline _ubool operator == ( const Viewport& viewport ) const;
 	inline _ubool operator != ( const Viewport& viewport ) const;
 
-	//!	Get aspect ratio of viewport.
-	//!	@param		none.
-	//!	@return		The aspect ratio.
+	//! Get aspect ratio of viewport.
+	//! @param		none.
+	//! @return		The aspect ratio.
 	inline _float GetAspectRatio( ) const;
-	//!	Get the left-top position.
-	//!	@param		none.
-	//!	@return		The left-top position.
+	//! Get the left-top position.
+	//! @param		none.
+	//! @return		The left-top position.
 	inline PointU GetLTPos( ) const;
-	//!	Get the left-top position.
-	//!	@param		none.
-	//!	@return		The left-top position.
+	//! Get the left-top position.
+	//! @param		none.
+	//! @return		The left-top position.
 	inline PointF GetLTPosF( ) const;
-	//!	Get the viewport size.
-	//!	@param		none.
-	//!	@return		The viewport size.
+	//! Get the viewport size.
+	//! @param		none.
+	//! @return		The viewport size.
 	inline PointU GetSize( ) const;
-	//!	Get the viewport size.
-	//!	@param		none.
-	//!	@return		The viewport size.
+	//! Get the viewport size.
+	//! @param		none.
+	//! @return		The viewport size.
 	inline PointF GetSizeF( ) const;
-	//!	Get the viewport rect.
-	//!	@param		none.
-	//!	@return		The viewport rect.
+	//! Get the viewport rect.
+	//! @param		none.
+	//! @return		The viewport rect.
 	inline RectU GetRect( ) const;
-	//!	Get the viewport rect.
-	//!	@param		none.
-	//!	@return		The viewport rect.
+	//! Get the viewport rect.
+	//! @param		none.
+	//! @return		The viewport rect.
 	inline RectF GetRectF( ) const;
 };
 

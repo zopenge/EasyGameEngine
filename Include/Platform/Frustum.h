@@ -28,37 +28,37 @@ public:
 	Frustum( const Matrix4& viewtransform, const Matrix4& projectiontransform );
 
 public:
-	//!	Compare frustum.
-	//!	@param		frustum		The frustum what you want to compare.
-	//!	@return		True indicates it's equal.
+	//! Compare frustum.
+	//! @param		frustum		The frustum what you want to compare.
+	//! @return		True indicates it's equal.
 	_ubool operator == ( const Frustum& frustum ) const;
-	//!	Compare frustum.
-	//!	@param		frustum		The frustum what you want to compare.
-	//!	@return		True indicates it's not equal.
+	//! Compare frustum.
+	//! @param		frustum		The frustum what you want to compare.
+	//! @return		True indicates it's not equal.
 	_ubool operator != ( const Frustum& frustum ) const;
 
 public:
-	//!	Get depth.
-	//!	@param		none.
-	//!	@return		The depth of frustum.
+	//! Get depth.
+	//! @param		none.
+	//! @return		The depth of frustum.
 	_float Depth( ) const;
 
-	//!	Check whether box is in frustum or not.
-	//!	@param		box			The box what you want to check.
-	//!	@return		True indicates it's in the frustum.
+	//! Check whether box is in frustum or not.
+	//! @param		box			The box what you want to check.
+	//! @return		True indicates it's in the frustum.
 	_ubool Inside( const AxisAlignedBox& box ) const;
-	//!	Check whether box is in frustum or not.
-	//!	@param		box			The box what you want to check.
-	//!	@return		True indicates it's in the frustum.
+	//! Check whether box is in frustum or not.
+	//! @param		box			The box what you want to check.
+	//! @return		True indicates it's in the frustum.
 	_ubool Inside( const Box& box ) const;
-	//!	Check whether line is in frustum or not.
-	//!	@param		line		The line what you want to check.
-	//!	@return		True indicates it's in the frustum.
+	//! Check whether line is in frustum or not.
+	//! @param		line		The line what you want to check.
+	//! @return		True indicates it's in the frustum.
 	_ubool Inside( const Line3D& line ) const;
 
-	//!	Check whether point is in frustum or not.
-	//!	@param		line		The line what you want to check.
-	//!	@return		True indicates it's in the frustum.
+	//! Check whether point is in frustum or not.
+	//! @param		line		The line what you want to check.
+	//! @return		True indicates it's in the frustum.
 	_ubool Inside( const Vector3& point ) const;
 
 	//! Get the sub frustum.

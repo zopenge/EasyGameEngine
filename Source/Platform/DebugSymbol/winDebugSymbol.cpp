@@ -84,9 +84,9 @@ struct SymbolFuncHelper
 	_MiniDumpWriteDump			mMiniDumpWriteDumpFunc;
 };
 
-//!	The debug symbol helper library
+//! The debug symbol helper library
 static Library			sSymbolFuncLibrary;
-//!	The symbol symbol helper
+//! The symbol symbol helper
 static SymbolFuncHelper sSymbolFuncHelper;
 
 //----------------------------------------------------------------------------

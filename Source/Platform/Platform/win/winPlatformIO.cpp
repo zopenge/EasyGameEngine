@@ -6,7 +6,7 @@
 
 #include "EGEPlatform.h"
 
-//!	The IO performance info.
+//! The IO performance info.
 static IOPerformanceInfo	sIOPerformanceInfo;
 
 //----------------------------------------------------------------------------

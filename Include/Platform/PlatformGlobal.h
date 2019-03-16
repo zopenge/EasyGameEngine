@@ -13,7 +13,7 @@ namespace EGE
 // The platform structures
 //----------------------------------------------------------------------------
 
-//!	The source file line info
+//! The source file line info
 template< typename CharType >
 struct SrcFileLineInfo
 {
@@ -51,26 +51,26 @@ typedef Array< WSrcFileLineInfo > WSrcFileLineInfoArray;
 typedef FixedArray< ASrcFileLineInfo, 256 > ASrcFileLineInfoFixedArray;
 typedef FixedArray< WSrcFileLineInfo, 256 > WSrcFileLineInfoFixedArray;
 
-//!	The detail of file or directory info
+//! The detail of file or directory info
 struct FileInfo
 {
-	//!	The enumeration depth
+	//! The enumeration depth
 	_dword	mDepth;
-	//!	The number of items found so far.
+	//! The number of items found so far.
 	_dword	mItemNumber;
 
-	//!	The relative path
+	//! The relative path
 	WString	mRelativePath;
-	//!	The absolute path
+	//! The absolute path
 	WString	mAbsolutePath;
-	//!	The file name
+	//! The file name
 	WString	mFileName;
 
-	//!	The file size
+	//! The file size
 	_qword	mSize;
-	//!	The file attributes, @see _FILE_ATTRIBUTE
+	//! The file attributes, @see _FILE_ATTRIBUTE
 	_dword	mAttributes;
-	//!	The last write time
+	//! The last write time
 	_qword	mLastWriteTime;
 
 	FileInfo( )

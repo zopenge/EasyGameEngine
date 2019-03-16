@@ -79,13 +79,13 @@ struct VersionInfo : public VersionInfoBase< VersionInfo >
 		{ return (const StringFileInfo*) EGE_ALIGN_UP32( (_dword) mFixedFileInfo + mValueLength ); }
 };
 
-//!	Get the aligned size in bytes.
+//! Get the aligned size in bytes.
 static _dword GetAlignedSize( _dword origin, _dword alignment )
 { 
 	return ( origin + alignment - 1 ) / alignment * alignment; 
 } 
 
-//!	The DllMain function declaration
+//! The DllMain function declaration
 typedef _int (*DllMainFunc)( _handle, _dword, _void* );
 
 //----------------------------------------------------------------------------

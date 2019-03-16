@@ -16,7 +16,7 @@ namespace EGE
 class DeferredProcessor
 {
 private:
-	//!	The status
+	//! The status
 	enum _STATUS
 	{
 		_STATUS_UNKONWN,
@@ -25,14 +25,14 @@ private:
 	};
 
 private:
-	//!	The status
+	//! The status
 	_STATUS	mStatus;
-	//!	The interval time
+	//! The interval time
 	_dword	mIntervalTime;
-	//!	The first delay time
+	//! The first delay time
 	_dword	mFirstDelayTime;
 
-	//!	The previous tickcount
+	//! The previous tickcount
 	_dword	mPrevTickcount;
 
 public:
@@ -40,28 +40,28 @@ public:
 	~DeferredProcessor( );
 
 public:
-	//!	Set the interval time.
-	//!	@param		interval	The interval time in milliseconds, -1 indicates unlimited.
-	//!	@return		none.
+	//! Set the interval time.
+	//! @param		interval	The interval time in milliseconds, -1 indicates unlimited.
+	//! @return		none.
 	_void SetIntervalTime( _dword interval );
-	//!	Set the first delay time.
-	//!	@param		delay		The delay time in milliseconds, -1 indicates unlimited.
-	//!	@return		none.
+	//! Set the first delay time.
+	//! @param		delay		The delay time in milliseconds, -1 indicates unlimited.
+	//! @return		none.
 	_void SetFirstDelayTime( _dword delay );
 
-	//!	Clear.
-	//!	@param		none.
-	//!	@return		none.
+	//! Clear.
+	//! @param		none.
+	//! @return		none.
 	_void Clear( );
 
-	//!	Reset.
-	//!	@param		none.
-	//!	@return		none.
+	//! Reset.
+	//! @param		none.
+	//! @return		none.
 	_void Reset( );
 
-	//!	Update.
-	//!	@param		none.
-	//!	@return		True indicates can occur the event, otherwise we should wait for it.
+	//! Update.
+	//! @param		none.
+	//! @return		True indicates can occur the event, otherwise we should wait for it.
 	_ubool Update( );
 };
 

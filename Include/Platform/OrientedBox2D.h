@@ -13,7 +13,7 @@ namespace EGE
 // OrientedBox2D
 //----------------------------------------------------------------------------
 
-//!	This class referenced from here: http://www.flipcode.com/archives/2D_OBB_Intersection.shtml, thanks for open source
+//! This class referenced from here: http://www.flipcode.com/archives/2D_OBB_Intersection.shtml, thanks for open source
 class OrientedBox2D
 {
 public:
@@ -38,14 +38,14 @@ public:
 	OrientedBox2D( const OrientedBox2D& box );
 
 public:
-	//!	Convert to rectangle.
+	//! Convert to rectangle.
 	RectF ToRectF( ) const;
-	//!	Convert from rectangle.
+	//! Convert from rectangle.
 	OrientedBox2D& FromRectF( const RectF& rect );
 
 	//! Move center position.
-	//!	@param		center	The center position.
-	//!	@return		none.
+	//! @param		center	The center position.
+	//! @return		none.
     _void MoveTo( const Vector2& center );
 
 	//! Set the width and height
@@ -55,8 +55,8 @@ public:
 	_void SetSize( _float width, _float height );
 
 	//! Returns true if other overlaps one dimension of this.
-	//!	@param		other	The other box.
-	//!	@return		True indicates it's overlapped in one dimension.
+	//! @param		other	The other box.
+	//! @return		True indicates it's overlapped in one dimension.
 	_ubool Overlaps1Way( const OrientedBox2D& other ) const;
 
 	//! Return true if the point in box

@@ -46,7 +46,7 @@ const _dword sCRCTable[256] =
 	0xB3667A2EL, 0xC4614AB8L, 0x5D681B02L, 0x2A6F2B94L, 0xB40BBE37L, 0xC30C8EA1L, 0x5A05DF1BL, 0x2D02EF8DL
 };
 
-//!	Calculate the CRC value. ( to make sure use inline function, we replace the function to macro )
+//! Calculate the CRC value. ( to make sure use inline function, we replace the function to macro )
 #define BUILD_CRC( data, crc ) sCRCTable[ ( crc ^ data ) & 0x000000FFL ] ^ ( crc >> 8 )
 
 //----------------------------------------------------------------------------

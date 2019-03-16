@@ -301,7 +301,7 @@ public:
 	Matrix4& Refection( const Vector3& vector );
 
 	//! Create a matrix from a matrix and a vector.
-	//!	@remark		The (m[3][0], m[3][1], m[3][2]) will be the translation position from matrix 3x3.
+	//! @remark		The (m[3][0], m[3][1], m[3][2]) will be the translation position from matrix 3x3.
 	//! @param		matrix		The matrix of rotation and translation.
 	//! @return		The reference of current matrix.
 	Matrix4& FromTranslationRotation( const Matrix3& matrix );

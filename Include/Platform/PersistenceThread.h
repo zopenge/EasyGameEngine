@@ -17,12 +17,12 @@ namespace EGE
 class PersistenceThread : public Thread
 {
 public:
-	//!	The feedback action of update thread callback function
+	//! The feedback action of update thread callback function
 	enum _ACTION
 	{
-		//!	Keep the function in the function queue
+		//! Keep the function in the function queue
 		_ACTION_KEEP	= 1,
-		//!	Remove the function in the function queue
+		//! Remove the function in the function queue
 		_ACTION_REMOVE	= 2,
 	};
 
@@ -38,12 +38,12 @@ protected:
 protected:
 	//! Update interval
 	_dword		mInterval;
-	//!	Thread wake event
+	//! Thread wake event
 	EventObject	mWakeEvent;
 
-	//!	The current updaters number
+	//! The current updaters number
 	_dword		mCurUpdatersNumber;
-	//!	The max updaters number
+	//! The max updaters number
 	_dword		mMaxUpdatersNumber;
 	//! The updaters buffer
 	UpdateFunc*	mUpdaters;
@@ -62,9 +62,9 @@ public:
 	virtual ~PersistenceThread( );
 
 public:
-	//!	Get the interval in milliseconds.
-	//!	@param		none.
-	//!	@return		The interval in milliseconds.
+	//! Get the interval in milliseconds.
+	//! @param		none.
+	//! @return		The interval in milliseconds.
 	_dword GetInterval( ) const;
 
 	//! Get if this thread is busy ( has some update function to call ) or not.
@@ -73,16 +73,16 @@ public:
 	_ubool IsThreadBusy( ) const;
 
 	//! Creates a thread to execute update functions.
-	//!	@param		max_updaters_number	The max updaters number.
-	//!	@param		priority			The priority (0~99).
+	//! @param		max_updaters_number	The max updaters number.
+	//! @param		priority			The priority (0~99).
 	//! @param		suspend				If it is true, thread is created in a suspended state and does not run until Resume is called.
 	//! @param		interval			The sleep interval of thread in milliseconds
-	//!	@param		name				The thread name.
+	//! @param		name				The thread name.
 	//! @return		True indicates success, false indicates failure.
 	_ubool Create( _dword max_updaters_number, _dword priority, _ubool suspend, _dword interval, WStringPtr name = L"" );
 	//! Close the thread in a safe way.
 	//! @param		none.
-	//!	@return		none.
+	//! @return		none.
 	_void Close( );
 	//! Suspend the thread, ( suspend count is incremented ).
 	//! @param		none
@@ -98,7 +98,7 @@ public:
 	//! @param		parameters	The user defined parameters.
 	//! @return		True indicates success, false indicates failure.
 	_ubool AddUpdaterFunc( OnUpdateFunction func, const QwordParameters2& parameters );
-	//!	Remove all updater functions.
+	//! Remove all updater functions.
 	//! @param		none.
 	//! @return		none.
 	_void RemoveAllUpdaterFuncs( );

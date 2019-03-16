@@ -424,7 +424,6 @@ inline MutableString< _charw, _ENCODING_UTF16 >& MutableString< _charw, _ENCODIN
 #include "Platform/Random.h"
 #include "Platform/MD5.h"
 #include "Platform/Color.h"
-#include "Platform/Expression.h"
 #include "Platform/Time.h"
 #include "Platform/Timer.h"
 #include "Platform/FPSTimer.h"

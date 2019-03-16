@@ -16,9 +16,9 @@ namespace EGE
 class anyPlatform
 {
 public:
-	//!	Initialize.
+	//! Initialize.
 	static _ubool Initialize( );
-	//!	Finalize.
+	//! Finalize.
 	static _void Finalize( );
 };
 

@@ -16,29 +16,29 @@ namespace EGE
 class Version
 {
 public:
-	//!	The zero version
+	//! The zero version
 	static Version cZero;
-	//!	The initial version
+	//! The initial version
 	static Version cInitial;
 
 public:
-	//!	The max major version number
+	//! The max major version number
 	enum { _MAX_MAJOR_NUMBER	= 0xFFFF };
-	//!	The max minor version number
+	//! The max minor version number
 	enum { _MAX_MINOR_NUMBER	= 0xFFFF };
-	//!	The max modified version number
+	//! The max modified version number
 	enum { _MAX_MODIFIED_NUMBER = 0xFFFF };
-	//!	The max build number
+	//! The max build number
 	enum { _MAX_BUILD_NUMBER	= 0xFFFF };
 
 private:
-	//!	The major version
+	//! The major version
 	_word	mMajor;
-	//!	The minor version
+	//! The minor version
 	_word	mMinor;
-	//!	The modified version
+	//! The modified version
 	_word	mModified;
-	//!	The build number
+	//! The build number
 	_word	mBuildNumber;
 
 public:
@@ -49,7 +49,7 @@ public:
 	inline Version( WStringPtr versionstring );
 
 public:
-	//!	Version comparison.
+	//! Version comparison.
 	inline _ubool operator == ( const Version& version ) const;
 	inline _ubool operator != ( const Version& version ) const;
 	inline _ubool operator >= ( const Version& version ) const;
@@ -57,47 +57,47 @@ public:
 	inline _ubool operator > ( const Version& version ) const;
 	inline _ubool operator < ( const Version& version ) const;
 
-	//!	Copy from version string.
+	//! Copy from version string.
 	inline const Version& operator = ( AStringPtr versionstring );
 	inline const Version& operator = ( WStringPtr versionstring );
 
-	//!	Get version in ANSI string format.
-	//!	@param		none.
-	//!	@return		The version string.
+	//! Get version in ANSI string format.
+	//! @param		none.
+	//! @return		The version string.
 	inline AString ToAString( _dword tags_number = 4 ) const;
-	//!	Get version in UTF-8 string format.
-	//!	@param		none.
-	//!	@return		The version string.
+	//! Get version in UTF-8 string format.
+	//! @param		none.
+	//! @return		The version string.
 	inline UString ToUString( _dword tags_number = 4 ) const;
-	//!	Get version in UTF-16 string format.
-	//!	@param		none.
-	//!	@return		The version string.
+	//! Get version in UTF-16 string format.
+	//! @param		none.
+	//! @return		The version string.
 	inline WString ToWString( _dword tags_number = 4 ) const;
 
-	//!	Check whether compatible or not.
-	//!	@param		version		The version.
-	//!	@return		True indicates it's compatible, otherwise it's not compatible.
+	//! Check whether compatible or not.
+	//! @param		version		The version.
+	//! @return		True indicates it's compatible, otherwise it's not compatible.
 	inline _ubool IsCompatible( const Version& version ) const;
 
-	//!	Get the major/minor/modified/buildnumber version.
+	//! Get the major/minor/modified/buildnumber version.
 	inline _word GetMajorVersion( ) const;
 	inline _word GetMinorVersion( ) const;
 	inline _word GetModifiedVersion( ) const;
 	inline _word GetBuildNumber( ) const;
 
-	//!	Set the major/minor/modified/buildnumber version.
+	//! Set the major/minor/modified/buildnumber version.
 	inline _void SetMajorVersion( _word major );
 	inline _void SetMinorVersion( _word minor );
 	inline _void SetModifiedVersion( _word modified );
 	inline _void SetBuildNumber( _word buildnumber );
 
-	//!	Increase the major/minor/modified/buildnumber version.
+	//! Increase the major/minor/modified/buildnumber version.
 	inline _word IncreaseMajorVersion( );
 	inline _word IncreaseMinorVersion( );
 	inline _word IncreaseModifiedVersion( );
 	inline _word IncreaseBuildNumber( );
 
-	//!	Get the major/minor/modified/buildnumber next version.
+	//! Get the major/minor/modified/buildnumber next version.
 	inline Version NextMajorVersion( ) const;
 	inline Version NextMinorVersion( ) const;
 	inline Version NextModifiedVersion( ) const;

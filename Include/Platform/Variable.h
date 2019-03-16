@@ -102,11 +102,11 @@ private:
 	};
 
 private:
-	//!	Convert to signed value.
+	//! Convert to signed value.
 	template< typename Type >
 	Type ConvertToSignedValue( ) const;
 
-	//!	Convert to unsigned value.
+	//! Convert to unsigned value.
 	template< typename Type >
 	Type ConvertToUnsignedValue( ) const;
 
@@ -131,7 +131,7 @@ public:
 	~Variable( );
 
 public:
-	//!	Convert to specified data type.
+	//! Convert to specified data type.
 	operator _boolean( ) const;
 	operator _ubool( ) const;
 	operator _tiny( ) const;
@@ -148,7 +148,7 @@ public:
 	operator WStringPtr( ) const;
 	operator _void*() const;
 
-	//!	operator = function.
+	//! operator = function.
 	const Variable& operator = ( _boolean value );
 	const Variable& operator = ( _ubool value );
 	const Variable& operator = ( _tiny value );
@@ -166,11 +166,11 @@ public:
 	const Variable& operator = ( const _void* pointer );
 	const Variable& operator = ( const Variable& variable );
 
-	//!	operator ++, -- function.
+	//! operator ++, -- function.
 	const Variable& operator ++ ( _int );
 	const Variable& operator -- ( _int );
 
-	//!	operator +=, -=, *=, /=, &=, |= function.
+	//! operator +=, -=, *=, /=, &=, |= function.
 	const Variable& operator += ( const Variable& variable );
 	const Variable& operator -= ( const Variable& variable );
 	const Variable& operator *= ( const Variable& variable );
@@ -178,10 +178,10 @@ public:
 	const Variable& operator &= ( const Variable& variable );
 	const Variable& operator |= ( const Variable& variable );
 
-	//!	operator - function.
+	//! operator - function.
 	Variable operator - ( ) const;
 
-	//!	operator <, <=, ==, !=, >, >= function.
+	//! operator <, <=, ==, !=, >, >= function.
 	_boolean operator <  ( const Variable& variable ) const;
 	_boolean operator <= ( const Variable& variable ) const;
 	_boolean operator == ( const Variable& variable ) const;
@@ -189,58 +189,58 @@ public:
 	_boolean operator >  ( const Variable& variable ) const;
 	_boolean operator >= ( const Variable& variable ) const;
 
-	//!	operator &&, || function.
+	//! operator &&, || function.
 	_boolean operator && ( const Variable& variable ) const;
 	_boolean operator || ( const Variable& variable ) const;
 
-	//!	Clear.
+	//! Clear.
 	_void Clear( );
 
-	//!	Is boolean type.
+	//! Is boolean type.
 	_boolean IsBoolean( ) const;
-	//!	Is pointer type.
+	//! Is pointer type.
 	_boolean IsPointer( ) const;
-	//!	Is string type.
+	//! Is string type.
 	_boolean IsString( ) const;
-	//!	Is float type.
+	//! Is float type.
 	_boolean IsFloat( ) const;
-	//!	Is double type.
+	//! Is double type.
 	_boolean IsDouble( ) const;
-	//!	Is number type.
+	//! Is number type.
 	_boolean IsNumber( ) const;
-	//!	Is integer type.
+	//! Is integer type.
 	_boolean IsInteger( ) const;
-	//!	Is signed type.
+	//! Is signed type.
 	_boolean IsSigned( ) const;
-	//!	Is zero value.
+	//! Is zero value.
 	_boolean IsZero( ) const;
 
-	//!	Convert value to string.
+	//! Convert value to string.
 	WString ToString( ) const;
 
-	//!	Get the value type ID.
+	//! Get the value type ID.
 	_dword GetTypeID( ) const;
 
-	//!	Get the string.
+	//! Get the string.
 	WStringPtr GetString( ) const;
-	//!	Set the string.
+	//! Set the string.
 	_void SetString( WStringPtr string );
-	//!	Set the string.
+	//! Set the string.
 	_void SetString( const _charw* string );
 
 public:
-	//!	Get the type ID from the type string.
-	//!	@param		typestring	The type string.
-	//!	@return		The type ID.
+	//! Get the type ID from the type string.
+	//! @param		typestring	The type string.
+	//! @return		The type ID.
 	static _dword GetTypeID( WStringPtr typestring );
-	//!	Get the type string from the type ID.
-	//!	@param		type		The type ID.
-	//!	@return		The type string.
+	//! Get the type string from the type ID.
+	//! @param		type		The type ID.
+	//! @return		The type string.
 	static WStringPtr GetTypeIDString( _dword type );
 
-	//!	Get the type size from the type ID.
-	//!	@param		type		The type ID.
-	//!	@return		The type size.
+	//! Get the type size from the type ID.
+	//! @param		type		The type ID.
+	//! @return		The type size.
 	static _dword GetTypeIDSize( _dword type );
 };
 

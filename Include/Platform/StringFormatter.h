@@ -58,7 +58,7 @@ private:
 	template< typename Type >
 	static _void ParseFromString( Type& value, const _charw* string, _dword radix = 0 );
 
-	//!	Parser string helper.
+	//! Parser string helper.
 	template< typename CharType, typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9, typename T10, typename T11, typename T12, typename T13, typename T14, typename T15, typename T16 >
 	static _dword ParseStringHelper( const CharType* string, const CharType* format, _dword number, T1& p1, T2& p2, T3& p3, T4& p4, T5& p5, T6& p6, T7& p7, T8& p8, T9& p9, T10& p10, T11& p11, T12& p12, T13& p13, T14& p14, T15& p15, T16& p16 );
 
@@ -113,100 +113,100 @@ public:
 	static _dword ParseString( const CharType* string, const CharType* format, T1& p1, T2& p2, T3& p3, T4& p4, T5& p5, T6& p6, T7& p7, T8& p8, T9& p9, T10& p10, T11& p11, T12& p12, T13& p13, T14& p14, T15& p15, T16& p16 );
 
 public:
-	//!	Split a string.
-	//!	@param		string		The source string to be split.
-	//!	@param		substrings	The split strings.
-	//!	@param		division	The delimiter of source string.
-	//!	@param		trim		The string what you want to trim from both.
-	//!	@return		The total number of split sub-string elements.
+	//! Split a string.
+	//! @param		string		The source string to be split.
+	//! @param		substrings	The split strings.
+	//! @param		division	The delimiter of source string.
+	//! @param		trim		The string what you want to trim from both.
+	//! @return		The total number of split sub-string elements.
 	template< typename CharType >
 	static _dword SplitString( CharType* string, CharType** substrings, const CharType* division, const CharType* trim );
-	//!	Split a string.
-	//!	@param		string		The source string to be split.
-	//!	@param		substrings	The split strings.
-	//!	@param		division	The delimiter of source string.
-	//!	@param		trim		The string what you want to trim from both.
-	//!	@return		The total number of split sub-string elements.
+	//! Split a string.
+	//! @param		string		The source string to be split.
+	//! @param		substrings	The split strings.
+	//! @param		division	The delimiter of source string.
+	//! @param		trim		The string what you want to trim from both.
+	//! @return		The total number of split sub-string elements.
 	template< typename StringArrayType >
 	static _dword SplitString( const typename StringArrayType::ElementType& string, StringArrayType& substrings, const typename StringArrayType::ElementType& division, const typename StringArrayType::ElementType& trim );
-	//!	Split a string.
-	//!	@param		string		The source string to be split.
-	//!	@param		substrings	The split strings.
-	//!	@param		division	The delimiter of source string.
-	//!	@param		trim		The string what you want to trim from both.
-	//!	@return		The total number of split sub-string elements.
+	//! Split a string.
+	//! @param		string		The source string to be split.
+	//! @param		substrings	The split strings.
+	//! @param		division	The delimiter of source string.
+	//! @param		trim		The string what you want to trim from both.
+	//! @return		The total number of split sub-string elements.
 	template< typename ObjectType, typename StringType = ObjectType, typename ObjectArrayType = Array< ObjectType > >
 	static _dword SplitStringToObject( const StringType& string, ObjectArrayType& substrings, const StringType& division, const StringType& trim );
 
-	//!	Check whether it's integer number.
-	//!	@param		string		The string.
-	//!	@return		True indicates it's integer number.
+	//! Check whether it's integer number.
+	//! @param		string		The string.
+	//! @return		True indicates it's integer number.
 	static _ubool IsIntegerNumber( AStringPtr string );
-	//!	Check whether it's integer number.
-	//!	@param		string		The string.
-	//!	@return		True indicates it's integer number.
+	//! Check whether it's integer number.
+	//! @param		string		The string.
+	//! @return		True indicates it's integer number.
 	static _ubool IsIntegerNumber( UStringPtr string );
-	//!	Check whether it's integer number.
-	//!	@param		string		The string.
-	//!	@return		True indicates it's integer number.
+	//! Check whether it's integer number.
+	//! @param		string		The string.
+	//! @return		True indicates it's integer number.
 	static _ubool IsIntegerNumber( WStringPtr string );
-	//!	Check whether it's integer number.
-	//!	@param		string		The string.
-	//!	@return		True indicates it's integer number.
+	//! Check whether it's integer number.
+	//! @param		string		The string.
+	//! @return		True indicates it's integer number.
 	static _ubool IsFloatPointNumber( AStringPtr string );
-	//!	Check whether it's integer number.
-	//!	@param		string		The string.
-	//!	@return		True indicates it's integer number.
+	//! Check whether it's integer number.
+	//! @param		string		The string.
+	//! @return		True indicates it's integer number.
 	static _ubool IsFloatPointNumber( UStringPtr string );
-	//!	Check whether it's integer number.
-	//!	@param		string		The string.
-	//!	@return		True indicates it's integer number.
+	//! Check whether it's integer number.
+	//! @param		string		The string.
+	//! @return		True indicates it's integer number.
 	static _ubool IsFloatPointNumber( WStringPtr string );
 
-	//!	Convert markup string to C string.
-	//!	@param		markup_string	The markup string.
-	//!	@return		c_string		The C string.
-	//!	@return		none.
+	//! Convert markup string to C string.
+	//! @param		markup_string	The markup string.
+	//! @return		c_string		The C string.
+	//! @return		none.
 	static _void ConvertMarkupString2CString( AStringPtr markup_string, AString& c_string );
-	//!	Convert markup string to C string.
-	//!	@param		markup_string	The markup string.
-	//!	@return		c_string		The C string.
-	//!	@return		none.
+	//! Convert markup string to C string.
+	//! @param		markup_string	The markup string.
+	//! @return		c_string		The C string.
+	//! @return		none.
 	static _void ConvertMarkupString2CString( UStringPtr markup_string, UString& c_string );
-	//!	Convert markup string to C string.
-	//!	@param		markup_string	The markup string.
-	//!	@return		c_string		The C string.
-	//!	@return		none.
+	//! Convert markup string to C string.
+	//! @param		markup_string	The markup string.
+	//! @return		c_string		The C string.
+	//! @return		none.
 	static _void ConvertMarkupString2CString( WStringPtr markup_string, WString& c_string );
 
-	//!	Convert string to '\Uxxxx' C string format.
-	//!	@param		in_string		The string what you want to convert.
-	//!	@param		out_string		The converted result string.
-	//!	@param		all				True indicates convert all characters, otherwise just convert >= 128 code.
-	//!	@return		none.
+	//! Convert string to '\Uxxxx' C string format.
+	//! @param		in_string		The string what you want to convert.
+	//! @param		out_string		The converted result string.
+	//! @param		all				True indicates convert all characters, otherwise just convert >= 128 code.
+	//! @return		none.
 	static _void ConvertString2UPrefixString( WStringPtr in_string, WString& out_string, _ubool all );
-	//!	Convert '\Uxxxx' C string format to string.
-	//!	@param		in_string		The string what you want to convert.
-	//!	@param		out_string		The converted result string.
-	//!	@return		none.
+	//! Convert '\Uxxxx' C string format to string.
+	//! @param		in_string		The string what you want to convert.
+	//! @param		out_string		The converted result string.
+	//! @return		none.
 	static _void ConvertUPrefixString2String( WStringPtr in_string, WString& out_string );
 
-	//!	URL encode.
-	//!	@param		in_string		The string what you want to convert.
-	//!	@param		out_string		The converted result string.
-	//!	@return		none.
+	//! URL encode.
+	//! @param		in_string		The string what you want to convert.
+	//! @param		out_string		The converted result string.
+	//! @return		none.
 	static _void URLEncode( WStringPtr in_string, WString& out_string );
-	//!	URL decode.
-	//!	@param		in_string		The string what you want to convert.
-	//!	@param		out_string		The converted result string.
-	//!	@return		none.
+	//! URL decode.
+	//! @param		in_string		The string what you want to convert.
+	//! @param		out_string		The converted result string.
+	//! @return		none.
 	static _void URLDecode( WStringPtr in_string, WString& out_string );
 
-	//!	Search sub-string.
-	//!	@param		in_string			The input string.
-	//!	@param		sub_string			The sub-string what to search.
-	//!	@param		match_whole_word	True indicates match the whole word.
-	//!	@return		The start index of sub-string.
+	//! Search sub-string.
+	//! @param		in_string			The input string.
+	//! @param		sub_string			The sub-string what to search.
+	//! @param		match_whole_word	True indicates match the whole word.
+	//! @return		The start index of sub-string.
 	template< typename CharType, typename StringType >
 	static _dword SearchL2R( StringType in_string, StringType sub_string, _ubool match_whole_word );
 };

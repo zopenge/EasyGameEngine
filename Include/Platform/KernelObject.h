@@ -38,13 +38,13 @@ public:
 
 public:
 	//! Check the object handle whether it is valid.
-	//!	@param		none.
-	//!	@return		True indicates it's valid, false indicates it's invalid.
+	//! @param		none.
+	//! @return		True indicates it's valid, false indicates it's invalid.
 	_ubool IsValid( ) const;
 
 	//! Close the object handle, decrements its reference count, and if the count is 0, then the kernel object is deleted.
 	//! @param		none.
-	//!	@return		none.
+	//! @return		none.
 	_void Close( );
 };
 

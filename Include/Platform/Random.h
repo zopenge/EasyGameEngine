@@ -32,34 +32,34 @@ public:
 	//! @return		A pseudorandom number.
 	static _dword Gen( );
 	//! Generates a pseudorandom number.
-	//!	@remark		[0, maxvalue] range.
+	//! @remark		[0, maxvalue] range.
 	//! @param		maxvalue	The limitation of the random number.
 	//! @return		A pseudorandom number, from zero to maxvalue.
 	static _dword Gen( _dword maxvalue );
 	//! Generates a pseudorandom number.
-	//!	@remark		[minvalue, maxvalue] range.
+	//! @remark		[minvalue, maxvalue] range.
 	//! @param		minvalue	The limitation of the random number.
 	//! @param		maxvalue	The limitation of the random number.
 	//! @return		A pseudorandom number, from minvalue to maxvalue.
 	static _dword Gen( _dword minvalue, _dword maxvalue );
 	//! Generates a pseudorandom number.
-	//!	@remark		[bounds.mMinValue, bounds.mMaxValue] range.
+	//! @remark		[bounds.mMinValue, bounds.mMaxValue] range.
 	//! @param		bounds		The value range bounds.
 	//! @return		A pseudorandom number, from minvalue to maxvalue.
 	static _dword Gen( const DwordRange& bounds );
 	//! Generates a pseudorandom number.
-	//!	@remark		[minvalue, maxvalue] range.
+	//! @remark		[minvalue, maxvalue] range.
 	//! @param		minvalue	The limitation of the random number.
 	//! @param		maxvalue	The limitation of the random number.
 	//! @return		A pseudorandom number, from minvalue to maxvalue.
 	static _float Gen( _float minvalue, _float maxvalue );
 	//! Generates a pseudorandom number.
-	//!	@remark		[bounds.mMinValue, bounds.mMaxValue] range.
+	//! @remark		[bounds.mMinValue, bounds.mMaxValue] range.
 	//! @param		bounds		The value range bounds.
 	//! @return		A pseudorandom number, from minvalue to maxvalue.
 	static _float Gen( const FloatRange& bounds );
 	//! Generates a pseudorandom number.
-	//!	@remark		[minvalue, maxvalue] range.
+	//! @remark		[minvalue, maxvalue] range.
 	//! @param		minvalue	The limitation of the random number.
 	//! @param		maxvalue	The limitation of the random number.
 	//! @return		A pseudorandom number, from minvalue to maxvalue.
@@ -107,34 +107,34 @@ public:
 	//! @return		A pseudorandom number.
 	_dword Gen( );
 	//! Generates a pseudorandom number.
-	//!	@remark		[0, maxvalue] range.
+	//! @remark		[0, maxvalue] range.
 	//! @param		maxvalue	The limitation of the random number.
 	//! @return		A pseudorandom number, from zero to maxvalue.
 	_dword Gen( _dword maxvalue );
 	//! Generates a pseudorandom number.
-	//!	@remark		[minvalue, maxvalue] range.
+	//! @remark		[minvalue, maxvalue] range.
 	//! @param		minvalue	The limitation of the random number.
 	//! @param		maxvalue	The limitation of the random number.
 	//! @return		A pseudorandom number, from minvalue to maxvalue.
 	_dword Gen( _dword minvalue, _dword maxvalue );
 	//! Generates a pseudorandom number.
-	//!	@remark		[bounds.mMinValue, bounds.mMaxValue] range.
+	//! @remark		[bounds.mMinValue, bounds.mMaxValue] range.
 	//! @param		bounds		The value range bounds.
 	//! @return		A pseudorandom number, from minvalue to maxvalue.
 	_dword Gen( const DwordRange& bounds );
 	//! Generates a pseudorandom number.
-	//!	@remark		[minvalue, maxvalue] range.
+	//! @remark		[minvalue, maxvalue] range.
 	//! @param		minvalue	The limitation of the random number.
 	//! @param		maxvalue	The limitation of the random number.
 	//! @return		A pseudorandom number, from minvalue to maxvalue.
 	_float Gen( _float minvalue, _float maxvalue );
 	//! Generates a pseudorandom number.
-	//!	@remark		[bounds.mMinValue, bounds.mMaxValue] range.
+	//! @remark		[bounds.mMinValue, bounds.mMaxValue] range.
 	//! @param		bounds		The value range bounds.
 	//! @return		A pseudorandom number, from minvalue to maxvalue.
 	_float Gen( const FloatRange& bounds );
 	//! Generates a pseudorandom number.
-	//!	@remark		[minvalue, maxvalue] range.
+	//! @remark		[minvalue, maxvalue] range.
 	//! @param		minvalue	The limitation of the random number.
 	//! @param		maxvalue	The limitation of the random number.
 	//! @return		A pseudorandom number, from minvalue to maxvalue.

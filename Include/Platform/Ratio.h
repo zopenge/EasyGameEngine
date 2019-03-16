@@ -21,9 +21,9 @@ public:
 public:
 	//£¡	The scale
 	_float	mScale;
-	//!	The base size
+	//! The base size
 	PointF	mBaseSize;
-	//!	The offset of left and top
+	//! The offset of left and top
 	PointF	mOffset;
 
 public:
@@ -42,27 +42,27 @@ public:
 	_ubool operator != ( const Ratio& ratio ) const;
 
 public:
-	//!	Initialize.
+	//! Initialize.
 	_void Init( _float width, _float height );
-	//!	Update size.
+	//! Update size.
 	PointF UpdateSize( _float width, _float height );
 	PointU UpdateSize( _dword width, _dword height );
 
-	//!	Get the base size.
+	//! Get the base size.
 	Vector2 GetBaseSize( ) const;
-	//!	Get the offset.
+	//! Get the offset.
 	Vector2 GetOffset( ) const;
 
-	//!	Fix size.
+	//! Fix size.
 	PointU FixSizeU( const PointU& size ) const;
 	PointF FixSizeF( const PointU& size ) const;
 
 public:
-	//!	Fix size by ratio info.
+	//! Fix size by ratio info.
 	static PointU FixSizeU( const Ratio& ratio, const PointU& size );
 	static PointF FixSizeF( const Ratio& ratio, const PointU& size );
 
-	//!	Keep the ratio and use the new size to create ratio.
+	//! Keep the ratio and use the new size to create ratio.
 	static Ratio Create( const Ratio& ratio, const PointU& size );
 };
 

@@ -10,184 +10,160 @@
 // Platform Memory Helpful Structure Implementation
 //----------------------------------------------------------------------------
 
-//!	The global memory block info
-struct GlobalMemBlockInfo
-{
-	_dword	mSize;
+//! The global memory block info
+struct GlobalMemBlockInfo {
+  _dword mSize;
 };
 
-//!	The total global memory allocated size in bytes
+//! The total global memory allocated size in bytes
 static _dword gGlobalMemAllocatedSize = 0;
 
 //----------------------------------------------------------------------------
 // Platform Memory Implementation
 //----------------------------------------------------------------------------
 
-_chara* Platform::HeapAllocStr( const _chara* string, _handle heaphandle )
-{
-	_dword  size	= AStringPtr( string ).SizeOfBytes( );
-	_chara* buffer	= (_chara*) Platform::HeapAlloc( size );
-	EGE_MEM_CPY( buffer, AStringPtr( string ).Str( ), size );
+_chara* Platform::HeapAllocStr(const _chara* string, _handle heaphandle) {
+  _dword size = AStringPtr(string).SizeOfBytes();
+  _chara* buffer = (_chara*)Platform::HeapAlloc(size);
+  EGE_MEM_CPY(buffer, AStringPtr(string).Str(), size);
 
-	return buffer;
+  return buffer;
 }
 
-_charw* Platform::HeapAllocStr( const _charw* string, _handle heaphandle )
-{
-	_dword  size	= WStringPtr( string ).SizeOfBytes( );
-	_charw* buffer	= (_charw*) Platform::HeapAlloc( size );
-	EGE_MEM_CPY( buffer, WStringPtr( string ).Str( ), size );
+_charw* Platform::HeapAllocStr(const _charw* string, _handle heaphandle) {
+  _dword size = WStringPtr(string).SizeOfBytes();
+  _charw* buffer = (_charw*)Platform::HeapAlloc(size);
+  EGE_MEM_CPY(buffer, WStringPtr(string).Str(), size);
 
-	return buffer;
+  return buffer;
 }
 
-_void* Platform::HeapAlloc( _dword size, _handle heaphandle )
-{
-	EGE_ASSERT( size > 0 );
+_void* Platform::HeapAlloc(_dword size, _handle heaphandle) {
+  EGE_ASSERT(size > 0);
 
-	return nedmalloc( size );
+  return nedmalloc(size);
 }
 
-_void* Platform::HeapReAlloc( _void* pointer, _dword size, _handle heaphandle )
-{
-	EGE_ASSERT( size > 0 );
+_void* Platform::HeapReAlloc(_void* pointer, _dword size, _handle heaphandle) {
+  EGE_ASSERT(size > 0);
 
-	if ( pointer == _null )
-		return nedmalloc( size );
-	else
-		return nedrealloc( pointer, size );
+  if (pointer == _null)
+    return nedmalloc(size);
+  else
+    return nedrealloc(pointer, size);
 }
 
-_void Platform::HeapFree( _void* pointer, _handle heaphandle )
-{
-	if ( pointer == _null )
-		return;
+_void Platform::HeapFree(_void* pointer, _handle heaphandle) {
+  if (pointer == _null) return;
 
-	nedfree( pointer );
+  nedfree(pointer);
 }
 
-_void* Platform::GlobalAlloc( _dword size )
-{
-	EGE_ASSERT( size > 0 );
+_void* Platform::GlobalAlloc(_dword size) {
+  EGE_ASSERT(size > 0);
 
-	// Allocate buffer
-	_byte* buffer = (_byte*) ::GlobalAlloc( GMEM_FIXED, size + sizeof( GlobalMemBlockInfo ) );
-	EGE_ASSERT( buffer != _null );
+  // Allocate buffer
+  _byte* buffer =
+      (_byte*)::GlobalAlloc(GMEM_FIXED, size + sizeof(GlobalMemBlockInfo));
+  EGE_ASSERT(buffer != _null);
 
-	// Set the global memory block info
-	GlobalMemBlockInfo* info	= (GlobalMemBlockInfo*) buffer;
-	info->mSize					= size;
+  // Set the global memory block info
+  GlobalMemBlockInfo* info = (GlobalMemBlockInfo*)buffer;
+  info->mSize = size;
 
-	// Update the total global memory allocated size
-	INTERLOCKED_ADD( gGlobalMemAllocatedSize, size );
+  // Update the total global memory allocated size
+  INTERLOCKED_ADD(gGlobalMemAllocatedSize, size);
 
-	// Feedback the pointer
-	return buffer + sizeof( GlobalMemBlockInfo );
+  // Feedback the pointer
+  return buffer + sizeof(GlobalMemBlockInfo);
 }
 
-_void* Platform::GlobalReAlloc( _void* pointer, _dword size )
-{
-	EGE_ASSERT( size > 0 );
+_void* Platform::GlobalReAlloc(_void* pointer, _dword size) {
+  EGE_ASSERT(size > 0);
 
-	GlobalFree( pointer );
+  GlobalFree(pointer);
 
-	return GlobalAlloc( size );
+  return GlobalAlloc(size);
 }
 
-_void Platform::GlobalFree( _void* pointer )
-{
-	if ( pointer == _null )
-		return;
+_void Platform::GlobalFree(_void* pointer) {
+  if (pointer == _null) return;
 
-	// Get the global memory block info
-	GlobalMemBlockInfo* info = (GlobalMemBlockInfo*) ((_byte*)pointer - sizeof( GlobalMemBlockInfo ));
-	EGE_ASSERT( info != _null );
+  // Get the global memory block info
+  GlobalMemBlockInfo* info =
+      (GlobalMemBlockInfo*)((_byte*)pointer - sizeof(GlobalMemBlockInfo));
+  EGE_ASSERT(info != _null);
 
-	// Update the total global memory allocated size
-	EGE_ASSERT( gGlobalMemAllocatedSize >= info->mSize );
-	INTERLOCKED_SUB( gGlobalMemAllocatedSize, info->mSize );
+  // Update the total global memory allocated size
+  EGE_ASSERT(gGlobalMemAllocatedSize >= info->mSize);
+  INTERLOCKED_SUB(gGlobalMemAllocatedSize, info->mSize);
 
-	// Free buffer
-	::GlobalFree( info );
+  // Free buffer
+  ::GlobalFree(info);
 }
 
-_void* Platform::ComAlloc( _dword size )
-{
-	EGE_ASSERT( size > 0 );
+_void* Platform::ComAlloc(_dword size) {
+  EGE_ASSERT(size > 0);
 
-	return ::CoTaskMemAlloc( size );
+  return ::CoTaskMemAlloc(size);
 }
 
-_charw* Platform::ComAllocString( const _chara* string )
-{
-	if ( string == _null )
-		return _null;
+_charw* Platform::ComAllocString(const _chara* string) {
+  if (string == _null) return _null;
 
-	_dword size = (Platform::AnsiToUtf16( _null, 0, string ) + 1) * sizeof( _charw );
-	_charw* buffer = ( _charw* ) ::CoTaskMemAlloc( size );
-	Platform::AnsiToUtf16( buffer, size, string );
+  _dword size = (Platform::AnsiToUtf16(_null, 0, string) + 1) * sizeof(_charw);
+  _charw* buffer = (_charw*)::CoTaskMemAlloc(size);
+  Platform::AnsiToUtf16(buffer, size, string);
 
-	return buffer;
+  return buffer;
 }
 
-_charw* Platform::ComAllocString( const _charw* string )
-{
-	if ( string == _null )
-		return _null;
+_charw* Platform::ComAllocString(const _charw* string) {
+  if (string == _null) return _null;
 
-	_dword size = (Platform::StringLength( string ) + 1) * sizeof( _charw );
-	_charw* buffer = (_charw*) ::CoTaskMemAlloc( size );
-	EGE_MEM_CPY( buffer, string, size );
+  _dword size = (Platform::StringLength(string) + 1) * sizeof(_charw);
+  _charw* buffer = (_charw*)::CoTaskMemAlloc(size);
+  EGE_MEM_CPY(buffer, string, size);
 
-	return buffer;
+  return buffer;
 }
 
-_void* Platform::ComReAlloc( _void* pointer, _dword size )
-{
-	EGE_ASSERT( size > 0 );
+_void* Platform::ComReAlloc(_void* pointer, _dword size) {
+  EGE_ASSERT(size > 0);
 
-	if ( pointer == _null )
-		return ::CoTaskMemAlloc( size );
-	else
-		return ::CoTaskMemRealloc( pointer, size );
+  if (pointer == _null)
+    return ::CoTaskMemAlloc(size);
+  else
+    return ::CoTaskMemRealloc(pointer, size);
 }
 
-_void Platform::ComFree( _void* pointer )
-{
-	if ( pointer == _null )
-		return;
+_void Platform::ComFree(_void* pointer) {
+  if (pointer == _null) return;
 
-	::CoTaskMemFree( pointer );
+  ::CoTaskMemFree(pointer);
 }
 
-_charw* Platform::AllocString( const _charw* string )
-{
-	if ( string == _null )
-		return _null;
+_charw* Platform::AllocString(const _charw* string) {
+  if (string == _null) return _null;
 
-	return ::SysAllocString( string );
+  return ::SysAllocString(string);
 }
 
-_void Platform::FreeString( _charw* string )
-{
-	if ( string == _null )
-		return;
+_void Platform::FreeString(_charw* string) {
+  if (string == _null) return;
 
-	::SysFreeString( string );
+  ::SysFreeString(string);
 }
 
-_void* Platform::VirtualAlloc( _dword size )
-{
-	if ( size == 0 )
-		return _null;
+_void* Platform::VirtualAlloc(_dword size) {
+  if (size == 0) return _null;
 
-	return ::VirtualAlloc( _null, size, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE );
+  return ::VirtualAlloc(_null, size, MEM_COMMIT | MEM_RESERVE,
+                        PAGE_EXECUTE_READWRITE);
 }
 
-_void Platform::VirtualFree( _void* pointer )
-{
-	if ( pointer == _null )
-		return;
+_void Platform::VirtualFree(_void* pointer) {
+  if (pointer == _null) return;
 
-	::VirtualFree( pointer, 0, MEM_RELEASE ); 
+  ::VirtualFree(pointer, 0, MEM_RELEASE);
 }

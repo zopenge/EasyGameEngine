@@ -1,0 +1,621 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugStatic|Win32">
+      <Configuration>DebugStatic</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseStatic|Win32">
+      <Configuration>ReleaseStatic</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4C0C4378-E2B3-40E7-F57F-F383FEF57070}</ProjectGuid>
+    <RootNamespace>EGEEngine</RootNamespace>
+    <SccProjectName>
+    </SccProjectName>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>EGEEngine-windows</ProjectName>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Win32_Lib_Release.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\Win32_Lib_Debug.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\Source\External\pcre;..\..\..\Source\External\freetype\include;..\..\..\Source\External\libxml2\include;..\..\..\Source\External\gumbo-parser\src;..\..\..\Source\External\tinyxml2;..\..\..\Source\External\cJSON;..\..\..\Source\External\zlib;..\..\..\Source\External\libzip\include\platform\windows;..\..\..\Source\External\libzip\include;..\..\..\Source\External\ziputils;..\..\..\Source\External\libpng;..\..\..\Source\External\libwebp\src;..\..\..\Source\External\libjpeg;..\..\..\Source\External\libgif\include;..\..\..\Source\External\libwebm\include;..\..\..\Source\External\libwebm\src;..\..\..\Source\External\libogg\include;..\..\..\Source\External\libvorbis\include;..\..\..\Source\External\libcsv;..\..\..\Source\External\libspeex\include;..\..\..\Source\External\google-breakpad;..\..\..\Source\External\google-breakpad\common\windows;..\..\..\Source\External\curl\include;..\..\..\Source\External\libdes;..\..\..\Source\External\libaes;..\..\..\Source\External\lib7z;..\..\..\Source\External\libflac\include;..\..\..\Source\External\xlslib\src;..\..\..\Source\External\xlslib\build\msvc2010;..\..\..\Source\External\libxls\include;..\..\..\Source\External\google-protobuf\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;OV_EXCLUDE_STATIC_CALLBACKS;LIBXML_STATIC;HAVE_CONFIG_H;FLAC__NO_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>EGEEngine.h</PrecompiledHeaderFile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <DisableSpecificWarnings>4091;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\Source\External\pcre;..\..\..\Source\External\freetype\include;..\..\..\Source\External\libxml2\include;..\..\..\Source\External\gumbo-parser\src;..\..\..\Source\External\tinyxml2;..\..\..\Source\External\cJSON;..\..\..\Source\External\zlib;..\..\..\Source\External\libzip\include\platform\windows;..\..\..\Source\External\libzip\include;..\..\..\Source\External\ziputils;..\..\..\Source\External\libpng;..\..\..\Source\External\libwebp\src;..\..\..\Source\External\libjpeg;..\..\..\Source\External\libgif\include;..\..\..\Source\External\libwebm\include;..\..\..\Source\External\libwebm\src;..\..\..\Source\External\libogg\include;..\..\..\Source\External\libvorbis\include;..\..\..\Source\External\libcsv;..\..\..\Source\External\libspeex\include;..\..\..\Source\External\google-breakpad;..\..\..\Source\External\google-breakpad\common\windows;..\..\..\Source\External\curl\include;..\..\..\Source\External\libdes;..\..\..\Source\External\libaes;..\..\..\Source\External\lib7z;..\..\..\Source\External\libflac\include;..\..\..\Source\External\xlslib\src;..\..\..\Source\External\xlslib\build\msvc2010;..\..\..\Source\External\libxls\include;..\..\..\Source\External\google-protobuf\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>FT2_BUILD_LIBRARY;OV_EXCLUDE_STATIC_CALLBACKS;LIBXML_STATIC;HAVE_CONFIG_H;FLAC__NO_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>EGEEngine.h</PrecompiledHeaderFile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <DisableSpecificWarnings>4091;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Lib>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Source\Engine\Allocator\BufferAllocator.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Allocator\LinearAllocator.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Allocator\OffsetAllocator.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Allocator\RangeAllocator.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Allocator\RingAllocator.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Allocator\StdAllocator.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Application\ios\iosViewBasedApp.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Engine\Application\win\winApp.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Application\win\winConsoleApp.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Application\win\winViewBasedApp.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Archive\FileArchive.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Archive\MemoryArchive.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Archive\PEResArchive.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Archive\LocalArchive.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Buffer\CacheBuffer.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Decoder\OGGDecoder.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Encryption\AESDecryptor.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Encryption\AESEncryptor.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Encryption\DESDecryptor.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Encryption\DESEncryptor.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\EngineNullClasses.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\EngineSerialization.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\ASTCFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\BinaryXMLFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\CSVFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\FNTFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\GIFFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\HTMLFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\FLACFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\MIDIFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\PackageFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\PKMFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\GeometryFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\KTXFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\ManifestFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\MarkupFileLangFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\OGGFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\PVRTexFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\SpeexFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\StreamingPCMFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\SZFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\TGAFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\WAVFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\WEBMFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\WEBPFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\File\FileCopier.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Font\FontFaceFNT.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Font\FontFaceFreeType2.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Font\FontFaceFreeType2Lib.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\GarbageCollector.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Image\Filter\Resize.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Image\ImageFillerBinaryTree.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Image\ImageFillerScanLines.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Image\ImageFillerLinear.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Image\ImageProcessor.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\InterfaceFactory\InterfaceFactory.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\InterfaceFactory\windows\winInterfaceFactory.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Layout\Aligner.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Layout\AlignerObjectBlock.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Layout\AlignerObjectLine.cpp" />
+    <ClInclude Include="..\..\..\Include\EGE_Engine.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IAllocator.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IBufferAllocator.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\ILinearAllocator.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IOffsetAllocator.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IRangeAllocator.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IRingAllocator.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IStackAllocator.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationController.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationInfo.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationKeyFrame.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationKeyFrames.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationPlayer.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationTrack.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationUpdater.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\ITAnimationInfo.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\ITAnimationUpdater.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Application\IAppDelegate.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Application\IApplication.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Application\IConsoleApp.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Application\IViewBasedApp.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Archive\IArchive.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Buffer\IBuffer.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Buffer\ICacheBuffer.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Compression\ICompressionDecoder.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Compression\ICompressionEncoder.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Decoder\IAudioDecoder.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Decoder\IDecoder.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Decoder\IMediaDecoder.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Device\IDeviceObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Device\IDeviceObjectIterator.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\ICrypto.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\IDecryptor.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\IEncryptor.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\EngineSerialization.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IASTCFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBaseFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBinaryFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBMPFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ICompressedTexFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ICSVFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IDDSFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IFLACFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IFNTFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IGeometryFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IGIFFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IGLSLFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IHTMLFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IImageFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IJPGFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IKTXFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IManifestFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IMarkupLangFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IMediaFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IMIDIFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IOGGFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPKMFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPNGFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPSDFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPVRTexFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IShaderFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ISoundFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ISpeexFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IStreamingPCMFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ITGAFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ITXTFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IWAVFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IWEBMFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IWEBPFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IXLSFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IZIPFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\File\IFileCopier.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\File\IFileWriter.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Font\IFontFace.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IClonableObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IConnection.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ICopyableObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IEventHooker.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IGarbageCollector.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IIDObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IInterfaceFactory.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IInvoker.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Image\IImageFiller.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Image\IImageProcessor.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IMeasurableObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IModule.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IModuleManager.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IObjectState.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IObservable.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IObserver.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IProcessor.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITask.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITColorObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITEnable.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITFlagsObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITickableObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITimeoutObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITimerObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITIterator.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITNameObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITObjectTree.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITPowerable.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITPriorityObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITScrollableObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITShowableObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITTagNameObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITUserDataObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITVersionable.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IWithLastErrorObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Layout\IAligner.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Logger\ILogger.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Manifest\IManifestFileManager.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Math\IInterpolator.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Math\IMD5ChecksumBuilder.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Math\IProjectileObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Parser\ICommandLineParser.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Parser\IFormula.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Parser\IRegularExpression.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Controller\IJoystick.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IAndroidPlatform.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IChromePlatform.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IIOSPlatform.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IMenu.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\INetFirewall.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IPlatform.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IProcessDebugger.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IPurchase.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IRegistry.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IShell.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IWindowsPlatform.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IWinPlatform.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Kernel\IKeychain.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Kernel\IProcessDebugger.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Kernel\IRegistry.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Kernel\IShell.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Network\IBluetooth.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Network\INet.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Network\INetFirewall.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\SensorManager\ISensorManager.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\UI\IEditBox.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\UI\IMenu.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\UI\IMessageBox.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\UI\IWebView.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Properties\IProperties.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Properties\IPropertiesMehods.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ProtoBuf\IProtoBufProcessor.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IActionRecord.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IActionRecorder.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IInputRecorder.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IInputRecordTrace.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IOperationRecorder.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IOperationRecordPerformer.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Resource\IResLoader.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Resource\IResLoaderFactory.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Resource\IResObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Serialization\ISerializable.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Serialization\ISerializableNode.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Serialization\ISerializableNodeWalker.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Serialization\ISerializer.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IBitStream.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IBitStreamReader.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IBitStreamWriter.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IFileStream.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IFileStreamReader.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IFileStreamWriter.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IStream.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IStreamProcessor.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IStreamReader.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IStreamWriter.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\StringTable\IStringTable.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\StringTable\StringObj.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Thread\IThreadObject.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Thread\IThreadPool.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Thread\IThreadTask.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Thread\IThreadTaskSet.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Transaction\ITransaction.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Transaction\ITransactionManager.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Allocator\BufferAllocator.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Allocator\OffsetAllocator.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Allocator\RangeAllocator.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Allocator\RingAllocator.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Archive\MemoryArchive.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Archive\PEResArchive.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Archive\LocalArchive.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Buffer\CacheBuffer.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Decoder\OGGDecoder.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\ASTCFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\FNTFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\GIFFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\HTMLFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\PackageFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\StreamingPCMFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\WEBMFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\File\FileCopier.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Font\FontFaceFreeType2Lib.h" />
+    <ClInclude Include="..\..\..\Source\Engine\InterfaceFactory\InterfaceFactory.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Logger\Logger.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Manifest\ManifestFileManager.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\SensorManager\winSensorManager.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Properties\Properties.h" />
+    <ClInclude Include="..\..\..\Source\Engine\ProtoBuf\ProtoBufMessageProcessor.h" />
+    <ClInclude Include="..\..\..\Source\Engine\ProtoBuf\ProtoBufProcessor.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Resource\ResCaches.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Resource\ResLoader.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Resource\ResLoaderTask.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Resource\ResLoaderTaskGroup.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Stream\SafeStreamReader.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Stream\PEResStreamReader.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Stream\PEResStreamWriter.h" />
+    <ClInclude Include="..\..\..\Source\Engine\StringTable\StringTable.h" />
+    <ClInclude Include="resource.h" />
+    <ClCompile Include="..\..\..\Source\Engine\Layout\MeasurableObject.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Logger\Logger.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Manifest\ManifestFileManager.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Platform\win\Controller\winControllerManager.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Platform\win\Controller\winJoystick.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Platform\win\Network\winBluetooth.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Platform\win\SensorManager\winSensorManager.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Platform\win\UI\winEditBox.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Platform\win\UI\winWebView.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Properties\Properties.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\ProtoBuf\ProtoBufMessageProcessor.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\ProtoBuf\ProtoBufProcessor.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Resource\ResCaches.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Resource\ResLoader.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Resource\ResLoaderTask.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Resource\ResLoaderTaskGroup.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Serialization\MarkupLangSerializableNodeWalker.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\std\stdStreamPipe.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Stream\SafeStreamReader.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Stream\PEResStreamReader.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Stream\PEResStreamWriter.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\StringTable\StringTable.cpp" />
+    <ClCompile Include="..\..\..\Source\External\libaes\oaes_base64.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\libaes\oaes_lib.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\libdes\des.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\tinyxml2\tinyxml2.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\ziputils\LiteUnzip.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\ziputils\LiteZip.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClInclude Include="..\..\..\Source\Engine\Allocator\StdAllocator.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Archive\FileArchive.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Encryption\AESDecryptor.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Encryption\AESEncryptor.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Encryption\DESDecryptor.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Encryption\DESEncryptor.h" />
+    <ClInclude Include="..\..\..\Source\Engine\EngineSDKFiles.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\BinaryXMLFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\FLACFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\MIDIFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\PKMFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\KTXFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\PVRTexFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\SpeexFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\SZFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\WAVFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\WEBPFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Font\FontFaceFNT.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Image\Filter\Filter.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Image\Filter\Resize.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Image\ImageFillerBinaryTree.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Layout\AlignerObjectLine.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClCompile Include="..\..\..\Source\Engine\Math\Interpolator.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Math\MD5ChecksumBuilder.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Math\ProjectileObject.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\ModuleManager.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Allocator\StackAllocator.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Allocator\MemAllocator.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Allocator\PageAllocator.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Platform\win\Kernel\winProcessDebugger.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Platform\win\Kernel\winRegistry.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Platform\win\Kernel\winShell.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Platform\win\Network\winNet.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Platform\win\Network\winNetFirewall.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Platform\win\UI\winMenu.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Platform\win\UI\winMessageBox.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Platform\win\winPlatform.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Recorder\ActionRecorder.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Recorder\InputRecorder.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Recorder\InputRecordTrace.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Recorder\OperationRecorder.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\std\stdCapture.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\std\stdStreamBuf.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Stream\AStringStreamReader.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Stream\StreamWriterProcessor.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Stream\UStringStreamReader.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Stream\WStringStreamReader.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Thread\SingleThreadPool.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Thread\ThreadTaskProcessor.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Transaction\TransactionManager.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Compression\CompressionDecoderZLIB.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Compression\CompressionEncoderZLIB.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\BMPFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\DDSFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\JPGFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\JSONFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\PNGFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\PSDFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\XMLFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\FileParser\ZIPFile.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Parser\CommandLineParser.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Parser\RegularExpression.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Thread\ThreadPool.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Thread\ThreadTaskQueue.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Thread\ThreadTaskWorker.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Serialization\MarkupLangSerializableNode.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Stream\BitStreamReader.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Stream\BitStreamWriter.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Stream\FileStreamReader.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Stream\FileStreamWriter.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Stream\MemStreamReader.cpp" />
+    <ClCompile Include="..\..\..\Source\Engine\Stream\MemStreamWriter.cpp" />
+    <ClCompile Include="..\..\..\Source\EGEEngine.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">Create</PrecompiledHeader>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">Default</CompileAs>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\libcsv\libcsv.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\cJSON\cJSON.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Source\Engine\Allocator\LinearAllocator.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Application\ios\iosViewBasedApp.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Application\ios\NSApplication.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Application\ios\NSUIView.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Application\ios\NSUIViewController.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Application\win\winApp.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Application\win\winConsoleApp.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Application\win\winViewBasedApp.h" />
+    <ClInclude Include="..\..\..\Source\Engine\EngineNullClasses.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\CSVFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\GeometryFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\ManifestFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\MarkupFileLangFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\OGGFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\TGAFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Font\FontFaceFreeType2.h" />
+    <ClInclude Include="..\..\..\Source\Engine\GarbageCollector.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Image\ImageFillerScanLines.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Image\ImageFillerLinear.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Image\ImageProcessor.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Layout\Aligner.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Layout\AlignerObjectBase.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Layout\AlignerObjectBlock.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Layout\MeasurableObject.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Math\Interpolator.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Math\MD5ChecksumBuilder.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Math\ProjectileObject.h" />
+    <ClInclude Include="..\..\..\Source\Engine\ModuleManager.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Allocator\StackAllocator.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Allocator\MemAllocator.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Allocator\PageAllocator.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\TBluetoothAdapter.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\TBluetoothDevice.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\TControllerManager.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\TEditBox.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\TJoystick.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\TMessageBox.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\TPlatform.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\TWebView.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\COMBSTR.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\Controller\winControllerManager.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\Controller\winJoystick.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\Kernel\winProcessDebugger.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\Kernel\winRegistry.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\Kernel\winShell.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\Network\winBluetooth.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\Network\winNet.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\Network\winNetFirewall.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\UI\winEditBox.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\UI\winMenu.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\UI\winMessageBox.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\UI\winWebView.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Platform\win\winPlatform.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Recorder\ActionRecorder.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Recorder\InputRecorder.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Recorder\InputRecordTrace.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Recorder\OperationRecorder.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Serialization\MarkupLangSerializableNodeWalker.h" />
+    <ClInclude Include="..\..\..\Source\Engine\std\stdCapture.h" />
+    <ClInclude Include="..\..\..\Source\Engine\std\stdStreamBuf.h" />
+    <ClInclude Include="..\..\..\Source\Engine\std\stdStreamPipe.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Stream\AStringStreamReader.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Stream\StreamWriterProcessor.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Stream\UStringStreamReader.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Stream\WStringStreamReader.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Thread\SingleThreadPool.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Thread\ThreadTaskProcessor.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Transaction\TransactionManager.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Compression\CompressionDecoderZLIB.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Compression\CompressionEncoderZLIB.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\BMPFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\DDSFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\JPGFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\JSONFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\PNGFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\PSDFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\XMLFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\FileParser\ZIPFile.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Parser\CommandLineParser.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Parser\RegularExpression.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Thread\ThreadPool.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Thread\ThreadTaskQueue.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Thread\ThreadTaskWorker.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Serialization\MarkupLangSerializableNode.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Stream\BitStreamReader.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Stream\BitStreamWriter.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Stream\FileStreamReader.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Stream\FileStreamWriter.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Stream\MemStreamReader.h" />
+    <ClInclude Include="..\..\..\Source\Engine\Stream\MemStreamWriter.h" />
+    <ClInclude Include="..\..\..\Source\Engine\EngineVersion.h" />
+    <ClInclude Include="..\..\..\Source\EGEEngine.h" />
+    <ClInclude Include="..\..\..\Source\External\libaes\oaes_base64.h" />
+    <ClInclude Include="..\..\..\Source\External\libaes\oaes_common.h" />
+    <ClInclude Include="..\..\..\Source\External\libaes\oaes_config.h" />
+    <ClInclude Include="..\..\..\Source\External\libaes\oaes_lib.h" />
+    <ClInclude Include="..\..\..\Source\External\libcsv\csv.h" />
+    <ClInclude Include="..\..\..\Source\External\libdes\des.h" />
+    <ClInclude Include="..\..\..\Source\External\tinyxml2\tinyxml2.h" />
+    <ClInclude Include="..\..\..\Source\External\ziputils\LiteUnzip.h" />
+    <ClInclude Include="..\..\..\Source\External\ziputils\LiteZip.h" />
+    <ClInclude Include="..\..\..\Source\External\cJSON\cJSON.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Source\Engine\Application\ios\NSApplication.mm" />
+    <None Include="..\..\..\Source\Engine\Application\ios\NSUIView.mm" />
+    <None Include="..\..\..\Source\Engine\Application\ios\NSUIViewController.mm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="EGEEngine.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

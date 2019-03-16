@@ -11,11 +11,11 @@ namespace EGE
 class Transform2D
 {
 public:
-	//!	The position
+	//! The position
 	Vector2	mPosition;
-	//!	The scale factor
+	//! The scale factor
 	Vector2	mScale;
-	//!	The rotation radian
+	//! The rotation radian
 	_float	mRadian;
 		
 public:

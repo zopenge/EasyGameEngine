@@ -6,34 +6,29 @@
 
 #pragma once
 
-namespace EGE
-{
+namespace EGE {
 
 //----------------------------------------------------------------------------
 // TempDir
 //----------------------------------------------------------------------------
 
-class TempDir
-{
-private:
-	WString mDirPath;
+class TempDir {
+ private:
+  WString mDirPath;
 
-public:
-	TempDir( WStringPtr root_dir );
-	TempDir( const TempDir& root_dir );
-	~TempDir( );
+ public:
+  TempDir(WStringPtr root_dir);
+  TempDir(const TempDir& root_dir);
+  ~TempDir();
 
-public:
-	WStringPtr GetDirPath( ) const;
+ public:
+  WStringPtr GetDirPath() const;
 };
 
 //----------------------------------------------------------------------------
 // TempDir Implementation
 //----------------------------------------------------------------------------
 
-inline WStringPtr TempDir::GetDirPath( ) const
-{
-	return mDirPath;
-}
+inline WStringPtr TempDir::GetDirPath() const { return mDirPath; }
 
-}
+}  // namespace EGE

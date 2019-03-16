@@ -10,7 +10,7 @@
 // Platform CPU Helpful Functions Implementation
 //----------------------------------------------------------------------------
 
-//!	Subtract times.
+//! Subtract times.
 ULONGLONG SubtractTimes( const FILETIME& t1, const FILETIME& t2 )
 {
 	LARGE_INTEGER a;
@@ -24,7 +24,7 @@ ULONGLONG SubtractTimes( const FILETIME& t1, const FILETIME& t2 )
 	return a.QuadPart - b.QuadPart;
 }
 
-//!	Check whether we have enough time to get the cpu usage.
+//! Check whether we have enough time to get the cpu usage.
 bool EnoughTimePassed( ULONGLONG last_tickcount )
 {
 	const int minElapsedMS = 250;//milliseconds

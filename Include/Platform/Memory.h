@@ -16,22 +16,22 @@ namespace EGE
 //! This class represents memory allocation information, used for memory track.
 struct MemoryAllocation
 {
-	//!	The memory referenced ID
+	//! The memory referenced ID
 	_dword				mReferencedID;
 	//! The memory block size.
 	_dword				mSize;
 
-	//!	The line number of memory allocation
+	//! The line number of memory allocation
 	_dword				mLineNumber;
-	//!	The file name of memory allocation in ANSI
+	//! The file name of memory allocation in ANSI
 	const _chara*		mFileNameANSI;
 
-	//!	The frame number of callstack
+	//! The frame number of callstack
 	_dword				mFrameNumber;
-	//!	The full callstack
+	//! The full callstack
 	ASrcFileLineInfo*	mSrcFileLines;
 
-	//!	We use the size as key when we need to sort it
+	//! We use the size as key when we need to sort it
 	operator _dword( ) const
 		{ return mSize; }
 };
@@ -67,7 +67,7 @@ struct MemoryBlockAllocation
 class Memory
 {
 public:
-	//!	It's singleton class.
+	//! It's singleton class.
 	SINGLETON( Memory )
 
 private:
@@ -75,104 +75,104 @@ private:
 	typedef Array< MemoryBlockAllocation > BlockAllocationArray;
 
 private:
-	//!	The default max frame number of callstack
+	//! The default max frame number of callstack
 	enum
 	{
 		_DEFAULT_MIN_FRAME_NUMBER = 4,
 		_DEFAULT_MAX_FRAME_NUMBER = 16
 	};
 
-	//!	The max file name length
+	//! The max file name length
 	enum 
 	{
 		_MAX_FILE_NAME_LENGTH = 255,
 	};
 
 private:
-	//!	Locker
+	//! Locker
 	Lock					mLocker;
 
-	//!	The memory referenced ID
+	//! The memory referenced ID
 	_dword					mReferencedID;
 
 	//! True indicates use the full callstack check
 	_ubool					mIsUseFullCallstackCheck;
-	//!	The max frame number
+	//! The max frame number
 	_dword					mMaxFrameNumber;
-	//!	The line number filter
+	//! The line number filter
 	_dword					mLineNumberFilter;
-	//!	The file name filter
+	//! The file name filter
 	_chara					mFileNameFilter[ _MAX_FILE_NAME_LENGTH ];
 
-	//!	The current allocation number
+	//! The current allocation number
 	_dword					mCurAllocNumber;
 	//! The current allocation total size in number of bytes.
 	_dword					mCurAllocSize;
 
-	//!	The allocated memory block list
+	//! The allocated memory block list
 	AllocationLink			mMemoryAllocation;
-	//!	The block array
+	//! The block array
 	BlockAllocationArray	mBlockAllocations;
 
 private:
-	//!	When dump the allocation info.
+	//! When dump the allocation info.
 	typedef _void (*OnOutputString)( _dword id, const _byte* address, const MemoryAllocation& allocation, const QwordParameters2& parameters );
 
-	//!	When output string.
+	//! When output string.
 	static _void OnOutputStringCallback( _dword id, const _byte* address, const MemoryAllocation& allocation, const QwordParameters2& parameters );
 
-	//!	Alloc/Free tail of memory block.
+	//! Alloc/Free tail of memory block.
 	static _void LockTailOfMemoryBlock( _byte* object, _dword allocedsize );
 	static _void UnlockTailOfMemoryBlock( _byte* object, _dword allocedsize );
 
 private:
-	//!	Check whether enable full callstack check.
+	//! Check whether enable full callstack check.
 	_ubool IsEnableFullCallstackCheck( _dword line_number, const _chara* file_name ) const;
 
-	//!	Dump allocations.
+	//! Dump allocations.
 	_void DumpAllocations( _dword min_size, OnOutputString funcpointer, const AllocationLink& allocations, const QwordParameters2& parameters );
 	_void DumpAllocations( _dword min_size, OnOutputString funcpointer, const BlockAllocationArray& allocations, const QwordParameters2& parameters );
 
 public:
-	//!	Initialize.
-	//!	@param		none.
-	//!	@return		True indicates successful, otherwise indicates failure.
+	//! Initialize.
+	//! @param		none.
+	//! @return		True indicates successful, otherwise indicates failure.
 	_ubool Initialize( );
-	//!	Finalize.
-	//!	@param		none.
-	//!	@return		none.
+	//! Finalize.
+	//! @param		none.
+	//! @return		none.
 	_void Finalize( );
 
-	//!	Enable/Disable full callstack check.
-	//!	@param		enable			True indicates enable full callstack check.
-	//!	@return		none.
+	//! Enable/Disable full callstack check.
+	//! @param		enable			True indicates enable full callstack check.
+	//! @return		none.
 	_void EnableFullCallstackCheck( _ubool enable );
-	//!	Set the max frame number of full callstack check.
-	//!	@param		max_frame_number	The max frame number of full callstack check.
-	//!	@return		none.
+	//! Set the max frame number of full callstack check.
+	//! @param		max_frame_number	The max frame number of full callstack check.
+	//! @return		none.
 	_void SetMaxFrameNumberOfFullCallstackCheck( _dword max_frame_number );
-	//!	Set the file name filter of full callstack check.
-	//!	@param		filter				The file name filter of full callstack check.
-	//!	@return		none.
+	//! Set the file name filter of full callstack check.
+	//! @param		filter				The file name filter of full callstack check.
+	//! @return		none.
 	_void SetFileNameFilterOfFullCallstackCheck( const _chara* filter );
-	//!	Set the line number filter of full callstack check.
-	//!	@param		line_number			The line number filter of full callstack check.
-	//!	@return		none.
+	//! Set the line number filter of full callstack check.
+	//! @param		line_number			The line number filter of full callstack check.
+	//! @return		none.
 	_void SetLineNumberFilterOfFullCallstackCheck( _dword line_number );
 
 	//! Allocate block memory from heap and trace the allocation information.
 	//! @param		block_number	The block number.
 	//! @param		size			The size of memory will be allocated in number of bytes.
-	//!	@param		filename		The filename of allocated cpp module.
-	//!	@param		linenumber		The line number of allocated cpp module.
+	//! @param		filename		The filename of allocated cpp module.
+	//! @param		linenumber		The line number of allocated cpp module.
 	//! @return		none.
 	_void AllocBlock( _dword block_number, _dword size, const _chara* filename, _dword linenumber );
 	//! Allocate block memory from heap and trace the allocation information.
 	//! @param		prev_block_number	The previous block number.
 	//! @param		block_number		The block number.
 	//! @param		size				The size of memory will be allocated in number of bytes.
-	//!	@param		filename			The filename of allocated cpp module.
-	//!	@param		linenumber			The line number of allocated cpp module.
+	//! @param		filename			The filename of allocated cpp module.
+	//! @param		linenumber			The line number of allocated cpp module.
 	//! @return		none.
 	_void ReallocBlock( _dword prev_block_number, _dword block_number, _dword size, const _chara* filename, _dword linenumber );
 	//! Frees a block memory block allocated and remove allocation information.
@@ -182,34 +182,34 @@ public:
 
 	//! Allocate memory from heap and trace the allocation information.
 	//! @param		size		The size of memory will be allocated in number of bytes.
-	//!	@param		filename	The filename of allocated cpp module.
-	//!	@param		linenumber	The line number of allocated cpp module.
+	//! @param		filename	The filename of allocated cpp module.
+	//! @param		linenumber	The line number of allocated cpp module.
 	//! @return		The pointer to the allocated memory block.
 	_void* Alloc( _dword size, const _chara* filename, _dword linenumber );
 	//! Reallocate memory from heap and trace the allocation information.
 	//! @param		buffer		The original buffer pointer.
 	//! @param		size		The size of memory will be allocated in number of bytes.
-	//!	@param		filename	The filename of allocated cpp module.
-	//!	@param		linenumber	The line number of allocated cpp module.
+	//! @param		filename	The filename of allocated cpp module.
+	//! @param		linenumber	The line number of allocated cpp module.
 	//! @return		The pointer to the allocated memory block.
 	_void* Realloc( _void* buffer, _dword size, const _chara* filename, _dword linenumber );
 	//! Frees a memory block allocated and remove allocation information.
 	//! @param		pointer		The pointer to the memory block to be freed.
-	//!	@param		filename	The filename of allocated cpp module.
-	//!	@param		linenumber	The line number of allocated cpp module.
-	//!	@return		none.
+	//! @param		filename	The filename of allocated cpp module.
+	//! @param		linenumber	The line number of allocated cpp module.
+	//! @return		none.
 	_void Free( _void* pointer, const _chara* filename, _dword linenumber );
 
 	//! Allocate ANSI string from heap.
 	//! @param		string		The ANSI string.
-	//!	@param		filename	The filename of allocated cpp module.
-	//!	@param		linenumber	The line number of allocated cpp module.
+	//! @param		filename	The filename of allocated cpp module.
+	//! @param		linenumber	The line number of allocated cpp module.
 	//! @return		The pointer to the allocated memory block.
 	_chara* AllocStr( const _chara* string, const _chara* filename, _dword linenumber );
 	//! Allocate UTF-16 string from heap.
 	//! @param		string		The UTF-16 string.
-	//!	@param		filename	The filename of allocated cpp module.
-	//!	@param		linenumber	The line number of allocated cpp module.
+	//! @param		filename	The filename of allocated cpp module.
+	//! @param		linenumber	The line number of allocated cpp module.
 	//! @return		The pointer to the allocated memory block.
 	_charw* AllocStr( const _charw* string, const _chara* filename, _dword linenumber );
 
@@ -247,13 +247,13 @@ public:
 	//! @return		True indicates it's referenced buffer.
 	_ubool IsReferencedBuffer( _void* buffer );
 
-	//!	Dump allocations.
-	//!	@param		min_size	The min size in byte.
-	//!	@return		none.
+	//! Dump allocations.
+	//! @param		min_size	The min size in byte.
+	//! @return		none.
 	_void Dump( _dword min_size, OnOutputString funcpointer, const QwordParameters2& parameters );
-	//!	Dump the current leak memory info.
-	//!	@param		none.
-	//!	@return		none.
+	//! Dump the current leak memory info.
+	//! @param		none.
+	//! @return		none.
 	_void DumpLeakInfo( );
 };
 

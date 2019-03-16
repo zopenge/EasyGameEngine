@@ -45,9 +45,9 @@ public:
 	//! @return		True indicates success, false indicates failure.
 	_ubool Reset( );
 
-	//!	Clone.
-	//!	@param		none.
-	//!	@return		The cloned event.
+	//! Clone.
+	//! @param		none.
+	//! @return		The cloned event.
 	EventObject* Clone( ) const;
 };
 

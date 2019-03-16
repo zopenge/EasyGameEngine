@@ -24,11 +24,11 @@ protected:
 	_byte*	mBuffer;
 
 protected:
-	//!	Resize.
+	//! Resize.
 	_ubool Resize( _dword size );
 
 protected:
-	//!	Read/Write.
+	//! Read/Write.
 	template< typename Type >
 	_void Read( Type& value );
 	template< typename Type >
@@ -40,14 +40,14 @@ public:
 	~Serializer( );
 
 public:
-	//!	Get buffer.
+	//! Get buffer.
 	_byte* GetBuffer( );
-	//!	Get size.
+	//! Get size.
 	_dword GetSize( ) const;
-	//!	Get offset.
+	//! Get offset.
 	_dword GetOffset( ) const;
 
-	//!	Check whether it's read only.
+	//! Check whether it's read only.
 	_ubool IsReadOnly( ) const;
 
 public:

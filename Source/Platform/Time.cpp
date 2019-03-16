@@ -12,7 +12,7 @@ const Time Time::cNull;
 // Time Helpful Functions Implementation
 //----------------------------------------------------------------------------
 
-//!	Convert day string to integer.
+//! Convert day string to integer.
 static _dword GetDayOfWeek( AStringPtr string )
 {
 	if ( string == "Sun" )
@@ -33,7 +33,7 @@ static _dword GetDayOfWeek( AStringPtr string )
 	return 0;
 }
 
-//!	Convert month string to integer.
+//! Convert month string to integer.
 static _dword GetMonth( AStringPtr string )
 {
 	if ( string == "Jan" )

@@ -19,7 +19,7 @@ private:
 	WStringArray	mSubPath;
 
 private:
-	//!	Search the directory separation character index.
+	//! Search the directory separation character index.
 	template< typename StringPtrType >
 	inline static _dword SearchDirSeparationIndexL2R( StringPtrType path );
 	template< typename StringPtrType >
@@ -30,62 +30,62 @@ private:
 	template< typename StringType, typename StringPtrType >
 	static StringType GetFileName( StringPtrType path, _ubool extension = _true );
 
-	//!	Returns the extension of the specified path string.
+	//! Returns the extension of the specified path string.
 	template< typename StringType, typename StringPtrType >
 	static StringType GetExtension( StringPtrType path );
-	//!	Replaces the extension of the specified path string.
+	//! Replaces the extension of the specified path string.
 	template< typename StringType, typename StringPtrType >
 	static StringType ReplaceExtension( StringPtrType path, StringPtrType dot, StringPtrType extension );
-	//!	Remove the extension of the specified path string.
+	//! Remove the extension of the specified path string.
 	template< typename StringType, typename StringPtrType >
 	static StringType RemoveExtension( StringPtrType path );
 
-	//!	Gets the root directory information of the specified path.
+	//! Gets the root directory information of the specified path.
 	template< typename StringType, typename StringPtrType >
 	static StringType GetPathRoot( StringPtrType path );
-	//!	Gets the root directory information of the specified path.
+	//! Gets the root directory information of the specified path.
 	template< typename StringType, typename StringPtrType >
 	static StringType GetChildPathRoot( StringPtrType path );
-	//!	Returns the directory information for the specified path string.
+	//! Returns the directory information for the specified path string.
 	template< typename StringType, typename StringPtrType >
 	static StringType GetDirectoryName( StringPtrType path );
-	//!	Returns the parent directory information for the specified path string.
+	//! Returns the parent directory information for the specified path string.
 	template< typename StringType, typename StringPtrType >
 	static StringType GetParentDirectoryName( StringPtrType path );
 
-	//!	Get root URL address.
+	//! Get root URL address.
 	template< typename StringType, typename StringPtrType >
 	static StringType GetRootURLAddress( StringPtrType path, StringPtrType protocol_head_string, StringPtrType split_char, StringPtrType trim_char );
-	//!	Get sub URL address.
+	//! Get sub URL address.
 	template< typename StringType, typename StringPtrType >
 	static StringType GetSubURLAddress( StringPtrType path, StringPtrType protocol_head_string, StringPtrType split_char, StringPtrType trim_char );
 
 	template< typename StringType, typename StringPtrType >
 	static _ubool IsIPAddress( StringPtrType url, StringPtrType split_char, StringPtrType trim_char );
 
-	//!	Build path.
+	//! Build path.
 	template< typename StringType, typename StringPtrType >
 	static StringType BuildFilePath( StringPtrType path, StringPtrType filename, StringPtrType trim_strings );
 
-	//!	Build relative path.
+	//! Build relative path.
 	template< typename StringType, typename StringPtrType >
 	static StringType GetRelativePath( StringPtrType patha, StringPtrType pathb );
 
-	//!	Normalize file name.
+	//! Normalize file name.
 	template< typename StringType, typename StringPtrType >
 	static StringType NormalizedFileName( StringPtrType filename );
-	//!	Normalize path name.
+	//! Normalize path name.
 	template< typename StringType, typename StringPtrType >
 	static StringType NormalizedPathName( StringPtrType pathname );
-	//!	Cleanup path.
+	//! Cleanup path.
 	template< typename StringType, typename StringPtrType >
 	static StringType CleanupPath( StringPtrType pathname );
 
-	//!	Check whether it's valid path string or not.
+	//! Check whether it's valid path string or not.
 	template< typename StringPtrType >
 	static _ubool IsPathString( StringPtrType string );
 
-	//!	Check whether it's path rooted or not.
+	//! Check whether it's path rooted or not.
 	template< typename StringPtrType >
 	static _ubool IsPathRooted( StringPtrType string );
 
@@ -95,7 +95,7 @@ public:
 	Path( WStringPtr path );
 
 public:
-	//!	Operator functions.
+	//! Operator functions.
 	_ubool operator == ( const Path& path ) const;
 	_ubool operator != ( const Path& path ) const;
 	_ubool operator >  ( const Path& path ) const;
@@ -103,20 +103,20 @@ public:
 	_ubool operator >= ( const Path& path ) const;
 	_ubool operator <= ( const Path& path ) const;
 
-	//!	Get the sub-path.
+	//! Get the sub-path.
 	WStringPtr operator[] ( _dword index ) const;
 
 public:
-	//!	Get the number of sub-path.
-	//!	@param		none.
-	//!	@return		The number of sub-path.
+	//! Get the number of sub-path.
+	//! @param		none.
+	//! @return		The number of sub-path.
 	_dword Number( ) const;
 
-	//!	Get the path string.
-	//!	@param		none.
-	//!	@return		The path string.
+	//! Get the path string.
+	//! @param		none.
+	//! @return		The path string.
 	WString Str( ) const;
-	//!	Get the file name.
+	//! Get the file name.
 	//! @param		extension		Whether need the extension of the the file name.
 	//! @return		The characters after the last directory character in path.
 	WString GetFileName( _ubool extension = _true ) const;
@@ -138,146 +138,146 @@ public:
 	//! @return		The characters after the last directory character in path.
 	inline static WString GetFileName( WStringPtr path, _ubool extension = _true );
 
-	//!	Returns the extension of the specified path string.
-	//!	@param		path			The path string from which to get the extension. 
-	//!	@return		The extension of the specified path.
+	//! Returns the extension of the specified path string.
+	//! @param		path			The path string from which to get the extension. 
+	//! @return		The extension of the specified path.
 	inline static AString GetExtension( AStringPtr path );
-	//!	Returns the extension of the specified path string.
-	//!	@param		path			The path string from which to get the extension. 
-	//!	@return		The extension of the specified path.
+	//! Returns the extension of the specified path string.
+	//! @param		path			The path string from which to get the extension. 
+	//! @return		The extension of the specified path.
 	inline static UString GetExtensionU( UStringPtr path );
-	//!	Returns the extension of the specified path string.
-	//!	@param		path			The path string from which to get the extension. 
-	//!	@return		The extension of the specified path.
+	//! Returns the extension of the specified path string.
+	//! @param		path			The path string from which to get the extension. 
+	//! @return		The extension of the specified path.
 	inline static WString GetExtension( WStringPtr path );
-	//!	Replaces the extension of the specified path string.
-	//!	@param		path			The path string from which to replace the extension. 
-	//!	@param		extension		The new extension name will replace.
-	//!	@return		The extension of the specified path.
+	//! Replaces the extension of the specified path string.
+	//! @param		path			The path string from which to replace the extension. 
+	//! @param		extension		The new extension name will replace.
+	//! @return		The extension of the specified path.
 	inline static AString ReplaceExtension( AStringPtr path, AStringPtr extension );
-	//!	Returns the extension of the specified path string.
-	//!	@param		path			The path string from which to get the extension. 
-	//!	@param		extension		The new extension name will replace.
-	//!	@return		The extension of the specified path.
+	//! Returns the extension of the specified path string.
+	//! @param		path			The path string from which to get the extension. 
+	//! @param		extension		The new extension name will replace.
+	//! @return		The extension of the specified path.
 	inline static WString ReplaceExtension( WStringPtr path, WStringPtr extension );
-	//!	Removes the extension of the specified path string.
-	//!	@param		path			The path string from which to remove the extension. 
-	//!	@return		The extension of the specified path.
+	//! Removes the extension of the specified path string.
+	//! @param		path			The path string from which to remove the extension. 
+	//! @return		The extension of the specified path.
 	inline static AString RemoveExtension( AStringPtr path );
-	//!	Removes the extension of the specified path string.
-	//!	@param		path			The path string from which to remove the extension. 
-	//!	@return		The extension of the specified path.
+	//! Removes the extension of the specified path string.
+	//! @param		path			The path string from which to remove the extension. 
+	//! @return		The extension of the specified path.
 	inline static WString RemoveExtension( WStringPtr path );
 
-	//!	Gets the root directory information of the specified path.
-	//!	@param		path			The path from which to obtain root directory information. 
-	//!	@return		The root directory of path.
+	//! Gets the root directory information of the specified path.
+	//! @param		path			The path from which to obtain root directory information. 
+	//! @return		The root directory of path.
 	inline static AString GetPathRoot( AStringPtr path );
-	//!	Gets the root directory information of the specified path.
-	//!	@param		path			The path from which to obtain root directory information. 
-	//!	@return		The root directory of path.
+	//! Gets the root directory information of the specified path.
+	//! @param		path			The path from which to obtain root directory information. 
+	//! @return		The root directory of path.
 	inline static WString GetPathRoot( WStringPtr path );
 
-	//!	Gets the root directory information of the specified path.
-	//!	@param		path			The path from which to obtain root directory information. 
-	//!	@return		The root directory of path.
+	//! Gets the root directory information of the specified path.
+	//! @param		path			The path from which to obtain root directory information. 
+	//! @return		The root directory of path.
 	inline static AString GetChildPathRoot( AStringPtr path );
-	//!	Gets the root directory information of the specified path.
-	//!	@param		path			The path from which to obtain root directory information. 
-	//!	@return		The root directory of path.
+	//! Gets the root directory information of the specified path.
+	//! @param		path			The path from which to obtain root directory information. 
+	//! @return		The root directory of path.
 	inline static WString GetChildPathRoot( WStringPtr path );
 
-	//!	Returns the directory information for the specified path string.
-	//!	@param		path			The path of a file or directory. 
-	//!	@return		Directory information for path.
+	//! Returns the directory information for the specified path string.
+	//! @param		path			The path of a file or directory. 
+	//! @return		Directory information for path.
 	inline static AString GetDirectoryName( AStringPtr path );
-	//!	Returns the directory information for the specified path string.
-	//!	@param		path			The path of a file or directory. 
-	//!	@return		Directory information for path.
+	//! Returns the directory information for the specified path string.
+	//! @param		path			The path of a file or directory. 
+	//! @return		Directory information for path.
 	inline static WString GetDirectoryName( WStringPtr path );
 
-	//!	Returns the parent directory information for the specified path string.
-	//!	@param		path			The path of a file or directory. 
-	//!	@return		Parent directory information for path.
+	//! Returns the parent directory information for the specified path string.
+	//! @param		path			The path of a file or directory. 
+	//! @return		Parent directory information for path.
 	inline static AString GetParentDirectoryName( AStringPtr path );
-	//!	Returns the parent directory information for the specified path string.
-	//!	@param		path			The path of a file or directory. 
-	//!	@return		Parent directory information for path.
+	//! Returns the parent directory information for the specified path string.
+	//! @param		path			The path of a file or directory. 
+	//! @return		Parent directory information for path.
 	inline static WString GetParentDirectoryName( WStringPtr path );
 
 	//! Returns the root URL address.
 	//! @param		path					The URL path. 
-	//!	@param		protocol_head_string	The protocol head string, ie 'http://'.
+	//! @param		protocol_head_string	The protocol head string, ie 'http://'.
 	//! @return		The root URL address.
 	inline static AString GetRootURLAddress( AStringPtr path, AStringPtr protocol_head_string );
 	//! Returns the root URL address.
 	//! @param		path					The URL path. 
-	//!	@param		protocol_head_string	The protocol head string, ie 'http://'.
+	//! @param		protocol_head_string	The protocol head string, ie 'http://'.
 	//! @return		The root URL address.
 	inline static UString GetRootURLAddress( UStringPtr path, UStringPtr protocol_head_string );
 	//! Returns the root URL address.
 	//! @param		path					The URL path. 
-	//!	@param		protocol_head_string	The protocol head string, ie 'http://'.
+	//! @param		protocol_head_string	The protocol head string, ie 'http://'.
 	//! @return		The root URL address.
 	inline static WString GetRootURLAddress( WStringPtr path, WStringPtr protocol_head_string );
 
 	//! Returns the sub URL address.
 	//! @param		path					The URL path. 
-	//!	@param		protocol_head_string	The protocol head string, ie 'http://'.
+	//! @param		protocol_head_string	The protocol head string, ie 'http://'.
 	//! @return		The sub URL address.
 	inline static AString GetSubURLAddress( AStringPtr path, AStringPtr protocol_head_string );
 	//! Returns the sub URL address.
 	//! @param		path					The URL path. 
-	//!	@param		protocol_head_string	The protocol head string, ie 'http://'.
+	//! @param		protocol_head_string	The protocol head string, ie 'http://'.
 	//! @return		The sub URL address.
 	inline static UString GetSubURLAddress( UStringPtr path, UStringPtr protocol_head_string );
 	//! Returns the sub URL address.
 	//! @param		path					The URL path. 
-	//!	@param		protocol_head_string	The protocol head string, ie 'http://'.
+	//! @param		protocol_head_string	The protocol head string, ie 'http://'.
 	//! @return		The sub URL address.
 	inline static WString GetSubURLAddress( WStringPtr path, WStringPtr protocol_head_string );
 
-	//!	Check whether it's IP address.
+	//! Check whether it's IP address.
 	inline static _ubool IsIPAddress( AStringPtr url );
-	//!	Check whether it's IP address.
+	//! Check whether it's IP address.
 	inline static _ubool IsIPAddress( UStringPtr url );
-	//!	Check whether it's IP address.
+	//! Check whether it's IP address.
 	inline static _ubool IsIPAddress( WStringPtr url );
 
-	//!	Check whether it's HTTP/HTTPs protocol.
+	//! Check whether it's HTTP/HTTPs protocol.
 	inline static _ubool IsHTTPProtocol( AStringPtr url );
-	//!	Check whether it's HTTP/HTTPs protocol.
+	//! Check whether it's HTTP/HTTPs protocol.
 	inline static _ubool IsHTTPProtocol( UStringPtr url );
-	//!	Check whether it's HTTP/HTTPs protocol.
+	//! Check whether it's HTTP/HTTPs protocol.
 	inline static _ubool IsHTTPProtocol( WStringPtr url );
 
-	//!	Build path.
-	//!	@param		path			The directory path.
-	//!	@param		filename		The file name.
-	//!	@return		The file path.
+	//! Build path.
+	//! @param		path			The directory path.
+	//! @param		filename		The file name.
+	//! @return		The file path.
 	inline static AString BuildFilePath( AStringPtr path, AStringPtr filename );
-	//!	Build path.
-	//!	@param		path			The directory path.
-	//!	@param		filename		The file name.
-	//!	@return		The file path.
+	//! Build path.
+	//! @param		path			The directory path.
+	//! @param		filename		The file name.
+	//! @return		The file path.
 	inline static UString BuildFilePathU( UStringPtr path, UStringPtr filename );
-	//!	Build path.
-	//!	@param		path			The directory path.
-	//!	@param		filename		The file name.
-	//!	@return		The file path.
+	//! Build path.
+	//! @param		path			The directory path.
+	//! @param		filename		The file name.
+	//! @return		The file path.
 	inline static WString BuildFilePath( WStringPtr path, WStringPtr filename );
 
-	//!	Check the file extension name with filter.
-	//!	@param		filename		The file name.
-	//!	@param		extension_list	The extension name list.
-	//!	@param		ignorecase		True indicates case insensitive when parsing.
-	//!	@return		True indicates the file name fit the filter.
+	//! Check the file extension name with filter.
+	//! @param		filename		The file name.
+	//! @param		extension_list	The extension name list.
+	//! @param		ignorecase		True indicates case insensitive when parsing.
+	//! @return		True indicates the file name fit the filter.
 	inline static _ubool DoesMatchExtension( AStringPtr filename, AStringPtr extension_list, _ubool ignorecase = _false );
-	//!	Check the file extension name with filter.
-	//!	@param		filename		The file name.
-	//!	@param		extension_list	The extension name list.
-	//!	@param		ignorecase		True indicates case insensitive when parsing.
-	//!	@return		True indicates the file name fit the filter.
+	//! Check the file extension name with filter.
+	//! @param		filename		The file name.
+	//! @param		extension_list	The extension name list.
+	//! @param		ignorecase		True indicates case insensitive when parsing.
+	//! @return		True indicates the file name fit the filter.
 	inline static _ubool DoesMatchExtension( WStringPtr filename, WStringPtr extension_list, _ubool ignorecase = _false );
 
 	//! Get the relative path from path B to path A.( example: path A: "D:\A\c.png"; path B: "D:\A\B\", return "..\c.png"
@@ -291,48 +291,48 @@ public:
 	//! @return		The relative path.
 	inline static WString GetRelativePath( WStringPtr patha, WStringPtr pathb );
 
-	//!	Normalize an ANSI file name.
-	//!	@param		string		The ANSI string.
-	//!	@return		The string with path normalized.
+	//! Normalize an ANSI file name.
+	//! @param		string		The ANSI string.
+	//! @return		The string with path normalized.
 	inline static AString NormalizedFileName( AStringPtr string );
-	//!	Normalize an UNICODE file name.
-	//!	@param		string		The UNICODE string.
-	//!	@return		The string with path normalized.
+	//! Normalize an UNICODE file name.
+	//! @param		string		The UNICODE string.
+	//! @return		The string with path normalized.
 	inline static WString NormalizedFileName( WStringPtr string );
-	//!	Normalize an ANSI path name.
-	//!	@param		string		The ANSI string.
-	//!	@return		The string with path normalized.
+	//! Normalize an ANSI path name.
+	//! @param		string		The ANSI string.
+	//! @return		The string with path normalized.
 	inline static AString NormalizedPathName( AStringPtr string );
-	//!	Normalize an UNICODE path name.
-	//!	@param		string		The UNICODE string.
-	//!	@return		The string with path normalized.
+	//! Normalize an UNICODE path name.
+	//! @param		string		The UNICODE string.
+	//! @return		The string with path normalized.
 	inline static WString NormalizedPathName( WStringPtr string );
 
-	//!	Cleanup an ANSI path.
-	//!	@param		string		The ANSI string.
-	//!	@return		The string with cleaned path.
+	//! Cleanup an ANSI path.
+	//! @param		string		The ANSI string.
+	//! @return		The string with cleaned path.
 	inline static AString CleanupPath( AStringPtr string );
-	//!	Cleanup an UNICODE path.
-	//!	@param		string		The UNICODE string.
-	//!	@return		The string with cleaned path.
+	//! Cleanup an UNICODE path.
+	//! @param		string		The UNICODE string.
+	//! @return		The string with cleaned path.
 	inline static WString CleanupPath( WStringPtr string );
 
-	//!	Check whether it's valid path string or not.
-	//!	@param		string		The ANSI string.
-	//!	@return		True indicates it's valid path string.
+	//! Check whether it's valid path string or not.
+	//! @param		string		The ANSI string.
+	//! @return		True indicates it's valid path string.
 	inline static _ubool IsPathString( AStringPtr string );
-	//!	Check whether it's valid path string or not.
-	//!	@param		string		The UTF-16 string.
-	//!	@return		True indicates it's valid path string.
+	//! Check whether it's valid path string or not.
+	//! @param		string		The UTF-16 string.
+	//! @return		True indicates it's valid path string.
 	inline static _ubool IsPathString( WStringPtr string );
 
-	//!	Check whether it's path rooted or not.
-	//!	@param		string		The ANSI string.
-	//!	@return		True indicates it's path rooted.
+	//! Check whether it's path rooted or not.
+	//! @param		string		The ANSI string.
+	//! @return		True indicates it's path rooted.
 	inline static _ubool IsPathRooted( AStringPtr string );
-	//!	Check whether it's path rooted or not.
-	//!	@param		string		The UTF-16 string.
-	//!	@return		True indicates it's path rooted.
+	//! Check whether it's path rooted or not.
+	//! @param		string		The UTF-16 string.
+	//! @return		True indicates it's path rooted.
 	inline static _ubool IsPathRooted( WStringPtr string );
 };
 

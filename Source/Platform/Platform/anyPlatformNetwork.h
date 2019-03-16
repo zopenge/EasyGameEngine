@@ -16,10 +16,10 @@ namespace EGE
 class anyPlatformNetwork
 {
 public:
-	//!	Set socket option status.
+	//! Set socket option status.
 	template< typename Type >
 	static Type GetSocketOperationStatus( _socket handle, _dword protocol, _dword option );
-	//!	Get socket option status.
+	//! Get socket option status.
 	template< typename Type >
 	static _ubool SetSocketOperationStatus( _socket handle, _dword protocol, _dword option, const Type& value );
 
@@ -42,7 +42,7 @@ public:
 // anyPlatformNetwork Implementation
 //----------------------------------------------------------------------------
 
-//!	Set socket option status.
+//! Set socket option status.
 template< typename Type >
 Type anyPlatformNetwork::GetSocketOperationStatus( _socket handle, _dword protocol, _dword option )
 {
@@ -55,7 +55,7 @@ Type anyPlatformNetwork::GetSocketOperationStatus( _socket handle, _dword protoc
 	return optval;
 }
 
-//!	Get socket option status.
+//! Get socket option status.
 template< typename Type >
 _ubool anyPlatformNetwork::SetSocketOperationStatus( _socket handle, _dword protocol, _dword option, const Type& value )
 {

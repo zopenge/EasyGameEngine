@@ -27,7 +27,7 @@ public:
 	_byte	a;
 
 public:
-	//!	The int -> float convertion table
+	//! The int -> float convertion table
 	static _float sInt2FloatConvertionTable[ 256 ];
 
 public:
@@ -186,62 +186,62 @@ public:
 	//! @return		The result color of division.
 	inline Color operator / ( _float scalar ) const;
 
-	//!	Get red component in floating-point.
-	//!	@param		none.
-	//!	@return		The red component in [0.0, 1.0].
+	//! Get red component in floating-point.
+	//! @param		none.
+	//! @return		The red component in [0.0, 1.0].
 	inline _float Red( ) const;
-	//!	Get green component in floating-point.
-	//!	@param		none.
-	//!	@return		The green component in [0.0, 1.0].
+	//! Get green component in floating-point.
+	//! @param		none.
+	//! @return		The green component in [0.0, 1.0].
 	inline _float Green( ) const;
-	//!	Get blue component in floating-point.
-	//!	@param		none.
-	//!	@return		The blue component in [0.0, 1.0].
+	//! Get blue component in floating-point.
+	//! @param		none.
+	//! @return		The blue component in [0.0, 1.0].
 	inline _float Blue( ) const;
-	//!	Get alpha component in floating-point.
-	//!	@param		none.
-	//!	@return		The alpha component in [0.0, 1.0].
+	//! Get alpha component in floating-point.
+	//! @param		none.
+	//! @return		The alpha component in [0.0, 1.0].
 	inline _float Alpha( ) const;
 
-	//!	Set red component in floating-point.
-	//!	@param		none.
-	//!	@return		none.
+	//! Set red component in floating-point.
+	//! @param		none.
+	//! @return		none.
 	inline _void Red( _float value );
-	//!	Set green component in floating-point.
-	//!	@param		none.
-	//!	@return		none.
+	//! Set green component in floating-point.
+	//! @param		none.
+	//! @return		none.
 	inline _void Green( _float value );
-	//!	Set blue component in floating-point.
-	//!	@param		none.
-	//!	@return		none.
+	//! Set blue component in floating-point.
+	//! @param		none.
+	//! @return		none.
 	inline _void Blue( _float value );
-	//!	Set alpha component in floating-point.
-	//!	@param		none.
-	//!	@return		none.
+	//! Set alpha component in floating-point.
+	//! @param		none.
+	//! @return		none.
 	inline _void Alpha( _float value );
 
 	inline _ubool IsNullColor( ) const;
 
 public:
-	//!	The average of red.
+	//! The average of red.
 	//! @param		color1		Source color 1.
 	//! @param		color2		Target color 2.
-	//!	@return		The red color component.
+	//! @return		The red color component.
 	inline static _byte AvgRed( const Color& color1, const Color& color2 );
-	//!	The average of green.
+	//! The average of green.
 	//! @param		color1		Source color 1.
 	//! @param		color2		Target color 2.
-	//!	@return		The green color component.
+	//! @return		The green color component.
 	inline static _byte AvgGreen( const Color& color1, const Color& color2 );
-	//!	The average of blue.
+	//! The average of blue.
 	//! @param		color1		Source color 1.
 	//! @param		color2		Target color 2.
-	//!	@return		The blue color component.
+	//! @return		The blue color component.
 	inline static _byte AvgBlue( const Color& color1, const Color& color2 );
-	//!	The average of alpha.
+	//! The average of alpha.
 	//! @param		color1		Source color 1.
 	//! @param		color2		Target color 2.
-	//!	@return		The alpha color component.
+	//! @return		The alpha color component.
 	inline static _byte AvgAlpha( const Color& color1, const Color& color2 );
 
 	//! Calculates dot product of two colors.
@@ -249,7 +249,7 @@ public:
 	//! @param		color2		Target color 2.
 	//! @return		The result color dot product.
 	//! @remarks	Modulate the components of each argument as signed components, add their products;
-	//!				then replicate the sum to all color channels, including alpha.
+	//! 			then replicate the sum to all color channels, including alpha.
 	static Color Dot( const Color& color1, const Color& color2 );
 	//! Calculates linear interpolation of two colors.
 	//! @param		color1		Source color 1.

@@ -10,7 +10,7 @@
 // anyPlatformNetwork Helpful Enumerations
 //----------------------------------------------------------------------------
 
-//!	The operation type
+//! The operation type
 enum _NET_OP_TYPE
 {
 	_NET_OP_NO_DATA,
@@ -19,7 +19,7 @@ enum _NET_OP_TYPE
 	_NET_OP_ERROR,
 };
 
-//!	The address info
+//! The address info
 struct AddrInfo 
 {
 	int			ai_flags;
@@ -46,7 +46,7 @@ _void FreeAddrInfo( AddrInfo* cahead )
 	}
 }
 
-//!	Get the address info.
+//! Get the address info.
 int GetAddrInfoEx( const char *nodename, const char *servname, const struct addrinfo *hints, AddrInfo **result )
 {
 	const struct addrinfo *ai;

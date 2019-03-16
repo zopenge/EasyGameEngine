@@ -143,7 +143,7 @@ public:
 	//! @return		The reference of current matrix.
 	Matrix3& FromRotation( const Quaternion& rotation );
 
-	//!	Parse position, scale and radian from it.
+	//! Parse position, scale and radian from it.
 	_void AnalysisMatrix( Vector2& position, Vector2& scale, _float& radian ) const;
 
 public:
@@ -229,11 +229,11 @@ public:
 	//! @return		The reflection matrix.
 	static Matrix3 CreateRefection( const Vector3& vector );
 
-	//!	Build transform by region.
+	//! Build transform by region.
 	static Matrix3 CreateFromRegion( const RectF& region );
-	//!	Build transform by region and size.
+	//! Build transform by region and size.
 	static Matrix3 CreateFromRegion( const RectF& region, const Vector2& size );
-	//!	Build transform by region, size and offset.
+	//! Build transform by region, size and offset.
 	static Matrix3 CreateFromRegion( const RectF& region, const Vector2& size, const Vector2& base_offset );
 };
 

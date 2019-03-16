@@ -20,11 +20,11 @@ public:
 	static MD5Code cNull;
 
 public:
-	//!	The unsigned 128-bits integer.
+	//! The unsigned 128-bits integer.
 	_dword	mCode[4];
 
 private:
-	//!	Get the section number from MD5 string.
+	//! Get the section number from MD5 string.
 	template< typename StringPtrType >
 	static _dword GetSectionNumber( StringPtrType string )
 	{
@@ -63,7 +63,7 @@ public:
 	inline _ubool operator != ( const MD5Code& oword ) const
 		{ return mCode[0] != oword.mCode[0] || mCode[1] != oword.mCode[1] || mCode[2] != oword.mCode[2] || mCode[3] != oword.mCode[3]; }
 
-	//!	Comparison operations.
+	//! Comparison operations.
 	_ubool operator >= ( const MD5Code& oword ) const;
 	_ubool operator > ( const MD5Code& oword ) const;
 	_ubool operator <= ( const MD5Code& oword ) const;
@@ -112,7 +112,7 @@ public:
 class MD5
 {
 private:
-	//!	The md5 state
+	//! The md5 state
 	struct MD5State
 	{
 		_dword	count[2];	/* message length in bits, lsw first */
@@ -126,14 +126,14 @@ private:
 	_ubool		mFinished;
 
 private:
-	//!	Initialize MD5 state.
+	//! Initialize MD5 state.
 	EGE_INTERNAL static _void Initialize( MD5State& state );
 
-	//!	Process/Calculate MD5 code from buffer data in MD5 state. 
+	//! Process/Calculate MD5 code from buffer data in MD5 state. 
 	EGE_INTERNAL static _void Process( MD5State& state, const _byte* data /*[64]*/ );
-	//!	Append buffer data to MD5 state.
+	//! Append buffer data to MD5 state.
 	EGE_INTERNAL static _void Append( MD5State& state, const _byte* data, _dword nbytes );
-	//!	Finish the message and return the digest.
+	//! Finish the message and return the digest.
 	EGE_INTERNAL static _void Finish( MD5State& state, _byte digest[16] );
 
 public:
@@ -141,32 +141,32 @@ public:
 	EGE_INTERNAL ~MD5( );
 
 public:
-	//!	Clear.
+	//! Clear.
 	EGE_INTERNAL _void Clear( );
 
-	//!	Append buffer data.
+	//! Append buffer data.
 	EGE_INTERNAL _void AppendBuffer( const _void* buffer, _dword size );
 
-	//!	Call finish and update digest code.
+	//! Call finish and update digest code.
 	EGE_INTERNAL _void Digest( );
 
-	//!	Get MD5 code.
-	//!	@remark		You must call Digest( ) to end up it first.
+	//! Get MD5 code.
+	//! @remark		You must call Digest( ) to end up it first.
 	EGE_INTERNAL MD5Code GetCode( ) const;
 
 public:
-	//!	Build the MD5 value from buffer.
-	//!	@param		buffer		The buffer data.
-	//!	@param		size		The buffer size.
-	//!	@return		The MD5 128-bits checksum.
+	//! Build the MD5 value from buffer.
+	//! @param		buffer		The buffer data.
+	//! @param		size		The buffer size.
+	//! @return		The MD5 128-bits checksum.
 	EGE_INTERNAL static MD5Code BuildFromBuffer( const _byte* buffer, _dword size );
-	//!	Build the MD5 value from string.
-	//!	@param		string		The string buffer.
-	//!	@return		The MD5 128-bits checksum.
+	//! Build the MD5 value from string.
+	//! @param		string		The string buffer.
+	//! @return		The MD5 128-bits checksum.
 	EGE_INTERNAL static MD5Code BuildFromString( AStringPtr string );
-	//!	Build the MD5 value from string.
-	//!	@param		string		The string buffer.
-	//!	@return		The MD5 128-bits checksum.
+	//! Build the MD5 value from string.
+	//! @param		string		The string buffer.
+	//! @return		The MD5 128-bits checksum.
 	EGE_INTERNAL static MD5Code BuildFromString( WStringPtr string );
 };
 

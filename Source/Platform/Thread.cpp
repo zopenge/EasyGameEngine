@@ -34,7 +34,7 @@ Thread::ThreadPtrArray*	Thread::sThreads	= _null;
 
 #if defined(_PLATFORM_WINDOWS_)
 
-//!	Handle execptions.
+//! Handle execptions.
 static int HandleException( EXCEPTION_POINTERS* exception_pointers )
 {
 	Platform::DebuggerBreak( );
