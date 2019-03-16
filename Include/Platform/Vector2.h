@@ -39,198 +39,198 @@ class Vector2 {
 
  public:
   //! Constructor, create a vector without sets x, y components.
-  //! @param		none
+  //! @param none
   Vector2();
   //! Constructor, create a vector and sets x, y components.
-  //! @param		xx			X-component of the vector.
-  //! @param		yy			Y-component of the vector.
+  //! @param xx   X-component of the vector.
+  //! @param yy   Y-component of the vector.
   Vector2(_float xx, _float yy);
 
   //! Get positive vector.
-  //! @param		none
-  //! @return		The positive vector.
+  //! @param none
+  //! @return The positive vector.
   Vector2 operator+() const;
   //! Get negative vector.
-  //! @param		none
-  //! @return		The negative vector.
+  //! @param none
+  //! @return The negative vector.
   Vector2 operator-() const;
 
   //! Copy a vector to current vector, and save result in current one.
-  //! @param		vector		The vector to copy.
-  //! @return		The result vector.
+  //! @param vector  The vector to copy.
+  //! @return The result vector.
   Vector2& operator=(const Vector2& vector);
 
   //! Add a vector to current vector, and save result in current one.
-  //! @param		vector		The vector to add.
-  //! @return		The result vector of addition.
+  //! @param vector  The vector to add.
+  //! @return The result vector of addition.
   Vector2& operator+=(const Vector2& vector);
   //! Subtract a vector from current vector, and save result in current one.
-  //! @param		vector		The vector to subtract.
-  //! @return		The result vector of subtraction.
+  //! @param vector  The vector to subtract.
+  //! @return The result vector of subtraction.
   Vector2& operator-=(const Vector2& vector);
   //! Multiply a scalar to current vector, and save result in current one.
-  //! @param		scalar		The scalar to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param scalar  The scalar to multiply.
+  //! @return The result vector of multiplication.
   Vector2& operator*=(_float scalar);
   //! Multiply a vector to current vector, and save result in current one.
-  //! @param		vector		The vector to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param vector  The vector to multiply.
+  //! @return The result vector of multiplication.
   Vector2& operator*=(const Vector2& vector);
   //! Divide a scalar to current vector, and save result in current one.
-  //! @param		scalar		The scalar to divide.
-  //! @return		The result vector of division.
+  //! @param scalar  The scalar to divide.
+  //! @return The result vector of division.
   Vector2& operator/=(_float scalar);
   //! Divide a vector to current vector, and save result in current one.
-  //! @param		vector		The vector to divide.
-  //! @return		The result vector of division.
+  //! @param vector  The vector to divide.
+  //! @return The result vector of division.
   Vector2& operator/=(const Vector2& vector);
 
   //! Multiply a matrix to current vector, and save result in current one.
-  //! @param		matrix		The matrix to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param matrix  The matrix to multiply.
+  //! @return The result vector of multiplication.
   Vector2& operator*=(const Matrix2& matrix);
   //! Multiply a matrix to current vector, and save result in current one.
-  //! @param		matrix		The matrix to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param matrix  The matrix to multiply.
+  //! @return The result vector of multiplication.
   Vector2& operator*=(const Matrix3& matrix);
 
   //! Add a vector to current vector, return a new vector to save result.
-  //! @param		vector		The vector to add.
-  //! @return		The result vector of addition.
+  //! @param vector  The vector to add.
+  //! @return The result vector of addition.
   Vector2 operator+(const Vector2& vector) const;
   //! Subtract a vector from current vector, return a new vector to save result.
-  //! @param		vector		The vector to subtract.
-  //! @return		The result vector of subtraction.
+  //! @param vector  The vector to subtract.
+  //! @return The result vector of subtraction.
   Vector2 operator-(const Vector2& vector) const;
   //! Multiply a scalar to current vector, return a new vector to save result.
-  //! @param		scalar		The scalar to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param scalar  The scalar to multiply.
+  //! @return The result vector of multiplication.
   Vector2 operator*(_float scalar) const;
   //! Multiply a vector to current vector, return a new vector to save result.
-  //! @param		vector		The vector to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param vector  The vector to multiply.
+  //! @return The result vector of multiplication.
   Vector2 operator*(const Vector2& vector) const;
   //! Divide a scalar to current vector, return a new vector to save result.
-  //! @param		scalar		The scalar to divide.
-  //! @return		The result vector of division.
+  //! @param scalar  The scalar to divide.
+  //! @return The result vector of division.
   Vector2 operator/(_float scalar) const;
   //! Divide a vector to current vector, return a new vector to save result.
-  //! @param		vector		The vector to divide.
-  //! @return		The result vector of division.
+  //! @param vector  The vector to divide.
+  //! @return The result vector of division.
   Vector2 operator/(const Vector2& vector) const;
 
   //! Compare two vectors.
-  //! @param		vector		The vector to compare with.
-  //! @return		True if they are identical, false otherwise.
+  //! @param vector  The vector to compare with.
+  //! @return True if they are identical, false otherwise.
   _ubool operator==(const Vector2& vector) const;
   //! Compare two vectors.
-  //! @param		vector		The vector to compare with.
-  //! @return		True if they are not identical, false otherwise.
+  //! @param vector  The vector to compare with.
+  //! @return True if they are not identical, false otherwise.
   _ubool operator!=(const Vector2& vector) const;
 
   //! Multiply a matrix to current vector, return a new vector to save result.
-  //! @param		matrix		The matrix to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param matrix  The matrix to multiply.
+  //! @return The result vector of multiplication.
   Vector2 operator*(const Matrix2& matrix) const;
   //! Multiply a matrix to current vector, return a new vector to save result.
-  //! @param		matrix		The matrix to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param matrix  The matrix to multiply.
+  //! @return The result vector of multiplication.
   Vector2 operator*(const Matrix3& matrix) const;
 
   //! @export_script_method("Compare two vectors with error margin")
-  //! @param		vector		The vector to compare with.
-  //! @param		margin		The margin that allows some error.
-  //! @return		True if they are identical, false otherwise.
+  //! @param vector  The vector to compare with.
+  //! @param margin  The margin that allows some error.
+  //! @return True if they are identical, false otherwise.
   _ubool Equal(const Vector2& vector,
                _float margin = Math::cFloatEpsilon) const;
 
   //! Make the current vector absolute, that all coordinates are nonnegative.
-  //! @param		none
-  //! @return		The absolute vector.
+  //! @param none
+  //! @return The absolute vector.
   Vector2& Absolute();
   //! Make the current vector normalized, that has one unit magnitude.
-  //! @param		none
-  //! @return		The normalized vector.
+  //! @param none
+  //! @return The normalized vector.
   Vector2& Normalize();
 
   //! Make the current vector normalized by bounding box, that x, y, z is from 0
   //! ~ 1
-  //! @param		none
-  //! @return		The normalized vector.
+  //! @param none
+  //! @return The normalized vector.
   Vector2& NormalizeByBoundingBox(const Vector2& bounding_min,
                                   const Vector2& bounding_max);
 
   //! @export_script_method("Calculates vector magnitude")
-  //! @param		none
-  //! @return		The magnitude of vector.
+  //! @param none
+  //! @return The magnitude of vector.
   _float Magnitude() const;
   //! @export_script_method("Calculates the square of vector magnitude, this
   //! function is faster than Magnitude")
-  //! @param		none
-  //! @return		The square of magnitude of vector.
+  //! @param none
+  //! @return The square of magnitude of vector.
   _float MagnitudeSquared() const;
 
   //! Round
-  //! @paranm		none.
-  //! @return		The rounded vector
+  //! @paranm  none.
+  //! @return The rounded vector
   Vector2& Round();
 
   //! Calculates dot product of two vectors.
-  //! @param		vector1		Source vector 1.
-  //! @param		vector2		Source vector 2.
-  //! @return		The dot product result.
+  //! @param vector1  Source vector 1.
+  //! @param vector2  Source vector 2.
+  //! @return The dot product result.
   static _float Dot(const Vector2& vector1, const Vector2& vector2);
   //! Calculates cross product of two vectors, return the z-component.
-  //! @param		vector1		Source vector 1.
-  //! @param		vector2		Source vector 2.
-  //! @return		The z-component of cross product result.
+  //! @param vector1  Source vector 1.
+  //! @param vector2  Source vector 2.
+  //! @return The z-component of cross product result.
   static _float Cross(const Vector2& vector1, const Vector2& vector2);
   //! Calculates vector by project one vector to another.
-  //! @param		vector1		The vector to be projected.
-  //! @param		vector2		The project reference vector.
-  //! @return		The projected vector, that has same direction of
+  //! @param vector1  The vector to be projected.
+  //! @param vector2  The project reference vector.
+  //! @return The projected vector, that has same direction of
   //! vector2.
   static Vector2 Project(const Vector2& vector1, const Vector2& vector2);
   //! Calculates vector by plumb one vector to another.
-  //! @param		vector1		The vector to be projected.
-  //! @param		vector2		The project reference vector.
-  //! @return		The plumbed vector, that is vertical of vector2.
+  //! @param vector1  The vector to be projected.
+  //! @param vector2  The project reference vector.
+  //! @return The plumbed vector, that is vertical of vector2.
   static Vector2 Plumb(const Vector2& vector1, const Vector2& vector2);
   //! Calculates linear interpolation of two vectors.
-  //! @param		vector1		Source vector 1.
-  //! @param		vector2		Target vector 2.
-  //! @param		factor		The interpolation factor, will clamp to
+  //! @param vector1  Source vector 1.
+  //! @param vector2  Target vector 2.
+  //! @param factor  The interpolation factor, will clamp to
   //! between 0 to 1.
-  //! @return		The result vector of interpolation, vector1 + ( vector2
+  //! @return The result vector of interpolation, vector1 + ( vector2
   //! - vector1 ) * factor.
   static Vector2 Lerp(const Vector2& vector1, const Vector2& vector2,
                       _float factor);
   //! Calculates radian of two vectors.
-  //! @param		vector1		Source vector 1.
-  //! @param		vector2		Target vector 2.
-  //! @return		The result vector of radian.
+  //! @param vector1  Source vector 1.
+  //! @param vector2  Target vector 2.
+  //! @return The result vector of radian.
   static _float Radian(const Vector2& vector1, const Vector2& vector2);
 
   //! Calculates angle vector1 rotate to vector2;
-  //! @param		vector1		rotation begin vector;
-  //! @param		vector2		rotation end vector;
-  //! @return		The angle vector1 rotate to vector2;
+  //! @param vector1  rotation begin vector;
+  //! @param vector2  rotation end vector;
+  //! @return The angle vector1 rotate to vector2;
   static _float GetRotateAngle(const Vector2& vector1, const Vector2& vector2);
   //! Compares two arguments and returns the smaller one.
-  //! @param		value1		Vector2 value 1.
-  //! @param		value2		Vector2 value 2.
-  //! @return		The smaller one.
+  //! @param value1  Vector2 value 1.
+  //! @param value2  Vector2 value 2.
+  //! @return The smaller one.
   static Vector2 Min(const Vector2& vector1, const Vector2& vector2);
   //! Compares two arguments and returns the larger one.
-  //! @param		value1		Vector2 value 1.
-  //! @param		value2		Vector2 value 2.
-  //! @return		The larger one.
+  //! @param value1  Vector2 value 1.
+  //! @param value2  Vector2 value 2.
+  //! @return The larger one.
   static Vector2 Max(const Vector2& vector1, const Vector2& vector2);
   //! Clamp value into the range specified by min and max.
-  //! @param		value		Integer value to be clamped.
-  //! @param		min			Minimal value of the range.
-  //! @param		max			Maximal value of the range.
-  //! @return		The clamped value.
+  //! @param value  Integer value to be clamped.
+  //! @param min   Minimal value of the range.
+  //! @param max   Maximal value of the range.
+  //! @return The clamped value.
   static Vector2 Clamp(const Vector2& vector, const Vector2& min,
                        const Vector2& max);
 };

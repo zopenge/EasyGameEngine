@@ -21,7 +21,7 @@ class Lock {
 
  public:
   //! Constructor, create a critical section and initialize it.
-  //! @param		none
+  //! @param none
   Lock() {
     mSectionHandle = Platform::InitializeCriticalSection();
     EGE_ASSERT(mSectionHandle != _null);
@@ -32,7 +32,7 @@ class Lock {
   }
 
   //! Destructor, delete the critical section.
-  //! @param		none
+  //! @param none
   ~Lock() { Platform::DeleteCriticalSection(mSectionHandle); }
 
  public:
@@ -43,7 +43,7 @@ class Lock {
 
   //! Waits for ownership of the critical section, returns when the calling
   //! thread is granted ownership.
-  //! @param		none
+  //! @param none
   _void Enter() const {
 #ifdef _DEBUG
     _dword lock_time = 0;
@@ -62,7 +62,7 @@ class Lock {
   }
 
   //! Releases ownership of the critical section.
-  //! @param		none
+  //! @param none
   _void Leave() const { Platform::LeaveCriticalSection(mSectionHandle); }
 };
 
@@ -81,10 +81,10 @@ class LockOwner {
 
  public:
   //! Constructor, obtain ownership of the critical section.
-  //! @param		lock		The lock to be owned.
+  //! @param lock  The lock to be owned.
   LockOwner(const Lock& lock) : mLock(lock) { mLock.Enter(); }
   //! Destructor, release ownership of the critical section.
-  //! @param		none
+  //! @param none
   ~LockOwner() { mLock.Leave(); }
 };
 

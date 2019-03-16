@@ -27,36 +27,36 @@ class EulerAngles {
 
  public:
   //! Constructor, create an euler angles without sets components.
-  //! @param		none
+  //! @param none
   inline EulerAngles();
   //! Constructor, create an euler angles and sets components.
-  //! @param		pitch		Rotation angle about x-axis.
-  //! @param		heading		Rotation angle about y-axis.
-  //! @param		bank		Rotation angle about z-axis.
+  //! @param pitch  Rotation angle about x-axis.
+  //! @param heading  Rotation angle about y-axis.
+  //! @param bank  Rotation angle about z-axis.
   inline EulerAngles(_float pitch, _float heading, _float bank);
 
   //! Calculates identity euler angles, and save result in current one.
-  //! @param		none
-  //! @return		The identity euler angles.
+  //! @param none
+  //! @return The identity euler angles.
   EulerAngles& Identity();
   //! Calculates canonica euler angles, and save result in current one.
-  //! @param		none
-  //! @return		The canonical euler angles.
+  //! @param none
+  //! @return The canonical euler angles.
   EulerAngles& Canonize();
 
   //! Calculates the axis and angle
-  //! @param		axis		the axis.
-  //! @param		angle		the angle.
-  //! @return		none.
+  //! @param axis  the axis.
+  //! @param angle  the angle.
+  //! @return none.
   _void GetAxisAndAngle(Vector3& axis, _float& angle) const;
 
   //! Compare two EulerAngles.
-  //! @param		angle		The EulerAngles to compare with.
-  //! @return		True if they are identical, false otherwise.
+  //! @param angle  The EulerAngles to compare with.
+  //! @return True if they are identical, false otherwise.
   _ubool operator==(const EulerAngles& angle) const;
   //! Compare two EulerAngles.
-  //! @param		angle		The EulerAngles to compare with.
-  //! @return		True if they are not identical, false otherwise.
+  //! @param angle  The EulerAngles to compare with.
+  //! @return True if they are not identical, false otherwise.
   _ubool operator!=(const EulerAngles& angle) const;
 
   inline EulerAngles operator+() const;

@@ -16,9 +16,9 @@ namespace EGE
 class anyPlatformEndian
 {
 public:
-	static _ubool IsLittleEndian( );
-	static _ubool IsBigEndian( );
-	static _ENDIAN GetEndianType( );
+ static _ubool IsLittleEndian( );
+ static _ubool IsBigEndian( );
+ static _ENDIAN GetEndianType( );
 };
 
 //----------------------------------------------------------------------------

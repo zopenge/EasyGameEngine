@@ -52,43 +52,43 @@ class Address {
 
  public:
   //! Compare IP address.
-  //! @param		address		The address what you want to compare.
-  //! @return		True indicates both IP address is equal.
+  //! @param address  The address what you want to compare.
+  //! @return True indicates both IP address is equal.
   inline _ubool operator==(const Address& address) const {
     return mIP == address.mIP && mType == address.mType &&
            mPort == address.mPort;
   }
   //! Compare IP address.
-  //! @param		address		The address what you want to compare.
-  //! @return		True indicates both IP address is not equal.
+  //! @param address  The address what you want to compare.
+  //! @return True indicates both IP address is not equal.
   inline _ubool operator!=(const Address& address) const {
     return mIP != address.mIP || mType != address.mType ||
            mPort != address.mPort;
   }
 
   //! Convert IP address to 64-bits value.
-  //! @param		none.
-  //! @return		The 64-bits value.
+  //! @param none.
+  //! @return The 64-bits value.
   inline operator _qword() const { return *(_qword*)this; }
 
   //! Check whether it's valid.
-  //! @param		none.
-  //! @return		True indicates it's valid.
+  //! @param none.
+  //! @return True indicates it's valid.
   inline _ubool IsValid() const { return mIP != 0; }
 
  public:
   //! Set address from string.
-  //! @param		string		The address string, use
+  //! @param string  The address string, use
   //!"192.168.1.1:8080" etc.
-  //! @return		The address referenced object.
+  //! @return The address referenced object.
   Address& FromString(WStringPtr address);
   //! Convert IP address to ANSI string.
-  //! @param		with_port	True indicates with port number.
-  //! @return		The IP address string.
+  //! @param with_port True indicates with port number.
+  //! @return The IP address string.
   AString ToStringA(_ubool with_port) const;
   //! Convert IP address to UTF-16 string.
-  //! @param		with_port	True indicates with port number.
-  //! @return		The IP address string.
+  //! @param with_port True indicates with port number.
+  //! @return The IP address string.
   WString ToStringW(_ubool with_port) const;
 };
 

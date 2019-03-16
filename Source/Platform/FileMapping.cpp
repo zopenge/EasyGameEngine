@@ -16,60 +16,60 @@ FileMapping::FileMapping( ) : mFileHandle( _null ), mSize( 0 ), mBuffer( _null )
 
 FileMapping::~FileMapping( )
 {
-	Close( );
+ Close( );
 }
 
 _ubool FileMapping::Initialize( )
 {
-	// Get file mapping size
-	mSize = Platform::GetFileSize( mFileHandle );
+ // Get file mapping size
+ mSize = Platform::GetFileSize( mFileHandle );
 
-	// Create file mapping
-	mObjectHandle = Platform::CreateFileMapping( mFileHandle, mSize, _FILE_OPERATION_READ );
-	if ( mObjectHandle == _null )
-		return _false;
+ // Create file mapping
+ mObjectHandle = Platform::CreateFileMapping( mFileHandle, mSize, _FILE_OPERATION_READ );
+ if ( mObjectHandle == _null )
+  return _false;
 
-	// Map whole file
-	mBuffer = (_byte*) Platform::MapViewOfFile( mObjectHandle, _FILE_OPERATION_READ );
-	if ( mBuffer == _null )
-		return _false;
+ // Map whole file
+ mBuffer = (_byte*) Platform::MapViewOfFile( mObjectHandle, _FILE_OPERATION_READ );
+ if ( mBuffer == _null )
+  return _false;
 
-	return _true;
+ return _true;
 }
 
 _byte* FileMapping::GetBuffer( ) const
 {
-	return mBuffer;
+ return mBuffer;
 }
 
 _dword FileMapping::GetSize( ) const
 {
-	return mSize;
+ return mSize;
 }
 
 _ubool FileMapping::Open( WStringPtr filename )
 {
-	Close( );
+ Close( );
 
-	// Open the file
-	mFileHandle = Platform::OpenFile( filename.Str( ), _FILE_OPEN_EXISTING, _FILE_OPERATION_READ, _FILE_SHARE_READ | _FILE_SHARE_WRITE, _FILE_ATTRIBUTE_NORMAL );
-	if ( mFileHandle == _null )
-		return _false;
+ // Open the file
+ mFileHandle = Platform::OpenFile( filename.Str( ), _FILE_OPEN_EXISTING, _FILE_OPERATION_READ, _FILE_SHARE_READ | _FILE_SHARE_WRITE, _FILE_ATTRIBUTE_NORMAL );
+ if ( mFileHandle == _null )
+  return _false;
 
-	// Initialize the file mapping
-	return Initialize( );
+ // Initialize the file mapping
+ return Initialize( );
 }
 
 _void FileMapping::Close( )
 {
-	if ( mBuffer != _null )
-		Platform::UnmapViewOfFile( mBuffer );
+ if ( mBuffer != _null )
+  Platform::UnmapViewOfFile( mBuffer );
 
-	Platform::CloseHandle( mObjectHandle );
-	Platform::CloseHandle( mFileHandle );
+ Platform::CloseHandle( mObjectHandle );
+ Platform::CloseHandle( mFileHandle );
 
-	mObjectHandle	= _null;
-	mFileHandle		= _null;
-	mBuffer			= _null;
-	mSize			= 0;
+ mObjectHandle = _null;
+ mFileHandle  = _null;
+ mBuffer   = _null;
+ mSize   = 0;
 }

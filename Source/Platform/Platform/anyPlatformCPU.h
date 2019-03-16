@@ -16,7 +16,7 @@ namespace EGE
 class anyPlatformCPU
 {
 public:
-	static const _charw* GetCPUFamilyName( );
+ static const _charw* GetCPUFamilyName( );
 };
 
 //----------------------------------------------------------------------------

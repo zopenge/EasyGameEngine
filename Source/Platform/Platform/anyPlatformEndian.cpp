@@ -12,24 +12,24 @@
 
 _ubool anyPlatformEndian::IsLittleEndian( )
 {
-	static _dword value	= 1;
-	static _ubool ret	= ( (_byte*) &value )[0] == 1;
+ static _dword value = 1;
+ static _ubool ret = ( (_byte*) &value )[0] == 1;
 
-	return ret;
+ return ret;
 }
 
 _ubool anyPlatformEndian::IsBigEndian( )
 {
-	static _dword value	= 1;
-	static _ubool ret	= ( (_byte*) &value )[3] == 1;
+ static _dword value = 1;
+ static _ubool ret = ( (_byte*) &value )[3] == 1;
 
-	return ret;
+ return ret;
 }
 
 _ENDIAN anyPlatformEndian::GetEndianType( )
 {
-	if ( IsLittleEndian( ) )
-		return _ENDIAN_LITTLE;
-	else
-		return _ENDIAN_BIG;
+ if ( IsLittleEndian( ) )
+  return _ENDIAN_LITTLE;
+ else
+  return _ENDIAN_BIG;
 }

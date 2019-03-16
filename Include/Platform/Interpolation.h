@@ -344,10 +344,10 @@ inline _float Interpolation::BounceIn(_float alpha) {
 inline _float Interpolation::IntegralBounceIn() {
   // integrate 1-(7.5625*((1-x)^2)) dx from x=1-1/2.75 to 1
   // 0.242424f integrate 1-(7.5625*((1-x-1.5/2.75)^2)+0.75) dx from x=1-2/2.75
-  // to 1-1/2.75			0.0606061f integrate
+  // to 1-1/2.75   0.0606061f integrate
   // 1-(7.5625*((1-x-2.25/2.75)^2)+0.9375) dx from x=1-2.5/2.75 to 1-2/2.75
   // 0.00757576f integrate 1-(7.5625*((1-x-2.625/2.75)^2)+0.984375) dx from x=0
-  // to 1-2.5/2.75			0.00094697f
+  // to 1-2.5/2.75   0.00094697f
   return 0.31155283f;
 }
 
@@ -369,7 +369,7 @@ inline _float Interpolation::IntegralBounceOut() {
   // integrate 7.5625*((x)^2) dx from x=0 to 1/2.75
   // 0.121212f integrate 7.5625*((x-1.5/2.75)^2)+0.75 dx from x=1/2.75 to 2/2.75
   // 0.303030f integrate 7.5625*((x-2.25/2.75)^2)+0.9375 dx from x=2/2.75
-  // to 2.5/2.75		0.174242f
+  // to 2.5/2.75  0.174242f
   // integrate 7.5625*((x-2.625/2.75)^2)+0.984375 dx from x=2.5/2.75 to 1
   // 0.0899621f
   return 0.6884461f;

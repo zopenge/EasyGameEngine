@@ -16,10 +16,10 @@ namespace EGE
 class anyPlatform
 {
 public:
-	//! Initialize.
-	static _ubool Initialize( );
-	//! Finalize.
-	static _void Finalize( );
+ //! Initialize.
+ static _ubool Initialize( );
+ //! Finalize.
+ static _void Finalize( );
 };
 
 //----------------------------------------------------------------------------

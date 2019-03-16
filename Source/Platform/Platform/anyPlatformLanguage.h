@@ -16,10 +16,10 @@ namespace EGE
 class anyPlatformLanguage
 {
 public:
-	static _ubool IsVowelInThai( _charw code );
-	static _ubool IsUpperVowelInThai( _charw code );
-	static _ubool IsDownVowelInThai( _charw code );
-	static _ubool IsToneInThai( _charw code );
+ static _ubool IsVowelInThai( _charw code );
+ static _ubool IsUpperVowelInThai( _charw code );
+ static _ubool IsDownVowelInThai( _charw code );
+ static _ubool IsToneInThai( _charw code );
 };
 
 //----------------------------------------------------------------------------

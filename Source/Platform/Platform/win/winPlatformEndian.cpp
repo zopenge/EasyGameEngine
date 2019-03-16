@@ -12,15 +12,15 @@
 
 _ubool Platform::IsLittleEndian( )
 {
-	return anyPlatformEndian::IsLittleEndian( );
+ return anyPlatformEndian::IsLittleEndian( );
 }
 
 _ubool Platform::IsBigEndian( )
 {
-	return anyPlatformEndian::IsBigEndian( );
+ return anyPlatformEndian::IsBigEndian( );
 }
 
 _ENDIAN Platform::GetEndianType( )
 {
-	return anyPlatformEndian::GetEndianType( );
+ return anyPlatformEndian::GetEndianType( );
 }

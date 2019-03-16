@@ -21,11 +21,11 @@ class DirectoryRecorder {
 
  public:
   //! Constructor, create a directory recorder, save the current directory path.
-  //! @param		pathname		The path name of new current
+  //! @param pathname  The path name of new current
   //! directory.
   DirectoryRecorder(WStringPtr directory);
   //! Destructor, set back current directory.
-  //! @param		none
+  //! @param none
   ~DirectoryRecorder();
 };
 

@@ -16,16 +16,16 @@ KernelObject::KernelObject( _handle objecthandle ) : mObjectHandle( objecthandle
 
 KernelObject::~KernelObject( )
 {
-	Close( );
+ Close( );
 }
 
 _ubool KernelObject::IsValid( ) const
 {
-	return mObjectHandle != _null;
+ return mObjectHandle != _null;
 }
 
 _void KernelObject::Close( )
 {
-	Platform::CloseHandle( mObjectHandle );
-	mObjectHandle = _null;
+ Platform::CloseHandle( mObjectHandle );
+ mObjectHandle = _null;
 }

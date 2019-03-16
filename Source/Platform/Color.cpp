@@ -55,11 +55,11 @@ _float Color::sInt2FloatConvertionTable[ 256 ];
 class Int2FloatConvertionTableInit
 {
 public:
-	Int2FloatConvertionTableInit( )
-	{
-		for ( _dword i = 0; i < EGE_ARRAY_NUMBER( Color::sInt2FloatConvertionTable ); i ++ )
-			Color::sInt2FloatConvertionTable[i] = _float( i ) / 255.0f;
-	}
+ Int2FloatConvertionTableInit( )
+ {
+  for ( _dword i = 0; i < EGE_ARRAY_NUMBER( Color::sInt2FloatConvertionTable ); i ++ )
+   Color::sInt2FloatConvertionTable[i] = _float( i ) / 255.0f;
+ }
 };
 
 static Int2FloatConvertionTableInit sInt2FloatConvertionTableInit;
@@ -70,31 +70,31 @@ static Int2FloatConvertionTableInit sInt2FloatConvertionTableInit;
 
 Color Color::Dot( const Color& color1, const Color& color2 )
 {
-	// Be careful the color bound range (0~255)
-	_byte color = _byte( _float(color1.r * color2.r) / 255.0f + _float(color1.g * color2.g) / 255.0f + _float(color1.b * color2.b) / 255.0f );
+ // Be careful the color bound range (0~255)
+ _byte color = _byte( _float(color1.r * color2.r) / 255.0f + _float(color1.g * color2.g) / 255.0f + _float(color1.b * color2.b) / 255.0f );
 
-	return Color( color, color, color, color );
+ return Color( color, color, color, color );
 }
 
 Color Color::Lerp( const Color& color1, const Color& color2, _float alpha )
 {
-	// Be careful the color bound range (0~255)
-	_int a1 = color1.a, a2 = color2.a;
-	_int r1 = color1.r, r2 = color2.r;
-	_int g1 = color1.g, g2 = color2.g;
-	_int b1 = color1.b, b2 = color2.b;
+ // Be careful the color bound range (0~255)
+ _int a1 = color1.a, a2 = color2.a;
+ _int r1 = color1.r, r2 = color2.r;
+ _int g1 = color1.g, g2 = color2.g;
+ _int b1 = color1.b, b2 = color2.b;
 
-	return Color( 
-		_byte( r1 + ( r2 - r1 ) * alpha ), 
-		_byte( g1 + ( g2 - g1 ) * alpha ), 
-		_byte( b1 + ( b2 - b1 ) * alpha ), 
-		_byte( a1 + ( a2 - a1 ) * alpha ) );
+ return Color( 
+  _byte( r1 + ( r2 - r1 ) * alpha ), 
+  _byte( g1 + ( g2 - g1 ) * alpha ), 
+  _byte( b1 + ( b2 - b1 ) * alpha ), 
+  _byte( a1 + ( a2 - a1 ) * alpha ) );
 }
 
 Color Color::Mix( const Color& color1, const Color& color2 )
 {
-	Color color	= Color::Lerp( color1, color2, color2.Alpha( ) );
-	color.a	= color1.a;
+ Color color = Color::Lerp( color1, color2, color2.Alpha( ) );
+ color.a = color1.a;
 
-	return color;
+ return color;
 }

@@ -16,69 +16,69 @@ namespace EGE
 class Timer
 {
 public:
-	//! When overdue ( time up ).
-	//! @param		parameters		The user defined parameters.
-	//! @return		none.
-	typedef _void (*OnOverdue)( const QwordParameters2& parameters );
+ //! When overdue ( time up ).
+ //! @param parameters  The user defined parameters.
+ //! @return none.
+ typedef _void (*OnOverdue)( const QwordParameters2& parameters );
 
 private:
-	typedef CallbackFunc< OnOverdue, _void, QwordParameters2 > OverdueFunc;
+ typedef CallbackFunc< OnOverdue, _void, QwordParameters2 > OverdueFunc;
 
 private:
-	//! True indicates it's paused
-	_ubool		mIsPaused;
+ //! True indicates it's paused
+ _ubool  mIsPaused;
 
-	//! The elapsed time
-	_dword		mElapsedTime;
-	//! The interval time
-	_dword		mIntervalTime;
+ //! The elapsed time
+ _dword  mElapsedTime;
+ //! The interval time
+ _dword  mIntervalTime;
 
-	//! The overdue callback function
-	OverdueFunc	mOverdueFunc;
-
-public:
-	Timer( );
-	~Timer( );
+ //! The overdue callback function
+ OverdueFunc mOverdueFunc;
 
 public:
-	//! Register overdue callback function.
-	//! @param		funcpointer	The function pointer.
-	//! @param		parameters	The user defined parameters.
-	//! @return		none.
-	_void RegisterOverdueFunc( OnOverdue funcpointer, const QwordParameters2& parameters );
+ Timer( );
+ ~Timer( );
 
-	//! Initialize.
-	//! @param		interval_time	The interval time in milliseconds.
-	//! @return		none.
-	_void Init( _dword interval_time );
+public:
+ //! Register overdue callback function.
+ //! @param funcpointer The function pointer.
+ //! @param parameters The user defined parameters.
+ //! @return none.
+ _void RegisterOverdueFunc( OnOverdue funcpointer, const QwordParameters2& parameters );
 
-	//! Resume.
-	//! @param		none.
-	//! @return		none.
-	_void Resume( );
-	//! Pause.
-	//! @param		none.
-	//! @return		none.
-	_void Pause( );
+ //! Initialize.
+ //! @param interval_time The interval time in milliseconds.
+ //! @return none.
+ _void Init( _dword interval_time );
 
-	//! Get the elapsed time in milliseconds.
-	//! @param		none.
-	//! @return		The elapsed time in milliseconds.
-	_dword GetElapsedTime( ) const;
-	//! Get the interval time in milliseconds.
-	//! @param		none.
-	//! @return		The interval time in milliseconds.
-	_dword GetIntervalTime( ) const;
+ //! Resume.
+ //! @param none.
+ //! @return none.
+ _void Resume( );
+ //! Pause.
+ //! @param none.
+ //! @return none.
+ _void Pause( );
 
-	//! Check whether it's paused or not.
-	//! @param		none.
-	//! @return		True indicates it's paused.
-	_ubool IsPaused( ) const;
-	//! Check whether it's overdue or not.
-	//! @param		elapse		The millisecond time of the update interval.
-	//! @param		auto_pause	True indicates pause timer when overdue.
-	//! @return		True indicates it's overdue.
-	_ubool IsOverdue( _dword elapse, _ubool auto_pause = _true );
+ //! Get the elapsed time in milliseconds.
+ //! @param none.
+ //! @return The elapsed time in milliseconds.
+ _dword GetElapsedTime( ) const;
+ //! Get the interval time in milliseconds.
+ //! @param none.
+ //! @return The interval time in milliseconds.
+ _dword GetIntervalTime( ) const;
+
+ //! Check whether it's paused or not.
+ //! @param none.
+ //! @return True indicates it's paused.
+ _ubool IsPaused( ) const;
+ //! Check whether it's overdue or not.
+ //! @param elapse  The millisecond time of the update interval.
+ //! @param auto_pause True indicates pause timer when overdue.
+ //! @return True indicates it's overdue.
+ _ubool IsOverdue( _dword elapse, _ubool auto_pause = _true );
 };
 
 }

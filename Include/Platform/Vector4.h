@@ -46,163 +46,163 @@ class Vector4 {
 
  public:
   //! Constructor, create a vector without sets x, y, z, w components.
-  //! @param		none
+  //! @param none
   Vector4();
   //! Constructor, create a vector and sets x, y, z components.
-  //! @param		xx			X-component of the vector.
-  //! @param		yy			Y-component of the vector.
-  //! @param		zz			Z-component of the vector.
+  //! @param xx   X-component of the vector.
+  //! @param yy   Y-component of the vector.
+  //! @param zz   Z-component of the vector.
   Vector4(_float xx, _float yy, _float zz, _float ww);
   //! Constructor, create a 4D vector from a 3D vector and a w-component.
-  //! @param		vector		The 3D vector, used to set x, y, z
+  //! @param vector  The 3D vector, used to set x, y, z
   //! components.
-  //! @param		ww			W-component of the vector.
+  //! @param ww   W-component of the vector.
   Vector4(const Vector3& vector, _float ww);
   //! Copy Constructor, create a vector and sets components by a given vector.
-  //! @param		m		The vector create from.
+  //! @param m  The vector create from.
   Vector4(const Vector4& v);
 
   //! Copy components from another vector.
-  //! @param		m		The other vector.
-  //! @return		The reference of current vector.
+  //! @param m  The other vector.
+  //! @return The reference of current vector.
   Vector4& operator=(const Vector3& v);
   //! Copy components from another vector.
-  //! @param		m		The other vector.
-  //! @return		The reference of current vector.
+  //! @param m  The other vector.
+  //! @return The reference of current vector.
   Vector4& operator=(const Vector4& v);
 
   //! Type conversion, get the 3D vector from x, y, z components.
-  //! @param		none
-  //! @return		The 3D vector.
+  //! @param none
+  //! @return The 3D vector.
   operator Vector3() const;
 
   //! Get positive vector.
-  //! @param		none
-  //! @return		The positive vector.
+  //! @param none
+  //! @return The positive vector.
   Vector4 operator+() const;
   //! Get negative vector.
-  //! @param		none
-  //! @return		The negative vector.
+  //! @param none
+  //! @return The negative vector.
   Vector4 operator-() const;
 
   //! Add a vector to current vector, and save result in current one.
-  //! @param		vector		The vector to add.
-  //! @return		The result vector of addition.
+  //! @param vector  The vector to add.
+  //! @return The result vector of addition.
   Vector4& operator+=(const Vector4& vector);
   //! Subtract a vector from current vector, and save result in current one.
-  //! @param		vector		The vector to subtract.
-  //! @return		The result vector of subtraction.
+  //! @param vector  The vector to subtract.
+  //! @return The result vector of subtraction.
   Vector4& operator-=(const Vector4& vector);
   //! Multiply a scalar to current vector, and save result in current one.
-  //! @param		scalar		The scalar to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param scalar  The scalar to multiply.
+  //! @return The result vector of multiplication.
   Vector4& operator*=(_float scalar);
   //! Multiply a vector to current vector, and save result in current one.
-  //! @param		vector		The vector to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param vector  The vector to multiply.
+  //! @return The result vector of multiplication.
   Vector4& operator*=(const Vector4& vector);
   //! Divide a scalar to current vector, and save result in current one.
-  //! @param		scalar		The scalar to divide.
-  //! @return		The result vector of division.
+  //! @param scalar  The scalar to divide.
+  //! @return The result vector of division.
   Vector4& operator/=(_float scalar);
   //! Divide a vector to current vector, and save result in current one.
-  //! @param		vector		The vector to divide.
-  //! @return		The result vector of division.
+  //! @param vector  The vector to divide.
+  //! @return The result vector of division.
   Vector4& operator/=(const Vector4& vector);
 
   //! Multiply a matrix to current vector, and save result in current one.
-  //! @param		matrix		The matrix to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param matrix  The matrix to multiply.
+  //! @return The result vector of multiplication.
   Vector4& operator*=(const Matrix4& matrix);
 
   //! Add a vector to current vector, return a new vector to save result.
-  //! @param		vector		The vector to add.
-  //! @return		The result vector of addition.
+  //! @param vector  The vector to add.
+  //! @return The result vector of addition.
   Vector4 operator+(const Vector4& vector) const;
   //! Subtract a vector from current vector, return a new vector to save result.
-  //! @param		vector		The vector to subtract.
-  //! @return		The result vector of subtraction.
+  //! @param vector  The vector to subtract.
+  //! @return The result vector of subtraction.
   Vector4 operator-(const Vector4& vector) const;
   //! Multiply a scalar to current vector, return a new vector to save result.
-  //! @param		scalar		The scalar to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param scalar  The scalar to multiply.
+  //! @return The result vector of multiplication.
   Vector4 operator*(_float scalar) const;
   //! Multiply a vector to current vector, return a new vector to save result.
-  //! @param		vector		The vector to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param vector  The vector to multiply.
+  //! @return The result vector of multiplication.
   Vector4 operator*(const Vector4& vector) const;
   //! Divide a scalar to current vector, return a new vector to save result.
-  //! @param		scalar		The scalar to divide.
-  //! @return		The result vector of division.
+  //! @param scalar  The scalar to divide.
+  //! @return The result vector of division.
   Vector4 operator/(_float scalar) const;
   //! Divide a vector to current vector, return a new vector to save result.
-  //! @param		vector		The vector to divide.
-  //! @return		The result vector of division.
+  //! @param vector  The vector to divide.
+  //! @return The result vector of division.
   Vector4 operator/(const Vector4& vector) const;
 
   //! Compare two vectors.
-  //! @param		vector		The vector to compare with.
-  //! @return		True if they are identical, false otherwise.
+  //! @param vector  The vector to compare with.
+  //! @return True if they are identical, false otherwise.
   _ubool operator==(const Vector4& vector) const;
   //! Compare two vectors.
-  //! @param		vector		The vector to compare with.
-  //! @return		True if they are not identical, false otherwise.
+  //! @param vector  The vector to compare with.
+  //! @return True if they are not identical, false otherwise.
   _ubool operator!=(const Vector4& vector) const;
 
   //! Multiply a matrix to current vector, return a new vector to save result.
-  //! @param		matrix		The matrix to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param matrix  The matrix to multiply.
+  //! @return The result vector of multiplication.
   Vector4 operator*(const Matrix4& matrix) const;
 
   //! Compare two vectors with error margin.
-  //! @param		vector		The vector to compare with.
-  //! @param		margin		The margin that allows some error.
-  //! @return		True if they are identical, false otherwise.
+  //! @param vector  The vector to compare with.
+  //! @param margin  The margin that allows some error.
+  //! @return True if they are identical, false otherwise.
   _ubool Equal(const Vector4& vector,
                _float margin = Math::cFloatEpsilon) const;
 
   //! Make the current vector absolute, that all coordinates are nonnegative.
-  //! @param		none
-  //! @return		The absolute vector.
+  //! @param none
+  //! @return The absolute vector.
   Vector4& Absolute();
   //! Make the current vector normalized, that has one unit magnitude.
-  //! @param		none
-  //! @return		The normalized vector.
+  //! @param none
+  //! @return The normalized vector.
   Vector4& Normalize();
 
   //! Calculates vector magnitude.
-  //! @param		none
-  //! @return		The magnitude of vector.
+  //! @param none
+  //! @return The magnitude of vector.
   _float Magnitude() const;
   //! Calculates the square of vector magnitude, this function is faster than
   //! Magnitude.
-  //! @param		none
-  //! @return		The square of magnitude of vector.
+  //! @param none
+  //! @return The square of magnitude of vector.
   _float MagnitudeSquared() const;
 
  public:
   //! Calculates dot product of two vectors.
-  //! @param		vector1		Source vector 1.
-  //! @param		vector2		Source vector 2.
-  //! @return		The dot product result.
+  //! @param vector1  Source vector 1.
+  //! @param vector2  Source vector 2.
+  //! @return The dot product result.
   static _float Dot(const Vector4& vector1, const Vector4& vector2);
   //! Calculates vector by project one vector to another.
-  //! @param		vector1		The vector to be projected.
-  //! @param		vector2		The project reference vector.
-  //! @return		The projected vector, that has same direction of
+  //! @param vector1  The vector to be projected.
+  //! @param vector2  The project reference vector.
+  //! @return The projected vector, that has same direction of
   //! vector2.
   static Vector4 Project(const Vector4& vector1, const Vector4& vector2);
   //! Calculates vector by plumb one vector to another.
-  //! @param		vector1		The vector to be projected.
-  //! @param		vector2		The project reference vector.
-  //! @return		The plumbed vector, that is vertical of vector2.
+  //! @param vector1  The vector to be projected.
+  //! @param vector2  The project reference vector.
+  //! @return The plumbed vector, that is vertical of vector2.
   static Vector4 Plumb(const Vector4& vector1, const Vector4& vector2);
   //! Calculates linear interpolation of two vectors.
-  //! @param		vector1		Source vector 1.
-  //! @param		vector2		Source vector 2.
-  //! @param		factor		The interpolation factor, will clamp to
+  //! @param vector1  Source vector 1.
+  //! @param vector2  Source vector 2.
+  //! @param factor  The interpolation factor, will clamp to
   //! between 0 to 1.
-  //! @return		The result vector of interpolation, vector1 + ( vector2
+  //! @return The result vector of interpolation, vector1 + ( vector2
   //! - vector1 ) * factor.
   static Vector4 Lerp(const Vector4& vector1, const Vector4& vector2,
                       _float factor);

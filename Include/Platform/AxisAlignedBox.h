@@ -51,9 +51,9 @@ class AxisAlignedBox {
 
  public:
   //! Makes a box equal to the union of two existing ones.
-  //! @param		box1		The source box 1.
-  //! @param		box2		The source box 2.
-  //! @return		The union box that contains both source boxes.
+  //! @param box1		The source box 1.
+  //! @param box2		The source box 2.
+  //! @return The union box that contains both source boxes.
   static AxisAlignedBox Union(const AxisAlignedBox& box1,
                               const AxisAlignedBox& box2);
 };

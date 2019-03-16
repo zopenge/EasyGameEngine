@@ -42,14 +42,14 @@ class Ray {
 
  public:
   //! Get the pick ray.
-  //! @param		x						The screen
+  //! @param x						The screen
   //! x-position.
-  //! @param		y						The screen
+  //! @param y						The screen
   //! y-position.
-  //! @param		viewport_size			The viewport size.
-  //! @param		view_transform			The view transform.
-  //! @param		projection_transform	The projection transform.
-  //! @return		The pick ray.
+  //! @param viewport_size			The viewport size.
+  //! @param view_transform			The view transform.
+  //! @param projection_transform	The projection transform.
+  //! @return The pick ray.
   static Ray GetPickRay(_int x, _int y, const PointU& viewport_size,
                         const Matrix4& view_transform,
                         const Matrix4& projection_transform);

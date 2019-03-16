@@ -12,12 +12,12 @@
 
 const _charw* anyPlatformCPU::GetCPUFamilyName( )
 {
-	switch ( Platform::GetCPUFamilyID( ) )
-	{
-		case _CPU_FAMILY_X86:	return L"x86";
-		case _CPU_FAMILY_ARM:	return L"ARM";
-		case _CPU_FAMILY_MIPS:	return L"MIPS";
-		default:
-			return L"";
-	}
+ switch ( Platform::GetCPUFamilyID( ) )
+ {
+  case _CPU_FAMILY_X86: return L"x86";
+  case _CPU_FAMILY_ARM: return L"ARM";
+  case _CPU_FAMILY_MIPS: return L"MIPS";
+  default:
+   return L"";
+ }
 }

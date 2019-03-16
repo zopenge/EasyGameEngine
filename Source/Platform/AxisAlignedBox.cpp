@@ -16,13 +16,13 @@ const AxisAlignedBox AxisAlignedBox::cMaxBox( Math::cMinFloat, Math::cMinFloat, 
 
 AxisAlignedBox AxisAlignedBox::Union( const AxisAlignedBox& box1, const AxisAlignedBox& box2 )
 {
-	AxisAlignedBox box;
-	box.mMinVector.x = MIN( box1.mMinVector.x, box2.mMinVector.x );
-	box.mMinVector.y = MIN( box1.mMinVector.y, box2.mMinVector.y );
-	box.mMinVector.z = MIN( box1.mMinVector.z, box2.mMinVector.z );
-	box.mMaxVector.x = MAX( box1.mMaxVector.x, box2.mMaxVector.x );
-	box.mMaxVector.y = MAX( box1.mMaxVector.y, box2.mMaxVector.y );
-	box.mMaxVector.z = MAX( box1.mMaxVector.z, box2.mMaxVector.z );
+ AxisAlignedBox box;
+ box.mMinVector.x = MIN( box1.mMinVector.x, box2.mMinVector.x );
+ box.mMinVector.y = MIN( box1.mMinVector.y, box2.mMinVector.y );
+ box.mMinVector.z = MIN( box1.mMinVector.z, box2.mMinVector.z );
+ box.mMaxVector.x = MAX( box1.mMaxVector.x, box2.mMaxVector.x );
+ box.mMaxVector.y = MAX( box1.mMaxVector.y, box2.mMaxVector.y );
+ box.mMaxVector.z = MAX( box1.mMaxVector.z, box2.mMaxVector.z );
 
-	return box;
+ return box;
 }

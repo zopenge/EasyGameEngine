@@ -46,226 +46,226 @@ class Vector3 {
 
  public:
   //! Constructor, create a vector without sets x, y, z components.
-  //! @param		none
+  //! @param none
   Vector3();
   //! Constructor, create a vector and sets x, y, z components.
-  //! @param		xx			X-component of the vector.
-  //! @param		yy			Y-component of the vector.
-  //! @param		zz			Z-component of the vector.
+  //! @param xx   X-component of the vector.
+  //! @param yy   Y-component of the vector.
+  //! @param zz   Z-component of the vector.
   Vector3(_float xx, _float yy, _float zz);
 
   //! Get positive vector.
-  //! @param		none
-  //! @return		The positive vector.
+  //! @param none
+  //! @return The positive vector.
   Vector3 operator+() const;
   //! Get negative vector.
-  //! @param		none
-  //! @return		The negative vector.
+  //! @param none
+  //! @return The negative vector.
   Vector3 operator-() const;
 
   //! Add a vector to current vector, and save result in current one.
-  //! @param		vector		The vector to add.
-  //! @return		The result vector of addition.
+  //! @param vector  The vector to add.
+  //! @return The result vector of addition.
   Vector3& operator+=(const Vector3& vector);
   //! Subtract a vector from current vector, and save result in current one.
-  //! @param		vector		The vector to subtract.
-  //! @return		The result vector of subtraction.
+  //! @param vector  The vector to subtract.
+  //! @return The result vector of subtraction.
   Vector3& operator-=(const Vector3& vector);
   //! Multiply a scalar to current vector, and save result in current one.
-  //! @param		scalar		The scalar to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param scalar  The scalar to multiply.
+  //! @return The result vector of multiplication.
   Vector3& operator*=(_float scalar);
   //! Multiply a vector to current vector, and save result in current one.
-  //! @param		vector		The vector to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param vector  The vector to multiply.
+  //! @return The result vector of multiplication.
   Vector3& operator*=(const Vector3& vector);
   //! Divide a scalar to current vector, and save result in current one.
-  //! @param		scalar		The scalar to divide.
-  //! @return		The result vector of division.
+  //! @param scalar  The scalar to divide.
+  //! @return The result vector of division.
   Vector3& operator/=(_float scalar);
   //! Divide a vector to current vector, and save result in current one.
-  //! @param		vector		The vector to divide.
-  //! @return		The result vector of division.
+  //! @param vector  The vector to divide.
+  //! @return The result vector of division.
   Vector3& operator/=(const Vector3& vector);
 
   //! Multiply a matrix to current vector, and save result in current one.
-  //! @param		matrix		The matrix to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param matrix  The matrix to multiply.
+  //! @return The result vector of multiplication.
   Vector3& operator*=(const Matrix3& matrix);
   //! Multiply a matrix to current vector, and save result in current one.
-  //! @param		matrix		The matrix to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param matrix  The matrix to multiply.
+  //! @return The result vector of multiplication.
   Vector3& operator*=(const Matrix3x4& matrix);
   //! Multiply a matrix to current vector, and save result in current one.
-  //! @param		matrix		The matrix to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param matrix  The matrix to multiply.
+  //! @return The result vector of multiplication.
   Vector3& operator*=(const Matrix4& matrix);
   //! Multiply a quaternion to current vector, and save result in current one.
-  //! @param		matrix		The quaternion to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param matrix  The quaternion to multiply.
+  //! @return The result vector of multiplication.
   Vector3& operator*=(const Quaternion& quaternion);
   //! Multiply a transform to current vector, and save result in current one.
-  //! @param		transform	The transform to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param transform The transform to multiply.
+  //! @return The result vector of multiplication.
   Vector3& operator*=(const Transform3D& transform);
 
   //! Add a vector to current vector, return a new vector to save result.
-  //! @param		vector		The vector to add.
-  //! @return		The result vector of addition.
+  //! @param vector  The vector to add.
+  //! @return The result vector of addition.
   Vector3 operator+(const Vector3& vector) const;
   //! Subtract a vector from current vector, return a new vector to save result.
-  //! @param		vector		The vector to subtract.
-  //! @return		The result vector of subtraction.
+  //! @param vector  The vector to subtract.
+  //! @return The result vector of subtraction.
   Vector3 operator-(const Vector3& vector) const;
   //! Multiply a scalar to current vector, return a new vector to save result.
-  //! @param		scalar		The scalar to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param scalar  The scalar to multiply.
+  //! @return The result vector of multiplication.
   Vector3 operator*(_float scalar) const;
   //! Multiply a vector to current vector, return a new vector to save result.
-  //! @param		vector		The vector to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param vector  The vector to multiply.
+  //! @return The result vector of multiplication.
   Vector3 operator*(const Vector3& vector) const;
   //! Divide a scalar to current vector, return a new vector to save result.
-  //! @param		scalar		The scalar to divide.
-  //! @return		The result vector of division.
+  //! @param scalar  The scalar to divide.
+  //! @return The result vector of division.
   Vector3 operator/(_float scalar) const;
   //! Divide a vector to current vector, return a new vector to save result.
-  //! @param		vector		The vector to divide.
-  //! @return		The result vector of division.
+  //! @param vector  The vector to divide.
+  //! @return The result vector of division.
   Vector3 operator/(const Vector3& vector) const;
 
   //! Compare two vectors.
-  //! @param		vector		The vector to compare with.
-  //! @return		True if they are identical, false otherwise.
+  //! @param vector  The vector to compare with.
+  //! @return True if they are identical, false otherwise.
   _ubool operator==(const Vector3& vector) const;
   //! Compare two vectors.
-  //! @param		vector		The vector to compare with.
-  //! @return		True if they are not identical, false otherwise.
+  //! @param vector  The vector to compare with.
+  //! @return True if they are not identical, false otherwise.
   _ubool operator!=(const Vector3& vector) const;
 
   //! Multiply a matrix to current vector, return a new vector to save result.
-  //! @param		matrix		The matrix to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param matrix  The matrix to multiply.
+  //! @return The result vector of multiplication.
   Vector3 operator*(const Matrix3& matrix) const;
   //! Multiply a matrix to current vector, return a new vector to save result.
-  //! @param		matrix		The matrix to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param matrix  The matrix to multiply.
+  //! @return The result vector of multiplication.
   Vector3 operator*(const Matrix3x4& matrix) const;
   //! Multiply a matrix to current vector, return a new vector to save result.
-  //! @param		matrix		The matrix to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param matrix  The matrix to multiply.
+  //! @return The result vector of multiplication.
   Vector3 operator*(const Matrix4& matrix) const;
   //! Multiply a matrix to current vector, return a new vector to save result.
-  //! @param		matrix		The matrix to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param matrix  The matrix to multiply.
+  //! @return The result vector of multiplication.
   Vector3 operator*(const Quaternion& quaternion) const;
   //! Multiply a Transform3D to current vector, return a new vector to save
   //! result.
-  //! @param		transform		The Transform3D to multiply.
-  //! @return		The result vector of multiplication.
+  //! @param transform  The Transform3D to multiply.
+  //! @return The result vector of multiplication.
   Vector3 operator*(const Transform3D& transform) const;
 
   //! Compare two vectors with error margin.
-  //! @param		vector		The vector to compare with.
-  //! @param		margin		The margin that allows some error.
-  //! @return		True if they are identical, false otherwise.
+  //! @param vector  The vector to compare with.
+  //! @param margin  The margin that allows some error.
+  //! @return True if they are identical, false otherwise.
   _ubool Equal(const Vector3& vector,
                _float margin = Math::cFloatEpsilon) const;
 
   //! Make the current vector absolute, that all coordinates are nonnegative.
-  //! @param		none
-  //! @return		The absolute vector.
+  //! @param none
+  //! @return The absolute vector.
   Vector3& Absolute();
   //! Make the current vector normalized, that has one unit magnitude.
-  //! @param		none
-  //! @return		The normalized vector.
+  //! @param none
+  //! @return The normalized vector.
   Vector3& Normalize();
 
   //! Make the current vector normalized by bounding box, that x, y, z is from 0
   //! ~ 1
-  //! @param		none
-  //! @return		The normalized vector.
+  //! @param none
+  //! @return The normalized vector.
   Vector3& NormalizeByBoundingBox(const Vector3& bounding_min,
                                   const Vector3& bounding_max);
 
   //! Convert vector from cartesian to spherical coordinates.
-  //! @param		none
+  //! @param none
   //! The spherical coordinates vector, in rho, phi, theta format.
   Vector3& Cartesian2Spherical();
   //! Convert vector from spherical to cartesian coordinates.
-  //! @param		none
+  //! @param none
   //! The spherical coordinates vector, in x, y, z format.
   Vector3& Spherical2Cartesian();
 
   //! Calculates vector magnitude.
-  //! @param		none
-  //! @return		The magnitude of vector.
+  //! @param none
+  //! @return The magnitude of vector.
   _float Magnitude() const;
   //! Calculates the square of vector magnitude, this function is faster than
   //! Magnitude.
-  //! @param		none
-  //! @return		The square of magnitude of vector.
+  //! @param none
+  //! @return The square of magnitude of vector.
   _float MagnitudeSquared() const;
 
  public:
   //! Get min vector of two vectors.
-  //! @param		vector1		Source vector 1.
-  //! @param		vector2		Source vector 2.
-  //! @return		The min vector result.
+  //! @param vector1  Source vector 1.
+  //! @param vector2  Source vector 2.
+  //! @return The min vector result.
   static Vector3 Min(const Vector3& vector1, const Vector3& vector2);
   //! Get max vector of two vectors.
-  //! @param		vector1		Source vector 1.
-  //! @param		vector2		Source vector 2.
-  //! @return		The max vector result.
+  //! @param vector1  Source vector 1.
+  //! @param vector2  Source vector 2.
+  //! @return The max vector result.
   static Vector3 Max(const Vector3& vector1, const Vector3& vector2);
   //! Clamp value into the range specified by min and max.
-  //! @param		value		Integer value to be clamped.
-  //! @param		min			Minimal value of the range.
-  //! @param		max			Maximal value of the range.
-  //! @return		The clamped value.
+  //! @param value  Integer value to be clamped.
+  //! @param min   Minimal value of the range.
+  //! @param max   Maximal value of the range.
+  //! @return The clamped value.
   static Vector3 Clamp(const Vector3& vector, const Vector3& min,
                        const Vector3& max);
 
   //! Calculates dot product of two vectors.
-  //! @param		vector1		Source vector 1.
-  //! @param		vector2		Source vector 2.
-  //! @return		The dot product result.
+  //! @param vector1  Source vector 1.
+  //! @param vector2  Source vector 2.
+  //! @return The dot product result.
   static _float Dot(const Vector3& vector1, const Vector3& vector2);
   //! Calculates cross product of two vectors.
-  //! @param		vector1		Source vector 1.
-  //! @param		vector2		Source vector 2.
-  //! @return		The cross product result.
+  //! @param vector1  Source vector 1.
+  //! @param vector2  Source vector 2.
+  //! @return The cross product result.
   static Vector3 Cross(const Vector3& vector1, const Vector3& vector2);
   //! Calculates vector by project one vector to another.
-  //! @param		vector1		The vector to be projected.
-  //! @param		vector2		The project reference vector.
-  //! @return		The projected vector, that has same direction of
+  //! @param vector1  The vector to be projected.
+  //! @param vector2  The project reference vector.
+  //! @return The projected vector, that has same direction of
   //! vector2.
   static Vector3 Project(const Vector3& vector1, const Vector3& vector2);
   //! Calculates vector by plumb one vector to another.
-  //! @param		vector1		The vector to be projected.
-  //! @param		vector2		The project reference vector.
-  //! @return		The plumbed vector, that is vertical of vector2.
+  //! @param vector1  The vector to be projected.
+  //! @param vector2  The project reference vector.
+  //! @return The plumbed vector, that is vertical of vector2.
   static Vector3 Plumb(const Vector3& vector1, const Vector3& vector2);
   //! Calculates linear interpolation of two vectors.
-  //! @param		vector1		Source vector 1.
-  //! @param		vector2		Source vector 2.
-  //! @param		factor		The interpolation factor, will clamp to
+  //! @param vector1  Source vector 1.
+  //! @param vector2  Source vector 2.
+  //! @param factor  The interpolation factor, will clamp to
   //! between 0 to 1.
-  //! @return		The result vector of interpolation, vector1 + ( vector2
+  //! @return The result vector of interpolation, vector1 + ( vector2
   //! - vector1 ) * factor.
   static Vector3 Lerp(const Vector3& vector1, const Vector3& vector2,
                       _float factor);
 
   //! Calculates angle vector1 rotate to vector2;
-  //! @param		vector1		rotation begin vector;
-  //! @param		vector2		rotation end vector;
-  //! @return		The angle vector1 rotate to vector2;
+  //! @param vector1  rotation begin vector;
+  //! @param vector2  rotation end vector;
+  //! @return The angle vector1 rotate to vector2;
   static _float GetAngle(const Vector3& vector1, const Vector3& vector2);
 
   //! Get the position of a 3D point on screen.
-  //! @param		point		The 3D point.
-  //! @return		The position on screen.
+  //! @param point  The 3D point.
+  //! @return The position on screen.
   static Vector2 Convert3DTo2D(const PointU& viewport_size,
                                const Vector3& point);
 
