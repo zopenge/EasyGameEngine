@@ -112,6 +112,8 @@ IndentCaseLabels: false
 IndentWidth:     4
 # 函数返回类型换行时，缩进函数声明或函数定义的函数名
 IndentWrappedFunctionNames: false
+# Add preprocessor directive indentation
+IndentPPDirectives: AfterHash
 # 保留在块开始处的空行
 KeepEmptyLinesAtTheStartOfBlocks: true
 # 开始一个块的宏的正则表达式

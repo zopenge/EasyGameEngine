@@ -284,6 +284,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Include\EGE_Always.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Compile.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Config.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Enums.h" />
+    <ClInclude Include="..\..\..\Include\EGE_EventMacros.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Events.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Logs.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Memory.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Platform.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Structs.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Template.h" />
+    <ClInclude Include="..\..\..\Include\EGE_TypeChecker.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Typedef.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Values.h" />
     <ClInclude Include="..\..\..\Include\Platform\Camera2D.h" />
     <ClInclude Include="..\..\..\Include\Platform\DeferredProcessor.h" />
     <ClInclude Include="..\..\..\Include\Platform\FPSTimer.h" />
