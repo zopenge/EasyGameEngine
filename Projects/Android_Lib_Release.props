@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <OutDir>..\..\..\Library\android\$(Configuration)\</OutDir>
+    <IntDir>..\..\..\Object\android\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>lib$(RootNamespace)</TargetName>
+    <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
+    <UseMultiToolTask>true</UseMultiToolTask>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\Include;..\..\..\..\Document\Resources;..\..\..\..\Document\Resources\Protocols\google-protobuf;..\..\..\..\Document\Resources\Protocols\google-protobuf\google\protobuf\platform\android;..\..\..\Source;..\..\..\Source\External;..\..\..\Source\Module;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_NDEBUG;_LIB;_PLATFORM_ANDROID_;ANDROID;__ANDROID__;NO_MALLINFO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>-Wno-sign-compare -Wno-unused-local-typedefs -fshort-wchar -ffast-math %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+    <CustomBuild>
+      <Outputs>$(IntDir)%(Filename).o</Outputs>
+    </CustomBuild>
+  </ItemDefinitionGroup>
+</Project>

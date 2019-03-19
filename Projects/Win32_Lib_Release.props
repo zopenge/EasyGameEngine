@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <OutDir>..\..\..\Library\win32\$(Configuration)\</OutDir>
+    <IntDir>..\..\..\Object\win32\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>lib$(RootNamespace)</TargetName>
+    <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\Include;..\..\..\..\Document\Resources;..\..\..\..\Document\Resources\Protocols\google-protobuf;..\..\..\..\Document\Resources\Protocols\google-protobuf\google\protobuf\platform\windows;..\..\..\Source;..\..\..\Source\External;..\..\..\Source\External\concurrentqueue-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;NDEBUG;_NDEBUG;_LIB;WIN32;_WIN32;_PLATFORM_WINDOWS_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalOptions>-Zm256 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Lib>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Lib>
+  </ItemDefinitionGroup>
+</Project>
