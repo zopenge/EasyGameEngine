@@ -35,7 +35,6 @@ extern "C"
 {
 #endif
     void _exit(int code);
-    void _login(const char *token);
 
     void *_malloc(int size);
     void _free(void *buffer);
@@ -153,10 +152,9 @@ int toLower(int c)
     return c;
 }
 
-// Thanks for sharing code: https://github.com/torvalds/linux/blob/master/lib/string.c
-int stringCompare(const char *s1, const char *s2, int ignoreCase)
+int stringEquals(const char *s1, const char *s2, int ignoreCase)
 {
-    int c1, c2;
+    int c1 = 0, c2 = 0;
 
     do
     {
@@ -168,9 +166,15 @@ int stringCompare(const char *s1, const char *s2, int ignoreCase)
             c1 = toLower(c1);
             c2 = toLower(c2);
         }
-    } while (c1 == c2 && c1 != 0);
 
-    return c1 - c2;
+        if (c1 != c2)
+        {
+            return false;
+        }
+
+    } while (c1 && c2);
+
+    return true;
 }
 
 int stringLength(const char *str)
@@ -385,9 +389,6 @@ void runScript(const char *str)
 
 struct GlobalInfo
 {
-    // Login token
-    char *token;
-
     // Random seeds
     unsigned int seeds[4];
 
@@ -492,14 +493,17 @@ void onRecvFileSize(const char *path, int size)
     consoleLog(path);
 #endif
 
+    // Get the file path
+    path = path ? path : "";
+
     // If it's download JS file then validate it
-    if (stringCompare(__global__->jsPath, path, false) == 0)
+    if (__global__->jsPath[0] && path[0] && stringEquals(__global__->jsPath, path, false))
     {
 #ifdef DEBUG
         consoleNumber(size);
         consoleNumber(__global__->jsFileSize);
 #endif
-        if (__global__->jsFileSize != size)
+        if (__global__->jsFileSize && __global__->jsFileSize != size)
         {
             // Hmmm ... you are a hacker .... Let me show something for you
             __global__->_attributes |= 0x0004010;
@@ -512,21 +516,6 @@ void onRecvFileSize(const char *path, int size)
 
 #ifdef DEBUG
     consoleNumber(__global__->_attributes);
-#endif
-}
-
-// Login to get token
-void login(const char *token)
-{
-    // Copy token
-    __global__->token = allocString(token);
-
-    _login(__global__->token);
-
-#ifdef DEBUG
-
-    consoleLog(token);
-
 #endif
 }
 
