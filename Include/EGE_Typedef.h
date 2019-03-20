@@ -7,7 +7,7 @@
 #pragma once
 
 #ifdef _PLATFORM_IOS_
-#include <sys/types.h>
+#	include <sys/types.h>
 #endif
 
 namespace EGE {
@@ -71,32 +71,43 @@ typedef void* _thread_ret;
 
 //! Boolean value ( 32 Bits ), 0 indicates false, other values indicate true.
 struct _ubool {
-  _dword mValue;
+	_dword mValue;
 
-  _ubool() {}
-  _ubool(_boolean value) { mValue = value; }
-  _ubool(_int value) { mValue = EGE_BOOLEAN(value); }
-  _ubool(_dword value) { mValue = EGE_BOOLEAN(value); }
-  _ubool(const _ubool& value) { mValue = value.mValue; }
+	_ubool() {
+	}
+	_ubool(_boolean value) {
+		mValue = value;
+	}
+	_ubool(_int value) {
+		mValue = EGE_BOOLEAN(value);
+	}
+	_ubool(_dword value) {
+		mValue = EGE_BOOLEAN(value);
+	}
+	_ubool(const _ubool& value) {
+		mValue = value.mValue;
+	}
 
-  operator _boolean() const { return EGE_BOOLEAN(mValue); }
+	operator _boolean() const {
+		return EGE_BOOLEAN(mValue);
+	}
 
-  _ubool& operator=(_boolean value) {
-    mValue = value;
-    return *this;
-  }
-  _ubool& operator&=(_boolean value) {
-    mValue &= (_dword)value;
-    return *this;
-  }
-  _ubool& operator|=(_boolean value) {
-    mValue |= (_dword)value;
-    return *this;
-  }
-  _ubool& operator^=(_boolean value) {
-    mValue ^= (_dword)value;
-    return *this;
-  }
+	_ubool& operator=(_boolean value) {
+		mValue = value;
+		return *this;
+	}
+	_ubool& operator&=(_boolean value) {
+		mValue &= (_dword)value;
+		return *this;
+	}
+	_ubool& operator|=(_boolean value) {
+		mValue |= (_dword)value;
+		return *this;
+	}
+	_ubool& operator^=(_boolean value) {
+		mValue ^= (_dword)value;
+		return *this;
+	}
 };
 
-}  // namespace EGE
+} // namespace EGE

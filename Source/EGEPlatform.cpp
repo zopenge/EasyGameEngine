@@ -85,68 +85,68 @@ const QwordParameters4 QwordParameters4::cNull(0, 0, 0, 0);
 
 #ifndef _USE_STANDARD_MEM_OPERATOR_
 
-#ifndef _USE_STANDARD_MALLOC_OPERATOR_
+#	ifndef _USE_STANDARD_MALLOC_OPERATOR_
 
 void _ege_free(void* pointer, const char* filename, int linenumber) {
-  EGE::Memory::GetInstance().Free(pointer, filename, linenumber);
+	EGE::Memory::GetInstance().Free(pointer, filename, linenumber);
 }
 
 void* _ege_malloc(size_t size, const char* filename, int linenumber) {
-  return EGE::Memory::GetInstance().Alloc(size, filename, linenumber);
+	return EGE::Memory::GetInstance().Alloc(size, filename, linenumber);
 }
 
 void* _ege_calloc(size_t number, size_t size, const char* filename,
                   int linenumber) {
-  EGE::_void* buffer =
-      EGE::Memory::GetInstance().Alloc(number * size, filename, linenumber);
-  if (buffer != _null) EGE_MEM_SET(buffer, 0, number * size);
+	EGE::_void* buffer =
+	    EGE::Memory::GetInstance().Alloc(number * size, filename, linenumber);
+	if (buffer != _null) EGE_MEM_SET(buffer, 0, number * size);
 
-  return buffer;
+	return buffer;
 }
 
 void* _ege_realloc(void* pointer, size_t size, const char* filename,
                    int linenumber) {
-  return EGE::Memory::GetInstance().Realloc(pointer, size, filename,
-                                            linenumber);
+	return EGE::Memory::GetInstance().Realloc(pointer, size, filename,
+	                                          linenumber);
 }
 
-#endif
+#	endif
 
-#undef new
+#	undef new
 
 // Overload New And Delete Operations
 void* operator new(size_t size) {
-  return EGE::Memory::GetInstance().Alloc((EGE::_dword)size, _null, 0);
+	return EGE::Memory::GetInstance().Alloc((EGE::_dword)size, _null, 0);
 }
 
 void* operator new(size_t size, const char* filename, int linenumber) {
-  return EGE::Memory::GetInstance().Alloc((EGE::_dword)size, filename,
-                                          linenumber);
+	return EGE::Memory::GetInstance().Alloc((EGE::_dword)size, filename,
+	                                        linenumber);
 }
 
 void* operator new[](size_t size) {
-  return EGE::Memory::GetInstance().Alloc((EGE::_dword)size, _null, 0);
+	return EGE::Memory::GetInstance().Alloc((EGE::_dword)size, _null, 0);
 }
 
 void* operator new[](size_t size, const char* filename, int linenumber) {
-  return EGE::Memory::GetInstance().Alloc((EGE::_dword)size, filename,
-                                          linenumber);
+	return EGE::Memory::GetInstance().Alloc((EGE::_dword)size, filename,
+	                                        linenumber);
 }
 
 void operator delete(void* pointer) {
-  return EGE::Memory::GetInstance().Free(pointer, _null, 0);
+	return EGE::Memory::GetInstance().Free(pointer, _null, 0);
 }
 
 void operator delete(void* pointer, const char* filename, int linenumber) {
-  return EGE::Memory::GetInstance().Free(pointer, filename, linenumber);
+	return EGE::Memory::GetInstance().Free(pointer, filename, linenumber);
 }
 
 void operator delete[](void* pointer) {
-  return EGE::Memory::GetInstance().Free(pointer, _null, 0);
+	return EGE::Memory::GetInstance().Free(pointer, _null, 0);
 }
 
 void operator delete[](void* pointer, const char* filename, int linenumber) {
-  return EGE::Memory::GetInstance().Free(pointer, filename, linenumber);
+	return EGE::Memory::GetInstance().Free(pointer, filename, linenumber);
 }
 
-#endif  // _USE_STANDARD_MEM_OPERATOR_
+#endif // _USE_STANDARD_MEM_OPERATOR_

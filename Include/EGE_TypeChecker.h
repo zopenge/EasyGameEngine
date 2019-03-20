@@ -10,13 +10,14 @@
 // TypeChecker
 //----------------------------------------------------------------------------
 
-#define TYPE_CHECKER(x)   \
-  namespace EGE {         \
-  template <>             \
-  struct TypeChecker<x> { \
-    TypeChecker(x) {}     \
-  };                      \
-  }
+#define TYPE_CHECKER(x)     \
+	namespace EGE {         \
+	template <>             \
+	struct TypeChecker<x> { \
+		TypeChecker(x) {    \
+		}                   \
+	};                      \
+	}
 
 // We will declare type checker class here
 template <class T>
@@ -47,122 +48,118 @@ TYPE_CHECKER(_boolean)
 
 // Enable the type checker
 #ifdef _DEBUG
-#define _EGE_CHECK_ARG(i, var) TypeChecker<T##i> checker##i(var)
+#	define CHECK_ARG(i, var) TypeChecker<T##i> checker##i(var)
 // Disable the type checker
 #else
-#define _EGE_CHECK_ARG(i, var)
+#	define CHECK_ARG(i, var)
 #endif
 
-#define _EGE_BUILD_ARGS_BEGIN()
-#define _EGE_BUILD_ARG_WITH_INDEX(index, var) _EGE_CHECK_ARG(index, var)
-#define _EGE_BUILD_ARGS_END()
-
-#define _EGE_FORMAT_STRING_WITH_ARGUMENTS_1(p1) \
-  Platform::FormatStringByArguments(buffer, size, format, p1)
-#define _EGE_FORMAT_STRING_WITH_ARGUMENTS_2(p1, p2) \
-  Platform::FormatStringByArguments(buffer, size, format, p1, p2)
-#define _EGE_FORMAT_STRING_WITH_ARGUMENTS_3(p1, p2, p3) \
-  Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3)
-#define _EGE_FORMAT_STRING_WITH_ARGUMENTS_4(p1, p2, p3, p4) \
-  Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4)
-#define _EGE_FORMAT_STRING_WITH_ARGUMENTS_5(p1, p2, p3, p4, p5) \
-  Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5)
-#define _EGE_FORMAT_STRING_WITH_ARGUMENTS_6(p1, p2, p3, p4, p5, p6)           \
-  Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
-                                    p6)
-#define _EGE_FORMAT_STRING_WITH_ARGUMENTS_7(p1, p2, p3, p4, p5, p6, p7)       \
-  Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
-                                    p6, p7)
-#define _EGE_FORMAT_STRING_WITH_ARGUMENTS_8(p1, p2, p3, p4, p5, p6, p7, p8)   \
-  Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
-                                    p6, p7, p8)
-#define _EGE_FORMAT_STRING_WITH_ARGUMENTS_9(p1, p2, p3, p4, p5, p6, p7, p8,   \
-                                            p9)                               \
-  Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
-                                    p6, p7, p8, p9)
-#define _EGE_FORMAT_STRING_WITH_ARGUMENTS_10(p1, p2, p3, p4, p5, p6, p7, p8,  \
-                                             p9, p10)                         \
-  Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
-                                    p6, p7, p8, p9, p10)
-#define _EGE_FORMAT_STRING_WITH_ARGUMENTS_11(p1, p2, p3, p4, p5, p6, p7, p8,  \
-                                             p9, p10, p11)                    \
-  Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
-                                    p6, p7, p8, p9, p10, p11)
-#define _EGE_FORMAT_STRING_WITH_ARGUMENTS_12(p1, p2, p3, p4, p5, p6, p7, p8,  \
-                                             p9, p10, p11, p12)               \
-  Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
-                                    p6, p7, p8, p9, p10, p11, p12)
-#define _EGE_FORMAT_STRING_WITH_ARGUMENTS_13(p1, p2, p3, p4, p5, p6, p7, p8,  \
-                                             p9, p10, p11, p12, p13)          \
-  Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
-                                    p6, p7, p8, p9, p10, p11, p12, p13)
+#define FORMAT_STRING_1(p1) \
+	Platform::FormatStringByArguments(buffer, size, format, p1)
+#define FORMAT_STRING_2(p1, p2) \
+	Platform::FormatStringByArguments(buffer, size, format, p1, p2)
+#define FORMAT_STRING_3(p1, p2, p3) \
+	Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3)
+#define FORMAT_STRING_4(p1, p2, p3, p4) \
+	Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4)
+#define FORMAT_STRING_5(p1, p2, p3, p4, p5) \
+	Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5)
+#define FORMAT_STRING_6(p1, p2, p3, p4, p5, p6)                                 \
+	Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
+	                                  p6)
+#define FORMAT_STRING_7(p1, p2, p3, p4, p5, p6, p7)                             \
+	Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
+	                                  p6, p7)
+#define FORMAT_STRING_8(p1, p2, p3, p4, p5, p6, p7, p8)                         \
+	Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
+	                                  p6, p7, p8)
+#define FORMAT_STRING_9(p1, p2, p3, p4, p5, p6, p7, p8,                         \
+                        p9)                                                     \
+	Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
+	                                  p6, p7, p8, p9)
+#define FORMAT_STRING_10(p1, p2, p3, p4, p5, p6, p7, p8,                        \
+                         p9, p10)                                               \
+	Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
+	                                  p6, p7, p8, p9, p10)
+#define FORMAT_STRING_11(p1, p2, p3, p4, p5, p6, p7, p8,                        \
+                         p9, p10, p11)                                          \
+	Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
+	                                  p6, p7, p8, p9, p10, p11)
+#define FORMAT_STRING_12(p1, p2, p3, p4, p5, p6, p7, p8,                        \
+                         p9, p10, p11, p12)                                     \
+	Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
+	                                  p6, p7, p8, p9, p10, p11, p12)
+#define FORMAT_STRING_13(p1, p2, p3, p4, p5, p6, p7, p8,                        \
+                         p9, p10, p11, p12, p13)                                \
+	Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, \
+	                                  p6, p7, p8, p9, p10, p11, p12, p13)
 
 #define _EGE_FORMAT_ASTRING_WITH_ARGUMENTS_1(p1) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_1(p1)
+	FORMAT_STRING_1(p1)
 #define _EGE_FORMAT_ASTRING_WITH_ARGUMENTS_2(p1, p2) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_2(p1, p2)
+	FORMAT_STRING_2(p1, p2)
 #define _EGE_FORMAT_ASTRING_WITH_ARGUMENTS_3(p1, p2, p3) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_3(p1, p2, p3)
+	FORMAT_STRING_3(p1, p2, p3)
 #define _EGE_FORMAT_ASTRING_WITH_ARGUMENTS_4(p1, p2, p3, p4) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_4(p1, p2, p3, p4)
+	FORMAT_STRING_4(p1, p2, p3, p4)
 #define _EGE_FORMAT_ASTRING_WITH_ARGUMENTS_5(p1, p2, p3, p4, p5) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_5(p1, p2, p3, p4, p5)
+	FORMAT_STRING_5(p1, p2, p3, p4, p5)
 #define _EGE_FORMAT_ASTRING_WITH_ARGUMENTS_6(p1, p2, p3, p4, p5, p6) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_6(p1, p2, p3, p4, p5, p6)
+	FORMAT_STRING_6(p1, p2, p3, p4, p5, p6)
 #define _EGE_FORMAT_ASTRING_WITH_ARGUMENTS_7(p1, p2, p3, p4, p5, p6, p7) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_7(p1, p2, p3, p4, p5, p6, p7)
+	FORMAT_STRING_7(p1, p2, p3, p4, p5, p6, p7)
 #define _EGE_FORMAT_ASTRING_WITH_ARGUMENTS_8(p1, p2, p3, p4, p5, p6, p7, p8) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_8(p1, p2, p3, p4, p5, p6, p7, p8)
+	FORMAT_STRING_8(p1, p2, p3, p4, p5, p6, p7, p8)
 #define _EGE_FORMAT_ASTRING_WITH_ARGUMENTS_9(p1, p2, p3, p4, p5, p6, p7, p8, \
                                              p9)                             \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_9(p1, p2, p3, p4, p5, p6, p7, p8, p9)
+	FORMAT_STRING_9(p1, p2, p3, p4, p5, p6, p7, p8, p9)
 #define _EGE_FORMAT_ASTRING_WITH_ARGUMENTS_10(p1, p2, p3, p4, p5, p6, p7, p8, \
                                               p9, p10)                        \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_10(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
+	FORMAT_STRING_10(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 #define _EGE_FORMAT_ASTRING_WITH_ARGUMENTS_11(p1, p2, p3, p4, p5, p6, p7, p8, \
                                               p9, p10, p11)                   \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_11(buffer, size, format, p1, p2, p3, p4,  \
-                                       p5, p6, p7, p8, p9, p10, p11)
+	FORMAT_STRING_11(buffer, size, format, p1, p2, p3, p4,                    \
+	                 p5, p6, p7, p8, p9, p10, p11)
 #define _EGE_FORMAT_ASTRING_WITH_ARGUMENTS_12(p1, p2, p3, p4, p5, p6, p7, p8, \
                                               p9, p10, p11, p12)              \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_12(buffer, size, format, p1, p2, p3, p4,  \
-                                       p5, p6, p7, p8, p9, p10, p11, p12)
+	FORMAT_STRING_12(buffer, size, format, p1, p2, p3, p4,                    \
+	                 p5, p6, p7, p8, p9, p10, p11, p12)
 #define _EGE_FORMAT_ASTRING_WITH_ARGUMENTS_13(p1, p2, p3, p4, p5, p6, p7, p8, \
                                               p9, p10, p11, p12, p13)         \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_13(buffer, size, format, p1, p2, p3, p4,  \
-                                       p5, p6, p7, p8, p9, p10, p11, p12, p13)
+	FORMAT_STRING_13(buffer, size, format, p1, p2, p3, p4,                    \
+	                 p5, p6, p7, p8, p9, p10, p11, p12, p13)
 
 #define _EGE_FORMAT_WSTRING_WITH_ARGUMENTS_1(p1) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_1(p1)
+	FORMAT_STRING_1(p1)
 #define _EGE_FORMAT_WSTRING_WITH_ARGUMENTS_2(p1, p2) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_2(p1, p2)
+	FORMAT_STRING_2(p1, p2)
 #define _EGE_FORMAT_WSTRING_WITH_ARGUMENTS_3(p1, p2, p3) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_3(p1, p2, p3)
+	FORMAT_STRING_3(p1, p2, p3)
 #define _EGE_FORMAT_WSTRING_WITH_ARGUMENTS_4(p1, p2, p3, p4) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_4(p1, p2, p3, p4)
+	FORMAT_STRING_4(p1, p2, p3, p4)
 #define _EGE_FORMAT_WSTRING_WITH_ARGUMENTS_5(p1, p2, p3, p4, p5) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_5(p1, p2, p3, p4, p5)
+	FORMAT_STRING_5(p1, p2, p3, p4, p5)
 #define _EGE_FORMAT_WSTRING_WITH_ARGUMENTS_6(p1, p2, p3, p4, p5, p6) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_6(p1, p2, p3, p4, p5, p6)
+	FORMAT_STRING_6(p1, p2, p3, p4, p5, p6)
 #define _EGE_FORMAT_WSTRING_WITH_ARGUMENTS_7(p1, p2, p3, p4, p5, p6, p7) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_7(p1, p2, p3, p4, p5, p6, p7)
+	FORMAT_STRING_7(p1, p2, p3, p4, p5, p6, p7)
 #define _EGE_FORMAT_WSTRING_WITH_ARGUMENTS_8(p1, p2, p3, p4, p5, p6, p7, p8) \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_8(p1, p2, p3, p4, p5, p6, p7, p8)
+	FORMAT_STRING_8(p1, p2, p3, p4, p5, p6, p7, p8)
 #define _EGE_FORMAT_WSTRING_WITH_ARGUMENTS_9(p1, p2, p3, p4, p5, p6, p7, p8, \
                                              p9)                             \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_9(p1, p2, p3, p4, p5, p6, p7, p8, p9)
+	FORMAT_STRING_9(p1, p2, p3, p4, p5, p6, p7, p8, p9)
 #define _EGE_FORMAT_WSTRING_WITH_ARGUMENTS_10(p1, p2, p3, p4, p5, p6, p7, p8, \
                                               p9, p10)                        \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_10(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
+	FORMAT_STRING_10(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 #define _EGE_FORMAT_WSTRING_WITH_ARGUMENTS_11(p1, p2, p3, p4, p5, p6, p7, p8, \
                                               p9, p10, p11)                   \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_11(buffer, size, format, p1, p2, p3, p4,  \
-                                       p5, p6, p7, p8, p9, p10, p11)
+	FORMAT_STRING_11(buffer, size, format, p1, p2, p3, p4,                    \
+	                 p5, p6, p7, p8, p9, p10, p11)
 #define _EGE_FORMAT_WSTRING_WITH_ARGUMENTS_12(p1, p2, p3, p4, p5, p6, p7, p8, \
                                               p9, p10, p11, p12)              \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_12(buffer, size, format, p1, p2, p3, p4,  \
-                                       p5, p6, p7, p8, p9, p10, p11, p12)
+	FORMAT_STRING_12(buffer, size, format, p1, p2, p3, p4,                    \
+	                 p5, p6, p7, p8, p9, p10, p11, p12)
 #define _EGE_FORMAT_WSTRING_WITH_ARGUMENTS_13(p1, p2, p3, p4, p5, p6, p7, p8, \
                                               p9, p10, p11, p12, p13)         \
-  _EGE_FORMAT_STRING_WITH_ARGUMENTS_13(buffer, size, format, p1, p2, p3, p4,  \
-                                       p5, p6, p7, p8, p9, p10, p11, p12, p13)
+	FORMAT_STRING_13(buffer, size, format, p1, p2, p3, p4,                    \
+	                 p5, p6, p7, p8, p9, p10, p11, p12, p13)
