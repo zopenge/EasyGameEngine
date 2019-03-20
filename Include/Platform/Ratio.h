@@ -3,7 +3,7 @@
 namespace EGE {
 
 /// <summary>
-/// 保持缩放比例计算辅助，可以获得按照此比例缩放后的宽高值
+/// Keep ratio with width and height
 /// </summary>
 class Ratio {
 public:
