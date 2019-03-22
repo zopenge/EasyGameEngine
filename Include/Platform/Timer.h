@@ -17,12 +17,12 @@ class Timer
 {
 public:
  //! When overdue ( time up ).
- //! @param parameters  The user defined parameters.
+ //! @param Params  The user defined Params.
  //! @return none.
- typedef _void (*OnOverdue)( const QwordParameters2& parameters );
+ typedef _void (*OnOverdue)( const QwordParams2& Params );
 
 private:
- typedef CallbackFunc< OnOverdue, _void, QwordParameters2 > OverdueFunc;
+ typedef CallbackFunc< OnOverdue, _void, QwordParams2 > OverdueFunc;
 
 private:
  //! True indicates it's paused
@@ -43,9 +43,9 @@ public:
 public:
  //! Register overdue callback function.
  //! @param funcpointer The function pointer.
- //! @param parameters The user defined parameters.
+ //! @param Params The user defined Params.
  //! @return none.
- _void RegisterOverdueFunc( OnOverdue funcpointer, const QwordParameters2& parameters );
+ _void RegisterOverdueFunc( OnOverdue funcpointer, const QwordParams2& Params );
 
  //! Initialize.
  //! @param interval_time The interval time in milliseconds.

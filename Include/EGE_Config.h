@@ -69,19 +69,13 @@
 
 // Unknown platform
 #else
-#	error "Unknown platform, We only support Win32/IOS/Android/Chrome platforms"
+#	error "Unknown platform, We only support Win32/IOS/Android platforms"
 #endif
 
 // #pragma - output string when compile
 #define _PRAGMA_STR1(x) #x
 #define _PRAGMA_STR2(x) _PRAGMA_STR1(x)
 #define _NOTE(x) message(__FILE__ "(" _PRAGMA_STR2(__LINE__) ") : -NOTE- " #x)
-#define _NOTE_ARG(x, y) message(__FILE__ "(" _PRAGMA_STR2(__LINE__) ") : -NOTE- " #x _PRAGMA_STR2(y))
-// use macros like this:
-//	#pragma _NOTE_ARG( "Number of buffers = ", NUM_COMM_BUFFERS )
-#define _NOTE_TODO(x) _NOTE_ARG([TODO], x)
-// use macros like this:
-//	#pragma _NOTE_TODO( "Fixed the bug" )
 
 // Debug Mode
 #if defined(_DEBUG)
@@ -125,9 +119,9 @@
 #endif
 
 #if defined(__GNUC__) && !defined(__CC_ARM) && !defined(__ARMCC__)
-#	define EGE_INTERNAL __attribute__((visibility("hidden")))
+#	define INTERNAL __attribute__((visibility("hidden")))
 #else
-#	define EGE_INTERNAL
+#	define INTERNAL
 #endif
 
 // A convenience MACRO to declare and assign values.
@@ -150,73 +144,18 @@
 // Win32 Platform
 #if defined _PLATFORM_WINDOWS_
 // DLL-IN
-#	ifndef EGE_DLL_IN
-#		define EGE_DLL_IN __declspec(dllimport)
+#	ifndef DLL_IN
+#		define DLL_IN __declspec(dllimport)
 #	endif
 
 // DLL-OUT
-#	ifndef EGE_DLL_OUT
-#		define EGE_DLL_OUT __declspec(dllexport)
+#	ifndef DLL_OUT
+#		define DLL_OUT __declspec(dllexport)
 #	endif
 #endif
 
-// Extern Function
-#define EGE_EXTERNAL extern "C"
-
 // The import function declaration
-#define DEFINE_IMPORT_FUNC(Type, Name, ParameterTypesAndNames) EGE_EXTERNAL Type Name ParameterTypesAndNames;
-
-//----------------------------------------------------------------------------
-// JNI native function declaration
-//----------------------------------------------------------------------------
-
-// Function name building method
-#define JNI_FUNC_NAME(class_name, func_name) Java_com_ege_android_##class_name##_##func_name
-#define JNI_FUNC_DECL(ret, class_name, func_name) extern "C" JNIEXPORT ret JNICALL JNI_FUNC_NAME(class_name, func_name)
-
-// The JNI function entry macro
-#define JNI_FUNC(ret, class_name, func_name)  \
-	JNI_FUNC_DECL(ret, class_name, func_name) \
-	(JNIEnv * env, jobject obj)
-#define JNI_FUNC_1(ret, class_name, func_name, p1) \
-	JNI_FUNC_DECL(ret, class_name, func_name)      \
-	(JNIEnv * env, jobject obj, p1)
-#define JNI_FUNC_2(ret, class_name, func_name, p1, p2) \
-	JNI_FUNC_DECL(ret, class_name, func_name)          \
-	(JNIEnv * env, jobject obj, p1, p2)
-#define JNI_FUNC_3(ret, class_name, func_name, p1, p2, p3) \
-	JNI_FUNC_DECL(ret, class_name, func_name)              \
-	(JNIEnv * env, jobject obj, p1, p2, p3)
-#define JNI_FUNC_4(ret, class_name, func_name, p1, p2, p3, p4) \
-	JNI_FUNC_DECL(ret, class_name, func_name)                  \
-	(JNIEnv * env, jobject obj, p1, p2, p3, p4)
-#define JNI_FUNC_5(ret, class_name, func_name, p1, p2, p3, p4, p5) \
-	JNI_FUNC_DECL(ret, class_name, func_name)                      \
-	(JNIEnv * env, jobject obj, p1, p2, p3, p4, p5)
-#define JNI_FUNC_6(ret, class_name, func_name, p1, p2, p3, p4, p5, p6) \
-	JNI_FUNC_DECL(ret, class_name, func_name)                          \
-	(JNIEnv * env, jobject obj, p1, p2, p3, p4, p5, p6)
-#define JNI_FUNC_7(ret, class_name, func_name, p1, p2, p3, p4, p5, p6, p7) \
-	JNI_FUNC_DECL(ret, class_name, func_name)                              \
-	(JNIEnv * env, jobject obj, p1, p2, p3, p4, p5, p6, p7)
-#define JNI_FUNC_8(ret, class_name, func_name, p1, p2, p3, p4, p5, p6, p7, p8) \
-	JNI_FUNC_DECL(ret, class_name, func_name)                                  \
-	(JNIEnv * env, jobject obj, p1, p2, p3, p4, p5, p6, p7, p8)
-#define JNI_FUNC_9(ret, class_name, func_name, p1, p2, p3, p4, p5, p6, p7, p8, p9) \
-	JNI_FUNC_DECL(ret, class_name, func_name)                                      \
-	(JNIEnv * env, jobject obj, p1, p2, p3, p4, p5, p6, p7, p8, p9)
-#define JNI_FUNC_10(ret, class_name, func_name, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10) \
-	JNI_FUNC_DECL(ret, class_name, func_name)                                            \
-	(JNIEnv * env, jobject obj, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
-#define JNI_FUNC_11(ret, class_name, func_name, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11) \
-	JNI_FUNC_DECL(ret, class_name, func_name)                                                 \
-	(JNIEnv * env, jobject obj, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11)
-#define JNI_FUNC_12(ret, class_name, func_name, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12) \
-	JNI_FUNC_DECL(ret, class_name, func_name)                                                      \
-	(JNIEnv * env, jobject obj, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12)
-#define JNI_FUNC_13(ret, class_name, func_name, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13) \
-	JNI_FUNC_DECL(ret, class_name, func_name)                                                           \
-	(JNIEnv * env, jobject obj, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13)
+#define DEFINE_IMPORT_FUNC(Type, Name, ParameterTypesAndNames) extern "C" Type Name ParameterTypesAndNames;
 
 //----------------------------------------------------------------------------
 // Predefine Types
@@ -263,23 +202,23 @@ extern "C" void __ege__assert(const wchar_t* error, const wchar_t* filename, uns
 // Assert
 #if _ASSERT_ENABLE_ == 1
 #	ifndef _USE_STANDARD_ASSERT_
-#		define EGE_ASSERT(x)                                            \
+#		define ASSERT(x)                                                \
 			{                                                            \
 				if (!(x))                                                \
 					__ege__assert(_WIDEN(#x), _FILENAME_W, _LINENUMBER); \
 			}
-#		define EGE_ASSERT2(x, y)                               \
+#		define ASSERT2(x, y)                                   \
 			{                                                   \
 				if (!(x))                                       \
 					__ege__assert(y, _FILENAME_W, _LINENUMBER); \
 			}
 #	else
-#		define EGE_ASSERT(x)            \
+#		define ASSERT(x)                \
 			{                            \
 				if (!(x))                \
 					_DEFAULT_ASSERT(#x); \
 			}
-#		define EGE_ASSERT2(x, y)       \
+#		define ASSERT2(x, y)           \
 			{                           \
 				if (!(x))               \
 					_DEFAULT_ASSERT(y); \
@@ -287,33 +226,33 @@ extern "C" void __ege__assert(const wchar_t* error, const wchar_t* filename, uns
 #	endif
 
 #else
-#	define EGE_ASSERT(x) \
-		{                 \
+#	define ASSERT(x) \
+		{             \
 		}
-#	define EGE_ASSERT2(x, y) \
-		{                     \
+#	define ASSERT2(x, y) \
+		{                 \
 		}
 #endif
 
 // Verify
 #if _VERIFY_ENABLE_ == 1
 #	ifndef _USE_STANDARD_ASSERT_
-#		define EGE_VERIFY(x)                                            \
+#		define VERIFY(x)                                                \
 			{                                                            \
 				if (!(x))                                                \
 					__ege__assert(_WIDEN(#x), _FILENAME_W, _LINENUMBER); \
 			}
 #	else
-#		define EGE_VERIFY(x)           \
+#		define VERIFY(x)               \
 			{                           \
 				if (!(x))               \
 					_DEFAULT_ASSERT(x); \
 			}
 #	endif
 #else
-#	define EGE_VERIFY(x) \
-		{                 \
-			(x);          \
+#	define VERIFY(x) \
+		{             \
+			(x);      \
 		}
 #endif
 
@@ -358,7 +297,7 @@ extern "C" void __ege__assert(const wchar_t* error, const wchar_t* filename, uns
 // Skip the UTF-8 header
 #	define SKIP_UTF_CODE_BY_INDEX(string, size, index)      \
 		if ((_byte)*string == (_byte)_UTF8_HEADER_##index) { \
-			EGE_ASSERT(size != 0);                           \
+			ASSERT(size != 0);                               \
 			string++;                                        \
 			size--;                                          \
 		}
@@ -448,124 +387,27 @@ private:                              \
 	typedef RefPtr<c> c##Ref;            \
 	typedef RefOwner<c> c##RefOwner
 
-// Define the internal handler.
-#define INTERNAL_HANDLER_DECL() \
-private:                        \
-	struct Handler;             \
-                                \
-private:                        \
-	Handler* mHandler
-
-// Implement the internal handler.
-#define INTERNAL_HANDLER_NAME Handler
-#define INTERNAL_HANDLER_IMPL_BEGIN(x) struct x::Handler {
-#define INTERNAL_HANDLER_IMPL_END() \
-	}                               \
-	;
-
-// Create and delete handler.
-#define INTERNAL_HANDLER_CREATE() mHandler = new Handler()
-#define INTERNAL_HANDLER_CONSTRUCTOR() Handler()
-#define INTERNAL_HANDLER_DESTRUCTOR() ~Handler()
-#define INTERNAL_HANDLER_RELEASE() EGE_DELETE(mHandler)
-
-// Get the handler.
-#define INTERNAL_HANDLER() mHandler
-
-// Define a singleton instance creator/accessors.
-#define SINGLETON(c)                       \
-private:                                   \
-	EGE_INTERNAL c();                      \
-	EGE_INTERNAL ~c();                     \
-                                           \
-public:                                    \
-	EGE_INTERNAL static c& GetInstance() { \
-		static c s##c;                     \
-		return s##c;                       \
-	}
-// Define a singleton instance creator/accessors with virtual destructor.
-#define VIRTUAL_SINGLETON(c)               \
-private:                                   \
-	EGE_INTERNAL c();                      \
-	EGE_INTERNAL virtual ~c();             \
-                                           \
-public:                                    \
-	EGE_INTERNAL static c& GetInstance() { \
-		static c s##c;                     \
-		return s##c;                       \
-	}
-
-// Get the function pointer from DLL
-#define GET_FUNC_PTR_FROM_DLL(Module, FuncVar, FuncDecl, FuncName, RET_CODE)          \
-	FuncVar = (FuncDecl)Platform::GetProcAddress(Module, FuncName);                   \
-	if (FuncVar == _null) {                                                           \
-		ALOG_ERROR_1("Load '%s' dll entry function failed", (const _chara*)FuncName); \
-		RET_CODE;                                                                     \
-	}
-
-#define GET_FUNC_PTR(Module, FuncName) GET_FUNC_PTR_FROM_DLL(Module, FuncName, FuncName, #FuncName, return _false)
-#define TRY_GET_FUNC_PTR(Module, FuncName) GET_FUNC_PTR_FROM_DLL(Module, FuncName, FuncName, #FuncName, ;)
-
-#define GET_FUNC_PTR_WITH_DECL(Module, FuncVar, FuncDecl, FuncName) GET_FUNC_PTR_FROM_DLL(Module, FuncVar, FuncDecl, #FuncName, return _false)
-#define TRY_GET_FUNC_PTR_WITH_DECL(Module, FuncVar, FuncDecl, FuncName) GET_FUNC_PTR_FROM_DLL(Module, FuncVar, FuncDecl, #FuncName, ;)
-
-//----------------------------------------------------------------------------
-// NAMESPACE Macros
-//----------------------------------------------------------------------------
-
-#define EGE_BEGIN_NAMESPACE_2(n1, n2) \
-	namespace n1 {                    \
-	namespace n2 {
-#define EGE_END_NAMESPACE_2() \
-	}                         \
-	}
-#define EGE_BEGIN_NAMESPACE_3(n1, n2, n3) \
-	namespace n1 {                        \
-	namespace n2 {                        \
-	namespace n3 {
-#define EGE_END_NAMESPACE_3() \
-	}                         \
-	}                         \
-	}
-#define EGE_BEGIN_NAMESPACE_4(n1, n2, n3, n4) \
-	namespace n1 {                            \
-	namespace n2 {                            \
-	namespace n3 {                            \
-	namespace n4 {
-#define EGE_END_NAMESPACE_4() \
-	}                         \
-	}                         \
-	}                         \
-	}
-
-//----------------------------------------------------------------------------
-// Other Macros
-//----------------------------------------------------------------------------
-
 // Value combination
-#define EGE_MAKEWORD(a, b) ((_word)(((_byte)(((_dword)(a)) & 0xff)) | ((_word)((_byte)(((_dword)(b)) & 0xff))) << 8))
-#define EGE_MAKEDWORD(a, b) ((_dword)(((_word)(((_dword)(a)) & 0xffff)) | ((_dword)((_word)(((_dword)(b)) & 0xffff))) << 16))
-#define EGE_MAKEQWORD(a, b) ((_qword)(((_dword)(((_qword)(a)) & 0xffffffff)) | ((_qword)((_dword)(((_qword)(b)) & 0xffffffff))) << 32))
-#define EGE_LODWORD(l) ((_dword)(((_qword)(l)) & 0xffffffff))
-#define EGE_HIDWORD(l) ((_dword)((((_qword)(l)) >> 32) & 0xffffffff))
-#define EGE_LOWORD(l) ((_word)(((_dword)(l)) & 0xffff))
-#define EGE_HIWORD(l) ((_word)((((_dword)(l)) >> 16) & 0xffff))
-#define EGE_LOBYTE(w) ((_byte)(((_dword)(w)) & 0xff))
-#define EGE_HIBYTE(w) ((_byte)((((_dword)(w)) >> 8) & 0xff))
+#define MAKEWORD(a, b) ((_word)(((_byte)(((_dword)(a)) & 0xff)) | ((_word)((_byte)(((_dword)(b)) & 0xff))) << 8))
+#define MAKEDWORD(a, b) ((_dword)(((_word)(((_dword)(a)) & 0xffff)) | ((_dword)((_word)(((_dword)(b)) & 0xffff))) << 16))
+#define MAKEQWORD(a, b) ((_qword)(((_dword)(((_qword)(a)) & 0xffffffff)) | ((_qword)((_dword)(((_qword)(b)) & 0xffffffff))) << 32))
+#define LODWORD(l) ((_dword)(((_qword)(l)) & 0xffffffff))
+#define HIDWORD(l) ((_dword)((((_qword)(l)) >> 32) & 0xffffffff))
+#define LOWORD(l) ((_word)(((_dword)(l)) & 0xffff))
+#define HIWORD(l) ((_word)((((_dword)(l)) >> 16) & 0xffff))
+#define LOBYTE(w) ((_byte)(((_dword)(w)) & 0xff))
+#define HIBYTE(w) ((_byte)((((_dword)(w)) >> 8) & 0xff))
 
-// String combination (Use other tool to obfuscate string)
-#define EGE_OBFUSCATE_STR(x) x
-
-// Build 32-bits ID ( example : EGE_ID( 'c', 'o', 'r', 'e' ) )
-#define EGE_ID(a, b, c, d) (((d) << 24) | ((c) << 16) | ((b) << 8) | (a))
+// Build 32-bits ID ( example : PACK_ID( 'c', 'o', 'r', 'e' ) )
+#define PACK_ID(a, b, c, d) (((d) << 24) | ((c) << 16) | ((b) << 8) | (a))
 // Pack two 16-bits to 32-bits
-#define EGE_PACK_DWORD(x, y) (((x) << 16) | (y))
+#define PACK_DWORD(x, y) (((x) << 16) | (y))
 // Unpack 32-bits to 16 bits
-#define EGE_UNPACK_DWORD_X(v) (((v) >> 16) & 0x0000FFFF)
-#define EGE_UNPACK_DWORD_Y(v) ((v)&0x0000FFFF)
+#define UNPACK_DWORD_X(v) (((v) >> 16) & 0x0000FFFF)
+#define UNPACK_DWORD_Y(v) ((v)&0x0000FFFF)
 
 // Free
-#define EGE_FREE(x)      \
+#define FREE(x)          \
 	{                    \
 		if ((x)) {       \
 			::free(x);   \
@@ -574,21 +416,21 @@ public:                                    \
 	}
 
 // Delete
-#define EGE_DELETE(x)    \
+#define DELETE(x)        \
 	{                    \
 		if ((x)) {       \
 			delete (x);  \
 			(x) = _null; \
 		}                \
 	}
-#define EGE_DELETE_ARRAY(x) \
-	{                       \
-		if ((x)) {          \
-			delete[](x);    \
-			(x) = _null;    \
-		}                   \
+#define DELETE_ARRAY(x)  \
+	{                    \
+		if ((x)) {       \
+			delete[](x); \
+			(x) = _null; \
+		}                \
 	}
-#define EGE_RELEASE(x)      \
+#define RELEASE(x)          \
 	{                       \
 		if ((x)) {          \
 			(x)->Release(); \
@@ -597,206 +439,58 @@ public:                                    \
 	}
 
 // Array
-#define EGE_INIT(x) memset(&x, 0, sizeof(x))
-#define EGE_INIT_ARRAY(x) memset(x, 0, sizeof(x))
-#define EGE_ARRAY_NUMBER(x) (sizeof(x) / sizeof(x[0]))
+#define INIT(x) memset(&x, 0, sizeof(x))
+#define INIT_ARRAY(x) memset(x, 0, sizeof(x))
+#define ARRAY_NUMBER(x) (sizeof(x) / sizeof(x[0]))
 
 // Ratio in percentage
-#define EGE_RATIO(num, total_num) (((_float)(num)) / ((_float)(total_num)))
-#define EGE_RATIO_DOUBLE(num, total_num) (((_double)(num)) / ((_double)(total_num)))
+#define RATIO(num, total_num) (((_float)(num)) / ((_float)(total_num)))
+#define RATIO_D(num, total_num) (((_double)(num)) / ((_double)(total_num)))
 // Float -> Integer (Round)
 #define F2I_ROUND(x) ((_int)(((_float)(x)) > 0.0f ? (_float)(x) + 0.5f : (_float)(x)-0.5f))
 
 // Buffer Offset
-#define EGE_BUFFER_OFFSET(i) ((_byte*)_null + (i))
+#define BUFFER_OFFSET(i) ((_byte*)_null + (i))
 // This macro does basically the same thing as offsetof defined in stddef.h, 999 is a specific number to ignore the compiler warning
-#define EGE_OFFSET_OF(s, m) ((size_t)(&reinterpret_cast<s*>(999)->m) - 999)
-
-// Return Operation
-#define EGE_RETURN_INC_REF(x) \
-	{                         \
-		(x)->AddRef();        \
-		return x;             \
-	}
+#define OFFSET_OF(s, m) ((size_t)(&reinterpret_cast<s*>(999)->m) - 999)
 
 // If x isn't DWORD aligned, this will evaluate to next highest DWORD boundary, otherwise evaluates to x
-#define EGE_ALIGN_UP32(x) ((((_dword)(x)) + 3) & 0xFFFFFFFC)
+#define ALIGN_UP32(x) ((((_dword)(x)) + 3) & 0xFFFFFFFC)
 
 // Color Conversion
-#define EGE_R5G6B5(r, g, b) (((((r) >> 3) & 0x1F) << 11) | ((((g) >> 2) & 0x3F) << 5) | (((b) >> 3) & 0x1F))
-#define EGE_R5G5B5A1(a, r, g, b) (((((r) >> 3) & 0x1F) << 11) | ((((g) >> 3) & 0x1F) << 6) | ((((b) >> 3) & 0x1F) << 1) | (((a) ? 1 : 0)))
-#define EGE_R4G4B4A4(a, r, g, b) (((((r) >> 4) & 0x0F) << 12) | ((((g) >> 4) & 0x0F) << 8) | ((((b) >> 4) & 0x0F) << 4) | (((a) >> 4) & 0x0F))
-#define EGE_A8G8(a, r, g, b) ((((a)&0xFF) << 8) | ((((r) + (g) + (b)) / 3) & 0xFF))
-
-// Cast x to a DWORD
-#define EGE_DW(x) ((_dword)(x))
+#define R5G6B5(r, g, b) (((((r) >> 3) & 0x1F) << 11) | ((((g) >> 2) & 0x3F) << 5) | (((b) >> 3) & 0x1F))
+#define R5G5B5A1(a, r, g, b) (((((r) >> 3) & 0x1F) << 11) | ((((g) >> 3) & 0x1F) << 6) | ((((b) >> 3) & 0x1F) << 1) | (((a) ? 1 : 0)))
+#define R4G4B4A4(a, r, g, b) (((((r) >> 4) & 0x0F) << 12) | ((((g) >> 4) & 0x0F) << 8) | ((((b) >> 4) & 0x0F) << 4) | (((a) >> 4) & 0x0F))
+#define A8G8(a, r, g, b) ((((a)&0xFF) << 8) | ((((r) + (g) + (b)) / 3) & 0xFF))
 
 // Is ptr within the range: [base, base+size]
-#define EGE_PTR_WITHIN(ptr, base, size) ((EGE_DW(ptr) >= EGE_DW(base)) && (EGE_DW(ptr) < (EGE_DW(base) + EGE_DW(size))))
+#define PTR_IN_RANGE(ptr, base, size) (((_dword)(ptr) >= (_dword)(base)) && ((_dword)(ptr) < ((_dword)(base) + (_dword)(size))))
 
 // Compare two value
-#define EGE_CHECK_COMP(f1, f2) \
+#define COMPARE(f1, f2) \
 	if ((f1) != (f2)) return ((f1) < (f2) ? -1 : 1)
-#define EGE_CHECK_COMP_BIG(f1, f2) \
+#define COMPARE_BIG(f1, f2) \
 	if ((f1) != (f2)) return ((f1) > (f2) ? _true : _false)
-#define EGE_CHECK_COMP_LESS(f1, f2) \
+#define COMPARE_LESS(f1, f2) \
 	if ((f1) != (f2)) return ((f1) < (f2) ? _true : _false)
 
-// Check
-#define EGE_IS_ACCESSOR(x) \
-	_ubool Is##x() const { \
-		return mIs##x;     \
-	}
-#define EGE_IS_ACCESSOR_OP(name, op) \
-	_ubool Is##name() const {        \
-		return op;                   \
-	}
-// Accessors
-#define EGE_SET_ACCESSOR(t, x) \
-	_void Set##x(t v) {        \
-		m##x = v;              \
-	}
-#define EGE_SET_ACCESSOR_OP(t, x, op) \
-	_void Set##x(t v) {               \
-		op;                           \
-	}
-#define EGE_SET_ACCESSOR_STATIC(t, x) \
-	static _void Set##x(t v) {        \
-		s##x = v;                     \
-	}
-#define EGE_GET_ACCESSOR(t, x) \
-	t Get##x() {               \
-		return m##x;           \
-	}
-#define EGE_GET_ADDR_ACCESSOR(t, x) \
-	t* Get##x() {                   \
-		return &m##x;               \
-	}
-#define EGE_GET_ACCESSOR_OP(t, x, op) \
-	t Get##x() {                      \
-		return op;                    \
-	}
-#define EGE_GET_ACCESSOR_CONST(t, x) \
-	t Get##x() const {               \
-		return m##x;                 \
-	}
-#define EGE_GET_ACCESSOR_CONST_OP(t, x, op) \
-	t Get##x() const {                      \
-		return op;                          \
-	}
-#define EGE_GET_ACCESSOR_STATIC(t, x) \
-	static t Get##x() {               \
-		return s##x;                  \
-	}
-#define EGE_GET_SET_ACCESSOR(t, x) \
-	EGE_SET_ACCESSOR(t, x)         \
-	EGE_GET_ACCESSOR(t, x)
-#define EGE_GET_SET_ACCESSOR_CONST(t, x) \
-	EGE_SET_ACCESSOR(t, x)               \
-	EGE_GET_ACCESSOR_CONST(t, x)
-#define EGE_GET_SET_ACCESSOR_STATIC(t, x) \
-	EGE_SET_ACCESSOR_STATIC(t, x)         \
-	EGE_GET_ACCESSOR_STATIC(t, x)
-// Pointer accessors
-#define EGE_SETP_ACCESSOR(t, x) \
-	_void Set##x(t* v) {        \
-		m##x = *v;              \
-	}
-#define EGE_GETP_ACCESSOR(t, x) \
-	t* Get##x() {               \
-		return m##x;            \
-	}
-#define EGE_GETP_ACCESSOR_CONST(t, x) \
-	const t* Get##x() const {         \
-		return m##x;                  \
-	}
-#define EGE_GETP_ACCESSOR_OP(t, x, op) \
-	t* Get##x() {                      \
-		return op;                     \
-	}
-#define EGE_GETP_ACCESSOR_CONST_OP(t, x, op) \
-	t* Get##x() const {                      \
-		return op;                           \
-	}
-#define EGE_GETP_SETP_ACCESSOR(t, x) \
-	EGE_SETP_ACCESSOR(t, x)          \
-	EGE_GETP_ACCESSOR_CONST(t, x)
-// Enable/Disable accessors
-#define EGE_ENABLE_ACCESSOR(x)  \
-	_void Enable##x(_ubool v) { \
-		m##x = v;               \
-	}
-#define EGE_QUERY_ENABLE_ACCESSOR(x) \
-	_ubool IsEnable##x() const {     \
-		return m##x;                 \
-	}
-#define EGE_OPTIONAL_ACCESSOR(x) \
-	EGE_ENABLE_ACCESSOR(x)       \
-	EGE_QUERY_ENABLE_ACCESSOR(x)
-// Referenced accessors
-#define EGE_SETR_ACCESSOR(t, x) \
-	_void Set##x(const t& v) {  \
-		m##x = v;               \
-	}
-#define EGE_GETR_ACCESSOR(t, x) \
-	t& Get##x() {               \
-		return m##x;            \
-	}
-#define EGE_GETR_ACCESSOR_CONST(t, x) \
-	const t& Get##x() const {         \
-		return m##x;                  \
-	}
-#define EGE_GETR_ACCESSOR_OP(t, x, op) \
-	t& Get##x() {                      \
-		return op;                     \
-	}
-#define EGE_GETR_ACCESSOR_CONST_OP(t, x, op) \
-	const t& Get##x() const {                \
-		return op;                           \
-	}
-#define EGE_GETR_SETR_ACCESSOR(t, x) \
-	EGE_SETR_ACCESSOR(t, x)          \
-	EGE_GETR_ACCESSOR_CONST(t, x)
-
-// Convert the enumeration name to ID
-#define EGE_ENUM_NAME_TO_ID_BEGIN() \
-	if (0) {                        \
-	}
-#define EGE_ENUM_NAME_TO_ID(name, enum_name, enum_id) \
-	else if (name.IsEqual(enum_name, _true)) {        \
-		return enum_id;                               \
-	}
-#define EGE_ENUM_NAME_TO_ID_END(unknown_enum_id) return unknown_enum_id;
-
-// One frame elapsed time in milliseconds
-#define EGE_ONE_FRAME_ELAPSED_TIME(fps) _dword(1000.0f / (_float)fps)
-
 // Convert time interval structure info to integer value
-#define EGE_VALUE_TO_TIME(time_val, time)        \
+#define VALUE_TO_TIME(time_val, time)            \
 	{                                            \
 		time_val.tv_sec = time / 1000;           \
 		time_val.tv_usec = (time % 1000) * 1000; \
 	}
-#define EGE_TIME_TO_DWORD(time) ((_dword)(time.tv_sec * 1000.0 + (time.tv_usec / 1000.0)))
-#define EGE_TIME_TO_QWORD(time) ((_qword)(time.tv_sec * 1000.0 + (time.tv_usec / 1000.0)) & 0x00000000FFFFFFFFLL)
+#define TIME_TO_DWORD(time) ((_dword)(time.tv_sec * 1000.0 + (time.tv_usec / 1000.0)))
+#define TIME_TO_QWORD(time) ((_qword)(time.tv_sec * 1000.0 + (time.tv_usec / 1000.0)) & 0x00000000FFFFFFFFLL)
 
 // Convert time in milliseconds to seconds
-#define EGE_MILLISECONDS_TO_SECONDS(ms) (_time_t)((ms) / 1000ul)
-#define EGE_SECONDS_MILLISECONDS(s) (_time_t)((s)*1000ul)
-
-// Convert to boolean value
-#define EGE_BOOLEAN(x) !!(x)
-// Combine boolean value into unsigned integer value
-#define EGE_BOOLEAN_TO_UNSIGNED_INT_OP(x, index) ((x) ? 1 << (index) : 0)
-#define EGE_BOOLEAN_TO_UNSIGNED_INT_1(b0) (EGE_BOOLEAN_TO_UNSIGNED_INT_OP(b0, 0))
-#define EGE_BOOLEAN_TO_UNSIGNED_INT_2(b0, b1) (EGE_BOOLEAN_TO_UNSIGNED_INT_1(b0) | EGE_BOOLEAN_TO_UNSIGNED_INT_OP(b1, 1))
-#define EGE_BOOLEAN_TO_UNSIGNED_INT_3(b0, b1, b2) (EGE_BOOLEAN_TO_UNSIGNED_INT_2(b0, b1) | EGE_BOOLEAN_TO_UNSIGNED_INT_OP(b2, 2))
-#define EGE_BOOLEAN_TO_UNSIGNED_INT_4(b0, b1, b2, b3) (EGE_BOOLEAN_TO_UNSIGNED_INT_3(b0, b1, b2) | EGE_BOOLEAN_TO_UNSIGNED_INT_OP(b3, 3))
+#define MS_TO_SEC(ms) (_time_t)((ms) / 1000ul)
+#define SEC_TO_MS(s) (_time_t)((s)*1000ul)
 
 // Atom Platform Detection
 #if defined(_PLATFORM_WINDOWS_)
 #	define _WINDOWS_ATOM_
-#elif defined(_PLATFORM_ANDROID_) || defined(_PLATFORM_IOS_) || defined(_PLATFORM_OSX_) || defined(_PLATFORM_CHROME_)
+#elif defined(_PLATFORM_ANDROID_) || defined(_PLATFORM_IOS_) || defined(_PLATFORM_OSX_)
 #	define _GCC_ATOM_
 #endif
 
@@ -817,26 +511,70 @@ public:                                    \
 #endif
 
 //!	Memory operations.
-#define EGE_MEM_SET(desbuffer, value, length) memset(desbuffer, value, length)
-#define EGE_MEM_CMP(buffer1, buffer2, length) memcmp(buffer1, buffer2, length)
-#define EGE_MEM_CPY(desbuffer, srcbuffer, length) memcpy(desbuffer, srcbuffer, length)
-#define EGE_MEM_MOVE(desbuffer, srcbuffer, length) memmove(desbuffer, srcbuffer, length)
-#define EGE_TO_LOWER(c) tolower(c)
-#define EGE_TO_UPPER(c) toupper(c)
+#define MEM_SET(desbuffer, value, length) memset(desbuffer, value, length)
+#define MEM_CMP(buffer1, buffer2, length) memcmp(buffer1, buffer2, length)
+#define MEM_CPY(desbuffer, srcbuffer, length) memcpy(desbuffer, srcbuffer, length)
+#define MEM_MOVE(desbuffer, srcbuffer, length) memmove(desbuffer, srcbuffer, length)
 
-//!	Platform features.
-#ifdef _PLATFORM_CHROME_
-// The chrome platform do not support the htonl() and ntohl() functions, so we need to implement here
-#	define htonl(x) Platform::IsBigEndian() ? x : Math::BSwap32(x)
-#	define ntohl(x) Platform::IsLittleEndian() ? x : Math::BSwap32(x)
-// The chrome PPAPI result check
-#	define PPRET2BOOL(ret, x)                                          \
-		{                                                               \
-			_int ppret = x;                                             \
-			ret = (ppret == PP_OK || ppret == PP_OK_COMPLETIONPENDING); \
-			Chrome_CheckPPRet(ppret);                                   \
-		}
+// Character operations.
+#define TO_LOWER(c) tolower(c)
+#define TO_UPPER(c) toupper(c)
+
+// Here we make sure the 'wchar_t' is 2 bytes
+#ifdef _DEBUG
+STATIC_ASSERT(sizeof(wchar_t) == 2, "We use UTF-16 as wchar_t, not UTF-32");
 #endif
 
-// Check whether it's split character
-#define EGE_IS_SPLIT_CHAR(x) ((x) == '/' || (x) == '\\')
+#ifndef _USE_STANDARD_MEM_OPERATOR_
+
+#	ifdef _PLATFORM_WINDOWS_
+
+#		ifndef _USE_STANDARD_MALLOC_OPERATOR_
+#			define EGE_HEAP_FREE_API _CRTNOALIAS
+#			define EGE_HEAP_ALLOC_API _CRTNOALIAS _CRTRESTRICT
+
+#			undef realloc
+#			undef malloc
+#			undef calloc
+#			undef free
+
+#			define free ege_free
+#			define calloc ege_calloc
+#			define malloc ege_malloc
+#			define realloc ege_realloc
+
+#			define ege_malloc(s) _ege_malloc(s, __FILE__, __LINE__)
+#			define ege_calloc(n, s) _ege_calloc(n, s, __FILE__, __LINE__)
+#			define ege_realloc(p, s) _ege_realloc(p, s, __FILE__, __LINE__)
+#			define ege_free(p) _ege_free(p, __FILE__, __LINE__)
+
+// Overload Malloc And Free Operations
+#			ifdef _cplusplus
+extern "C" {
+#			endif
+void _ege_free(void* pointer, const char* filename, int linenumber);
+void* _ege_malloc(size_t size, const char* filename, int linenumber);
+void* _ege_calloc(size_t number, size_t size, const char* filename, int linenumber);
+void* _ege_realloc(void* pointer, size_t size, const char* filename, int linenumber);
+#			ifdef _cplusplus
+}
+#			endif
+#		endif
+
+#	endif // _PLATFORM_WINDOWS_
+
+#	ifndef _DISABLE_OVERLOAD_NEW_DELETE
+// Overload New And Delete Operations
+void* operator new(size_t size);
+void* operator new(size_t size, const char* filename, int linenumber);
+void* operator new[](size_t size);
+void* operator new[](size_t size, const char* filename, int linenumber);
+void operator delete(void* pointer);
+void operator delete(void* pointer, const char* filename, int linenumber);
+void operator delete[](void* pointer);
+void operator delete[](void* pointer, const char* filename, int linenumber);
+
+#		define new new (__FILE__, __LINE__)
+#	endif // _DISABLE_OVERLOAD_NEW_DELETE
+
+#endif // _USE_STANDARD_MEM_OPERATOR_

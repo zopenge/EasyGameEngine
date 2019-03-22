@@ -7,40 +7,6 @@
 #pragma once
 
 //----------------------------------------------------------------------------
-// String Format Macros
-//----------------------------------------------------------------------------
-
-// ANSI string format
-#define FORMAT_ASTRING_1(format, p1) AString().Format(format, p1).Str()
-#define FORMAT_ASTRING_2(format, p1, p2) AString().Format(format, p1, p2).Str()
-#define FORMAT_ASTRING_3(format, p1, p2, p3) AString().Format(format, p1, p2, p3).Str()
-#define FORMAT_ASTRING_4(format, p1, p2, p3, p4) AString().Format(format, p1, p2, p3, p4).Str()
-#define FORMAT_ASTRING_5(format, p1, p2, p3, p4, p5) AString().Format(format, p1, p2, p3, p4, p5).Str()
-#define FORMAT_ASTRING_6(format, p1, p2, p3, p4, p5, p6) AString().Format(format, p1, p2, p3, p4, p5, p6).Str()
-#define FORMAT_ASTRING_7(format, p1, p2, p3, p4, p5, p6, p7) AString().Format(format, p1, p2, p3, p4, p5, p6, p7).Str()
-#define FORMAT_ASTRING_8(format, p1, p2, p3, p4, p5, p6, p7, p8) AString().Format(format, p1, p2, p3, p4, p5, p6, p7, p8).Str()
-#define FORMAT_ASTRING_9(format, p1, p2, p3, p4, p5, p6, p7, p8, p9) AString().Format(format, p1, p2, p3, p4, p5, p6, p7, p8, p9).Str()
-#define FORMAT_ASTRING_10(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10) AString().Format(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10).Str()
-#define FORMAT_ASTRING_11(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11) AString().Format(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11).Str()
-#define FORMAT_ASTRING_12(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12) AString().Format(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12).Str()
-#define FORMAT_ASTRING_13(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13) AString().Format(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13).Str()
-
-// UTF-16 string format
-#define FORMAT_WSTRING_1(format, p1) WString().Format(format, p1).Str()
-#define FORMAT_WSTRING_2(format, p1, p2) WString().Format(format, p1, p2).Str()
-#define FORMAT_WSTRING_3(format, p1, p2, p3) WString().Format(format, p1, p2, p3).Str()
-#define FORMAT_WSTRING_4(format, p1, p2, p3, p4) WString().Format(format, p1, p2, p3, p4).Str()
-#define FORMAT_WSTRING_5(format, p1, p2, p3, p4, p5) WString().Format(format, p1, p2, p3, p4, p5).Str()
-#define FORMAT_WSTRING_6(format, p1, p2, p3, p4, p5, p6) WString().Format(format, p1, p2, p3, p4, p5, p6).Str()
-#define FORMAT_WSTRING_7(format, p1, p2, p3, p4, p5, p6, p7) WString().Format(format, p1, p2, p3, p4, p5, p6, p7).Str()
-#define FORMAT_WSTRING_8(format, p1, p2, p3, p4, p5, p6, p7, p8) WString().Format(format, p1, p2, p3, p4, p5, p6, p7, p8).Str()
-#define FORMAT_WSTRING_9(format, p1, p2, p3, p4, p5, p6, p7, p8, p9) WString().Format(format, p1, p2, p3, p4, p5, p6, p7, p8, p9).Str()
-#define FORMAT_WSTRING_10(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10) WString().Format(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10).Str()
-#define FORMAT_WSTRING_11(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11) WString().Format(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11).Str()
-#define FORMAT_WSTRING_12(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12) WString().Format(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12).Str()
-#define FORMAT_WSTRING_13(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13) WString().Format(format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13).Str()
-
-//----------------------------------------------------------------------------
 // Platform Configure
 //----------------------------------------------------------------------------
 
@@ -652,11 +618,5 @@ struct NotCompare<WStringPtr> : public BinaryFunction<WStringPtr, WStringPtr> {
 
 // Android Platform
 #elif defined _PLATFORM_ANDROID_
-
-// Chrome Platform
-#elif defined _PLATFORM_CHROME_
-
-#	include "Platform/OS/chrome/ChromePPAPI.h"
-#	include "Platform/OS/chrome/ChromePlatform.h"
 
 #endif

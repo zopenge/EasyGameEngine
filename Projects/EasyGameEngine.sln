@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28711.60
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EGEPlatform-windows", "EGEPlatform\EGEPlatform.windows\EGEPlatform.vcxproj", "{4C0C4378-E2B3-40E7-1111-1283FDE510DE}"
 EndProject
@@ -11,6 +11,71 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{F9B91146
 		props\Android_Lib_Release.props = props\Android_Lib_Release.props
 		props\Win32_Lib_Debug.props = props\Win32_Lib_Debug.props
 		props\Win32_Lib_Release.props = props\Win32_Lib_Release.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{AE74F76E-3F57-457B-B2A6-5CE0952F4BBD}"
+	ProjectSection(SolutionItems) = preProject
+		..\.clang-format = ..\.clang-format
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "include", "include", "{71F5407D-6332-4BBE-A929-DC5A953BD21C}"
+	ProjectSection(SolutionItems) = preProject
+		..\Include\EGE_Always.h = ..\Include\EGE_Always.h
+		..\Include\EGE_Compile.h = ..\Include\EGE_Compile.h
+		..\Include\EGE_Config.h = ..\Include\EGE_Config.h
+		..\Include\EGE_Const.h = ..\Include\EGE_Const.h
+		..\Include\EGE_Platform.h = ..\Include\EGE_Platform.h
+		..\Include\EGE_Template.h = ..\Include\EGE_Template.h
+		..\Include\EGE_Typedef.h = ..\Include\EGE_Typedef.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{E3378F46-CDC5-4D6C-A2AB-0D9004F04309}"
+	ProjectSection(SolutionItems) = preProject
+		..\Include\Template\Algorithm.h = ..\Include\Template\Algorithm.h
+		..\Include\Template\Array.h = ..\Include\Template\Array.h
+		..\Include\Template\BinaryHeap.h = ..\Include\Template\BinaryHeap.h
+		..\Include\Template\BitArray.h = ..\Include\Template\BitArray.h
+		..\Include\Template\CallbackFunc.h = ..\Include\Template\CallbackFunc.h
+		..\Include\Template\Compare.h = ..\Include\Template\Compare.h
+		..\Include\Template\ConcurrentQueue.h = ..\Include\Template\ConcurrentQueue.h
+		..\Include\Template\ConstString.h = ..\Include\Template\ConstString.h
+		..\Include\Template\CountOf.h = ..\Include\Template\CountOf.h
+		..\Include\Template\DataField.h = ..\Include\Template\DataField.h
+		..\Include\Template\DataOwner.h = ..\Include\Template\DataOwner.h
+		..\Include\Template\DependencyGraph.h = ..\Include\Template\DependencyGraph.h
+		..\Include\Template\Graph.h = ..\Include\Template\Graph.h
+		..\Include\Template\HashMap.h = ..\Include\Template\HashMap.h
+		..\Include\Template\Link.h = ..\Include\Template\Link.h
+		..\Include\Template\Map.h = ..\Include\Template\Map.h
+		..\Include\Template\MutableString.h = ..\Include\Template\MutableString.h
+		..\Include\Template\PagePool.h = ..\Include\Template\PagePool.h
+		..\Include\Template\Pair.h = ..\Include\Template\Pair.h
+		..\Include\Template\PassRefPtr.h = ..\Include\Template\PassRefPtr.h
+		..\Include\Template\Point.h = ..\Include\Template\Point.h
+		..\Include\Template\Progression.h = ..\Include\Template\Progression.h
+		..\Include\Template\Quadruple.h = ..\Include\Template\Quadruple.h
+		..\Include\Template\Queue.h = ..\Include\Template\Queue.h
+		..\Include\Template\Range.h = ..\Include\Template\Range.h
+		..\Include\Template\RBTree.h = ..\Include\Template\RBTree.h
+		..\Include\Template\Rect.h = ..\Include\Template\Rect.h
+		..\Include\Template\Ref.h = ..\Include\Template\Ref.h
+		..\Include\Template\RefObject.h = ..\Include\Template\RefObject.h
+		..\Include\Template\RefPtr.h = ..\Include\Template\RefPtr.h
+		..\Include\Template\SafeValue.h = ..\Include\Template\SafeValue.h
+		..\Include\Template\Stack.h = ..\Include\Template\Stack.h
+		..\Include\Template\Tree.h = ..\Include\Template\Tree.h
+		..\Include\Template\Triple.h = ..\Include\Template\Triple.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "concurrentqueue", "concurrentqueue", "{B70870F3-0BEC-4D5F-905D-E46D67A920D9}"
+	ProjectSection(SolutionItems) = preProject
+		..\Include\Template\concurrentqueue\blockingconcurrentqueue.h = ..\Include\Template\concurrentqueue\blockingconcurrentqueue.h
+		..\Include\Template\concurrentqueue\concurrentqueue.h = ..\Include\Template\concurrentqueue\concurrentqueue.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "internal", "internal", "{0DEB1ABF-09ED-422A-80CE-D1A80BD3362D}"
+	ProjectSection(SolutionItems) = preProject
+		..\Include\Template\concurrentqueue\internal\concurrentqueue_internal_debug.h = ..\Include\Template\concurrentqueue\internal\concurrentqueue_internal_debug.h
 	EndProjectSection
 EndProject
 Global
@@ -26,6 +91,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E3378F46-CDC5-4D6C-A2AB-0D9004F04309} = {71F5407D-6332-4BBE-A929-DC5A953BD21C}
+		{B70870F3-0BEC-4D5F-905D-E46D67A920D9} = {E3378F46-CDC5-4D6C-A2AB-0D9004F04309}
+		{0DEB1ABF-09ED-422A-80CE-D1A80BD3362D} = {B70870F3-0BEC-4D5F-905D-E46D67A920D9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6FF6F4B9-B383-447E-B2E7-0D7A20F8555B}

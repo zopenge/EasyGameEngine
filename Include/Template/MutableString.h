@@ -1539,7 +1539,7 @@ MutableString< _chara, _ENCODING_ANSI >& MutableString< _chara, _ENCODING_ANSI >
 				_dword size = utf16_string_size + 1;
 
 				// Convert UTF-8 string to UNICODE
-				MemArrayPtr< _charw > string_unicode( size );
+				MeelementsPtr< _charw > string_unicode( size );
 				Platform::Utf8ToUtf16( string_unicode, size, (const _chara*) string, utf16_string_size );
 
 				// Import from UNICODE string
@@ -1604,7 +1604,7 @@ MutableString< _chara, _ENCODING_UTF8 >& MutableString< _chara, _ENCODING_UTF8 >
 				_dword size = utf16_string_size + 1;
 
 				// Convert ANSI string to UNICODE
-				MemArrayPtr< _charw > string_unicode( size );
+				MeelementsPtr< _charw > string_unicode( size );
 				Platform::AnsiToUtf16( string_unicode, size, (const _chara*) string, utf16_string_size );
 
 				// Import from UNICODE string

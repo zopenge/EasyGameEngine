@@ -28,12 +28,12 @@ public:
 
 protected:
  //! Define update callback function prototype.
- //! @param parameters  The user defined parameters.
+ //! @param Params  The user defined Params.
  //! @return The action ID, @see _ACTION.
- typedef _dword (*OnUpdateFunction)( const QwordParameters2& parameters );
+ typedef _dword (*OnUpdateFunction)( const QwordParams2& Params );
 
 protected:
- typedef CallbackFunc< OnUpdateFunction, _dword, QwordParameters2 > UpdateFunc;
+ typedef CallbackFunc< OnUpdateFunction, _dword, QwordParams2 > UpdateFunc;
  
 protected:
  //! Update interval
@@ -50,8 +50,8 @@ protected:
 
 // Thread Interface
 protected:
- virtual _dword OnRunThread( const QwordParameters2& parameters ) override;
- virtual _void OnCloseThread( _dword exitcode, const QwordParameters2& parameters ) override;
+ virtual _dword OnRunThread( const QwordParams2& Params ) override;
+ virtual _void OnCloseThread( _dword exitcode, const QwordParams2& Params ) override;
 
 public:
  //! Constructor, create a empty thread, that is not running.
@@ -95,9 +95,9 @@ public:
 
  //! Add updater functions, the function will be called every interval in the thread.
  //! @param func  Update function pointer.
- //! @param parameters The user defined parameters.
+ //! @param Params The user defined Params.
  //! @return True indicates success, false indicates failure.
- _ubool AddUpdaterFunc( OnUpdateFunction func, const QwordParameters2& parameters );
+ _ubool AddUpdaterFunc( OnUpdateFunction func, const QwordParams2& Params );
  //! Remove all updater functions.
  //! @param none.
  //! @return none.

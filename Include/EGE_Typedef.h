@@ -111,3 +111,51 @@ struct _ubool {
 };
 
 } // namespace EGE
+
+//----------------------------------------------------------------------------
+// TypeChecker
+//----------------------------------------------------------------------------
+
+#define TYPE_CHECKER(x)     \
+	namespace EGE {         \
+	template <>             \
+	struct TypeChecker<x> { \
+		TypeChecker(x) {    \
+		}                   \
+	};                      \
+	}
+
+// We will declare type checker class here
+template <class T>
+struct TypeChecker;
+
+// Common types
+TYPE_CHECKER(_chara*)
+TYPE_CHECKER(_charw*)
+TYPE_CHECKER(const _chara*)
+TYPE_CHECKER(const _charw*)
+TYPE_CHECKER(const _void*)
+TYPE_CHECKER(_void*)
+TYPE_CHECKER(_chara)
+TYPE_CHECKER(_charw)
+TYPE_CHECKER(_tiny)
+TYPE_CHECKER(_short)
+TYPE_CHECKER(_byte)
+TYPE_CHECKER(_word)
+TYPE_CHECKER(_int)
+TYPE_CHECKER(_dword)
+TYPE_CHECKER(_long)
+TYPE_CHECKER(_large)
+TYPE_CHECKER(_qword)
+TYPE_CHECKER(_float)
+TYPE_CHECKER(_double)
+TYPE_CHECKER(_ubool)
+TYPE_CHECKER(_boolean)
+
+// Enable the type checker
+#ifdef _DEBUG
+#	define CHECK_ARG(i, var) TypeChecker<T##i> checker##i(var)
+// Disable the type checker
+#else
+#	define CHECK_ARG(i, var)
+#endif

@@ -65,7 +65,7 @@
 #include "Template/MemSegmentPtr.h"
 #include "Template/PagePool.h"
 #include "Template/Pair.h"
-#include "Template/Parameters.h"
+#include "Template/Params.h"
 #include "Template/PassRefPtr.h"
 #include "Template/Point.h"
 #include "Template/Pool.h"
@@ -92,14 +92,10 @@
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Specified template static variables declaration
-//----------------------------------------------------------------------------
-
-//!	Qword Parameters
-typedef Parameters<_qword, 2> QwordParameters2;
-typedef Parameters<_qword, 3> QwordParameters3;
-typedef Parameters<_qword, 4> QwordParameters4;
+//!	Qword Params
+typedef Params<_qword, 2> QwordParams2;
+typedef Params<_qword, 3> QwordParams3;
+typedef Params<_qword, 4> QwordParams4;
 
 //! Point
 typedef Point<_int> PointI;
@@ -179,16 +175,10 @@ typedef MemSegmentPtr<Vector2> Vector2MemSegmentPtr;
 typedef MemSegmentPtr<Vector3> Vector3MemSegmentPtr;
 typedef MemSegmentPtr<Vector4> Vector4MemSegmentPtr;
 
-namespace EGE {
-
-//----------------------------------------------------------------------------
-// Specified template static variables declaration
-//----------------------------------------------------------------------------
-
-//!	Qword Parameters
-typedef Parameters<_qword, 2> QwordParameters2;
-typedef Parameters<_qword, 3> QwordParameters3;
-typedef Parameters<_qword, 4> QwordParameters4;
+//!	Qword Params
+typedef Params<_qword, 2> QwordParams2;
+typedef Params<_qword, 3> QwordParams3;
+typedef Params<_qword, 4> QwordParams4;
 
 //! Point
 typedef Point<_int> PointI;
@@ -269,7 +259,7 @@ typedef MemSegmentPtr<Vector3> Vector3MemSegmentPtr;
 typedef MemSegmentPtr<Vector4> Vector4MemSegmentPtr;
 
 //----------------------------------------------------------------------------
-// Specified function implementation
+// Template function implementation
 //----------------------------------------------------------------------------
 
 template <>
@@ -293,145 +283,141 @@ inline _ubool RectF::operator!=(const RectF& rect) const {
 }
 
 template <>
-inline Parameters<_qword, 2>::Parameters() {
-	mParameters[0] = 0;
-	mParameters[1] = 0;
+inline Params<_qword, 2>::Params() {
+	mParams[0] = 0;
+	mParams[1] = 0;
 }
 template <>
-inline Parameters<_qword, 2>::Parameters(_qword p1) {
-	mParameters[0] = p1;
-	mParameters[1] = 0;
+inline Params<_qword, 2>::Params(_qword p1) {
+	mParams[0] = p1;
+	mParams[1] = 0;
 }
 template <>
-inline Parameters<_qword, 2>::Parameters(_qword p1, _qword p2) {
-	mParameters[0] = p1;
-	mParameters[1] = p2;
+inline Params<_qword, 2>::Params(_qword p1, _qword p2) {
+	mParams[0] = p1;
+	mParams[1] = p2;
 }
 template <>
-inline Parameters<_qword, 2>::Parameters(const Parameters& pars) {
-	mParameters[0] = pars.mParameters[0];
-	mParameters[1] = pars.mParameters[1];
+inline Params<_qword, 2>::Params(const Params& pars) {
+	mParams[0] = pars.mParams[0];
+	mParams[1] = pars.mParams[1];
 }
 template <>
-inline Parameters<_qword, 2>& Parameters<_qword, 2>::operator=(const Parameters& pars) {
-	mParameters[0] = pars.mParameters[0];
-	mParameters[1] = pars.mParameters[1];
+inline Params<_qword, 2>& Params<_qword, 2>::operator=(const Params& pars) {
+	mParams[0] = pars.mParams[0];
+	mParams[1] = pars.mParams[1];
 
 	return *this;
 }
 template <>
-inline _void Parameters<_qword, 2>::Clear() {
-	mParameters[0] = 0;
-	mParameters[1] = 0;
+inline _void Params<_qword, 2>::Clear() {
+	mParams[0] = 0;
+	mParams[1] = 0;
 }
 
 template <>
-inline Parameters<_qword, 3>::Parameters() {
-	mParameters[0] = 0;
-	mParameters[1] = 0;
-	mParameters[2] = 0;
+inline Params<_qword, 3>::Params() {
+	mParams[0] = 0;
+	mParams[1] = 0;
+	mParams[2] = 0;
 }
 template <>
-inline Parameters<_qword, 3>::Parameters(_qword p1) {
-	mParameters[0] = p1;
-	mParameters[1] = 0;
-	mParameters[2] = 0;
+inline Params<_qword, 3>::Params(_qword p1) {
+	mParams[0] = p1;
+	mParams[1] = 0;
+	mParams[2] = 0;
 }
 template <>
-inline Parameters<_qword, 3>::Parameters(_qword p1, _qword p2) {
-	mParameters[0] = p1;
-	mParameters[1] = p2;
-	mParameters[2] = 0;
+inline Params<_qword, 3>::Params(_qword p1, _qword p2) {
+	mParams[0] = p1;
+	mParams[1] = p2;
+	mParams[2] = 0;
 }
 template <>
-inline Parameters<_qword, 3>::Parameters(_qword p1, _qword p2, _qword p3) {
-	mParameters[0] = p1;
-	mParameters[1] = p2;
-	mParameters[2] = p3;
+inline Params<_qword, 3>::Params(_qword p1, _qword p2, _qword p3) {
+	mParams[0] = p1;
+	mParams[1] = p2;
+	mParams[2] = p3;
 }
 template <>
-inline Parameters<_qword, 3>::Parameters(const Parameters& pars) {
-	mParameters[0] = pars.mParameters[0];
-	mParameters[1] = pars.mParameters[1];
-	mParameters[2] = pars.mParameters[2];
+inline Params<_qword, 3>::Params(const Params& pars) {
+	mParams[0] = pars.mParams[0];
+	mParams[1] = pars.mParams[1];
+	mParams[2] = pars.mParams[2];
 }
 template <>
-inline Parameters<_qword, 3>& Parameters<_qword, 3>::operator=(const Parameters& pars) {
-	mParameters[0] = pars.mParameters[0];
-	mParameters[1] = pars.mParameters[1];
-	mParameters[2] = pars.mParameters[2];
-
-	return *this;
-}
-template <>
-inline _void Parameters<_qword, 3>::Clear() {
-	mParameters[0] = 0;
-	mParameters[1] = 0;
-	mParameters[2] = 0;
-}
-
-template <>
-inline Parameters<_qword, 4>::Parameters() {
-	mParameters[0] = 0;
-	mParameters[1] = 0;
-	mParameters[2] = 0;
-	mParameters[3] = 0;
-}
-template <>
-inline Parameters<_qword, 4>::Parameters(_qword p1) {
-	mParameters[0] = p1;
-	mParameters[1] = 0;
-	mParameters[2] = 0;
-	mParameters[3] = 0;
-}
-template <>
-inline Parameters<_qword, 4>::Parameters(_qword p1, _qword p2) {
-	mParameters[0] = p1;
-	mParameters[1] = p2;
-	mParameters[2] = 0;
-	mParameters[3] = 0;
-}
-template <>
-inline Parameters<_qword, 4>::Parameters(_qword p1, _qword p2, _qword p3) {
-	mParameters[0] = p1;
-	mParameters[1] = p2;
-	mParameters[2] = p3;
-	mParameters[3] = 0;
-}
-template <>
-inline Parameters<_qword, 4>::Parameters(_qword p1, _qword p2, _qword p3, _qword p4) {
-	mParameters[0] = p1;
-	mParameters[1] = p2;
-	mParameters[2] = p3;
-	mParameters[3] = p4;
-}
-template <>
-inline Parameters<_qword, 4>::Parameters(const Parameters& pars) {
-	mParameters[0] = pars.mParameters[0];
-	mParameters[1] = pars.mParameters[1];
-	mParameters[2] = pars.mParameters[2];
-	mParameters[3] = pars.mParameters[3];
-}
-template <>
-inline Parameters<_qword, 4>& Parameters<_qword, 4>::operator=(const Parameters& pars) {
-	mParameters[0] = pars.mParameters[0];
-	mParameters[1] = pars.mParameters[1];
-	mParameters[2] = pars.mParameters[2];
-	mParameters[3] = pars.mParameters[3];
+inline Params<_qword, 3>& Params<_qword, 3>::operator=(const Params& pars) {
+	mParams[0] = pars.mParams[0];
+	mParams[1] = pars.mParams[1];
+	mParams[2] = pars.mParams[2];
 
 	return *this;
 }
 template <>
-inline _void Parameters<_qword, 4>::Clear() {
-	mParameters[0] = 0;
-	mParameters[1] = 0;
-	mParameters[2] = 0;
-	mParameters[3] = 0;
+inline _void Params<_qword, 3>::Clear() {
+	mParams[0] = 0;
+	mParams[1] = 0;
+	mParams[2] = 0;
 }
 
-//----------------------------------------------------------------------------
-// Useful Template Functions
-//----------------------------------------------------------------------------
+template <>
+inline Params<_qword, 4>::Params() {
+	mParams[0] = 0;
+	mParams[1] = 0;
+	mParams[2] = 0;
+	mParams[3] = 0;
+}
+template <>
+inline Params<_qword, 4>::Params(_qword p1) {
+	mParams[0] = p1;
+	mParams[1] = 0;
+	mParams[2] = 0;
+	mParams[3] = 0;
+}
+template <>
+inline Params<_qword, 4>::Params(_qword p1, _qword p2) {
+	mParams[0] = p1;
+	mParams[1] = p2;
+	mParams[2] = 0;
+	mParams[3] = 0;
+}
+template <>
+inline Params<_qword, 4>::Params(_qword p1, _qword p2, _qword p3) {
+	mParams[0] = p1;
+	mParams[1] = p2;
+	mParams[2] = p3;
+	mParams[3] = 0;
+}
+template <>
+inline Params<_qword, 4>::Params(_qword p1, _qword p2, _qword p3, _qword p4) {
+	mParams[0] = p1;
+	mParams[1] = p2;
+	mParams[2] = p3;
+	mParams[3] = p4;
+}
+template <>
+inline Params<_qword, 4>::Params(const Params& pars) {
+	mParams[0] = pars.mParams[0];
+	mParams[1] = pars.mParams[1];
+	mParams[2] = pars.mParams[2];
+	mParams[3] = pars.mParams[3];
+}
+template <>
+inline Params<_qword, 4>& Params<_qword, 4>::operator=(const Params& pars) {
+	mParams[0] = pars.mParams[0];
+	mParams[1] = pars.mParams[1];
+	mParams[2] = pars.mParams[2];
+	mParams[3] = pars.mParams[3];
+
+	return *this;
+}
+template <>
+inline _void Params<_qword, 4>::Clear() {
+	mParams[0] = 0;
+	mParams[1] = 0;
+	mParams[2] = 0;
+	mParams[3] = 0;
+}
 
 //!	Swap elements.
 template <typename Type>

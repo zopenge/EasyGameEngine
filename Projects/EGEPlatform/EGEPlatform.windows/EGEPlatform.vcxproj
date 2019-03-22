@@ -23,7 +23,7 @@
     </SccProvider>
     <Keyword>Win32Proj</Keyword>
     <ProjectName>EGEPlatform-windows</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" Label="Configuration">
@@ -283,20 +283,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Include\EGE_Always.h" />
-    <ClInclude Include="..\..\..\Include\EGE_Compile.h" />
-    <ClInclude Include="..\..\..\Include\EGE_Config.h" />
-    <ClInclude Include="..\..\..\Include\EGE_Enums.h" />
-    <ClInclude Include="..\..\..\Include\EGE_EventMacros.h" />
-    <ClInclude Include="..\..\..\Include\EGE_Events.h" />
-    <ClInclude Include="..\..\..\Include\EGE_Logs.h" />
-    <ClInclude Include="..\..\..\Include\EGE_Memory.h" />
-    <ClInclude Include="..\..\..\Include\EGE_Platform.h" />
-    <ClInclude Include="..\..\..\Include\EGE_Structs.h" />
-    <ClInclude Include="..\..\..\Include\EGE_Template.h" />
-    <ClInclude Include="..\..\..\Include\EGE_TypeChecker.h" />
-    <ClInclude Include="..\..\..\Include\EGE_Typedef.h" />
-    <ClInclude Include="..\..\..\Include\EGE_Values.h" />
     <ClInclude Include="..\..\..\Include\Platform\Camera2D.h" />
     <ClInclude Include="..\..\..\Include\Platform\DeferredProcessor.h" />
     <ClInclude Include="..\..\..\Include\Platform\FPSTimer.h" />

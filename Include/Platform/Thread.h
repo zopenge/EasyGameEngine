@@ -20,8 +20,8 @@ protected:
  typedef Array< Thread* > ThreadPtrArray;
 
 protected:
- //! The parameters
- QwordParameters2 mParameters;
+ //! The Params
+ QwordParams2 mParams;
  
  //! True indicates it's releasing
  _ubool    mIsReleasing;
@@ -60,14 +60,14 @@ protected:
 
 protected:
  //! When thread run function.
- //! @param parameters  The user defined parameters.
+ //! @param Params  The user defined Params.
  //! @return The exit code of the thread.
- virtual _dword OnRunThread( const QwordParameters2& parameters ) PURE;
+ virtual _dword OnRunThread( const QwordParams2& Params ) PURE;
  //! When thread close function.
  //! @param exitcode  The exit code of the thread.
- //! @param parameters  The user defined parameters.
+ //! @param Params  The user defined Params.
  //! @return none.
- virtual _void OnCloseThread( _dword exitcode, const QwordParameters2& parameters ) PURE;
+ virtual _void OnCloseThread( _dword exitcode, const QwordParams2& Params ) PURE;
 
 public:
  Thread( );
@@ -110,9 +110,9 @@ public:
  //! @param priority The priority (0~99).
  //! @param suspend  If it is true, thread is created in a suspended state and does not run until Resume is called.
  //! @param name  The thread name.
- //! @param parameters The user defined parameters.
+ //! @param Params The user defined Params.
  //! @return True indicates success, false indicates failure.
- _ubool Create( _dword priority, _ubool suspend, WStringPtr name, const QwordParameters2& parameters );
+ _ubool Create( _dword priority, _ubool suspend, WStringPtr name, const QwordParams2& Params );
  //! Close the thread in a safe way.
  //! @param none.
  //! @return none.

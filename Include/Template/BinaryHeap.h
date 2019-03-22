@@ -24,43 +24,43 @@ public:
 		//! The heap reference.
 		BinaryHeap< _MAX_SIZE, Type, CompareFunc >*	mHeap;
 		//! The current index of the element index array.
-		_dword										mIndex;
+		_dword										index;
 
 		//! Constructor, create an iterator of the heap.
 		//! @param		none.
 		Iterator( ) 
-			: mHeap( _null ), mIndex( -1 ) { }
+			: mHeap( _null ), index( -1 ) { }
 		//! Constructor, create an iterator of the heap.
 		//! @param		heap		The heap reference.
 		//! @param		index		The current index of the element.
 		Iterator( BinaryHeap< _MAX_SIZE, Type, CompareFunc >* heap, _dword index )
-			: mHeap( heap ), mIndex( index ) { }
+			: mHeap( heap ), index( index ) { }
 
 		//! Type conversion, get the element reference.
 		//! @param		none
 		//! @return		Reference of the element.
 		operator Type& ( )
-			{ return mHeap->mElements[ mIndex ]; }
+			{ return mHeap->mElements[ index ]; }
 		//! Type conversion, get the element reference.
 		//! @param		none
 		//! @return		Reference of the element.
 		operator const Type& ( ) const
-			{ return mHeap->mElements[ mIndex ]; }
+			{ return mHeap->mElements[ index ]; }
 
 		//! Decrease the iterator, point to the previous element of the array.
 		//! @param		none
 		_void operator -- ( _int )
-			{ mIndex --; }		
+			{ index --; }		
 		//! Increase the iterator, point to the next element of the array.
 		//! @param		none
 		_void operator ++ ( _int )
-			{ mIndex ++; }
+			{ index ++; }
 
 		//! Check the iterator if it is valid ( points to an available element ).
 		//! @param		none
 		//! @return		True if the iterator is valid, false otherwise.
 		_ubool IsValid( ) const
-			{ return mHeap != _null && mIndex < mHeap->mElements.Number( ); }
+			{ return mHeap != _null && index < mHeap->mElements.Number( ); }
 	};
 
 private:

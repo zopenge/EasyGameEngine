@@ -6,44 +6,40 @@
 
 #pragma once
 
-namespace EGE
-{
+namespace EGE {
 
 //----------------------------------------------------------------------------
 // ConcurrentQueue
 //----------------------------------------------------------------------------
 
-template< typename Type > 
-class ConcurrentQueue : public Queue< Type >
-{
+template <typename Type>
+class ConcurrentQueue : public Queue<Type> {
 private:
-	Lock	mLock;
+	Lock mLock;
 
 public:
 	//! Constructor, create an empty queue.
 	//! @param		none.
-	ConcurrentQueue( );
+	ConcurrentQueue();
 	//! Copy-Constructor, create a queue by copy from another one.
 	//! @param		queue	The other queue.
-	ConcurrentQueue( const ConcurrentQueue< Type >& queue );
+	ConcurrentQueue(const ConcurrentQueue<Type>& queue);
 	//! Destructor, delete the queue, and release the elements memory.
 	//! @param		none
-	~ConcurrentQueue( );
+	~ConcurrentQueue();
 
 public:
-	template<typename U>
-	_ubool try_dequeue( U& item )
-	{
-		LockOwner lock_owner( mLock );
+	template <typename U>
+	_ubool try_dequeue(U& item) {
+		LockOwner lock_owner(mLock);
 
-		return Dequeue( item );
+		return Dequeue(item);
 	}
 
-	_void enqueue( const Type& item )
-	{
-		LockOwner lock_owner( mLock );
+	_void enqueue(const Type& item) {
+		LockOwner lock_owner(mLock);
 
-		Enqueue( item );
+		Enqueue(item);
 	}
 };
 
@@ -51,19 +47,16 @@ public:
 // ConcurrentQueue Implementation
 //----------------------------------------------------------------------------
 
-template< typename Type >
-ConcurrentQueue< Type >::ConcurrentQueue( )
-{
+template <typename Type>
+ConcurrentQueue<Type>::ConcurrentQueue() {
 }
 
-template< typename Type >
-ConcurrentQueue< Type >::ConcurrentQueue( const ConcurrentQueue< Type >& queue )
-{
+template <typename Type>
+ConcurrentQueue<Type>::ConcurrentQueue(const ConcurrentQueue<Type>& queue) {
 }
 
-template< typename Type >
-ConcurrentQueue< Type >::~ConcurrentQueue( )
-{
+template <typename Type>
+ConcurrentQueue<Type>::~ConcurrentQueue() {
 }
 
-}
+} // namespace EGE

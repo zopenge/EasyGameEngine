@@ -188,7 +188,7 @@ class Quaternion {
   static Quaternion Slerp(const Quaternion& quaternion1,
                           const Quaternion& quaternion2, _float factor);
 
-  //! Precompute parameters for spherical linear interpolation of two
+  //! Precompute Params for spherical linear interpolation of two
   //! quaternions.
   //! @param quaternion1	Source quaternion 1.
   //! @param quaternion2	Source quaternion 2.
@@ -198,13 +198,13 @@ class Quaternion {
   //! function.
   //! @param recipsqrt	Parameter for slerp, get from this
   //! function.
-  static _void PrecomputedSlerpParameters(const Quaternion& quaternion1,
+  static _void PrecomputedSlerpParams(const Quaternion& quaternion1,
                                           const Quaternion& quaternion2,
                                           _float& dot, _float& theta,
                                           _float& recipsqrt);
 
   //! Calculates spherical linear interpolation of two quaternions, with some
-  //! precomputed parameters.
+  //! precomputed Params.
   //! @param quaternion1	Source quaternion 1.
   //! @param quaternion2	Source quaternion 2.
   //! @param dont		The dot product of two quaternions.

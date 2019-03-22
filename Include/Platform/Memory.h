@@ -116,10 +116,10 @@ private:
 
 private:
  //! When dump the allocation info.
- typedef _void (*OnOutputString)( _dword id, const _byte* address, const MemoryAllocation& allocation, const QwordParameters2& parameters );
+ typedef _void (*OnOutputString)( _dword id, const _byte* address, const MemoryAllocation& allocation, const QwordParams2& Params );
 
  //! When output string.
- static _void OnOutputStringCallback( _dword id, const _byte* address, const MemoryAllocation& allocation, const QwordParameters2& parameters );
+ static _void OnOutputStringCallback( _dword id, const _byte* address, const MemoryAllocation& allocation, const QwordParams2& Params );
 
  //! Alloc/Free tail of memory block.
  static _void LockTailOfMemoryBlock( _byte* object, _dword allocedsize );
@@ -130,8 +130,8 @@ private:
  _ubool IsEnableFullCallstackCheck( _dword line_number, const _chara* file_name ) const;
 
  //! Dump allocations.
- _void DumpAllocations( _dword min_size, OnOutputString funcpointer, const AllocationLink& allocations, const QwordParameters2& parameters );
- _void DumpAllocations( _dword min_size, OnOutputString funcpointer, const BlockAllocationArray& allocations, const QwordParameters2& parameters );
+ _void DumpAllocations( _dword min_size, OnOutputString funcpointer, const AllocationLink& allocations, const QwordParams2& Params );
+ _void DumpAllocations( _dword min_size, OnOutputString funcpointer, const BlockAllocationArray& allocations, const QwordParams2& Params );
 
 public:
  //! Initialize.
@@ -250,7 +250,7 @@ public:
  //! Dump allocations.
  //! @param min_size The min size in byte.
  //! @return none.
- _void Dump( _dword min_size, OnOutputString funcpointer, const QwordParameters2& parameters );
+ _void Dump( _dword min_size, OnOutputString funcpointer, const QwordParams2& Params );
  //! Dump the current leak memory info.
  //! @param none.
  //! @return none.

@@ -16,14 +16,14 @@ class Library {
  public:
   //! When loaded dependence DLL library.
   //! @param filename  The DLL library file name.
-  //! @param parameters  The user defined parameters.
+  //! @param Params  The user defined Params.
   //! @return The dll module handle when we handled the DLL loading
   //! procession.
   typedef _handle (*OnLoadDependentDLL)(AStringPtr dllfilename,
-                                        const QwordParameters2& parameters);
+                                        const QwordParams2& Params);
 
  private:
-  typedef CallbackFunc<OnLoadDependentDLL, _handle, QwordParameters2>
+  typedef CallbackFunc<OnLoadDependentDLL, _handle, QwordParams2>
       LoadDependentDLLFunc;
 
  private:
@@ -82,10 +82,10 @@ class Library {
   //! @param size   The memory buffer size.
   //! @param funcpointer  The load dependent libraries
   //! function pointer.
-  //! @param parameters  The user defined parameters.
+  //! @param Params  The user defined Params.
   //! @return True indicates success, false indicates failure.
   _ubool Load(const _byte* buffer, _dword size, OnLoadDependentDLL funcpointer,
-              const QwordParameters2& parameters);
+              const QwordParams2& Params);
   //! Free library.
   //! @param none.
   //! @return none.

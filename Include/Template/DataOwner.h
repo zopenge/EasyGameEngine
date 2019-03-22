@@ -6,38 +6,35 @@
 
 #pragma once
 
-namespace EGE
-{
+namespace EGE {
 
 //----------------------------------------------------------------------------
 // DataOwner
 //----------------------------------------------------------------------------
 
-template< typename Type > 
-class DataOwner
-{
+template <typename Type>
+class DataOwner {
 private:
-	Type&	mDataRef;
-	Type	mDataCopy;
+	Type& mDataRef;
+	Type mDataCopy;
 
 public:
-	DataOwner( Type& data );
-	~DataOwner( );
+	DataOwner(Type& data);
+	~DataOwner();
 };
 
 //----------------------------------------------------------------------------
 // DataOwner Implementation
 //----------------------------------------------------------------------------
 
-template< typename Type >
-DataOwner< Type >::DataOwner( Type& data ) : mDataRef( data ), mDataCopy( data )
-{
+template <typename Type>
+DataOwner<Type>::DataOwner(Type& data)
+    : mDataRef(data), mDataCopy(data) {
 }
 
-template< typename Type >
-DataOwner< Type >::~DataOwner( )
-{
+template <typename Type>
+DataOwner<Type>::~DataOwner() {
 	mDataRef = mDataCopy;
 }
 
-}
+} // namespace EGE

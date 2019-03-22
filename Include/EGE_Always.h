@@ -30,7 +30,6 @@
 // EasyGameEngine Configures
 #include "EGE_Compile.h"
 #include "EGE_Config.h"
-#include "EGE_Values.h"
 
 // Type Define Headers
 #include "EGE_Typedef.h"
@@ -38,7 +37,7 @@
 #include "EGE_TypeChecker.h"
 
 // EasyGameEngine Basic Headers
-#include "EGE_Enums.h"
+#include "EGE_Const.h"
 #include "EGE_Memory.h"
 #include "EGE_Structs.h"
 #include "EGE_Template.h"
@@ -48,12 +47,3 @@
 
 // The Platform Files
 #include "EGE_Platform.h"
-
-// Global messages and events
-#include "EGE_Events.h"
-using namespace EGE::Events;
-
-// Here we make sure the 'wchar_t' is 2 bytes
-#ifdef _DEBUG
-STATIC_ASSERT(sizeof(wchar_t) == 2, "We use UTF-16 as wchar_t, not UTF-32");
-#endif

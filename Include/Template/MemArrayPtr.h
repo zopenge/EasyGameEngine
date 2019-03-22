@@ -1,4 +1,4 @@
-//! @file     MemArrayPtr.h
+//! @file     MeelementsPtr.h
 //! @author   LiCode
 //! @version  1.0.0.613
 //! @date     2011/01/17
@@ -10,11 +10,11 @@ namespace EGE
 {
 
 //----------------------------------------------------------------------------
-// MemArrayPtr
+// MeelementsPtr
 //----------------------------------------------------------------------------
 
 template< typename Type > 
-class MemArrayPtr: public MemPtrBase< Type >
+class MeelementsPtr: public MemPtrBase< Type >
 {
 protected:
 	typedef MemPtrBase< Type > TBaseClass;
@@ -24,9 +24,9 @@ protected:
 	_dword	mNumber;
 
 public:
-	MemArrayPtr( );
-	MemArrayPtr( _dword number );
-	~MemArrayPtr( );
+	MeelementsPtr( );
+	MeelementsPtr( _dword number );
+	~MeelementsPtr( );
 
 public:
 	template< typename IndexType >
@@ -34,7 +34,7 @@ public:
 	template< typename IndexType >
 	const Type& operator [] ( IndexType index ) const;
 
-	MemArrayPtr& operator = ( const MemArrayPtr& mem_ptr );
+	MeelementsPtr& operator = ( const MeelementsPtr& mem_ptr );
 
 public:
 	//!	Get number of elements.
@@ -53,17 +53,17 @@ public:
 };
 
 //----------------------------------------------------------------------------
-// MemArrayPtr Implementation
+// MeelementsPtr Implementation
 //----------------------------------------------------------------------------
 
 template< typename Type >
-MemArrayPtr< Type >::MemArrayPtr( )
+MeelementsPtr< Type >::MeelementsPtr( )
 {
 	mNumber = 0;
 }
 
 template< typename Type >
-MemArrayPtr< Type >::MemArrayPtr( _dword number )
+MeelementsPtr< Type >::MeelementsPtr( _dword number )
 {
 	EGE_ASSERT( number > 0 );
 
@@ -74,27 +74,27 @@ MemArrayPtr< Type >::MemArrayPtr( _dword number )
 }
 
 template< typename Type >
-MemArrayPtr< Type >::~MemArrayPtr( )
+MeelementsPtr< Type >::~MeelementsPtr( )
 {
 	Clear( );
 }
 
 template< typename Type >
 template< typename IndexType >
-Type& MemArrayPtr< Type >::operator [] ( IndexType index )
+Type& MeelementsPtr< Type >::operator [] ( IndexType index )
 {
 	return this->mPointer[ index ];
 }
 
 template< typename Type >
 template< typename IndexType >
-const Type& MemArrayPtr< Type >::operator [] ( IndexType index ) const
+const Type& MeelementsPtr< Type >::operator [] ( IndexType index ) const
 {
 	return this->mPointer[ index ];
 }
 
 template< typename Type >
-MemArrayPtr< Type >& MemArrayPtr< Type >::operator = ( const MemArrayPtr& mem_ptr )
+MeelementsPtr< Type >& MeelementsPtr< Type >::operator = ( const MeelementsPtr& mem_ptr )
 {
 	Clear( );
 
@@ -112,19 +112,19 @@ MemArrayPtr< Type >& MemArrayPtr< Type >::operator = ( const MemArrayPtr& mem_pt
 }
 
 template< typename Type >
-_dword MemArrayPtr< Type >::Number( ) const
+_dword MeelementsPtr< Type >::Number( ) const
 {
 	return this->mNumber;
 }
 
 template< typename Type >
-_dword MemArrayPtr< Type >::SizeOfBytes( ) const
+_dword MeelementsPtr< Type >::SizeOfBytes( ) const
 {
 	return mNumber * sizeof( Type );
 }
 
 template< typename Type >
-Type* MemArrayPtr< Type >::Create( _dword number )
+Type* MeelementsPtr< Type >::Create( _dword number )
 {
 	EGE_ASSERT( number > 0 );
 
@@ -139,7 +139,7 @@ Type* MemArrayPtr< Type >::Create( _dword number )
 }
 
 template< typename Type >
-Type* MemArrayPtr< Type >::Create( _dword number, const Type* pointer )
+Type* MeelementsPtr< Type >::Create( _dword number, const Type* pointer )
 {
 	Create( number );
 
@@ -151,7 +151,7 @@ Type* MemArrayPtr< Type >::Create( _dword number, const Type* pointer )
 }
 
 template< typename Type >
-_void MemArrayPtr< Type >::CreateInShareMode( _dword number, const Type* pointer )
+_void MeelementsPtr< Type >::CreateInShareMode( _dword number, const Type* pointer )
 {
 	Clear( );
 
@@ -162,7 +162,7 @@ _void MemArrayPtr< Type >::CreateInShareMode( _dword number, const Type* pointer
 }
 
 template< typename Type >
-_ubool MemArrayPtr< Type >::Resize( _dword number )
+_ubool MeelementsPtr< Type >::Resize( _dword number )
 {
 	if ( this->IsEnableAutoDelete( ) == _false )
 		return _false;
@@ -188,7 +188,7 @@ _ubool MemArrayPtr< Type >::Resize( _dword number )
 }
 
 template< typename Type >
-_void MemArrayPtr< Type >::Clear( )
+_void MeelementsPtr< Type >::Clear( )
 {
 	if ( this->IsEnableAutoDelete( ) )
 	{

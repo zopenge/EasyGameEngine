@@ -226,40 +226,40 @@ _ubool Version::operator != ( const Version& version ) const
 
 _ubool Version::operator >= ( const Version& version ) const
 {
- EGE_CHECK_COMP_BIG( mMajor, version.mMajor );
- EGE_CHECK_COMP_BIG( mMinor, version.mMinor );
- EGE_CHECK_COMP_BIG( mModified, version.mModified );
- EGE_CHECK_COMP_BIG( mBuildNumber, version.mBuildNumber );
+ COMPARE_BIG( mMajor, version.mMajor );
+ COMPARE_BIG( mMinor, version.mMinor );
+ COMPARE_BIG( mModified, version.mModified );
+ COMPARE_BIG( mBuildNumber, version.mBuildNumber );
 
  return _true;
 }
 
 _ubool Version::operator <= ( const Version& version ) const
 {
- EGE_CHECK_COMP_LESS( mMajor, version.mMajor );
- EGE_CHECK_COMP_LESS( mMinor, version.mMinor );
- EGE_CHECK_COMP_LESS( mModified, version.mModified );
- EGE_CHECK_COMP_LESS( mBuildNumber, version.mBuildNumber );
+ COMPARE_LESS( mMajor, version.mMajor );
+ COMPARE_LESS( mMinor, version.mMinor );
+ COMPARE_LESS( mModified, version.mModified );
+ COMPARE_LESS( mBuildNumber, version.mBuildNumber );
 
  return _true;
 }
 
 _ubool Version::operator > ( const Version& version ) const
 {
- EGE_CHECK_COMP_BIG( mMajor, version.mMajor );
- EGE_CHECK_COMP_BIG( mMinor, version.mMinor );
- EGE_CHECK_COMP_BIG( mModified, version.mModified );
- EGE_CHECK_COMP_BIG( mBuildNumber, version.mBuildNumber );
+ COMPARE_BIG( mMajor, version.mMajor );
+ COMPARE_BIG( mMinor, version.mMinor );
+ COMPARE_BIG( mModified, version.mModified );
+ COMPARE_BIG( mBuildNumber, version.mBuildNumber );
 
  return _false;
 }
 
 _ubool Version::operator < ( const Version& version ) const
 {
- EGE_CHECK_COMP_LESS( mMajor, version.mMajor );
- EGE_CHECK_COMP_LESS( mMinor, version.mMinor );
- EGE_CHECK_COMP_LESS( mModified, version.mModified );
- EGE_CHECK_COMP_LESS( mBuildNumber, version.mBuildNumber );
+ COMPARE_LESS( mMajor, version.mMajor );
+ COMPARE_LESS( mMinor, version.mMinor );
+ COMPARE_LESS( mModified, version.mModified );
+ COMPARE_LESS( mBuildNumber, version.mBuildNumber );
 
  return _false;
 }
