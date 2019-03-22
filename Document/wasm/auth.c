@@ -1,4 +1,4 @@
-#define DEBUG 1
+//#define DEBUG 1
 
 #define PRIME0 211
 #define PRIME1 104381
@@ -1045,6 +1045,9 @@ void onRecvFileSize(const char* path, int size) {
 		}
 	}
 
+	// Receive auth info completed
+	__global__->attributes |= 0x80000000;
+
 #ifdef DEBUG
 	consoleNumber(__global__->attributes);
 #endif
@@ -1107,6 +1110,22 @@ unsigned int getAttributes() {
 
 const char* getID() {
 	return __global__->id;
+}
+
+unsigned int getPluginsNumber() {
+	return __global__->pluginsNumber;
+}
+
+const char* getPluginVersion(int index) {
+	return __global__->plugins[index].version;
+}
+
+const char* getPluginName(int index) {
+	return __global__->plugins[index].name;
+}
+
+const char* getPluginDesc(int index) {
+	return __global__->plugins[index].desc;
 }
 
 void setAttributes(const long long* buffer) {
