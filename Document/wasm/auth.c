@@ -164,6 +164,10 @@ int toLower(int c) {
 }
 
 int stringEquals(const char* s1, const char* s2, int ignoreCase) {
+	if (!s1 || !s2) {
+		return false;
+	}
+
 	int c1 = 0, c2 = 0;
 
 	do {
@@ -361,7 +365,7 @@ typedef struct {
  * Easy to read JSON token with jsmntok_t structure
  */
 typedef struct JSONToken {
-	char* tokenName;
+	char* name;
 	const jsmntok_t* token;
 	struct JSONToken* parent;
 	struct JSONToken* child;
@@ -372,6 +376,11 @@ typedef struct JSONToken {
  * Create JSON tokens.
  */
 JSONToken* parseJSONString(const char* str, int* number);
+
+/**
+ * Find the JSON token by name.
+ */
+JSONToken* findJSONToken(JSONToken* rootToken, const char* name);
 
 /**
  * Free JSON tokens.
@@ -751,12 +760,11 @@ JSONToken* parseJSONString(const char* str, int* number) {
 	memset(jsonTokens, 0, bufferSize);
 	for (int i = 0; i < tokenNumber; i++) {
 		const jsmntok_t* token = &tokens[i];
-		if (token->type != JSMN_STRING && token->type != JSMN_PRIMITIVE) {
-			continue;
-		}
 
 		JSONToken* jsonToken = &jsonTokens[i];
-		jsonToken->tokenName = subString(str, token->start, token->end);
+		if (token->type == JSMN_STRING || token->type == JSMN_PRIMITIVE) {
+			jsonToken->name = subString(str, token->start, token->end);
+		}
 		jsonToken->token = token;
 
 		if (token->parent != -1) {
@@ -764,7 +772,12 @@ JSONToken* parseJSONString(const char* str, int* number) {
 
 			JSONToken* parent = jsonToken->parent;
 			if (parent->child) {
-				parent->child->next = &jsonTokens[i];
+				JSONToken* tail = parent->child;
+				while (tail->next) {
+					tail = tail->next;
+				}
+
+				tail->next = &jsonTokens[i];
 			} else {
 				parent->child = &jsonTokens[i];
 			}
@@ -774,10 +787,43 @@ JSONToken* parseJSONString(const char* str, int* number) {
 	return jsonTokens;
 }
 
+JSONToken* findJSONToken(JSONToken* rootToken, const char* name) {
+	if (!rootToken) {
+		return NULL;
+	}
+
+	if (!name) {
+		return NULL;
+	}
+
+	if (rootToken->name) {
+		consoleLog(rootToken->name);
+	}
+	if (name) {
+		consoleLog(name);
+	}
+
+	if (stringEquals(rootToken->name, name, false)) {
+		return rootToken;
+	}
+
+	JSONToken* nextToken = findJSONToken(rootToken->next, name);
+	if (nextToken) {
+		return nextToken;
+	}
+
+	JSONToken* childToken = findJSONToken(rootToken->child, name);
+	if (childToken) {
+		return childToken;
+	}
+
+	return NULL;
+}
+
 void freeJSONToken(JSONToken* tokens, int number) {
 	for (int i = 0; i < number; i++) {
 		JSONToken* jsonToken = &tokens[i];
-		FREE(jsonToken->tokenName);
+		FREE(jsonToken->name);
 	}
 
 	FREE(tokens);
@@ -876,14 +922,24 @@ int rsaGetEncryptSize(const char* message, int message_size) {
  * Internal Global Info
  */
 
+struct PluginInfo {
+	char* name;
+	char* version;
+	char* desc;
+};
+
 struct GlobalInfo {
 	// Random seeds
 	unsigned int seeds[4];
 
 	// Attributes to save engine abilities
 	unsigned int attributes;
-	// The attribute time stamp to validate with current local time
-	char* timeStamp;
+	// The user ID
+	char* id;
+
+	// The plugins
+	int pluginsNumber;
+	struct PluginInfo* plugins;
 
 	// Internal RSA keys
 	struct public_key_class pub;
@@ -1049,8 +1105,8 @@ unsigned int getAttributes() {
 	return __global__->attributes;
 }
 
-const char* getTimeStamp() {
-	return __global__->timeStamp;
+const char* getID() {
+	return __global__->id;
 }
 
 void setAttributes(const long long* buffer) {
@@ -1065,10 +1121,41 @@ void setAttributes(const long long* buffer) {
 		return;
 	}
 
-	// Get the 'timestamp'
-	__global__->timeStamp = allocString(jsonToken->child->child->tokenName);
-	consoleLog(__global__->timeStamp);
+	// Get the 'id'
+	const JSONToken* idToken = jsonToken->child->child;
+	if (idToken) {
+		__global__->id = allocString(idToken->name);
+#ifdef DEBUG
+		consoleLog(__global__->id);
+#endif
+	}
 
+	// Get the 'plugins'
+	const JSONToken* pluginTokens = jsonToken->child->next->next->child;
+	if (pluginTokens) {
+		for (const JSONToken* pluginToken = pluginTokens->child; pluginToken; pluginToken = pluginToken->next) {
+			__global__->pluginsNumber++;
+		}
+
+#ifdef DEBUG
+		consoleNumber(__global__->pluginsNumber);
+#endif
+		__global__->plugins = (struct PluginInfo*)MALLOC(sizeof(struct PluginInfo) * __global__->pluginsNumber);
+		int index = 0;
+		for (const JSONToken* pluginToken = pluginTokens->child; pluginToken; pluginToken = pluginToken->next) {
+			struct PluginInfo* pluginInfo = &__global__->plugins[index++];
+			pluginInfo->version = allocString(pluginToken->child->child->name);
+			pluginInfo->name = allocString(pluginToken->child->next->child->name);
+			pluginInfo->desc = allocString(pluginToken->child->next->next->child->name);
+#ifdef DEBUG
+			consoleLog(pluginInfo->version);
+			consoleLog(pluginInfo->name);
+			consoleLog(pluginInfo->desc);
+#endif
+		}
+	}
+
+	// Free JSON data
 	freeJSONToken(jsonToken, *number);
 
 	// Mix a little to save the original text
