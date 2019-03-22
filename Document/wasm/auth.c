@@ -734,18 +734,9 @@ void jsmn_init(jsmn_parser* parser) {
 }
 
 JSONToken* parseJSONString(const char* str, int* number) {
-#ifdef DEBUG
-	consoleLog(str);
-#endif
-#ifdef DEBUG
-	consoleNumber(225511);
-#endif
 	jsmn_parser* p = (jsmn_parser*)MALLOC(sizeof(jsmn_parser));
 	jsmn_init(p);
 
-#ifdef DEBUG
-	consoleNumber(2255);
-#endif
 	const int bufferNumber = 1024;
 	jsmntok_t* tokens = (jsmntok_t*)MALLOC(bufferNumber * sizeof(jsmntok_t));
 	memset(tokens, 0, sizeof(jsmntok_t) * bufferNumber);
@@ -755,12 +746,9 @@ JSONToken* parseJSONString(const char* str, int* number) {
 		*number = tokenNumber;
 	}
 
-#ifdef DEBUG
-	consoleNumber(tokenNumber);
-#endif
-
-	JSONToken* jsonTokens = (JSONToken*)MALLOC(tokenNumber * sizeof(JSONToken));
-	memset(jsonTokens, 0, sizeof(jsonTokens));
+	int bufferSize = tokenNumber * sizeof(JSONToken);
+	JSONToken* jsonTokens = (JSONToken*)MALLOC(bufferSize);
+	memset(jsonTokens, 0, bufferSize);
 	for (int i = 0; i < tokenNumber; i++) {
 		const jsmntok_t* token = &tokens[i];
 		if (token->type != JSMN_STRING && token->type != JSMN_PRIMITIVE) {
@@ -1010,20 +998,12 @@ void onRecvFileSize(const char* path, int size) {
 long long* encodeString(const char* string) {
 	int length = stringLength(string);
 	int encrypted_size = rsaGetEncryptSize(string, length);
-#ifdef DEBUG
-	consoleNumber(length);
-	consoleNumber(encrypted_size);
-#endif
-
 	long long* encrypted = (long long*)MALLOC(sizeof(long long) * (encrypted_size + 1));
 
 	struct public_key_class* pub = &__global__->pub;
 
 	int index = 0;
 	encrypted[index++] = rsa_modExp(encrypted_size, pub->exponent, pub->modulus);
-#ifdef DEBUG
-	consoleNumber(encrypted[0]);
-#endif
 
 	for (int i = 0; i < length; i++) {
 		char c = string[i];
@@ -1042,15 +1022,7 @@ long long* encodeString(const char* string) {
 char* decodeString(const long long* buffer) {
 	struct private_key_class* priv = &__global__->priv;
 
-#ifdef DEBUG
-	consoleNumber(buffer[0]);
-	consoleNumber(priv->exponent);
-	consoleNumber(priv->modulus);
-#endif
 	int size = (int)rsa_modExp(buffer[0], priv->exponent, priv->modulus);
-#ifdef DEBUG
-	consoleNumber(size);
-#endif
 	if (!size)
 		return NULL;
 
@@ -1087,29 +1059,22 @@ void setAttributes(const long long* buffer) {
 		return;
 	}
 
-#ifdef DEBUG
-	consoleNumber(1234);
-#endif
-
-	int number = 0;
-	JSONToken* jsonToken = parseJSONString(str, &number);
-	if (jsonToken) {
+	int* number = (int*)MALLOC(sizeof(int));
+	JSONToken* jsonToken = parseJSONString(str, number);
+	if (!jsonToken) {
 		return;
 	}
-
-#ifdef DEBUG
-	consoleNumber(12345);
-#endif
 
 	// Get the 'timestamp'
 	__global__->timeStamp = allocString(jsonToken->child->child->tokenName);
 	consoleLog(__global__->timeStamp);
 
-	freeJSONToken(jsonToken, number);
+	freeJSONToken(jsonToken, *number);
 
 	// Mix a little to save the original text
 	mixString(str);
 
+	FREE(number);
 	FREE(str);
 }
 
