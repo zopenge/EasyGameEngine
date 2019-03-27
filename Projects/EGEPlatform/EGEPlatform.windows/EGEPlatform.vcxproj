@@ -182,7 +182,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\DeferredProcessor.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Address.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\OrientedBox2D.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\AxisAlignedBox.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Box.cpp" />
@@ -287,6 +286,7 @@
     <ClInclude Include="..\..\..\Include\Platform\DeferredProcessor.h" />
     <ClInclude Include="..\..\..\Include\Platform\FPSTimer.h" />
     <ClInclude Include="..\..\..\Include\Platform\Interpolation.h" />
+    <ClInclude Include="..\..\..\Include\Platform\IPAddress.h" />
     <ClInclude Include="..\..\..\Include\Platform\OrientedBox2D.h" />
     <ClInclude Include="..\..\..\Include\Platform\OS\ios\IOSHeaders.h" />
     <ClInclude Include="..\..\..\Include\Platform\OS\NetworkOSHeader.h" />
@@ -301,7 +301,6 @@
     <ClInclude Include="..\..\..\Include\Platform\Serializer.h" />
     <ClInclude Include="..\..\..\Include\Platform\TempDir.h" />
     <ClInclude Include="..\..\..\Include\Platform\Timer.h" />
-    <ClInclude Include="..\..\..\Include\Platform\Address.h" />
     <ClInclude Include="..\..\..\Include\Platform\AxisAlignedBox.h" />
     <ClInclude Include="..\..\..\Include\Platform\Box.h" />
     <ClInclude Include="..\..\..\Include\Platform\CallStack.h" />
