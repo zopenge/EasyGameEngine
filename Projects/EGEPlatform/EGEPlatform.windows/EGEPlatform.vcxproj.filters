@@ -481,9 +481,6 @@
     <ClInclude Include="..\..\..\Source\External\crt\dbgheap\dbgint.h">
       <Filter>SDK Files\dbgheap</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Platform\Address.h">
-      <Filter>Header Files\Platform</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\AxisAlignedBox.h">
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
@@ -683,6 +680,9 @@
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\Viewport.h">
+      <Filter>Header Files\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Platform\IPAddress.h">
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
   </ItemGroup>
