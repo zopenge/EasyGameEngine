@@ -1,17 +1,10 @@
-//! @file     CountOf.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// CountOf
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The count of elements.
+/// </summary>
 template <typename Type = _dword>
 class CountOf {
 protected:

@@ -1,18 +1,10 @@
-//! @file     Graph.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// GraphNode
-//----------------------------------------------------------------------------
-
-//! This class is template container class, represents a graph node.
+/// <summary>
+/// This class is template container class, represents a graph node.
+/// </summary>
 template <typename Type, typename Edge, typename Key>
 class GraphNode {
 public:
@@ -185,11 +177,9 @@ public:
 	}
 };
 
-//----------------------------------------------------------------------------
-// Graph
-//----------------------------------------------------------------------------
-
-//! This class is template container class, represents a graph.
+/// <summary>
+/// This class is template container class, represents a graph.
+/// </summary>
 template <typename Type, typename Edge, typename Key>
 class Graph {
 public:
@@ -318,10 +308,6 @@ public:
 	//!	@return		none.
 	_void Clear();
 };
-
-//----------------------------------------------------------------------------
-// Graph Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type, typename Edge, typename Key>
 Graph<Type, Edge, Key>::Graph() {

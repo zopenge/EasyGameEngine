@@ -1,18 +1,10 @@
-//! @file     Point.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Point
-//----------------------------------------------------------------------------
-
-//! This class represents a 2D point ( or a 2D size ) with integer coordinates.
+/// <summary>
+/// This class represents a 2D point ( or a 2D size ) with integer coordinates.
+/// </summary>
 template <typename Type>
 class Point {
 public:
@@ -120,10 +112,6 @@ public:
 	//!	@return		The ratio.
 	_float GetRatio() const;
 };
-
-//----------------------------------------------------------------------------
-// Point Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type>
 Point<Type>::Point() {

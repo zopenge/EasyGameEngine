@@ -1,23 +1,10 @@
-//! @file     Triple.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Triple
-//----------------------------------------------------------------------------
-
-//! This class is template container class, represents a 3-element structure.
-
-//! Template parameter "Type1" defines the first element type.<br>
-//! Template parameter "Type2" defines the second element type.<br>
-//! Template parameter "Type3" defines the third element type.<br>
-//! A comparision of triple only care about the first element type, the <b>Key<b> type.
+/// <summary>
+/// This class is template container class, represents a 3-element structure.
+/// </summary>
 template <typename Type1, typename Type2, typename Type3>
 class Triple {
 public:
@@ -46,10 +33,6 @@ public:
 	//! @return		The const reference of the first object.
 	operator const Type1&() const;
 };
-
-//----------------------------------------------------------------------------
-// Triple Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type1, typename Type2, typename Type3>
 Triple<Type1, Type2, Type3>::Triple() {

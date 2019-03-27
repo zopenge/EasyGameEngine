@@ -1,17 +1,10 @@
-//! @file     Algorithm.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Algorithm
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// Algorithm for template class usage.
+/// </summary>
 class Algorithm {
 public:
 	//!	Return the index of element by lower/upper bound within a range in binary search way.
@@ -20,14 +13,14 @@ public:
 	//!	@param		right		The end index of elements.
 	//! @param		key			The key of element to be compared.
 	template <typename Type, typename Key, typename KeyConverter, typename SortCompareFunc, typename BoundCompareFunc>
-	static _dword binaryBound(const Type elements[], _int left, _int right, const Key& key);
+	static _dword BinaryBound(const Type elements[], _int left, _int right, const Key& key);
 	//!	Search the element by key by ascending/descending in binary search way.
 	//!	@param		elements	The element array.
 	//!	@param		number		The element number.
 	//! @param		key			The key of element to be searched.
 	//!	@return		The index of element in array.
 	template <typename Type, typename Key, typename KeyConverter, typename CompareFunc>
-	static _int binarySearch(const Type elements[], _int number, const Key& key);
+	static _int BinarySearch(const Type elements[], _int number, const Key& key);
 
 	//!	Sort all elements in ascending/descending way.
 	//!	@param		elements	The element array.
@@ -35,22 +28,18 @@ public:
 	//!	@param		right		The end index of element in array.
 	//! @return		none.
 	template <typename Type, typename Key, typename KeyConverter, typename GreaterFunc, typename LessFunc>
-	static _void quickSort(Type elements[], _int left, _int right);
+	static _void QuickSort(Type elements[], _int left, _int right);
 	//!	Sort all elements in ascending/descending way.
 	//!	@param		elements	The element array.
 	//!	@param		left		The start index of element in array.
 	//!	@param		right		The end index of element in array.
 	//! @return		none.
 	template <typename Type, typename Key, typename KeyConverter, typename CompareFunc>
-	static _void quickSort(Type elements[], _int left, _int right);
+	static _void QuickSort(Type elements[], _int left, _int right);
 };
 
-//----------------------------------------------------------------------------
-// Algorithm Implementation
-//----------------------------------------------------------------------------
-
 template <typename Type, typename Key, typename KeyConverter, typename SortCompareFunc, typename BoundCompareFunc>
-_dword Algorithm::binaryBound(const Type elements[], _int left, _int right, const Key& key) {
+_dword Algorithm::BinaryBound(const Type elements[], _int left, _int right, const Key& key) {
 	_int i = left, j = right;
 
 	while (i < j - 1) {
@@ -78,7 +67,7 @@ _dword Algorithm::binaryBound(const Type elements[], _int left, _int right, cons
 }
 
 template <typename Type, typename Key, typename KeyConverter, typename CompareFunc>
-_int Algorithm::binarySearch(const Type elements[], _int number, const Key& key) {
+_int Algorithm::BinarySearch(const Type elements[], _int number, const Key& key) {
 	if (number <= 0)
 		return -1;
 
@@ -110,7 +99,7 @@ _int Algorithm::binarySearch(const Type elements[], _int number, const Key& key)
 }
 
 template <typename Type, typename Key, typename KeyConverter, typename GreaterFunc, typename LessFunc>
-_void Algorithm::quickSort(Type elements[], _int left, _int right) {
+_void Algorithm::QuickSort(Type elements[], _int left, _int right) {
 	if (left >= right)
 		return;
 
@@ -135,12 +124,12 @@ _void Algorithm::quickSort(Type elements[], _int left, _int right) {
 		elements[j] = element;
 	}
 
-	quickSort<Type, Key, KeyConverter, GreaterFunc, LessFunc>(elements, left, i - 1);
-	quickSort<Type, Key, KeyConverter, GreaterFunc, LessFunc>(elements, j + 1, right);
+	QuickSort<Type, Key, KeyConverter, GreaterFunc, LessFunc>(elements, left, i - 1);
+	QuickSort<Type, Key, KeyConverter, GreaterFunc, LessFunc>(elements, j + 1, right);
 }
 
 template <typename Type, typename Key, typename KeyConverter, typename CompareFunc>
-_void Algorithm::quickSort(Type elements[], _int left, _int right) {
+_void Algorithm::QuickSort(Type elements[], _int left, _int right) {
 	if (left >= right)
 		return;
 
@@ -165,8 +154,8 @@ _void Algorithm::quickSort(Type elements[], _int left, _int right) {
 		elements[j] = element;
 	}
 
-	quickSort<Type, Key, KeyConverter, CompareFunc>(elements, left, i - 1);
-	quickSort<Type, Key, KeyConverter, CompareFunc>(elements, j + 1, right);
+	QuickSort<Type, Key, KeyConverter, CompareFunc>(elements, left, i - 1);
+	QuickSort<Type, Key, KeyConverter, CompareFunc>(elements, j + 1, right);
 }
 
 } // namespace EGE

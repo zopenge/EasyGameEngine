@@ -1,18 +1,10 @@
-//! @file     Range.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Range
-//----------------------------------------------------------------------------
-
-//!	A interval range class, in [min, max] range
+/// <summary>
+/// A interval range class, in [min, max] range
+/// </summary>
 template <typename Type>
 class Range {
 public:
@@ -58,10 +50,6 @@ public:
 	//!	@return		True indicates it's finish.
 	_ubool IsFinish() const;
 };
-
-//----------------------------------------------------------------------------
-// Range Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type>
 Range<Type>::Range() {

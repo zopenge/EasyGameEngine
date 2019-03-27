@@ -1,17 +1,10 @@
-//! @file     RefPtr.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// RefPtr
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The referenced pointer type with auto increase/decrease referenced count.
+/// </summary>
 template <typename Type>
 class RefPtr : public Ref<Type> {
 protected:
@@ -38,10 +31,6 @@ public:
 
 	_void SetPtr(Type* pointer);
 };
-
-//----------------------------------------------------------------------------
-// RefPtr Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type>
 RefPtr<Type>::RefPtr() {

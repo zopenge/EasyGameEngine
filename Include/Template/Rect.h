@@ -1,17 +1,10 @@
-//! @file     Rect.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Rect
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The rectangle of [left, top] and (right, bottom).
+/// </summary>
 template <typename Type>
 class Rect {
 public:
@@ -216,10 +209,6 @@ public:
 	//! @return		The rectangle with max size by the same ratio.
 	static Rect ScaleToFitCenter(const Rect& rect1, const Rect& rect2);
 };
-
-//----------------------------------------------------------------------------
-// Rect Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type>
 Rect<Type>::Rect() {

@@ -1,17 +1,10 @@
-//! @file     PassRefPtr.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// PassRefPtr
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The referenced pointer type without increase referenced count when construct
+/// </summary>
 template <typename Type>
 class PassRefPtr : public Ref<Type> {
 protected:
@@ -34,10 +27,6 @@ public:
 	PassRefPtr<Type>& operator=(Type* pointer);
 	PassRefPtr<Type>& operator=(const PassRefPtr<Type>& refptr);
 };
-
-//----------------------------------------------------------------------------
-// PassRefPtr Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type>
 PassRefPtr<Type>::PassRefPtr() {

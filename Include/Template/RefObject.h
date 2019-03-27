@@ -1,17 +1,10 @@
-//! @file     RefObject.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// TRefObject
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The referenced class that auto increase/decrease referenced count.
+/// </summary>
 template <typename Type>
 class RefObject : public Type {
 protected:

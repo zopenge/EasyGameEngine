@@ -1,17 +1,10 @@
-//! @file     HashMap.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// HashKeyConverterBase
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The 32-bits value hash key converter.
+/// </summary>
 class HashKeyConverterBase {
 public:
 	template <typename Key>
@@ -20,10 +13,9 @@ public:
 	}
 };
 
-//----------------------------------------------------------------------------
-// HashStringKeyConverter
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The string value hash key converter.
+/// </summary>
 class HashStringKeyConverter {
 public:
 	template <typename Key>
@@ -32,10 +24,9 @@ public:
 	}
 };
 
-//----------------------------------------------------------------------------
-// HashRefStringObjKeyConverter
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The referenced string object value hash key converter.
+/// </summary>
 class HashRefStringObjKeyConverter {
 public:
 	template <typename Key>
@@ -44,11 +35,9 @@ public:
 	}
 };
 
-//----------------------------------------------------------------------------
-// HashMap
-//----------------------------------------------------------------------------
-
-//! This class is template container class, represents a hash table.
+/// <summary>
+/// This class is template container class, represents a hash table.
+/// </summary>
 template <typename Type, typename Key, typename KeyConverter = HashKeyConverterBase>
 class HashMap : public CountOf<> {
 private:
@@ -260,10 +249,6 @@ public:
 	//!	@return		none.
 	_void Clear(_dword divisor);
 };
-
-//----------------------------------------------------------------------------
-// Hash Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type, typename Key, typename KeyConverter>
 HashMap<Type, Key, KeyConverter>::HashMap(_dword divisor) {

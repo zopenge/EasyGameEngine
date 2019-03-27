@@ -1,17 +1,10 @@
-//! @file     DataField.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// DataField
-//----------------------------------------------------------------------------
-
+/// <summary>
+///	The data field with offset and number, range is in [base + offset, base + offset + number).
+/// </summary>
 template <typename Type>
 class DataField {
 public:
@@ -59,10 +52,6 @@ public:
 	_ubool operator==(const DataField& data_field) const;
 	_ubool operator!=(const DataField& data_field) const;
 };
-
-//----------------------------------------------------------------------------
-// DataField Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type>
 DataField<Type>::DataField() {

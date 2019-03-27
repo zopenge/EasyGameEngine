@@ -1,22 +1,10 @@
-//! @file     Pair.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Pair
-//----------------------------------------------------------------------------
-
-//! This class is template container class, represents a 2-element structure.
-
-//! Template parameter "Type1" defines the first element type.<br>
-//! Template parameter "Type2" defines the second element type.<br>
-//! A comparision of pair only care about the first element type, the <b>Key<b> type.
+/// <summary>
+/// This class is template container class, represents a 2-element structure.
+/// </summary>
 template <typename Type1, typename Type2>
 class Pair {
 public:
@@ -38,10 +26,6 @@ public:
 	//! @return		The const reference of the first object.
 	operator const Type1&() const;
 };
-
-//----------------------------------------------------------------------------
-// Pair Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type1, typename Type2>
 Pair<Type1, Type2>::Pair() {

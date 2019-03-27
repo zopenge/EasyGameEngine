@@ -1,17 +1,10 @@
-//! @file     RBTree.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// RBTree
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The red black tree.
+/// </summary>
 template <typename Type, typename CompareFunc = Compare<Type>>
 class RBTree : public CountOf<> {
 private:
@@ -241,10 +234,6 @@ public:
 	//!	@return		none.
 	_void Clear();
 };
-
-//----------------------------------------------------------------------------
-// RBTree Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type, typename CompareFunc>
 RBTree<Type, CompareFunc>::RBTree() {

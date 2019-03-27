@@ -1,17 +1,10 @@
-//! @file     Tree.h
-//! @author   LiCode
-//! @version  1.0.0.613
-//! @date     2011/01/17
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Tree
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The tree container.
+/// </summary>
 template <typename Type, typename Key = Type>
 class Tree : public CountOf<> {
 private:
@@ -128,10 +121,6 @@ public:
 	//!	@return		none.
 	_void Clear();
 };
-
-//----------------------------------------------------------------------------
-// Tree Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type, typename Key>
 Tree<Type, Key>::Tree() {

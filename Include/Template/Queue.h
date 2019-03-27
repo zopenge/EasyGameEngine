@@ -1,24 +1,10 @@
-//! @file     Queue.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Queue
-//----------------------------------------------------------------------------
-
-//! This class is template container class, represents a queue, can insert at front and remove from rear.
-
-//! A queue allocates a buffer to store all elements, the buffer will auto enlarge to hold more elements.
-//! Each elements are adjacent in memory as a ring, can be accessed by index base from zero.<br>
-//! Template parameter "Type" defines the element type storaged in the queue.<br>
-//! For example, Queue< ClassA, _dword > defines a queue stores ClassA element, and access it
-//! by _dword, means ClassA has a overload operator with _dword ( ==, !=, > and < etc ), or it can convert to _dword.
+/// <summary>
+/// This class is template container class, represents a queue, can insert at front and remove from rear.
+/// </summary>
 template <typename Type>
 class Queue : public CountOf<> {
 public:
@@ -192,10 +178,6 @@ public:
 	//!	@return		none.
 	_void Clear(_ubool freememory = _false);
 };
-
-//----------------------------------------------------------------------------
-// Queue Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type>
 Queue<Type>::Queue() {

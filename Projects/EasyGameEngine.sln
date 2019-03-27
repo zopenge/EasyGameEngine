@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28711.60
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EGEPlatform-windows", "EGEPlatform\EGEPlatform.windows\EGEPlatform.vcxproj", "{4C0C4378-E2B3-40E7-1111-1283FDE510DE}"
 EndProject
@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{E3
 	ProjectSection(SolutionItems) = preProject
 		..\Include\Template\Algorithm.h = ..\Include\Template\Algorithm.h
 		..\Include\Template\Array.h = ..\Include\Template\Array.h
+		..\Include\Template\BaseRef.h = ..\Include\Template\BaseRef.h
 		..\Include\Template\BinaryHeap.h = ..\Include\Template\BinaryHeap.h
 		..\Include\Template\BitArray.h = ..\Include\Template\BitArray.h
 		..\Include\Template\CallbackFunc.h = ..\Include\Template\CallbackFunc.h
@@ -58,7 +59,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{E3
 		..\Include\Template\Range.h = ..\Include\Template\Range.h
 		..\Include\Template\RBTree.h = ..\Include\Template\RBTree.h
 		..\Include\Template\Rect.h = ..\Include\Template\Rect.h
-		..\Include\Template\Ref.h = ..\Include\Template\Ref.h
 		..\Include\Template\RefObject.h = ..\Include\Template\RefObject.h
 		..\Include\Template\RefPtr.h = ..\Include\Template\RefPtr.h
 		..\Include\Template\SafeValue.h = ..\Include\Template\SafeValue.h

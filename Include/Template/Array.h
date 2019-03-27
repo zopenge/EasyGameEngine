@@ -1,18 +1,10 @@
-//! @file     Array.h
-//! @author   LiCode
-//! @version  1.0.0.613
-//! @date     2011/01/17
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Array
-//----------------------------------------------------------------------------
-
-//! This class is template container class, represents a array.
+/// <summary>
+/// This class is template container class, represents a array.
+/// </summary>
 template <typename Type>
 class Array : public CountOf<> {
 public:
@@ -444,10 +436,6 @@ public:
 	template <typename ToType, typename ToTypeArray = Array<ToType>, typename Type2ToType = Type2Key<Type, ToType>>
 	ToTypeArray ConvertArray() const;
 };
-
-//----------------------------------------------------------------------------
-// Array Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type>
 Array<Type>::Array() {

@@ -1,17 +1,10 @@
-//! @file     ConcurrentQueue.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// ConcurrentQueue
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The queue for thread safe.
+/// </summary>
 template <typename Type>
 class ConcurrentQueue : public Queue<Type> {
 private:
@@ -42,10 +35,6 @@ public:
 		Enqueue(item);
 	}
 };
-
-//----------------------------------------------------------------------------
-// ConcurrentQueue Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type>
 ConcurrentQueue<Type>::ConcurrentQueue() {

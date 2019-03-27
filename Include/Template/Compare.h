@@ -1,25 +1,17 @@
-//! @file     Compare.h
-//! @author   LiCode
-//! @version  1.0.0.613
-//! @date     2011/01/17
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// BinaryFunction
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The dummy binary operation function.
+/// </summary>
 template <typename T1, typename T2>
 struct BinaryFunction {
 };
 
-//----------------------------------------------------------------------------
-// Convert type to key
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// Convert type to key function.
+/// </summary>
 template <typename Type, typename Key>
 struct Type2Key {
 	Key operator()(const Type& element) const {
@@ -28,6 +20,9 @@ struct Type2Key {
 	}
 };
 
+/// <summary>
+/// Convert pointer type to key function.
+/// </summary>
 template <typename Type, typename Key>
 struct PtrType2Key {
 	const Key operator()(const Type& element) const {
@@ -36,11 +31,9 @@ struct PtrType2Key {
 	}
 };
 
-//----------------------------------------------------------------------------
-// Compare
-//----------------------------------------------------------------------------
-
-//! This class is template class to process compare operation.
+/// <summary>
+/// This class is template class to process compare operation.
+/// </summary>
 template <typename Type>
 struct Compare : public BinaryFunction<Type, Type> {
 	//!	Process compare operation.
@@ -54,11 +47,9 @@ struct Compare : public BinaryFunction<Type, Type> {
 	}
 };
 
-//----------------------------------------------------------------------------
-// NotCompare
-//----------------------------------------------------------------------------
-
-//! This class is template class to process NOT-compare operation.
+/// <summary>
+/// This class is template class to process NOT-compare operation.
+/// </summary>
 template <typename Type>
 struct NotCompare : public BinaryFunction<Type, Type> {
 	//!	Process compare operation.
@@ -72,11 +63,9 @@ struct NotCompare : public BinaryFunction<Type, Type> {
 	}
 };
 
-//----------------------------------------------------------------------------
-// EqualTo
-//----------------------------------------------------------------------------
-
-//! This class is template class to process NOT-compare operation.
+/// <summary>
+/// This class is template class to process NOT-compare operation.
+/// </summary>
 template <typename Type>
 struct EqualTo : public BinaryFunction<Type, Type> {
 	//!	Process compare operation.
@@ -85,11 +74,9 @@ struct EqualTo : public BinaryFunction<Type, Type> {
 	}
 };
 
-//----------------------------------------------------------------------------
-// NotEqualTo
-//----------------------------------------------------------------------------
-
-//! This class is template class to process NOT-compare operation.
+/// <summary>
+/// This class is template class to process NOT-compare operation.
+/// </summary>
 template <typename Type>
 struct NotEqualTo : public BinaryFunction<Type, Type> {
 	//!	Process compare operation.
@@ -98,11 +85,9 @@ struct NotEqualTo : public BinaryFunction<Type, Type> {
 	}
 };
 
-//----------------------------------------------------------------------------
-// Greater
-//----------------------------------------------------------------------------
-
-//! This class is template class to process NOT-compare operation.
+/// <summary>
+/// This class is template class to process NOT-compare operation.
+/// </summary>
 template <typename Type>
 struct Greater : public BinaryFunction<Type, Type> {
 	//!	Process compare operation.
@@ -111,11 +96,9 @@ struct Greater : public BinaryFunction<Type, Type> {
 	}
 };
 
-//----------------------------------------------------------------------------
-// GreaterEqual
-//----------------------------------------------------------------------------
-
-//! This class is template class to process NOT-compare operation.
+/// <summary>
+/// This class is template class to process NOT-compare operation.
+/// </summary>
 template <typename Type>
 struct GreaterEqual : public BinaryFunction<Type, Type> {
 	//!	Process compare operation.
@@ -124,11 +107,9 @@ struct GreaterEqual : public BinaryFunction<Type, Type> {
 	}
 };
 
-//----------------------------------------------------------------------------
-// Less
-//----------------------------------------------------------------------------
-
-//! This class is template class to process NOT-compare operation.
+/// <summary>
+/// This class is template class to process NOT-compare operation.
+/// </summary>
 template <typename Type>
 struct Less : public BinaryFunction<Type, Type> {
 	//!	Process compare operation.
@@ -137,11 +118,9 @@ struct Less : public BinaryFunction<Type, Type> {
 	}
 };
 
-//----------------------------------------------------------------------------
-// LessEqual
-//----------------------------------------------------------------------------
-
-//! This class is template class to process NOT-compare operation.
+/// <summary>
+/// This class is template class to process NOT-compare operation.
+/// </summary>
 template <typename Type>
 struct LessEqual : public BinaryFunction<Type, Type> {
 	//!	Process compare operation.

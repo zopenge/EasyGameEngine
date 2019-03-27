@@ -1,18 +1,10 @@
-//! @file     PagePool.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// PagePool
-//----------------------------------------------------------------------------
-
-//! This class is template container class, represents a page pool.
+/// <summary>
+/// This class is template container class, represents a page pool.
+/// </summary>
 template <typename Type, _dword _PAGE_SIZE>
 class PagePool {
 private:
@@ -57,10 +49,6 @@ public:
 	//!	@return		none.
 	_void Clear();
 };
-
-//----------------------------------------------------------------------------
-// PagePool Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type, _dword _PAGE_SIZE>
 PagePool<Type, _PAGE_SIZE>::PagePool() {

@@ -1,9 +1,3 @@
-//! @file     Map.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
@@ -11,11 +5,9 @@ namespace EGE {
 template <typename Key>
 _int CompareKeyInMap(const Key& key1, const Key& key2);
 
-//----------------------------------------------------------------------------
-// Map
-//----------------------------------------------------------------------------
-
-//! This class is template container class, represents a map in red-black tree.
+/// <summary>
+/// This class is template container class, represents a map in red-black tree.
+/// </summary>
 template <typename Type, typename Key>
 class Map {
 public:
@@ -172,10 +164,6 @@ public:
 	//!	@return		none.
 	_void Clear();
 };
-
-//----------------------------------------------------------------------------
-// Map Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type, typename Key>
 Map<Type, Key>::Map() {

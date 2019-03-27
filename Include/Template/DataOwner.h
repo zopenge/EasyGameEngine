@@ -1,17 +1,10 @@
-//! @file     DataOwner.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// DataOwner
-//----------------------------------------------------------------------------
-
+/// <summary>
+///	The reference keeper to restore value when end lifetime.
+/// </summary>
 template <typename Type>
 class DataOwner {
 private:
@@ -22,10 +15,6 @@ public:
 	DataOwner(Type& data);
 	~DataOwner();
 };
-
-//----------------------------------------------------------------------------
-// DataOwner Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type>
 DataOwner<Type>::DataOwner(Type& data)

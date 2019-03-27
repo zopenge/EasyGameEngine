@@ -1,17 +1,10 @@
-//! @file     Progression.h
-//! @author   LiCode
-//! @version  1.0.0.522
-//! @date     2011/01/05
-//! Copyright 2009-2010 LiCode's Union.
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Progression
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The progression range.
+/// </summary>
 template <typename Type>
 class Progression {
 public:
@@ -75,10 +68,6 @@ public:
 	//!	@return		True indicates it has completed.
 	_ubool HasCompleted() const;
 };
-
-//----------------------------------------------------------------------------
-// Progression Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type>
 Progression<Type>::Progression() {

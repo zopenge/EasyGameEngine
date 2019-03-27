@@ -1,25 +1,10 @@
-//! @file     Stack.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Stack
-//----------------------------------------------------------------------------
-
-//! This class is template container class, represents a stack.
-
-//! A stack allocates a buffer to store all elements, the buffer will auto enlarge to hold more elements.
-//! Each elements are adjacent in memory, can be accessed by index base from zero.<br>
-//! Template parameter "Type" defines the element type storaged in the stack.<br>
-//! Template parameter "Key" defines the comparable type of the element type.<br>
-//! For example, Stack< ClassA, _dword > defines a stack stores ClassA element, and access it
-//! by _dword, means ClassA has a overload operator with _dword ( ==, !=, > and < etc ), or it can convert to _dword.
+/// <summary>
+/// This class is template container class, represents a stack.
+/// </summary>
 template <typename Type, typename Key = Type>
 class Stack : public CountOf<> {
 public:
@@ -146,10 +131,6 @@ public:
 	//! @param		freememory	If free the memory used by array.
 	_void Clear(_ubool freememory = _false);
 };
-
-//----------------------------------------------------------------------------
-// Stack Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type, typename Key>
 Stack<Type, Key>::Stack(_dword number) {

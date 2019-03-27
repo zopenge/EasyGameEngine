@@ -1,17 +1,10 @@
-//! @file     CallbackFunc.h
-//! @author   LiCode
-//! @version  1.0.0.702
-//! @date     2011/02/15
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// CallbackFunc
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The callback function wrapper.
+/// </summary>
 template <typename FuncDecl, typename FuncReturnType, class ParamsType>
 class CallbackFunc {
 private:
@@ -110,10 +103,6 @@ public:
 	template <typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7>
 	FuncReturnType InvokeR(const T1& arg1, const T2& arg2, const T3& arg3, const T4& arg4, const T5& arg5, const T6& arg6, const T7& arg7) const;
 };
-
-//----------------------------------------------------------------------------
-// CallbackFunc Implementation
-//----------------------------------------------------------------------------
 
 template <typename FuncDecl, typename FuncReturnType, class ParamsType>
 CallbackFunc<FuncDecl, FuncReturnType, ParamsType>::CallbackFunc() {

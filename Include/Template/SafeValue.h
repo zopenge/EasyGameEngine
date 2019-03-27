@@ -1,17 +1,10 @@
-//! @file     SafeValue.h
-//! @author   foreven
-//! @version  1.0
-//! @date     2013.05.27
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// SafeValue
-//----------------------------------------------------------------------------
-
+/// <summary>
+///	The safe value to prevent HACKER to change value in memory.
+/// </summary>
 template <typename ToValueType, typename FromValueType, typename CodeType = _dword>
 class SafeValue {
 public:
@@ -51,9 +44,6 @@ public:
 	SafeValue& operator/=(const FromValueType& value);
 };
 
-//----------------------------------------------------------------------------
-// SafeValue Implementation
-//----------------------------------------------------------------------------
 template <typename ToValueType, typename FromValueType, typename CodeType>
 SafeValue<ToValueType, FromValueType, CodeType>::SafeValue()
     : mCode((CodeType)rand()), mValue(_null) {

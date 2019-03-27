@@ -1,24 +1,10 @@
-//! @file     Quadruple.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Quadruple
-//----------------------------------------------------------------------------
-
-//! This class is template container class, represents a 4-element structure.
-
-//! Template parameter "Type1" defines the first element type.<br>
-//! Template parameter "Type2" defines the second element type.<br>
-//! Template parameter "Type3" defines the third element type.<br>
-//! Template parameter "Type4" defines the fourth element type.<br>
-//! A comparision of quadruple only care about the first element type, the <b>Key<b> type.
+/// <summary>
+/// This class is template container class, represents a 4-element structure.
+/// </summary>
 template <typename Type1, typename Type2, typename Type3, typename Type4>
 class Quadruple {
 public:
@@ -38,10 +24,6 @@ public:
 	//! @param		none
 	Quadruple(const Type1& object1, const Type2& object2, const Type3& object3, const Type4& object4);
 };
-
-//----------------------------------------------------------------------------
-// Quadruple Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type1, typename Type2, typename Type3, typename Type4>
 Quadruple<Type1, Type2, Type3, Type4>::Quadruple() {

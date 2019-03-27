@@ -1,30 +1,23 @@
-//! @file     DependencyGraph.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// DependencyGraphEdge
-//----------------------------------------------------------------------------
-
+/// <summary>
+///	The edge for dependency graph.
+/// </summary>
 struct DependencyGraphEdge {
 	//!	The connection flag
-	enum _FLAG {
+	enum class Flag {
 		//!	Unknown connection
-		_CONNECTION_FLAG_UNKNOWN,
+		Unknown,
 		//! The prerequisite connection
-		_CONNECTION_FLAG_PREREQUISITE,
+		Prerequisite,
 		//! The subsequent connection
-		_CONNECTION_FLAG_SUBSEQUENT,
+		Subsequent,
 	};
 
 	//!	The connection flag
-	_FLAG mConnectionFlag;
+	Flag mConnectionFlag;
 	//!	The pass flag, true indicates we can pass this edge ( connection )
 	_ubool mCanPass;
 
@@ -47,49 +40,48 @@ struct DependencyGraphEdge {
 		return _true;
 	}
 
-	DependencyGraphEdge(_FLAG flag = _CONNECTION_FLAG_UNKNOWN, _ubool pass = _false)
+	DependencyGraphEdge(Flag flag = Flag::Unknown, _ubool pass = _false)
 	    : mConnectionFlag(flag), mCanPass(pass) {
 	}
 };
 
-//----------------------------------------------------------------------------
-// DependencyGraphNode
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The node of dependency graph.
+/// </summary>
 template <typename Type, typename Edge, typename Key>
 class DependencyGraphNode {
 public:
 	typedef GraphNode<DependencyGraphNode, Edge, Key> TGraphNodeType;
 	typedef Graph<DependencyGraphNode, Edge, Key> TGraphType;
-	typedef typename TGraphType::TGraphNode::ConnectionMap::Iterator ConnectionIt;
+	typedef typename TGraphType::TGraphNode::ConnectionMap::Iterator ConnectionIterator;
 	typedef typename TGraphNodeType::ConnectionPair TConnectionPair;
-	typedef typename Edge::_FLAG ConnectionFlags;
+	typedef typename Edge::Flag EdgeFlag;
 
 public:
 	//!	The iterator of of dependency-graph node's connection
 	struct ConnectionIterator {
-		//!	The enumeration flag
-		ConnectionFlags mEnumFlag;
+		//!	The edge flag
+		EdgeFlag mEdgeFlag;
 		//!	The connection iterator
-		ConnectionIt mConnectionIt;
+		ConnectionIterator mConnectionIterator;
 		//!	The graph-node
 		TGraphNodeType* mGraphNode;
 
 		//! Constructor, create an iterator of the node.
 		ConnectionIterator()
-		    : mEnumFlag(Edge::_CONNECTION_FLAG_UNKNOWN), mGraphNode(_null) {
+		    : mEdgeFlag(Edge::Unknown), mGraphNode(_null) {
 		}
 		//! Constructor, create an iterator of the node.
-		ConnectionIterator(ConnectionFlags enumflag, const ConnectionIt& connection_it, TGraphNodeType* graph_node)
-		    : mEnumFlag(enumflag), mConnectionIt(connection_it), mGraphNode(graph_node) {
+		ConnectionIterator(EdgeFlag edge_flag, const ConnectionIterator& connection_it, TGraphNodeType* graph_node)
+		    : mEdgeFlag(edge_flag), mConnectionIterator(connection_it), mGraphNode(graph_node) {
 		}
 
 		//! Decrease the iterator, point to the previous node.
 		//! @param		none
 		_void operator--() {
 			// Find the node by enumeration flag
-			for (--mConnectionIt; mConnectionIt.IsValid(); mConnectionIt--) {
-				const Edge& edge = mConnectionIt.GetObject().mObject2;
+			for (--mConnectionIterator; mConnectionIterator.IsValid(); mConnectionIterator--) {
+				const Edge& edge = mConnectionIterator.GetObject().mObject2;
 
 				// Skip for the none-compatible connections
 				if (mEnumFlag != Edge::_CONNECTION_FLAG_UNKNOWN && edge.mConnectionFlag != mEnumFlag)
@@ -103,8 +95,8 @@ public:
 		//! @param		none
 		_void operator++() {
 			// Find the node by enumeration flag
-			for (++mConnectionIt; mConnectionIt.IsValid(); ++mConnectionIt) {
-				const Edge& edge = mConnectionIt.GetObject().mObject2;
+			for (++mConnectionIterator; mConnectionIterator.IsValid(); ++mConnectionIterator) {
+				const Edge& edge = mConnectionIterator.GetObject().mObject2;
 
 				// Skip for the none-compatible connections
 				if (mEnumFlag != Edge::_CONNECTION_FLAG_UNKNOWN && edge.mConnectionFlag != mEnumFlag)
@@ -126,46 +118,48 @@ public:
 
 		//! Type conversion, get the node.
 		TGraphNodeType* GetGraphNode() {
-			return mConnectionIt.GetObject().mObject1;
+			return mConnectionIterator.GetObject().mObject1;
 		}
 		//! Type conversion, get the node.
 		const TGraphNodeType* GetGraphNode() const {
-			return mConnectionIt.GetObject().mObject1;
+			return mConnectionIterator.GetObject().mObject1;
 		}
 
 		//!	Get the edge data.
 		Edge& GetEdgeData() {
-			return mConnectionIt.GetObject().mObject2;
+			return mConnectionIterator.GetObject().mObject2;
 		}
 		//!	Get the edge data.
 		const Edge& GetEdgeData() const {
-			return mConnectionIt.GetObject().mObject2;
+			return mConnectionIterator.GetObject().mObject2;
 		}
 
 		//!	Get the connection ID.
 		_dword GetConnectionID() const {
-			return mConnectionIt.GetKey();
+			return mConnectionIterator.GetKey();
 		}
 
 		//! Check the iterator if it is valid.
 		//! @param		none
 		//! @return		True if the iterator is valid, false otherwise.
 		_ubool IsValid() const {
-			return mConnectionIt.IsValid();
+			return mConnectionIterator.IsValid();
 		}
 	};
 
 public:
-	//!	The status
-	enum _STATUS {
-		_STATUS_SUSPEND,
-		_STATUS_PROCESSING,
-		_STATUS_FINISHED
+	/// <summary>
+	/// The status of node.
+	/// </summary>
+	enum class Status {
+		Suspend,
+		Processing,
+		Finished
 	};
 
 private:
 	//!	The status
-	_STATUS mStatus;
+	Status mStatus;
 	//!	The graph node
 	TGraphNodeType* mGraphNode;
 	//!	The element
@@ -178,15 +172,11 @@ private:
 
 public:
 	DependencyGraphNode()
-	    : mStatus(_STATUS_SUSPEND), mGraphNode(_null), mGraph(_null) {
+	    : mStatus(Status::Suspend), mGraphNode(_null), mGraph(_null) {
 	}
 	DependencyGraphNode(const Type& element, const Key& key, TGraphType* graph)
-	    : mStatus(_STATUS_SUSPEND), mGraphNode(_null), mElement(element), mKey(key), mGraph(graph) {
+	    : mStatus(Status::Suspend), mGraphNode(_null), mElement(element), mKey(key), mGraph(graph) {
 	}
-
-public:
-	EGE_GET_ACCESSOR_CONST(_STATUS, Status)
-	EGE_GET_ACCESSOR(TGraphNodeType*, GraphNode)
 
 public:
 	//!	Bind graph node
@@ -199,8 +189,8 @@ public:
 	}
 
 	//!	Get the connection iterator.
-	ConnectionIterator GetConnectionIterator(ConnectionFlags flags) const {
-		for (ConnectionIt it = mGraphNode->GetConnections().GetHeadIterator(); it.IsValid(); ++it) {
+	ConnectionIterator GetConnectionIterator(EdgeFlag flags) const {
+		for (ConnectionIterator it = mGraphNode->GetConnections().GetHeadIterator(); it.IsValid(); ++it) {
 			const Edge& edge_data = it.GetObject().mObject2;
 
 			if (edge_data.mConnectionFlag == flags)
@@ -211,11 +201,11 @@ public:
 	}
 	//!	Get the prerequisite iterator.
 	ConnectionIterator GetPrerequisiteIterator() const {
-		return GetConnectionIterator(Edge::_CONNECTION_FLAG_PREREQUISITE);
+		return GetConnectionIterator(EdgeFlag::Prerequisite);
 	}
 	//!	Get the subsequent iterator.
 	ConnectionIterator GetSubsequentIterator() const {
-		return GetConnectionIterator(Edge::_CONNECTION_FLAG_SUBSEQUENT);
+		return GetConnectionIterator(EdgeFlag::Subsequent);
 	}
 
 	//! Finished.
@@ -223,19 +213,19 @@ public:
 	//! @return		none.
 	_void Finished() {
 		// We finished this node ( passed )
-		mStatus = _STATUS_FINISHED;
+		mStatus = Status::Finished;
 	}
 	//!	Start.
 	//! @param		none.
 	//! @return		none.
 	_void Start() {
-		mStatus = _STATUS_PROCESSING;
+		mStatus = Status::Processing;
 	}
 	//!	Suspend.
 	//! @param		none.
 	//! @return		none.
 	_void Suspend() {
-		mStatus = _STATUS_SUSPEND;
+		mStatus = Status::Suspend;
 	}
 
 	//!	Get the prerequisite nodes number.
@@ -293,11 +283,11 @@ public:
 			EGE_ASSERT(node != _null);
 
 			// Get the node status
-			_STATUS status = node->GetElement().GetStatus();
-			EGE_ASSERT(status == _STATUS_SUSPEND || status == _STATUS_PROCESSING || status == _STATUS_FINISHED);
+			Status status = node->GetElement().GetStatus();
+			ASSERT(status == Status::Suspend || status == Status::Processing || status == Status::Finished);
 
 			// Check whether did we pass it or not
-			if (status != _STATUS_FINISHED)
+			if (status != Status::Finished)
 				return _false;
 		}
 
@@ -315,11 +305,11 @@ public:
 			EGE_ASSERT(node != _null);
 
 			// Get the node status
-			_STATUS status = node->GetElement().GetStatus();
-			EGE_ASSERT(status == _STATUS_SUSPEND || status == _STATUS_PROCESSING || status == _STATUS_FINISHED);
+			Status status = node->GetElement().GetStatus();
+			ASSERT(status == Status::Suspend || status == Status::Processing || status == Status::Finished);
 
 			// Check whether did we pass it or not
-			if (status != _STATUS_FINISHED)
+			if (status != Status::Finished)
 				return _false;
 		}
 
@@ -341,23 +331,12 @@ public:
 	}
 };
 
-//----------------------------------------------------------------------------
-// DependencyGraph
-//----------------------------------------------------------------------------
-
-//! This class is template container class, represents a dependency-graph.
+/// <summary>
+/// This class is template container class, represents a dependency-graph.
+/// </summary>
 template <typename Type, typename Edge, typename Key>
 class DependencyGraph {
 	NO_COPY_OPERATIONS(DependencyGraph)
-
-public:
-	//!	The remove flag
-	enum _REMOVE_FLAG {
-		//!	Auto connect all subsequent nodes to prerequisite nodes
-		_REMOVE_FLAG_AUTO_CONNECT,
-		//!	Remove all subsequent nodes also
-		_REMOVE_FLAG_ALL_SUBSEQUENT_NODES,
-	};
 
 public:
 	typedef DependencyGraph<Type, Edge, Key> TDependencyGraphType;
@@ -365,6 +344,7 @@ public:
 	typedef GraphNode<TDependencyGraphNode, Edge, Key> TGraphNodeType;
 	typedef Array<TDependencyGraphNode*> TDependencyGraphNodePtrArray;
 	typedef Graph<TDependencyGraphNode, Edge, Key> TGraphType;
+	typedef Edge::Flag EdgeFlag;
 
 public:
 	//! The iterator of graph class.
@@ -488,10 +468,10 @@ public:
 	//! @return		The graph node.
 	TDependencyGraphNode* AddNode(const Type& element, const Key& key);
 	//!	Remove node.
-	//! @param		key			The element key.
-	//! @param		flag		The remove flag.
+	//! @param		key				The element key.
+	//! @param		auto_connect	Auto connect all subsequent nodes to prerequisite nodes.
 	//! @return		True indicates removed successful.
-	_ubool RemoveNode(const Key& key, _REMOVE_FLAG flag);
+	_ubool RemoveNode(const Key& key, _ubool auto_connect = true);
 
 	//!	Get the node by key.
 	//! @param		key			The element key.
@@ -518,10 +498,6 @@ public:
 	//!	@return		none.
 	_void Clear();
 };
-
-//----------------------------------------------------------------------------
-// DependencyGraph Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type, typename Edge, typename Key>
 DependencyGraph<Type, Edge, Key>::DependencyGraph() {
@@ -639,16 +615,15 @@ DependencyGraphNode<Type, Edge, Key>* DependencyGraph<Type, Edge, Key>::AddNode(
 }
 
 template <typename Type, typename Edge, typename Key>
-_ubool DependencyGraph<Type, Edge, Key>::RemoveNode(const Key& key, _REMOVE_FLAG flag) {
+_ubool DependencyGraph<Type, Edge, Key>::RemoveNode(const Key& key, _ubool auto_connect) {
 	TDependencyGraphNode* node = GetNode(key);
 	EGE_ASSERT(node != _null);
 
 	// Remove it from none dependent nodes
 	mNoneDependentNodes.Remove(node);
 
-	switch (flag) {
 	// Remove it and auto connect all subsequent nodes to prerequisite nodes
-	case _REMOVE_FLAG_AUTO_CONNECT: {
+	if (auto_connect) {
 		// Get the prerequisite and subsequent iterators
 		typename TDependencyGraphNode::ConnectionIterator prerequisite_it = node->GetPrerequisiteIterator();
 		typename TDependencyGraphNode::ConnectionIterator subsequent_it = node->GetSubsequentIterator();
@@ -679,10 +654,9 @@ _ubool DependencyGraph<Type, Edge, Key>::RemoveNode(const Key& key, _REMOVE_FLAG
 
 		// Remove the specified node but skip to remove connections, because we have deal with that
 		mGraph.RemoveNode(key);
-	} break;
-
+	}
 	// Remove all subsequent nodes
-	case _REMOVE_FLAG_ALL_SUBSEQUENT_NODES: {
+	else {
 		// Get the subsequent iterator
 		typename TDependencyGraphNode::ConnectionIterator it = node->GetSubsequentIterator();
 
@@ -697,11 +671,6 @@ _ubool DependencyGraph<Type, Edge, Key>::RemoveNode(const Key& key, _REMOVE_FLAG
 
 		// Remove the specified node but skip to remove connections, because we have deal with that
 		mGraph.RemoveNode(key);
-	} break;
-
-	default:
-		EGE_ASSERT(0);
-		return _false;
 	}
 
 	return _true;
@@ -735,7 +704,7 @@ _ubool DependencyGraph<Type, Edge, Key>::ActiveNode(TDependencyGraphNode* node) 
 		return _false;
 
 	// We process this node ( passed )
-	if (node->GetStatus() == TDependencyGraphNode::_STATUS_SUSPEND)
+	if (node->GetStatus() == TDependencyGraphNode::Status::Suspend)
 		node->Start();
 
 	// All the subsequent connections can be pass
@@ -763,8 +732,8 @@ _void DependencyGraph<Type, Edge, Key>::AddPrerequisiteNode(TDependencyGraphNode
 		return;
 
 	// Add in/out-connections
-	node->GetGraphNode()->AddConnection(target_node->GetGraphNode(), Edge(Edge::_CONNECTION_FLAG_SUBSEQUENT, passed));
-	target_node->GetGraphNode()->AddConnection(node->GetGraphNode(), Edge(Edge::_CONNECTION_FLAG_PREREQUISITE, passed));
+	node->GetGraphNode()->AddConnection(target_node->GetGraphNode(), Edge(EdgeFlag::Prerequisite, passed));
+	target_node->GetGraphNode()->AddConnection(node->GetGraphNode(), Edge(EdgeFlag::Subsequent, passed));
 
 	// Update none dependent nodes
 	if (target_node->AllDependencyFinished())
