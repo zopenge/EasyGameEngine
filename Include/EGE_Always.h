@@ -37,6 +37,8 @@
 // EasyGameEngine Basic Headers
 #include "EGE_Const.h"
 #include "EGE_Template.h"
+// EasyGameEngine Structure Headers
+#include "EGE_Struct.h"
 
 // Network OS Header
 #include "Platform/OS/NetworkOSHeader.h"

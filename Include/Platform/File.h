@@ -25,14 +25,14 @@ public:
 	//! @param none.
 	//! @return none.
 	_void Close();
-	//! Open (or create) a file.
-	//! @param filename  The name of the file to open (or to create).
-	//! @param createflag  Flag of how to create a file.
-	//! @param operateflag  Flag of how to operate a file, one of _FILE_OPERATION_FLAG.
-	//! @param shareflag  Flag of how to share the file with other processes, one of _FILE_SHARE_FLAG.
-	//! @param attributes  The attribute of file.
+	//! Create a file.
+	//! @param filename  The name of the file to create.
 	//! @return True indicates success, false indicates failure.
-	_ubool Open(WStringPtr filename, _FILE_CREATE_FLAG createflag, _dword operateflag, _dword shareflag = _FILE_SHARE_READ | _FILE_SHARE_WRITE, _dword attributes = 0);
+	_ubool Create(WStringPtr filename);
+	//! Open a file.
+	//! @param filename  The name of the file to open.
+	//! @return True indicates success, false indicates failure.
+	_ubool Open(WStringPtr filename);
 	//! Peek from a file.
 	//! @param buffer   Pointer to the buffer that receives the data read from the file.
 	//! @param size   Number of bytes to be read from the file.
@@ -159,7 +159,7 @@ public:
 	//! @param flag   The seek flag.
 	//! @param distance  Number of bytes to move.
 	//! @return The current offset of file pointer from begin.
-	_dword Seek(_SEEK flag, _int distance);
+	_dword Seek(Seek flag, _int distance);
 
 	//! Get the current offset of file pointer of the file.
 	//! @param none

@@ -1,30 +1,10 @@
-//! @file     Math.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-class Vector2;
-class Vector3;
-class Vector4;
-class Matrix3;
-class Quaternion;
-class EulerAngles;
-class Bounds;
-template <typename Type>
-class Rect;
-template <typename Type>
-class MemSegmentPtr;
-
-//----------------------------------------------------------------------------
-// Math
-//----------------------------------------------------------------------------
-
-//! This class provides many common mathematics functions.
+/// <summary>
+/// This class provides many common mathematics functions.
+/// </summary>
 class Math {
 public:
 	//! 0.0f
@@ -367,62 +347,6 @@ public:
 	//! @return The arctangent of valuey/valuex in the range -PI to PI
 	//! radians, or 0 if valuex is 0.
 	static _float Atan(_float valuey, _float valuex);
-
-	//! Convert Quaternion to EulerAngles ( use the standard quaternion
-	//! multiplication, rotate order is x->y->z ).
-	//! @param quaternion  The Quaternion.
-	//! @param angles   The EulerAngles.
-	//! @return none.
-	static _void Quaternion2EulerAngles(const Quaternion& quaternion,
-	                                    EulerAngles& angles);
-	//! Convert Matrix3 to EulerAngles.
-	//! @param matrix   The Matrix3.
-	//! @param angles   The EulerAngles.
-	//! @return none.
-	static _void Matrix2EulerAngles(const Matrix3& matrix, EulerAngles& angles);
-	//! Convert EulerAngles to Quaternion( use the standard quaternion
-	//! multiplication, rotate order is x->y->z ).
-	//! @param angles   The EulerAngles.
-	//! @param quaternion  The Quaternion.
-	//! @return none.
-	static _void EulerAngles2Quaternion(const EulerAngles& angles,
-	                                    Quaternion& quaternion);
-	//! Convert Matrix3 to Quaternion.
-	//! @param matrix   The Matrix3.
-	//! @param quaternion   The Quaternion.
-	//! @return none.
-	static _void Matrix2Quaternion(const Matrix3& matrix, Quaternion& quaternion);
-	//! Convert EulerAngles to Matrix3.
-	//! @param angles   The EulerAngles.
-	//! @param matrix   The Matrix3.
-	//! @return none.
-	static _void EulerAngles2Matrix(const EulerAngles& angles, Matrix3& matrix);
-	//! Convert Quaternion to Matrix3.
-	//! @param quaternion  The Quaternion.
-	//! @param matrix   The Matrix3.
-	//! @return none.
-	static _void Quaternion2Matrix(const Quaternion& quaternion, Matrix3& matrix);
-
-	//! Calculates the value from value1 lerp to value2.
-	//! @param vector1  Source value 1.
-	//! @param vector2  Target value 2.
-	//! @param alpha  The lerp alpha.
-	//! @return The result value of interpolation.
-	static Quaternion SLerpToValue(const Quaternion& src, const Quaternion& dst,
-	                               _float alpha);
-
-	//! Calculate Tangent by vertex position, normal and uv
-	//! @param index_buffer The index_buffer.
-	//! @param position_buffer The position buffer.
-	//! @param normal_buffer The normal buffer.
-	//! @param uv_buffer  The uv buffer.
-	//! @param ret_tangent_buffer The result tangent buffer.
-	static _void CalculateTangentByNormalUV(
-	    const MemSegmentPtr<_word>& index_buffer,
-	    const MemSegmentPtr<Vector3>& position_buffer,
-	    const MemSegmentPtr<Vector3>& normal_buffer,
-	    const MemSegmentPtr<Vector2>& uv_buffer,
-	    MemSegmentPtr<Vector4>& ret_tangent_buffer);
 };
 
 //----------------------------------------------------------------------------

@@ -249,13 +249,13 @@ inline Variable::Variable() {
 
 inline Variable::Variable(_boolean value) {
 	mType = _TYPE_ID_BOOLEAN;
-	mUnsignedValues[0] = EGE_BOOLEAN(value);
+	mUnsignedValues[0] = !!value;
 	mUnsignedValues[1] = 0;
 }
 
 inline Variable::Variable(_ubool value) {
 	mType = _TYPE_ID_BOOLEAN;
-	mUnsignedValues[0] = EGE_BOOLEAN(value);
+	mUnsignedValues[0] = !!value;
 	mUnsignedValues[1] = 0;
 }
 
@@ -359,18 +359,18 @@ inline _large Variable::ConvertToSignedValue() const {
 		return Platform::ConvertStringToLarge((const _charw*)mUnsignedValue, 10);
 	} else {
 		switch (mType) {
-		case _TYPE_ID_INT8:
-		case _TYPE_ID_INT16:
-		case _TYPE_ID_INT32:
-			return (_large)mSignedValues[0];
+			case _TYPE_ID_INT8:
+			case _TYPE_ID_INT16:
+			case _TYPE_ID_INT32:
+				return (_large)mSignedValues[0];
 
-		case _TYPE_ID_UINT8:
-		case _TYPE_ID_UINT16:
-		case _TYPE_ID_UINT32:
-			return (_large)mUnsignedValues[0];
+			case _TYPE_ID_UINT8:
+			case _TYPE_ID_UINT16:
+			case _TYPE_ID_UINT32:
+				return (_large)mUnsignedValues[0];
 
-		default:
-			return mSignedValue;
+			default:
+				return mSignedValue;
 		}
 	}
 }
@@ -385,18 +385,18 @@ inline _float Variable::ConvertToSignedValue() const {
 		return Platform::ConvertStringToFloat((const _charw*)mUnsignedValue);
 	} else {
 		switch (mType) {
-		case _TYPE_ID_INT8:
-		case _TYPE_ID_INT16:
-		case _TYPE_ID_INT32:
-			return (_float)mSignedValues[0];
+			case _TYPE_ID_INT8:
+			case _TYPE_ID_INT16:
+			case _TYPE_ID_INT32:
+				return (_float)mSignedValues[0];
 
-		case _TYPE_ID_UINT8:
-		case _TYPE_ID_UINT16:
-		case _TYPE_ID_UINT32:
-			return (_float)mUnsignedValues[0];
+			case _TYPE_ID_UINT8:
+			case _TYPE_ID_UINT16:
+			case _TYPE_ID_UINT32:
+				return (_float)mUnsignedValues[0];
 
-		default:
-			return (_float)mSignedValue;
+			default:
+				return (_float)mSignedValue;
 		}
 	}
 }
@@ -411,18 +411,18 @@ inline _double Variable::ConvertToSignedValue() const {
 		return Platform::ConvertStringToDouble((const _charw*)mUnsignedValue);
 	} else {
 		switch (mType) {
-		case _TYPE_ID_INT8:
-		case _TYPE_ID_INT16:
-		case _TYPE_ID_INT32:
-			return (_double)mSignedValues[0];
+			case _TYPE_ID_INT8:
+			case _TYPE_ID_INT16:
+			case _TYPE_ID_INT32:
+				return (_double)mSignedValues[0];
 
-		case _TYPE_ID_UINT8:
-		case _TYPE_ID_UINT16:
-		case _TYPE_ID_UINT32:
-			return (_double)mUnsignedValues[0];
+			case _TYPE_ID_UINT8:
+			case _TYPE_ID_UINT16:
+			case _TYPE_ID_UINT32:
+				return (_double)mUnsignedValues[0];
 
-		default:
-			return (_double)mSignedValue;
+			default:
+				return (_double)mSignedValue;
 		}
 	}
 }
@@ -454,18 +454,18 @@ inline _qword Variable::ConvertToUnsignedValue() const {
 		return Platform::ConvertStringToQword((const _charw*)mUnsignedValue, 10);
 	} else {
 		switch (mType) {
-		case _TYPE_ID_INT8:
-		case _TYPE_ID_INT16:
-		case _TYPE_ID_INT32:
-			return (_qword)mSignedValues[0];
+			case _TYPE_ID_INT8:
+			case _TYPE_ID_INT16:
+			case _TYPE_ID_INT32:
+				return (_qword)mSignedValues[0];
 
-		case _TYPE_ID_UINT8:
-		case _TYPE_ID_UINT16:
-		case _TYPE_ID_UINT32:
-			return (_qword)mUnsignedValues[0];
+			case _TYPE_ID_UINT8:
+			case _TYPE_ID_UINT16:
+			case _TYPE_ID_UINT32:
+				return (_qword)mUnsignedValues[0];
 
-		default:
-			return mUnsignedValue;
+			default:
+				return mUnsignedValue;
 		}
 	}
 }
@@ -473,9 +473,9 @@ inline _qword Variable::ConvertToUnsignedValue() const {
 template <>
 inline _boolean Variable::ConvertToUnsignedValue() const {
 	if (IsFloat()) {
-		return (_boolean)EGE_BOOLEAN(mFloatValues[0]);
+		return !!mFloatValues[0];
 	} else if (IsDouble()) {
-		return (_boolean)EGE_BOOLEAN(mDoubleValue);
+		return !!mDoubleValue;
 	} else if (IsString()) {
 		WStringPtr string = (const _charw*)mUnsignedValue;
 
@@ -484,7 +484,7 @@ inline _boolean Variable::ConvertToUnsignedValue() const {
 		else
 			return _false;
 	} else {
-		return EGE_BOOLEAN(mUnsignedValues[0]);
+		return !!mUnsignedValues[0];
 	}
 }
 
@@ -556,7 +556,7 @@ inline Variable::operator _void*() const {
 
 inline const Variable& Variable::operator=(_boolean value) {
 	mType = _TYPE_ID_BOOLEAN;
-	mUnsignedValues[0] = EGE_BOOLEAN(value);
+	mUnsignedValues[0] = !!value;
 	mUnsignedValues[1] = 0;
 
 	return *this;
@@ -564,7 +564,7 @@ inline const Variable& Variable::operator=(_boolean value) {
 
 inline const Variable& Variable::operator=(_ubool value) {
 	mType = _TYPE_ID_BOOLEAN;
-	mUnsignedValues[0] = EGE_BOOLEAN(value);
+	mUnsignedValues[0] = !!value;
 	mUnsignedValues[1] = 0;
 
 	return *this;
@@ -661,36 +661,36 @@ inline const Variable& Variable::operator=(const Variable& variable) {
 
 inline const Variable& Variable::operator++(_int) {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-	case _TYPE_ID_INT16:
-	case _TYPE_ID_INT32:
-		mSignedValues[0]++;
-		break;
+		case _TYPE_ID_INT8:
+		case _TYPE_ID_INT16:
+		case _TYPE_ID_INT32:
+			mSignedValues[0]++;
+			break;
 
-	case _TYPE_ID_INT64:
-		mSignedValue++;
-		break;
+		case _TYPE_ID_INT64:
+			mSignedValue++;
+			break;
 
-	case _TYPE_ID_UINT8:
-	case _TYPE_ID_UINT16:
-	case _TYPE_ID_UINT32:
-		mUnsignedValues[0]++;
-		break;
+		case _TYPE_ID_UINT8:
+		case _TYPE_ID_UINT16:
+		case _TYPE_ID_UINT32:
+			mUnsignedValues[0]++;
+			break;
 
-	case _TYPE_ID_UINT64:
-		mUnsignedValue++;
-		break;
+		case _TYPE_ID_UINT64:
+			mUnsignedValue++;
+			break;
 
-	case _TYPE_ID_FLOAT:
-		mFloatValues[0] = mFloatValues[0] + 1.0f;
-		break;
+		case _TYPE_ID_FLOAT:
+			mFloatValues[0] = mFloatValues[0] + 1.0f;
+			break;
 
-	case _TYPE_ID_DOUBLE:
-		mDoubleValue = mDoubleValue + 1.0;
-		break;
+		case _TYPE_ID_DOUBLE:
+			mDoubleValue = mDoubleValue + 1.0;
+			break;
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return *this;
@@ -698,36 +698,36 @@ inline const Variable& Variable::operator++(_int) {
 
 inline const Variable& Variable::operator--(_int) {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-	case _TYPE_ID_INT16:
-	case _TYPE_ID_INT32:
-		mSignedValues[0]--;
-		break;
+		case _TYPE_ID_INT8:
+		case _TYPE_ID_INT16:
+		case _TYPE_ID_INT32:
+			mSignedValues[0]--;
+			break;
 
-	case _TYPE_ID_INT64:
-		mSignedValue--;
-		break;
+		case _TYPE_ID_INT64:
+			mSignedValue--;
+			break;
 
-	case _TYPE_ID_UINT8:
-	case _TYPE_ID_UINT16:
-	case _TYPE_ID_UINT32:
-		mUnsignedValues[0]--;
-		break;
+		case _TYPE_ID_UINT8:
+		case _TYPE_ID_UINT16:
+		case _TYPE_ID_UINT32:
+			mUnsignedValues[0]--;
+			break;
 
-	case _TYPE_ID_UINT64:
-		mUnsignedValue--;
-		break;
+		case _TYPE_ID_UINT64:
+			mUnsignedValue--;
+			break;
 
-	case _TYPE_ID_FLOAT:
-		mFloatValues[0] = mFloatValues[0] - 1.0f;
-		break;
+		case _TYPE_ID_FLOAT:
+			mFloatValues[0] = mFloatValues[0] - 1.0f;
+			break;
 
-	case _TYPE_ID_DOUBLE:
-		mDoubleValue = mDoubleValue - 1.0;
-		break;
+		case _TYPE_ID_DOUBLE:
+			mDoubleValue = mDoubleValue - 1.0;
+			break;
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return *this;
@@ -735,48 +735,48 @@ inline const Variable& Variable::operator--(_int) {
 
 inline const Variable& Variable::operator+=(const Variable& variable) {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-		mSignedValues[0] += (_tiny)variable;
-		break;
+		case _TYPE_ID_INT8:
+			mSignedValues[0] += (_tiny)variable;
+			break;
 
-	case _TYPE_ID_INT16:
-		mSignedValues[0] += (_short)variable;
-		break;
+		case _TYPE_ID_INT16:
+			mSignedValues[0] += (_short)variable;
+			break;
 
-	case _TYPE_ID_INT32:
-		mSignedValues[0] += (_int)variable;
-		break;
+		case _TYPE_ID_INT32:
+			mSignedValues[0] += (_int)variable;
+			break;
 
-	case _TYPE_ID_INT64:
-		mSignedValue += (_large)variable;
-		break;
+		case _TYPE_ID_INT64:
+			mSignedValue += (_large)variable;
+			break;
 
-	case _TYPE_ID_UINT8:
-		mUnsignedValues[0] += (_byte)variable;
-		break;
+		case _TYPE_ID_UINT8:
+			mUnsignedValues[0] += (_byte)variable;
+			break;
 
-	case _TYPE_ID_UINT16:
-		mUnsignedValues[0] += (_word)variable;
-		break;
+		case _TYPE_ID_UINT16:
+			mUnsignedValues[0] += (_word)variable;
+			break;
 
-	case _TYPE_ID_UINT32:
-		mUnsignedValues[0] += (_dword)variable;
-		break;
+		case _TYPE_ID_UINT32:
+			mUnsignedValues[0] += (_dword)variable;
+			break;
 
-	case _TYPE_ID_UINT64:
-		mUnsignedValue += (_qword)variable;
-		break;
+		case _TYPE_ID_UINT64:
+			mUnsignedValue += (_qword)variable;
+			break;
 
-	case _TYPE_ID_FLOAT:
-		mFloatValues[0] = mFloatValues[0] + (_float)variable;
-		break;
+		case _TYPE_ID_FLOAT:
+			mFloatValues[0] = mFloatValues[0] + (_float)variable;
+			break;
 
-	case _TYPE_ID_DOUBLE:
-		mDoubleValue = mDoubleValue + (_double)variable;
-		break;
+		case _TYPE_ID_DOUBLE:
+			mDoubleValue = mDoubleValue + (_double)variable;
+			break;
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return *this;
@@ -784,48 +784,48 @@ inline const Variable& Variable::operator+=(const Variable& variable) {
 
 inline const Variable& Variable::operator-=(const Variable& variable) {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-		mSignedValues[0] -= (_tiny)variable;
-		break;
+		case _TYPE_ID_INT8:
+			mSignedValues[0] -= (_tiny)variable;
+			break;
 
-	case _TYPE_ID_INT16:
-		mSignedValues[0] -= (_short)variable;
-		break;
+		case _TYPE_ID_INT16:
+			mSignedValues[0] -= (_short)variable;
+			break;
 
-	case _TYPE_ID_INT32:
-		mSignedValues[0] -= (_int)variable;
-		break;
+		case _TYPE_ID_INT32:
+			mSignedValues[0] -= (_int)variable;
+			break;
 
-	case _TYPE_ID_INT64:
-		mSignedValue -= (_large)variable;
-		break;
+		case _TYPE_ID_INT64:
+			mSignedValue -= (_large)variable;
+			break;
 
-	case _TYPE_ID_UINT8:
-		mUnsignedValues[0] -= (_byte)variable;
-		break;
+		case _TYPE_ID_UINT8:
+			mUnsignedValues[0] -= (_byte)variable;
+			break;
 
-	case _TYPE_ID_UINT16:
-		mUnsignedValues[0] -= (_word)variable;
-		break;
+		case _TYPE_ID_UINT16:
+			mUnsignedValues[0] -= (_word)variable;
+			break;
 
-	case _TYPE_ID_UINT32:
-		mUnsignedValues[0] -= (_dword)variable;
-		break;
+		case _TYPE_ID_UINT32:
+			mUnsignedValues[0] -= (_dword)variable;
+			break;
 
-	case _TYPE_ID_UINT64:
-		mUnsignedValue -= (_qword)variable;
-		break;
+		case _TYPE_ID_UINT64:
+			mUnsignedValue -= (_qword)variable;
+			break;
 
-	case _TYPE_ID_FLOAT:
-		mFloatValues[0] = mFloatValues[0] - (_float)variable;
-		break;
+		case _TYPE_ID_FLOAT:
+			mFloatValues[0] = mFloatValues[0] - (_float)variable;
+			break;
 
-	case _TYPE_ID_DOUBLE:
-		mDoubleValue = mDoubleValue - (_double)variable;
-		break;
+		case _TYPE_ID_DOUBLE:
+			mDoubleValue = mDoubleValue - (_double)variable;
+			break;
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return *this;
@@ -833,48 +833,48 @@ inline const Variable& Variable::operator-=(const Variable& variable) {
 
 inline const Variable& Variable::operator*=(const Variable& variable) {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-		mSignedValues[0] *= (_tiny)variable;
-		break;
+		case _TYPE_ID_INT8:
+			mSignedValues[0] *= (_tiny)variable;
+			break;
 
-	case _TYPE_ID_INT16:
-		mSignedValues[0] *= (_short)variable;
-		break;
+		case _TYPE_ID_INT16:
+			mSignedValues[0] *= (_short)variable;
+			break;
 
-	case _TYPE_ID_INT32:
-		mSignedValues[0] *= (_int)variable;
-		break;
+		case _TYPE_ID_INT32:
+			mSignedValues[0] *= (_int)variable;
+			break;
 
-	case _TYPE_ID_INT64:
-		mSignedValue *= (_large)variable;
-		break;
+		case _TYPE_ID_INT64:
+			mSignedValue *= (_large)variable;
+			break;
 
-	case _TYPE_ID_UINT8:
-		mUnsignedValues[0] *= (_byte)variable;
-		break;
+		case _TYPE_ID_UINT8:
+			mUnsignedValues[0] *= (_byte)variable;
+			break;
 
-	case _TYPE_ID_UINT16:
-		mUnsignedValues[0] *= (_word)variable;
-		break;
+		case _TYPE_ID_UINT16:
+			mUnsignedValues[0] *= (_word)variable;
+			break;
 
-	case _TYPE_ID_UINT32:
-		mUnsignedValues[0] *= (_dword)variable;
-		break;
+		case _TYPE_ID_UINT32:
+			mUnsignedValues[0] *= (_dword)variable;
+			break;
 
-	case _TYPE_ID_UINT64:
-		mUnsignedValue *= (_qword)variable;
-		break;
+		case _TYPE_ID_UINT64:
+			mUnsignedValue *= (_qword)variable;
+			break;
 
-	case _TYPE_ID_FLOAT:
-		mFloatValues[0] = mFloatValues[0] * (_float)variable;
-		break;
+		case _TYPE_ID_FLOAT:
+			mFloatValues[0] = mFloatValues[0] * (_float)variable;
+			break;
 
-	case _TYPE_ID_DOUBLE:
-		mDoubleValue = mDoubleValue * (_double)variable;
-		break;
+		case _TYPE_ID_DOUBLE:
+			mDoubleValue = mDoubleValue * (_double)variable;
+			break;
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return *this;
@@ -882,48 +882,48 @@ inline const Variable& Variable::operator*=(const Variable& variable) {
 
 inline const Variable& Variable::operator/=(const Variable& variable) {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-		mSignedValues[0] /= (_tiny)variable;
-		break;
+		case _TYPE_ID_INT8:
+			mSignedValues[0] /= (_tiny)variable;
+			break;
 
-	case _TYPE_ID_INT16:
-		mSignedValues[0] /= (_short)variable;
-		break;
+		case _TYPE_ID_INT16:
+			mSignedValues[0] /= (_short)variable;
+			break;
 
-	case _TYPE_ID_INT32:
-		mSignedValues[0] /= (_int)variable;
-		break;
+		case _TYPE_ID_INT32:
+			mSignedValues[0] /= (_int)variable;
+			break;
 
-	case _TYPE_ID_INT64:
-		mSignedValue /= (_large)variable;
-		break;
+		case _TYPE_ID_INT64:
+			mSignedValue /= (_large)variable;
+			break;
 
-	case _TYPE_ID_UINT8:
-		mUnsignedValues[0] /= (_byte)variable;
-		break;
+		case _TYPE_ID_UINT8:
+			mUnsignedValues[0] /= (_byte)variable;
+			break;
 
-	case _TYPE_ID_UINT16:
-		mUnsignedValues[0] /= (_word)variable;
-		break;
+		case _TYPE_ID_UINT16:
+			mUnsignedValues[0] /= (_word)variable;
+			break;
 
-	case _TYPE_ID_UINT32:
-		mUnsignedValues[0] /= (_dword)variable;
-		break;
+		case _TYPE_ID_UINT32:
+			mUnsignedValues[0] /= (_dword)variable;
+			break;
 
-	case _TYPE_ID_UINT64:
-		mUnsignedValue /= (_qword)variable;
-		break;
+		case _TYPE_ID_UINT64:
+			mUnsignedValue /= (_qword)variable;
+			break;
 
-	case _TYPE_ID_FLOAT:
-		mFloatValues[0] = mFloatValues[0] / (_float)variable;
-		break;
+		case _TYPE_ID_FLOAT:
+			mFloatValues[0] = mFloatValues[0] / (_float)variable;
+			break;
 
-	case _TYPE_ID_DOUBLE:
-		mDoubleValue = mDoubleValue / (_double)variable;
-		break;
+		case _TYPE_ID_DOUBLE:
+			mDoubleValue = mDoubleValue / (_double)variable;
+			break;
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return *this;
@@ -931,40 +931,40 @@ inline const Variable& Variable::operator/=(const Variable& variable) {
 
 inline const Variable& Variable::operator&=(const Variable& variable) {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-		mSignedValues[0] &= (_tiny)variable;
-		break;
+		case _TYPE_ID_INT8:
+			mSignedValues[0] &= (_tiny)variable;
+			break;
 
-	case _TYPE_ID_INT16:
-		mSignedValues[0] &= (_short)variable;
-		break;
+		case _TYPE_ID_INT16:
+			mSignedValues[0] &= (_short)variable;
+			break;
 
-	case _TYPE_ID_INT32:
-		mSignedValues[0] &= (_int)variable;
-		break;
+		case _TYPE_ID_INT32:
+			mSignedValues[0] &= (_int)variable;
+			break;
 
-	case _TYPE_ID_INT64:
-		mSignedValue &= (_large)variable;
-		break;
+		case _TYPE_ID_INT64:
+			mSignedValue &= (_large)variable;
+			break;
 
-	case _TYPE_ID_UINT8:
-		mUnsignedValues[0] &= (_byte)variable;
-		break;
+		case _TYPE_ID_UINT8:
+			mUnsignedValues[0] &= (_byte)variable;
+			break;
 
-	case _TYPE_ID_UINT16:
-		mUnsignedValues[0] &= (_word)variable;
-		break;
+		case _TYPE_ID_UINT16:
+			mUnsignedValues[0] &= (_word)variable;
+			break;
 
-	case _TYPE_ID_UINT32:
-		mUnsignedValues[0] &= (_dword)variable;
-		break;
+		case _TYPE_ID_UINT32:
+			mUnsignedValues[0] &= (_dword)variable;
+			break;
 
-	case _TYPE_ID_UINT64:
-		mUnsignedValue &= (_qword)variable;
-		break;
+		case _TYPE_ID_UINT64:
+			mUnsignedValue &= (_qword)variable;
+			break;
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return *this;
@@ -972,40 +972,40 @@ inline const Variable& Variable::operator&=(const Variable& variable) {
 
 inline const Variable& Variable::operator|=(const Variable& variable) {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-		mSignedValues[0] |= (_tiny)variable;
-		break;
+		case _TYPE_ID_INT8:
+			mSignedValues[0] |= (_tiny)variable;
+			break;
 
-	case _TYPE_ID_INT16:
-		mSignedValues[0] |= (_short)variable;
-		break;
+		case _TYPE_ID_INT16:
+			mSignedValues[0] |= (_short)variable;
+			break;
 
-	case _TYPE_ID_INT32:
-		mSignedValues[0] |= (_int)variable;
-		break;
+		case _TYPE_ID_INT32:
+			mSignedValues[0] |= (_int)variable;
+			break;
 
-	case _TYPE_ID_INT64:
-		mSignedValue |= (_large)variable;
-		break;
+		case _TYPE_ID_INT64:
+			mSignedValue |= (_large)variable;
+			break;
 
-	case _TYPE_ID_UINT8:
-		mUnsignedValues[0] |= (_byte)variable;
-		break;
+		case _TYPE_ID_UINT8:
+			mUnsignedValues[0] |= (_byte)variable;
+			break;
 
-	case _TYPE_ID_UINT16:
-		mUnsignedValues[0] |= (_word)variable;
-		break;
+		case _TYPE_ID_UINT16:
+			mUnsignedValues[0] |= (_word)variable;
+			break;
 
-	case _TYPE_ID_UINT32:
-		mUnsignedValues[0] |= (_dword)variable;
-		break;
+		case _TYPE_ID_UINT32:
+			mUnsignedValues[0] |= (_dword)variable;
+			break;
 
-	case _TYPE_ID_UINT64:
-		mUnsignedValue |= (_qword)variable;
-		break;
+		case _TYPE_ID_UINT64:
+			mUnsignedValue |= (_qword)variable;
+			break;
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return *this;
@@ -1013,31 +1013,31 @@ inline const Variable& Variable::operator|=(const Variable& variable) {
 
 inline Variable Variable::operator-() const {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-	case _TYPE_ID_INT16:
-	case _TYPE_ID_INT32:
-		return -mSignedValues[0];
+		case _TYPE_ID_INT8:
+		case _TYPE_ID_INT16:
+		case _TYPE_ID_INT32:
+			return -mSignedValues[0];
 
-	case _TYPE_ID_INT64:
-		return -mSignedValue;
+		case _TYPE_ID_INT64:
+			return -mSignedValue;
 
-	case _TYPE_ID_UINT8:
-	case _TYPE_ID_UINT16:
-	case _TYPE_ID_UINT32:
-		return -(_int)mUnsignedValues[0];
+		case _TYPE_ID_UINT8:
+		case _TYPE_ID_UINT16:
+		case _TYPE_ID_UINT32:
+			return -(_int)mUnsignedValues[0];
 
-	case _TYPE_ID_UINT64:
-		return -(_large)mUnsignedValue;
-		break;
+		case _TYPE_ID_UINT64:
+			return -(_large)mUnsignedValue;
+			break;
 
-	case _TYPE_ID_FLOAT:
-		return -mFloatValues[0];
+		case _TYPE_ID_FLOAT:
+			return -mFloatValues[0];
 
-	case _TYPE_ID_DOUBLE:
-		return -mDoubleValue;
+		case _TYPE_ID_DOUBLE:
+			return -mDoubleValue;
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return Variable::cNull;
@@ -1045,41 +1045,41 @@ inline Variable Variable::operator-() const {
 
 inline _boolean Variable::operator<(const Variable& variable) const {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-		return mSignedValues[0] < (_tiny)variable;
+		case _TYPE_ID_INT8:
+			return mSignedValues[0] < (_tiny)variable;
 
-	case _TYPE_ID_INT16:
-		return mSignedValues[0] < (_short)variable;
+		case _TYPE_ID_INT16:
+			return mSignedValues[0] < (_short)variable;
 
-	case _TYPE_ID_INT32:
-		return mSignedValues[0] < (_int)variable;
+		case _TYPE_ID_INT32:
+			return mSignedValues[0] < (_int)variable;
 
-	case _TYPE_ID_INT64:
-		return mSignedValue < (_large)variable;
+		case _TYPE_ID_INT64:
+			return mSignedValue < (_large)variable;
 
-	case _TYPE_ID_UINT8:
-		return mUnsignedValues[0] < (_byte)variable;
+		case _TYPE_ID_UINT8:
+			return mUnsignedValues[0] < (_byte)variable;
 
-	case _TYPE_ID_UINT16:
-		return mUnsignedValues[0] < (_word)variable;
+		case _TYPE_ID_UINT16:
+			return mUnsignedValues[0] < (_word)variable;
 
-	case _TYPE_ID_UINT32:
-		return mUnsignedValues[0] < (_dword)variable;
+		case _TYPE_ID_UINT32:
+			return mUnsignedValues[0] < (_dword)variable;
 
-	case _TYPE_ID_UINT64:
-		return mUnsignedValue < (_qword)variable;
+		case _TYPE_ID_UINT64:
+			return mUnsignedValue < (_qword)variable;
 
-	case _TYPE_ID_FLOAT:
-		return mFloatValues[0] < (_float)variable;
+		case _TYPE_ID_FLOAT:
+			return mFloatValues[0] < (_float)variable;
 
-	case _TYPE_ID_DOUBLE:
-		return mDoubleValue < (_double)variable;
+		case _TYPE_ID_DOUBLE:
+			return mDoubleValue < (_double)variable;
 
-	case _TYPE_ID_WSTRING:
-		return GetString() < variable.GetString();
+		case _TYPE_ID_WSTRING:
+			return GetString() < variable.GetString();
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return _false;
@@ -1087,41 +1087,41 @@ inline _boolean Variable::operator<(const Variable& variable) const {
 
 inline _boolean Variable::operator<=(const Variable& variable) const {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-		return mSignedValues[0] <= (_tiny)variable;
+		case _TYPE_ID_INT8:
+			return mSignedValues[0] <= (_tiny)variable;
 
-	case _TYPE_ID_INT16:
-		return mSignedValues[0] <= (_short)variable;
+		case _TYPE_ID_INT16:
+			return mSignedValues[0] <= (_short)variable;
 
-	case _TYPE_ID_INT32:
-		return mSignedValues[0] <= (_int)variable;
+		case _TYPE_ID_INT32:
+			return mSignedValues[0] <= (_int)variable;
 
-	case _TYPE_ID_INT64:
-		return mSignedValue <= (_large)variable;
+		case _TYPE_ID_INT64:
+			return mSignedValue <= (_large)variable;
 
-	case _TYPE_ID_UINT8:
-		return mUnsignedValues[0] <= (_byte)variable;
+		case _TYPE_ID_UINT8:
+			return mUnsignedValues[0] <= (_byte)variable;
 
-	case _TYPE_ID_UINT16:
-		return mUnsignedValues[0] <= (_word)variable;
+		case _TYPE_ID_UINT16:
+			return mUnsignedValues[0] <= (_word)variable;
 
-	case _TYPE_ID_UINT32:
-		return mUnsignedValues[0] <= (_dword)variable;
+		case _TYPE_ID_UINT32:
+			return mUnsignedValues[0] <= (_dword)variable;
 
-	case _TYPE_ID_UINT64:
-		return mUnsignedValue <= (_qword)variable;
+		case _TYPE_ID_UINT64:
+			return mUnsignedValue <= (_qword)variable;
 
-	case _TYPE_ID_FLOAT:
-		return mFloatValues[0] <= (_float)variable;
+		case _TYPE_ID_FLOAT:
+			return mFloatValues[0] <= (_float)variable;
 
-	case _TYPE_ID_DOUBLE:
-		return mDoubleValue <= (_double)variable;
+		case _TYPE_ID_DOUBLE:
+			return mDoubleValue <= (_double)variable;
 
-	case _TYPE_ID_WSTRING:
-		return GetString() <= variable.GetString();
+		case _TYPE_ID_WSTRING:
+			return GetString() <= variable.GetString();
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return _false;
@@ -1129,41 +1129,41 @@ inline _boolean Variable::operator<=(const Variable& variable) const {
 
 inline _boolean Variable::operator==(const Variable& variable) const {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-		return mSignedValues[0] == (_tiny)variable;
+		case _TYPE_ID_INT8:
+			return mSignedValues[0] == (_tiny)variable;
 
-	case _TYPE_ID_INT16:
-		return mSignedValues[0] == (_short)variable;
+		case _TYPE_ID_INT16:
+			return mSignedValues[0] == (_short)variable;
 
-	case _TYPE_ID_INT32:
-		return mSignedValues[0] == (_int)variable;
+		case _TYPE_ID_INT32:
+			return mSignedValues[0] == (_int)variable;
 
-	case _TYPE_ID_INT64:
-		return mSignedValue == (_large)variable;
+		case _TYPE_ID_INT64:
+			return mSignedValue == (_large)variable;
 
-	case _TYPE_ID_UINT8:
-		return mUnsignedValues[0] == (_byte)variable;
+		case _TYPE_ID_UINT8:
+			return mUnsignedValues[0] == (_byte)variable;
 
-	case _TYPE_ID_UINT16:
-		return mUnsignedValues[0] == (_word)variable;
+		case _TYPE_ID_UINT16:
+			return mUnsignedValues[0] == (_word)variable;
 
-	case _TYPE_ID_UINT32:
-		return mUnsignedValues[0] == (_dword)variable;
+		case _TYPE_ID_UINT32:
+			return mUnsignedValues[0] == (_dword)variable;
 
-	case _TYPE_ID_UINT64:
-		return mUnsignedValue == (_qword)variable;
+		case _TYPE_ID_UINT64:
+			return mUnsignedValue == (_qword)variable;
 
-	case _TYPE_ID_FLOAT:
-		return mFloatValues[0] == (_float)variable;
+		case _TYPE_ID_FLOAT:
+			return mFloatValues[0] == (_float)variable;
 
-	case _TYPE_ID_DOUBLE:
-		return mDoubleValue == (_double)variable;
+		case _TYPE_ID_DOUBLE:
+			return mDoubleValue == (_double)variable;
 
-	case _TYPE_ID_WSTRING:
-		return GetString() == variable.GetString();
+		case _TYPE_ID_WSTRING:
+			return GetString() == variable.GetString();
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return _false;
@@ -1171,41 +1171,41 @@ inline _boolean Variable::operator==(const Variable& variable) const {
 
 inline _boolean Variable::operator!=(const Variable& variable) const {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-		return mSignedValues[0] != (_tiny)variable;
+		case _TYPE_ID_INT8:
+			return mSignedValues[0] != (_tiny)variable;
 
-	case _TYPE_ID_INT16:
-		return mSignedValues[0] != (_short)variable;
+		case _TYPE_ID_INT16:
+			return mSignedValues[0] != (_short)variable;
 
-	case _TYPE_ID_INT32:
-		return mSignedValues[0] != (_int)variable;
+		case _TYPE_ID_INT32:
+			return mSignedValues[0] != (_int)variable;
 
-	case _TYPE_ID_INT64:
-		return mSignedValue != (_large)variable;
+		case _TYPE_ID_INT64:
+			return mSignedValue != (_large)variable;
 
-	case _TYPE_ID_UINT8:
-		return mUnsignedValues[0] != (_byte)variable;
+		case _TYPE_ID_UINT8:
+			return mUnsignedValues[0] != (_byte)variable;
 
-	case _TYPE_ID_UINT16:
-		return mUnsignedValues[0] != (_word)variable;
+		case _TYPE_ID_UINT16:
+			return mUnsignedValues[0] != (_word)variable;
 
-	case _TYPE_ID_UINT32:
-		return mUnsignedValues[0] != (_dword)variable;
+		case _TYPE_ID_UINT32:
+			return mUnsignedValues[0] != (_dword)variable;
 
-	case _TYPE_ID_UINT64:
-		return mUnsignedValue != (_qword)variable;
+		case _TYPE_ID_UINT64:
+			return mUnsignedValue != (_qword)variable;
 
-	case _TYPE_ID_FLOAT:
-		return mFloatValues[0] != (_float)variable;
+		case _TYPE_ID_FLOAT:
+			return mFloatValues[0] != (_float)variable;
 
-	case _TYPE_ID_DOUBLE:
-		return mDoubleValue != (_double)variable;
+		case _TYPE_ID_DOUBLE:
+			return mDoubleValue != (_double)variable;
 
-	case _TYPE_ID_WSTRING:
-		return GetString() != variable.GetString();
+		case _TYPE_ID_WSTRING:
+			return GetString() != variable.GetString();
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return _false;
@@ -1213,41 +1213,41 @@ inline _boolean Variable::operator!=(const Variable& variable) const {
 
 inline _boolean Variable::operator>(const Variable& variable) const {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-		return mSignedValues[0] > (_tiny)variable;
+		case _TYPE_ID_INT8:
+			return mSignedValues[0] > (_tiny)variable;
 
-	case _TYPE_ID_INT16:
-		return mSignedValues[0] > (_short)variable;
+		case _TYPE_ID_INT16:
+			return mSignedValues[0] > (_short)variable;
 
-	case _TYPE_ID_INT32:
-		return mSignedValues[0] > (_int)variable;
+		case _TYPE_ID_INT32:
+			return mSignedValues[0] > (_int)variable;
 
-	case _TYPE_ID_INT64:
-		return mSignedValue > (_large)variable;
+		case _TYPE_ID_INT64:
+			return mSignedValue > (_large)variable;
 
-	case _TYPE_ID_UINT8:
-		return mUnsignedValues[0] > (_byte)variable;
+		case _TYPE_ID_UINT8:
+			return mUnsignedValues[0] > (_byte)variable;
 
-	case _TYPE_ID_UINT16:
-		return mUnsignedValues[0] > (_word)variable;
+		case _TYPE_ID_UINT16:
+			return mUnsignedValues[0] > (_word)variable;
 
-	case _TYPE_ID_UINT32:
-		return mUnsignedValues[0] > (_dword)variable;
+		case _TYPE_ID_UINT32:
+			return mUnsignedValues[0] > (_dword)variable;
 
-	case _TYPE_ID_UINT64:
-		return mUnsignedValue > (_qword)variable;
+		case _TYPE_ID_UINT64:
+			return mUnsignedValue > (_qword)variable;
 
-	case _TYPE_ID_FLOAT:
-		return mFloatValues[0] > (_float)variable;
+		case _TYPE_ID_FLOAT:
+			return mFloatValues[0] > (_float)variable;
 
-	case _TYPE_ID_DOUBLE:
-		return mDoubleValue > (_double)variable;
+		case _TYPE_ID_DOUBLE:
+			return mDoubleValue > (_double)variable;
 
-	case _TYPE_ID_WSTRING:
-		return GetString() > variable.GetString();
+		case _TYPE_ID_WSTRING:
+			return GetString() > variable.GetString();
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return _false;
@@ -1255,41 +1255,41 @@ inline _boolean Variable::operator>(const Variable& variable) const {
 
 inline _boolean Variable::operator>=(const Variable& variable) const {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-		return mSignedValues[0] >= (_tiny)variable;
+		case _TYPE_ID_INT8:
+			return mSignedValues[0] >= (_tiny)variable;
 
-	case _TYPE_ID_INT16:
-		return mSignedValues[0] >= (_short)variable;
+		case _TYPE_ID_INT16:
+			return mSignedValues[0] >= (_short)variable;
 
-	case _TYPE_ID_INT32:
-		return mSignedValues[0] >= (_int)variable;
+		case _TYPE_ID_INT32:
+			return mSignedValues[0] >= (_int)variable;
 
-	case _TYPE_ID_INT64:
-		return mSignedValue >= (_large)variable;
+		case _TYPE_ID_INT64:
+			return mSignedValue >= (_large)variable;
 
-	case _TYPE_ID_UINT8:
-		return mUnsignedValues[0] >= (_byte)variable;
+		case _TYPE_ID_UINT8:
+			return mUnsignedValues[0] >= (_byte)variable;
 
-	case _TYPE_ID_UINT16:
-		return mUnsignedValues[0] >= (_word)variable;
+		case _TYPE_ID_UINT16:
+			return mUnsignedValues[0] >= (_word)variable;
 
-	case _TYPE_ID_UINT32:
-		return mUnsignedValues[0] >= (_dword)variable;
+		case _TYPE_ID_UINT32:
+			return mUnsignedValues[0] >= (_dword)variable;
 
-	case _TYPE_ID_UINT64:
-		return mUnsignedValue >= (_qword)variable;
+		case _TYPE_ID_UINT64:
+			return mUnsignedValue >= (_qword)variable;
 
-	case _TYPE_ID_FLOAT:
-		return mFloatValues[0] >= (_float)variable;
+		case _TYPE_ID_FLOAT:
+			return mFloatValues[0] >= (_float)variable;
 
-	case _TYPE_ID_DOUBLE:
-		return mDoubleValue >= (_double)variable;
+		case _TYPE_ID_DOUBLE:
+			return mDoubleValue >= (_double)variable;
 
-	case _TYPE_ID_WSTRING:
-		return GetString() >= variable.GetString();
+		case _TYPE_ID_WSTRING:
+			return GetString() >= variable.GetString();
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return _false;
@@ -1297,41 +1297,41 @@ inline _boolean Variable::operator>=(const Variable& variable) const {
 
 inline _boolean Variable::operator&&(const Variable& variable) const {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-		return mSignedValues[0] && (_tiny)variable;
+		case _TYPE_ID_INT8:
+			return mSignedValues[0] && (_tiny)variable;
 
-	case _TYPE_ID_INT16:
-		return mSignedValues[0] && (_short)variable;
+		case _TYPE_ID_INT16:
+			return mSignedValues[0] && (_short)variable;
 
-	case _TYPE_ID_INT32:
-		return mSignedValues[0] && (_int)variable;
+		case _TYPE_ID_INT32:
+			return mSignedValues[0] && (_int)variable;
 
-	case _TYPE_ID_INT64:
-		return mSignedValue && (_large)variable;
+		case _TYPE_ID_INT64:
+			return mSignedValue && (_large)variable;
 
-	case _TYPE_ID_UINT8:
-		return mUnsignedValues[0] && (_byte)variable;
+		case _TYPE_ID_UINT8:
+			return mUnsignedValues[0] && (_byte)variable;
 
-	case _TYPE_ID_UINT16:
-		return mUnsignedValues[0] && (_word)variable;
+		case _TYPE_ID_UINT16:
+			return mUnsignedValues[0] && (_word)variable;
 
-	case _TYPE_ID_UINT32:
-		return mUnsignedValues[0] && (_dword)variable;
+		case _TYPE_ID_UINT32:
+			return mUnsignedValues[0] && (_dword)variable;
 
-	case _TYPE_ID_UINT64:
-		return mUnsignedValue && (_qword)variable;
+		case _TYPE_ID_UINT64:
+			return mUnsignedValue && (_qword)variable;
 
-	case _TYPE_ID_FLOAT:
-		return mFloatValues[0] && (_float)variable;
+		case _TYPE_ID_FLOAT:
+			return mFloatValues[0] && (_float)variable;
 
-	case _TYPE_ID_DOUBLE:
-		return mDoubleValue && (_double)variable;
+		case _TYPE_ID_DOUBLE:
+			return mDoubleValue && (_double)variable;
 
-	case _TYPE_ID_WSTRING:
-		return _true;
+		case _TYPE_ID_WSTRING:
+			return _true;
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return _false;
@@ -1339,41 +1339,41 @@ inline _boolean Variable::operator&&(const Variable& variable) const {
 
 inline _boolean Variable::operator||(const Variable& variable) const {
 	switch (mType) {
-	case _TYPE_ID_INT8:
-		return mSignedValues[0] || (_tiny)variable;
+		case _TYPE_ID_INT8:
+			return mSignedValues[0] || (_tiny)variable;
 
-	case _TYPE_ID_INT16:
-		return mSignedValues[0] || (_short)variable;
+		case _TYPE_ID_INT16:
+			return mSignedValues[0] || (_short)variable;
 
-	case _TYPE_ID_INT32:
-		return mSignedValues[0] || (_int)variable;
+		case _TYPE_ID_INT32:
+			return mSignedValues[0] || (_int)variable;
 
-	case _TYPE_ID_INT64:
-		return mSignedValue || (_large)variable;
+		case _TYPE_ID_INT64:
+			return mSignedValue || (_large)variable;
 
-	case _TYPE_ID_UINT8:
-		return mUnsignedValues[0] || (_byte)variable;
+		case _TYPE_ID_UINT8:
+			return mUnsignedValues[0] || (_byte)variable;
 
-	case _TYPE_ID_UINT16:
-		return mUnsignedValues[0] || (_word)variable;
+		case _TYPE_ID_UINT16:
+			return mUnsignedValues[0] || (_word)variable;
 
-	case _TYPE_ID_UINT32:
-		return mUnsignedValues[0] || (_dword)variable;
+		case _TYPE_ID_UINT32:
+			return mUnsignedValues[0] || (_dword)variable;
 
-	case _TYPE_ID_UINT64:
-		return mUnsignedValue || (_qword)variable;
+		case _TYPE_ID_UINT64:
+			return mUnsignedValue || (_qword)variable;
 
-	case _TYPE_ID_FLOAT:
-		return mFloatValues[0] || (_float)variable;
+		case _TYPE_ID_FLOAT:
+			return mFloatValues[0] || (_float)variable;
 
-	case _TYPE_ID_DOUBLE:
-		return mDoubleValue || (_double)variable;
+		case _TYPE_ID_DOUBLE:
+			return mDoubleValue || (_double)variable;
 
-	case _TYPE_ID_WSTRING:
-		return _true;
+		case _TYPE_ID_WSTRING:
+			return _true;
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return _false;
@@ -1393,7 +1393,7 @@ inline _boolean Variable::IsPointer() const {
 }
 
 inline _boolean Variable::IsString() const {
-	return EGE_BOOLEAN(mType & _TYPE_STRING);
+	return !!(mType & _TYPE_STRING);
 }
 
 inline _boolean Variable::IsFloat() const {
@@ -1405,15 +1405,15 @@ inline _boolean Variable::IsDouble() const {
 }
 
 inline _boolean Variable::IsNumber() const {
-	return EGE_BOOLEAN(mType & (_TYPE_INTEGER | _TYPE_FLOAT));
+	return !!(mType & (_TYPE_INTEGER | _TYPE_FLOAT));
 }
 
 inline _boolean Variable::IsInteger() const {
-	return EGE_BOOLEAN(mType & _TYPE_INTEGER);
+	return !!(mType & _TYPE_INTEGER);
 }
 
 inline _boolean Variable::IsSigned() const {
-	return EGE_BOOLEAN(mType & _TYPE_ID_SIGNED);
+	return !!(mType & _TYPE_ID_SIGNED);
 }
 
 inline _boolean Variable::IsZero() const {
@@ -1425,39 +1425,39 @@ inline WString Variable::ToString() const {
 	string[0] = 0;
 
 	switch (mType) {
-	case _TYPE_ID_INT8:
-	case _TYPE_ID_INT16:
-	case _TYPE_ID_INT32:
-		Platform::ConvertLongToString(mSignedValues[0], 10, string, 1024);
-		break;
+		case _TYPE_ID_INT8:
+		case _TYPE_ID_INT16:
+		case _TYPE_ID_INT32:
+			Platform::ConvertLongToString(mSignedValues[0], 10, string, 1024);
+			break;
 
-	case _TYPE_ID_INT64:
-		Platform::ConvertLargeToString(mSignedValue, 10, string, 1024);
-		break;
+		case _TYPE_ID_INT64:
+			Platform::ConvertLargeToString(mSignedValue, 10, string, 1024);
+			break;
 
-	case _TYPE_ID_UINT8:
-	case _TYPE_ID_UINT16:
-	case _TYPE_ID_UINT32:
-		Platform::ConvertLongToString(mUnsignedValues[0], 10, string, 1024);
-		break;
+		case _TYPE_ID_UINT8:
+		case _TYPE_ID_UINT16:
+		case _TYPE_ID_UINT32:
+			Platform::ConvertLongToString(mUnsignedValues[0], 10, string, 1024);
+			break;
 
-	case _TYPE_ID_UINT64:
-		Platform::ConvertQwordToString(mUnsignedValue, 10, string, 1024);
-		break;
+		case _TYPE_ID_UINT64:
+			Platform::ConvertQwordToString(mUnsignedValue, 10, string, 1024);
+			break;
 
-	case _TYPE_ID_FLOAT:
-		Platform::ConvertFloatToString(mFloatValues[0], string, 1024);
-		break;
+		case _TYPE_ID_FLOAT:
+			Platform::ConvertFloatToString(mFloatValues[0], string, 1024);
+			break;
 
-	case _TYPE_ID_DOUBLE:
-		Platform::ConvertDoubleToString(mDoubleValue, string, 1024);
-		break;
+		case _TYPE_ID_DOUBLE:
+			Platform::ConvertDoubleToString(mDoubleValue, string, 1024);
+			break;
 
-	case _TYPE_ID_WSTRING:
-		return GetString();
+		case _TYPE_ID_WSTRING:
+			return GetString();
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return string;

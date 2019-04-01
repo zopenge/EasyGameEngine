@@ -101,9 +101,6 @@
     <ClCompile Include="..\..\..\Source\Platform\Lock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Maths.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Matrix2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -387,6 +384,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\CallStackFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\Mathics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -809,6 +809,15 @@
       <Filter>Header Files\Template</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Template\MemSegmentPtr.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\EGE_Struct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Platform\Mathics.h">
+      <Filter>Header Files\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Line.h">
       <Filter>Header Files\Template</Filter>
     </ClInclude>
   </ItemGroup>

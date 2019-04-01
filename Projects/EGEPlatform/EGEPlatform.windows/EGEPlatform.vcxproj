@@ -183,6 +183,7 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Bounds.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\CallStackFrame.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Mathics.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\OrientedBox2D.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Box.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\CallStack\winCallStack.cpp" />
@@ -205,7 +206,6 @@
     <ClCompile Include="..\..\..\Source\Platform\Library.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Library\winLibrary.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Lock.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Maths.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Matrix2.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Matrix3.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Matrix3x4.cpp" />
@@ -285,6 +285,7 @@
     <ClInclude Include="..\..\..\Include\EGE_Config.h" />
     <ClInclude Include="..\..\..\Include\EGE_Const.h" />
     <ClInclude Include="..\..\..\Include\EGE_Platform.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Struct.h" />
     <ClInclude Include="..\..\..\Include\EGE_Template.h" />
     <ClInclude Include="..\..\..\Include\EGE_Typedef.h" />
     <ClInclude Include="..\..\..\Include\Platform\Bounds.h" />
@@ -293,6 +294,7 @@
     <ClInclude Include="..\..\..\Include\Platform\FPSTimer.h" />
     <ClInclude Include="..\..\..\Include\Platform\Interpolation.h" />
     <ClInclude Include="..\..\..\Include\Platform\IPAddress.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Mathics.h" />
     <ClInclude Include="..\..\..\Include\Platform\OrientedBox2D.h" />
     <ClInclude Include="..\..\..\Include\Platform\OS\ios\IOSHeaders.h" />
     <ClInclude Include="..\..\..\Include\Platform\OS\NetworkOSHeader.h" />
@@ -373,6 +375,7 @@
     <ClInclude Include="..\..\..\Include\Template\FixedArray.h" />
     <ClInclude Include="..\..\..\Include\Template\Graph.h" />
     <ClInclude Include="..\..\..\Include\Template\HashMap.h" />
+    <ClInclude Include="..\..\..\Include\Template\Line.h" />
     <ClInclude Include="..\..\..\Include\Template\Link.h" />
     <ClInclude Include="..\..\..\Include\Template\Map.h" />
     <ClInclude Include="..\..\..\Include\Template\MemPtr.h" />

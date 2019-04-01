@@ -8,21 +8,21 @@
 #define _EGE_PLATFORM_PCH_
 
 // Standard Files
-#include <math.h>
-#include <wchar.h>
 #include <cstdint>
 #include <limits>
+#include <math.h>
+#include <wchar.h>
 
 // CRT dbg Files
 #ifdef _PLATFORM_WINDOWS_
-#include "dbgint.h"
+#	include "dbgint.h"
 #endif
 
 // Nedmalloc Files On Windows Platform
 #ifdef _PLATFORM_WINDOWS_
-#define NO_NED_NAMESPACE
-#define NEDMALLOCDEPRECATED  // Disable deprecated warning for ned-malloc SDK
-#include "nedmalloc/nedmalloc.h"
+#	define NO_NED_NAMESPACE
+#	define NEDMALLOCDEPRECATED // Disable deprecated warning for ned-malloc SDK
+#	include "nedmalloc/nedmalloc.h"
 #endif
 
 extern "C" {
@@ -32,7 +32,7 @@ extern "C" {
 // pthread Files
 //#define USE_PTHREAD 1
 #if (USE_PTHREAD == 1)
-#include "pthread.h"
+#	include "pthread.h"
 #endif
 }
 
@@ -40,30 +40,30 @@ extern "C" {
 #if defined _PLATFORM_WINDOWS_
 
 // Windows Header Files
-#include "Platform/OS/windows/Win32Headers.h"
+#	include "Platform/OS/windows/Win32Headers.h"
 // System Files
-#include <dbghelp.h>
-#include <iptypes.h>
-#include <lm.h>
-#include <mmsystem.h>
-#include <objbase.h>
-#include <tlhelp32.h>
-#include <ws2tcpip.h>
+#	include <dbghelp.h>
+#	include <iptypes.h>
+#	include <lm.h>
+#	include <mmsystem.h>
+#	include <objbase.h>
+#	include <tlhelp32.h>
+#	include <ws2tcpip.h>
 // Redefined Windows Variables and Functions
-#include "Platform/OS/windows/Win32Macros.h"
+#	include "Platform/OS/windows/Win32Macros.h"
 
 // Libraries Files
-#pragma comment(lib, "version")
-#pragma comment(lib, "wininet")
-#pragma comment(lib, "netapi32")
-#pragma comment(lib, "winmm")
-#pragma comment(lib, "Iphlpapi")
-#pragma comment(lib, "ws2_32.lib")
+#	pragma comment(lib, "version")
+#	pragma comment(lib, "wininet")
+#	pragma comment(lib, "netapi32")
+#	pragma comment(lib, "winmm")
+#	pragma comment(lib, "Iphlpapi")
+#	pragma comment(lib, "ws2_32.lib")
 
 // Some rename functions
-#define strtoull _strtoui64
+#	define strtoull _strtoui64
 
-#if (USE_PTHREAD == 1)
+#	if (USE_PTHREAD == 1)
 typedef int (*__pthread_attr_init)(pthread_attr_t* attr);
 typedef int (*__pthread_create)(pthread_t* tid, const pthread_attr_t* attr,
                                 void*(PTW32_CDECL* start)(void*), void* arg);
@@ -88,68 +88,62 @@ extern __pthread_attr_setschedpolicy _pthread_attr_setschedpolicy;
 extern __pthread_attr_setschedparam _pthread_attr_setschedparam;
 extern __pthread_kill _pthread_kill;
 extern __pthread_join _pthread_join;
-#endif
-
-// Show skip assert dialog
-#define _SHOW_SKIP_ASSERT_DIALOG 1
+#	endif
 
 // IOS Platform
 #elif defined _PLATFORM_IOS_
 
 // Use pthread
-#ifndef USE_PTHREAD
-#define USE_PTHREAD 1
-#endif
+#	ifndef USE_PTHREAD
+#		define USE_PTHREAD 1
+#	endif
 
 // Foundation Files
-#ifdef __OBJC__
-#import <Availability.h>
-#import <Foundation/Foundation.h>
-#endif
+#	ifdef __OBJC__
+#		import <Availability.h>
+#		import <Foundation/Foundation.h>
+#	endif
 
 // System Files
-#import <dirent.h>
-#import <fcntl.h>
-#import <mach/mach.h>
-#import <pthread.h>
-#import <sys/mman.h>
-#import <sys/signal.h>
-#import <sys/stat.h>
-#import <sys/time.h>
-#import <sys/types.h>
-#import <unistd.h>
-#import <cerrno>
-
-// Show skip assert dialog
-#define _SHOW_SKIP_ASSERT_DIALOG 0
+#	import <cerrno>
+#	import <dirent.h>
+#	import <fcntl.h>
+#	import <mach/mach.h>
+#	import <pthread.h>
+#	import <sys/mman.h>
+#	import <sys/signal.h>
+#	import <sys/stat.h>
+#	import <sys/time.h>
+#	import <sys/types.h>
+#	import <unistd.h>
 
 // Android Platform
 #elif defined _PLATFORM_ANDROID_
 
 // Use pthread
-#ifndef USE_PTHREAD
-#define USE_PTHREAD 1
-#endif
+#	ifndef USE_PTHREAD
+#		define USE_PTHREAD 1
+#	endif
 
 // System Files
-#include <dirent.h>
-#include <fcntl.h>
-#include <pthread.h>
-#include <signal.h>
-#include <sys/stat.h>
-#include <sys/time.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include <cerrno>
+#	include <cerrno>
+#	include <dirent.h>
+#	include <fcntl.h>
+#	include <pthread.h>
+#	include <signal.h>
+#	include <sys/stat.h>
+#	include <sys/time.h>
+#	include <sys/wait.h>
+#	include <unistd.h>
 //	#include <locale.h>
 
 // NDK Files
-#include <android/asset_manager.h>
-#include <android/asset_manager_jni.h>
-#include <android/log.h>
+#	include <android/asset_manager.h>
+#	include <android/asset_manager_jni.h>
+#	include <android/log.h>
 
 // NDK-Tools Files
-#include "cpufeatures/cpu-features.h"
+#	include "cpufeatures/cpu-features.h"
 
 // Quit application
 extern "C" void QuitAndroidCurProcess();
@@ -166,25 +160,18 @@ extern "C" AAssetManager* GetAndroidAssetManager();
 // Check whether the debugger is present.
 extern "C" bool IsAndroidDebuggerPresent();
 // Enumerate resource files.
-extern "C" bool EnumAndroidResFiles(const wchar_t* sub_dir_name,
-                                    void* funcpointer, void* parameter);
-
-// Show skip assert dialog
-#define _SHOW_SKIP_ASSERT_DIALOG 0
+extern "C" bool EnumAndroidResFiles(const wchar_t* sub_dir_name, void* funcpointer, void* parameter);
 
 // OSX Platform
 #elif defined _PLATFORM_OSX_
 
 // Use static library to link pthread SDK
-#define PTW32_STATIC_LIB
+#	define PTW32_STATIC_LIB
 // Use pthread
-#ifndef USE_PTHREAD
-#define USE_PTHREAD 1
-#endif
-#include <pthread.h>
-
-// Show skip assert dialog
-#define _SHOW_SKIP_ASSERT_DIALOG 0
+#	ifndef USE_PTHREAD
+#		define USE_PTHREAD 1
+#	endif
+#	include <pthread.h>
 
 #endif
 
@@ -206,23 +193,23 @@ wchar_t* __ege_utow__(unsigned int value, wchar_t* result, int base);
 wchar_t* __ege_i64tow__(signed long long value, wchar_t* result, int base);
 wchar_t* __ege_u64tow__(unsigned long long value, wchar_t* result, int base);
 }
-#define itoa __ege_itoa__
-#define utoa __ege_utoa__
+#	define itoa __ege_itoa__
+#	define utoa __ege_utoa__
 
 #endif
 
 #if (USE_PTHREAD == 1)
-#define _pthread_attr_init pthread_attr_init
-#define _pthread_create pthread_create
-#define _pthread_detach pthread_detach
-#define _pthread_attr_setdetachstate pthread_attr_setdetachstate
-#define _pthread_attr_destroy pthread_attr_destroy
-#define _pthread_self pthread_self
-#define _pthread_attr_setschedpolicy pthread_attr_setschedpolicy
-#define _pthread_attr_setschedparam pthread_attr_setschedparam
-#define _pthread_kill pthread_kill
-#define _pthread_join pthread_join
-#define _pthread_setname_np pthread_setname_np
+#	define _pthread_attr_init pthread_attr_init
+#	define _pthread_create pthread_create
+#	define _pthread_detach pthread_detach
+#	define _pthread_attr_setdetachstate pthread_attr_setdetachstate
+#	define _pthread_attr_destroy pthread_attr_destroy
+#	define _pthread_self pthread_self
+#	define _pthread_attr_setschedpolicy pthread_attr_setschedpolicy
+#	define _pthread_attr_setschedparam pthread_attr_setschedparam
+#	define _pthread_kill pthread_kill
+#	define _pthread_join pthread_join
+#	define _pthread_setname_np pthread_setname_np
 #endif
 
 // Network OS Header
@@ -249,10 +236,15 @@ wchar_t* __ege_u64tow__(unsigned long long value, wchar_t* result, int base);
 #if defined _PLATFORM_IOS_
 
 // Objective-C Files
-#import "Platform/ios/NSPlatform.h"
-#ifdef __OBJC__
-#import "Platform/ios/NSMappedFile.h"
-#endif
+#	import "Platform/ios/NSPlatform.h"
+#	ifdef __OBJC__
+#		import "Platform/ios/NSMappedFile.h"
+#	endif
+
+// Some header files must be included after the namespace using declaration,
+// otherwise compile failed
+#	import <net/if_dl.h>
+#	import <sys/sysctl.h>
 
 #endif
 
@@ -260,23 +252,7 @@ namespace EGE {
 
 //! The main thread ID
 extern _thread_id gMainThreadID;
-//! The source file line info for skipping assert
-#if (_SHOW_SKIP_ASSERT_DIALOG == 1)
-extern WSrcFileLineInfoFixedArray gAssertSkipSrcFileLines;
-#endif
 
-}  // namespace EGE
+} // namespace EGE
 
-using namespace EGE;
-using namespace EGE::Events;
-
-#if defined _PLATFORM_IOS_
-
-// Some header files must be included after the namespace using declaration,
-// otherwise compile failed
-#import <net/if_dl.h>
-#import <sys/sysctl.h>
-
-#endif
-
-#endif  // _EGE_PLATFORM_PCH_
+#endif // _EGE_PLATFORM_PCH_

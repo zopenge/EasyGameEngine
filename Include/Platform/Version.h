@@ -211,37 +211,37 @@ _ubool Version::operator!=(const Version& version) const {
 }
 
 _ubool Version::operator>=(const Version& version) const {
-	COMPARE_BIG(mMajor, version.mMajor);
-	COMPARE_BIG(mMinor, version.mMinor);
-	COMPARE_BIG(mModified, version.mModified);
-	COMPARE_BIG(mBuildNumber, version.mBuildNumber);
+	EGE_COMPARE_BIG(mMajor, version.mMajor);
+	EGE_COMPARE_BIG(mMinor, version.mMinor);
+	EGE_COMPARE_BIG(mModified, version.mModified);
+	EGE_COMPARE_BIG(mBuildNumber, version.mBuildNumber);
 
 	return _true;
 }
 
 _ubool Version::operator<=(const Version& version) const {
-	COMPARE_LESS(mMajor, version.mMajor);
-	COMPARE_LESS(mMinor, version.mMinor);
-	COMPARE_LESS(mModified, version.mModified);
-	COMPARE_LESS(mBuildNumber, version.mBuildNumber);
+	EGE_COMPARE_LESS(mMajor, version.mMajor);
+	EGE_COMPARE_LESS(mMinor, version.mMinor);
+	EGE_COMPARE_LESS(mModified, version.mModified);
+	EGE_COMPARE_LESS(mBuildNumber, version.mBuildNumber);
 
 	return _true;
 }
 
 _ubool Version::operator>(const Version& version) const {
-	COMPARE_BIG(mMajor, version.mMajor);
-	COMPARE_BIG(mMinor, version.mMinor);
-	COMPARE_BIG(mModified, version.mModified);
-	COMPARE_BIG(mBuildNumber, version.mBuildNumber);
+	EGE_COMPARE_BIG(mMajor, version.mMajor);
+	EGE_COMPARE_BIG(mMinor, version.mMinor);
+	EGE_COMPARE_BIG(mModified, version.mModified);
+	EGE_COMPARE_BIG(mBuildNumber, version.mBuildNumber);
 
 	return _false;
 }
 
 _ubool Version::operator<(const Version& version) const {
-	COMPARE_LESS(mMajor, version.mMajor);
-	COMPARE_LESS(mMinor, version.mMinor);
-	COMPARE_LESS(mModified, version.mModified);
-	COMPARE_LESS(mBuildNumber, version.mBuildNumber);
+	EGE_COMPARE_LESS(mMajor, version.mMajor);
+	EGE_COMPARE_LESS(mMinor, version.mMinor);
+	EGE_COMPARE_LESS(mModified, version.mModified);
+	EGE_COMPARE_LESS(mBuildNumber, version.mBuildNumber);
 
 	return _false;
 }
@@ -264,20 +264,20 @@ AString Version::ToAString(_dword tags_number) const {
 	buffer[0] = 0;
 
 	switch (tags_number) {
-	case 1:
-		Platform::FormatStringBuffer(buffer, EGE_ARRAY_NUMBER(buffer), "%d", mMajor);
-		break;
-	case 2:
-		Platform::FormatStringBuffer(buffer, EGE_ARRAY_NUMBER(buffer), "%d.%d", mMajor, mMinor);
-		break;
-	case 3:
-		Platform::FormatStringBuffer(buffer, EGE_ARRAY_NUMBER(buffer), "%d.%d.%d", mMajor, mMinor, mModified);
-		break;
-	case 4:
-		Platform::FormatStringBuffer(buffer, EGE_ARRAY_NUMBER(buffer), "%d.%d.%d.%d", mMajor, mMinor, mModified, mBuildNumber);
-		break;
-	default:
-		break;
+		case 1:
+			Platform::FormatStringBuffer(buffer, EGE_ARRAY_NUMBER(buffer), "%d", mMajor);
+			break;
+		case 2:
+			Platform::FormatStringBuffer(buffer, EGE_ARRAY_NUMBER(buffer), "%d.%d", mMajor, mMinor);
+			break;
+		case 3:
+			Platform::FormatStringBuffer(buffer, EGE_ARRAY_NUMBER(buffer), "%d.%d.%d", mMajor, mMinor, mModified);
+			break;
+		case 4:
+			Platform::FormatStringBuffer(buffer, EGE_ARRAY_NUMBER(buffer), "%d.%d.%d.%d", mMajor, mMinor, mModified, mBuildNumber);
+			break;
+		default:
+			break;
 	}
 
 	return buffer;

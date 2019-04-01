@@ -119,9 +119,9 @@
 #endif
 
 #if defined(__GNUC__) && !defined(__CC_ARM) && !defined(__ARMCC__)
-#	define INTERNAL __attribute__((visibility("hidden")))
+#	define EGE_INTERNAL __attribute__((visibility("hidden")))
 #else
-#	define INTERNAL
+#	define EGE_INTERNAL
 #endif
 
 // A convenience MACRO to declare and assign values.
@@ -377,6 +377,18 @@ extern "C" void __ege__assert(const wchar_t* error, const wchar_t* filename, uns
 private:                              \
 	classname(const classname&);      \
 	const classname& operator=(const classname&);
+
+// Define a singleton instance creator/accessors.
+#define SINGLETON(c)                       \
+private:                                   \
+	EGE_INTERNAL c();                      \
+	EGE_INTERNAL ~c();                     \
+                                           \
+public:                                    \
+	EGE_INTERNAL static c& GetInstance() { \
+		static c s##c;                     \
+		return s##c;                       \
+	}
 
 // Define a referenced interface object type
 #define REF_OBJECT_DECL(c) \

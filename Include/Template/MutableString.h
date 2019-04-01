@@ -51,6 +51,9 @@ public:
 	//! Constructor, create a string only contains the terminal null.
 	//! @param		none
 	MutableString();
+	//! Constructor, create a string only contains the terminal null.
+	//! @param		none
+	MutableString(const CharType* string);
 	//! Copy-Constructor, create a string by copy another string object.
 	//! @param		string	The second string object.
 	//! @param		number		The number of characters to be copy.
@@ -73,6 +76,10 @@ public:
 	//! Copy the string from another one, and recreates memory to hold it.
 	//! @param		string		Pointer to a null-terminated string.
 	//! @return		The reference of current string.
+	MutableString& operator=(const CharType* string);
+	//! Copy the string from another one, and recreates memory to hold it.
+	//! @param		string		Pointer to a null-terminated string.
+	//! @return		The reference of current string.
 	MutableString& operator=(ConstStringType string);
 	//! Copy the string from another one, and recreates memory to hold it.
 	//! @param		string		The string object.
@@ -83,6 +90,10 @@ public:
 	//! @param		character	The character to be append.
 	//! @return		The reference of current string.
 	MutableString& operator+=(CharType character);
+	//! Append another string to the end of the current one.
+	//! @param		string		Pointer to a null-terminated string.
+	//! @return		The reference of current string.
+	MutableString& operator+=(const CharType* string);
 	//! Append another string to the end of the current one.
 	//! @param		string		Pointer to a null-terminated string.
 	//! @return		The reference of current string.
@@ -154,6 +165,129 @@ public:
 	_ubool operator<=(const MutableString& string) const;
 
 public:
+	//!	Get the encode type.
+	//!	@param		none.
+	//!	@return		The encode type.
+	Encoding GetEncodeType() const;
+
+	//! Get ID of the string.
+	//! @param		none.
+	//! @return		The ID of the string.
+	_dword GetID() const;
+
+	//! CharType conversion, get the const string pointer.
+	//! @param		none.
+	//! @return		The const string pointer.
+	const CharType* CStr() const;
+
+	//!	Convert the string to boolean.
+	//! @param		none.
+	//!	@return		The boolean value.
+	_boolean ToBool() const;
+	//!	Convert the string to signed 32-bits integer.
+	//! @param		radix		The base of value, which must be in the range 2每36.
+	//!	@return		The value in decimal.
+	_int ToLong(_dword radix) const;
+	//!	Convert the string to unsigned 32-bits integer.
+	//! @param		radix		The base of value, which must be in the range 2每36.
+	//!	@return		The value in decimal.
+	_dword ToDword(_dword radix) const;
+	//!	Convert the string to signed 64-bits integer.
+	//! @param		radix		The base of value, which must be in the range 2每36.
+	//!	@return		The value in decimal.
+	_large ToLarge(_dword radix) const;
+	//!	Convert the string to unsigned 64-bits integer.
+	//! @param		radix		The base of value, which must be in the range 2每36.
+	//!	@return		The value in decimal.
+	_qword ToQword(_dword radix) const;
+	//!	Convert the string to float.
+	//!	@param		none.
+	//!	@return		The value in floating point.
+	_float ToFloat() const;
+	//!	Convert the string to double.
+	//!	@param		none.
+	//!	@return		The value in floating point.
+	_double ToDouble() const;
+
+	//!	Check whether starts with specified character or not.
+	//! @param		character	The character to be searched.
+	//!	@param		ignorecase	True indicates case insensitive.
+	//!	@return		True indicates it starts with specified string.
+	_ubool StartsWith(CharType character, _ubool ignorecase = _false) const;
+	//!	Check whether starts with specified string or not.
+	//! @param		string		The substring to be searched.
+	//!	@param		ignorecase	True indicates case insensitive.
+	//!	@return		True indicates it starts with specified string.
+	_ubool StartsWith(const ConstStringType& string, _ubool ignorecase = _false) const;
+	//!	Check whether ends with specified character or not.
+	//! @param		character	The character to be searched.
+	//!	@param		ignorecase	True indicates case insensitive.
+	//!	@return		True indicates it starts with specified string.
+	_ubool EndsWith(CharType character, _ubool ignorecase = _false) const;
+	//!	Check whether ends with specified string or not.
+	//! @param		string		The substring to be searched.
+	//!	@param		ignorecase	True indicates case insensitive.
+	//!	@return		True indicates it starts with specified string.
+	_ubool EndsWith(const ConstStringType& string, _ubool ignorecase = _false) const;
+
+	//! Search a character in the string from left to right.
+	//! @param		character	The character to be searched.
+	//!	@param		ignorecase	True indicates case insensitive.
+	//! @return		The index of the first occurrence of the character or -1 indicates cant find.
+	_dword SearchL2R(CharType character, _ubool ignorecase = _false) const;
+	//! Search a character in the string from right to left.
+	//! @param		character	The character to be searched.
+	//!	@param		ignorecase	True indicates case insensitive.
+	//! @return		The index of the first occurrence of the character or -1 indicates cant find.
+	_dword SearchR2L(CharType character, _ubool ignorecase = _false) const;
+	//! Search a substring in the string from left to right.
+	//! @param		string		The substring to be searched.
+	//!	@param		ignorecase	True indicates case insensitive.
+	//!	@param		endindex	The end index of searching.
+	//! @return		The index of the first occurrence of the substring or -1 indicates cant find.
+	_dword SearchL2R(const ConstStringType& string, _ubool ignorecase = _false, _dword* endindex = _null) const;
+	//! Search a substring in the string from right to left.
+	//! @param		string		The substring to be searched.
+	//!	@param		ignorecase	True indicates case insensitive.
+	//!	@param		startindex	The start index of searching.
+	//! @return		The index of the first occurrence of the substring or -1 indicates cant find.
+	_dword SearchR2L(const ConstStringType& string, _ubool ignorecase = _false, _dword* startindex = _null) const;
+
+	//! Compare two strings
+	//! @param		string		The second string object.
+	//!	@param		ignorecase	True indicates case insensitive when compare.
+	//! @return		True indicates it's the same string.
+	_ubool IsEqual(const ConstStringType& string, _ubool ignorecase) const;
+	//! Compare two strings.
+	//! @param		string		The second string object.
+	//!	@param		ignorecase	True indicates case insensitive when compare.
+	//! @return		The lexicographic relation of two strings, -1, 0, 1.
+	_int Compare(const ConstStringType& string, _ubool ignorecase) const;
+	//! Compare		two strings with wildcards.
+	//! @param		string		The second string with wildcards.
+	//!	@param		ignorecase	True indicates case insensitive.
+	//! @return		True if the string meets the wildcard, false otherwise.
+	//!	@remarks	Wildcards must in the second string, otherwise it will be normal character.<br>
+	//!				<b>'*'</b> meets zero or more character.<br>
+	//!				<b>'?'</b> meets exactly one character.<br>
+	//!				'*' must not adjacent with other wildcards together, otherwise will get wrong result.
+	//!				For example, "Hello" will meets "He??o" or "H*o" or "*Hello".
+	_ubool CompareWildcard(const ConstStringType& string, _ubool ignorecase = _false) const;
+
+	//!	Check whether the string is empty or not.
+	//!	@param		none.
+	//!	@return		True indicates it's empty string.
+	_ubool IsEmpty() const;
+	//! Determine if string is empty, or looks like blank.
+	//! @param		none.
+	//! @return		True if blank, false otherwise.
+	_ubool IsBlank() const;
+	//! Determine the path is a full path or not, a full path will begin with "X:" or "\\"
+	//!	@param		none.
+	//! @return		True if full path, false otherwise.
+	_ubool IsFullpath() const;
+
+public:
 	//!	Convert to const null-terminated string.
 	//!	@param		none.
 	//!	@return		The const null-terminated string.
@@ -209,7 +343,7 @@ public:
 	_void Remove(_dword index, _dword number = -1);
 	//! Remove some characters by range.
 	//! @param		range	The range of string.
-	_void Remove(const DwordRange& range);
+	_void Remove(const Range<_dword>& range);
 
 	//! Search and replace all substring to another.
 	//! @param		srcstring	The substring to be searched.
@@ -354,12 +488,12 @@ public:
 	//!	@param		format		The format of string.
 	//!	@param		...			The optional arguments.
 	//! @return		none.
-	_void FormatStringByArguments(const CharType* format, ...);
+	_void Format(const CharType* format, ...);
 	//!	Format string.
 	//!	@param		format		The format of string.
 	//!	@param		arguments	The optional arguments.
 	//! @return		none.
-	_void FormatStringByVAList(const CharType* format, _va_list arguments);
+	_void FormatByVAList(const CharType* format, _va_list arguments);
 };
 
 //----------------------------------------------------------------------------
@@ -378,6 +512,20 @@ void MutableString<CharType, CharEncoding>::Init() {
 
 	static _dword sNull = 0;
 	mString = (const CharType*)&sNull;
+}
+
+template <typename CharType, Encoding CharEncoding>
+MutableString<CharType, CharEncoding>::MutableString(const CharType* string) {
+	if (string == _null || *string == 0) {
+		mLength = 0;
+		mSize = 0;
+	} else {
+		// Get the string length
+		mLength = Platform::StringLength(string);
+
+		// Create and copy the string buffer
+		CreateStringBuffer(string);
+	}
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -490,6 +638,33 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::op
 }
 
 template <typename CharType, Encoding CharEncoding>
+MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::operator=(const CharType* string) {
+	// Get the string length
+	mLength = Platform::StringLength(string);
+
+	// It's empty string
+	if (mLength == 0) {
+		if (mSize > 0)
+			this->mString[0] = 0;
+	}
+	// Create more memory if necessary
+	else if (mSize < mLength + 1) {
+		// Free the old string buffer
+		if (mSize > 0) {
+			delete[] this->mString;
+		}
+
+		// Create and copy the string buffer
+		CreateStringBuffer(string);
+	} else {
+		// Copy the string buffer
+		CopyStringBuffer(string);
+	}
+
+	return *this;
+}
+
+template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::operator=(ConstStringType string) {
 	// Get the string length
 	mLength = string.GetLength();
@@ -576,6 +751,16 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::op
 
 	// Set null-terminated
 	this->mString[mLength] = 0;
+
+	return *this;
+}
+
+template <typename CharType, Encoding CharEncoding>
+MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::operator+=(const CharType* string) {
+	if (string == _null || *string == 0)
+		return *this;
+
+	AppendStringBuffer(string, Platform::StringLength(string));
 
 	return *this;
 }
@@ -676,6 +861,137 @@ _ubool MutableString<CharType, CharEncoding>::operator>=(const MutableString& st
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::operator<=(const MutableString& string) const {
 	return Platform::CompareString(this->mString, string.CStr()) <= 0;
+}
+
+template <typename CharType, Encoding CharEncoding>
+Encoding MutableString<CharType, CharEncoding>::GetEncodeType() const {
+	return CharEncoding;
+}
+
+template <typename CharType, Encoding CharEncoding>
+_dword MutableString<CharType, CharEncoding>::GetID() const {
+	return CRC::BuildFromString(mString);
+}
+
+template <typename CharType, Encoding CharEncoding>
+const CharType* MutableString<CharType, CharEncoding>::CStr() const {
+	return mString;
+}
+
+template <typename CharType, Encoding CharEncoding>
+_boolean MutableString<CharType, CharEncoding>::ToBool() const {
+	return Platform::ConvertStringToBool(mString);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_int MutableString<CharType, CharEncoding>::ToLong(_dword radix) const {
+	return Platform::ConvertStringToLong(mString, radix);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_dword MutableString<CharType, CharEncoding>::ToDword(_dword radix) const {
+	return Platform::ConvertStringToDword(mString, radix);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_large MutableString<CharType, CharEncoding>::ToLarge(_dword radix) const {
+	return Platform::ConvertStringToLarge(mString, radix);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_qword MutableString<CharType, CharEncoding>::ToQword(_dword radix) const {
+	return Platform::ConvertStringToQword(mString, radix);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_float MutableString<CharType, CharEncoding>::ToFloat() const {
+	return Platform::ConvertStringToFloat(mString);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_double MutableString<CharType, CharEncoding>::ToDouble() const {
+	return Platform::ConvertStringToDouble(mString);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_ubool MutableString<CharType, CharEncoding>::StartsWith(CharType character, _ubool ignorecase) const {
+	return Platform::SearchL2R(mString, character, ignorecase) == 0;
+}
+
+template <typename CharType, Encoding CharEncoding>
+_ubool MutableString<CharType, CharEncoding>::StartsWith(const ConstStringType& string, _ubool ignorecase) const {
+	return Platform::SearchL2R(mString, string.CStr(), ignorecase, _null) == 0;
+}
+
+template <typename CharType, Encoding CharEncoding>
+_ubool MutableString<CharType, CharEncoding>::EndsWith(CharType character, _ubool ignorecase) const {
+	return Platform::SearchR2L(mString, character, ignorecase) == (this->GetLength() - 1);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_ubool MutableString<CharType, CharEncoding>::EndsWith(const ConstStringType& string, _ubool ignorecase) const {
+	_dword length1 = this->GetLength();
+	_dword length2 = string.GetLength();
+
+	// The compare string is larger than self
+	if (length2 > length1)
+		return _false;
+
+	// It's the same length, we compare the whole string
+	if (length2 == length1)
+		return *this == string;
+
+	return Platform::SearchR2L(mString, string.CStr(), ignorecase, _null) == (length1 - length2);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_dword MutableString<CharType, CharEncoding>::SearchL2R(CharType character, _ubool ignorecase) const {
+	return Platform::SearchL2R(mString, character);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_dword MutableString<CharType, CharEncoding>::SearchR2L(CharType character, _ubool ignorecase) const {
+	return Platform::SearchR2L(mString, character);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_dword MutableString<CharType, CharEncoding>::SearchL2R(const ConstStringType& string, _ubool ignorecase, _dword* endindex) const {
+	return Platform::SearchL2R(mString, string.CStr(), ignorecase, endindex);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_dword MutableString<CharType, CharEncoding>::SearchR2L(const ConstStringType& string, _ubool ignorecase, _dword* startindex) const {
+	return Platform::SearchR2L(mString, string.CStr(), ignorecase, startindex);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_ubool MutableString<CharType, CharEncoding>::IsEqual(const ConstStringType& string, _ubool ignorecase) const {
+	return Platform::CompareString(mString, string.CStr(), ignorecase) == 0;
+}
+
+template <typename CharType, Encoding CharEncoding>
+_int MutableString<CharType, CharEncoding>::Compare(const ConstStringType& string, _ubool ignorecase) const {
+	return Platform::CompareString(mString, string.CStr(), ignorecase);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_ubool MutableString<CharType, CharEncoding>::CompareWildcard(const ConstStringType& string, _ubool ignorecase) const {
+	return Platform::CompareWildcard(mString, string.CStr(), ignorecase);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_ubool MutableString<CharType, CharEncoding>::IsEmpty() const {
+	return mString[0] == 0;
+}
+
+template <typename CharType, Encoding CharEncoding>
+_ubool MutableString<CharType, CharEncoding>::IsBlank() const {
+	return Platform::IsBlank(mString);
+}
+
+template <typename CharType, Encoding CharEncoding>
+_ubool MutableString<CharType, CharEncoding>::IsFullpath() const {
+	return Platform::IsFullpath(mString);
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -882,7 +1198,7 @@ _void MutableString<CharType, CharEncoding>::Remove(_dword index, _dword number)
 }
 
 template <typename CharType, Encoding CharEncoding>
-_void MutableString<CharType, CharEncoding>::Remove(const DwordRange& range) {
+_void MutableString<CharType, CharEncoding>::Remove(const Range<_dword>& range) {
 	Remove(range.mStartIndex, range.GetLength());
 }
 
@@ -1065,7 +1381,7 @@ MutableString<CharType, CharEncoding> MutableString<CharType, CharEncoding>::Lef
 
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding> MutableString<CharType, CharEncoding>::RightSubString(CharType delimiter) const {
-	_dword index = TBaseClass::SearchR2L(delimiter);
+	_dword index = SearchR2L(delimiter);
 	if (index == -1)
 		return *this;
 
@@ -1074,7 +1390,7 @@ MutableString<CharType, CharEncoding> MutableString<CharType, CharEncoding>::Rig
 
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding> MutableString<CharType, CharEncoding>::RightSubString(ConstStringType delimiter) const {
-	_dword index = TBaseClass::SearchR2L(delimiter);
+	_dword index = SearchR2L(delimiter);
 	if (index == -1)
 		return *this;
 
@@ -1326,14 +1642,14 @@ MutableString<_charw, Encoding::Utf16>& MutableString<_charw, Encoding::Utf16>::
 }
 
 template <typename CharType, Encoding CharEncoding>
-_void MutableString<CharType, CharEncoding>::FormatStringByArguments(const CharType* format, ...) {
+_void MutableString<CharType, CharEncoding>::Format(const CharType* format, ...) {
 	BEGIN_VA_LIST(args, format);
-	FormatStringByVAList(format, args);
+	FormatByVAList(format, args);
 	END_VA_LIST(args);
 }
 
 template <typename CharType, Encoding CharEncoding>
-_void MutableString<CharType, CharEncoding>::FormatStringByVAList(const CharType* format, _va_list arguments) {
+_void MutableString<CharType, CharEncoding>::FormatByVAList(const CharType* format, _va_list arguments) {
 	mLength = Platform::GetFormatStringLength(format, arguments);
 
 	// Create more memory if necessary

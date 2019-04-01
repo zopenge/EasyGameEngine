@@ -8,54 +8,57 @@ namespace EGE {
 class Ratio {
 public:
 	/// <summary>
-	/// 默认值
+	/// The null ratio.
 	/// </summary>
 	static Ratio cNull;
 
 public:
 	/// <summary>
-	/// 缩放系数
+	/// The scale factor.
 	/// </summary>
 	_float scale;
 	/// <summary>
-	/// 基础缩放系数
+	/// The base scale factor.
 	/// </summary>
 	Vector2 baseSize;
 	/// <summary>
-	/// 以左上角为起点的偏移量
+	/// The offset from left-top.
 	/// </summary>
 	Vector2 offset;
 
 public:
 	/// <summary>
-	/// 默认构造
+	/// Constructor
 	/// </summary>
 	Ratio();
 	/// <summary>
-	///	默认拷贝构造
+	///	Copy constructor
 	/// </summary>
 	/// <param name="ratio">数据来源</param>
 	Ratio(const Ratio& ratio);
 	/// <summary>
-	/// 以宽高作为数据来源进行初始化
+	/// Construct from width and height
 	/// </summary>
-	/// <param name="size">宽高</param>
+	/// <param name="size">width and height</param>
 	Ratio(const Vector2& size);
 	/// <summary>
-	/// 以宽高作为数据来源进行初始化
+	/// Construct from width and height
 	/// </summary>
-	/// <param name="width">宽度</param>
-	/// <param name="height">高度</param>
+	/// <param name="width">width</param>
+	/// <param name="height">height</param>
 	Ratio(_float width, _float height);
 
 public:
 	/// <summary>
-	/// 获取缩放过后的
+	/// Get the scaled position.
 	/// </summary>
 	template <typename Type>
 	Vector2 getScaledPos(const Type& pos) const;
+	/// <summary>
+	/// Get the inversed original position.
+	/// </summary>
 	template <typename Type>
-	Vector2 InverseConvertPos(const Type& pos) const;
+	Vector2 getInversedScaledPos(const Type& pos) const;
 
 	_ubool operator==(const Ratio& ratio) const;
 	_ubool operator!=(const Ratio& ratio) const;
@@ -95,7 +98,7 @@ public:
 //----------------------------------------------------------------------------
 
 template <typename Type>
-Vector2 Ratio::ConvertPos(const Type& pos) const {
+Vector2 Ratio::getScaledPos(const Type& pos) const {
 	if (mScale > 0)
 		return Vector2(((_float)pos.x - mOffset.x) / mScale, ((_float)pos.y - mOffset.y) / mScale);
 	else
@@ -103,7 +106,7 @@ Vector2 Ratio::ConvertPos(const Type& pos) const {
 }
 
 template <typename Type>
-Vector2 Ratio::InverseConvertPos(const Type& pos) const {
+Vector2 Ratio::getInversedScaledPos(const Type& pos) const {
 	if (scale > 0)
 		return Vector2((_float)pos.x * scale + offset.x, (_float)pos.y * scale + offset.y);
 	else

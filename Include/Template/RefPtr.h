@@ -6,9 +6,9 @@ namespace EGE {
 /// The referenced pointer type with auto increase/decrease referenced count.
 /// </summary>
 template <typename Type>
-class RefPtr : public Ref<Type> {
+class RefPtr : public BaseRef<Type> {
 protected:
-	typedef Ref<Type> TBaseClass;
+	typedef BaseRef<Type> TBaseClass;
 
 public:
 	RefPtr();

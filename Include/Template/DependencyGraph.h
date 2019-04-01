@@ -53,7 +53,7 @@ class DependencyGraphNode {
 public:
 	typedef GraphNode<DependencyGraphNode, Edge, Key> TGraphNodeType;
 	typedef Graph<DependencyGraphNode, Edge, Key> TGraphType;
-	typedef typename TGraphType::TGraphNode::ConnectionMap::Iterator ConnectionIterator;
+	typedef typename TGraphType::TGraphNode::ConnectionMap::Iterator ConnectionMapIterator;
 	typedef typename TGraphNodeType::ConnectionPair TConnectionPair;
 	typedef typename Edge::Flag EdgeFlag;
 
@@ -63,7 +63,7 @@ public:
 		//!	The edge flag
 		EdgeFlag mEdgeFlag;
 		//!	The connection iterator
-		ConnectionIterator mConnectionIterator;
+		ConnectionMapIterator mConnectionMapIterator;
 		//!	The graph-node
 		TGraphNodeType* mGraphNode;
 
@@ -72,16 +72,16 @@ public:
 		    : mEdgeFlag(Edge::Unknown), mGraphNode(_null) {
 		}
 		//! Constructor, create an iterator of the node.
-		ConnectionIterator(EdgeFlag edge_flag, const ConnectionIterator& connection_it, TGraphNodeType* graph_node)
-		    : mEdgeFlag(edge_flag), mConnectionIterator(connection_it), mGraphNode(graph_node) {
+		ConnectionIterator(EdgeFlag edge_flag, const ConnectionMapIterator& connection_it, TGraphNodeType* graph_node)
+		    : mEdgeFlag(edge_flag), mConnectionMapIterator(connection_it), mGraphNode(graph_node) {
 		}
 
 		//! Decrease the iterator, point to the previous node.
 		//! @param		none
 		_void operator--() {
 			// Find the node by enumeration flag
-			for (--mConnectionIterator; mConnectionIterator.IsValid(); mConnectionIterator--) {
-				const Edge& edge = mConnectionIterator.GetObject().mObject2;
+			for (--mConnectionMapIterator; mConnectionMapIterator.IsValid(); mConnectionMapIterator--) {
+				const Edge& edge = mConnectionMapIterator.GetObject().mObject2;
 
 				// Skip for the none-compatible connections
 				if (mEnumFlag != Edge::_CONNECTION_FLAG_UNKNOWN && edge.mConnectionFlag != mEnumFlag)
@@ -95,8 +95,8 @@ public:
 		//! @param		none
 		_void operator++() {
 			// Find the node by enumeration flag
-			for (++mConnectionIterator; mConnectionIterator.IsValid(); ++mConnectionIterator) {
-				const Edge& edge = mConnectionIterator.GetObject().mObject2;
+			for (++mConnectionMapIterator; mConnectionMapIterator.IsValid(); ++mConnectionMapIterator) {
+				const Edge& edge = mConnectionMapIterator.GetObject().mObject2;
 
 				// Skip for the none-compatible connections
 				if (mEnumFlag != Edge::_CONNECTION_FLAG_UNKNOWN && edge.mConnectionFlag != mEnumFlag)
@@ -118,32 +118,32 @@ public:
 
 		//! Type conversion, get the node.
 		TGraphNodeType* GetGraphNode() {
-			return mConnectionIterator.GetObject().mObject1;
+			return mConnectionMapIterator.GetObject().mObject1;
 		}
 		//! Type conversion, get the node.
 		const TGraphNodeType* GetGraphNode() const {
-			return mConnectionIterator.GetObject().mObject1;
+			return mConnectionMapIterator.GetObject().mObject1;
 		}
 
 		//!	Get the edge data.
 		Edge& GetEdgeData() {
-			return mConnectionIterator.GetObject().mObject2;
+			return mConnectionMapIterator.GetObject().mObject2;
 		}
 		//!	Get the edge data.
 		const Edge& GetEdgeData() const {
-			return mConnectionIterator.GetObject().mObject2;
+			return mConnectionMapIterator.GetObject().mObject2;
 		}
 
 		//!	Get the connection ID.
 		_dword GetConnectionID() const {
-			return mConnectionIterator.GetKey();
+			return mConnectionMapIterator.GetKey();
 		}
 
 		//! Check the iterator if it is valid.
 		//! @param		none
 		//! @return		True if the iterator is valid, false otherwise.
 		_ubool IsValid() const {
-			return mConnectionIterator.IsValid();
+			return mConnectionMapIterator.IsValid();
 		}
 	};
 
@@ -344,7 +344,7 @@ public:
 	typedef GraphNode<TDependencyGraphNode, Edge, Key> TGraphNodeType;
 	typedef Array<TDependencyGraphNode*> TDependencyGraphNodePtrArray;
 	typedef Graph<TDependencyGraphNode, Edge, Key> TGraphType;
-	typedef Edge::Flag EdgeFlag;
+	typedef DependencyGraphEdge::Flag EdgeFlag;
 
 public:
 	//! The iterator of graph class.

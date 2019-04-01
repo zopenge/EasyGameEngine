@@ -36,14 +36,13 @@ const Color Color::cMagenta(0xFFFF00FF);
 const Color Color::cOrchid(0xFFDA70D6);
 const Color Color::cChocolate(0xFFD2691E);
 
-//! The int -> float convertion table
-static _float sInt2FloatConvertionTable[256];
+_float Color::sInt2FloatConvertionTable[256];
 
 class Int2FloatConvertionTableInit {
 public:
 	Int2FloatConvertionTableInit() {
-		for (_dword i = 0; i < EGE_ARRAY_NUMBER(sInt2FloatConvertionTable); i++)
-			sInt2FloatConvertionTable[i] = _float(i) / 255.0f;
+		for (_dword i = 0; i < EGE_ARRAY_NUMBER(Color::sInt2FloatConvertionTable); i++)
+			Color::sInt2FloatConvertionTable[i] = _float(i) / 255.0f;
 	}
 };
 

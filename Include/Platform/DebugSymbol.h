@@ -45,7 +45,7 @@ public:
 	//! @param call_stack   The callstack frame info.
 	//! @param max_frame_number The max frame number of callstack, -1 indicates unlimited.
 	//! @return The frame number of callstack.
-	static _dword StackWalk(_void* context, ASrcFileLineInfo* call_stack, _dword max_frame_number = -1);
+	static _dword StackWalk(_void* context, SymbolFileData* call_stack, _dword max_frame_number = -1);
 	//! Walk the callstack frame from specified context with callback function.
 	//! @param context   The context pointer.
 	//! @param funcpointer  The callstack frame callback function pointer.

@@ -7,6 +7,10 @@ namespace EGE {
 /// </summary>
 class Color {
 public:
+	//! The int -> float convertion table
+	static _float sInt2FloatConvertionTable[256];
+
+public:
 	//! Blue-component of the Color.
 	_byte b;
 	//! Green-component of the Color.
@@ -438,6 +442,7 @@ _ubool Color::IsNull() const {
 		return _false;
 	if (b != (_byte)0)
 		return _false;
+
 	return _true;
 }
 

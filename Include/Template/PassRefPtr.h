@@ -6,14 +6,14 @@ namespace EGE {
 /// The referenced pointer type without increase referenced count when construct
 /// </summary>
 template <typename Type>
-class PassRefPtr : public Ref<Type> {
+class PassRefPtr : public BaseRef<Type> {
 protected:
-	typedef Ref<Type> TBaseClass;
+	typedef BaseRef<Type> TBaseClass;
 
 protected:
 	//! We disable construct or copy from Ref< Type >
-	PassRefPtr(Ref<Type>);
-	PassRefPtr& operator=(const Ref<Type>&);
+	PassRefPtr(BaseRef<Type>);
+	PassRefPtr& operator=(const BaseRef<Type>&);
 
 public:
 	PassRefPtr();

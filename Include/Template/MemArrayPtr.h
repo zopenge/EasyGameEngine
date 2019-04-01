@@ -13,9 +13,9 @@ namespace EGE {
 //----------------------------------------------------------------------------
 
 template <typename Type>
-class MemArrayPtr : public MemPtrBase<Type> {
+class MemArrayPtr : public BaseMemPtr<Type> {
 protected:
-	typedef MemPtrBase<Type> TBaseClass;
+	typedef BaseMemPtr<Type> TBaseClass;
 
 protected:
 	//!	The number of elements

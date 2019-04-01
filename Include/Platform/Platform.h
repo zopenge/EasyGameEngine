@@ -41,19 +41,10 @@ public:
 	//! @return none.
 	static _void Finalize();
 
-	//! Get the platform type.
+	//! Get the OS data.
 	//! @param none.
-	//! @return The platform type.
-	static _PLATFORM_TYPE GetPlatformType();
-	//! Get the platform name.
-	//! @param none.
-	//! @return The platform type.
-	static const _charw* GetPlatformName();
-	//! Get the operation system version.
-	//! @param major The major version.
-	//! @param minor The minor version.
-	//! @return True indicates success false indicates failure.
-	static _ubool GetPlatformVersion(_dword& major, _dword& minor);
+	//! @return The OS data.
+	static const OSData& GetOSData();
 
 	//! Check whether it's embedded system or not.
 	//! @param none.
@@ -132,26 +123,14 @@ public:
 	//! Get the endian type.
 	//! @param none.
 	//! @return The endian type.
-	static _ENDIAN GetEndianType();
+	static Endian GetEndianType();
 
 	//! CPU
 public:
-	//! Get CPU number.
+	//! Get CPU data.
 	//! @param none.
-	//! @return The CPU number.
-	static _dword GetCPUNumber();
-	//! Get CPU family ID.
-	//! @param none.
-	//! @return The CPU family ID.
-	static _CPU_FAMILY GetCPUFamilyID();
-	//! Get CPU family name.
-	//! @param none.
-	//! @return The CPU family name.
-	static const _charw* GetCPUFamilyName();
-	//! Get CPU features.
-	//! @param none.
-	//! @return The CPU features, @see _CPU_FEATURES.
-	static _dword GetCPUFeatures();
+	//! @return The CPU data.
+	static const CPUData& GetCPUData();
 	//! Get current CPU usage.
 	//! @param none.
 	//! @return The current CPU usage in [0.0, 100.0].
@@ -274,14 +253,14 @@ public:
 	//! @return True indicates success false indicates failure.
 	static _ubool SetFileAttributes(const _charw* filename, _dword attributes);
 
-	//! Open (or create) a file.
-	//! @param filename  The name of the file to open (or to create).
-	//! @param createflag  Flag of how to create a file.
-	//! @param operateflag  Flag of how to operate a file, @see _FILE_OPERATION_FLAG.
-	//! @param shareflag  Flag of how to share the file with other processes, @see _FILE_SHARE_FLAG.
-	//! @param attributes  The attributes of file.
+	//! Create a file.
+	//! @param filename  The name of the file to create.
 	//! @return The file handle.
-	static _handle OpenFile(const _charw* filename, _FILE_CREATE_FLAG createflag, _dword operateflag, _dword shareflag, _dword attributes);
+	static _handle CreateFile(const _charw* filename);
+	//! Open a file.
+	//! @param filename  The name of the file to open.
+	//! @return The file handle.
+	static _handle OpenFile(const _charw* filename);
 	//! Close a file.
 	//! @param handle   The file handle.
 	//! @return none.
@@ -312,7 +291,7 @@ public:
 	//! @param flag   The seek flag.
 	//! @param distance  Number of bytes to move.
 	//! @return The current offset of file pointer from begin.
-	static _dword SeekFilePointer(_handle handle, _SEEK flag, _int distance);
+	static _dword SeekFilePointer(_handle handle, Seek flag, _int distance);
 
 	//! Get the size, in bytes, of the file.
 	//! @param handle   The file handle.
@@ -417,18 +396,15 @@ public:
 	//! @return True indicates success false indicates failure.
 	static _ubool GetDiskFreeSpace(const _charw* directory, _qword* freebytes, _qword* totalbytes);
 
-	//! Get the IO performance info.
+	//! Performance
+public:
+	//! Get the performance data.
 	//! @param info   The IO performance info.
 	//! @return none.
-	static _void GetIOPerformanceInfo(IOPerformanceInfo& info);
+	static _void GetPerformanceData(PerformanceData& data);
 
 	//! Language
 public:
-	//! Get local language ID.
-	//! @param none.
-	//! @return The local language ID.
-	static _LANG GetLocalLanguage();
-
 	//! Check whether character is vowel in Thai.
 	//! @param code  The character code.
 	//! @return True indicates it's vowel in Thai.
@@ -456,14 +432,14 @@ public:
 	//! Get the IP address by URL address.
 	//! @param url_address  The URL address.
 	//! @return The IP address.
-	static _DOMAIN_FAMILY_TYPE GetFamilyType(_dword port, const _chara* url_address);
+	static DomainFamilyType GetFamilyType(_dword port, const _chara* url_address);
 
 	//! Create socket.
 	//! @param families  The address families.
 	//! @param type   The socket type.
 	//! @param block_mode  True indicates it's block mode.
 	//! @return The socket handle.
-	static _socket CreateSocket(_DOMAIN_FAMILY_TYPE families, _SOCKET_TYPE type, _ubool block_mode);
+	static _socket CreateSocket(DomainFamilyType families, SocketType type, _ubool block_mode);
 	//! Create listened socket.
 	//! @param families    The address families.
 	//! @param type     The socket type.
@@ -471,7 +447,7 @@ public:
 	//! @param port     The bind port.
 	//! @param max_connection_number The max connections number.
 	//! @return The socket handle.
-	static _socket CreateListenedSocket(_DOMAIN_FAMILY_TYPE families, _SOCKET_TYPE type, _ubool block_mode, _dword port, _dword max_connection_number);
+	static _socket CreateListenedSocket(DomainFamilyType families, SocketType type, _ubool block_mode, _dword port, _dword max_connection_number);
 	//! Close socket.
 	//! @param handle   The socket handle.
 	//! @return none.
@@ -556,13 +532,12 @@ public:
 	//! Creates an instance of a named pipe and returns a handle for subsequent pipe operations.
 	//! @param name   The unique pipe name.
 	//! @param accessmode  The access mode.
-	//! @param mode   The pipe mode, @see _PIPE_TYPE.
 	//! @param maxnumber  The maximum number of instances that can be created for this pipe.
 	//! @param outbuffersize The number of bytes to reserve for the output buffer.
 	//! @param inbuffersize The number of bytes to reserve for the input  buffer.
 	//! @param timeout   The default time-out value, in milliseconds.
 	//! @return The pipe handle.
-	static _handle CreateNamedPipe(const _charw* name, _PIPE_ACCESS accessmode, _dword mode, _dword maxnumber, _dword outbuffersize, _dword inbuffersize, _dword timeout);
+	static _handle CreateNamedPipe(const _charw* name, _dword mode, _dword maxnumber, _dword outbuffersize, _dword inbuffersize, _dword timeout);
 	//! Enables a named pipe server process to wait for a client process to connect to an instance of a named pipe.
 	//! @param handle   The pipe handle.
 	//! @return True indicates success false indicates failure.
@@ -664,11 +639,6 @@ public:
 	//! @param name   The thread name.
 	//! @return True indicates success, false indicates failure.
 	static _ubool SetThreadName(_thread_id threadid, const _charw* name);
-	//! Set the priority value for the specified thread.
-	//! @param thread   A handle to the thread.
-	//! @param priority  The priority value for the thread.
-	//! @return True indicates success, false indicates failure.
-	static _ubool SetThreadPriority(_handle thread, _PRIORITY priority);
 	//! Suspends the specified thread.
 	//! @param thread   A handle to the thread.
 	//! @return True indicates success, false indicates failure.
@@ -1043,43 +1013,6 @@ public:
 	//! @param string  The string what you want to print.
 	//! @return none.
 	static _void WriteConsole(const _charw* string);
-
-	//! Clipboard
-public:
-	//! Open the clipboard.
-	//! @param none.
-	//! @return True indicates success false indicates failure.
-	static _ubool OpenClipboard();
-	//! Close the clipboard.
-	//! @param none.
-	//! @return none.
-	static _void CloseClipboard();
-
-	//! Open/Get data from clipboard.
-	//! @remark  Just feedback  the buffer data pointer without copy.
-	//! @param flag  The clipboard buffer data flag.
-	//! @return buffer  The clipboard buffer data pointer.
-	//! @param size  The clipboard buffer data size.
-	//! @return The clipboard buffer data handle.
-	static _handle GetClipboardData(_CLIPBOARD_FLAG flag, _byte*& pointer, _dword* size = _null);
-	//! Close data from clipboard.
-	//! @param pointer  The clipboard buffer data handle.
-	//! @return none.
-	static _void CloseClipboardData(_handle handle);
-
-	//! Read data from clipboard.
-	//! @param flag  The clipboard buffer data flag.
-	//! @param buffer  The clipboard buffer data.
-	//! @param size  The clipboard buffer size.
-	//! @return True indicates success false indicates failure.
-	static _ubool ReadClipboard(_CLIPBOARD_FLAG flag, _byte* buffer, _dword size);
-	//! Write data to clipboard.
-	//! @remark  This operation will clean and overwrite the clipboard previous data.
-	//! @param flag  The clipboard buffer data flag.
-	//! @param buffer  The clipboard buffer data.
-	//! @param size  The clipboard buffer size.
-	//! @return True indicates success false indicates failure.
-	static _ubool WriteClipboard(_CLIPBOARD_FLAG flag, const _void* buffer, _dword size);
 
 	//! Converter
 public:
@@ -1649,8 +1582,7 @@ template <class T1>
 _chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1) {
 	CHECK_ARG(1, p1);
 
-	_EGE_FORMAT_ASTRING_WITH_ARGUMENTS_1(p1);
-	return buffer;
+	return Platform::FormatStringByArguments(buffer, size, format, p1);
 }
 
 template <class T1, class T2>
@@ -1658,8 +1590,7 @@ _chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* 
 	CHECK_ARG(1, p1);
 	CHECK_ARG(2, p2);
 
-	_EGE_FORMAT_ASTRING_WITH_ARGUMENTS_2(p1, p2);
-	return buffer;
+	return Platform::FormatStringByArguments(buffer, size, format, p1, p2);
 }
 
 template <class T1, class T2, class T3>

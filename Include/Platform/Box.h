@@ -89,8 +89,4 @@ Box Box::operator*(const Transform3D& transform) const {
 	return returnbox *= transform;
 }
 
-void k() {
-	return 1;
-}
-
 } // namespace EGE
