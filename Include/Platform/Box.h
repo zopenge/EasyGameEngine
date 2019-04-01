@@ -1,20 +1,13 @@
-//! @file     Box.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Box
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The box.
+/// </summary>
 class Box {
 public:
-	static const Box cNullBox;
+	static const Box cNull;
 
 public:
 	Vector3 mVectors[8];
@@ -32,10 +25,6 @@ public:
 	Box& Expand(_float expand_size);
 	Vector3 GetCenter() const;
 };
-
-//----------------------------------------------------------------------------
-// Box Implementation
-//----------------------------------------------------------------------------
 
 Box::Box() {
 }

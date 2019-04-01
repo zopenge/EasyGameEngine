@@ -202,23 +202,23 @@ extern "C" void __ege__assert(const wchar_t* error, const wchar_t* filename, uns
 // Assert
 #if _ASSERT_ENABLE_ == 1
 #	ifndef _USE_STANDARD_ASSERT_
-#		define ASSERT(x)                                                \
+#		define EGE_ASSERT(x)                                            \
 			{                                                            \
 				if (!(x))                                                \
 					__ege__assert(_WIDEN(#x), _FILENAME_W, _LINENUMBER); \
 			}
-#		define ASSERT2(x, y)                                   \
+#		define EGE_ASSERT2(x, y)                               \
 			{                                                   \
 				if (!(x))                                       \
 					__ege__assert(y, _FILENAME_W, _LINENUMBER); \
 			}
 #	else
-#		define ASSERT(x)                \
+#		define EGE_ASSERT(x)            \
 			{                            \
 				if (!(x))                \
 					_DEFAULT_ASSERT(#x); \
 			}
-#		define ASSERT2(x, y)           \
+#		define EGE_ASSERT2(x, y)       \
 			{                           \
 				if (!(x))               \
 					_DEFAULT_ASSERT(y); \
@@ -226,33 +226,33 @@ extern "C" void __ege__assert(const wchar_t* error, const wchar_t* filename, uns
 #	endif
 
 #else
-#	define ASSERT(x) \
-		{             \
-		}
-#	define ASSERT2(x, y) \
+#	define EGE_ASSERT(x) \
 		{                 \
+		}
+#	define EGE_ASSERT2(x, y) \
+		{                     \
 		}
 #endif
 
 // Verify
 #if _VERIFY_ENABLE_ == 1
 #	ifndef _USE_STANDARD_ASSERT_
-#		define VERIFY(x)                                                \
+#		define EGE_VERIFY(x)                                            \
 			{                                                            \
 				if (!(x))                                                \
 					__ege__assert(_WIDEN(#x), _FILENAME_W, _LINENUMBER); \
 			}
 #	else
-#		define VERIFY(x)               \
+#		define EGE_VERIFY(x)           \
 			{                           \
 				if (!(x))               \
 					_DEFAULT_ASSERT(x); \
 			}
 #	endif
 #else
-#	define VERIFY(x) \
-		{             \
-			(x);      \
+#	define EGE_VERIFY(x) \
+		{                 \
+			(x);          \
 		}
 #endif
 
@@ -388,26 +388,26 @@ private:                              \
 	typedef RefOwner<c> c##RefOwner
 
 // Value combination
-#define MAKEWORD(a, b) ((_word)(((_byte)(((_dword)(a)) & 0xff)) | ((_word)((_byte)(((_dword)(b)) & 0xff))) << 8))
-#define MAKEDWORD(a, b) ((_dword)(((_word)(((_dword)(a)) & 0xffff)) | ((_dword)((_word)(((_dword)(b)) & 0xffff))) << 16))
-#define MAKEQWORD(a, b) ((_qword)(((_dword)(((_qword)(a)) & 0xffffffff)) | ((_qword)((_dword)(((_qword)(b)) & 0xffffffff))) << 32))
-#define LODWORD(l) ((_dword)(((_qword)(l)) & 0xffffffff))
-#define HIDWORD(l) ((_dword)((((_qword)(l)) >> 32) & 0xffffffff))
-#define LOWORD(l) ((_word)(((_dword)(l)) & 0xffff))
-#define HIWORD(l) ((_word)((((_dword)(l)) >> 16) & 0xffff))
-#define LOBYTE(w) ((_byte)(((_dword)(w)) & 0xff))
-#define HIBYTE(w) ((_byte)((((_dword)(w)) >> 8) & 0xff))
+#define EGE_MAKEWORD(a, b) ((_word)(((_byte)(((_dword)(a)) & 0xff)) | ((_word)((_byte)(((_dword)(b)) & 0xff))) << 8))
+#define EGE_MAKEDWORD(a, b) ((_dword)(((_word)(((_dword)(a)) & 0xffff)) | ((_dword)((_word)(((_dword)(b)) & 0xffff))) << 16))
+#define EGE_MAKEQWORD(a, b) ((_qword)(((_dword)(((_qword)(a)) & 0xffffffff)) | ((_qword)((_dword)(((_qword)(b)) & 0xffffffff))) << 32))
+#define EGE_LODWORD(l) ((_dword)(((_qword)(l)) & 0xffffffff))
+#define EGE_HIDWORD(l) ((_dword)((((_qword)(l)) >> 32) & 0xffffffff))
+#define EGE_LOWORD(l) ((_word)(((_dword)(l)) & 0xffff))
+#define EGE_HIWORD(l) ((_word)((((_dword)(l)) >> 16) & 0xffff))
+#define EGE_LOBYTE(w) ((_byte)(((_dword)(w)) & 0xff))
+#define EGE_HIBYTE(w) ((_byte)((((_dword)(w)) >> 8) & 0xff))
 
 // Build 32-bits ID ( example : PACK_ID( 'c', 'o', 'r', 'e' ) )
-#define PACK_ID(a, b, c, d) (((d) << 24) | ((c) << 16) | ((b) << 8) | (a))
+#define EGE_PACK_ID(a, b, c, d) (((d) << 24) | ((c) << 16) | ((b) << 8) | (a))
 // Pack two 16-bits to 32-bits
-#define PACK_DWORD(x, y) (((x) << 16) | (y))
+#define EGE_PACK_DWORD(x, y) (((x) << 16) | (y))
 // Unpack 32-bits to 16 bits
-#define UNPACK_DWORD_X(v) (((v) >> 16) & 0x0000FFFF)
-#define UNPACK_DWORD_Y(v) ((v)&0x0000FFFF)
+#define EGE_UNPACK_DWORD_X(v) (((v) >> 16) & 0x0000FFFF)
+#define EGE_UNPACK_DWORD_Y(v) ((v)&0x0000FFFF)
 
 // Free
-#define FREE(x)          \
+#define EGE_FREE(x)      \
 	{                    \
 		if ((x)) {       \
 			::free(x);   \
@@ -416,21 +416,21 @@ private:                              \
 	}
 
 // Delete
-#define DELETE(x)        \
+#define EGE_DELETE(x)    \
 	{                    \
 		if ((x)) {       \
 			delete (x);  \
 			(x) = _null; \
 		}                \
 	}
-#define DELETE_ARRAY(x)  \
-	{                    \
-		if ((x)) {       \
-			delete[](x); \
-			(x) = _null; \
-		}                \
+#define EGE_DELETE_ARRAY(x) \
+	{                       \
+		if ((x)) {          \
+			delete[](x);    \
+			(x) = _null;    \
+		}                   \
 	}
-#define RELEASE(x)          \
+#define EGE_RELEASE(x)      \
 	{                       \
 		if ((x)) {          \
 			(x)->Release(); \
@@ -439,53 +439,53 @@ private:                              \
 	}
 
 // Array
-#define INIT(x) memset(&x, 0, sizeof(x))
-#define INIT_ARRAY(x) memset(x, 0, sizeof(x))
-#define ARRAY_NUMBER(x) (sizeof(x) / sizeof(x[0]))
+#define EGE_INIT(x) memset(&x, 0, sizeof(x))
+#define EGE_INIT_ARRAY(x) memset(x, 0, sizeof(x))
+#define EGE_ARRAY_NUMBER(x) (sizeof(x) / sizeof(x[0]))
 
 // Ratio in percentage
-#define RATIO(num, total_num) (((_float)(num)) / ((_float)(total_num)))
-#define RATIO_D(num, total_num) (((_double)(num)) / ((_double)(total_num)))
+#define EGE_RATIO(num, total_num) (((_float)(num)) / ((_float)(total_num)))
+#define EGE_RATIO_D(num, total_num) (((_double)(num)) / ((_double)(total_num)))
 // Float -> Integer (Round)
-#define F2I_ROUND(x) ((_int)(((_float)(x)) > 0.0f ? (_float)(x) + 0.5f : (_float)(x)-0.5f))
+#define EGE_F2I_ROUND(x) ((_int)(((_float)(x)) > 0.0f ? (_float)(x) + 0.5f : (_float)(x)-0.5f))
 
 // Buffer Offset
-#define BUFFER_OFFSET(i) ((_byte*)_null + (i))
+#define EGE_BUFFER_OFFSET(i) ((_byte*)_null + (i))
 // This macro does basically the same thing as offsetof defined in stddef.h, 999 is a specific number to ignore the compiler warning
-#define OFFSET_OF(s, m) ((size_t)(&reinterpret_cast<s*>(999)->m) - 999)
+#define EGE_OFFSET_OF(s, m) ((size_t)(&reinterpret_cast<s*>(999)->m) - 999)
 
 // If x isn't DWORD aligned, this will evaluate to next highest DWORD boundary, otherwise evaluates to x
-#define ALIGN_UP32(x) ((((_dword)(x)) + 3) & 0xFFFFFFFC)
+#define EGE_ALIGN_UP32(x) ((((_dword)(x)) + 3) & 0xFFFFFFFC)
 
 // Color Conversion
-#define R5G6B5(r, g, b) (((((r) >> 3) & 0x1F) << 11) | ((((g) >> 2) & 0x3F) << 5) | (((b) >> 3) & 0x1F))
-#define R5G5B5A1(a, r, g, b) (((((r) >> 3) & 0x1F) << 11) | ((((g) >> 3) & 0x1F) << 6) | ((((b) >> 3) & 0x1F) << 1) | (((a) ? 1 : 0)))
-#define R4G4B4A4(a, r, g, b) (((((r) >> 4) & 0x0F) << 12) | ((((g) >> 4) & 0x0F) << 8) | ((((b) >> 4) & 0x0F) << 4) | (((a) >> 4) & 0x0F))
-#define A8G8(a, r, g, b) ((((a)&0xFF) << 8) | ((((r) + (g) + (b)) / 3) & 0xFF))
+#define EGE_R5G6B5(r, g, b) (((((r) >> 3) & 0x1F) << 11) | ((((g) >> 2) & 0x3F) << 5) | (((b) >> 3) & 0x1F))
+#define EGE_R5G5B5A1(a, r, g, b) (((((r) >> 3) & 0x1F) << 11) | ((((g) >> 3) & 0x1F) << 6) | ((((b) >> 3) & 0x1F) << 1) | (((a) ? 1 : 0)))
+#define EGE_R4G4B4A4(a, r, g, b) (((((r) >> 4) & 0x0F) << 12) | ((((g) >> 4) & 0x0F) << 8) | ((((b) >> 4) & 0x0F) << 4) | (((a) >> 4) & 0x0F))
+#define EGE_A8G8(a, r, g, b) ((((a)&0xFF) << 8) | ((((r) + (g) + (b)) / 3) & 0xFF))
 
 // Is ptr within the range: [base, base+size]
-#define PTR_IN_RANGE(ptr, base, size) (((_dword)(ptr) >= (_dword)(base)) && ((_dword)(ptr) < ((_dword)(base) + (_dword)(size))))
+#define EGE_PTR_IN_RANGE(ptr, base, size) (((_dword)(ptr) >= (_dword)(base)) && ((_dword)(ptr) < ((_dword)(base) + (_dword)(size))))
 
 // Compare two value
-#define COMPARE(f1, f2) \
+#define EGE_COMPARE(f1, f2) \
 	if ((f1) != (f2)) return ((f1) < (f2) ? -1 : 1)
-#define COMPARE_BIG(f1, f2) \
+#define EGE_COMPARE_BIG(f1, f2) \
 	if ((f1) != (f2)) return ((f1) > (f2) ? _true : _false)
-#define COMPARE_LESS(f1, f2) \
+#define EGE_COMPARE_LESS(f1, f2) \
 	if ((f1) != (f2)) return ((f1) < (f2) ? _true : _false)
 
 // Convert time interval structure info to integer value
-#define VALUE_TO_TIME(time_val, time)            \
+#define EGE_VALUE_TO_TIME(time_val, time)        \
 	{                                            \
 		time_val.tv_sec = time / 1000;           \
 		time_val.tv_usec = (time % 1000) * 1000; \
 	}
-#define TIME_TO_DWORD(time) ((_dword)(time.tv_sec * 1000.0 + (time.tv_usec / 1000.0)))
-#define TIME_TO_QWORD(time) ((_qword)(time.tv_sec * 1000.0 + (time.tv_usec / 1000.0)) & 0x00000000FFFFFFFFLL)
+#define EGE_TIME_TO_DWORD(time) ((_dword)(time.tv_sec * 1000.0 + (time.tv_usec / 1000.0)))
+#define EGE_TIME_TO_QWORD(time) ((_qword)(time.tv_sec * 1000.0 + (time.tv_usec / 1000.0)) & 0x00000000FFFFFFFFLL)
 
 // Convert time in milliseconds to seconds
-#define MS_TO_SEC(ms) (_time_t)((ms) / 1000ul)
-#define SEC_TO_MS(s) (_time_t)((s)*1000ul)
+#define EGE_MS_TO_SEC(ms) (_time_t)((ms) / 1000ul)
+#define EGE_SEC_TO_MS(s) (_time_t)((s)*1000ul)
 
 // Atom Platform Detection
 #if defined(_PLATFORM_WINDOWS_)
@@ -511,14 +511,14 @@ private:                              \
 #endif
 
 //!	Memory operations.
-#define MEM_SET(desbuffer, value, length) memset(desbuffer, value, length)
-#define MEM_CMP(buffer1, buffer2, length) memcmp(buffer1, buffer2, length)
-#define MEM_CPY(desbuffer, srcbuffer, length) memcpy(desbuffer, srcbuffer, length)
-#define MEM_MOVE(desbuffer, srcbuffer, length) memmove(desbuffer, srcbuffer, length)
+#define EGE_MEM_SET(desbuffer, value, length) memset(desbuffer, value, length)
+#define EGE_MEM_CMP(buffer1, buffer2, length) memcmp(buffer1, buffer2, length)
+#define EGE_MEM_CPY(desbuffer, srcbuffer, length) memcpy(desbuffer, srcbuffer, length)
+#define EGE_MEM_MOVE(desbuffer, srcbuffer, length) memmove(desbuffer, srcbuffer, length)
 
 // Character operations.
-#define TO_LOWER(c) tolower(c)
-#define TO_UPPER(c) toupper(c)
+#define EGE_TO_LOWER(c) tolower(c)
+#define EGE_TO_UPPER(c) toupper(c)
 
 // Here we make sure the 'wchar_t' is 2 bytes
 #ifdef _DEBUG

@@ -56,21 +56,21 @@ typedef Array<_double> DoubleArray;
 typedef Stack<_word> WordStack;
 typedef Stack<_dword> DwordStack;
 
-typedef RawString<_chara, _ENCODING_ANSI> ARawString;
-typedef RawString<_chara, _ENCODING_UTF8> URawString;
-typedef RawString<_charw, _ENCODING_UTF16> WRawString;
+typedef RawString<_chara, Encoding::Ansi> ARawString;
+typedef RawString<_chara, Encoding::Utf8> URawString;
+typedef RawString<_charw, Encoding::Utf16> WRawString;
 
-typedef ConstString<_chara, _ENCODING_ANSI> AStringPtr;
-typedef ConstString<_chara, _ENCODING_UTF8> UStringPtr;
-typedef ConstString<_charw, _ENCODING_UTF16> WStringPtr;
+typedef ConstString<_chara, Encoding::Ansi> AStringPtr;
+typedef ConstString<_chara, Encoding::Utf8> UStringPtr;
+typedef ConstString<_charw, Encoding::Utf16> WStringPtr;
 
-typedef MutableString<_chara, _ENCODING_ANSI> AString;
-typedef MutableString<_chara, _ENCODING_UTF8> UString;
-typedef MutableString<_charw, _ENCODING_UTF16> WString;
+typedef MutableString<_chara, Encoding::Ansi> AString;
+typedef MutableString<_chara, Encoding::Utf8> UString;
+typedef MutableString<_charw, Encoding::Utf16> WString;
 
-typedef MutableStringR<_chara, _ENCODING_ANSI> AStringR;
-typedef MutableStringR<_chara, _ENCODING_UTF8> UStringR;
-typedef MutableStringR<_charw, _ENCODING_UTF16> WStringR;
+typedef MutableStringR<_chara, Encoding::Ansi> AStringR;
+typedef MutableStringR<_chara, Encoding::Utf8> UStringR;
+typedef MutableStringR<_charw, Encoding::Utf16> WStringR;
 
 typedef Array<AString> AStringArray;
 typedef Array<UString> UStringArray;
@@ -209,7 +209,7 @@ inline _int CompareKeyInMap<WString>(const WString& key1, const WString& key2) {
 }
 
 template <>
-inline MutableString<_chara, _ENCODING_ANSI>& MutableString<_chara, _ENCODING_ANSI>::FormatBytes(_qword bytes) {
+inline MutableString<_chara, Encoding::Ansi>& MutableString<_chara, Encoding::Ansi>::FormatBytes(_qword bytes) {
 	if (bytes >= 1 GB)
 		Format("%3.2f GB", (_float)bytes / (_float)1 GB);
 	else if (bytes >= 1 MB)
@@ -221,7 +221,7 @@ inline MutableString<_chara, _ENCODING_ANSI>& MutableString<_chara, _ENCODING_AN
 }
 
 template <>
-inline MutableString<_chara, _ENCODING_UTF8>& MutableString<_chara, _ENCODING_UTF8>::FormatBytes(_qword bytes) {
+inline MutableString<_chara, Encoding::Utf8>& MutableString<_chara, Encoding::Utf8>::FormatBytes(_qword bytes) {
 	if (bytes >= 1 GB)
 		Format("%3.2f GB", (_float)bytes / (_float)1 GB);
 	else if (bytes >= 1 MB)
@@ -233,7 +233,7 @@ inline MutableString<_chara, _ENCODING_UTF8>& MutableString<_chara, _ENCODING_UT
 }
 
 template <>
-inline MutableString<_charw, _ENCODING_UTF16>& MutableString<_charw, _ENCODING_UTF16>::FormatBytes(_qword bytes) {
+inline MutableString<_charw, Encoding::Utf16>& MutableString<_charw, Encoding::Utf16>::FormatBytes(_qword bytes) {
 	if (bytes >= 1 GB)
 		Format(L"%3.2f GB", (_float)bytes / (_float)1 GB);
 	else if (bytes >= 1 MB)
@@ -245,7 +245,7 @@ inline MutableString<_charw, _ENCODING_UTF16>& MutableString<_charw, _ENCODING_U
 }
 
 template <>
-inline MutableString<_chara, _ENCODING_ANSI>& MutableString<_chara, _ENCODING_ANSI>::FormatCurrency(_qword currency) {
+inline MutableString<_chara, Encoding::Ansi>& MutableString<_chara, Encoding::Ansi>::FormatCurrency(_qword currency) {
 	// Max value 4294967295 => 4,294,967,295
 
 	_dword a = (_dword)(currency / 1000000000);
@@ -266,7 +266,7 @@ inline MutableString<_chara, _ENCODING_ANSI>& MutableString<_chara, _ENCODING_AN
 }
 
 template <>
-inline MutableString<_chara, _ENCODING_UTF8>& MutableString<_chara, _ENCODING_UTF8>::FormatCurrency(_qword currency) {
+inline MutableString<_chara, Encoding::Utf8>& MutableString<_chara, Encoding::Utf8>::FormatCurrency(_qword currency) {
 	// Max value 4294967295 => 4,294,967,295
 
 	_dword a = (_dword)(currency / 1000000000);
@@ -287,7 +287,7 @@ inline MutableString<_chara, _ENCODING_UTF8>& MutableString<_chara, _ENCODING_UT
 }
 
 template <>
-inline MutableString<_charw, _ENCODING_UTF16>& MutableString<_charw, _ENCODING_UTF16>::FormatCurrency(_qword currency) {
+inline MutableString<_charw, Encoding::Utf16>& MutableString<_charw, Encoding::Utf16>::FormatCurrency(_qword currency) {
 	// Max value 4294967295 => 4,294,967,295
 
 	_dword a = (_dword)(currency / 1000000000);
@@ -308,7 +308,7 @@ inline MutableString<_charw, _ENCODING_UTF16>& MutableString<_charw, _ENCODING_U
 }
 
 template <>
-inline MutableString<_chara, _ENCODING_ANSI>& MutableString<_chara, _ENCODING_ANSI>::FormatTime(_qword millisecond) {
+inline MutableString<_chara, Encoding::Ansi>& MutableString<_chara, Encoding::Ansi>::FormatTime(_qword millisecond) {
 	_dword hourunit = 60 * 60 * 1000, minuteunit = 60 * 1000, secondunit = 1000;
 
 	_dword hours = (_dword)(millisecond / hourunit);
@@ -321,7 +321,7 @@ inline MutableString<_chara, _ENCODING_ANSI>& MutableString<_chara, _ENCODING_AN
 }
 
 template <>
-inline MutableString<_chara, _ENCODING_UTF8>& MutableString<_chara, _ENCODING_UTF8>::FormatTime(_qword millisecond) {
+inline MutableString<_chara, Encoding::Utf8>& MutableString<_chara, Encoding::Utf8>::FormatTime(_qword millisecond) {
 	_dword hourunit = 60 * 60 * 1000, minuteunit = 60 * 1000, secondunit = 1000;
 
 	_dword hours = (_dword)(millisecond / hourunit);
@@ -334,7 +334,7 @@ inline MutableString<_chara, _ENCODING_UTF8>& MutableString<_chara, _ENCODING_UT
 }
 
 template <>
-inline MutableString<_charw, _ENCODING_UTF16>& MutableString<_charw, _ENCODING_UTF16>::FormatTime(_qword millisecond) {
+inline MutableString<_charw, Encoding::Utf16>& MutableString<_charw, Encoding::Utf16>::FormatTime(_qword millisecond) {
 	_dword hourunit = 60 * 60 * 1000, minuteunit = 60 * 1000, secondunit = 1000;
 
 	_dword hours = (_dword)(millisecond / hourunit);
@@ -349,8 +349,7 @@ inline MutableString<_charw, _ENCODING_UTF16>& MutableString<_charw, _ENCODING_U
 } // namespace EGE
 
 // Platform Files
-#include "Platform/Address.h"
-#include "Platform/AxisAlignedBox.h"
+#include "Platform/Bounds.h"
 #include "Platform/Box.h"
 #include "Platform/CallStack.h"
 #include "Platform/Camera.h"
@@ -368,6 +367,7 @@ inline MutableString<_charw, _ENCODING_UTF16>& MutableString<_charw, _ENCODING_U
 #include "Platform/FileSystem.h"
 #include "Platform/FlagsObject.h"
 #include "Platform/Frustum.h"
+#include "Platform/IPAddress.h"
 #include "Platform/Interpolation.h"
 #include "Platform/Intersection.h"
 #include "Platform/KernelObject.h"
@@ -550,7 +550,7 @@ template <>
 struct Compare<AStringPtr> : public BinaryFunction<AStringPtr, AStringPtr> {
 	//!	Process compare operation.
 	_int operator()(const AStringPtr& v1, const AStringPtr& v2) const {
-		return Platform::CompareString(v1.Str(), v2.Str());
+		return Platform::CompareString(v1.CStr(), v2.CStr());
 	}
 };
 
@@ -558,7 +558,7 @@ template <>
 struct NotCompare<AStringPtr> : public BinaryFunction<AStringPtr, AStringPtr> {
 	//!	Process compare operation.
 	_int operator()(const AStringPtr& v1, const AStringPtr& v2) const {
-		return Platform::CompareString(v1.Str(), v2.Str()) * -1;
+		return Platform::CompareString(v1.CStr(), v2.CStr()) * -1;
 	}
 };
 
@@ -566,7 +566,7 @@ template <>
 struct Compare<UStringPtr> : public BinaryFunction<UStringPtr, UStringPtr> {
 	//!	Process compare operation.
 	_int operator()(const UStringPtr& v1, const UStringPtr& v2) const {
-		return Platform::CompareString(v1.Str(), v2.Str());
+		return Platform::CompareString(v1.CStr(), v2.CStr());
 	}
 };
 
@@ -574,7 +574,7 @@ template <>
 struct NotCompare<UStringPtr> : public BinaryFunction<UStringPtr, UStringPtr> {
 	//!	Process compare operation.
 	_int operator()(const UStringPtr& v1, const UStringPtr& v2) const {
-		return Platform::CompareString(v1.Str(), v2.Str()) * -1;
+		return Platform::CompareString(v1.CStr(), v2.CStr()) * -1;
 	}
 };
 
@@ -582,7 +582,7 @@ template <>
 struct Compare<WStringPtr> : public BinaryFunction<WStringPtr, WStringPtr> {
 	//!	Process compare operation.
 	_int operator()(const WStringPtr& v1, const WStringPtr& v2) const {
-		return Platform::CompareString(v1.Str(), v2.Str());
+		return Platform::CompareString(v1.CStr(), v2.CStr());
 	}
 };
 
@@ -590,7 +590,7 @@ template <>
 struct NotCompare<WStringPtr> : public BinaryFunction<WStringPtr, WStringPtr> {
 	//!	Process compare operation.
 	_int operator()(const WStringPtr& v1, const WStringPtr& v2) const {
-		return Platform::CompareString(v1.Str(), v2.Str()) * -1;
+		return Platform::CompareString(v1.CStr(), v2.CStr()) * -1;
 	}
 };
 

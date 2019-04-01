@@ -12,21 +12,20 @@ namespace EGE {
 // Frustum
 //----------------------------------------------------------------------------
 
-class Frustum
-{
-  public:
+class Frustum {
+public:
 	//! The identity Frustum.
 	static const Frustum cIdentity;
 
-  public:
+public:
 	Vector3 mVectors[8];
 	Plane mPlanes[6];
 
-  public:
+public:
 	Frustum();
 	Frustum(const Matrix4& viewtransform, const Matrix4& projectiontransform);
 
-  public:
+public:
 	//! Compare frustum.
 	//! @param frustum  The frustum what you want to compare.
 	//! @return True indicates it's equal.
@@ -36,7 +35,7 @@ class Frustum
 	//! @return True indicates it's not equal.
 	_ubool operator!=(const Frustum& frustum) const;
 
-  public:
+public:
 	//! Get depth.
 	//! @param none.
 	//! @return The depth of frustum.
@@ -45,7 +44,7 @@ class Frustum
 	//! Check whether box is in frustum or not.
 	//! @param box   The box what you want to check.
 	//! @return True indicates it's in the frustum.
-	_ubool Inside(const AxisAlignedBox& box) const;
+	_ubool Inside(const Bounds& box) const;
 	//! Check whether box is in frustum or not.
 	//! @param box   The box what you want to check.
 	//! @return True indicates it's in the frustum.
@@ -76,10 +75,16 @@ class Frustum
 // Frustum Implementation
 //----------------------------------------------------------------------------
 
-inline _ubool Frustum::operator==(const Frustum& frustum) const { return mPlanes[0] == frustum.mPlanes[0] && mPlanes[1] == frustum.mPlanes[1] && mPlanes[2] == frustum.mPlanes[2] && mPlanes[3] == frustum.mPlanes[3] && mPlanes[4] == frustum.mPlanes[4] && mPlanes[5] == frustum.mPlanes[5]; }
+inline _ubool Frustum::operator==(const Frustum& frustum) const {
+	return mPlanes[0] == frustum.mPlanes[0] && mPlanes[1] == frustum.mPlanes[1] && mPlanes[2] == frustum.mPlanes[2] && mPlanes[3] == frustum.mPlanes[3] && mPlanes[4] == frustum.mPlanes[4] && mPlanes[5] == frustum.mPlanes[5];
+}
 
-inline _ubool Frustum::operator!=(const Frustum& frustum) const { return mPlanes[0] != frustum.mPlanes[0] || mPlanes[1] != frustum.mPlanes[1] || mPlanes[2] != frustum.mPlanes[2] || mPlanes[3] != frustum.mPlanes[3] || mPlanes[4] != frustum.mPlanes[4] || mPlanes[5] != frustum.mPlanes[5]; }
+inline _ubool Frustum::operator!=(const Frustum& frustum) const {
+	return mPlanes[0] != frustum.mPlanes[0] || mPlanes[1] != frustum.mPlanes[1] || mPlanes[2] != frustum.mPlanes[2] || mPlanes[3] != frustum.mPlanes[3] || mPlanes[4] != frustum.mPlanes[4] || mPlanes[5] != frustum.mPlanes[5];
+}
 
-inline _float Frustum::Depth() const { return Math::Abs(mPlanes[1].Distance(mVectors[0])); }
+inline _float Frustum::Depth() const {
+	return Math::Abs(mPlanes[1].Distance(mVectors[0]));
+}
 
 } // namespace EGE

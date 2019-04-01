@@ -33,13 +33,9 @@
 
 // Type Define Headers
 #include "EGE_Typedef.h"
-// Type Define Checker Headers
-#include "EGE_TypeChecker.h"
 
 // EasyGameEngine Basic Headers
 #include "EGE_Const.h"
-#include "EGE_Memory.h"
-#include "EGE_Structs.h"
 #include "EGE_Template.h"
 
 // Network OS Header

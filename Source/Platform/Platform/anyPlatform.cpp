@@ -141,7 +141,7 @@ _ubool anyPlatform::Initialize() {
 	STATIC_ASSERT(sizeof(_float) == 4, "Basic data type size check");
 	STATIC_ASSERT(sizeof(_double) == 8, "Basic data type size check");
 	STATIC_ASSERT(sizeof(_boolean) == 1, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_crcvalue) == 4, "Basic data type size check");
+	STATIC_ASSERT(sizeof(_dword) == 4, "Basic data type size check");
 	STATIC_ASSERT(sizeof(_ubool) == 4, "Basic data type size check");
 
 	// Get the main thread ID ( the main thread ID could be changed by system, so

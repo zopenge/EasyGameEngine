@@ -54,9 +54,6 @@ typedef time_t _time_t;
 //! The unsigned int pointer
 typedef uintptr_t _uintptr_t;
 
-//!	The CRC value
-typedef unsigned int _crcvalue;
-
 //!	The arguments list
 typedef va_list _va_list;
 
@@ -79,17 +76,17 @@ struct _ubool {
 		mValue = value;
 	}
 	_ubool(_int value) {
-		mValue = EGE_BOOLEAN(value);
+		mValue = !!value;
 	}
 	_ubool(_dword value) {
-		mValue = EGE_BOOLEAN(value);
+		mValue = !!value;
 	}
 	_ubool(const _ubool& value) {
 		mValue = value.mValue;
 	}
 
 	operator _boolean() const {
-		return EGE_BOOLEAN(mValue);
+		return !!mValue;
 	}
 
 	_ubool& operator=(_boolean value) {

@@ -23,7 +23,7 @@
     </SccProvider>
     <Keyword>Win32Proj</Keyword>
     <ProjectName>EGEPlatform-windows</ProjectName>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" Label="Configuration">
@@ -181,9 +181,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\Bounds.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\DeferredProcessor.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\OrientedBox2D.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\AxisAlignedBox.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Box.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\CallStack.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\CallStack\winCallStack.cpp" />
@@ -282,6 +282,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Include\Platform\Bounds.h" />
     <ClInclude Include="..\..\..\Include\Platform\Camera2D.h" />
     <ClInclude Include="..\..\..\Include\Platform\DeferredProcessor.h" />
     <ClInclude Include="..\..\..\Include\Platform\FPSTimer.h" />
@@ -301,7 +302,6 @@
     <ClInclude Include="..\..\..\Include\Platform\Serializer.h" />
     <ClInclude Include="..\..\..\Include\Platform\TempDir.h" />
     <ClInclude Include="..\..\..\Include\Platform\Timer.h" />
-    <ClInclude Include="..\..\..\Include\Platform\AxisAlignedBox.h" />
     <ClInclude Include="..\..\..\Include\Platform\Box.h" />
     <ClInclude Include="..\..\..\Include\Platform\CallStack.h" />
     <ClInclude Include="..\..\..\Include\Platform\Camera.h" />

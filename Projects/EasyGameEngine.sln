@@ -51,6 +51,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{E3
 		..\Include\Template\MutableString.h = ..\Include\Template\MutableString.h
 		..\Include\Template\PagePool.h = ..\Include\Template\PagePool.h
 		..\Include\Template\Pair.h = ..\Include\Template\Pair.h
+		..\Include\Template\Params.h = ..\Include\Template\Params.h
 		..\Include\Template\PassRefPtr.h = ..\Include\Template\PassRefPtr.h
 		..\Include\Template\Point.h = ..\Include\Template\Point.h
 		..\Include\Template\Progression.h = ..\Include\Template\Progression.h

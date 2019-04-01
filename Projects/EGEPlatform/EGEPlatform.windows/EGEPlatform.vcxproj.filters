@@ -53,9 +53,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Source\Platform\AxisAlignedBox.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Box.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -392,6 +389,9 @@
     <ClCompile Include="..\..\..\Source\Platform\TempDir.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\Bounds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Source\EGEPlatform.h">
@@ -477,9 +477,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Source\External\crt\dbgheap\dbgint.h">
       <Filter>SDK Files\dbgheap</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Platform\AxisAlignedBox.h">
-      <Filter>Header Files\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\Box.h">
       <Filter>Header Files\Platform</Filter>
@@ -680,6 +677,9 @@
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\IPAddress.h">
+      <Filter>Header Files\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Platform\Bounds.h">
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
   </ItemGroup>

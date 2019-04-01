@@ -1,16 +1,6 @@
-//! @file     Box.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
-const Box Box::cNullBox(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-
-//----------------------------------------------------------------------------
-// Box Implementation
-//----------------------------------------------------------------------------
+const Box Box::cNull(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
 
 Box& Box::Expand(_float expand_size) {
 	Vector3 vx = (mVectors[1] - mVectors[0]).Normalize();

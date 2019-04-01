@@ -27,7 +27,7 @@ static _ubool _TrimDir(WStringPtr directory, _ubool& no_any_files_in_it) {
 	FileInfo fileinfo;
 	while (filefinder.Walk(fileinfo, L"", 0, 1)) {
 		_charw filename[1024];
-		Platform::FormatStringBuffer(filename, 1024, L"%s/%s", directory.Str(), fileinfo.mFileName.Str());
+		Platform::FormatStringBuffer(filename, 1024, L"%s/%s", directory.CStr(), fileinfo.mFileName.CStr());
 
 		// Found a sub directory
 		if (fileinfo.mAttributes & _FILE_ATTRIBUTE_DIRECTORY) {
@@ -56,7 +56,7 @@ static _ubool _TrimDir(WStringPtr directory, _ubool& no_any_files_in_it) {
 
 _ubool FileSystem::IsFileExist(WStringPtr filename) {
 	_dword attributes = 0;
-	if (Platform::GetFileAttributes(filename.Str(), attributes) == _false)
+	if (Platform::GetFileAttributes(filename.CStr(), attributes) == _false)
 		return _false;
 
 	return (attributes & _FILE_ATTRIBUTE_DIRECTORY) == 0;
@@ -64,7 +64,7 @@ _ubool FileSystem::IsFileExist(WStringPtr filename) {
 
 _ubool FileSystem::IsDirectoryExist(WStringPtr directory) {
 	_dword attributes = 0;
-	if (Platform::GetFileAttributes(directory.Str(), attributes) == _false)
+	if (Platform::GetFileAttributes(directory.CStr(), attributes) == _false)
 		return _false;
 
 	return (attributes & _FILE_ATTRIBUTE_DIRECTORY) != 0;
@@ -153,7 +153,7 @@ _ubool FileSystem::GetTempFileName(WStringPtr path, WStringPtr extensionname, WS
 
 		// Add prefix and suffix name
 		_charw name_buffer[1024];
-		filename += Platform::FormatStringBuffer(name_buffer, 1024, L"%d.%s", i, extensionname.Str());
+		filename += Platform::FormatStringBuffer(name_buffer, 1024, L"%d.%s", i, extensionname.CStr());
 
 		// Check whether the file is existing or not
 		if (IsFileExist(filename) == _false)
@@ -173,7 +173,7 @@ _ubool FileSystem::GetTempFileName(WStringPtr path, WStringPtr extensionname, WS
 
 		// Add prefix and suffix name
 		_charw name_buffer[1024];
-		filename += Platform::FormatStringBuffer(name_buffer, 1024, L"%d.%s", prefix_number, extensionname.Str());
+		filename += Platform::FormatStringBuffer(name_buffer, 1024, L"%d.%s", prefix_number, extensionname.CStr());
 
 		// Check whether the file is existing or not
 		if (IsFileExist(filename) == _false)
@@ -194,11 +194,11 @@ _ubool FileSystem::GetFileSize(WStringPtr filename, _dword& bytes) {
 }
 
 _ubool FileSystem::GetAttributes(WStringPtr filename, _dword& attributes) {
-	return Platform::GetFileAttributes(filename.Str(), attributes);
+	return Platform::GetFileAttributes(filename.CStr(), attributes);
 }
 
 _ubool FileSystem::SetAttributes(WStringPtr filename, _dword attributes) {
-	return Platform::SetFileAttributes(filename.Str(), attributes);
+	return Platform::SetFileAttributes(filename.CStr(), attributes);
 }
 
 _ubool FileSystem::GetTimes(WStringPtr filename, FileTime* creation, FileTime* lastaccess, FileTime* lastwrite) {
@@ -234,7 +234,7 @@ _ubool FileSystem::CreateFile(WStringPtr filename, _dword attributeflag) {
 }
 
 _ubool FileSystem::CreateFile(WStringPtr filename, AStringPtr string, _dword attributeflag) {
-	return CreateFile(filename, string.GetLength(), string.Str(), attributeflag);
+	return CreateFile(filename, string.GetLength(), string.CStr(), attributeflag);
 }
 
 _ubool FileSystem::CreateFile(WStringPtr filename, _dword size, const _void* buffer, _dword attributeflag) {
@@ -262,7 +262,7 @@ _ubool FileSystem::DeleteFile(WStringPtr filename) {
 		return _false;
 
 	// Delete the file.
-	return Platform::DeleteFile(filename.Str());
+	return Platform::DeleteFile(filename.CStr());
 }
 
 _ubool FileSystem::CopyFile(WStringPtr desfilename, WStringPtr srcfilename) {
@@ -273,10 +273,10 @@ _ubool FileSystem::CopyFile(WStringPtr desfilename, WStringPtr srcfilename) {
 	WString pathname = Path::GetDirectoryName(desfilename);
 
 	// Create directory if needed
-	if (CreateDir(pathname.Str()) == _false)
+	if (CreateDir(pathname.CStr()) == _false)
 		return _false;
 
-	return Platform::CopyFile(desfilename.Str(), srcfilename.Str());
+	return Platform::CopyFile(desfilename.CStr(), srcfilename.CStr());
 }
 
 _ubool FileSystem::MoveFile(WStringPtr desfilename, WStringPtr srcfilename) {
@@ -287,10 +287,10 @@ _ubool FileSystem::MoveFile(WStringPtr desfilename, WStringPtr srcfilename) {
 	WString pathname = Path::GetDirectoryName(desfilename);
 
 	// Create directory if needed
-	if (CreateDir(pathname.Str()) == _false)
+	if (CreateDir(pathname.CStr()) == _false)
 		return _false;
 
-	return Platform::MoveFile(desfilename.Str(), srcfilename.Str());
+	return Platform::MoveFile(desfilename.CStr(), srcfilename.CStr());
 }
 
 _ubool FileSystem::ReadFile(WStringPtr filename, AString& string) {
@@ -348,12 +348,12 @@ _ENCODING FileSystem::GetFileEncodingType(WStringPtr filename) {
 	file.ReadBuffer(encoding_tag, sizeof(encoding_tag));
 
 	if (encoding_tag[0] == _UTF16_HEADER_0 && encoding_tag[1] == _UTF16_HEADER_1) {
-		return _ENCODING_UTF16;
+		return Encoding::Utf16;
 	} else if (encoding_tag[0] == _UTF8_HEADER_0 && encoding_tag[1] == _UTF8_HEADER_1 && encoding_tag[2] == _UTF8_HEADER_2) {
-		return _ENCODING_UTF8;
+		return Encoding::Utf8;
 	}
 
-	return _ENCODING_ANSI;
+	return Encoding::Ansi;
 }
 
 WString FileSystem::GetCurrentDir() {
@@ -369,7 +369,7 @@ _ubool FileSystem::SetCurrentDir(WStringPtr directory) {
 	if (CreateDir(directory) == _false)
 		return _false;
 
-	return Platform::SetCurrentDirectory(directory.Str());
+	return Platform::SetCurrentDirectory(directory.CStr());
 }
 
 _ubool FileSystem::CreateDir(WStringPtr directory) {
@@ -393,16 +393,16 @@ _ubool FileSystem::CreateDir(WStringPtr directory) {
 		if (directory[i - 1] == ':')
 			continue;
 
-		WString middlepath(directory.Str(), i);
+		WString middlepath(directory.CStr(), i);
 
 		if (IsDirectoryExist(middlepath))
 			continue;
 
-		if (Platform::CreateDirectory(middlepath.Str()) == _false)
+		if (Platform::CreateDirectory(middlepath.CStr()) == _false)
 			return _false;
 	}
 
-	return Platform::CreateDirectory(directory.Str());
+	return Platform::CreateDirectory(directory.CStr());
 }
 
 _ubool FileSystem::DeleteDir(WStringPtr directory) {
@@ -418,7 +418,7 @@ _ubool FileSystem::DeleteDir(WStringPtr directory) {
 	FileInfo fileinfo;
 	while (filefinder.Walk(fileinfo, L"", 0, 1)) {
 		_charw filename[1024];
-		Platform::FormatStringBuffer(filename, 1024, L"%s/%s", directory.Str(), fileinfo.mFileName.Str());
+		Platform::FormatStringBuffer(filename, 1024, L"%s/%s", directory.CStr(), fileinfo.mFileName.CStr());
 
 		// Found a sub directory
 		if (fileinfo.mAttributes & _FILE_ATTRIBUTE_DIRECTORY) {
@@ -441,8 +441,8 @@ _ubool FileSystem::DeleteDir(WStringPtr directory) {
 	filefinder.Close();
 
 	// Delete root directory
-	Platform::SetFileAttributes(directory.Str(), _FILE_ATTRIBUTE_NORMAL | _FILE_ATTRIBUTE_DIRECTORY);
-	Platform::RemoveDirectory(directory.Str());
+	Platform::SetFileAttributes(directory.CStr(), _FILE_ATTRIBUTE_NORMAL | _FILE_ATTRIBUTE_DIRECTORY);
+	Platform::RemoveDirectory(directory.CStr());
 
 	return _true;
 }
@@ -460,8 +460,8 @@ _ubool FileSystem::CopyDir(WStringPtr desdirectory, WStringPtr srcdirectory) {
 	FileInfo fileinfo;
 	while (filefinder.Walk(fileinfo, L"", 0, 1)) {
 		_charw srcfilename[1024], desfilename[1024];
-		Platform::FormatStringBuffer(srcfilename, 1024, L"%s/%s", srcdirectory.Str(), fileinfo.mFileName.Str());
-		Platform::FormatStringBuffer(desfilename, 1024, L"%s/%s", desdirectory.Str(), fileinfo.mFileName.Str());
+		Platform::FormatStringBuffer(srcfilename, 1024, L"%s/%s", srcdirectory.CStr(), fileinfo.mFileName.CStr());
+		Platform::FormatStringBuffer(desfilename, 1024, L"%s/%s", desdirectory.CStr(), fileinfo.mFileName.CStr());
 
 		// Found a sub directory
 		if (fileinfo.mAttributes & _FILE_ATTRIBUTE_DIRECTORY) {
@@ -494,8 +494,8 @@ _ubool FileSystem::MoveDir(WStringPtr desdirectory, WStringPtr srcdirectory) {
 	FileInfo fileinfo;
 	while (filefinder.Walk(fileinfo, L"", 0, 1)) {
 		_charw srcfilename[1024], desfilename[1024];
-		Platform::FormatStringBuffer(srcfilename, 1024, L"%s/%s", srcdirectory.Str(), fileinfo.mFileName.Str());
-		Platform::FormatStringBuffer(desfilename, 1024, L"%s/%s", desdirectory.Str(), fileinfo.mFileName.Str());
+		Platform::FormatStringBuffer(srcfilename, 1024, L"%s/%s", srcdirectory.CStr(), fileinfo.mFileName.CStr());
+		Platform::FormatStringBuffer(desfilename, 1024, L"%s/%s", desdirectory.CStr(), fileinfo.mFileName.CStr());
 
 		// Found a sub directory.
 		if (fileinfo.mAttributes & _FILE_ATTRIBUTE_DIRECTORY) {
@@ -520,8 +520,8 @@ _ubool FileSystem::MoveDir(WStringPtr desdirectory, WStringPtr srcdirectory) {
 	filefinder.Close();
 
 	// Delete root directory
-	Platform::SetFileAttributes(srcdirectory.Str(), _FILE_ATTRIBUTE_NORMAL | _FILE_ATTRIBUTE_DIRECTORY);
-	Platform::RemoveDirectory(srcdirectory.Str());
+	Platform::SetFileAttributes(srcdirectory.CStr(), _FILE_ATTRIBUTE_NORMAL | _FILE_ATTRIBUTE_DIRECTORY);
+	Platform::RemoveDirectory(srcdirectory.CStr());
 
 	return _true;
 }
@@ -547,7 +547,7 @@ _ubool FileSystem::CleanDir(WStringPtr directory) {
 	FileInfo fileinfo;
 	while (filefinder.Walk(fileinfo, L"", 0, 1)) {
 		_charw filename[1024];
-		Platform::FormatStringBuffer(filename, 1024, L"%s/%s", directory.Str(), fileinfo.mFileName.Str());
+		Platform::FormatStringBuffer(filename, 1024, L"%s/%s", directory.CStr(), fileinfo.mFileName.CStr());
 
 		// Found a sub directory
 		if ((fileinfo.mAttributes & _FILE_ATTRIBUTE_DIRECTORY) != 0) {
@@ -585,7 +585,7 @@ _ubool FileSystem::GetDiskSpace(WStringPtr directory, _qword& total, _qword& ava
 		autocreate = _true;
 	}
 
-	_ubool retval = Platform::GetDiskFreeSpace(directory.Str(), &available, &total);
+	_ubool retval = Platform::GetDiskFreeSpace(directory.CStr(), &available, &total);
 
 	if (autocreate == _true) {
 		DeleteDir(directory);
@@ -650,8 +650,8 @@ _ubool FileSystem::CompareDir(WStringPtr srcdirectory, WStringPtr desdirectory, 
 	FileInfo fileinfo;
 	while (filefinder.Walk(fileinfo, L"", 0, 1)) {
 		_charw srcfilename[1024], desfilename[1024];
-		Platform::FormatStringBuffer(srcfilename, 1024, L"%s/%s", srcdirectory.Str(), fileinfo.mFileName.Str());
-		Platform::FormatStringBuffer(desfilename, 1024, L"%s/%s", desdirectory.Str(), fileinfo.mFileName.Str());
+		Platform::FormatStringBuffer(srcfilename, 1024, L"%s/%s", srcdirectory.CStr(), fileinfo.mFileName.CStr());
+		Platform::FormatStringBuffer(desfilename, 1024, L"%s/%s", desdirectory.CStr(), fileinfo.mFileName.CStr());
 
 		// Found a sub directory
 		if (fileinfo.mAttributes & _FILE_ATTRIBUTE_DIRECTORY) {
