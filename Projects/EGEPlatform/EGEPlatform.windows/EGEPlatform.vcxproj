@@ -182,14 +182,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Bounds.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\DeferredProcessor.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\CallStackFrame.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\OrientedBox2D.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Box.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\CallStack.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\CallStack\winCallStack.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Camera.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Camera2D.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Clipboard.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Color.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\CRC.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\DebugSymbol\winDebugSymbol.cpp" />
@@ -282,9 +280,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Include\EGE_Always.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Compile.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Config.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Const.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Platform.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Template.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Typedef.h" />
     <ClInclude Include="..\..\..\Include\Platform\Bounds.h" />
+    <ClInclude Include="..\..\..\Include\Platform\CallStackFrame.h" />
     <ClInclude Include="..\..\..\Include\Platform\Camera2D.h" />
-    <ClInclude Include="..\..\..\Include\Platform\DeferredProcessor.h" />
     <ClInclude Include="..\..\..\Include\Platform\FPSTimer.h" />
     <ClInclude Include="..\..\..\Include\Platform\Interpolation.h" />
     <ClInclude Include="..\..\..\Include\Platform\IPAddress.h" />
@@ -303,9 +308,7 @@
     <ClInclude Include="..\..\..\Include\Platform\TempDir.h" />
     <ClInclude Include="..\..\..\Include\Platform\Timer.h" />
     <ClInclude Include="..\..\..\Include\Platform\Box.h" />
-    <ClInclude Include="..\..\..\Include\Platform\CallStack.h" />
     <ClInclude Include="..\..\..\Include\Platform\Camera.h" />
-    <ClInclude Include="..\..\..\Include\Platform\Clipboard.h" />
     <ClInclude Include="..\..\..\Include\Platform\Color.h" />
     <ClInclude Include="..\..\..\Include\Platform\CRC.h" />
     <ClInclude Include="..\..\..\Include\Platform\DebugSymbol.h" />
@@ -353,6 +356,41 @@
     <ClInclude Include="..\..\..\Include\Platform\Vector4.h" />
     <ClInclude Include="..\..\..\Include\Platform\Version.h" />
     <ClInclude Include="..\..\..\Include\Platform\Viewport.h" />
+    <ClInclude Include="..\..\..\Include\Template\Algorithm.h" />
+    <ClInclude Include="..\..\..\Include\Template\Array.h" />
+    <ClInclude Include="..\..\..\Include\Template\BaseRef.h" />
+    <ClInclude Include="..\..\..\Include\Template\BinaryHeap.h" />
+    <ClInclude Include="..\..\..\Include\Template\BitArray.h" />
+    <ClInclude Include="..\..\..\Include\Template\CallbackFunc.h" />
+    <ClInclude Include="..\..\..\Include\Template\Compare.h" />
+    <ClInclude Include="..\..\..\Include\Template\ConcurrentQueue.h" />
+    <ClInclude Include="..\..\..\Include\Template\ConstString.h" />
+    <ClInclude Include="..\..\..\Include\Template\CountOf.h" />
+    <ClInclude Include="..\..\..\Include\Template\DataField.h" />
+    <ClInclude Include="..\..\..\Include\Template\DataOwner.h" />
+    <ClInclude Include="..\..\..\Include\Template\DependencyGraph.h" />
+    <ClInclude Include="..\..\..\Include\Template\Graph.h" />
+    <ClInclude Include="..\..\..\Include\Template\HashMap.h" />
+    <ClInclude Include="..\..\..\Include\Template\Link.h" />
+    <ClInclude Include="..\..\..\Include\Template\Map.h" />
+    <ClInclude Include="..\..\..\Include\Template\MutableString.h" />
+    <ClInclude Include="..\..\..\Include\Template\PagePool.h" />
+    <ClInclude Include="..\..\..\Include\Template\Pair.h" />
+    <ClInclude Include="..\..\..\Include\Template\Params.h" />
+    <ClInclude Include="..\..\..\Include\Template\PassRefPtr.h" />
+    <ClInclude Include="..\..\..\Include\Template\Point.h" />
+    <ClInclude Include="..\..\..\Include\Template\Progression.h" />
+    <ClInclude Include="..\..\..\Include\Template\Quadruple.h" />
+    <ClInclude Include="..\..\..\Include\Template\Queue.h" />
+    <ClInclude Include="..\..\..\Include\Template\Range.h" />
+    <ClInclude Include="..\..\..\Include\Template\RBTree.h" />
+    <ClInclude Include="..\..\..\Include\Template\Rect.h" />
+    <ClInclude Include="..\..\..\Include\Template\RefObject.h" />
+    <ClInclude Include="..\..\..\Include\Template\RefPtr.h" />
+    <ClInclude Include="..\..\..\Include\Template\SafeValue.h" />
+    <ClInclude Include="..\..\..\Include\Template\Stack.h" />
+    <ClInclude Include="..\..\..\Include\Template\Tree.h" />
+    <ClInclude Include="..\..\..\Include\Template\Triple.h" />
     <ClInclude Include="..\..\..\Source\EGEPlatform.h" />
     <ClInclude Include="..\..\..\Source\External\crt\dbgheap\dbgint.h" />
     <ClInclude Include="..\..\..\Source\External\uchar\inttypes.h" />

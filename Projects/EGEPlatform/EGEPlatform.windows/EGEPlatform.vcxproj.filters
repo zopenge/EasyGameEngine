@@ -51,18 +51,15 @@
     <Filter Include="Header Files\Platform">
       <UniqueIdentifier>{40d4f633-99b4-4185-92ea-8aa926c127da}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Template">
+      <UniqueIdentifier>{aa3d1c4b-426a-4061-b321-9c8c4f7b69cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Source\Platform\Box.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\CallStack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Clipboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Color.cpp">
@@ -284,9 +281,6 @@
     <ClCompile Include="..\..\..\Source\External\uchar\uchar.cpp">
       <Filter>SDK Files\uchar</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\DeferredProcessor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatform.cpp">
       <Filter>Source Files\Platform</Filter>
     </ClCompile>
@@ -392,6 +386,9 @@
     <ClCompile Include="..\..\..\Source\Platform\Bounds.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\CallStackFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Source\EGEPlatform.h">
@@ -481,16 +478,10 @@
     <ClInclude Include="..\..\..\Include\Platform\Box.h">
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Platform\CallStack.h">
-      <Filter>Header Files\Platform</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\Camera.h">
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\Camera2D.h">
-      <Filter>Header Files\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Platform\Clipboard.h">
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\Color.h">
@@ -500,9 +491,6 @@
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\DebugSymbol.h">
-      <Filter>Header Files\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Platform\DeferredProcessor.h">
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\DirectoryRecorder.h">
@@ -680,6 +668,135 @@
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\Bounds.h">
+      <Filter>Header Files\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Triple.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Tree.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Algorithm.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Array.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\BaseRef.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\BinaryHeap.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\BitArray.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\CallbackFunc.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Compare.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\ConcurrentQueue.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\ConstString.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\CountOf.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\DataField.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\DataOwner.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\DependencyGraph.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Graph.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\HashMap.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Link.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Map.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\MutableString.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\PagePool.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Pair.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Params.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\PassRefPtr.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Point.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Progression.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Quadruple.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Queue.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Range.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\RBTree.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Rect.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\RefObject.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\RefPtr.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\SafeValue.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\Stack.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\EGE_Always.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\EGE_Compile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\EGE_Config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\EGE_Const.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\EGE_Platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\EGE_Template.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\EGE_Typedef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Platform\CallStackFrame.h">
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
   </ItemGroup>

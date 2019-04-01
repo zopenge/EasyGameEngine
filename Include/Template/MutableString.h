@@ -35,7 +35,7 @@ protected:
 	//!	Create string buffer.
 	//!	@param		string		If we provide the string buffer then copy it when create string buffer finished.
 	//!	@return		none.
-	_void CreateStringBuffer(const CharType* string = _null);
+	_void CreateStringBuffer(const CharType* string);
 	//!	Copy string buffer.
 	//!	@param		string		The source string buffer.
 	//!	@return		none.
@@ -51,19 +51,13 @@ public:
 	//! Constructor, create a string only contains the terminal null.
 	//! @param		none
 	MutableString();
-	//! Copy-Constructor, create a string by copy another string.
-	//! @param		string	The string.
-	MutableString(const CharType* string);
 	//! Copy-Constructor, create a string by copy another string object.
 	//! @param		string	The second string object.
-	MutableString(ConstStringType string);
+	//! @param		number		The number of characters to be copy.
+	MutableString(ConstStringType string, _dword number = -1);
 	//! Copy-Constructor, create a string by copy another string object.
 	//! @param		string	The second string object.
 	MutableString(const MutableString& string);
-	//! Constructor, create a string by copy some characters from another string.
-	//! @param		string		Pointer to a null-terminated string.
-	//! @param		number		The number of characters to be copy.
-	MutableString(const CharType* string, _dword number);
 	//! Constructor, create a string by character.
 	//! @param		char_code	The character code.
 	MutableString(CharType char_code);
@@ -79,7 +73,7 @@ public:
 	//! Copy the string from another one, and recreates memory to hold it.
 	//! @param		string		Pointer to a null-terminated string.
 	//! @return		The reference of current string.
-	MutableString& operator=(const CharType* string);
+	MutableString& operator=(ConstStringType string);
 	//! Copy the string from another one, and recreates memory to hold it.
 	//! @param		string		The string object.
 	//! @return		The reference of current string.
@@ -92,7 +86,7 @@ public:
 	//! Append another string to the end of the current one.
 	//! @param		string		Pointer to a null-terminated string.
 	//! @return		The reference of current string.
-	MutableString& operator+=(const CharType* string);
+	MutableString& operator+=(ConstStringType string);
 	//! Append another string to the end of the current one.
 	//! @param		string		Pointer to a null-terminated string.
 	//! @return		The reference of current string.
@@ -112,27 +106,27 @@ public:
 	//! Compare two strings with case sensitive.
 	//! @param		string		The second string.
 	//! @return		True if two strings are same, false otherwise.
-	_ubool operator==(const CharType* string) const;
+	_ubool operator==(ConstStringType string) const;
 	//! Compare two strings with case sensitive.
 	//! @param		string		The second string.
 	//! @return		True if two strings are not same, false otherwise.
-	_ubool operator!=(const CharType* string) const;
+	_ubool operator!=(ConstStringType string) const;
 	//! Compare two strings with case sensitive.
 	//! @param		string		The second string.
 	//! @return		True if the first string is greater than the second one, false otherwise.
-	_ubool operator>(const CharType* string) const;
+	_ubool operator>(ConstStringType string) const;
 	//! Compare two strings with case sensitive.
 	//! @param		string		The second string.
 	//! @return		True if the first string is less than the second one, false otherwise.
-	_ubool operator<(const CharType* string) const;
+	_ubool operator<(ConstStringType string) const;
 	//! Compare two strings with case sensitive.
 	//! @param		string		The second string.
 	//! @return		True if the first string is greater or equal than the second one, false otherwise.
-	_ubool operator>=(const CharType* string) const;
+	_ubool operator>=(ConstStringType string) const;
 	//! Compare two strings with case sensitive.
 	//! @param		string		The second string.
 	//! @return		True if the first string is less or equal than the second one, false otherwise.
-	_ubool operator<=(const CharType* string) const;
+	_ubool operator<=(ConstStringType string) const;
 
 	//! Compare two strings with case sensitive.
 	//! @param		string		The second string.
@@ -160,6 +154,11 @@ public:
 	_ubool operator<=(const MutableString& string) const;
 
 public:
+	//!	Convert to const null-terminated string.
+	//!	@param		none.
+	//!	@return		The const null-terminated string.
+	operator ConstStringType() const;
+
 	//! Get the length of the string, excluding the terminal null, overwrite parent class function.
 	//! @param		none
 	//! @return		The Length of the string.
@@ -199,7 +198,7 @@ public:
 	//! @remark		The substring will be inserted before the index.<br>
 	//!				For example, "Hello".Insert( 0, "World" ) will results "WorldHello",
 	//!				and "Hello".Insert( 5, "World" ) will results "HelloWorld".
-	_void Insert(_dword index, const _StringPtr& string);
+	_void Insert(_dword index, ConstStringType string);
 	//! Remove some characters at the index of the string.
 	//! @param		index		The index of the string.
 	//! @param		number		The number of characters to be removed.
@@ -209,18 +208,15 @@ public:
 	//!				and "Hello".Remove( 4, 2 ) will failed ( return false ).
 	_void Remove(_dword index, _dword number = -1);
 	//! Remove some characters by range.
-	//! @param		start_index	The start index of the string.
-	//! @param		end_index	The end index of the string.
-	_void RemoveByRange(_dword start_index, _dword end_index);
-
-	_void RemoveChar(CharType character);
+	//! @param		range	The range of string.
+	_void Remove(const DwordRange& range);
 
 	//! Search and replace all substring to another.
 	//! @param		srcstring	The substring to be searched.
 	//! @param		desstring	The substring to be replaced.
 	//!	@param		ignorecase	True indicates case insensitive when parsing.
 	//! @return		True if successfully searched & replaced, false otherwise.
-	_ubool Replace(const CharType* srcstring, const CharType* desstring, _ubool ignorecase = _false);
+	_ubool Replace(ConstStringType srcstring, ConstStringType desstring, _ubool ignorecase = _false);
 	//! Search and replace a character to another one.
 	//! @param		index		The index of character to be replaced.
 	//! @param		character	The character to be used.
@@ -237,7 +233,7 @@ public:
 	//! @param		string		Pointer to a null-terminated string.
 	//! @param		length		The length of string.
 	//! @return		The reference of current string.
-	MutableString& CopyString(const CharType* string, _dword length = -1);
+	MutableString& CopyString(ConstStringType string, _dword length = -1);
 
 	//! Convert the string to lowercase.
 	//! @return		The pointer of the string with lowercase.
@@ -262,16 +258,20 @@ public:
 	//!	Trim substring from left to right.
 	//!	@param		charset		The substring what you want to trim.
 	//!	@return		The trimmed string.
-	MutableString& TrimLeft(_StringPtr charset);
+	MutableString& TrimLeft(ConstStringType charset);
 	//!	Trim substring from right to left.
 	//!	@param		charset		The substring what you want to trim.
 	//!	@return		The trimmed string.
-	MutableString& TrimRight(_StringPtr charset);
+	MutableString& TrimRight(ConstStringType charset);
 	//!	Trim substring both left and right.
 	//!	@param		charset		The substring what you want to trim.
 	//!	@return		The trimmed string.
-	MutableString& TrimBoth(_StringPtr charset);
+	MutableString& TrimBoth(ConstStringType charset);
 
+	//! Get the substring start from a index.
+	//! @param		index		The index of the string, must be less or equal than the length of the string.
+	//! @return		The substring from the index.
+	MutableString SubString(_dword index) const;
 	//! Get the substring start from a index.
 	//! @param		start		The index of the string, must be less or equal than the length of the string.
 	//! @return		The substring from the index.
@@ -284,7 +284,7 @@ public:
 	//! Get the substring from left to right.
 	//! @param		delimiter	The delimiter string what substring will be end there.
 	//! @return		The substring.
-	MutableString LeftSubString(_StringPtr delimiter) const;
+	MutableString LeftSubString(ConstStringType delimiter) const;
 	//! Get the substring from right to left.
 	//! @param		delimiter	The delimiter character what substring will be end there.
 	//! @return		The substring.
@@ -292,12 +292,7 @@ public:
 	//! Get the substring from right to left.
 	//! @param		delimiter	The delimiter string what substring will be end there.
 	//! @return		The substring.
-	MutableString RightSubString(_StringPtr delimiter) const;
-
-	//! Remove the file extension from the full path.
-	//! @param		none.
-	//! @return		True indicates remove it successful.
-	_ubool RemoveExtension();
+	MutableString RightSubString(ConstStringType delimiter) const;
 
 	//! Copy from signed value.
 	//! @param		value		The integer value.
@@ -386,28 +381,18 @@ void MutableString<CharType, CharEncoding>::Init() {
 }
 
 template <typename CharType, Encoding CharEncoding>
-MutableString<CharType, CharEncoding>::MutableString(const CharType* string) {
-	if (string == _null || *string == 0) {
-		Init();
-	} else {
-		// Get the string length
-		mLength = Platform::StringLength(string);
-
-		// Create and copy the string buffer
-		CreateStringBuffer(string);
-	}
-}
-
-template <typename CharType, Encoding CharEncoding>
-MutableString<CharType, CharEncoding>::MutableString(ConstStringType string) {
+MutableString<CharType, CharEncoding>::MutableString(ConstStringType string, _dword number) {
 	if (string.IsEmpty()) {
 		Init();
 	} else {
 		// Get the string length
-		mLength = string.GetLength();
+		if (number == -1)
+			mLength = string.GetLength();
+		else
+			mLength = number;
 
 		// Create and copy the string buffer
-		CreateStringBuffer(string.CStr());
+		CreateStringBuffer(string);
 	}
 }
 
@@ -421,22 +406,6 @@ MutableString<CharType, CharEncoding>::MutableString(const MutableString& string
 
 		// Create and copy the string buffer
 		CreateStringBuffer(string.CStr());
-	}
-}
-
-template <typename CharType, Encoding CharEncoding>
-MutableString<CharType, CharEncoding>::MutableString(const CharType* string, _dword number) {
-	if (string == _null || *string == 0) {
-		Init();
-	} else {
-		// Get the string length
-		if (number == -1)
-			mLength = Platform::StringLength(string);
-		else
-			mLength = number;
-
-		// Create and copy the string buffer
-		CreateStringBuffer(string);
 	}
 }
 
@@ -521,9 +490,9 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::op
 }
 
 template <typename CharType, Encoding CharEncoding>
-MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::operator=(const CharType* string) {
+MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::operator=(ConstStringType string) {
 	// Get the string length
-	mLength = Platform::StringLength(string);
+	mLength = string.GetLength();
 
 	// It's empty string
 	if (mLength == 0) {
@@ -612,11 +581,11 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::op
 }
 
 template <typename CharType, Encoding CharEncoding>
-MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::operator+=(const CharType* string) {
-	if (string == _null || *string == 0)
+MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::operator+=(ConstStringType string) {
+	if (string.IsEmpty())
 		return *this;
 
-	AppendStringBuffer(string, Platform::StringLength(string));
+	AppendStringBuffer(string, string.GetLength());
 
 	return *this;
 }
@@ -644,33 +613,33 @@ const CharType& MutableString<CharType, CharEncoding>::operator[](IndexType inde
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool MutableString<CharType, CharEncoding>::operator==(const CharType* string) const {
-	return Platform::CompareString(this->mString, string) == 0;
+_ubool MutableString<CharType, CharEncoding>::operator==(ConstStringType string) const {
+	return Platform::CompareString(this->mString, string.CStr()) == 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool MutableString<CharType, CharEncoding>::operator!=(const CharType* string) const {
-	return Platform::CompareString(this->mString, string) != 0;
+_ubool MutableString<CharType, CharEncoding>::operator!=(ConstStringType string) const {
+	return Platform::CompareString(this->mString, string.CStr()) != 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool MutableString<CharType, CharEncoding>::operator>(const CharType* string) const {
-	return Platform::CompareString(this->mString, string) > 0;
+_ubool MutableString<CharType, CharEncoding>::operator>(ConstStringType string) const {
+	return Platform::CompareString(this->mString, string.CStr()) > 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool MutableString<CharType, CharEncoding>::operator<(const CharType* string) const {
-	return Platform::CompareString(this->mString, string) < 0;
+_ubool MutableString<CharType, CharEncoding>::operator<(ConstStringType string) const {
+	return Platform::CompareString(this->mString, string.CStr()) < 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool MutableString<CharType, CharEncoding>::operator>=(const CharType* string) const {
-	return Platform::CompareString(this->mString, string) >= 0;
+_ubool MutableString<CharType, CharEncoding>::operator>=(ConstStringType string) const {
+	return Platform::CompareString(this->mString, string.CStr()) >= 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool MutableString<CharType, CharEncoding>::operator<=(const CharType* string) const {
-	return Platform::CompareString(this->mString, string) <= 0;
+_ubool MutableString<CharType, CharEncoding>::operator<=(ConstStringType string) const {
+	return Platform::CompareString(this->mString, string.CStr()) <= 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -707,6 +676,11 @@ _ubool MutableString<CharType, CharEncoding>::operator>=(const MutableString& st
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::operator<=(const MutableString& string) const {
 	return Platform::CompareString(this->mString, string.CStr()) <= 0;
+}
+
+template <typename CharType, Encoding CharEncoding>
+MutableString<CharType, CharEncoding>::operator ConstStringType() const {
+	return ConstStringType(mString);
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -849,12 +823,12 @@ _void MutableString<CharType, CharEncoding>::Insert(_dword index, CharType chara
 }
 
 template <typename CharType, Encoding CharEncoding>
-_void MutableString<CharType, CharEncoding>::Insert(_dword index, const _StringPtr& string) {
+_void MutableString<CharType, CharEncoding>::Insert(_dword index, ConstStringType string) {
 	EGE_ASSERT(index <= mLength);
 
 	// Get the string length
 	_dword length1 = mLength;
-	_dword length2 = Platform::StringLength(string.CStr());
+	_dword length2 = string.GetLength();
 
 	// Get the total string length
 	mLength = length1 + length2;
@@ -882,7 +856,7 @@ _void MutableString<CharType, CharEncoding>::Insert(_dword index, const _StringP
 	}
 
 	// Insert string
-	EGE_MEM_CPY(this->mString + index, (const CharType*)string.CStr(), length2 * sizeof(CharType));
+	EGE_MEM_CPY(this->mString + index, string.CStr(), length2 * sizeof(CharType));
 
 	// Set null-terminated
 	this->mString[mLength] = 0;
@@ -908,31 +882,12 @@ _void MutableString<CharType, CharEncoding>::Remove(_dword index, _dword number)
 }
 
 template <typename CharType, Encoding CharEncoding>
-_void MutableString<CharType, CharEncoding>::RemoveByRange(_dword start_index, _dword end_index) {
-	EGE_ASSERT(end_index >= start_index);
-
-	Remove(start_index, end_index - start_index + 1);
+_void MutableString<CharType, CharEncoding>::Remove(const DwordRange& range) {
+	Remove(range.mStartIndex, range.GetLength());
 }
 
 template <typename CharType, Encoding CharEncoding>
-_void MutableString<CharType, CharEncoding>::RemoveChar(CharType character) {
-	_dword i = 0;
-	_dword j = 0;
-	_dword remove_number = 0;
-	for (; i <= mLength; ++i) {
-		if (this->mString[i] == character) {
-			remove_number++;
-			continue;
-		}
-		this->mString[j] = this->mString[i];
-
-		++j;
-	}
-	mLength -= remove_number;
-}
-
-template <typename CharType, Encoding CharEncoding>
-_ubool MutableString<CharType, CharEncoding>::Replace(const CharType* srcstring, const CharType* desstring, _ubool ignorecase) {
+_ubool MutableString<CharType, CharEncoding>::Replace(ConstStringType srcstring, ConstStringType desstring, _ubool ignorecase) {
 	_ubool replaced = _false;
 
 	// Get the sub-string length
@@ -988,10 +943,10 @@ _ubool MutableString<CharType, CharEncoding>::Replace(_dword index, _dword numbe
 }
 
 template <typename CharType, Encoding CharEncoding>
-MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::CopyString(const CharType* string, _dword length) {
+MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::CopyString(ConstStringType string, _dword length) {
 	// Get string length
 	if (length == -1)
-		mLength = Platform::StringLength(string);
+		mLength = string.GetLength();
 	else
 		mLength = length;
 
@@ -1054,29 +1009,29 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::Tr
 }
 
 template <typename CharType, Encoding CharEncoding>
-MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::TrimLeft(_StringPtr charset) {
+MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::TrimLeft(ConstStringType charset) {
 	Platform::TrimStringLeft(this->mString, mLength, charset.CStr());
 
 	return *this;
 }
 
 template <typename CharType, Encoding CharEncoding>
-MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::TrimRight(_StringPtr charset) {
+MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::TrimRight(ConstStringType charset) {
 	Platform::TrimStringRight(this->mString, mLength, charset.CStr());
 
 	return *this;
 }
 
 template <typename CharType, Encoding CharEncoding>
-MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::TrimBoth(_StringPtr charset) {
+MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::TrimBoth(ConstStringType charset) {
 	Platform::TrimStringBoth(this->mString, mLength, charset.CStr());
 
 	return *this;
 }
 
 template <typename CharType, Encoding CharEncoding>
-ConstString<CharType, CharEncoding> MutableString<CharType, CharEncoding>::SubString(_dword index) const {
-	return TBaseClass::SubString(index).CStr();
+MutableString<CharType, CharEncoding> MutableString<CharType, CharEncoding>::SubString(_dword index) const {
+	return SubString(index, mLength - index);
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -1100,7 +1055,7 @@ MutableString<CharType, CharEncoding> MutableString<CharType, CharEncoding>::Lef
 }
 
 template <typename CharType, Encoding CharEncoding>
-MutableString<CharType, CharEncoding> MutableString<CharType, CharEncoding>::LeftSubString(_StringPtr delimiter) const {
+MutableString<CharType, CharEncoding> MutableString<CharType, CharEncoding>::LeftSubString(ConstStringType delimiter) const {
 	_dword index = this->SearchL2R(delimiter);
 	if (index == -1)
 		return *this;
@@ -1118,23 +1073,12 @@ MutableString<CharType, CharEncoding> MutableString<CharType, CharEncoding>::Rig
 }
 
 template <typename CharType, Encoding CharEncoding>
-MutableString<CharType, CharEncoding> MutableString<CharType, CharEncoding>::RightSubString(_StringPtr delimiter) const {
+MutableString<CharType, CharEncoding> MutableString<CharType, CharEncoding>::RightSubString(ConstStringType delimiter) const {
 	_dword index = TBaseClass::SearchR2L(delimiter);
 	if (index == -1)
 		return *this;
 
 	return MutableString(this->mString + index + delimiter.GetLength(), mLength - index - delimiter.GetLength());
-}
-
-template <typename CharType, Encoding CharEncoding>
-_ubool MutableString<CharType, CharEncoding>::RemoveExtension() {
-	_dword index = TBaseClass::SearchR2L('.');
-	if (index == -1)
-		return _false;
-
-	Remove(index);
-
-	return _true;
 }
 
 template <typename CharType, Encoding CharEncoding>

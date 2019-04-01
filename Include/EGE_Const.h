@@ -93,6 +93,21 @@ enum class FileAttribute {
 };
 
 /// <summary>
+///	The callback frame data.
+/// </summary>
+struct CallStackFrameData {
+	_dword mLineNumber;
+	_chara* mFuncName;
+	_chara* mFileName;
+
+	CallStackFrameData() {
+		mLineNumber = 0;
+		mFuncName = _null;
+		mFileName = _null;
+	}
+};
+
+/// <summary>
 /// The calendar time format.
 /// </summary>
 struct CalendarTime {

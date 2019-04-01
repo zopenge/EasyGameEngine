@@ -1,15 +1,6 @@
-//! @file     CRC.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
-//----------------------------------------------------------------------------
 // CRC Table
-//----------------------------------------------------------------------------
-
 const _dword sCRCTable[256] =
     {
         0x00000000L, 0x77073096L, 0xEE0E612CL, 0x990951BAL, 0x076DC419L, 0x706AF48FL, 0xE963A535L, 0x9E6495A3L,
@@ -48,10 +39,6 @@ const _dword sCRCTable[256] =
 //! Calculate the CRC value. ( to make sure use inline function, we replace the function to macro )
 #define BUILD_CRC(data, crc) sCRCTable[(crc ^ data) & 0x000000FFL] ^ (crc >> 8)
 
-//----------------------------------------------------------------------------
-// CRC Implementation
-//----------------------------------------------------------------------------
-
 _dword CRC::BuildFromBuffer(const _byte* buffer, _dword size, _dword oldcrc) {
 	if (buffer == _null || size == 0)
 		return 0;
@@ -63,19 +50,19 @@ _dword CRC::BuildFromBuffer(const _byte* buffer, _dword size, _dword oldcrc) {
 	return ~crc;
 }
 
-_dword CRC::BuildFromString(const _chara* string, _dword flag, _dword oldcrc) {
+_dword CRC::BuildFromString(const _chara* string, Flag flag, _dword oldcrc) {
 	if (string == _null)
 		return 0;
 
 	_dword crc = ~oldcrc;
 
 	// Lowercase string
-	if (flag == _BUILD_STRING_LOWERCASE) {
+	if (flag == Flag::Lowercase) {
 		for (_dword i = 0; string[i] != 0; i++)
 			crc = BUILD_CRC(EGE_TO_LOWER(string[i]), crc);
 	}
 	// Uppercase string
-	else if (flag == _BUILD_STRING_UPPERCASE) {
+	else if (flag == Flag::Uppercase) {
 		for (_dword i = 0; string[i] != 0; i++)
 			crc = BUILD_CRC(EGE_TO_UPPER(string[i]), crc);
 	}
@@ -88,19 +75,19 @@ _dword CRC::BuildFromString(const _chara* string, _dword flag, _dword oldcrc) {
 	return ~crc;
 }
 
-_dword CRC::BuildFromString(const _charw* string, _dword flag, _dword oldcrc) {
+_dword CRC::BuildFromString(const _charw* string, Flag flag, _dword oldcrc) {
 	if (string == _null)
 		return 0;
 
 	_dword crc = ~oldcrc;
 
 	// Lowercase string
-	if (flag == _BUILD_STRING_LOWERCASE) {
+	if (flag == Flag::Lowercase) {
 		for (_dword i = 0; string[i] != 0; i++)
 			crc = BUILD_CRC(EGE_TO_LOWER(string[i]), crc);
 	}
 	// Uppercase string
-	else if (flag == _BUILD_STRING_UPPERCASE) {
+	else if (flag == Flag::Uppercase) {
 		for (_dword i = 0; string[i] != 0; i++)
 			crc = BUILD_CRC(EGE_TO_UPPER(string[i]), crc);
 	}

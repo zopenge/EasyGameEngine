@@ -31,7 +31,7 @@ public:
 	ConstString(const CharType* string);
 	//! Constructor, create a string points to the specified string.
 	//! @param		string		The referenced string.
-	ConstString(const ConstString<CharType, CharEncoding>& string);
+	ConstString(const ConstString& string);
 	//! Destructor.
 	//! @param		none.
 	~ConstString();
@@ -40,11 +40,11 @@ public:
 	//! Set the string from another one.
 	//! @param		string		Pointer to a null-terminated string.
 	//! @return		The reference of current string.
-	ConstString<CharType, CharEncoding>& operator=(const CharType* string);
+	ConstString& operator=(const CharType* string);
 	//! Set the string from another one.
 	//! @param		string		The referenced string object.
 	//! @return		The reference of current string.
-	ConstString<CharType, CharEncoding>& operator=(ConstString<CharType, CharEncoding> string);
+	ConstString& operator=(const ConstString& string);
 
 	//! Get a character from string by index.
 	//! @param		index		The index of the character in string.
@@ -80,27 +80,27 @@ public:
 	//! Compare two strings with case sensitive.
 	//! @param		string		The second string.
 	//! @return		True if two strings are same, false otherwise.
-	_ubool operator==(ConstString<CharType, CharEncoding> string) const;
+	_ubool operator==(const ConstString& string) const;
 	//! Compare two strings with case sensitive.
 	//! @param		string		The second string.
 	//! @return		True if two strings are not same, false otherwise.
-	_ubool operator!=(ConstString<CharType, CharEncoding> string) const;
+	_ubool operator!=(const ConstString& string) const;
 	//! Compare two strings with case sensitive.
 	//! @param		string		The second string.
 	//! @return		True if the first string is greater than the second one, false otherwise.
-	_ubool operator>(ConstString<CharType, CharEncoding> string) const;
+	_ubool operator>(const ConstString& string) const;
 	//! Compare two strings with case sensitive.
 	//! @param		string		The second string.
 	//! @return		True if the first string is less than the second one, false otherwise.
-	_ubool operator<(ConstString<CharType, CharEncoding> string) const;
+	_ubool operator<(const ConstString& string) const;
 	//! Compare two strings with case sensitive.
 	//! @param		string		The second string.
 	//! @return		True if the first string is greater or equal than the second one, false otherwise.
-	_ubool operator>=(ConstString<CharType, CharEncoding> string) const;
+	_ubool operator>=(const ConstString& string) const;
 	//! Compare two strings with case sensitive.
 	//! @param		string		The second string.
 	//! @return		True if the first string is less or equal than the second one, false otherwise.
-	_ubool operator<=(ConstString<CharType, CharEncoding> string) const;
+	_ubool operator<=(const ConstString& string) const;
 
 public:
 	//!	Convert to const null-terminated string.
@@ -134,7 +134,7 @@ public:
 	//! Get the substring start from a index.
 	//! @param		index		The index of the string, must be less or equal than the length of the string.
 	//! @return		The substring from the index.
-	ConstString<CharType, CharEncoding> SubString(_dword index) const;
+	ConstString SubString(_dword index) const;
 
 	//!	Convert the string to boolean.
 	//! @param		none.
@@ -174,7 +174,7 @@ public:
 	//! @param		string		The substring to be searched.
 	//!	@param		ignorecase	True indicates case insensitive.
 	//!	@return		True indicates it starts with specified string.
-	_ubool StartsWith(ConstString<CharType, CharEncoding> string, _ubool ignorecase = _false) const;
+	_ubool StartsWith(const ConstString& string, _ubool ignorecase = _false) const;
 	//!	Check whether ends with specified character or not.
 	//! @param		character	The character to be searched.
 	//!	@param		ignorecase	True indicates case insensitive.
@@ -184,7 +184,7 @@ public:
 	//! @param		string		The substring to be searched.
 	//!	@param		ignorecase	True indicates case insensitive.
 	//!	@return		True indicates it starts with specified string.
-	_ubool EndsWith(ConstString<CharType, CharEncoding> string, _ubool ignorecase = _false) const;
+	_ubool EndsWith(const ConstString& string, _ubool ignorecase = _false) const;
 
 	//! Search a character in the string from left to right.
 	//! @param		character	The character to be searched.
@@ -201,46 +201,24 @@ public:
 	//!	@param		ignorecase	True indicates case insensitive.
 	//!	@param		endindex	The end index of searching.
 	//! @return		The index of the first occurrence of the substring or -1 indicates cant find.
-	_dword SearchL2R(const CharType* string, _ubool ignorecase = _false, _dword* endindex = _null) const;
+	_dword SearchL2R(const ConstString& string, _ubool ignorecase = _false, _dword* endindex = _null) const;
 	//! Search a substring in the string from right to left.
 	//! @param		string		The substring to be searched.
 	//!	@param		ignorecase	True indicates case insensitive.
 	//!	@param		startindex	The start index of searching.
 	//! @return		The index of the first occurrence of the substring or -1 indicates cant find.
-	_dword SearchR2L(const CharType* string, _ubool ignorecase = _false, _dword* startindex = _null) const;
-	//! Search a substring in the string from left to right.
-	//! @param		string		The substring to be searched.
-	//!	@param		ignorecase	True indicates case insensitive.
-	//!	@param		endindex	The end index of searching.
-	//! @return		The index of the first occurrence of the substring or -1 indicates cant find.
-	_dword SearchL2R(ConstString<CharType, CharEncoding> string, _ubool ignorecase = _false, _dword* endindex = _null) const;
-	//! Search a substring in the string from right to left.
-	//! @param		string		The substring to be searched.
-	//!	@param		ignorecase	True indicates case insensitive.
-	//!	@param		startindex	The start index of searching.
-	//! @return		The index of the first occurrence of the substring or -1 indicates cant find.
-	_dword SearchR2L(ConstString<CharType, CharEncoding> string, _ubool ignorecase = _false, _dword* startindex = _null) const;
+	_dword SearchR2L(const ConstString& string, _ubool ignorecase = _false, _dword* startindex = _null) const;
 
 	//! Compare two strings
 	//! @param		string		The second string object.
 	//!	@param		ignorecase	True indicates case insensitive when compare.
 	//! @return		True indicates it's the same string.
-	_ubool IsEqual(const CharType* string, _ubool ignorecase) const;
-	//! Compare two strings
-	//! @param		string		The second string object.
-	//!	@param		ignorecase	True indicates case insensitive when compare.
-	//! @return		True indicates it's the same string.
-	_ubool IsEqual(ConstString<CharType, CharEncoding> string, _ubool ignorecase) const;
+	_ubool IsEqual(const ConstString& string, _ubool ignorecase) const;
 	//! Compare two strings.
 	//! @param		string		The second string object.
 	//!	@param		ignorecase	True indicates case insensitive when compare.
 	//! @return		The lexicographic relation of two strings, -1, 0, 1.
-	_int Compare(const CharType* string, _ubool ignorecase) const;
-	//! Compare two strings.
-	//! @param		string		The second string object.
-	//!	@param		ignorecase	True indicates case insensitive when compare.
-	//! @return		The lexicographic relation of two strings, -1, 0, 1.
-	_int Compare(ConstString<CharType, CharEncoding> string, _ubool ignorecase) const;
+	_int Compare(const ConstString& string, _ubool ignorecase) const;
 	//! Compare		two strings with wildcards.
 	//! @param		string		The second string with wildcards.
 	//!	@param		ignorecase	True indicates case insensitive.
@@ -250,17 +228,7 @@ public:
 	//!				<b>'?'</b> meets exactly one character.<br>
 	//!				'*' must not adjacent with other wildcards together, otherwise will get wrong result.
 	//!				For example, "Hello" will meets "He??o" or "H*o" or "*Hello".
-	_ubool CompareWildcard(const CharType* string, _ubool ignorecase = _false) const;
-	//! Compare		two strings with wildcards.
-	//! @param		string		The second string with wildcards.
-	//!	@param		ignorecase	True indicates case insensitive.
-	//! @return		True if the string meets the wildcard, false otherwise.
-	//!	@remarks	Wildcards must in the second string, otherwise it will be normal character.<br>
-	//!				<b>'*'</b> meets zero or more character.<br>
-	//!				<b>'?'</b> meets exactly one character.<br>
-	//!				'*' must not adjacent with other wildcards together, otherwise will get wrong result.
-	//!				For example, "Hello" will meets "He??o" or "H*o" or "*Hello".
-	_ubool CompareWildcard(ConstString<CharType, CharEncoding> string, _ubool ignorecase = _false) const;
+	_ubool CompareWildcard(const ConstString& string, _ubool ignorecase = _false) const;
 
 	//!	Check whether the string is empty or not.
 	//!	@param		none.
@@ -293,7 +261,7 @@ ConstString<CharType, CharEncoding>::ConstString(const CharType* string) {
 }
 
 template <typename CharType, Encoding CharEncoding>
-ConstString<CharType, CharEncoding>::ConstString(const ConstString<CharType, CharEncoding>& string) {
+ConstString<CharType, CharEncoding>::ConstString(const ConstString& string) {
 	mString = string.mString;
 }
 
@@ -310,7 +278,7 @@ ConstString<CharType, CharEncoding>& ConstString<CharType, CharEncoding>::operat
 }
 
 template <typename CharType, Encoding CharEncoding>
-ConstString<CharType, CharEncoding>& ConstString<CharType, CharEncoding>::operator=(ConstString<CharType, CharEncoding> string) {
+ConstString<CharType, CharEncoding>& ConstString<CharType, CharEncoding>::operator=(const ConstString& string) {
 	mString = string.mString;
 
 	return *this;
@@ -353,32 +321,32 @@ _ubool ConstString<CharType, CharEncoding>::operator<=(const CharType* string) c
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool ConstString<CharType, CharEncoding>::operator==(ConstString<CharType, CharEncoding> string) const {
+_ubool ConstString<CharType, CharEncoding>::operator==(const ConstString& string) const {
 	return Platform::CompareString(mString, string.CStr()) == 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool ConstString<CharType, CharEncoding>::operator!=(ConstString<CharType, CharEncoding> string) const {
+_ubool ConstString<CharType, CharEncoding>::operator!=(const ConstString& string) const {
 	return Platform::CompareString(mString, string.CStr()) != 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool ConstString<CharType, CharEncoding>::operator>(ConstString<CharType, CharEncoding> string) const {
+_ubool ConstString<CharType, CharEncoding>::operator>(const ConstString& string) const {
 	return Platform::CompareString(mString, string.CStr()) > 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool ConstString<CharType, CharEncoding>::operator<(ConstString<CharType, CharEncoding> string) const {
+_ubool ConstString<CharType, CharEncoding>::operator<(const ConstString& string) const {
 	return Platform::CompareString(mString, string.CStr()) < 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool ConstString<CharType, CharEncoding>::operator>=(ConstString<CharType, CharEncoding> string) const {
+_ubool ConstString<CharType, CharEncoding>::operator>=(const ConstString& string) const {
 	return Platform::CompareString(mString, string.CStr()) >= 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool ConstString<CharType, CharEncoding>::operator<=(ConstString<CharType, CharEncoding> string) const {
+_ubool ConstString<CharType, CharEncoding>::operator<=(const ConstString& string) const {
 	return Platform::CompareString(mString, string.CStr()) <= 0;
 }
 
@@ -414,7 +382,7 @@ const CharType* ConstString<CharType, CharEncoding>::CStr() const {
 
 template <typename CharType, Encoding CharEncoding>
 ConstString<CharType, CharEncoding> ConstString<CharType, CharEncoding>::SubString(_dword index) const {
-	return ConstString<CharType, CharEncoding>(mString + index);
+	return const ConstString & (mString + index);
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -458,7 +426,7 @@ _ubool ConstString<CharType, CharEncoding>::StartsWith(CharType character, _uboo
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool ConstString<CharType, CharEncoding>::StartsWith(ConstString<CharType, CharEncoding> string, _ubool ignorecase) const {
+_ubool ConstString<CharType, CharEncoding>::StartsWith(const ConstString& string, _ubool ignorecase) const {
 	return Platform::SearchL2R(mString, string.CStr(), ignorecase, _null) == 0;
 }
 
@@ -468,7 +436,7 @@ _ubool ConstString<CharType, CharEncoding>::EndsWith(CharType character, _ubool 
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool ConstString<CharType, CharEncoding>::EndsWith(ConstString<CharType, CharEncoding> string, _ubool ignorecase) const {
+_ubool ConstString<CharType, CharEncoding>::EndsWith(const ConstString& string, _ubool ignorecase) const {
 	_dword length1 = this->GetLength();
 	_dword length2 = string.GetLength();
 
@@ -494,52 +462,27 @@ _dword ConstString<CharType, CharEncoding>::SearchR2L(CharType character, _ubool
 }
 
 template <typename CharType, Encoding CharEncoding>
-_dword ConstString<CharType, CharEncoding>::SearchL2R(const CharType* string, _ubool ignorecase, _dword* endindex) const {
-	return Platform::SearchL2R(mString, string, ignorecase, endindex);
-}
-
-template <typename CharType, Encoding CharEncoding>
-_dword ConstString<CharType, CharEncoding>::SearchR2L(const CharType* string, _ubool ignorecase, _dword* startindex) const {
-	return Platform::SearchR2L(mString, string, ignorecase, startindex);
-}
-
-template <typename CharType, Encoding CharEncoding>
-_dword ConstString<CharType, CharEncoding>::SearchL2R(ConstString<CharType, CharEncoding> string, _ubool ignorecase, _dword* endindex) const {
+_dword ConstString<CharType, CharEncoding>::SearchL2R(const ConstString& string, _ubool ignorecase, _dword* endindex) const {
 	return Platform::SearchL2R(mString, string.CStr(), ignorecase, endindex);
 }
 
 template <typename CharType, Encoding CharEncoding>
-_dword ConstString<CharType, CharEncoding>::SearchR2L(ConstString<CharType, CharEncoding> string, _ubool ignorecase, _dword* startindex) const {
+_dword ConstString<CharType, CharEncoding>::SearchR2L(const ConstString& string, _ubool ignorecase, _dword* startindex) const {
 	return Platform::SearchR2L(mString, string.CStr(), ignorecase, startindex);
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool ConstString<CharType, CharEncoding>::IsEqual(const CharType* string, _ubool ignorecase) const {
-	return Platform::CompareString(mString, string, ignorecase) == 0;
-}
-
-template <typename CharType, Encoding CharEncoding>
-_ubool ConstString<CharType, CharEncoding>::IsEqual(ConstString<CharType, CharEncoding> string, _ubool ignorecase) const {
+_ubool ConstString<CharType, CharEncoding>::IsEqual(const ConstString& string, _ubool ignorecase) const {
 	return Platform::CompareString(mString, string.CStr(), ignorecase) == 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
-_int ConstString<CharType, CharEncoding>::Compare(const CharType* string, _ubool ignorecase) const {
-	return Platform::CompareString(mString, string, ignorecase);
-}
-
-template <typename CharType, Encoding CharEncoding>
-_int ConstString<CharType, CharEncoding>::Compare(ConstString<CharType, CharEncoding> string, _ubool ignorecase) const {
+_int ConstString<CharType, CharEncoding>::Compare(const ConstString& string, _ubool ignorecase) const {
 	return Platform::CompareString(mString, string.CStr(), ignorecase);
 }
 
 template <typename CharType, Encoding CharEncoding>
-_ubool ConstString<CharType, CharEncoding>::CompareWildcard(const CharType* string, _ubool ignorecase) const {
-	return Platform::CompareWildcard(mString, string, ignorecase);
-}
-
-template <typename CharType, Encoding CharEncoding>
-_ubool ConstString<CharType, CharEncoding>::CompareWildcard(ConstString<CharType, CharEncoding> string, _ubool ignorecase) const {
+_ubool ConstString<CharType, CharEncoding>::CompareWildcard(const ConstString& string, _ubool ignorecase) const {
 	return Platform::CompareWildcard(mString, string.CStr(), ignorecase);
 }
 

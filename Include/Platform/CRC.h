@@ -1,24 +1,17 @@
-//! @file     CRC.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// CRC
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The CRC builder.
+/// </summary>
 class CRC {
 public:
 	//! The build string flag
-	enum _BUILD_STRING_FLAG {
-		_BUILD_STRING_NORMAL,
-		_BUILD_STRING_LOWERCASE,
-		_BUILD_STRING_UPPERCASE,
+	enum class Flag {
+		Normal,
+		Lowercase,
+		Uppercase,
 	};
 
 public:
@@ -34,13 +27,13 @@ public:
 	//! @param flag  The build string flag.
 	//! @param oldcrc  The old CRC value.
 	//! @return The CRC value.
-	static _dword BuildFromString(const _chara* string, _dword flag = _BUILD_STRING_NORMAL, _dword oldcrc = 0);
+	static _dword BuildFromString(const _chara* string, Flag flag = Flag::Normal, _dword oldcrc = 0);
 	//! Build the CRC value from UNICODE string.
 	//! @param string  The UNICODE string.
 	//! @param flag  The build string flag.
 	//! @param oldcrc  The old CRC value.
 	//! @return The CRC value.
-	static _dword BuildFromString(const _charw* string, _dword flag = _BUILD_STRING_NORMAL, _dword oldcrc = 0);
+	static _dword BuildFromString(const _charw* string, Flag flag = Flag::Normal, _dword oldcrc = 0);
 };
 
 } // namespace EGE

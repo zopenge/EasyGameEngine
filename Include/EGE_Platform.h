@@ -37,8 +37,6 @@
 // Template classes are dependent on the platform files
 #include "Template/ConstString.h"
 #include "Template/MutableString.h"
-#include "Template/MutableStringR.h"
-#include "Template/RawString.h"
 
 //----------------------------------------------------------------------------
 // Helpful Functions
@@ -56,10 +54,6 @@ typedef Array<_double> DoubleArray;
 typedef Stack<_word> WordStack;
 typedef Stack<_dword> DwordStack;
 
-typedef RawString<_chara, Encoding::Ansi> ARawString;
-typedef RawString<_chara, Encoding::Utf8> URawString;
-typedef RawString<_charw, Encoding::Utf16> WRawString;
-
 typedef ConstString<_chara, Encoding::Ansi> AStringPtr;
 typedef ConstString<_chara, Encoding::Utf8> UStringPtr;
 typedef ConstString<_charw, Encoding::Utf16> WStringPtr;
@@ -67,10 +61,6 @@ typedef ConstString<_charw, Encoding::Utf16> WStringPtr;
 typedef MutableString<_chara, Encoding::Ansi> AString;
 typedef MutableString<_chara, Encoding::Utf8> UString;
 typedef MutableString<_charw, Encoding::Utf16> WString;
-
-typedef MutableStringR<_chara, Encoding::Ansi> AStringR;
-typedef MutableStringR<_chara, Encoding::Utf8> UStringR;
-typedef MutableStringR<_charw, Encoding::Utf16> WStringR;
 
 typedef Array<AString> AStringArray;
 typedef Array<UString> UStringArray;
@@ -351,13 +341,11 @@ inline MutableString<_charw, Encoding::Utf16>& MutableString<_charw, Encoding::U
 // Platform Files
 #include "Platform/Bounds.h"
 #include "Platform/Box.h"
-#include "Platform/CallStack.h"
+#include "Platform/CallStackFrame.h"
 #include "Platform/Camera.h"
 #include "Platform/Camera2D.h"
-#include "Platform/Clipboard.h"
 #include "Platform/Color.h"
 #include "Platform/DebugSymbol.h"
-#include "Platform/DeferredProcessor.h"
 #include "Platform/DirectoryRecorder.h"
 #include "Platform/EulerAngles.h"
 #include "Platform/FPSTimer.h"

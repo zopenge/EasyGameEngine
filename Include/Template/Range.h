@@ -3,7 +3,7 @@
 namespace EGE {
 
 /// <summary>
-/// A interval range class, in [min, max] range
+/// A interval range class, in [mStartIndex, mEndIndex] range
 /// </summary>
 template <typename Type>
 class Range {
@@ -13,9 +13,9 @@ public:
 
 public:
 	//!	The minimal value
-	Type mMinValue;
+	Type mStartIndex;
 	//!	The maximal value
-	Type mMaxValue;
+	Type mEndIndex;
 
 public:
 	Range();
@@ -36,31 +36,23 @@ public:
 	//!	@param		none.
 	//!	@return		The length of the range.
 	Type GetLength() const;
-	//!	Get the percentage in [0.0, 1.0].
-	//!	@param		none.
-	//!	@return		The percentage.
-	_float GetPercentage() const;
 
 	//!	Check whether it's in range.
 	//!	@param		value	The value.
 	//!	@return		True indicates it's in range.
 	_ubool IsIn(Type value) const;
-	//!	Check whether it's finish.
-	//!	@param		none.
-	//!	@return		True indicates it's finish.
-	_ubool IsFinish() const;
 };
 
 template <typename Type>
 Range<Type>::Range() {
-	mMinValue = (Type)0;
-	mMaxValue = (Type)0;
+	mStartIndex = (Type)0;
+	mEndIndex = (Type)0;
 }
 
 template <typename Type>
 Range<Type>::Range(Type min_value, Type max_value) {
-	mMinValue = min_value;
-	mMaxValue = max_value;
+	mStartIndex = min_value;
+	mEndIndex = max_value;
 }
 
 template <typename Type>
@@ -69,44 +61,34 @@ Range<Type>::~Range() {
 
 template <typename Type>
 Range<Type>& Range<Type>::operator+=(const Range& range) {
-	mMinValue += range.mMinValue;
-	mMaxValue += range.mMaxValue;
+	mStartIndex += range.mStartIndex;
+	mEndIndex += range.mEndIndex;
 
 	return *this;
 }
 
 template <typename Type>
 Range<Type>& Range<Type>::operator-=(const Range& range) {
-	mMinValue -= range.mMinValue;
-	mMaxValue -= range.mMaxValue;
+	mStartIndex -= range.mStartIndex;
+	mEndIndex -= range.mEndIndex;
 
 	return *this;
 }
 
 template <typename Type>
 Type Range<Type>::GetLength() const {
-	return mMaxValue - mMinValue;
-}
-
-template <typename Type>
-_float Range<Type>::GetPercentage() const {
-	return EGE_RATIO(mMinValue, mMaxValue);
+	return mEndIndex - mStartIndex + 1;
 }
 
 template <typename Type>
 _ubool Range<Type>::IsIn(Type value) const {
-	if (mMinValue > value)
+	if (value < mStartIndex)
 		return _false;
 
-	if (mMaxValue < value)
+	if (value > mEndIndex)
 		return _false;
 
 	return _true;
-}
-
-template <typename Type>
-_ubool Range<Type>::IsFinish() const {
-	return mMinValue == mMaxValue;
 }
 
 } // namespace EGE

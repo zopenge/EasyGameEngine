@@ -525,6 +525,7 @@ private:                              \
 STATIC_ASSERT(sizeof(wchar_t) == 2, "We use UTF-16 as wchar_t, not UTF-32");
 #endif
 
+// The memory operations
 #ifndef _USE_STANDARD_MEM_OPERATOR_
 
 #	ifdef _PLATFORM_WINDOWS_

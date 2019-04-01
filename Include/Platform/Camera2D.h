@@ -8,30 +8,32 @@ namespace EGE {
 //----------------------------------------------------------------------------
 
 class Camera2D {
- public:
-  static const Camera2D cNull;
+public:
+	static const Camera2D cNull;
 
- public:
-  Camera2D();
-  Camera2D(const Vector2& position, const Vector2& scale, _float rotation);
-  ~Camera2D();
+private:
+	Vector2 mOffset;
+	Vector2 mScale;
+	_float mRotation;
+	Matrix3 mTransform;
 
-  _void SetOffset(const Vector2& offset);
-  _void SetScale(const Vector2& scale);
-  _void SetRotation(_float rotation);
+public:
+	Camera2D();
+	Camera2D(const Vector2& position, const Vector2& scale, _float rotation);
+	~Camera2D();
 
-  Vector2 GetOffset() const;
-  Vector2 GetScale() const;
-  _float GetRotation() const;
+public:
+	_void SetOffset(const Vector2& offset);
+	_void SetScale(const Vector2& scale);
+	_void SetRotation(_float rotation);
 
-  _void Scale(const Vector2& scale, const Vector2& anchorpos);
-  _void Rotate(_float rotate, const Vector2& anchorpos);
-  const Matrix3& GetTransform() const;
+	const Vector2& GetOffset() const;
+	const Vector2& GetScale() const;
+	_float GetRotation() const;
+	const Matrix3& GetTransform() const;
 
- private:
-  Vector2 mOffset;
-  Vector2 mScale;
-  _float mRotation;
-  Matrix3 mTransform;
+	_void Scale(const Vector2& scale, const Vector2& anchorpos);
+	_void Rotate(_float rotate, const Vector2& anchorpos);
 };
-}  // namespace EGE
+
+} // namespace EGE

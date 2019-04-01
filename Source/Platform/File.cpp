@@ -1,14 +1,4 @@
-//! @file     File.cpp
-//! @author   LiCode
-//! @version  1.1.1.804
-//! @date     2011/03/10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// File Implementation
-//----------------------------------------------------------------------------
 
 File::File() {
 	mObjectHandle = _null;
