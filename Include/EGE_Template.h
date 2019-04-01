@@ -48,7 +48,7 @@
 #include "Template/Map.h"
 #include "Template/MemArrayPtr.h"
 #include "Template/MemPtr.h"
-#include "Template/MemPtrBase.h"
+#include "Template/BaseMemPtr.h"
 #include "Template/MemSegmentPtr.h"
 #include "Template/PagePool.h"
 #include "Template/Pair.h"

@@ -799,5 +799,17 @@
     <ClInclude Include="..\..\..\Include\Platform\CallStackFrame.h">
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\FixedArray.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\BaseMemPtr.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\MemPtr.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\MemSegmentPtr.h">
+      <Filter>Header Files\Template</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
