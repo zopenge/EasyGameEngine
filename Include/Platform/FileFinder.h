@@ -13,14 +13,6 @@ namespace EGE {
 //----------------------------------------------------------------------------
 
 class FileFinder {
-public:
-	//! The get files type
-	enum _GET_FILE_TYPE {
-		_GET_FILE_TYPE_FULL_PATH, //! Use the full path to get files
-		_GET_FILE_TYPE_RELATIVE_PATH, //! Use the relative path to get files
-		_GET_FILE_TYPE_NAME_ONLY, //! Use the name only to get files
-	};
-
 private:
 	//! The file finder data
 	struct FolderData {
@@ -96,13 +88,6 @@ public:
 	//! @param depth   The enumeration depth.
 	//! @return True indicates it has file with specified extension name.
 	_ubool HasFile(WStringPtr extension_name, _dword depth = -1);
-
-	//! Get the files.
-	//! @param get_type The get file type.
-	//! @param filter  The extension name filter.
-	//! @param depth  The enumeration depth.
-	//! @return The files.
-	WStringArray GetFiles(_GET_FILE_TYPE get_type, WStringPtr filter = L"", _dword depth = -1);
 
 	//! Enumerate/Walk each files/directories in the root directory recursively.
 	//! @param fileinfo The file info.

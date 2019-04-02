@@ -252,7 +252,11 @@ namespace EGE {
 
 //! The main thread ID
 extern _thread_id gMainThreadID;
+//! The performance data.
+extern PerformanceData sPerformanceData;
 
 } // namespace EGE
+
+using namespace EGE;
 
 #endif // _EGE_PLATFORM_PCH_

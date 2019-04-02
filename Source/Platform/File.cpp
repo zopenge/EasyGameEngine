@@ -13,26 +13,27 @@ _void File::Close() {
 	mObjectHandle = _null;
 }
 
-_ubool File::Open(WStringPtr filename, _FILE_CREATE_FLAG createflag, _dword operateflag, _dword shareflag, _dword attributes) {
+_ubool File::Create(WStringPtr filename) {
 	// Create directory if needed
-	if (createflag == _FILE_CREATE_NEW || createflag == _FILE_CREATE_ALWAYS || createflag == _FILE_OPEN_ALWAYS) {
-		WString pathname = Path::GetDirectoryName(filename);
+	WString pathname = Path::GetDirectoryName(filename);
 
-		// Create directory if it's not existing
-		if (pathname[0] != 0 && FileSystem::IsDirectoryExist(pathname.CStr()) == _false) {
-			if (FileSystem::CreateDir(pathname.CStr()) == _false)
-				return _false;
-		}
-	}
-
-	// Set file attribute to normal if it's existing
-	if (operateflag & _FILE_OPERATION_WRITE) {
-		if (FileSystem::IsFileExist(filename) && FileSystem::SetAttributes(filename, _FILE_ATTRIBUTE_NORMAL) == _false)
+	// Create directory if it's not existing
+	if (pathname[0] != 0 && FileSystem::IsDirectoryExist(pathname.CStr()) == _false) {
+		if (FileSystem::CreateDir(pathname.CStr()) == _false)
 			return _false;
 	}
 
 	// Create file handle
-	mObjectHandle = Platform::OpenFile(filename.CStr(), createflag, operateflag, shareflag, attributes);
+	mObjectHandle = Platform::CreateFile(filename.CStr());
+	if (mObjectHandle == _null)
+		return _false;
+
+	return true;
+}
+
+_ubool File::Open(WStringPtr filename) {
+	// Create file handle
+	mObjectHandle = Platform::OpenFile(filename.CStr());
 	if (mObjectHandle == _null)
 		return _false;
 
@@ -47,7 +48,7 @@ _ubool File::PeekBuffer(_void* buffer, _dword size, _dword* bytesread) {
 	_ubool ret = ReadBuffer(buffer, size, bytesread);
 
 	// Reset the file pointer
-	Seek(_SEEK_BEGIN, offset);
+	Seek(SeekFlag::Begin, offset);
 
 	return ret;
 }
@@ -58,13 +59,13 @@ _ubool File::PeekBuffer(_void* buffer, _dword size, _dword offset, _dword* bytes
 
 	// Seek file pointer by offset
 	if (offset != -1)
-		Seek(_SEEK_BEGIN, offset);
+		Seek(SeekFlag::Begin, offset);
 
 	// Read the buffer data
 	_ubool ret = ReadBuffer(buffer, size, bytesread);
 
 	// Reset the file pointer
-	Seek(_SEEK_BEGIN, old_offset);
+	Seek(SeekFlag::Begin, old_offset);
 
 	return ret;
 }
@@ -184,12 +185,12 @@ _ubool File::WriteUTF8Flag() {
 	return WriteBuffer(&utf8flag, 3);
 }
 
-_dword File::Seek(_SEEK flag, _int distance) {
+_dword File::Seek(SeekFlag flag, _int distance) {
 	return Platform::SeekFilePointer(mObjectHandle, flag, distance);
 }
 
 _dword File::GetOffset() const {
-	return Platform::SeekFilePointer(mObjectHandle, _SEEK_CURRENT, 0);
+	return Platform::SeekFilePointer(mObjectHandle, SeekFlag::Current, 0);
 }
 
 _dword File::GetSize() const {
@@ -198,7 +199,7 @@ _dword File::GetSize() const {
 
 _ubool File::SetSize(_dword size) {
 	// Move pointer to the end of file
-	if (Seek(_SEEK_BEGIN, (_int)size) == -1)
+	if (Seek(SeekFlag::Begin, (_int)size) == -1)
 		return _false;
 
 	// Set it as end of file

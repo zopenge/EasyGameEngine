@@ -120,6 +120,12 @@ public:
 	WString GetFileName(_ubool extension = _true) const;
 
 public:
+	/// <summary>
+	/// Check whether it's split character.
+	/// </summary>
+	template <typename CharType>
+	inline static _ubool isSplitChar(CharType code);
+
 	//! Returns the file name and extension of the specified path string.
 	//! @param path   The path string from which to obtain the file name and extension.
 	//! @param extension  Whether need the extension of the the file name.
@@ -531,7 +537,7 @@ StringType Path::BuildFilePath(StringPtrType path, StringPtrType filename, Strin
 	combined_filename.TrimLeft(trim_strings);
 
 	combined_path += '/' + combined_filename;
-	combined_path.ReplaceAll('\\', '/');
+	combined_path.Replace('\\', '/');
 
 	return combined_path;
 }
@@ -621,12 +627,12 @@ StringType Path::CleanupPath(StringPtrType pathname) {
 
 	for (_int i = 0; string[i] != 0;) {
 		// Check whether it's backward path string
-		if (EGE_IS_SPLIT_CHAR(string[i]) && string[i + 1] == '.' && string[i + 2] == '.' && EGE_IS_SPLIT_CHAR(string[i + 3])) {
+		if (isSplitChar(string[i]) && string[i + 1] == '.' && string[i + 2] == '.' && isSplitChar(string[i + 3])) {
 			_ubool remove_flag = _false;
 
 			// Find the parent directory
 			for (_int j = i - 1; j >= 0; j--) {
-				if (EGE_IS_SPLIT_CHAR(string[j]) && string[j + 1] != '.' && string[j + 2] != '.') {
+				if (isSplitChar(string[j]) && string[j + 1] != '.' && string[j + 2] != '.') {
 					// Get the remove string length ( + '..\' )
 					_dword length = (i - j) + 3;
 
@@ -673,6 +679,15 @@ _ubool Path::IsPathRooted(StringPtrType string) {
 	}
 
 	return _false;
+}
+
+template <typename CharType>
+_ubool Path::isSplitChar(CharType code) {
+	if (code == '\\' || code == '/') {
+		return true;
+	}
+
+	return false;
 }
 
 AString Path::GetFileName(AStringPtr path, _ubool extension) {

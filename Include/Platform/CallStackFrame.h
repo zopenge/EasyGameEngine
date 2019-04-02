@@ -44,6 +44,11 @@ public:
 	static _ubool GetCurrentCallStack(CallStackFrame& callstack);
 
 public:
+	/// <summary>
+	/// Create exception and save call stack frame.
+	/// </summary>
+	_void Create(_void* exception);
+
 	//! Release callstack.
 	//! @param none.
 	//! @return none.

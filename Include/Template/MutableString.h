@@ -488,12 +488,12 @@ public:
 	//!	@param		format		The format of string.
 	//!	@param		...			The optional arguments.
 	//! @return		none.
-	_void Format(const CharType* format, ...);
+	MutableString& Format(const CharType* format, ...);
 	//!	Format string.
 	//!	@param		format		The format of string.
 	//!	@param		arguments	The optional arguments.
 	//! @return		none.
-	_void FormatByVAList(const CharType* format, _va_list arguments);
+	MutableString& FormatByVAList(const CharType* format, _va_list arguments);
 };
 
 //----------------------------------------------------------------------------
@@ -511,7 +511,7 @@ void MutableString<CharType, CharEncoding>::Init() {
 	mSize = 0;
 
 	static _dword sNull = 0;
-	mString = (const CharType*)&sNull;
+	mString = (CharType*)&sNull;
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -1058,7 +1058,7 @@ _void MutableString<CharType, CharEncoding>::Clear(_ubool freememory) {
 
 	// Not allocated any string buffer
 	if (mSize == 0) {
-		TBaseClass::Clear();
+		Init();
 	}
 	// Free the string buffer
 	else if (freememory) {
@@ -1067,7 +1067,7 @@ _void MutableString<CharType, CharEncoding>::Clear(_ubool freememory) {
 			mSize = 0;
 		}
 
-		TBaseClass::Clear();
+		Init();
 	}
 	// Not free the string buffer
 	else {
@@ -1642,14 +1642,16 @@ MutableString<_charw, Encoding::Utf16>& MutableString<_charw, Encoding::Utf16>::
 }
 
 template <typename CharType, Encoding CharEncoding>
-_void MutableString<CharType, CharEncoding>::Format(const CharType* format, ...) {
+MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::Format(const CharType* format, ...) {
 	BEGIN_VA_LIST(args, format);
 	FormatByVAList(format, args);
 	END_VA_LIST(args);
+
+	return *this;
 }
 
 template <typename CharType, Encoding CharEncoding>
-_void MutableString<CharType, CharEncoding>::FormatByVAList(const CharType* format, _va_list arguments) {
+MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::FormatByVAList(const CharType* format, _va_list arguments) {
 	mLength = Platform::GetFormatStringLength(format, arguments);
 
 	// Create more memory if necessary
@@ -1672,6 +1674,8 @@ _void MutableString<CharType, CharEncoding>::FormatByVAList(const CharType* form
 
 	// Set null-terminated
 	this->mString[mLength] = 0;
+
+	return *this;
 }
 
 } // namespace EGE

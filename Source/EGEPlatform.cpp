@@ -7,9 +7,7 @@
 #include "EGEPlatform.h"
 
 _thread_id EGE::gMainThreadID = 0;
-#if (_SHOW_SKIP_ASSERT_DIALOG == 1)
-WSrcFileLineInfoFixedArray EGE::gAssertSkipSrcFileLines;
-#endif
+PerformanceData EGE::sPerformanceData;
 
 //----------------------------------------------------------------------------
 // Specified template static variables implementation
@@ -44,14 +42,11 @@ template <>
 const RectF RectF::cNull(0.0f, 0.0f, 0.0f, 0.0f);
 
 template <>
-const RectI RectI::cMax(Math::cMinInt, Math::cMinInt, Math::cMaxInt,
-                        Math::cMaxInt);
+const RectI RectI::cMax(Math::cMinInt, Math::cMinInt, Math::cMaxInt, Math::cMaxInt);
 template <>
-const RectU RectU::cMax(Math::cMinDword, Math::cMinDword, Math::cMaxDword,
-                        Math::cMaxDword);
+const RectU RectU::cMax(Math::cMinDword, Math::cMinDword, Math::cMaxDword, Math::cMaxDword);
 template <>
-const RectF RectF::cMax(Math::cMinFloat, Math::cMinFloat, Math::cMaxFloat,
-                        Math::cMaxFloat);
+const RectF RectF::cMax(Math::cMinFloat, Math::cMinFloat, Math::cMaxFloat, Math::cMaxFloat);
 
 template <>
 const WordRange WordRange::cNull(0, 0);
@@ -73,11 +68,11 @@ template <>
 const DwordDataField DwordDataField::cNull(0, 0);
 
 template <>
-const QwordParameters2 QwordParameters2::cNull(0, 0);
+const QwordParams2 QwordParams2::cNull(0, 0);
 template <>
-const QwordParameters3 QwordParameters3::cNull(0, 0, 0);
+const QwordParams3 QwordParams3::cNull(0, 0, 0);
 template <>
-const QwordParameters4 QwordParameters4::cNull(0, 0, 0, 0);
+const QwordParams4 QwordParams4::cNull(0, 0, 0, 0);
 
 //----------------------------------------------------------------------------
 // Memory Overload Implementation

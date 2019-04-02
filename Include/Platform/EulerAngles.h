@@ -43,6 +43,9 @@ public:
 	//! @return none.
 	_void GetAxisAndAngle(Vector3& axis, _float& angle) const;
 
+	_void ToQuaternion(Quaternion& quaternion) const;
+	_void ToMatrix(Matrix3& matrix) const;
+
 	//! Compare two EulerAngles.
 	//! @param angle  The EulerAngles to compare with.
 	//! @return True if they are identical, false otherwise.

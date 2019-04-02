@@ -42,6 +42,9 @@ public:
 	//! @param none
 	Vector2();
 	//! Constructor, create a vector and sets x, y components.
+	template <typename PointType>
+	Vector2(const PointType& point);
+	//! Constructor, create a vector and sets x, y components.
 	//! @param xx   X-component of the vector.
 	//! @param yy   Y-component of the vector.
 	Vector2(_float xx, _float yy);
@@ -240,6 +243,11 @@ public:
 //----------------------------------------------------------------------------
 
 inline Vector2::Vector2() {
+}
+
+template <typename PointType>
+inline Vector2::Vector2(const PointType& point)
+    : x((_float)point.x), y((_float)point.y) {
 }
 
 inline Vector2::Vector2(_float xx, _float yy)

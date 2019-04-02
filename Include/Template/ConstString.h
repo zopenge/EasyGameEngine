@@ -382,7 +382,7 @@ const CharType* ConstString<CharType, CharEncoding>::CStr() const {
 
 template <typename CharType, Encoding CharEncoding>
 ConstString<CharType, CharEncoding> ConstString<CharType, CharEncoding>::SubString(_dword index) const {
-	return const ConstString & (mString + index);
+	return ConstString(mString + index);
 }
 
 template <typename CharType, Encoding CharEncoding>

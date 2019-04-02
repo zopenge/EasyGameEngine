@@ -134,8 +134,7 @@ _ubool anyPlatform::Initialize() {
 	STATIC_ASSERT(sizeof(_byte) == 1, "Basic data type size check");
 	STATIC_ASSERT(sizeof(_word) == 2, "Basic data type size check");
 	STATIC_ASSERT(sizeof(_dword) == 4, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_long) == 4 || sizeof(_long) == 8,
-	              "Basic data type size check");
+	STATIC_ASSERT(sizeof(_long) == 4 || sizeof(_long) == 8, "Basic data type size check");
 	STATIC_ASSERT(sizeof(_large) == 8, "Basic data type size check");
 	STATIC_ASSERT(sizeof(_qword) == 8, "Basic data type size check");
 	STATIC_ASSERT(sizeof(_float) == 4, "Basic data type size check");
@@ -144,24 +143,17 @@ _ubool anyPlatform::Initialize() {
 	STATIC_ASSERT(sizeof(_dword) == 4, "Basic data type size check");
 	STATIC_ASSERT(sizeof(_ubool) == 4, "Basic data type size check");
 
-	// Get the main thread ID ( the main thread ID could be changed by system, so
-	// we need to update it)
+	// Get the main thread ID ( the main thread ID could be changed by system, so we need to update it)
 	gMainThreadID = Platform::GetCurrentThreadID();
 	EGE_ASSERT(gMainThreadID != 0);
 
 	// Show the long type size, build time and main thread ID
-	OUTPUT_DEBUG_STRING(
-	    FORMAT_ASTRING_1("EGE: '_long' type size: %d\n", (_dword)sizeof(_long)));
-	OUTPUT_DEBUG_STRING(
-	    FORMAT_ASTRING_2("EGE: BuildTime: %s %s\n", _BUILDDATE_A, _BUILDTIME_A));
-	OUTPUT_DEBUG_STRING(
-	    FORMAT_ASTRING_1("EGE: MainThread: 0x%.16llx\n", gMainThreadID));
+	Platform::OutputDebugStringInLine(AString().Format("EGE: '_long' type size: %d\n", (_dword)sizeof(_long)).CStr());
+	Platform::OutputDebugStringInLine(AString().Format("EGE: BuildTime: %s %s\n", _BUILDDATE_A, _BUILDTIME_A).CStr());
+	Platform::OutputDebugStringInLine(AString().Format("EGE: MainThread: 0x%.16llx\n", gMainThreadID).CStr());
 
 	return _true;
 }
 
 _void anyPlatform::Finalize() {
-#if (_SHOW_SKIP_ASSERT_DIALOG == 1)
-	gAssertSkipSrcFileLines.Clear();
-#endif
 }

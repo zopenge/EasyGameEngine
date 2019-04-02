@@ -557,7 +557,7 @@ _ubool Intersection::RayVSMesh(const Ray& ray, _dword stride, _dword vertex_numb
 	return nearest >= 0.0f;
 }
 
-_ubool Intersection::OBBoxVSOBBox(const OrientedBox2D& box1, const OrientedBox2D& box2) {
+_ubool Intersection::OBBoxVSOBBox(const ColliderBox2D& box1, const ColliderBox2D& box2) {
 	return box1.Overlaps1Way(box2) && box2.Overlaps1Way(box1);
 }
 

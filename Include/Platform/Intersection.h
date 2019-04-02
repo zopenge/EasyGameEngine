@@ -102,7 +102,7 @@ public:
 	//! @param box1  The oriented-box 1.
 	//! @param box2  The oriented-box 2.
 	//! @return True indicates oriented-box 1 hit oriented-box 2 successful.
-	static _ubool OBBoxVSOBBox(const OrientedBox2D& box1, const OrientedBox2D& box2);
+	static _ubool OBBoxVSOBBox(const ColliderBox2D& box1, const ColliderBox2D& box2);
 
 	//! Bound-box VS bound-box.
 	//! @param box1  The bound-box 1.

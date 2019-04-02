@@ -183,8 +183,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Bounds.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\CallStackFrame.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\ColliderBox2D.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Mathics.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\OrientedBox2D.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Box.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\CallStack\winCallStack.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Camera.cpp" />
@@ -291,11 +291,11 @@
     <ClInclude Include="..\..\..\Include\Platform\Bounds.h" />
     <ClInclude Include="..\..\..\Include\Platform\CallStackFrame.h" />
     <ClInclude Include="..\..\..\Include\Platform\Camera2D.h" />
+    <ClInclude Include="..\..\..\Include\Platform\ColliderBox2D.h" />
     <ClInclude Include="..\..\..\Include\Platform\FPSTimer.h" />
     <ClInclude Include="..\..\..\Include\Platform\Interpolation.h" />
     <ClInclude Include="..\..\..\Include\Platform\IPAddress.h" />
     <ClInclude Include="..\..\..\Include\Platform\Mathics.h" />
-    <ClInclude Include="..\..\..\Include\Platform\OrientedBox2D.h" />
     <ClInclude Include="..\..\..\Include\Platform\OS\ios\IOSHeaders.h" />
     <ClInclude Include="..\..\..\Include\Platform\OS\NetworkOSHeader.h" />
     <ClInclude Include="..\..\..\Include\Platform\OS\windows\Win32Headers.h" />

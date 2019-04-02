@@ -154,12 +154,11 @@ public:
 	_ubool WriteUTF8Flag();
 
 	//! Move the file pointer from the begin of the file.
-	//! @remarks A positive distance moves the file pointer forward in the file,
-	//!    and a negative value moves the file pointer backward.
+	//! @remarks A positive distance moves the file pointer forward in the file, and a negative value moves the file pointer backward.
 	//! @param flag   The seek flag.
 	//! @param distance  Number of bytes to move.
 	//! @return The current offset of file pointer from begin.
-	_dword Seek(Seek flag, _int distance);
+	_dword Seek(SeekFlag flag, _int distance);
 
 	//! Get the current offset of file pointer of the file.
 	//! @param none

@@ -199,17 +199,17 @@ _void DebugSymbol::Finalize() {
 }
 
 _ubool DebugSymbol::StackWalk(_void* context, WString& string, _dword max_frame_number) {
-	ASrcFileLineInfo call_stack[256];
+	SymbolFileData call_stack[256];
 	_dword number = StackWalk(context, call_stack, max_frame_number);
 	if (number == 0)
 		return _false;
 
 	for (_dword i = 0; i < number; i++) {
-		const ASrcFileLineInfo& line_info = call_stack[i];
+		const SymbolFileData& line_info = call_stack[i];
 
 		// Feedback the callstack frame
 		_chara string_buffer_ansi[1024];
-		Platform::FormatStringBuffer(string_buffer_ansi, 1024, "%.8X\t%s:%d\n", line_info.mAddress, line_info.mFileName, line_info.mLinenumber);
+		Platform::FormatStringBuffer(string_buffer_ansi, 1024, "%.8X\t%s:%d\n", line_info.mAddress, line_info.mFileName, line_info.mLineNumber);
 
 		// Update callstack string
 		string += WString().FromString(Encoding::Ansi, string_buffer_ansi);
@@ -218,7 +218,7 @@ _ubool DebugSymbol::StackWalk(_void* context, WString& string, _dword max_frame_
 	return _true;
 }
 
-_dword DebugSymbol::StackWalk(_void* context, ASrcFileLineInfo* call_stack, _dword max_frame_number) {
+_dword DebugSymbol::StackWalk(_void* context, SymbolFileData* call_stack, _dword max_frame_number) {
 	// Initialize debug symbol
 	if (Initialize() == _false)
 		return 0;
@@ -237,37 +237,13 @@ _dword DebugSymbol::StackWalk(_void* context, ASrcFileLineInfo* call_stack, _dwo
 
 	// Walk stack
 	for (_dword i = 0; i < framenumber; i++) {
-		ASrcFileLineInfo& line_info = call_stack[i];
+		SymbolFileData& line_info = call_stack[i];
 
 		// Unknown callstack frame
 		if (addresslist[i] == 0) {
 			SafeCopyString(line_info.mFileName, "Unknown");
 			continue;
 		}
-
-		//// DebugSymbol buffer
-		//_byte symbolbuffer[ sizeof( IMAGEHLP_SYMBOL64 ) + CallStackFrame::_MAX_STRING_LENGTH ];
-
-		//// Initialize symbol
-		//IMAGEHLP_SYMBOL64* symbol = (IMAGEHLP_SYMBOL64*) symbolbuffer;
-		//symbol->SizeOfStruct  = sizeof( symbolbuffer );
-		//symbol->MaxNameLength  = CallStackFrame::_MAX_STRING_LENGTH;
-
-		//// The function name string buffer
-		//_charw funcname[ CallStackFrame::_MAX_STRING_LENGTH ];
-
-		//// Get function symbol from address
-		//_qword offset = 0;
-		//if ( (*sSymbolFuncHelper.mSymGetSymFromAddr64Func)( processhandle, addresslist[i], &offset, symbol ) == _false )
-		//{
-		// // Get symbol failed
-		// SafeCopyString( funcname, L"Unknown" );
-		//}
-		//else
-		//{
-		// // The symbol->Name is ansi, so convert it to unicode
-		// Platform::AnsiToUtf16( funcname, CallStackFrame::_MAX_STRING_LENGTH, symbol->Name );
-		//}
 
 		// Get line number from address
 		DWORD offset = 0;
@@ -278,7 +254,7 @@ _dword DebugSymbol::StackWalk(_void* context, ASrcFileLineInfo* call_stack, _dwo
 		}
 
 		line_info.mAddress = (_dword)addresslist[i];
-		line_info.mLinenumber = lineinfo.LineNumber;
+		line_info.mLineNumber = lineinfo.LineNumber;
 		SafeCopyString(line_info.mFileName, lineinfo.FileName);
 	}
 
@@ -312,17 +288,18 @@ _ubool DebugSymbol::StackWalk(_void* context, OnCallStackFrame funcpointer, _voi
 		}
 
 		// DebugSymbol buffer
-		_byte symbolbuffer[sizeof(IMAGEHLP_SYMBOL64) + CallStackFrame::_MAX_STRING_LENGTH];
+		const _dword cMaxStringLength = 256;
+		_byte symbolbuffer[sizeof(IMAGEHLP_SYMBOL64) + cMaxStringLength];
 
 		// Initialize symbol
 		IMAGEHLP_SYMBOL64* symbol = (IMAGEHLP_SYMBOL64*)symbolbuffer;
 		symbol->SizeOfStruct = sizeof(symbolbuffer);
-		symbol->MaxNameLength = CallStackFrame::_MAX_STRING_LENGTH;
+		symbol->MaxNameLength = cMaxStringLength;
 
 		// Get function symbol from address
 		DWORD64 offset = 0;
 		if (!(*sSymbolFuncHelper.mSymGetSymFromAddr64Func)(processhandle, addresslist[i], &offset, symbol))
-			Platform::CopyString(symbol->Name, "Unknown", CallStackFrame::_MAX_STRING_LENGTH);
+			Platform::CopyString(symbol->Name, "Unknown", cMaxStringLength);
 
 		// Get file name and line number from address
 		IMAGEHLP_LINE64 lineinfo = {0};
@@ -341,7 +318,7 @@ _ubool DebugSymbol::StackWalk(_void* context, OnCallStackFrame funcpointer, _voi
 _ubool DebugSymbol::WriteMiniDumpFile(WStringPtr filename, _void* exception) {
 	// Create dump file to save exception info
 	File dumpfile;
-	if (dumpfile.Open(filename, _FILE_CREATE_ALWAYS, _FILE_OPERATION_WRITE) == _false)
+	if (dumpfile.Create(filename) == _false)
 		return _false;
 
 	// Dump exception to the file

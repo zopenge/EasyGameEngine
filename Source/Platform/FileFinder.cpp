@@ -43,7 +43,7 @@ _void FileFinder::PopDir() {
 	mFolderDataStack.Pop();
 }
 
-_ubool FileFinder::ReadDir(FolderData& filefinder, FileInfo& fileinfo, WStringPtr filter, _dword flags) {
+_ubool FileFinder::ReadDir(FolderData& filefinder, FileData& fileinfo, WStringPtr filter, _dword flags) {
 	FileFinderData finddata;
 	while (Platform::ReadDir(filefinder.mFinderHandle, finddata)) {
 		// Walk subdirectory
@@ -126,7 +126,7 @@ WString FileFinder::GetFileByName(WStringPtr name) {
 	WString extension_name = Path::GetExtension(name);
 
 	// Start to find
-	FileInfo file_info;
+	FileData file_info;
 	while (Walk(file_info, extension_name, _FILE_FINDER_FILE_MASK, -1)) {
 		if (file_info.mFileName == name)
 			return file_info.mRelativePath;
@@ -141,7 +141,7 @@ _ubool FileFinder::HasFile(WStringPtr extension_name, _dword depth) {
 		return _false;
 
 	// Start to find
-	FileInfo file_info;
+	FileData file_info;
 	while (Walk(file_info, L"", _FILE_FINDER_FILE_MASK, depth)) {
 		if (Path::GetExtension(file_info.mFileName) == extension_name)
 			return _true;
@@ -150,37 +150,7 @@ _ubool FileFinder::HasFile(WStringPtr extension_name, _dword depth) {
 	return _false;
 }
 
-WStringArray FileFinder::GetFiles(_GET_FILE_TYPE get_type, WStringPtr filter, _dword depth) {
-	WStringArray files;
-
-	// Open the root directory
-	if (Open(mRootDirectory)) {
-		// Start to find
-		FileInfo file_info;
-		while (Walk(file_info, filter, _FILE_FINDER_FILE_MASK, depth)) {
-			switch (get_type) {
-			case _GET_FILE_TYPE_FULL_PATH:
-				files.Append(file_info.mAbsolutePath);
-				break;
-
-			case _GET_FILE_TYPE_RELATIVE_PATH:
-				files.Append(file_info.mRelativePath);
-				break;
-
-			case _GET_FILE_TYPE_NAME_ONLY:
-				files.Append(file_info.mFileName);
-				break;
-
-			default:
-				break;
-			}
-		}
-	}
-
-	return files;
-}
-
-_ubool FileFinder::Walk(FileInfo& fileinfo, WStringPtr filter, _dword flags, _dword depth) {
+_ubool FileFinder::Walk(FileData& fileinfo, WStringPtr filter, _dword flags, _dword depth) {
 	// Walk this directory
 	while (mFolderDataStack.Number() > 0) {
 		// Get the current file finder

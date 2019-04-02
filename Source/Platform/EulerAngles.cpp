@@ -57,7 +57,40 @@ _void EulerAngles::GetAxisAndAngle(Vector3& axis, _float& angle) const {
 		angle = mBank;
 	} else {
 		Quaternion q;
-		Math::EulerAngles2Quaternion(*this, q);
+		ToQuaternion(q);
 		q.GetAxisAndAngle(axis, angle);
 	}
+}
+
+_void EulerAngles::ToQuaternion(Quaternion& quaternion) const {
+	_float cp = Math::Cos(mPitch / 2.0f);
+	_float ch = Math::Cos(mHeading / 2.0f);
+	_float cb = Math::Cos(mBank / 2.0f);
+	_float sp = Math::Sin(mPitch / 2.0f);
+	_float sh = Math::Sin(mHeading / 2.0f);
+	_float sb = Math::Sin(mBank / 2.0f);
+
+	quaternion.w = cp * ch * cb + sp * sh * sb;
+	quaternion.x = sp * ch * cb - cp * sh * sb;
+	quaternion.y = cp * sh * cb + sp * ch * sb;
+	quaternion.z = cp * ch * sb - sp * sh * cb;
+}
+
+_void EulerAngles::ToMatrix(Matrix3& matrix) const {
+	_float cp = Math::Cos(mPitch);
+	_float ch = Math::Cos(mHeading);
+	_float cb = Math::Cos(mBank);
+	_float sp = Math::Sin(mPitch);
+	_float sh = Math::Sin(mHeading);
+	_float sb = Math::Sin(mBank);
+
+	matrix.m[0][0] = ch * cb;
+	matrix.m[0][1] = ch * sb;
+	matrix.m[0][2] = -sh;
+	matrix.m[1][0] = sp * sh * cb - cp * sb;
+	matrix.m[1][1] = sp * sh * sb + cp * cb;
+	matrix.m[1][2] = sp * ch;
+	matrix.m[2][0] = cp * sh * cb + sp * sb;
+	matrix.m[2][1] = cp * sh * sb - sp * cb;
+	matrix.m[2][2] = cp * ch;
 }

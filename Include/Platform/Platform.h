@@ -291,7 +291,7 @@ public:
 	//! @param flag   The seek flag.
 	//! @param distance  Number of bytes to move.
 	//! @return The current offset of file pointer from begin.
-	static _dword SeekFilePointer(_handle handle, Seek flag, _int distance);
+	static _dword SeekFilePointer(_handle handle, SeekFlag flag, _int distance);
 
 	//! Get the size, in bytes, of the file.
 	//! @param handle   The file handle.
@@ -360,14 +360,12 @@ public:
 	//! Creates or opens a named or unnamed file mapping object for a specified file.
 	//! @param file   A handle to the file from which to create a file mapping object.
 	//! @param size   The maximum size of the file mapping object, 0 indicates is equal to the current size of the file.
-	//! @param operationflag The file mapping object operation flag, @see _FILE_OPERATION_FLAG.
 	//! @return The file mapping handle.
-	static _handle CreateFileMapping(_handle file, _dword size, _dword operationflag);
+	static _handle CreateFileMapping(_handle file, _dword size);
 	//! Maps a view of a file mapping into the address space of a calling process.
 	//! @param handle   The file mapping handle.
-	//! @param operationflag The file mapping object operation flag, @see _FILE_OPERATION_FLAG.
 	//! @return The starting address of the mapped view.
-	static _void* MapViewOfFile(_handle handle, _dword operationflag);
+	static _void* MapViewOfFile(_handle handle);
 	//! Unmaps a mapped view of a file from the calling process's address space.
 	//! @param pointer   A pointer to the base address of the mapped view of a file that is to be unmapped.
 	//! @return none.
@@ -399,9 +397,8 @@ public:
 	//! Performance
 public:
 	//! Get the performance data.
-	//! @param info   The IO performance info.
-	//! @return none.
-	static _void GetPerformanceData(PerformanceData& data);
+	//! @return The performance data.
+	static const PerformanceData& GetPerformanceData();
 
 	//! Language
 public:
@@ -1511,123 +1508,85 @@ public:
 	//! @return The formatted string length.
 	static _dword GetFormatStringLength(const _charw* format, _va_list arguments);
 
-	//! Format string with different number of parameter (ANSI version).
-	template <class T1>
-	static _chara* FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1);
+	//! Format string with different number of parameter.
+	template <class CharType, class T1>
+	static CharType* FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1);
 
-	template <class T1, class T2>
-	static _chara* FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2);
+	template <class CharType, class T1, class T2>
+	static CharType* FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2);
 
-	template <class T1, class T2, class T3>
-	static _chara* FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3);
+	template <class CharType, class T1, class T2, class T3>
+	static CharType* FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3);
 
-	template <class T1, class T2, class T3, class T4>
-	static _chara* FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3, T4 p4);
+	template <class CharType, class T1, class T2, class T3, class T4>
+	static CharType* FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3, T4 p4);
 
-	template <class T1, class T2, class T3, class T4, class T5>
-	static _chara* FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5);
+	template <class CharType, class T1, class T2, class T3, class T4, class T5>
+	static CharType* FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5);
 
-	template <class T1, class T2, class T3, class T4, class T5, class T6>
-	static _chara* FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6);
+	template <class CharType, class T1, class T2, class T3, class T4, class T5, class T6>
+	static CharType* FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6);
 
-	template <class T1, class T2, class T3, class T4, class T5, class T6, class T7>
-	static _chara* FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7);
+	template <class CharType, class T1, class T2, class T3, class T4, class T5, class T6, class T7>
+	static CharType* FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7);
 
-	template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8>
-	static _chara* FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8);
+	template <class CharType, class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8>
+	static CharType* FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8);
 
-	template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9>
-	static _chara* FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9);
+	template <class CharType, class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9>
+	static CharType* FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9);
 
-	template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10>
-	static _chara* FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9, T10 p10);
-
-	//! Format string with different number of parameter (UNICODE version).
-	template <class T1>
-	static _charw* FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1);
-
-	template <class T1, class T2>
-	static _charw* FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2);
-
-	template <class T1, class T2, class T3>
-	static _charw* FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3);
-
-	template <class T1, class T2, class T3, class T4>
-	static _charw* FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3, T4 p4);
-
-	template <class T1, class T2, class T3, class T4, class T5>
-	static _charw* FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5);
-
-	template <class T1, class T2, class T3, class T4, class T5, class T6>
-	static _charw* FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6);
-
-	template <class T1, class T2, class T3, class T4, class T5, class T6, class T7>
-	static _charw* FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7);
-
-	template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8>
-	static _charw* FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8);
-
-	template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9>
-	static _charw* FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9);
-
-	template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10>
-	static _charw* FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9, T10 p10);
+	template <class CharType, class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10>
+	static CharType* FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9, T10 p10);
 };
 
-//----------------------------------------------------------------------------
-// Platform Implementation
-//----------------------------------------------------------------------------
-
-template <class T1>
-_chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1) {
+template <class CharType, class T1>
+CharType* Platform::FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1) {
 	CHECK_ARG(1, p1);
 
 	return Platform::FormatStringByArguments(buffer, size, format, p1);
 }
 
-template <class T1, class T2>
-_chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2) {
+template <class CharType, class T1, class T2>
+CharType* Platform::FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2) {
 	CHECK_ARG(1, p1);
 	CHECK_ARG(2, p2);
 
 	return Platform::FormatStringByArguments(buffer, size, format, p1, p2);
 }
 
-template <class T1, class T2, class T3>
-_chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3) {
+template <class CharType, class T1, class T2, class T3>
+CharType* Platform::FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3) {
 	CHECK_ARG(1, p1);
 	CHECK_ARG(2, p2);
 	CHECK_ARG(3, p3);
 
-	_EGE_FORMAT_ASTRING_WITH_ARGUMENTS_3(p1, p2, p3);
-	return buffer;
+	return Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3);
 }
 
-template <class T1, class T2, class T3, class T4>
-_chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3, T4 p4) {
+template <class CharType, class T1, class T2, class T3, class T4>
+CharType* Platform::FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3, T4 p4) {
 	CHECK_ARG(1, p1);
 	CHECK_ARG(2, p2);
 	CHECK_ARG(3, p3);
 	CHECK_ARG(4, p4);
 
-	_EGE_FORMAT_ASTRING_WITH_ARGUMENTS_4(p1, p2, p3, p4);
-	return buffer;
+	return Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4);
 }
 
-template <class T1, class T2, class T3, class T4, class T5>
-_chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5) {
+template <class CharType, class T1, class T2, class T3, class T4, class T5>
+CharType* Platform::FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5) {
 	CHECK_ARG(1, p1);
 	CHECK_ARG(2, p2);
 	CHECK_ARG(3, p3);
 	CHECK_ARG(4, p4);
 	CHECK_ARG(5, p5);
 
-	_EGE_FORMAT_ASTRING_WITH_ARGUMENTS_5(p1, p2, p3, p4, p5);
-	return buffer;
+	return Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5);
 }
 
-template <class T1, class T2, class T3, class T4, class T5, class T6>
-_chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6) {
+template <class CharType, class T1, class T2, class T3, class T4, class T5, class T6>
+CharType* Platform::FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6) {
 	CHECK_ARG(1, p1);
 	CHECK_ARG(2, p2);
 	CHECK_ARG(3, p3);
@@ -1635,12 +1594,11 @@ _chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* 
 	CHECK_ARG(5, p5);
 	CHECK_ARG(6, p6);
 
-	_EGE_FORMAT_ASTRING_WITH_ARGUMENTS_6(p1, p2, p3, p4, p5, p6);
-	return buffer;
+	return Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, p6);
 }
 
-template <class T1, class T2, class T3, class T4, class T5, class T6, class T7>
-_chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7) {
+template <class CharType, class T1, class T2, class T3, class T4, class T5, class T6, class T7>
+CharType* Platform::FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7) {
 	CHECK_ARG(1, p1);
 	CHECK_ARG(2, p2);
 	CHECK_ARG(3, p3);
@@ -1649,12 +1607,11 @@ _chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* 
 	CHECK_ARG(6, p6);
 	CHECK_ARG(7, p7);
 
-	_EGE_FORMAT_ASTRING_WITH_ARGUMENTS_7(p1, p2, p3, p4, p5, p6, p7);
-	return buffer;
+	return Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, p6, p7);
 }
 
-template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8>
-_chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8) {
+template <class CharType, class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8>
+CharType* Platform::FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8) {
 	CHECK_ARG(1, p1);
 	CHECK_ARG(2, p2);
 	CHECK_ARG(3, p3);
@@ -1664,12 +1621,11 @@ _chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* 
 	CHECK_ARG(7, p7);
 	CHECK_ARG(8, p8);
 
-	_EGE_FORMAT_ASTRING_WITH_ARGUMENTS_8(p1, p2, p3, p4, p5, p6, p7, p8);
-	return buffer;
+	return Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, p6, p7, p8);
 }
 
-template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9>
-_chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9) {
+template <class CharType, class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9>
+CharType* Platform::FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9) {
 	CHECK_ARG(1, p1);
 	CHECK_ARG(2, p2);
 	CHECK_ARG(3, p3);
@@ -1680,12 +1636,11 @@ _chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* 
 	CHECK_ARG(8, p8);
 	CHECK_ARG(9, p9);
 
-	_EGE_FORMAT_ASTRING_WITH_ARGUMENTS_9(p1, p2, p3, p4, p5, p6, p7, p8, p9);
-	return buffer;
+	return Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, p6, p7, p8, p9);
 }
 
-template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10>
-_chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9, T10 p10) {
+template <class CharType, class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10>
+CharType* Platform::FormatStringBuffer(CharType* buffer, _dword size, const CharType* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9, T10 p10) {
 	CHECK_ARG(1, p1);
 	CHECK_ARG(2, p2);
 	CHECK_ARG(3, p3);
@@ -1697,133 +1652,7 @@ _chara* Platform::FormatStringBuffer(_chara* buffer, _dword size, const _chara* 
 	CHECK_ARG(9, p9);
 	CHECK_ARG(10, p10);
 
-	_EGE_FORMAT_ASTRING_WITH_ARGUMENTS_10(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10);
-	return buffer;
-}
-
-template <class T1>
-_charw* Platform::FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1) {
-	CHECK_ARG(1, p1);
-
-	_EGE_FORMAT_WSTRING_WITH_ARGUMENTS_1(p1);
-	return buffer;
-}
-
-template <class T1, class T2>
-_charw* Platform::FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2) {
-	CHECK_ARG(1, p1);
-	CHECK_ARG(2, p2);
-
-	_EGE_FORMAT_WSTRING_WITH_ARGUMENTS_2(p1, p2);
-	return buffer;
-}
-
-template <class T1, class T2, class T3>
-_charw* Platform::FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3) {
-	CHECK_ARG(1, p1);
-	CHECK_ARG(2, p2);
-	CHECK_ARG(3, p3);
-
-	_EGE_FORMAT_WSTRING_WITH_ARGUMENTS_3(p1, p2, p3);
-	return buffer;
-}
-
-template <class T1, class T2, class T3, class T4>
-_charw* Platform::FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3, T4 p4) {
-	CHECK_ARG(1, p1);
-	CHECK_ARG(2, p2);
-	CHECK_ARG(3, p3);
-	CHECK_ARG(4, p4);
-
-	_EGE_FORMAT_WSTRING_WITH_ARGUMENTS_4(p1, p2, p3, p4);
-	return buffer;
-}
-
-template <class T1, class T2, class T3, class T4, class T5>
-_charw* Platform::FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5) {
-	CHECK_ARG(1, p1);
-	CHECK_ARG(2, p2);
-	CHECK_ARG(3, p3);
-	CHECK_ARG(4, p4);
-	CHECK_ARG(5, p5);
-
-	_EGE_FORMAT_WSTRING_WITH_ARGUMENTS_5(p1, p2, p3, p4, p5);
-	return buffer;
-}
-
-template <class T1, class T2, class T3, class T4, class T5, class T6>
-_charw* Platform::FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6) {
-	CHECK_ARG(1, p1);
-	CHECK_ARG(2, p2);
-	CHECK_ARG(3, p3);
-	CHECK_ARG(4, p4);
-	CHECK_ARG(5, p5);
-	CHECK_ARG(6, p6);
-
-	_EGE_FORMAT_WSTRING_WITH_ARGUMENTS_6(p1, p2, p3, p4, p5, p6);
-	return buffer;
-}
-
-template <class T1, class T2, class T3, class T4, class T5, class T6, class T7>
-_charw* Platform::FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7) {
-	CHECK_ARG(1, p1);
-	CHECK_ARG(2, p2);
-	CHECK_ARG(3, p3);
-	CHECK_ARG(4, p4);
-	CHECK_ARG(5, p5);
-	CHECK_ARG(6, p6);
-	CHECK_ARG(7, p7);
-
-	_EGE_FORMAT_WSTRING_WITH_ARGUMENTS_7(p1, p2, p3, p4, p5, p6, p7);
-	return buffer;
-}
-
-template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8>
-_charw* Platform::FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8) {
-	CHECK_ARG(1, p1);
-	CHECK_ARG(2, p2);
-	CHECK_ARG(3, p3);
-	CHECK_ARG(4, p4);
-	CHECK_ARG(5, p5);
-	CHECK_ARG(6, p6);
-	CHECK_ARG(7, p7);
-	CHECK_ARG(8, p8);
-
-	_EGE_FORMAT_WSTRING_WITH_ARGUMENTS_8(p1, p2, p3, p4, p5, p6, p7, p8);
-	return buffer;
-}
-
-template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9>
-_charw* Platform::FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9) {
-	CHECK_ARG(1, p1);
-	CHECK_ARG(2, p2);
-	CHECK_ARG(3, p3);
-	CHECK_ARG(4, p4);
-	CHECK_ARG(5, p5);
-	CHECK_ARG(6, p6);
-	CHECK_ARG(7, p7);
-	CHECK_ARG(8, p8);
-	CHECK_ARG(9, p9);
-
-	_EGE_FORMAT_WSTRING_WITH_ARGUMENTS_9(p1, p2, p3, p4, p5, p6, p7, p8, p9);
-	return buffer;
-}
-
-template <class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10>
-_charw* Platform::FormatStringBuffer(_charw* buffer, _dword size, const _charw* format, T1 p1, T2 p2, T3 p3, T4 p4, T5 p5, T6 p6, T7 p7, T8 p8, T9 p9, T10 p10) {
-	CHECK_ARG(1, p1);
-	CHECK_ARG(2, p2);
-	CHECK_ARG(3, p3);
-	CHECK_ARG(4, p4);
-	CHECK_ARG(5, p5);
-	CHECK_ARG(6, p6);
-	CHECK_ARG(7, p7);
-	CHECK_ARG(8, p8);
-	CHECK_ARG(9, p9);
-	CHECK_ARG(10, p10);
-
-	_EGE_FORMAT_WSTRING_WITH_ARGUMENTS_10(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10);
-	return buffer;
+	return Platform::FormatStringByArguments(buffer, size, format, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10);
 }
 
 } // namespace EGE

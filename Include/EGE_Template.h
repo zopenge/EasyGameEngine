@@ -248,7 +248,7 @@ inline AString operator+(const _chara* str1, const AString& str2) {
 	return string;
 }
 
-inline AString operator+(const AString& str1, const _chara* str2) {
+inline AString operator+(const AString& str1, AStringPtr str2) {
 	AString string(str1);
 	string += str2;
 
@@ -277,7 +277,7 @@ inline UString operator+(const _chara* str1, const UString& str2) {
 	return string;
 }
 
-inline UString operator+(const UString& str1, const _chara* str2) {
+inline UString operator+(const UString& str1, UStringPtr str2) {
 	UString string(str1);
 	string += str2;
 
@@ -306,7 +306,7 @@ inline WString operator+(const _charw* str1, const WString& str2) {
 	return string;
 }
 
-inline WString operator+(const WString& str1, const _charw* str2) {
+inline WString operator+(const WString& str1, WStringPtr str2) {
 	WString string(str1);
 	string += str2;
 

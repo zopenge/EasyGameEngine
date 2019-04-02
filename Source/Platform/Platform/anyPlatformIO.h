@@ -25,7 +25,7 @@ public:
 	static _ubool ReadFile(_handle handle, _void* buffer, _dword size, _dword* bytesread);
 	static _ubool WriteFile(_handle handle, const _void* buffer, _dword size, _dword* byteswritten);
 	static _ubool FlushFileBuffers(_handle handle);
-	static _dword SeekFilePointer(_handle handle, Seek flag, _int distance);
+	static _dword SeekFilePointer(_handle handle, SeekFlag flag, _int distance);
 	static _dword GetFileSize(_handle handle);
 	static _ubool SetEndOfFile(_handle handle);
 	static _ubool GetFileTime(_handle handle, FileTime* creation, FileTime* lastaccess, FileTime* lastwrite);

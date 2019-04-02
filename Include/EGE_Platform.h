@@ -71,7 +71,7 @@ typedef Array<Line3D> Line3DArray;
 
 // Platform-BaseGeometry Files
 #include "Platform/Box.h"
-#include "Platform/OrientedBox2D.h"
+#include "Platform/ColliderBox2D.h"
 #include "Platform/Plane.h"
 #include "Platform/Ray.h"
 #include "Platform/Sphere.h"

@@ -209,9 +209,6 @@
     <ClCompile Include="..\..\..\Source\Platform\Transform3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\OrientedBox2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Transform2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -389,6 +386,9 @@
     <ClCompile Include="..\..\..\Source\Platform\Mathics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\ColliderBox2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Source\EGEPlatform.h">
@@ -560,9 +560,6 @@
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\Memory.h">
-      <Filter>Header Files\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Platform\OrientedBox2D.h">
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\Path.h">
@@ -819,6 +816,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Template\Line.h">
       <Filter>Header Files\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Platform\ColliderBox2D.h">
+      <Filter>Header Files\Platform</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
