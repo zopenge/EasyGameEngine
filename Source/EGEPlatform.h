@@ -218,19 +218,19 @@ wchar_t* __ege_u64tow__(unsigned long long value, wchar_t* result, int base);
 // EasyGameEngine Headers
 #include "EGE_Always.h"
 
-// Any-Platform Files
-#include "Platform/anyPlatform.h"
-#include "Platform/anyPlatformCPU.h"
-#include "Platform/anyPlatformConverter.h"
-#include "Platform/anyPlatformEndian.h"
-#include "Platform/anyPlatformIO.h"
-#include "Platform/anyPlatformKernel.h"
-#include "Platform/anyPlatformLanguage.h"
-#include "Platform/anyPlatformMemory.h"
-#include "Platform/anyPlatformNetwork.h"
-#include "Platform/anyPlatformProcess.h"
-#include "Platform/anyPlatformString.h"
-#include "Platform/anyPlatformTime.h"
+// Any-OS Files
+#include "OS/anyPlatform.h"
+#include "OS/anyPlatformCPU.h"
+#include "OS/anyPlatformConverter.h"
+#include "OS/anyPlatformEndian.h"
+#include "OS/anyPlatformIO.h"
+#include "OS/anyPlatformKernel.h"
+#include "OS/anyPlatformLanguage.h"
+#include "OS/anyPlatformMemory.h"
+#include "OS/anyPlatformNetwork.h"
+#include "OS/anyPlatformProcess.h"
+#include "OS/anyPlatformString.h"
+#include "OS/anyPlatformTime.h"
 
 // IOS Platform
 #if defined _PLATFORM_IOS_
@@ -250,13 +250,10 @@ wchar_t* __ege_u64tow__(unsigned long long value, wchar_t* result, int base);
 
 namespace EGE {
 
-//! The main thread ID
 extern _thread_id gMainThreadID;
-//! The performance data.
 extern PerformanceData gPerformanceData;
-//! The CPU data.
 extern CPUData gCPUData;
-//! The OS data.
+extern GPUData gGPUData;
 extern OSData gOSData;
 
 } // namespace EGE

@@ -9,6 +9,7 @@
 _thread_id EGE::gMainThreadID = 0;
 PerformanceData EGE::gPerformanceData;
 CPUData EGE::gCPUData;
+GPUData EGE::gGPUData;
 OSData EGE::gOSData;
 
 //----------------------------------------------------------------------------

@@ -10,19 +10,20 @@
 // Platform GPU Implementation
 //----------------------------------------------------------------------------
 
-const _charw* Platform::GetGPUFamilyName() {
+const GPUData& Platform::GetGPUData() {
+	if (gGPUData.mFamilyName) {
+		return gGPUData;
+	}
+
 	static DISPLAY_DEVICEW device = {0};
 
 	// Get the primary device name
-	if (device.cb == 0) {
-		device.cb = sizeof(device);
-		if (!::EnumDisplayDevicesW(_null, 1, &device, EDD_GET_DEVICE_INTERFACE_NAME))
-			return L"";
-
+	device.cb = sizeof(device);
+	if (::EnumDisplayDevicesW(_null, 1, &device, EDD_GET_DEVICE_INTERFACE_NAME)) {
 		// Make sure it's active
-		if (EGE_BOOLEAN(device.StateFlags & DISPLAY_DEVICE_ACTIVE) == _false)
-			return L"";
+		if (device.StateFlags & DISPLAY_DEVICE_ACTIVE)
+			gGPUData.mFamilyName = device.DeviceString;
 	}
 
-	return device.DeviceString;
+	return gGPUData;
 }

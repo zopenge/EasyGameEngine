@@ -136,6 +136,13 @@ public:
 	//! @return The current CPU usage in [0.0, 100.0].
 	static _float GetCurrentCPUUsage();
 
+	//! GPU
+public:
+	//! Get GPU data.
+	//! @param none.
+	//! @return The GPU data.
+	static const GPUData& GetGPUData();
+
 	//! Memory
 public:
 	//! Allocate ANSI string from heap.

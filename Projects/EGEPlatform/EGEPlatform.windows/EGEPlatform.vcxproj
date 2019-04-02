@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="DebugStatic|Win32">
-      <Configuration>DebugStatic</Configuration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="ReleaseStatic|Win32">
-      <Configuration>ReleaseStatic</Configuration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
@@ -22,18 +22,18 @@
     <SccProvider>
     </SccProvider>
     <Keyword>Win32Proj</Keyword>
-    <ProjectName>EGEPlatform-windows</ProjectName>
+    <ProjectName>EGEPlatform.windows</ProjectName>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <CLRSupport>false</CLRSupport>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <CLRSupport>false</CLRSupport>
@@ -42,27 +42,27 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\props\Win32_Lib_Release.props" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\props\Win32_Lib_Debug.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" />
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" />
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">$(VCInstallDir)\CRT\src;$(IncludePath)</IncludePath>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(VCInstallDir)\CRT\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" />
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <PreBuildEvent>
       <Command>
       </Command>
@@ -88,7 +88,7 @@
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Lib>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <PreBuildEvent>
       <Command>
       </Command>
@@ -114,72 +114,72 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Source\External\crt\dbgheap\dbgheap.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\uchar\uchar.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\adler32.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\compress.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\crc32.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\deflate.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\gzclose.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\gzlib.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\gzread.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\gzwrite.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\infback.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\inffast.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\inflate.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\inftrees.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\trees.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\uncompr.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\zlib\zutil.c">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Bounds.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\CallStackFrame.cpp" />
@@ -213,39 +213,40 @@
     <ClCompile Include="..\..\..\Source\Platform\Matrix4Adjustor.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\MD5.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Memory.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatform.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformConverter.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformCPU.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformDebugging.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformEndian.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformLanguage.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformMemory.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformNetwork.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformProcess.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformString.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformTime.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatform.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformConsole.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformConverter.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformCPU.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformDebugging.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformDevice.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformEndian.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformEnvironment.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformGPU.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformIO.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformKernel.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformLanguage.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformMemory.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformNetwork.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformProcess.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformResource.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformString.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformTime.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformVersion.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Path.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\PersistenceThread.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Pipe.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Plane.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatform.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformConverter.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformCPU.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformDebugging.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformEndian.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformLanguage.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformMemory.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformNetwork.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformProcess.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformString.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformTime.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatform.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformConsole.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformConverter.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformCPU.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformDebugging.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformDevice.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformEndian.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformEnvironment.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformIO.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformKernel.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformLanguage.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformMemory.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformNetwork.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformProcess.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformResource.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformString.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformTime.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformVersion.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Precision.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Quaternion.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Random.cpp" />
@@ -272,8 +273,8 @@
     <ClCompile Include="..\..\..\Source\Platform\Version.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Viewport.cpp" />
     <ClCompile Include="..\..\..\Source\EGEPlatform.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -293,7 +294,6 @@
     <ClInclude Include="..\..\..\Include\Platform\Interpolation.h" />
     <ClInclude Include="..\..\..\Include\Platform\IPAddress.h" />
     <ClInclude Include="..\..\..\Include\Platform\Mathics.h" />
-    <ClInclude Include="..\..\..\Include\Platform\OS\ios\IOSHeaders.h" />
     <ClInclude Include="..\..\..\Include\Platform\OS\NetworkOSHeader.h" />
     <ClInclude Include="..\..\..\Include\Platform\OS\windows\Win32Headers.h" />
     <ClInclude Include="..\..\..\Include\Platform\Path.h" />
@@ -323,7 +323,6 @@
     <ClInclude Include="..\..\..\Include\Platform\KeyCodes.h" />
     <ClInclude Include="..\..\..\Include\Platform\Library.h" />
     <ClInclude Include="..\..\..\Include\Platform\Lock.h" />
-    <ClInclude Include="..\..\..\Include\Platform\Maths.h" />
     <ClInclude Include="..\..\..\Include\Platform\Matrix2.h" />
     <ClInclude Include="..\..\..\Include\Platform\Matrix3.h" />
     <ClInclude Include="..\..\..\Include\Platform\Matrix3x4.h" />
@@ -409,16 +408,16 @@
     <ClInclude Include="..\..\..\Source\External\zlib\zconf.h" />
     <ClInclude Include="..\..\..\Source\External\zlib\zlib.h" />
     <ClInclude Include="..\..\..\Source\External\zlib\zutil.h" />
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatform.h" />
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformConverter.h" />
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformCPU.h" />
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformEndian.h" />
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformLanguage.h" />
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformMemory.h" />
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformNetwork.h" />
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformProcess.h" />
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformString.h" />
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformTime.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatform.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformConverter.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformCPU.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformEndian.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformLanguage.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformMemory.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformNetwork.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformProcess.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformString.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformTime.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

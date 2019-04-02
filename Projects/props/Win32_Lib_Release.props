@@ -4,7 +4,6 @@
     <OutDir>..\..\..\Library\win32\$(Configuration)\</OutDir>
     <IntDir>..\..\..\Object\win32\$(Configuration)\$(ProjectName)\</IntDir>
     <TargetName>lib$(RootNamespace)</TargetName>
-    <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>

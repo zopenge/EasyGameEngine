@@ -33,6 +33,17 @@ struct CPUData {
 };
 
 /// <summary>
+/// The GPU data.
+/// </summary>
+struct GPUData {
+	const _charw* mFamilyName;
+
+	GPUData() {
+		mFamilyName = _null;
+	}
+};
+
+/// /// <summary>
 /// The symbol file data.
 /// </summary>
 struct SymbolFileData {

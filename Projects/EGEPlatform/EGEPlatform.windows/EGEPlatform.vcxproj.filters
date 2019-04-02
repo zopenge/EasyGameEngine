@@ -5,9 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Source Files\Platform">
-      <UniqueIdentifier>{ea970a82-4eda-4a2d-8158-52ef5ee158b5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
@@ -36,14 +33,8 @@
     <Filter Include="Header Files\OS\windows">
       <UniqueIdentifier>{afe74f1c-9cdb-4c72-b353-640d92d145a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\OS\ios">
-      <UniqueIdentifier>{48c3eba3-9259-41fd-85ab-a0899eace66f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SDK Files\zlib">
       <UniqueIdentifier>{24fcedde-3de5-4b56-8282-5e03343eb870}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Platform\any">
-      <UniqueIdentifier>{b89acf31-44b7-4700-b929-a72c667d70ee}</UniqueIdentifier>
     </Filter>
     <Filter Include="SDK Files\dbgheap">
       <UniqueIdentifier>{547d2064-02f2-4139-b6f8-22aa82603fb8}</UniqueIdentifier>
@@ -53,6 +44,12 @@
     </Filter>
     <Filter Include="Header Files\Template">
       <UniqueIdentifier>{aa3d1c4b-426a-4061-b321-9c8c4f7b69cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OS">
+      <UniqueIdentifier>{ea970a82-4eda-4a2d-8158-52ef5ee158b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OS\any">
+      <UniqueIdentifier>{b89acf31-44b7-4700-b929-a72c667d70ee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -272,93 +269,6 @@
     <ClCompile Include="..\..\..\Source\External\uchar\uchar.cpp">
       <Filter>SDK Files\uchar</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatform.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformConsole.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformConverter.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformCPU.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformDebugging.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformDevice.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformEndian.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformEnvironment.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformIO.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformKernel.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformLanguage.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformMemory.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformNetwork.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformProcess.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformResource.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformString.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformTime.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformVersion.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatform.cpp">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformConverter.cpp">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformCPU.cpp">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformDebugging.cpp">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformEndian.cpp">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformLanguage.cpp">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformMemory.cpp">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformNetwork.cpp">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformProcess.cpp">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformString.cpp">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformTime.cpp">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\ValueEncoder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -380,6 +290,96 @@
     <ClCompile Include="..\..\..\Source\Platform\ColliderBox2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatform.cpp">
+      <Filter>Source Files\OS\any</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformConverter.cpp">
+      <Filter>Source Files\OS\any</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformCPU.cpp">
+      <Filter>Source Files\OS\any</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformDebugging.cpp">
+      <Filter>Source Files\OS\any</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformEndian.cpp">
+      <Filter>Source Files\OS\any</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformLanguage.cpp">
+      <Filter>Source Files\OS\any</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformMemory.cpp">
+      <Filter>Source Files\OS\any</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformNetwork.cpp">
+      <Filter>Source Files\OS\any</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformProcess.cpp">
+      <Filter>Source Files\OS\any</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformString.cpp">
+      <Filter>Source Files\OS\any</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformTime.cpp">
+      <Filter>Source Files\OS\any</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatform.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformConsole.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformConverter.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformCPU.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformDebugging.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformDevice.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformEndian.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformEnvironment.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformGPU.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformIO.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformKernel.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformLanguage.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformMemory.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformNetwork.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformProcess.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformResource.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformString.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformTime.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\OS\win\winPlatformVersion.cpp">
+      <Filter>Source Files\OS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Source\EGEPlatform.h">
@@ -390,9 +390,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Source\External\uchar\uchar.h">
       <Filter>SDK Files\uchar</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Platform\OS\ios\IOSHeaders.h">
-      <Filter>Header Files\OS\ios</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\OS\windows\Win32Headers.h">
       <Filter>Header Files\OS\windows</Filter>
@@ -432,36 +429,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Source\External\zlib\zlib.h">
       <Filter>SDK Files\zlib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatform.h">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformConverter.h">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformCPU.h">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformEndian.h">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformLanguage.h">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformMemory.h">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformNetwork.h">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformProcess.h">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformString.h">
-      <Filter>Source Files\Platform\any</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Source\Platform\Platform\anyPlatformTime.h">
-      <Filter>Source Files\Platform\any</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Source\External\crt\dbgheap\dbgint.h">
       <Filter>SDK Files\dbgheap</Filter>
@@ -527,9 +494,6 @@
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\Lock.h">
-      <Filter>Header Files\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Platform\Maths.h">
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\Matrix2.h">
@@ -807,6 +771,36 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\ColliderBox2D.h">
       <Filter>Header Files\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatform.h">
+      <Filter>Source Files\OS\any</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformConverter.h">
+      <Filter>Source Files\OS\any</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformCPU.h">
+      <Filter>Source Files\OS\any</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformEndian.h">
+      <Filter>Source Files\OS\any</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformLanguage.h">
+      <Filter>Source Files\OS\any</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformMemory.h">
+      <Filter>Source Files\OS\any</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformNetwork.h">
+      <Filter>Source Files\OS\any</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformProcess.h">
+      <Filter>Source Files\OS\any</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformString.h">
+      <Filter>Source Files\OS\any</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformTime.h">
+      <Filter>Source Files\OS\any</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
