@@ -56,9 +56,8 @@ private:
 	//! @param filefinder The file finder.
 	//! @param fileinfo The file info.
 	//! @param filter  The extension name filter.
-	//! @param flags  The enumeration flags.
 	//! @return True indicates success, false indicates failure.
-	_ubool ReadDir(FolderData& filefinder, FileData& fileinfo, WStringPtr filter, _dword flags);
+	_ubool ReadDir(FolderData& filefinder, FileData& fileinfo, WStringPtr filter);
 
 public:
 	FileFinder();
@@ -92,10 +91,9 @@ public:
 	//! Enumerate/Walk each files/directories in the root directory recursively.
 	//! @param fileinfo The file info.
 	//! @param filter  The extension name filter.
-	//! @param flags  The enumeration flags, @see _FILE_FINDER_ENUMERATION.
 	//! @param depth  The enumeration depth.
 	//! @return True indicates there are some files or directories what need to walk, otherwise indicates enumerate/walk finished.
-	_ubool Walk(FileData& fileinfo, WStringPtr filter = L"", _dword flags = 0, _dword depth = -1);
+	_ubool Walk(FileData& fileinfo, WStringPtr filter = L"", _dword depth = -1);
 };
 
 } // namespace EGE

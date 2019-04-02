@@ -27,8 +27,7 @@ static Link<MemoryAllocation>::Node* GetNodeAddress(_void* address) {
 	return (Link<MemoryAllocation>::Node*)(((_byte*)address) - cSizeOfNode);
 }
 
-#if defined(_PLATFORM_WINDOWS_) && !defined(_USE_STANDARD_MEM_OPERATOR_) && \
-    !defined(_USE_STANDARD_MALLOC_OPERATOR_)
+#if defined(_PLATFORM_WINDOWS_) && !defined(_USE_STANDARD_MEM_OPERATOR_) && !defined(_USE_STANDARD_MALLOC_OPERATOR_)
 
 //! The CRT allocation hooker
 static int OnCRTAllocHookCallback(int nAllocType, void* userData, size_t size,
@@ -41,32 +40,30 @@ static int OnCRTAllocHookCallback(int nAllocType, void* userData, size_t size,
 	AStringPtr filename_ansi = (const _chara*)filename;
 
 	switch (nAllocType) {
-	case _HOOK_ALLOC: {
-		if (filename != _null) {
-			if (filename_ansi == "wincore.cpp" || filename_ansi == "plex.cpp" ||
-			    filename_ansi == "strcore.cpp" || filename_ansi == "oleinit.cpp" ||
-			    filename_ansi == "winmenu.cpp") {
-				return TRUE;
+		case _HOOK_ALLOC: {
+			if (filename != _null) {
+				if (filename_ansi == "wincore.cpp" || filename_ansi == "plex.cpp" ||
+				    filename_ansi == "strcore.cpp" || filename_ansi == "oleinit.cpp" ||
+				    filename_ansi == "winmenu.cpp") {
+					return TRUE;
+				}
 			}
-		}
 
-		Memory::GetInstance().AllocBlock(requestNumber, size,
-		                                 (const _chara*)filename, lineNumber);
-	} break;
+			Memory::GetInstance().AllocBlock(requestNumber, size, (const _chara*)filename, lineNumber);
+		} break;
 
-	case _HOOK_REALLOC: {
-		_CrtMemBlockHeader* header = pHdr(userData);
-		Memory::GetInstance().ReallocBlock(header->lRequest, requestNumber, size,
-		                                   (const _chara*)filename, lineNumber);
-	} break;
+		case _HOOK_REALLOC: {
+			_CrtMemBlockHeader* header = pHdr(userData);
+			Memory::GetInstance().ReallocBlock(header->lRequest, requestNumber, size, (const _chara*)filename, lineNumber);
+		} break;
 
-	case _HOOK_FREE: {
-		_CrtMemBlockHeader* header = pHdr(userData);
-		Memory::GetInstance().FreeBlock(header->lRequest);
-	} break;
+		case _HOOK_FREE: {
+			_CrtMemBlockHeader* header = pHdr(userData);
+			Memory::GetInstance().FreeBlock(header->lRequest);
+		} break;
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return TRUE;
@@ -93,9 +90,7 @@ Memory::Memory() {
 Memory::~Memory() {
 }
 
-_void Memory::OnOutputStringCallback(_dword id, const _byte* address,
-                                     const MemoryAllocation& allocation,
-                                     const QwordParameters2& parameters) {
+_void Memory::OnOutputStringCallback(_dword id, const _byte* address, const MemoryAllocation& allocation, const QwordParams2& parameters) {
 	File* file = (File*)parameters[0];
 
 	// The temporary string buffer
@@ -108,24 +103,14 @@ _void Memory::OnOutputStringCallback(_dword id, const _byte* address,
 
 	// Update string
 	if (address != _null)
-		Platform::AppendString(
-		    dumpstringbuffer,
-		    Platform::FormatStringBuffer(tempstringbuffer, 4096,
-		                                 "[%d] Memory Block : 0x%p\t%u\r\n", id,
-		                                 (_void*)address, allocation.mSize));
+		Platform::AppendString(dumpstringbuffer, Platform::FormatStringBuffer(tempstringbuffer, 4096, "[%d] Memory Block : 0x%p\t%u\r\n", id, (_void*)address, allocation.mSize));
 	else
-		Platform::AppendString(dumpstringbuffer, Platform::FormatStringBuffer(
-		                                             tempstringbuffer, 4096,
-		                                             "[%d] Memory Block : %u\r\n",
-		                                             id, allocation.mSize));
+		Platform::AppendString(dumpstringbuffer, Platform::FormatStringBuffer(tempstringbuffer, 4096, "[%d] Memory Block : %u\r\n", id, allocation.mSize));
 
 	for (_dword i = 0; i < allocation.mFrameNumber; i++) {
-		const ASrcFileLineInfo& line_info = allocation.mSrcFileLines[i];
+		const SymbolFileData& line_info = allocation.mSrcFileLines[i];
 
-		Platform::AppendString(dumpstringbuffer,
-		                       Platform::FormatStringBuffer(
-		                           tempstringbuffer, 4096, "\t%s(%u)\r\n",
-		                           line_info.mFileName, line_info.mLinenumber));
+		Platform::AppendString(dumpstringbuffer, Platform::FormatStringBuffer(tempstringbuffer, 4096, "\t%s(%u)\r\n", line_info.mFileName, line_info.mLineNumber));
 	}
 
 	// Dump string with file name and line number
@@ -144,17 +129,11 @@ _void Memory::OnOutputStringCallback(_dword id, const _byte* address,
 			if (code == 0) break;
 		}
 
-		Platform::AppendString(
-		    dumpstringbuffer,
-		    Platform::FormatStringBuffer(tempstringbuffer, 4096, "\t%s(%u)\r\n",
-		                                 fixed_filename, allocation.mLineNumber));
+		Platform::AppendString(dumpstringbuffer, Platform::FormatStringBuffer(tempstringbuffer, 4096, "\t%s(%u)\r\n", fixed_filename, allocation.mLineNumber));
 	}
 	// Dump string with line number only
 	else {
-		Platform::AppendString(
-		    dumpstringbuffer,
-		    Platform::FormatStringBuffer(tempstringbuffer, 4096, "\t?(%u)\r\n",
-		                                 allocation.mLineNumber));
+		Platform::AppendString(dumpstringbuffer, Platform::FormatStringBuffer(tempstringbuffer, 4096, "\t?(%u)\r\n", allocation.mLineNumber));
 	}
 
 	// Dump 32 bytes memory data
@@ -174,18 +153,16 @@ _void Memory::OnOutputStringCallback(_dword id, const _byte* address,
 				data = '.';
 
 			// Convert character to string
-			Platform::AppendString(
-			    bufferdata,
-			    Platform::FormatStringBuffer(tempstringbuffer, 4096, "%c", data));
+			Platform::AppendString(bufferdata, Platform::FormatStringBuffer(tempstringbuffer, 4096, "%c", data));
 		}
 
 		// Update the dump string buffer
-		Platform::AppendString(dumpstringbuffer, Platform::FormatStringBuffer(
-		                                             tempstringbuffer, 4096,
-		                                             "\t%s\r\n\r\n", bufferdata));
+		Platform::AppendString(dumpstringbuffer, Platform::FormatStringBuffer(tempstringbuffer, 4096, "\t%s\r\n\r\n", bufferdata));
 	}
 
-	if (file != _null) file->WriteString(dumpstringbuffer);
+	if (file != _null) {
+		file->WriteString(dumpstringbuffer);
+	}
 
 #if (_ENABLE_DEBUG_STRING == 1)
 	OUTPUT_DEBUG_STRING(dumpstringbuffer);
@@ -225,14 +202,13 @@ _ubool Memory::IsEnableFullCallstackCheck(_dword line_number,
 
 _void Memory::DumpAllocations(_dword min_size, OnOutputString funcpointer,
                               const AllocationLink& allocations,
-                              const QwordParameters2& parameters) {
+                              const QwordParams2& parameters) {
 	// No any memory blocks
 	if (allocations.Number() == 0) return;
 
 	// Dump each memory block
 	_dword id = 1;
-	for (Link<MemoryAllocation>::Iterator it = allocations.GetHeadIterator();
-	     it.IsValid(); it++, id++) {
+	for (Link<MemoryAllocation>::Iterator it = allocations.GetHeadIterator(); it.IsValid(); it++, id++) {
 		const MemoryAllocation& allocation = it;
 
 		if (allocation.mSize < min_size) continue;
@@ -248,7 +224,7 @@ _void Memory::DumpAllocations(_dword min_size, OnOutputString funcpointer,
 
 _void Memory::DumpAllocations(_dword min_size, OnOutputString funcpointer,
                               const BlockAllocationArray& allocations,
-                              const QwordParameters2& parameters) {
+                              const QwordParams2& parameters) {
 	// No any memory blocks
 	if (allocations.Number() == 0) return;
 
@@ -292,12 +268,12 @@ _void Memory::EnableFullCallstackCheck(_ubool enable) {
 }
 
 _void Memory::SetMaxFrameNumberOfFullCallstackCheck(_dword max_frame_number) {
-	mMaxFrameNumber = Math::Clamp<_dword>(
-	    max_frame_number, _DEFAULT_MIN_FRAME_NUMBER, _DEFAULT_MAX_FRAME_NUMBER);
+	mMaxFrameNumber = Math::Clamp<_dword>(max_frame_number, _DEFAULT_MIN_FRAME_NUMBER, _DEFAULT_MAX_FRAME_NUMBER);
 }
 
 _void Memory::SetFileNameFilterOfFullCallstackCheck(const _chara* filter) {
-	if (filter == _null) filter = "";
+	if (filter == _null)
+		filter = "";
 
 	Platform::CopyString(mFileNameFilter, filter);
 }
@@ -309,8 +285,7 @@ _void Memory::SetLineNumberFilterOfFullCallstackCheck(_dword line_number) {
 _void Memory::AllocBlock(_dword block_number, _dword size,
                          const _chara* filename, _dword linenumber) {
 #ifdef _DEBUG
-	EGE_ASSERT(mBlockAllocations.SearchAscending(block_number).IsValid() ==
-	           _false);
+	EGE_ASSERT(mBlockAllocations.SearchAscending(block_number).IsValid() == _false);
 #endif
 
 	// Increase the current allocated size
@@ -328,12 +303,9 @@ _void Memory::AllocBlock(_dword block_number, _dword size,
 	mBlockAllocations.InsertAscending(block_allocation);
 }
 
-_void Memory::ReallocBlock(_dword prev_block_number, _dword block_number,
-                           _dword size, const _chara* filename,
-                           _dword linenumber) {
+_void Memory::ReallocBlock(_dword prev_block_number, _dword block_number, _dword size, const _chara* filename, _dword linenumber) {
 	// Get old block
-	BlockAllocationArray::Iterator it =
-	    mBlockAllocations.SearchAscending(prev_block_number);
+	BlockAllocationArray::Iterator it = mBlockAllocations.SearchAscending(prev_block_number);
 	if (it.IsValid()) {
 		// Get the old block info
 		const MemoryBlockAllocation& old_block = it;
@@ -365,8 +337,7 @@ _void Memory::ReallocBlock(_dword prev_block_number, _dword block_number,
 }
 
 _void Memory::FreeBlock(_dword block_number) {
-	BlockAllocationArray::Iterator it =
-	    mBlockAllocations.SearchAscending(block_number);
+	BlockAllocationArray::Iterator it = mBlockAllocations.SearchAscending(block_number);
 	if (it.IsValid()) {
 		MemoryBlockAllocation& block_allocation = it;
 
@@ -418,10 +389,8 @@ _void* Memory::Alloc(_dword size, const _chara* filename, _dword linenumber) {
 
 	// Get the full callstack info
 	if (IsEnableFullCallstackCheck(linenumber, filename)) {
-		node->mElement.mSrcFileLines = (ASrcFileLineInfo*)Platform::GlobalAlloc(
-		    sizeof(ASrcFileLineInfo) * mMaxFrameNumber);
-		node->mElement.mFrameNumber = DebugSymbol::StackWalk(
-		    _null, node->mElement.mSrcFileLines, mMaxFrameNumber);
+		node->mElement.mSrcFileLines = (SymbolFileData*)Platform::GlobalAlloc(sizeof(SymbolFileData) * mMaxFrameNumber);
+		node->mElement.mFrameNumber = DebugSymbol::StackWalk(_null, node->mElement.mSrcFileLines, mMaxFrameNumber);
 	} else {
 		node->mElement.mSrcFileLines = _null;
 		node->mElement.mFrameNumber = 0;
@@ -440,8 +409,7 @@ _void* Memory::Alloc(_dword size, const _chara* filename, _dword linenumber) {
 #endif
 }
 
-_void* Memory::Realloc(_void* buffer, _dword size, const _chara* filename,
-                       _dword linenumber) {
+_void* Memory::Realloc(_void* buffer, _dword size, const _chara* filename, _dword linenumber) {
 	if (buffer == _null) return Alloc(size, filename, linenumber);
 
 #if defined(_PLATFORM_WINDOWS_)
@@ -469,8 +437,7 @@ _void* Memory::Realloc(_void* buffer, _dword size, const _chara* filename,
 #	endif
 
 	// Realloc it from heap
-	node =
-	    (Link<MemoryAllocation>::Node*)Platform::HeapReAlloc(node, allocedsize);
+	node = (Link<MemoryAllocation>::Node*)Platform::HeapReAlloc(node, allocedsize);
 	if (node == _null) return _null;
 
 	// Copy the old buffer data
@@ -491,10 +458,8 @@ _void* Memory::Realloc(_void* buffer, _dword size, const _chara* filename,
 
 	// Get the full callstack info
 	if (IsEnableFullCallstackCheck(linenumber, filename)) {
-		node->mElement.mSrcFileLines = (ASrcFileLineInfo*)Platform::GlobalAlloc(
-		    sizeof(ASrcFileLineInfo) * mMaxFrameNumber);
-		node->mElement.mFrameNumber = DebugSymbol::StackWalk(
-		    _null, node->mElement.mSrcFileLines, mMaxFrameNumber);
+		node->mElement.mSrcFileLines = (SymbolFileData*)Platform::GlobalAlloc(sizeof(SymbolFileData) * mMaxFrameNumber);
+		node->mElement.mFrameNumber = DebugSymbol::StackWalk(_null, node->mElement.mSrcFileLines, mMaxFrameNumber);
 	} else {
 		node->mElement.mSrcFileLines = _null;
 		node->mElement.mFrameNumber = 0;
@@ -561,8 +526,7 @@ _void Memory::Free(_void* pointer, const _chara* filename, _dword linenumber) {
 #endif
 }
 
-_chara* Memory::AllocStr(const _chara* string, const _chara* filename,
-                         _dword linenumber) {
+_chara* Memory::AllocStr(const _chara* string, const _chara* filename, _dword linenumber) {
 	_dword size = AStringPtr(string).SizeOfBytes();
 	_chara* buffer = (_chara*)Alloc(size, filename, linenumber);
 	EGE_MEM_CPY(buffer, AStringPtr(string).CStr(), size);
@@ -570,8 +534,7 @@ _chara* Memory::AllocStr(const _chara* string, const _chara* filename,
 	return buffer;
 }
 
-_charw* Memory::AllocStr(const _charw* string, const _chara* filename,
-                         _dword linenumber) {
+_charw* Memory::AllocStr(const _charw* string, const _chara* filename, _dword linenumber) {
 	_dword size = WStringPtr(string).SizeOfBytes();
 	_charw* buffer = (_charw*)Alloc(size, filename, linenumber);
 	EGE_MEM_CPY(buffer, WStringPtr(string).CStr(), size);
@@ -646,7 +609,7 @@ _ubool Memory::IsReferencedBuffer(_void* buffer) {
 }
 
 _void Memory::Dump(_dword min_size, OnOutputString funcpointer,
-                   const QwordParameters2& parameters) {
+                   const QwordParams2& parameters) {
 	DumpAllocations(min_size, funcpointer, mMemoryAllocation, parameters);
 	DumpAllocations(min_size, funcpointer, mBlockAllocations, parameters);
 }
@@ -656,13 +619,12 @@ _void Memory::DumpLeakInfo() {
 
 #ifdef _PLATFORM_WINDOWS_
 	File log_file;
-	if (log_file.Open(L"memory_leak.log", _FILE_CREATE_ALWAYS,
-	                  _FILE_OPERATION_WRITE, _FILE_SHARE_READ) == _false)
+	if (log_file.Create(L"memory_leak.log") == _false)
 		return;
 
 	file = &log_file;
 #endif
 
-	Dump(0, OnOutputStringCallback, QwordParameters2((_qword)file, _null));
+	Dump(0, OnOutputStringCallback, QwordParams2((_qword)file, _null));
 	mBlockAllocations.Clear(_true);
 }

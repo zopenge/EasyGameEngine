@@ -134,12 +134,12 @@ public:
 	Matrix3& Adjoint();
 
 	//! Get rotation quaternion from current matrix.
-	//! @param rotation The quaternion of rotation, get from this function.
-	_void ToRotation(Quaternion& rotation) const;
+	//! @param quaternion The quaternion of rotation, get from this function.
+	_void ToRotation(Quaternion& quaternion) const;
 	//! Create a matrix from a quaternion
-	//! @param rotation The quaternion of rotation.
+	//! @param quaternion The quaternion of rotation.
 	//! @return The reference of current matrix.
-	Matrix3& FromRotation(const Quaternion& rotation);
+	Matrix3& FromRotation(const Quaternion& quaternion);
 
 	//! Parse position, scale and radian from it.
 	_void AnalysisMatrix(Vector2& position, Vector2& scale, _float& radian) const;

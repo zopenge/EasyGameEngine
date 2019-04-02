@@ -229,7 +229,6 @@
     <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformString.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Platform\anyPlatformTime.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatform.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformClipboard.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformConsole.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformConverter.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformCPU.cpp" />
@@ -237,7 +236,6 @@
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformDevice.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformEndian.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformEnvironment.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformGPU.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformIO.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformKernel.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformLanguage.cpp" />
@@ -248,7 +246,6 @@
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformString.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformTime.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformVersion.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Polygon2D.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Precision.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Quaternion.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Random.cpp" />
@@ -302,7 +299,6 @@
     <ClInclude Include="..\..\..\Include\Platform\Path.h" />
     <ClInclude Include="..\..\..\Include\Platform\PlatformConfig.h" />
     <ClInclude Include="..\..\..\Include\Platform\PlatformGlobal.h" />
-    <ClInclude Include="..\..\..\Include\Platform\Polygon2D.h" />
     <ClInclude Include="..\..\..\Include\Platform\Precision.h" />
     <ClInclude Include="..\..\..\Include\Platform\Random.h" />
     <ClInclude Include="..\..\..\Include\Platform\Ratio.h" />

@@ -330,13 +330,6 @@ Quaternion Quaternion::Slerp(const Quaternion& quaternion1, const Quaternion& qu
 	    quaternion1.w * divide + quaternion2.w * factor);
 }
 
-_void Quaternion::PrecomputedSlerpParameters(const Quaternion& quaternion1, const Quaternion& quaternion2, _float& dot, _float& theta, _float& recipsqrt) {
-	dot = Dot(quaternion1, quaternion2);
-
-	theta = Math::Acos(dot < 0.0f ? -dot : dot);
-	recipsqrt = 1.0f / Math::Sin(theta);
-}
-
 Quaternion Quaternion::Slerp(const Quaternion& quaternion1, const Quaternion& quaternion2, _float dot, _float theta, _float recipsqrt, _float factor) {
 	_ubool flip = dot < 0.0f;
 

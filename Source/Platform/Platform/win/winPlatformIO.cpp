@@ -92,7 +92,7 @@ _handle Platform::CreateFile(const _charw* filename) {
 		return _null;
 
 	// Update IO performance info
-	sPerformanceData.mFileOpenCount++;
+	gPerformanceData.mFileOpenCount++;
 
 	return handle;
 }
@@ -107,7 +107,7 @@ _handle Platform::OpenFile(const _charw* filename) {
 		return _null;
 
 	// Update IO performance info
-	sPerformanceData.mFileOpenCount++;
+	gPerformanceData.mFileOpenCount++;
 
 	return handle;
 }
@@ -133,8 +133,8 @@ _ubool Platform::ReadFile(_handle handle, _void* buffer, _dword size, _dword* by
 		*bytesread = bytes;
 
 	// Update IO performance info
-	sPerformanceData.mFileReadCount++;
-	sPerformanceData.mFileReadBytes += bytes;
+	gPerformanceData.mFileReadCount++;
+	gPerformanceData.mFileReadBytes += bytes;
 
 	return _true;
 }
@@ -155,8 +155,8 @@ _ubool Platform::WriteFile(_handle handle, const _void* buffer, _dword size, _dw
 		*byteswritten = bytes;
 
 	// Update IO performance info
-	sPerformanceData.mFileWriteCount++;
-	sPerformanceData.mFileWriteBytes += bytes;
+	gPerformanceData.mFileWriteCount++;
+	gPerformanceData.mFileWriteBytes += bytes;
 
 	return _true;
 }
@@ -310,5 +310,5 @@ _ubool Platform::GetDiskFreeSpace(const _charw* directory, _qword* freebytes, _q
 }
 
 const PerformanceData& Platform::GetPerformanceData() {
-	return sPerformanceData;
+	return gPerformanceData;
 }

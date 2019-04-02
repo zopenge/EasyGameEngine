@@ -14,7 +14,6 @@ Pipe::Pipe() {
 	mIsServerProcess = _false;
 	mIsConnected = _false;
 
-	mType = 0;
 	mSize = 0;
 	mTimeout = 0;
 }
@@ -28,18 +27,17 @@ WString Pipe::BuildPipeName(WStringPtr pipename) {
 	return WString(Platform::FormatStringBuffer(fixed_pipename, 1024, L"\\\\.\\pipe\\%s", pipename.CStr()));
 }
 
-_ubool Pipe::CreateServer(WStringPtr pipename, _dword type, _dword size, _dword timeout) {
+_ubool Pipe::CreateServer(WStringPtr pipename, _dword size, _dword timeout) {
 	// Build the pipe name
 	WString fixed_pipename = BuildPipeName(pipename);
 
 	// Initialize basic info
 	mName = pipename;
-	mType = type;
 	mSize = size;
 	mTimeout = timeout;
 
 	// Create the named pipe
-	mObjectHandle = Platform::CreateNamedPipe(fixed_pipename.CStr(), _PIPE_ACCESS_DUPLEX, type, 32, size, size, timeout);
+	mObjectHandle = Platform::CreateNamedPipe(fixed_pipename.CStr(), 32, size, size, timeout);
 	if (mObjectHandle == _null)
 		return _false;
 
@@ -58,12 +56,11 @@ _ubool Pipe::CreateClient(WStringPtr pipename, _dword timeout) {
 
 	// Initialize basic info
 	mName = pipename;
-	mType = 0;
 	mSize = 0;
 	mTimeout = timeout;
 
 	// Open named pipe connection
-	mObjectHandle = Platform::OpenFile(fixed_pipename.CStr(), _FILE_OPEN_EXISTING, _FILE_OPERATION_ALL, _FILE_SHARE_NONE, 0);
+	mObjectHandle = Platform::OpenFile(fixed_pipename.CStr());
 	if (mObjectHandle == _null)
 		return _false;
 

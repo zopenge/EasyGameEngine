@@ -42,10 +42,10 @@ public:
 	//! @return The mapping buffer data pointer.
 	_byte* GetBuffer() const;
 
-	//! Open the file mapping.
+	//! Create the file mapping.
 	//! @param filename The file name.
 	//! @return True indicates success false indicates failure.
-	_ubool Open(WStringPtr filename);
+	_ubool Create(WStringPtr filename);
 	//! Close the file mapping.
 	//! @param none.
 	//! @return none.

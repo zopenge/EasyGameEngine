@@ -1,26 +1,10 @@
-//! @file     anyPlatformCPU.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
-namespace EGE
-{
+namespace EGE {
 
-//----------------------------------------------------------------------------
-// anyPlatformCPU
-//----------------------------------------------------------------------------
-
-class anyPlatformCPU
-{
+class anyPlatformCPU {
 public:
- static const _charw* GetCPUFamilyName( );
+	static const CPUData& GetCPUData();
 };
 
-//----------------------------------------------------------------------------
-// anyPlatformCPU Implementation
-//----------------------------------------------------------------------------
-
-}
+} // namespace EGE

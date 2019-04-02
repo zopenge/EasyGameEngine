@@ -23,12 +23,12 @@ _ubool FileMapping::Initialize() {
 	mSize = Platform::GetFileSize(mFileHandle);
 
 	// Create file mapping
-	mObjectHandle = Platform::CreateFileMapping(mFileHandle, mSize, _FILE_OPERATION_READ);
+	mObjectHandle = Platform::CreateFileMapping(mFileHandle, mSize);
 	if (mObjectHandle == _null)
 		return _false;
 
 	// Map whole file
-	mBuffer = (_byte*)Platform::MapViewOfFile(mObjectHandle, _FILE_OPERATION_READ);
+	mBuffer = (_byte*)Platform::MapViewOfFile(mObjectHandle);
 	if (mBuffer == _null)
 		return _false;
 
@@ -43,11 +43,11 @@ _dword FileMapping::GetSize() const {
 	return mSize;
 }
 
-_ubool FileMapping::Open(WStringPtr filename) {
+_ubool FileMapping::Create(WStringPtr filename) {
 	Close();
 
 	// Open the file
-	mFileHandle = Platform::OpenFile(filename.CStr(), _FILE_OPEN_EXISTING, _FILE_OPERATION_READ, _FILE_SHARE_READ | _FILE_SHARE_WRITE, _FILE_ATTRIBUTE_NORMAL);
+	mFileHandle = Platform::CreateFile(filename.CStr());
 	if (mFileHandle == _null)
 		return _false;
 

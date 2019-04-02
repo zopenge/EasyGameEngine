@@ -1214,7 +1214,7 @@ _ubool MutableString<CharType, CharEncoding>::Replace(ConstStringType srcstring,
 	_dword startindex = 0;
 
 	// Start to replace sub-string
-	_StringPtr string = *this;
+	ConstStringType string = *this;
 	while (string.IsEmpty() == _false) {
 		// Search for the source sub-string
 		_dword index = string.SearchL2R(srcstring, ignorecase);

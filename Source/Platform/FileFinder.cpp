@@ -43,23 +43,21 @@ _void FileFinder::PopDir() {
 	mFolderDataStack.Pop();
 }
 
-_ubool FileFinder::ReadDir(FolderData& filefinder, FileData& fileinfo, WStringPtr filter, _dword flags) {
+_ubool FileFinder::ReadDir(FolderData& filefinder, FileData& fileinfo, WStringPtr filter) {
 	FileFinderData finddata;
 	while (Platform::ReadDir(filefinder.mFinderHandle, finddata)) {
+		_dword attributes = finddata.mFileAttributes;
+
 		// Walk subdirectory
-		if (finddata.mFileAttributes & _FILE_ATTRIBUTE_DIRECTORY) {
+		if (attributes & FileAttribute::Directory) {
 			// Skip for the hidden directory
-			if ((finddata.mFileAttributes & _FILE_ATTRIBUTE_HIDDEN) && (flags & _FILE_FINDER_ENUMERATION_SKIP_HIDDEN_DIRECTORY))
+			if (attributes & FileAttribute::Hidden)
 				continue;
 		}
 		// It's file item
 		else {
-			// Skip for directory only mode
-			if (flags & _FILE_FINDER_ENUMERATION_DIRECTORY_ONLY)
-				continue;
-
 			// Skip for the hidden file
-			if ((finddata.mFileAttributes & _FILE_ATTRIBUTE_HIDDEN) && (flags & _FILE_FINDER_ENUMERATION_SKIP_HIDDEN_FILE))
+			if (attributes & FileAttribute::Hidden)
 				continue;
 
 			// Check the extension name
@@ -127,7 +125,11 @@ WString FileFinder::GetFileByName(WStringPtr name) {
 
 	// Start to find
 	FileData file_info;
-	while (Walk(file_info, extension_name, _FILE_FINDER_FILE_MASK, -1)) {
+	while (Walk(file_info, extension_name, -1)) {
+		if (file_info.mAttributes & FileAttribute::Directory) {
+			continue;
+		}
+
 		if (file_info.mFileName == name)
 			return file_info.mRelativePath;
 	}
@@ -142,7 +144,11 @@ _ubool FileFinder::HasFile(WStringPtr extension_name, _dword depth) {
 
 	// Start to find
 	FileData file_info;
-	while (Walk(file_info, L"", _FILE_FINDER_FILE_MASK, depth)) {
+	while (Walk(file_info, L"", depth)) {
+		if (file_info.mAttributes & FileAttribute::Directory) {
+			continue;
+		}
+
 		if (Path::GetExtension(file_info.mFileName) == extension_name)
 			return _true;
 	}
@@ -150,14 +156,14 @@ _ubool FileFinder::HasFile(WStringPtr extension_name, _dword depth) {
 	return _false;
 }
 
-_ubool FileFinder::Walk(FileData& fileinfo, WStringPtr filter, _dword flags, _dword depth) {
+_ubool FileFinder::Walk(FileData& fileinfo, WStringPtr filter, _dword depth) {
 	// Walk this directory
 	while (mFolderDataStack.Number() > 0) {
 		// Get the current file finder
 		FolderData& filefinder = mFolderDataStack.Top();
 
 		// Read the directory
-		if (ReadDir(filefinder, fileinfo, filter, flags) == _false) {
+		if (ReadDir(filefinder, fileinfo, filter) == _false) {
 			// Completed the walk operation, pop and close it
 			PopDir();
 
@@ -177,14 +183,10 @@ _ubool FileFinder::Walk(FileData& fileinfo, WStringPtr filter, _dword flags, _dw
 		fileinfo.mAbsolutePath = Path::BuildFilePath(filefinder.mAbsolutePath, fileinfo.mFileName);
 
 		// Walk for the sub-directory
-		if (fileinfo.mAttributes & _FILE_ATTRIBUTE_DIRECTORY) {
+		if (fileinfo.mAttributes & FileAttribute::Directory) {
 			// Open and push the directory
 			if (PushDir(fileinfo.mRelativePath, fileinfo.mAbsolutePath) == _false)
 				return _false;
-
-			// Enumerate file only
-			if (flags & _FILE_FINDER_ENUMERATION_FILE_ONLY)
-				continue; // Continue to enumerate
 		}
 
 		// We found file or directory

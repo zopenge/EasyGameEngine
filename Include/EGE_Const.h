@@ -79,20 +79,6 @@ enum class MouseButton {
 };
 
 /// <summary>
-/// The file attributes.
-/// </summary>
-enum class FileAttribute {
-	/// <summary>
-	/// It's directory.
-	/// </summary>
-	Directory = 1 << 0,
-	/// <summary>
-	/// It's hidden item.
-	/// </summary>
-	Hidden = 1 << 1,
-};
-
-/// <summary>
 /// The domain family type
 /// </summary>
 enum class DomainFamilyType {
@@ -110,22 +96,25 @@ enum class SocketType {
 	SeqPacket,
 };
 
-enum class FileAttributs {
-	ReadOnly = 0x00000001,
-	Hidden = 0x00000002,
-	System = 0x00000004,
-	Directory = 0x00000010,
-	Archive = 0x00000020,
-	Device = 0x00000040,
-	Normal = 0x00000080,
-	Temporary = 0x00000100,
-	SparseFile = 0x00000200,
-	ReparsePoint = 0x00000400,
-	Compressed = 0x00000800,
-	Offline = 0x00001000,
-	NotContentIndexed = 0x00002000,
-	Encrypted = 0x00004000,
-	IntegrityStream = 0x00008000,
-};
+/// <summary>
+/// The file attribute
+/// </summary>
+namespace FileAttribute {
+static unsigned int ReadOnly = 0x00000001;
+static unsigned int Hidden = 0x00000002;
+static unsigned int System = 0x00000004;
+static unsigned int Directory = 0x00000010;
+static unsigned int Archive = 0x00000020;
+static unsigned int Device = 0x00000040;
+static unsigned int Normal = 0x00000080;
+static unsigned int Temporary = 0x00000100;
+static unsigned int SparseFile = 0x00000200;
+static unsigned int ReparsePoint = 0x00000400;
+static unsigned int Compressed = 0x00000800;
+static unsigned int Offline = 0x00001000;
+static unsigned int NotContentIndexed = 0x00002000;
+static unsigned int Encrypted = 0x00004000;
+static unsigned int IntegrityStream = 0x00008000;
+}; // namespace FileAttribute
 
 } // namespace EGE

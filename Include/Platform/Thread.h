@@ -54,6 +54,11 @@ protected:
 	//! The thread work function.
 	//! @param parameter  The user defined parameter.
 	//! @return The exit code of the thread.
+	static _thread_ret RunThreadProc(Thread* thread);
+
+	//! The thread work function.
+	//! @param parameter  The user defined parameter.
+	//! @return The exit code of the thread.
 	static _thread_ret ThreadProc(_void* parameter);
 
 protected:

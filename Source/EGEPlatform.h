@@ -253,7 +253,11 @@ namespace EGE {
 //! The main thread ID
 extern _thread_id gMainThreadID;
 //! The performance data.
-extern PerformanceData sPerformanceData;
+extern PerformanceData gPerformanceData;
+//! The CPU data.
+extern CPUData gCPUData;
+//! The OS data.
+extern OSData gOSData;
 
 } // namespace EGE
 

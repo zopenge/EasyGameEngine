@@ -106,7 +106,6 @@ typedef Array<Line3D> Line3DArray;
 #include "Platform/Path.h"
 #include "Platform/PersistenceThread.h"
 #include "Platform/Pipe.h"
-#include "Platform/Polygon2D.h"
 #include "Platform/Precision.h"
 #include "Platform/Random.h"
 #include "Platform/Ratio.h"

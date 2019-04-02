@@ -170,7 +170,7 @@ _charw* Time::ToWString(_charw* buffer, _dword length, _dword format) const {
 
 	// "YYYY/MM/DD"
 	if (format & _FORMAT_WITH_DAY) {
-		Platform::AppendString(buffer, FORMAT_WSTRING_3(L"%.4d/%.2d/%.2d", mYear, mMonth, mDayOfMonth));
+		Platform::AppendString(buffer, WString().Format(L"%.4d/%.2d/%.2d", mYear, mMonth, mDayOfMonth).CStr());
 	}
 
 	// "HH::MM::SS"
@@ -179,12 +179,12 @@ _charw* Time::ToWString(_charw* buffer, _dword length, _dword format) const {
 		if (format & _FORMAT_WITH_DAY)
 			Platform::AppendString(buffer, L" ");
 
-		Platform::AppendString(buffer, FORMAT_WSTRING_3(L"%.2d:%.2d:%.2d", mHour, mMinute, mSecond));
+		Platform::AppendString(buffer, WString().Format(L"%.2d:%.2d:%.2d", mHour, mMinute, mSecond).CStr());
 	}
 
 	// "(MMMM)"
 	if (format & _FORMAT_WITH_TIME_MS) {
-		Platform::AppendString(buffer, FORMAT_WSTRING_1(L"(%.3d)", mMilliseconds));
+		Platform::AppendString(buffer, WString().Format(L"(%.3d)", mMilliseconds).CStr());
 	}
 
 	return buffer;
@@ -302,33 +302,33 @@ _dword Time::GetNumDaysOfMonth(_dword year, _dword month) {
 	_dword num_of_days = 0;
 
 	switch (month) {
-	case 1:
-	case 3:
-	case 5:
-	case 7:
-	case 8:
-	case 10:
-	case 12: {
-		num_of_days = 31;
-	} break;
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		case 12: {
+			num_of_days = 31;
+		} break;
 
-	case 2: {
-		if (((year % 4) == 0 && (year % 100) != 0) || (year % 400) == 0)
-			num_of_days = 29;
-		else
-			num_of_days = 28;
-	} break;
+		case 2: {
+			if (((year % 4) == 0 && (year % 100) != 0) || (year % 400) == 0)
+				num_of_days = 29;
+			else
+				num_of_days = 28;
+		} break;
 
-	case 4:
-	case 6:
-	case 9:
-	case 11: {
-		num_of_days = 30;
-	} break;
+		case 4:
+		case 6:
+		case 9:
+		case 11: {
+			num_of_days = 30;
+		} break;
 
-	default:
-		EGE_ASSERT(0);
-		break;
+		default:
+			EGE_ASSERT(0);
+			break;
 	}
 
 	return num_of_days;

@@ -34,37 +34,37 @@ MD5Code::MD5Code(const MD5Code& code) {
 }
 
 _ubool MD5Code::operator>=(const MD5Code& code) const {
-	EGE_CHECK_COMP_BIG(mCode[3], code.mCode[3]);
-	EGE_CHECK_COMP_BIG(mCode[2], code.mCode[2]);
-	EGE_CHECK_COMP_BIG(mCode[1], code.mCode[1]);
-	EGE_CHECK_COMP_BIG(mCode[0], code.mCode[0]);
+	EGE_COMPARE_BIG(mCode[3], code.mCode[3]);
+	EGE_COMPARE_BIG(mCode[2], code.mCode[2]);
+	EGE_COMPARE_BIG(mCode[1], code.mCode[1]);
+	EGE_COMPARE_BIG(mCode[0], code.mCode[0]);
 
 	return _true;
 }
 
 _ubool MD5Code::operator>(const MD5Code& code) const {
-	EGE_CHECK_COMP_BIG(mCode[3], code.mCode[3]);
-	EGE_CHECK_COMP_BIG(mCode[2], code.mCode[2]);
-	EGE_CHECK_COMP_BIG(mCode[1], code.mCode[1]);
-	EGE_CHECK_COMP_BIG(mCode[0], code.mCode[0]);
+	EGE_COMPARE_BIG(mCode[3], code.mCode[3]);
+	EGE_COMPARE_BIG(mCode[2], code.mCode[2]);
+	EGE_COMPARE_BIG(mCode[1], code.mCode[1]);
+	EGE_COMPARE_BIG(mCode[0], code.mCode[0]);
 
 	return _false;
 }
 
 _ubool MD5Code::operator<=(const MD5Code& code) const {
-	EGE_CHECK_COMP_LESS(mCode[3], code.mCode[3]);
-	EGE_CHECK_COMP_LESS(mCode[2], code.mCode[2]);
-	EGE_CHECK_COMP_LESS(mCode[1], code.mCode[1]);
-	EGE_CHECK_COMP_LESS(mCode[0], code.mCode[0]);
+	EGE_COMPARE_LESS(mCode[3], code.mCode[3]);
+	EGE_COMPARE_LESS(mCode[2], code.mCode[2]);
+	EGE_COMPARE_LESS(mCode[1], code.mCode[1]);
+	EGE_COMPARE_LESS(mCode[0], code.mCode[0]);
 
 	return _true;
 }
 
 _ubool MD5Code::operator<(const MD5Code& code) const {
-	EGE_CHECK_COMP_LESS(mCode[3], code.mCode[3]);
-	EGE_CHECK_COMP_LESS(mCode[2], code.mCode[2]);
-	EGE_CHECK_COMP_LESS(mCode[1], code.mCode[1]);
-	EGE_CHECK_COMP_LESS(mCode[0], code.mCode[0]);
+	EGE_COMPARE_LESS(mCode[3], code.mCode[3]);
+	EGE_COMPARE_LESS(mCode[2], code.mCode[2]);
+	EGE_COMPARE_LESS(mCode[1], code.mCode[1]);
+	EGE_COMPARE_LESS(mCode[0], code.mCode[0]);
 
 	return _false;
 }
@@ -99,19 +99,19 @@ _ubool MD5Code::ParseFromString(WStringPtr string) {
 	else {
 		// Build the MD5 code
 		switch (GetSectionNumber(string)) {
-		case 1:
-			StringFormatter::ParseString(string.CStr(), L"%x-%x", mCode[0], mCode[1]);
-			break;
-		case 2:
-			StringFormatter::ParseString(string.CStr(), L"%x-%x-%x", mCode[0], mCode[1], mCode[2]);
-			break;
-		case 3:
-			StringFormatter::ParseString(string.CStr(), L"%x-%x-%x-%x", mCode[0], mCode[1], mCode[2], mCode[3]);
-			break;
-			break;
+			case 1:
+				StringFormatter::ParseString(string.CStr(), L"%x-%x", mCode[0], mCode[1]);
+				break;
+			case 2:
+				StringFormatter::ParseString(string.CStr(), L"%x-%x-%x", mCode[0], mCode[1], mCode[2]);
+				break;
+			case 3:
+				StringFormatter::ParseString(string.CStr(), L"%x-%x-%x-%x", mCode[0], mCode[1], mCode[2], mCode[3]);
+				break;
+				break;
 
-		default:
-			return _false;
+			default:
+				return _false;
 		}
 	}
 

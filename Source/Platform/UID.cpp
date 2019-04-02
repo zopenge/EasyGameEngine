@@ -74,7 +74,7 @@ _ubool UID128::operator<=(const UID128& uid) const {
 	return UID::CompareUUID(*this, uid) <= 0;
 }
 
-AStringR UID128::ToStringA(_ubool to_upper) const {
+AString UID128::ToStringA(_ubool to_upper) const {
 	_chara uidstring[1024];
 	uidstring[0] = 0;
 	UID::UUID2String(*this, uidstring, 1024);
@@ -85,7 +85,7 @@ AStringR UID128::ToStringA(_ubool to_upper) const {
 	return uidstring;
 }
 
-UStringR UID128::ToStringU(_ubool to_upper) const {
+UString UID128::ToStringU(_ubool to_upper) const {
 	_chara uidstring[1024];
 	uidstring[0] = 0;
 	UID::UUID2String(*this, uidstring, 1024);
@@ -96,7 +96,7 @@ UStringR UID128::ToStringU(_ubool to_upper) const {
 	return uidstring;
 }
 
-WStringR UID128::ToStringW(_ubool to_upper) const {
+WString UID128::ToStringW(_ubool to_upper) const {
 	_charw uidstring[1024];
 	uidstring[0] = 0;
 	UID::UUID2String(*this, uidstring, 1024);
@@ -320,12 +320,12 @@ _charw* UID::UUID2String(const UID128& uid, _charw* uidstring, _dword length) {
 }
 
 _int UID::CompareUUID(const UID128& uuid1, const UID128& uuid2) {
-	EGE_CHECK_COMP(uuid1.mData1, uuid2.mData1);
-	EGE_CHECK_COMP(uuid1.mData2, uuid2.mData2);
-	EGE_CHECK_COMP(uuid1.mData3, uuid2.mData3);
+	EGE_COMPARE(uuid1.mData1, uuid2.mData1);
+	EGE_COMPARE(uuid1.mData2, uuid2.mData2);
+	EGE_COMPARE(uuid1.mData3, uuid2.mData3);
 
 	for (_dword i = 0; i < 8; i++)
-		EGE_CHECK_COMP(uuid1.mData4[i], uuid2.mData4[i]);
+		EGE_COMPARE(uuid1.mData4[i], uuid2.mData4[i]);
 
 	return 0;
 }

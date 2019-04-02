@@ -94,24 +94,21 @@ public:
 	//! Create an empty file.
 	//! @remarks If the file already exists, it will not be truncated.
 	//! @param filename   The name of the file.
-	//! @param attributeflag  The attribute of file.
 	//! @return True indicates success, false indicates failure.
-	static _ubool CreateFile(WStringPtr filename, _dword attributeflag = 0);
+	static _ubool CreateFile(WStringPtr filename);
 	//! Create a file with ANSI string.
 	//! @remarks If the file already exists, it will be overwritten.
 	//! @param filename   The name of the file.
 	//! @param string    The ANSI string.
-	//! @param attributeflag  The attribute of file.
 	//! @return True indicates success, false indicates failure.
-	static _ubool CreateFile(WStringPtr filename, AStringPtr string, _dword attributeflag = 0);
+	static _ubool CreateFile(WStringPtr filename, AStringPtr string);
 	//! Create a file with specified buffer and size.
 	//! @remarks If the file already exists, it will be overwritten.
 	//! @param filename   The name of the file.
 	//! @param size    The size of file.
 	//! @param buffer    The buffer to be written into the file, it can be null, means only set file size.
-	//! @param attributeflag  The attribute of file.
 	//! @return True indicates success, false indicates failure.
-	static _ubool CreateFile(WStringPtr filename, _dword size, const _void* buffer, _dword attributeflag = 0);
+	static _ubool CreateFile(WStringPtr filename, _dword size, const _void* buffer);
 	//! Delete an existing file.
 	//! @param filename   The name of the file.
 	//! @return True indicates success, false indicates failure.
@@ -209,11 +206,10 @@ public:
 	//! Enumerate/Walk each files/directories in recursively.
 	//! @param path   The relative directory path.
 	//! @param filter   The extension name filter.
-	//! @param flags   The enumeration flags, @see _FILE_FINDER_ENUMERATION.
 	//! @param depth   The enumeration depth.
 	//! @param items   The file or directories items info.
 	//! @return True indicates success, false indicates failure.
-	static _ubool EnumResources(WStringPtr path, WStringPtr filter, _dword flags, _dword depth, FileDataArray& items);
+	static _ubool EnumResources(WStringPtr path, WStringPtr filter, _dword depth, FileDataArray& items);
 
 	//! Check whether it's text file.
 	//! @param filename  The file name.

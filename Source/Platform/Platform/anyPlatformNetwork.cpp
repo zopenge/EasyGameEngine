@@ -139,15 +139,15 @@ void SetAddrInfoPort(AddrInfo* addrinfo, int port) {
 
 	for (ca = addrinfo; ca != NULL; ca = ca->ai_next) {
 		switch (ca->ai_family) {
-		case AF_INET:
-			addr = (sockaddr_in*)ca->ai_addr; /* storage area for this info */
-			addr->sin_port = htons((unsigned short)port);
-			break;
+			case AF_INET:
+				addr = (sockaddr_in*)ca->ai_addr; /* storage area for this info */
+				addr->sin_port = htons((unsigned short)port);
+				break;
 
-		case AF_INET6:
-			addr6 = (sockaddr_in6*)ca->ai_addr; /* storage area for this info */
-			addr6->sin6_port = htons((unsigned short)port);
-			break;
+			case AF_INET6:
+				addr6 = (sockaddr_in6*)ca->ai_addr; /* storage area for this info */
+				addr6->sin6_port = htons((unsigned short)port);
+				break;
 		}
 	}
 }
@@ -156,29 +156,29 @@ void SetAddrInfoPort(AddrInfo* addrinfo, int port) {
 // anyPlatformNetwork Helpful Functions Implementation
 //----------------------------------------------------------------------------
 
-static _dword TranslateDomainFamilyType(_DOMAIN_FAMILY_TYPE families) {
+static _dword TranslateDomainFamilyType(DomainFamilyType families) {
 	switch (families) {
-	case _DOMAIN_AF_INET:
-		return AF_INET;
-	case _DOMAIN_AF_INET6:
-		return AF_INET6;
-	default:
-		return 0;
+		case DomainFamilyType::INET:
+			return AF_INET;
+		case DomainFamilyType::INET6:
+			return AF_INET6;
+		default:
+			return 0;
 	}
 }
 
-static _dword TranslateSocketType(_SOCKET_TYPE type) {
+static _dword TranslateSocketType(SocketType type) {
 	switch (type) {
-	case _SOCK_STREAM:
-		return SOCK_STREAM;
-	case _SOCK_DGRAM:
-		return SOCK_DGRAM;
-	case _SOCK_RAW:
-		return SOCK_RAW;
-	case _SOCK_SEQPACKET:
-		return SOCK_SEQPACKET;
-	default:
-		return 0;
+		case SocketType::Stream:
+			return SOCK_STREAM;
+		case SocketType::Dgram:
+			return SOCK_DGRAM;
+		case SocketType::Raw:
+			return SOCK_RAW;
+		case SocketType::SeqPacket:
+			return SOCK_SEQPACKET;
+		default:
+			return 0;
 	}
 }
 
@@ -186,19 +186,19 @@ static _NET_OP_TYPE CheckConnectionError() {
 	// Process it with error ID
 	_dword err_id = errno;
 	switch (err_id) {
-	// The operation be interrupted, so try it again
-	case EINTR:
-	case EAGAIN: {
-		return _NET_OP_CONTINUE;
-	} break;
+		// The operation be interrupted, so try it again
+		case EINTR:
+		case EAGAIN: {
+			return _NET_OP_CONTINUE;
+		} break;
 
-	case 0:
-	case EBADF: {
-		return _NET_OP_ERROR;
-	} break;
+		case 0:
+		case EBADF: {
+			return _NET_OP_ERROR;
+		} break;
 
-	default:
-		break;
+		default:
+			break;
 	}
 
 	return _NET_OP_FINISHED;
@@ -223,26 +223,26 @@ static _int CheckConnectionStatus(_socket handle, _dword timeout) {
 
 static _NET_OP_TYPE GetOperationResult(_socket handle, _dword ret) {
 	switch (ret) {
-	// Connection closed
-	case 0:
-		return _NET_OP_ERROR;
+		// Connection closed
+		case 0:
+			return _NET_OP_ERROR;
 
-	// Check the error, maybe something wrong
-	case 0xFFFFFFFF: {
-		// Check connection error
-		_NET_OP_TYPE op_type = CheckConnectionError();
-		if (op_type == _NET_OP_ERROR) {
-			_int result = CheckConnectionStatus(handle, 10);
-			if (result != 0 && result != 1)
-				return _NET_OP_ERROR;
+		// Check the error, maybe something wrong
+		case 0xFFFFFFFF: {
+			// Check connection error
+			_NET_OP_TYPE op_type = CheckConnectionError();
+			if (op_type == _NET_OP_ERROR) {
+				_int result = CheckConnectionStatus(handle, 10);
+				if (result != 0 && result != 1)
+					return _NET_OP_ERROR;
 
-			return _NET_OP_NO_DATA;
-		}
-	} break;
+				return _NET_OP_NO_DATA;
+			}
+		} break;
 
-	// Read successful
-	default:
-		break;
+		// Read successful
+		default:
+			break;
 	}
 
 	return _NET_OP_FINISHED;
@@ -268,24 +268,24 @@ _dword anyPlatformNetwork::GetURLIPAddress(const _chara* url_address) {
 	// Get the IP address
 	for (const addrinfo* ptr = result; ptr != _null; ptr = ptr->ai_next) {
 		switch (ptr->ai_family) {
-		case AF_INET:
-		case AF_INET6: {
-			return ((struct sockaddr_in*)ptr->ai_addr)->sin_addr.s_addr;
-		} break;
+			case AF_INET:
+			case AF_INET6: {
+				return ((struct sockaddr_in*)ptr->ai_addr)->sin_addr.s_addr;
+			} break;
 
-		default:
-			break;
+			default:
+				break;
 		}
 	}
 
 	return 0;
 }
 
-_DOMAIN_FAMILY_TYPE anyPlatformNetwork::GetFamilyType(_dword port, const _chara* url_address) {
+DomainFamilyType anyPlatformNetwork::GetFamilyType(_dword port, const _chara* url_address) {
 	if (port == 0 || url_address == _null)
-		return _DOMAIN_AF_INET;
+		return DomainFamilyType::INET;
 
-	_DOMAIN_FAMILY_TYPE family_type = _DOMAIN_AF_INET;
+	DomainFamilyType family_type = DomainFamilyType::INET;
 
 	addrinfo* result = _null;
 	addrinfo* res = _null;
@@ -297,10 +297,10 @@ _DOMAIN_FAMILY_TYPE anyPlatformNetwork::GetFamilyType(_dword port, const _chara*
 	if (error == 0) {
 		for (res = result; res != NULL; res = res->ai_next) {
 			if (AF_INET6 == res->ai_addr->sa_family) {
-				family_type = _DOMAIN_AF_INET6;
+				family_type = DomainFamilyType::INET6;
 				break;
 			} else if (AF_INET == res->ai_addr->sa_family) {
-				family_type = _DOMAIN_AF_INET;
+				family_type = DomainFamilyType::INET;
 			}
 		}
 	}
@@ -308,7 +308,7 @@ _DOMAIN_FAMILY_TYPE anyPlatformNetwork::GetFamilyType(_dword port, const _chara*
 	return family_type;
 }
 
-_socket anyPlatformNetwork::CreateSocket(_DOMAIN_FAMILY_TYPE families, _SOCKET_TYPE type, _ubool block_mode) {
+_socket anyPlatformNetwork::CreateSocket(DomainFamilyType families, SocketType type, _ubool block_mode) {
 	// Create socket
 	_socket handle = ::socket(TranslateDomainFamilyType(families), TranslateSocketType(type), 0);
 	if (handle == INVALID_SOCKET)
@@ -324,7 +324,7 @@ _socket anyPlatformNetwork::CreateSocket(_DOMAIN_FAMILY_TYPE families, _SOCKET_T
 	return handle;
 }
 
-_socket anyPlatformNetwork::CreateListenedSocket(_DOMAIN_FAMILY_TYPE families, _SOCKET_TYPE type, _ubool block_mode, _dword port, _dword max_connection_number) {
+_socket anyPlatformNetwork::CreateListenedSocket(DomainFamilyType families, SocketType type, _ubool block_mode, _dword port, _dword max_connection_number) {
 	// Create socket
 	_socket handle = CreateSocket(families, type, block_mode);
 	if (handle == _null)
@@ -406,8 +406,7 @@ _ubool anyPlatformNetwork::ConnectSocket(_socket handle, const _chara* remote_ad
 
 		// Skip for connected, block and progressing status
 		if (err_id != 0 && err_id != EINPROGRESS && err_id != EWOULDBLOCK && err_id != EBADF) {
-			OUTPUT_DEBUG_STRING(FORMAT_ASTRING_4("Connect to '%s:%d' (%d) socket failed (%d)\n",
-			                                     remote_address, port, (_dword)handle, err_id));
+			Platform::OutputDebugString(AString().Format("Connect to '%s:%d' (%d) socket failed (%d)\n", remote_address, port, (_dword)handle, err_id).CStr());
 
 			err_occurred = _true;
 		}
@@ -425,9 +424,7 @@ _ubool anyPlatformNetwork::ConnectSocket(_socket handle, const _chara* remote_ad
 	while (_true) {
 		// Check whether to break it
 		if (func != _null && (*func)(times SEC, userdata)) {
-			OUTPUT_DEBUG_STRING(FORMAT_ASTRING_3("Connect to '%s:%d' (%d) socket failed, due to timeout\n",
-			                                     remote_address, port, (_dword)handle));
-
+			Platform::OutputDebugString(AString().Format("Connect to '%s:%d' (%d) socket failed, due to timeout\n", remote_address, port, (_dword)handle).CStr());
 			return _false;
 		}
 
@@ -446,9 +443,7 @@ _ubool anyPlatformNetwork::ConnectSocket(_socket handle, const _chara* remote_ad
 		// Wait for event
 		int ret = select(handle + 1, &rset, &set, NULL, &tm);
 		if (ret < 0) {
-			OUTPUT_DEBUG_STRING(FORMAT_ASTRING_4("Connect to '%s:%d' (%d) socket failed when wait for event (%d)\n",
-			                                     remote_address, port, (_dword)handle, ret));
-
+			Platform::OutputDebugString(AString().Format("Connect to '%s:%d' (%d) socket failed when wait for event (%d)\n", remote_address, port, (_dword)handle, ret).CStr());
 			return _false;
 		}
 		// Connect successful
@@ -471,22 +466,22 @@ _dword anyPlatformNetwork::ReadSocket(_socket handle, _void* buffer, _dword size
 
 		_NET_OP_TYPE op_type = GetOperationResult(handle, ret);
 		switch (op_type) {
-		case _NET_OP_NO_DATA:
-			return 0;
+			case _NET_OP_NO_DATA:
+				return 0;
 
-		case _NET_OP_CONTINUE:
-			Platform::Sleep(10);
-			break;
+			case _NET_OP_CONTINUE:
+				Platform::Sleep(10);
+				break;
 
-		case _NET_OP_ERROR:
-			return -1;
+			case _NET_OP_ERROR:
+				return -1;
 
-		case _NET_OP_FINISHED:
-			return ret;
+			case _NET_OP_FINISHED:
+				return ret;
 
-		default:
-			EGE_ASSERT(0);
-			break;
+			default:
+				EGE_ASSERT(0);
+				break;
 		}
 	}
 
@@ -501,22 +496,22 @@ _dword anyPlatformNetwork::WriteSocket(_socket handle, const _void* buffer, _dwo
 
 		_NET_OP_TYPE op_type = GetOperationResult(handle, ret);
 		switch (op_type) {
-		case _NET_OP_NO_DATA:
-			return 0;
+			case _NET_OP_NO_DATA:
+				return 0;
 
-		case _NET_OP_CONTINUE:
-			Platform::Sleep(10);
-			break;
+			case _NET_OP_CONTINUE:
+				Platform::Sleep(10);
+				break;
 
-		case _NET_OP_ERROR:
-			return -1;
+			case _NET_OP_ERROR:
+				return -1;
 
-		case _NET_OP_FINISHED:
-			return ret;
+			case _NET_OP_FINISHED:
+				return ret;
 
-		default:
-			EGE_ASSERT(0);
-			break;
+			default:
+				EGE_ASSERT(0);
+				break;
 		}
 	}
 

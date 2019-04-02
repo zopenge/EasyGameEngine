@@ -14,7 +14,7 @@ namespace EGE {
 
 class anyPlatformProcess {
 public:
-	static _handle CreateNamedPipe(const _charw* name, _dword mode, _dword maxnumber, _dword outbuffersize, _dword inbuffersize, _dword timeout);
+	static _handle CreateNamedPipe(const _charw* name, _dword maxnumber, _dword outbuffersize, _dword inbuffersize, _dword timeout);
 	static _ubool ConnectNamedPipe(_handle handle);
 	static _void DisconnectNamedPipe(_handle handle);
 	static _ubool WaitNamedPipe(const _charw* name, _dword timeout);

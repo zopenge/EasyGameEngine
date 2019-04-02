@@ -186,12 +186,80 @@ Matrix3& Matrix3::Adjoint() {
 	return *this;
 }
 
-_void Matrix3::ToRotation(Quaternion& rotation) const {
-	Math::Matrix2Quaternion(*this, rotation);
+_void Matrix3::ToRotation(Quaternion& quaternion) const {
+	// Determine which of w, x, y, or z has the largest absolute value.
+	_float fourWSquaredMinus1 = m[0][0] + m[1][1] + m[2][2];
+	_float fourXSquaredMinus1 = m[0][0] - m[1][1] - m[2][2];
+	_float fourYSquaredMinus1 = m[1][1] - m[0][0] - m[2][2];
+	_float fourZSquaredMinus1 = m[2][2] - m[0][0] - m[1][1];
+
+	_int biggestIndex = 0;
+	_float fourBiggestSquaredMinus1 = fourWSquaredMinus1;
+
+	if (fourXSquaredMinus1 > fourBiggestSquaredMinus1) {
+		fourBiggestSquaredMinus1 = fourXSquaredMinus1;
+		biggestIndex = 1;
+	}
+
+	if (fourYSquaredMinus1 > fourBiggestSquaredMinus1) {
+		fourBiggestSquaredMinus1 = fourYSquaredMinus1;
+		biggestIndex = 2;
+	}
+
+	if (fourZSquaredMinus1 > fourBiggestSquaredMinus1) {
+		fourBiggestSquaredMinus1 = fourZSquaredMinus1;
+		biggestIndex = 3;
+	}
+
+	_float biggestVal = Math::Sqrt(fourBiggestSquaredMinus1 + 1.0f) * 0.5f;
+	_float mult = 0.25f / biggestVal;
+
+	// Apply table to compute quaternion values.
+	switch (biggestIndex) {
+		case 0:
+			quaternion.w = biggestVal;
+			quaternion.x = (m[1][2] - m[2][1]) * mult;
+			quaternion.y = (m[2][0] - m[0][2]) * mult;
+			quaternion.z = (m[0][1] - m[1][0]) * mult;
+			break;
+
+		case 1:
+			quaternion.x = biggestVal;
+			quaternion.w = (m[1][2] - m[2][1]) * mult;
+			quaternion.y = (m[0][1] + m[1][0]) * mult;
+			quaternion.z = (m[2][0] + m[0][2]) * mult;
+			break;
+
+		case 2:
+			quaternion.y = biggestVal;
+			quaternion.w = (m[2][0] - m[0][2]) * mult;
+			quaternion.x = (m[0][1] + m[1][0]) * mult;
+			quaternion.z = (m[1][2] + m[2][1]) * mult;
+			break;
+
+		case 3:
+			quaternion.z = biggestVal;
+			quaternion.w = (m[0][1] - m[1][0]) * mult;
+			quaternion.x = (m[2][0] + m[0][2]) * mult;
+			quaternion.y = (m[1][2] + m[2][1]) * mult;
+			break;
+	}
 }
 
-Matrix3& Matrix3::FromRotation(const Quaternion& rotation) {
-	Math::Quaternion2Matrix(rotation, *this);
+Matrix3& Matrix3::FromRotation(const Quaternion& quaternion) {
+	_float xx = quaternion.x * quaternion.x * 2.0f, yy = quaternion.y * quaternion.y * 2.0f, zz = quaternion.z * quaternion.z * 2.0f;
+	_float xy = quaternion.x * quaternion.y * 2.0f, zw = quaternion.z * quaternion.w * 2.0f, xz = quaternion.x * quaternion.z * 2.0f;
+	_float yw = quaternion.y * quaternion.w * 2.0f, yz = quaternion.y * quaternion.z * 2.0f, xw = quaternion.x * quaternion.w * 2.0f;
+
+	m[0][0] = 1.0f - yy - zz;
+	m[0][1] = xy + zw;
+	m[0][2] = xz - yw;
+	m[1][0] = xy - zw;
+	m[1][1] = 1.0f - xx - zz;
+	m[1][2] = yz + xw;
+	m[2][0] = xz + yw;
+	m[2][1] = yz - xw;
+	m[2][2] = 1.0f - xx - yy;
 
 	return *this;
 }
@@ -515,11 +583,11 @@ Matrix3 Matrix3::CreateFromRegion(const RectF& region, const Vector2& size, cons
 
 		// Keep the ratio
 		Ratio ratio(size.x, size.y);
-		PointF scale_f = ratio.UpdateSize(region.GetSize().x, region.GetSize().y);
+		Vector2 updatedSize = ratio.UpdateSize(region.GetSize().x, region.GetSize().y);
 
 		// Update the scale
-		scale.x = EGE_RATIO(scale_f.x, size.x);
-		scale.y = EGE_RATIO(scale_f.y, size.y);
+		scale.x = EGE_RATIO(updatedSize.x, size.x);
+		scale.y = EGE_RATIO(updatedSize.y, size.y);
 	}
 
 	// Get the region size

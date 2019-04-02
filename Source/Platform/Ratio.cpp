@@ -68,7 +68,7 @@ _void Ratio::Init(_float width, _float height) {
 	UpdateSize(width, height);
 }
 
-PointF Ratio::UpdateSize(_float width, _float height) {
+Vector2 Ratio::UpdateSize(_float width, _float height) {
 	_float ratiow = width / baseSize.x;
 	_float ratioh = height / baseSize.y;
 
@@ -88,8 +88,8 @@ PointF Ratio::UpdateSize(_float width, _float height) {
 }
 
 PointU Ratio::UpdateSize(_dword width, _dword height) {
-	PointF size = UpdateSize((_float)width, (_float)height);
-	return ConvertPointF2PointU(size);
+	Vector2 size = UpdateSize((_float)width, (_float)height);
+	return PointU((_dword)size.x, (_dword)size.y);
 }
 
 Vector2 Ratio::GetBaseSize() const {
@@ -104,27 +104,26 @@ PointU Ratio::FixSizeU(const PointU& size) const {
 	return FixSizeU(*this, size);
 }
 
-PointF Ratio::FixSizeF(const PointU& size) const {
+Vector2 Ratio::FixSizeF(const PointU& size) const {
 	return FixSizeF(*this, size);
 }
 
 PointU Ratio::FixSizeU(const Ratio& ratio, const PointU& size) {
-	PointF fixed_size = FixSizeF(ratio, size);
+	Vector2 fixed_size = FixSizeF(ratio, size);
 	return PointU((_dword)fixed_size.x, (_dword)fixed_size.y);
 }
 
-PointF Ratio::FixSizeF(const Ratio& ratio, const PointU& size) {
+Vector2 Ratio::FixSizeF(const Ratio& ratio, const PointU& size) {
 	if (ratio == Ratio::cNull) {
 		return PointF((_float)size.x, (_float)size.y);
-		;
 	} else {
-		PointF fixed_size = Ratio(ratio).UpdateSize((_float)size.x, (_float)size.y);
+		Vector2 fixed_size = Ratio(ratio).UpdateSize((_float)size.x, (_float)size.y);
 		return fixed_size;
 	}
 }
 
 Ratio Ratio::Create(const Ratio& ratio, const PointU& size) {
 	Ratio ratio_tmp = ratio;
-	PointF fixed_size = ratio_tmp.UpdateSize((_float)size.x, (_float)size.y);
+	Vector2 fixed_size = ratio_tmp.UpdateSize((_float)size.x, (_float)size.y);
 	return Ratio(fixed_size.x, fixed_size.y);
 }

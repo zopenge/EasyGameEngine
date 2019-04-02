@@ -136,13 +136,6 @@ public:
 	//! @return The current CPU usage in [0.0, 100.0].
 	static _float GetCurrentCPUUsage();
 
-	//! GPU
-public:
-	//! Get GPU family name.
-	//! @param none.
-	//! @return The GPU family name.
-	static const _charw* GetGPUFamilyName();
-
 	//! Memory
 public:
 	//! Allocate ANSI string from heap.
@@ -528,13 +521,12 @@ public:
 
 	//! Creates an instance of a named pipe and returns a handle for subsequent pipe operations.
 	//! @param name   The unique pipe name.
-	//! @param accessmode  The access mode.
 	//! @param maxnumber  The maximum number of instances that can be created for this pipe.
 	//! @param outbuffersize The number of bytes to reserve for the output buffer.
 	//! @param inbuffersize The number of bytes to reserve for the input  buffer.
 	//! @param timeout   The default time-out value, in milliseconds.
 	//! @return The pipe handle.
-	static _handle CreateNamedPipe(const _charw* name, _dword mode, _dword maxnumber, _dword outbuffersize, _dword inbuffersize, _dword timeout);
+	static _handle CreateNamedPipe(const _charw* name, _dword maxnumber, _dword outbuffersize, _dword inbuffersize, _dword timeout);
 	//! Enables a named pipe server process to wait for a client process to connect to an instance of a named pipe.
 	//! @param handle   The pipe handle.
 	//! @return True indicates success false indicates failure.

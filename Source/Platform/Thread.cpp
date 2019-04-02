@@ -45,11 +45,11 @@ Thread::ThreadPtrArray* Thread::sThreads = _null;
 static int HandleException(EXCEPTION_POINTERS* exception_pointers) {
 	Platform::DebuggerBreak();
 
-	CallStack call_stack;
+	CallStackFrame call_stack;
 	call_stack.Create(exception_pointers);
 
-	for (CallStack::Iterator it = call_stack.GetHeadIterator(); it.IsValid(); it++) {
-		const CallStackFrame& call_stack_frame = it;
+	for (CallStackFrame::Iterator it = call_stack.GetHeadIterator(); it.IsValid(); it++) {
+		const CallStackFrameData& call_stack_frame = it;
 
 		_chara string_buffer[2048];
 		Platform::FormatStringBuffer(string_buffer, 2048, "%s(%d)\n", call_stack_frame.mFileName, call_stack_frame.mLineNumber);
@@ -93,10 +93,7 @@ Thread::~Thread() {
 	sThreadLock->Leave();
 }
 
-_thread_ret Thread::ThreadProc(_void* parameter) {
-	Thread* thread = (Thread*)parameter;
-	EGE_ASSERT(thread != _null);
-
+_thread_ret Thread::RunThreadProc(Thread* thread) {
 	_dword exitcode = 0;
 
 	// Sleep a while to let the signal call wait() before call set()
@@ -107,41 +104,32 @@ _thread_ret Thread::ThreadProc(_void* parameter) {
 	thread_name_ansi[0] = 0;
 	Platform::Utf16ToAnsi(thread_name_ansi, 1024, thread->mThreadName.CStr());
 
-	// The temporary string buffer
-	_chara tempstringbuffer[4096];
-	tempstringbuffer[0] = 0;
-
 	_thread_id id = thread->GetThreadID();
-	OUTPUT_DEBUG_STRING(Platform::FormatStringBuffer(tempstringbuffer, 4096,
-	                                                 "Begin '%s' thread, ID:0x%.16llx\n", (const _chara*)thread_name_ansi, id));
+	Platform::OutputDebugString(AString().Format("Begin '%s' thread, ID:0x%.16llx\n", (const _chara*)thread_name_ansi, id).CStr());
 
-	_CATCH_THREAD_EXCEPTION_BEGIN() {
-		// Create auto release pool
-		_handle pool = Platform::CreateAutoReleasePool();
+	// Create auto release pool
+	_handle pool = Platform::CreateAutoReleasePool();
 
-		// Set for the ready event signal
-		thread->mReadyEvent.Set();
+	// Set for the ready event signal
+	thread->mReadyEvent.Set();
 
-		// Set the thread name on IOS platform
+	// Set the thread name on IOS platform
 #ifdef _PLATFORM_IOS_
-		::pthread_setname_np(thread_name_ansi);
+	::pthread_setname_np(thread_name_ansi);
 #else
-		Platform::SetThreadName(thread->mThreadID, thread_name_ansi);
+	Platform::SetThreadName(thread->mThreadID, thread_name_ansi);
 #endif
 
-		// Invoke the run thread callback function
-		exitcode = thread->OnRunThread(thread->mParameters);
+	// Invoke the run thread callback function
+	exitcode = thread->OnRunThread(thread->mParams);
 
-		// Invoke the close thread callback function
-		thread->OnCloseThread(exitcode, thread->mParameters);
+	// Invoke the close thread callback function
+	thread->OnCloseThread(exitcode, thread->mParams);
 
-		// Release auto release pool
-		Platform::ReleaseAutoReleasePool(pool);
-	}
-	_CATCH_THREAD_EXCEPTION_END()
+	// Release auto release pool
+	Platform::ReleaseAutoReleasePool(pool);
 
-	OUTPUT_DEBUG_STRING(Platform::FormatStringBuffer(tempstringbuffer, 4096,
-	                                                 "Exit '%s' thread (ret:%d) OK, ID:0x%.16llx\n", (const _chara*)thread_name_ansi, exitcode, id));
+	Platform::OutputDebugString(AString().Format("Exit '%s' thread (ret:%d) OK, ID:0x%.16llx\n", (const _chara*)thread_name_ansi, exitcode, id).CStr());
 
 	// Sleep a while to call wait() before exit()
 	Platform::Sleep(100);
@@ -150,6 +138,20 @@ _thread_ret Thread::ThreadProc(_void* parameter) {
 	thread->mExitEvent.Set();
 
 	return (_thread_ret)exitcode;
+}
+
+_thread_ret Thread::ThreadProc(_void* parameter) {
+	Thread* thread = (Thread*)parameter;
+	EGE_ASSERT(thread != _null);
+
+	_thread_ret exitcode;
+
+	_CATCH_THREAD_EXCEPTION_BEGIN() {
+		exitcode = RunThreadProc(thread);
+	}
+	_CATCH_THREAD_EXCEPTION_END()
+
+	return exitcode;
 }
 
 _ubool Thread::HasExit() const {
@@ -177,10 +179,6 @@ WStringPtr Thread::GetThreadName() const {
 	return mThreadName;
 }
 
-_ubool Thread::SetThreadPriority(_PRIORITY priority) {
-	return Platform::SetThreadPriority(mObjectHandle, priority);
-}
-
 _float Thread::GetCPUUsage(_dword timenow) {
 	// TODO: 1. Thread ID and last thread times in info structure
 	// Remove this function from it and add it for GetThreadInfoByIndex( )
@@ -189,11 +187,11 @@ _float Thread::GetCPUUsage(_dword timenow) {
 	return Platform::GetThreadCPUUsage(mObjectHandle, timenow, mLastThreadTime, mLastSampleTime, mLastSampleDelta);
 }
 
-_ubool Thread::Create(_dword priority, _ubool suspend, WStringPtr name, const QwordParameters2& parameters) {
+_ubool Thread::Create(_dword priority, _ubool suspend, WStringPtr name, const QwordParams2& parameters) {
 	Close();
 
 	// Set the parameters
-	mParameters = parameters;
+	mParams = parameters;
 
 	// Set the thread name
 	mThreadName = name;

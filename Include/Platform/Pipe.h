@@ -24,8 +24,6 @@ private:
 
 	//! The pipe name.
 	WString mName;
-	//! The pipe type.
-	_dword mType;
 	//! The pipe size.
 	_dword mSize;
 	//! The pipe timeout in milliseconds.
@@ -42,11 +40,10 @@ public:
 public:
 	//! Create the named pipe as server process.
 	//! @param name The unique pipe name.
-	//! @param type The pipe type, @see _PIPE_TYPE.
 	//! @param size The number of bytes to reserve for the output and input buffer.
 	//! @param timeout The default time-out value, in milliseconds.
 	//! @return True indicates success false indicates failure.
-	_ubool CreateServer(WStringPtr pipename, _dword type, _dword size, _dword timeout);
+	_ubool CreateServer(WStringPtr pipename, _dword size, _dword timeout);
 	//! Create the named pipe as client process.
 	//! @param name The unique pipe name.
 	//! @param timeout The default time-out value, in milliseconds.

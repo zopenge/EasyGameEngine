@@ -1,18 +1,13 @@
-//! @file     winPlatformResource.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
-//----------------------------------------------------------------------------
-// Platform Resource Helpful Functions Implementation
-//----------------------------------------------------------------------------
+struct EnumResFileData {
+	Platform::OnEnumResNameProc mFuncPointer;
+	_void* mParameter;
+};
 
 static BOOL CALLBACK OnEnumResNameCallback(HMODULE module, LPCWSTR type, LPWSTR name, LONG_PTR parameter) {
-	EventEnumResFile* enum_res_file_event = (EventEnumResFile*)parameter;
-	EGE_ASSERT(enum_res_file_event != _null);
+	EnumResFileData* enum_res_file_data = (EnumResFileData*)parameter;
+	EGE_ASSERT(enum_res_file_data != _null);
 
 	// Check resource name
 	if (IS_INTRESOURCE(name) == _false)
@@ -22,12 +17,8 @@ static BOOL CALLBACK OnEnumResNameCallback(HMODULE module, LPCWSTR type, LPWSTR 
 	WString res_name = WString().FromValue((_dword)name, 10);
 
 	// Notify outside
-	return (*enum_res_file_event->mEnumResNameProc)(type, res_name.CStr(), enum_res_file_event->mParameter);
+	return (*enum_res_file_data->mFuncPointer)(type, res_name.CStr(), enum_res_file_data->mParameter);
 }
-
-//----------------------------------------------------------------------------
-// Platform Resource Implementation
-//----------------------------------------------------------------------------
 
 _handle Platform::FindResource(_handle module, const _charw* name, const _charw* type) {
 	return ::FindResourceW((HMODULE)module, name, type);
@@ -53,9 +44,9 @@ _ubool Platform::EnumResourceNames(_handle module, const _charw* type, OnEnumRes
 	if (type == _null)
 		return _false;
 
-	EventEnumResFile enum_res_file_event;
-	enum_res_file_event.mEnumResNameProc = funcpointer;
-	enum_res_file_event.mParameter = parameter;
+	EnumResFileData enum_res_file_data;
+	enum_res_file_data.mFuncPointer = funcpointer;
+	enum_res_file_data.mParameter = parameter;
 
-	return EGE_BOOLEAN(::EnumResourceNamesW((HMODULE)module, type, OnEnumResNameCallback, (LONG_PTR)&enum_res_file_event));
+	return !!(::EnumResourceNamesW((HMODULE)module, type, OnEnumResNameCallback, (LONG_PTR)&enum_res_file_data));
 }

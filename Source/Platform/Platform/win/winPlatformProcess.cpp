@@ -18,27 +18,6 @@ struct ThreadNameInfo {
 };
 
 //----------------------------------------------------------------------------
-// Helpful Functions
-//----------------------------------------------------------------------------
-
-static _dword TranslateThreadPriority(_PRIORITY priority) {
-	switch (priority) {
-		case _PRIORITY_LOWEST:
-			return THREAD_PRIORITY_LOWEST;
-		case _PRIORITY_BELOW_NORMAL:
-			return THREAD_PRIORITY_BELOW_NORMAL;
-		case _PRIORITY_NORMAL:
-			return THREAD_PRIORITY_NORMAL;
-		case _PRIORITY_ABOVE_NORMAL:
-			return THREAD_PRIORITY_ABOVE_NORMAL;
-		case _PRIORITY_HIGHEST:
-			return THREAD_PRIORITY_HIGHEST;
-		default:
-			return 0;
-	}
-}
-
-//----------------------------------------------------------------------------
 // Platform-Process Implementation
 //----------------------------------------------------------------------------
 
@@ -56,8 +35,8 @@ _void Platform::KillCurrentProcess() {
 	::ExitProcess(-1);
 }
 
-_handle Platform::CreateNamedPipe(const _charw* name, _PIPE_ACCESS accessmode, _dword mode, _dword maxnumber, _dword outbuffersize, _dword inbuffersize, _dword timeout) {
-	return ::CreateNamedPipeW(name, accessmode, mode, maxnumber, outbuffersize, inbuffersize, timeout, _null);
+_handle Platform::CreateNamedPipe(const _charw* name, _dword maxnumber, _dword outbuffersize, _dword inbuffersize, _dword timeout) {
+	return ::CreateNamedPipeW(name, PIPE_ACCESS_DUPLEX, 0, maxnumber, outbuffersize, inbuffersize, timeout, _null);
 }
 
 _ubool Platform::ConnectNamedPipe(_handle handle) {
@@ -81,7 +60,7 @@ _void Platform::DisconnectNamedPipe(_handle handle) {
 }
 
 _ubool Platform::WaitNamedPipe(const _charw* name, _dword timeout) {
-	return EGE_BOOLEAN(::WaitNamedPipeW(name, timeout));
+	return !!(::WaitNamedPipeW(name, timeout));
 }
 
 _ubool Platform::PeekNamedPipe(_handle handle, _void* buffer, _dword size, _dword* bytesread, _dword* total_bytes_avail, _dword* bytes_left) {
@@ -89,7 +68,7 @@ _ubool Platform::PeekNamedPipe(_handle handle, _void* buffer, _dword size, _dwor
 		return _false;
 
 	DWORD pipe_read_bytes = 0, pipe_total_bytes_avail = 0, pipe_bytes_left = 0;
-	_ubool ret = EGE_BOOLEAN(::PeekNamedPipe(handle, buffer, size, &pipe_read_bytes, &pipe_total_bytes_avail, &pipe_bytes_left));
+	_ubool ret = !!(::PeekNamedPipe(handle, buffer, size, &pipe_read_bytes, &pipe_total_bytes_avail, &pipe_bytes_left));
 	if (ret) {
 		if (bytesread != _null)
 			*bytesread = pipe_read_bytes;
@@ -139,7 +118,7 @@ _ubool Platform::SetThreadAffinityMask(_handle threadhandle, _dword mask, _dword
 
 _ubool Platform::GetProcessAffinityMask(_handle processhandle, _dword& mask, _dword* systemmask) {
 	DWORD process_mask = 0, process_system_mask = 0;
-	_ubool ret = EGE_BOOLEAN(::GetProcessAffinityMask(processhandle, &process_mask, &process_system_mask));
+	_ubool ret = !!(::GetProcessAffinityMask(processhandle, &process_mask, &process_system_mask));
 	if (ret) {
 		mask = process_mask;
 
@@ -213,10 +192,6 @@ _ubool Platform::SetThreadName(_thread_id threadid, const _charw* name) {
 	Platform::Utf16ToAnsi(name_ansi, 1024, name);
 
 	return SetThreadName(threadid, name_ansi);
-}
-
-_ubool Platform::SetThreadPriority(_handle thread, _PRIORITY priority) {
-	return EGE_BOOLEAN(::SetThreadPriority(thread, TranslateThreadPriority(priority)));
 }
 
 _ubool Platform::SuspendThread(_handle thread) {
@@ -300,7 +275,7 @@ _void Platform::CloseThread(_handle thread) {
 
 _ubool Platform::GetExitCodeThread(_handle thread, _dword& exit_code) {
 	DWORD thread_exit_code = 0;
-	_ubool ret = EGE_BOOLEAN(::GetExitCodeThread(thread, &thread_exit_code));
+	_ubool ret = !!(::GetExitCodeThread(thread, &thread_exit_code));
 	if (ret) {
 		exit_code = thread_exit_code;
 	}
@@ -361,7 +336,7 @@ _handle Platform::LoadLibrary(const _charw* filename) {
 }
 
 _ubool Platform::FreeLibrary(_handle module) {
-	return EGE_BOOLEAN(::FreeLibrary((HMODULE)module));
+	return !!(::FreeLibrary((HMODULE)module));
 }
 
 _void* Platform::GetProcAddress(_handle module, const _chara* procname) {
@@ -376,11 +351,11 @@ _void Platform::ExitProcess(_dword exitcode) {
 }
 
 _ubool Platform::TerminateProcess(_handle processhandle, _dword exitcode) {
-	return EGE_BOOLEAN(::TerminateProcess(processhandle, exitcode));
+	return !!(::TerminateProcess(processhandle, exitcode));
 }
 
 _ubool Platform::DebugActiveProcessStop(_dword process_id) {
-	return EGE_BOOLEAN(::DebugActiveProcessStop(process_id));
+	return !!(::DebugActiveProcessStop(process_id));
 }
 
 _ubool Platform::IsProcessAlive(_handle processhandle) {
@@ -402,7 +377,7 @@ _ubool Platform::CreateProcess(const _chara* modulename, const _chara* cmdline, 
 
 	// Create process module (http://www.baike.com/wiki/CreateProcess)
 	PROCESS_INFORMATION processinfo = {0};
-	_ubool retval = EGE_BOOLEAN(::CreateProcessA(modulename, (LPSTR)cmdline, _null, _null, _false, creationflags, _null, workdir, &startupinfo, &processinfo));
+	_ubool retval = !!(::CreateProcessA(modulename, (LPSTR)cmdline, _null, _null, _false, creationflags, _null, workdir, &startupinfo, &processinfo));
 
 	// Feedback the thread handle
 	if (threadhandle != _null)
@@ -427,7 +402,7 @@ _ubool Platform::CreateProcess(const _charw* modulename, const _charw* cmdline, 
 
 	// Create process module (http://www.baike.com/wiki/CreateProcess)
 	PROCESS_INFORMATION processinfo = {0};
-	_ubool retval = EGE_BOOLEAN(::CreateProcessW(modulename, (LPWSTR)cmdline, _null, _null, _false, creationflags | CREATE_UNICODE_ENVIRONMENT, _null, workdir, &startupinfo, &processinfo));
+	_ubool retval = !!(::CreateProcessW(modulename, (LPWSTR)cmdline, _null, _null, _false, creationflags | CREATE_UNICODE_ENVIRONMENT, _null, workdir, &startupinfo, &processinfo));
 
 	// Feedback the thread handle
 	if (threadhandle != _null)
@@ -446,7 +421,7 @@ _ubool Platform::CreateProcess(const _charw* modulename, const _charw* cmdline, 
 
 _ubool Platform::ReadProcessMemory(_handle processhandle, const _void* baseaddress, _void* buffer, _dword size, _dword* bytesread) {
 	DWORD process_bytes_read = 0;
-	_ubool ret = EGE_BOOLEAN(::ReadProcessMemory(processhandle, baseaddress, buffer, size, &process_bytes_read));
+	_ubool ret = !!(::ReadProcessMemory(processhandle, baseaddress, buffer, size, &process_bytes_read));
 	if (ret) {
 		if (bytesread != _null)
 			*bytesread = process_bytes_read;

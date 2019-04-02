@@ -15,7 +15,7 @@ struct VersionInfoBase {
 	_charw mKeyName[1];
 
 	inline _ubool IsValidPtr(const _void* ptr) const {
-		return EGE_PTR_WITHIN(ptr, &mLength, mLength);
+		return EGE_PTR_IN_RANGE(ptr, &mLength, mLength);
 	}
 
 	inline const Type* GetNext() const {
@@ -205,7 +205,7 @@ _ubool Library::LoadResourceFromMemory(_dword virtualaddress, const _byte* base,
 	return _true;
 }
 
-_ubool Library::Load(const _byte* buffer, _dword size, OnLoadDependentDLL funcpointer, const QwordParameters2& parameters) {
+_ubool Library::Load(const _byte* buffer, _dword size, OnLoadDependentDLL funcpointer, const QwordParams2& parameters) {
 	if (buffer == _null)
 		return _false;
 

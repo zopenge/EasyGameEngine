@@ -7,7 +7,9 @@
 #include "EGEPlatform.h"
 
 _thread_id EGE::gMainThreadID = 0;
-PerformanceData EGE::sPerformanceData;
+PerformanceData EGE::gPerformanceData;
+CPUData EGE::gCPUData;
+OSData EGE::gOSData;
 
 //----------------------------------------------------------------------------
 // Specified template static variables implementation

@@ -263,9 +263,6 @@
     <ClCompile Include="..\..\..\Source\Platform\Triangle2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Polygon2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Ratio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -276,9 +273,6 @@
       <Filter>SDK Files\uchar</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatform.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformClipboard.cpp">
       <Filter>Source Files\Platform</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformConsole.cpp">
@@ -300,9 +294,6 @@
       <Filter>Source Files\Platform</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformEnvironment.cpp">
-      <Filter>Source Files\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformGPU.cpp">
       <Filter>Source Files\Platform</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\Platform\win\winPlatformIO.cpp">
@@ -581,9 +572,6 @@
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\PlatformGlobal.h">
-      <Filter>Header Files\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Platform\Polygon2D.h">
       <Filter>Header Files\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Platform\Precision.h">

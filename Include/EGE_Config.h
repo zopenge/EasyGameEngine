@@ -297,7 +297,7 @@ extern "C" void __ege__assert(const wchar_t* error, const wchar_t* filename, uns
 // Skip the UTF-8 header
 #	define SKIP_UTF_CODE_BY_INDEX(string, size, index)      \
 		if ((_byte)*string == (_byte)_UTF8_HEADER_##index) { \
-			ASSERT(size != 0);                               \
+			EGE_ASSERT(size != 0);                           \
 			string++;                                        \
 			size--;                                          \
 		}
