@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6ab2db86-b9b4-4988-bf6c-b0ef825c227b}</ProjectGuid>
+    <Keyword>Linux</Keyword>
+    <RootNamespace>EGEPlatform_linux</RootNamespace>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
+    <ApplicationType>Linux</ApplicationType>
+    <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
+    <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
+    <LinuxProjectType>{D51BCBC9-82E9-4017-911E-C93873C4EA2B}</LinuxProjectType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="..\..\props\Linux_Lib_Debug.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <Import Project="..\..\props\Linux_Lib_Debug.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Include\EGE_Always.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Compile.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Config.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Const.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Platform.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Struct.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Template.h" />
+    <ClInclude Include="..\..\..\Include\EGE_Typedef.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Bounds.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Box.h" />
+    <ClInclude Include="..\..\..\Include\Platform\CallStackFrame.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Camera.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Camera2D.h" />
+    <ClInclude Include="..\..\..\Include\Platform\ColliderBox2D.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Color.h" />
+    <ClInclude Include="..\..\..\Include\Platform\CRC.h" />
+    <ClInclude Include="..\..\..\Include\Platform\DebugSymbol.h" />
+    <ClInclude Include="..\..\..\Include\Platform\DirectoryRecorder.h" />
+    <ClInclude Include="..\..\..\Include\Platform\EulerAngles.h" />
+    <ClInclude Include="..\..\..\Include\Platform\File.h" />
+    <ClInclude Include="..\..\..\Include\Platform\FileFinder.h" />
+    <ClInclude Include="..\..\..\Include\Platform\FileMapping.h" />
+    <ClInclude Include="..\..\..\Include\Platform\FileSystem.h" />
+    <ClInclude Include="..\..\..\Include\Platform\FlagsObject.h" />
+    <ClInclude Include="..\..\..\Include\Platform\FPSTimer.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Frustum.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Interpolation.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Intersection.h" />
+    <ClInclude Include="..\..\..\Include\Platform\IPAddress.h" />
+    <ClInclude Include="..\..\..\Include\Platform\KernelObject.h" />
+    <ClInclude Include="..\..\..\Include\Platform\KeyCodes.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Library.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Lock.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Mathics.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Matrix2.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Matrix3.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Matrix3x4.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Matrix4.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Matrix4Adjustor.h" />
+    <ClInclude Include="..\..\..\Include\Platform\MD5.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Memory.h" />
+    <ClInclude Include="..\..\..\Include\Platform\OS\ios\IOSHeaders.h" />
+    <ClInclude Include="..\..\..\Include\Platform\OS\NetworkOSHeader.h" />
+    <ClInclude Include="..\..\..\Include\Platform\OS\windows\Win32Headers.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Path.h" />
+    <ClInclude Include="..\..\..\Include\Platform\PersistenceThread.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Pipe.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Plane.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Platform.h" />
+    <ClInclude Include="..\..\..\Include\Platform\PlatformConfig.h" />
+    <ClInclude Include="..\..\..\Include\Platform\PlatformGlobal.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Precision.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Quaternion.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Random.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Ratio.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Ray.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Serializer.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Sphere.h" />
+    <ClInclude Include="..\..\..\Include\Platform\StringFormatter.h" />
+    <ClInclude Include="..\..\..\Include\Platform\SyncObject.h" />
+    <ClInclude Include="..\..\..\Include\Platform\TempDir.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Thread.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Time.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Timer.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Transform2D.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Transform3D.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Triangle.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Triangle2D.h" />
+    <ClInclude Include="..\..\..\Include\Platform\UID.h" />
+    <ClInclude Include="..\..\..\Include\Platform\ValueEncoder.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Variable.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Vector2.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Vector3.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Vector4.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Version.h" />
+    <ClInclude Include="..\..\..\Include\Platform\Viewport.h" />
+    <ClInclude Include="..\..\..\Include\Template\Algorithm.h" />
+    <ClInclude Include="..\..\..\Include\Template\Array.h" />
+    <ClInclude Include="..\..\..\Include\Template\BaseMemPtr.h" />
+    <ClInclude Include="..\..\..\Include\Template\BaseRef.h" />
+    <ClInclude Include="..\..\..\Include\Template\BinaryHeap.h" />
+    <ClInclude Include="..\..\..\Include\Template\BitArray.h" />
+    <ClInclude Include="..\..\..\Include\Template\CallbackFunc.h" />
+    <ClInclude Include="..\..\..\Include\Template\Compare.h" />
+    <ClInclude Include="..\..\..\Include\Template\ConcurrentQueue.h" />
+    <ClInclude Include="..\..\..\Include\Template\ConstString.h" />
+    <ClInclude Include="..\..\..\Include\Template\CountOf.h" />
+    <ClInclude Include="..\..\..\Include\Template\DataField.h" />
+    <ClInclude Include="..\..\..\Include\Template\DataOwner.h" />
+    <ClInclude Include="..\..\..\Include\Template\DependencyGraph.h" />
+    <ClInclude Include="..\..\..\Include\Template\FixedArray.h" />
+    <ClInclude Include="..\..\..\Include\Template\Graph.h" />
+    <ClInclude Include="..\..\..\Include\Template\HashMap.h" />
+    <ClInclude Include="..\..\..\Include\Template\Line.h" />
+    <ClInclude Include="..\..\..\Include\Template\Link.h" />
+    <ClInclude Include="..\..\..\Include\Template\Map.h" />
+    <ClInclude Include="..\..\..\Include\Template\MemPtr.h" />
+    <ClInclude Include="..\..\..\Include\Template\MemSegmentPtr.h" />
+    <ClInclude Include="..\..\..\Include\Template\MutableString.h" />
+    <ClInclude Include="..\..\..\Include\Template\PagePool.h" />
+    <ClInclude Include="..\..\..\Include\Template\Pair.h" />
+    <ClInclude Include="..\..\..\Include\Template\Params.h" />
+    <ClInclude Include="..\..\..\Include\Template\PassRefPtr.h" />
+    <ClInclude Include="..\..\..\Include\Template\Point.h" />
+    <ClInclude Include="..\..\..\Include\Template\Progression.h" />
+    <ClInclude Include="..\..\..\Include\Template\Quadruple.h" />
+    <ClInclude Include="..\..\..\Include\Template\Queue.h" />
+    <ClInclude Include="..\..\..\Include\Template\Range.h" />
+    <ClInclude Include="..\..\..\Include\Template\RBTree.h" />
+    <ClInclude Include="..\..\..\Include\Template\Rect.h" />
+    <ClInclude Include="..\..\..\Include\Template\RefObject.h" />
+    <ClInclude Include="..\..\..\Include\Template\RefPtr.h" />
+    <ClInclude Include="..\..\..\Include\Template\SafeValue.h" />
+    <ClInclude Include="..\..\..\Include\Template\Stack.h" />
+    <ClInclude Include="..\..\..\Include\Template\Tree.h" />
+    <ClInclude Include="..\..\..\Include\Template\Triple.h" />
+    <ClInclude Include="..\..\..\Source\EGEPlatform.h" />
+    <ClInclude Include="..\..\..\Source\External\crt\dbgheap\dbgint.h" />
+    <ClInclude Include="..\..\..\Source\External\uchar\inttypes.h" />
+    <ClInclude Include="..\..\..\Source\External\uchar\uchar.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\crc32.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\deflate.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\gzguts.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\inffast.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\inffixed.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\inflate.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\inftrees.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\trees.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\zconf.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\zlib.h" />
+    <ClInclude Include="..\..\..\Source\External\zlib\zutil.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatform.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformConverter.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformCPU.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformEndian.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformIO.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformKernel.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformLanguage.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformMemory.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformNetwork.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformProcess.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformString.h" />
+    <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformTime.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Source\EGEPlatform.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\crt\dbgheap\dbgheap.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\uchar\uchar.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\adler32.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\compress.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\crc32.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\deflate.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\gzclose.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\gzlib.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\gzread.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\gzwrite.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\infback.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\inffast.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\inflate.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\inftrees.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\trees.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\uncompr.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\zlib\zutil.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x86'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Source\Platform\Bounds.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Box.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\CallStackFrame.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\CallStack\winCallStack.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Camera.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Camera2D.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\ColliderBox2D.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Color.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\CRC.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\DebugSymbol\winDebugSymbol.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\DirectoryRecorder.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\EulerAngles.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\File.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\FileFinder.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\FileMapping.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\FileSystem.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\FlagsObject.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\FPSTimer.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Frustum.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Intersection.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\KernelObject.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Library.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Library\winLibrary.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Lock.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Mathics.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Matrix2.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Matrix3.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Matrix3x4.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Matrix4.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Matrix4Adjustor.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\MD5.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Memory.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatform.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformConverter.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformCPU.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformDebugging.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformEndian.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformIO.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformKernel.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformLanguage.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformMemory.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformNetwork.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformProcess.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformString.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatformTime.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatform.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformClipboard.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformConsole.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformConverter.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformCPU.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformDebugging.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformDevice.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformEndian.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformEnvironment.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformGPU.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformIO.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformKernel.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformLanguage.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformMemory.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformNetwork.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformProcess.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformResource.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformString.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformTime.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\OS\linux\linuxPlatformVersion.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Path.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\PersistenceThread.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Pipe.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Plane.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Precision.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Quaternion.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Random.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Ratio.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Ray.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Serializer.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Sphere.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\StringFormatter.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\SyncObject.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\TempDir.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Thread.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Time.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Timer.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Transform2D.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Transform3D.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Triangle.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Triangle2D.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\UID.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\ValueEncoder.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Variable.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Vector2.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Vector3.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Vector4.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Version.cpp" />
+    <ClCompile Include="..\..\..\Source\Platform\Viewport.cpp" />
+  </ItemGroup>
+  <ItemDefinitionGroup />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
