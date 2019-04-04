@@ -1,9 +1,3 @@
-//! @file     Math.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
 _void ValueEncoder::EncodeTransform3D(const Transform3D& transform, const Bounds& bounding_box, _qword& encode_q, _dword& encode_d) {

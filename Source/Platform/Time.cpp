@@ -1,16 +1,6 @@
-//! @file     Time.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
 const Time Time::cNull;
-
-//----------------------------------------------------------------------------
-// Time Helpful Functions Implementation
-//----------------------------------------------------------------------------
 
 //! Convert day string to integer.
 static _dword GetDayOfWeek(AStringPtr string) {
@@ -61,10 +51,6 @@ static _dword GetMonth(AStringPtr string) {
 
 	return 0;
 }
-
-//----------------------------------------------------------------------------
-// Time Implementation
-//----------------------------------------------------------------------------
 
 Time::Time() {
 }

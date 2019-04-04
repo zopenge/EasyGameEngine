@@ -1,9 +1,3 @@
-//! @file     Memory.cpp
-//! @author   LiCode
-//! @version  1.1.0.547
-//! @date     2011/01/07
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
 // The size of memory allocation node in bytes

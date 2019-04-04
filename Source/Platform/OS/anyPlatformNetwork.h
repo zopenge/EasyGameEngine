@@ -1,17 +1,10 @@
-//! @file     anyPlatformNetwork.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// anyPlatformNetwork
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The any-platform network.
+/// </summary>
 class anyPlatformNetwork {
 public:
 	//! Set socket option status.
@@ -35,10 +28,6 @@ public:
 	static _dword ReadSocket(_socket handle, _void* buffer, _dword size);
 	static _dword WriteSocket(_socket handle, const _void* buffer, _dword size);
 };
-
-//----------------------------------------------------------------------------
-// anyPlatformNetwork Implementation
-//----------------------------------------------------------------------------
 
 //! Set socket option status.
 template <typename Type>

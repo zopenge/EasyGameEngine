@@ -210,7 +210,6 @@
     <ClCompile Include="..\..\..\Source\Platform\Matrix3.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Matrix3x4.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Matrix4.cpp" />
-    <ClCompile Include="..\..\..\Source\Platform\Matrix4Adjustor.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\MD5.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\Memory.cpp" />
     <ClCompile Include="..\..\..\Source\Platform\OS\anyPlatform.cpp" />

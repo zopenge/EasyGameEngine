@@ -1,14 +1,4 @@
-//! @file     Intersection.cpp
-//! @author   LiCode
-//! @version  1.1.0.613
-//! @date     2011/01/17
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// Intersection Implementation
-//----------------------------------------------------------------------------
 
 _ubool Intersection::RectangleVSRectangle(const Vector2& lt, const Vector2& rb, const RectU& region) {
 	if (rb.x < (_float)region.l)

@@ -1,17 +1,10 @@
-//! @file     anyPlatformString.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// anyPlatformString
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The any-platform string.
+/// </summary>
 class anyPlatformString {
 protected:
 	//! Compare two characters.
@@ -178,10 +171,6 @@ public:
 	static _dword GetFormatStringLength(const _chara* format, _va_list arguments);
 	static _dword GetFormatStringLength(const _charw* format, _va_list arguments);
 };
-
-//----------------------------------------------------------------------------
-// anyPlatformString Implementation
-//----------------------------------------------------------------------------
 
 template <typename CharType>
 _ubool anyPlatformString::Equal(CharType c1, CharType c2, _ubool ignorecase) {

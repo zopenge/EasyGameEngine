@@ -1,17 +1,10 @@
-//! @file     Path.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Path
-//----------------------------------------------------------------------------
-
+/// <summary>
+///	The path parser.
+/// </summary>
 class Path {
 private:
 	WStringArray mSubPath;
@@ -339,10 +332,6 @@ public:
 	//! @return True indicates it's path rooted.
 	inline static _ubool IsPathRooted(WStringPtr string);
 };
-
-//----------------------------------------------------------------------------
-// Path Implementation
-//----------------------------------------------------------------------------
 
 template <typename StringPtrType>
 _dword Path::SearchDirSeparationIndexL2R(StringPtrType path) {

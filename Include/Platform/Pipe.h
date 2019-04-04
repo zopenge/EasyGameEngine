@@ -1,17 +1,10 @@
-//! @file     Pipe.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Pipe
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The pipe for processes.
+/// </summary>
 class Pipe : public KernelObject {
 private:
 	NO_COPY_OPERATIONS(Pipe);

@@ -1,14 +1,4 @@
-//! @file     Library.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// Library Implementation
-//----------------------------------------------------------------------------
 
 Library::Library() {
 	mLibInMemory = _false;

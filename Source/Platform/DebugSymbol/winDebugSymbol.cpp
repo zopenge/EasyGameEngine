@@ -1,9 +1,3 @@
-//! @file     winDebugSymbol.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
 //! The symbol function declarations
@@ -31,30 +25,29 @@ typedef DWORD(WINAPI* _UnDecorateSymbolName)(PCTSTR, PTSTR, DWORD, DWORD);
 typedef BOOL(WINAPI* _MiniDumpWriteDump)(HANDLE, DWORD, HANDLE, MINIDUMP_TYPE, CONST PMINIDUMP_EXCEPTION_INFORMATION, CONST PMINIDUMP_USER_STREAM_INFORMATION, CONST PMINIDUMP_CALLBACK_INFORMATION);
 
 //! The debug symbol functions name
-static const _chara* sSymbolFunctionNames[] =
-    {
-        "SymCleanup",
-        "SymFunctionTableAccess",
-        "SymFunctionTableAccess64",
-        "SymGetModuleInfo",
-        "SymGetModuleInfo64",
-        "SymGetModuleBase",
-        "SymGetModuleBase64",
-        "SymGetSymFromAddr",
-        "SymGetSymFromAddr64",
-        "SymGetLineFromAddr",
-        "SymGetLineFromAddr64",
-        "SymFromAddr",
-        "SymInitialize",
-        "SymLoadModule",
-        "SymLoadModuleEx",
-        "SymUnloadModule",
-        "SymSetOptions",
-        "SymGetOptions",
-        "StackWalk",
-        "StackWalk64",
-        "UnDecorateSymbolName",
-        "MiniDumpWriteDump",
+static const _chara* sSymbolFunctionNames[] = {
+    "SymCleanup",
+    "SymFunctionTableAccess",
+    "SymFunctionTableAccess64",
+    "SymGetModuleInfo",
+    "SymGetModuleInfo64",
+    "SymGetModuleBase",
+    "SymGetModuleBase64",
+    "SymGetSymFromAddr",
+    "SymGetSymFromAddr64",
+    "SymGetLineFromAddr",
+    "SymGetLineFromAddr64",
+    "SymFromAddr",
+    "SymInitialize",
+    "SymLoadModule",
+    "SymLoadModuleEx",
+    "SymUnloadModule",
+    "SymSetOptions",
+    "SymGetOptions",
+    "StackWalk",
+    "StackWalk64",
+    "UnDecorateSymbolName",
+    "MiniDumpWriteDump",
 };
 
 //! The debug symbols function pointer

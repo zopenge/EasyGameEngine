@@ -1,14 +1,4 @@
-//! @file     FileSystem.cpp
-//! @author   LiCode
-//! @version  1.1.1.804
-//! @date     2011/03/10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// FileSystem Helpful Functions Implementation
-//----------------------------------------------------------------------------
 
 static _ubool _TrimDir(WStringPtr directory, _ubool& no_any_files_in_it) {
 	// Check directory name
@@ -49,10 +39,6 @@ static _ubool _TrimDir(WStringPtr directory, _ubool& no_any_files_in_it) {
 
 	return _true;
 }
-
-//----------------------------------------------------------------------------
-// FileSystem Implementation
-//----------------------------------------------------------------------------
 
 _ubool FileSystem::IsFileExist(WStringPtr filename) {
 	_dword attributes = 0;

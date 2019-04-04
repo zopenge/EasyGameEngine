@@ -1,17 +1,10 @@
-//! @file     Version.h
-//! @author   LiCode
-//! @version  1.1.0.702
-//! @date     2011/02/15
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Version
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The version.
+/// </summary>
 class Version {
 public:
 	//! The zero version
@@ -101,10 +94,6 @@ public:
 	inline Version NextModifiedVersion() const;
 	inline Version NextBuildNumber() const;
 };
-
-//----------------------------------------------------------------------------
-// Version Implementation
-//----------------------------------------------------------------------------
 
 Version::Version() {
 	mMajor = 0;

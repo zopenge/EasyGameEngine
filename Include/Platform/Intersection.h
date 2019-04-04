@@ -1,19 +1,11 @@
-//! @file     Intersection.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Intersection
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The collision result of polygons.
+/// </summary>
 struct PolygonCollisionResult {
-public:
 	// Are the polygons going to intersect forward in time?
 	_ubool mWillIntersect;
 	// Are the polygons currently intersecting?
@@ -22,6 +14,9 @@ public:
 	Vector2 mMinimumTranslationVector;
 };
 
+/// <summary>
+/// The intersection.
+/// </summary>
 class Intersection {
 public:
 	//! Rectangle VS rectangle.
@@ -132,10 +127,6 @@ public:
 	//! @param box   The box.
 	//! @return True indicates sphere hit box successful.
 	static _ubool SphereVSBox(const Sphere& sphere, const Box& box);
-
-	//----------------------------------------------------------------------------
-	// Separate Axis Testing
-	//----------------------------------------------------------------------------
 
 	//! Box VS Box
 	//! @param box1  The Box 1.

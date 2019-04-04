@@ -1,14 +1,4 @@
-//! @file     winPlatformCPU.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// Platform CPU Helpful Functions Implementation
-//----------------------------------------------------------------------------
 
 //! Subtract times.
 ULONGLONG SubtractTimes(const FILETIME& t1, const FILETIME& t2) {
@@ -30,10 +20,6 @@ bool EnoughTimePassed(ULONGLONG last_tickcount) {
 	ULONGLONG dwCurrentTickCount = GetTickCount64();
 	return (dwCurrentTickCount - last_tickcount) > minElapsedMS;
 }
-
-//----------------------------------------------------------------------------
-// Platform CPU Implementation
-//----------------------------------------------------------------------------
 
 const CPUData& Platform::GetCPUData() {
 	if (gCPUData.mNumber) {

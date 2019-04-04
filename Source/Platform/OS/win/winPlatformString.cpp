@@ -1,14 +1,4 @@
-//! @file     winPlatformString.cpp
-//! @author   LiCode
-//! @version  1.1.1.804
-//! @date     2011/03/10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// Platform String Implementation
-//----------------------------------------------------------------------------
 
 _dword Platform::AnsiToUtf16(_charw* buffer, _dword size, const _chara* string, _dword number) {
 	if (string == _null || *string == 0) {

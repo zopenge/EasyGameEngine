@@ -1,14 +1,4 @@
-//! @file     anyPlatformProcess.cpp
-//! @author   LiCode
-//! @version  1.1.0.695
-//! @date     2011/02/13
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// anyPlatformProcess Implementation
-//----------------------------------------------------------------------------
 
 _handle anyPlatformProcess::CreateNamedPipe(const _charw* name, _dword maxnumber, _dword outbuffersize, _dword inbuffersize, _dword timeout) {
 	return _null;

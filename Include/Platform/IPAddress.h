@@ -1,20 +1,13 @@
-//! @file     Address.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Address
-//----------------------------------------------------------------------------
-
-class Address {
+/// <summary>
+/// The IP Address.
+/// </summary>
+class IPAddress {
 public:
-	static Address cNullAddress;
+	static IPAddress cNull;
 
 public:
 	//! The address type
@@ -45,15 +38,15 @@ public:
 	_word mPort;
 
 public:
-	Address()
+	IPAddress()
 	    : mIP(0), mType(0), mPort(0) {
 	}
 
-	Address(_word type)
+	IPAddress(_word type)
 	    : mIP(0), mType(type), mPort(0) {
 	}
 
-	Address(_dword ip, _word type, _word port)
+	IPAddress(_dword ip, _word type, _word port)
 	    : mIP(ip), mType(type), mPort(port) {
 	}
 
@@ -61,13 +54,13 @@ public:
 	//! Compare IP address.
 	//! @param address  The address what you want to compare.
 	//! @return True indicates both IP address is equal.
-	inline _ubool operator==(const Address& address) const {
+	inline _ubool operator==(const IPAddress& address) const {
 		return mIP == address.mIP && mType == address.mType && mPort == address.mPort;
 	}
 	//! Compare IP address.
 	//! @param address  The address what you want to compare.
 	//! @return True indicates both IP address is not equal.
-	inline _ubool operator!=(const Address& address) const {
+	inline _ubool operator!=(const IPAddress& address) const {
 		return mIP != address.mIP || mType != address.mType || mPort != address.mPort;
 	}
 
@@ -89,19 +82,15 @@ public:
 	//! Set address from string.
 	//! @param string  The address string, use 192.168.1.1:8080" etc.
 	//! @return The address referenced object.
-	Address& FromString(WStringPtr address);
+	IPAddress& FromString(WStringPtr address);
 	//! Convert IP address to ANSI string.
 	//! @param with_port True indicates with port number.
 	//! @return The IP address string.
-	AString ToStringA(_ubool with_port) const;
+	IPAddress ToStringA(_ubool with_port) const;
 	//! Convert IP address to UTF-16 string.
 	//! @param with_port True indicates with port number.
 	//! @return The IP address string.
-	WString ToStringW(_ubool with_port) const;
+	IPAddress ToStringW(_ubool with_port) const;
 };
-
-//----------------------------------------------------------------------------
-// Address Implementation
-//----------------------------------------------------------------------------
 
 } // namespace EGE

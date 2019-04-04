@@ -1,14 +1,4 @@
-//! @file     Quaternion.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// Quaternion Implementation
-//----------------------------------------------------------------------------
 
 const Quaternion Quaternion::cIdentity(0.0f, 0.0f, 0.0f, 1.0f);
 

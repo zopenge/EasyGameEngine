@@ -1,17 +1,10 @@
-//! @file     anyPlatformIO.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// anyPlatformIO
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The any-platform IO.
+/// </summary>
 class anyPlatformIO {
 public:
 	static _handle OpenDir(const _charw* directory);
@@ -39,9 +32,5 @@ public:
 	static _ubool CreateDirectory(const _charw* path);
 	static _ubool RemoveDirectory(const _charw* path);
 };
-
-//----------------------------------------------------------------------------
-// anyPlatformIO Implementation
-//----------------------------------------------------------------------------
 
 } // namespace EGE

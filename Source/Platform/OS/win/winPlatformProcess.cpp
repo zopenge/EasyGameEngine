@@ -1,16 +1,9 @@
-//! @file     winPlatformProcess.cpp
-//! @author   LiCode
-//! @version  1.1.0.695
-//! @date     2011/02/13
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
-//----------------------------------------------------------------------------
-// ThreadNameInfo
-//----------------------------------------------------------------------------
-
-struct ThreadNameInfo {
+/// <summary>
+/// The thread name data.
+/// </summary>
+struct ThreadNameData {
 	_dword mType; // Must be 0x1000.
 	const _chara* mName; // Pointer to name (in user addr space).
 	_thread_id mThreadID; // Thread ID (-1=caller thread).
@@ -170,7 +163,7 @@ _ubool Platform::SetThreadName(_thread_id threadid, const _chara* name) {
 	return anyPlatformProcess::SetThreadName(threadid, name);
 #else
 	// Build the thread name info
-	ThreadNameInfo threadnameinfo;
+	ThreadNameData threadnameinfo;
 	threadnameinfo.mType = 0x1000;
 	threadnameinfo.mName = name;
 	threadnameinfo.mThreadID = threadid;

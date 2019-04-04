@@ -1,18 +1,10 @@
-//! @file     MD5.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// MD5Code
-//----------------------------------------------------------------------------
-
-//! This class represents a unsigned 128-bits integer.
+/// <summary>
+/// This class represents a unsigned 128-bits integer.
+/// </summary>
 class MD5Code {
 public:
 	static MD5Code cNull;
@@ -103,10 +95,9 @@ public:
 	WStringPtr ToWString(_charw* buffer, _dword size, _ubool format) const;
 };
 
-//----------------------------------------------------------------------------
-// MD5
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The MD5 code builder.
+/// </summary>
 class MD5 {
 private:
 	//! The md5 state
@@ -165,9 +156,5 @@ public:
 	//! @return The MD5 128-bits checksum.
 	EGE_INTERNAL static MD5Code BuildFromString(WStringPtr string);
 };
-
-//----------------------------------------------------------------------------
-// MD5 Implementation
-//----------------------------------------------------------------------------
 
 } // namespace EGE

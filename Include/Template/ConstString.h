@@ -1,18 +1,10 @@
-//! @file     ConstString.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// ConstString
-//----------------------------------------------------------------------------
-
-//! This class represents a const null-terminated string.
+/// <summary>
+/// This class represents a const null-terminated string.
+/// </summary>
 template <typename CharType, Encoding CharEncoding>
 class ConstString {
 public:
@@ -243,10 +235,6 @@ public:
 	//! @return		True if full path, false otherwise.
 	_ubool IsFullpath() const;
 };
-
-//----------------------------------------------------------------------------
-// ConstString Implementation
-//----------------------------------------------------------------------------
 
 template <typename CharType, Encoding CharEncoding>
 ConstString<CharType, CharEncoding>::ConstString() {

@@ -1,14 +1,4 @@
-//! @file     winPlatformKernel.cpp
-//! @author   LiCode
-//! @version  1.1.0.695
-//! @date     2011/02/13
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// Platform-Kernel Implementation
-//----------------------------------------------------------------------------
 
 const OSData& Platform::GetOSData() {
 	if (gOSData.mName) {

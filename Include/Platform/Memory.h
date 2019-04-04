@@ -1,18 +1,10 @@
-//! @file     Memory.h
-//! @author   LiCode
-//! @version  1.1.0.547
-//! @date     2011/01/07
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// MemoryAllocation
-//----------------------------------------------------------------------------
-
-//! This class represents memory allocation information, used for memory track.
+/// <summary>
+/// This class represents memory allocation information, used for memory track.
+/// </summary>
 struct MemoryAllocation {
 	//! The memory referenced ID
 	_dword mReferencedID;
@@ -35,10 +27,9 @@ struct MemoryAllocation {
 	}
 };
 
-//----------------------------------------------------------------------------
-// MemoryBlockAllocation
-//----------------------------------------------------------------------------
-
+/// <summary>
+///	The memory block allocation.
+/// </summary>
 struct MemoryBlockAllocation {
 	_dword mBlockNumber;
 	_dword mSize;
@@ -57,11 +48,9 @@ struct MemoryBlockAllocation {
 	}
 };
 
-//----------------------------------------------------------------------------
-// Memory
-//----------------------------------------------------------------------------
-
-//! This class trace memory allocation to detect memory leak and allocate times etc.
+/// <summary>
+/// This class trace memory allocation to detect memory leak and allocate times etc.
+/// </summary>
 class Memory {
 public:
 	//! It's singleton class.

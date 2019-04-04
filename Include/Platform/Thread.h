@@ -1,18 +1,10 @@
-//! @file     Thread.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Thread
-//----------------------------------------------------------------------------
-
-//! This class represents a lite thread in a process
+/// <summary>
+/// This class represents a lite thread in a process
+/// </summary>
 class Thread {
 protected:
 	typedef Array<Thread*> ThreadPtrArray;

@@ -1,9 +1,3 @@
-//! @file     PlatformGlobal.h
-//! @author   LiCode
-//! @version  1.1.0.702
-//! @date     2011/02/15
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {

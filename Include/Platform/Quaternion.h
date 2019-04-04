@@ -1,9 +1,3 @@
-//! @file     Quaternion.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
@@ -11,11 +5,9 @@ namespace EGE {
 class Vector3;
 class EulerAngles;
 
-//----------------------------------------------------------------------------
-// Quaternion
-//----------------------------------------------------------------------------
-
-//! This class represents a quaternion.
+/// <summary>
+/// This class represents a quaternion.
+/// </summary>
 class Quaternion {
 public:
 	//! X-component of the quaternion.
@@ -185,10 +177,6 @@ public:
 	//! @return The result quaternion of interpolation.
 	static Quaternion Slerp(const Quaternion& quaternion1, const Quaternion& quaternion2, _float dot, _float theta, _float recipsqrt, _float factor);
 };
-
-//----------------------------------------------------------------------------
-// Quaternion Implementation
-//----------------------------------------------------------------------------
 
 Quaternion::Quaternion() {
 }

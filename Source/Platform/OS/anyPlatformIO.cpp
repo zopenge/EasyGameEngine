@@ -1,14 +1,4 @@
-//! @file     anyPlatformIO.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// anyPlatformIO Helpful Functions Implementation
-//----------------------------------------------------------------------------
 
 static _ubool TranslateFileMode(AString& mode, _FILE_CREATE_FLAG createflag, _dword operateflag) {
 	// Build the file mode
@@ -68,10 +58,6 @@ static _dword TranslateFileSeekFlag(_SEEK flag) {
 			return 0;
 	}
 }
-
-//----------------------------------------------------------------------------
-// anyPlatformIO Implementation
-//----------------------------------------------------------------------------
 
 _handle anyPlatformIO::OpenDir(const _charw* directory) {
 	_chara directory_ansi[1024];

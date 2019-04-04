@@ -1,18 +1,10 @@
-//! @file     PersistenceThread.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// PersistenceThread
-//----------------------------------------------------------------------------
-
-//! This class represents a thread in a process
+/// <summary>
+/// This class represents a thread in a process
+/// </summary>
 class PersistenceThread : public Thread {
 public:
 	//! The feedback action of update thread callback function

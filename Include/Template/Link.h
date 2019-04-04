@@ -1,18 +1,10 @@
-//! @file     Link.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Link
-//----------------------------------------------------------------------------
-
-//! This class is template base class of some bidirectional chain structure container class.
+/// <summary>
+/// This class is template base class of some bidirectional chain structure container class.
+/// </summary>
 template <typename Type>
 class Link : public CountOf<> {
 public:

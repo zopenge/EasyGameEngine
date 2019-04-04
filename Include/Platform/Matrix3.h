@@ -1,18 +1,10 @@
-//! @file     Matrix3.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Matrix3
-//----------------------------------------------------------------------------
-
-//! This class represents a 3D Matrix.
+/// <summary>
+/// This class represents a 3D Matrix.
+/// </summary>
 class Matrix3 {
 public:
 	//! The component of the matrix.
@@ -236,10 +228,6 @@ public:
 	//! Build transform by region, size and offset.
 	static Matrix3 CreateFromRegion(const RectF& region, const Vector2& size, const Vector2& base_offset);
 };
-
-//----------------------------------------------------------------------------
-// Matrix3 Implementation
-//----------------------------------------------------------------------------
 
 inline Matrix3::Matrix3() {
 }

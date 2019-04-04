@@ -1,9 +1,3 @@
-//! @file     Vector3.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
@@ -14,11 +8,9 @@ class Matrix4;
 class Quaternion;
 class Transform3D;
 
-//----------------------------------------------------------------------------
-// Vector3
-//----------------------------------------------------------------------------
-
-//! This class represents a 3D vector.
+/// <summary>
+/// This class represents a 3D vector.
+/// </summary>
 class Vector3 {
 public:
 	//! X-component of the vector.
@@ -40,9 +32,9 @@ public:
 	//! The z-axis vector.
 	static const Vector3 cZAxis;
 	//! The maximal vector.
-	static const Vector3 cMaxVector;
+	static const Vector3 cMax;
 	//! The minimal vector.
-	static const Vector3 cMinVector;
+	static const Vector3 cMin;
 
 public:
 	//! Constructor, create a vector without sets x, y, z components.
@@ -271,10 +263,6 @@ public:
 
 	static _ubool IsNegative(const Vector3& srcvector, const Vector3& desvector);
 };
-
-//----------------------------------------------------------------------------
-// Vector3 Implementation
-//----------------------------------------------------------------------------
 
 inline Vector3::Vector3() {
 }

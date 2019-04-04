@@ -1,9 +1,3 @@
-//! @file     Win32Headers.h
-//! @author   LiCode
-//! @version  1.1.0.556
-//! @date     2011/01/08
-//! Copyright ...
-
 #pragma once
 
 // Exclude rarely-used stuff from Windows headers

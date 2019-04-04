@@ -1,9 +1,3 @@
-//! @file     PlatformConfig.h
-//! @author   LiCode
-//! @version  1.1.0.695
-//! @date     2011/02/13
-//! Copyright ...
-
 #pragma once
 
 // Win32 Platform
@@ -18,7 +12,7 @@
 // Android Platform
 #elif defined _PLATFORM_ANDROID_
 
-#define NS_EXPORT
+#	define NS_EXPORT
 
 extern "C" {
 /*
@@ -33,7 +27,7 @@ extern "C" {
  * either because the way __dso_handle was used was already broken (and
  * the custom linker works around it).
  */
-NS_EXPORT __attribute__((weak)) void *__dso_handle;
+NS_EXPORT __attribute__((weak)) void* __dso_handle;
 }
 
 #endif

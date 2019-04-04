@@ -1,14 +1,4 @@
-//! @file     FileFinder.cpp
-//! @author   LiCode
-//! @version  1.1.0.702
-//! @date     2011/02/15
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// FileFinder Implementation
-//----------------------------------------------------------------------------
 
 FileFinder::FileFinder() {
 	mItemNumber = 0;

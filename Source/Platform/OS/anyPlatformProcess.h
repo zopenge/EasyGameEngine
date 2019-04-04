@@ -1,17 +1,10 @@
-//! @file     anyPlatformProcess.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// anyPlatformProcess
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The any-platform process.
+/// </summary>
 class anyPlatformProcess {
 public:
 	static _handle CreateNamedPipe(const _charw* name, _dword maxnumber, _dword outbuffersize, _dword inbuffersize, _dword timeout);
@@ -56,9 +49,5 @@ public:
 	static _ubool CreateProcess(const _charw* modulename, const _charw* cmdline, _dword creationflags, const _charw* workdir, _handle* processhandle, _handle* threadhandle);
 	static _ubool ReadProcessMemory(_handle processhandle, const _void* baseaddress, _void* buffer, _dword size, _dword* bytesread);
 };
-
-//----------------------------------------------------------------------------
-// anyPlatformProcess Implementation
-//----------------------------------------------------------------------------
 
 } // namespace EGE

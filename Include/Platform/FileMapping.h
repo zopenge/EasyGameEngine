@@ -1,17 +1,10 @@
-//! @file     FileMapping.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// FileMapping
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The file mapping.
+/// </summary>
 class FileMapping : public KernelObject {
 private:
 	//! The mapping file handle
@@ -51,9 +44,5 @@ public:
 	//! @return none.
 	_void Close();
 };
-
-//----------------------------------------------------------------------------
-// FileMapping Implementation
-//----------------------------------------------------------------------------
 
 } // namespace EGE

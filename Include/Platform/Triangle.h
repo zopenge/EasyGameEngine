@@ -1,17 +1,10 @@
-//! @file     Triangle.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Triangle
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The triangle shape.
+/// </summary>
 class Triangle {
 public:
 	Vector3 mVector1;
@@ -28,10 +21,6 @@ public:
 
 	inline Vector3 MiddleVector();
 };
-
-//----------------------------------------------------------------------------
-// Triangle Implementation
-//----------------------------------------------------------------------------
 
 Triangle::Triangle() {
 }

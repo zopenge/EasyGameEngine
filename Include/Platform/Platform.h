@@ -1,17 +1,10 @@
-//! @file     Platform.h
-//! @author   LiCode
-//! @version  1.1.0.695
-//! @date     2011/02/13
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Platform
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The OS platform.
+/// </summary>
 class Platform {
 	//! Callback Functions Declaration
 public:

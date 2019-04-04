@@ -1,223 +1,215 @@
-//! @file     Matrix2.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
-//----------------------------------------------------------------------------
-// Matrix2 Implementation
-//----------------------------------------------------------------------------
+const Matrix2 Matrix2::cZero(0.0f, 0.0f, 0.0f, 0.0f);
+const Matrix2 Matrix2::cIdentity(1.0f, 0.0f, 0.0f, 1.0f);
 
-const Matrix2 Matrix2::cZero( 0.0f, 0.0f, 0.0f, 0.0f );
-const Matrix2 Matrix2::cIdentity( 1.0f, 0.0f, 0.0f, 1.0f );
+Matrix2& Matrix2::operator+=(const Matrix2& matrix) {
+	m[0][0] += matrix.m[0][0];
+	m[0][1] += matrix.m[0][1];
+	m[1][0] += matrix.m[1][0];
+	m[1][1] += matrix.m[1][1];
 
-Matrix2& Matrix2::operator += ( const Matrix2& matrix )
-{
- m[0][0] += matrix.m[0][0]; m[0][1] += matrix.m[0][1];
- m[1][0] += matrix.m[1][0]; m[1][1] += matrix.m[1][1];
-
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::operator -= ( const Matrix2& matrix )
-{
- m[0][0] -= matrix.m[0][0]; m[0][1] -= matrix.m[0][1];
- m[1][0] -= matrix.m[1][0]; m[1][1] -= matrix.m[1][1];
+Matrix2& Matrix2::operator-=(const Matrix2& matrix) {
+	m[0][0] -= matrix.m[0][0];
+	m[0][1] -= matrix.m[0][1];
+	m[1][0] -= matrix.m[1][0];
+	m[1][1] -= matrix.m[1][1];
 
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::operator *= ( const Matrix2& matrix )
-{
- _float m00 = m[0][0], m01 = m[0][1], m10 = m[1][0], m11 = m[1][1];
+Matrix2& Matrix2::operator*=(const Matrix2& matrix) {
+	_float m00 = m[0][0], m01 = m[0][1], m10 = m[1][0], m11 = m[1][1];
 
- m[0][0] = m00 * matrix.m[0][0] + m01 * matrix.m[1][0];
- m[0][1] = m00 * matrix.m[0][1] + m01 * matrix.m[1][1];
- m[1][0] = m10 * matrix.m[0][0] + m11 * matrix.m[1][0];
- m[1][1] = m10 * matrix.m[0][1] + m11 * matrix.m[1][1];
+	m[0][0] = m00 * matrix.m[0][0] + m01 * matrix.m[1][0];
+	m[0][1] = m00 * matrix.m[0][1] + m01 * matrix.m[1][1];
+	m[1][0] = m10 * matrix.m[0][0] + m11 * matrix.m[1][0];
+	m[1][1] = m10 * matrix.m[0][1] + m11 * matrix.m[1][1];
 
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::operator *= ( _float scalar )
-{
- m[0][0] *= scalar; m[0][1] *= scalar;
- m[1][0] *= scalar; m[1][1] *= scalar;
+Matrix2& Matrix2::operator*=(_float scalar) {
+	m[0][0] *= scalar;
+	m[0][1] *= scalar;
+	m[1][0] *= scalar;
+	m[1][1] *= scalar;
 
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::operator /= ( _float scalar )
-{
- m[0][0] /= scalar; m[0][1] /= scalar;
- m[1][0] /= scalar; m[1][1] /= scalar;
+Matrix2& Matrix2::operator/=(_float scalar) {
+	m[0][0] /= scalar;
+	m[0][1] /= scalar;
+	m[1][0] /= scalar;
+	m[1][1] /= scalar;
 
- return *this;
+	return *this;
 }
 
-Matrix2 Matrix2::operator + ( const Matrix2& matrix ) const
-{
- Matrix2 returnmatrix = *this;
+Matrix2 Matrix2::operator+(const Matrix2& matrix) const {
+	Matrix2 returnmatrix = *this;
 
- return returnmatrix += matrix;
+	return returnmatrix += matrix;
 }
 
-Matrix2 Matrix2::operator - ( const Matrix2& matrix ) const
-{
- Matrix2 returnmatrix = *this;
+Matrix2 Matrix2::operator-(const Matrix2& matrix) const {
+	Matrix2 returnmatrix = *this;
 
- return returnmatrix -= matrix;
+	return returnmatrix -= matrix;
 }
 
-Matrix2 Matrix2::operator * ( const Matrix2& matrix ) const
-{
- Matrix2 returnmatrix = *this;
+Matrix2 Matrix2::operator*(const Matrix2& matrix) const {
+	Matrix2 returnmatrix = *this;
 
- return returnmatrix *= matrix;
+	return returnmatrix *= matrix;
 }
 
-Matrix2 Matrix2::operator * ( _float scalar ) const
-{
- Matrix2 returnmatrix = *this;
+Matrix2 Matrix2::operator*(_float scalar) const {
+	Matrix2 returnmatrix = *this;
 
- return returnmatrix *= scalar;
+	return returnmatrix *= scalar;
 }
 
-Matrix2 Matrix2::operator / ( _float scalar ) const
-{
- Matrix2 returnmatrix = *this;
+Matrix2 Matrix2::operator/(_float scalar) const {
+	Matrix2 returnmatrix = *this;
 
- return returnmatrix /= scalar;
+	return returnmatrix /= scalar;
 }
 
-_float Matrix2::Determinant( ) const
-{
- return m[0][0] * m[1][1] - m[0][1] * m[1][0];
+_float Matrix2::Determinant() const {
+	return m[0][0] * m[1][1] - m[0][1] * m[1][0];
 }
 
-Matrix2& Matrix2::Identity( )
-{
- m[0][0] = 1.0f; m[0][1] = 0.0f;
- m[1][0] = 0.0f; m[1][1] = 1.0f;
+Matrix2& Matrix2::Identity() {
+	m[0][0] = 1.0f;
+	m[0][1] = 0.0f;
+	m[1][0] = 0.0f;
+	m[1][1] = 1.0f;
 
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::Transpose( )
-{
- _float m01 = m[0][1], m10 = m[1][0];
+Matrix2& Matrix2::Transpose() {
+	_float m01 = m[0][1], m10 = m[1][0];
 
- m[0][1] = m10;
- m[1][0] = m01;
+	m[0][1] = m10;
+	m[1][0] = m01;
 
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::Inverse( )
-{
- _float determinant = Determinant( );
+Matrix2& Matrix2::Inverse() {
+	_float determinant = Determinant();
 
- if ( determinant != 0.0f )
- {
-  Adjoint( );
+	if (determinant != 0.0f) {
+		Adjoint();
 
-  m[0][0] /= determinant; m[0][1] /= determinant;
-  m[1][0] /= determinant; m[1][1] /= determinant;
- }
+		m[0][0] /= determinant;
+		m[0][1] /= determinant;
+		m[1][0] /= determinant;
+		m[1][1] /= determinant;
+	}
 
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::Adjoint( )
-{
- _float m00 = m[0][0], m01 = m[0][1], m10 = m[1][0], m11 = m[1][1];
+Matrix2& Matrix2::Adjoint() {
+	_float m00 = m[0][0], m01 = m[0][1], m10 = m[1][0], m11 = m[1][1];
 
- m[0][0] =   m11; m[0][1] = - m01;
- m[1][0] = - m10; m[1][1] =   m00;
+	m[0][0] = m11;
+	m[0][1] = -m01;
+	m[1][0] = -m10;
+	m[1][1] = m00;
 
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::Scaling( _float x, _float y )
-{
- m[0][0] =    x; m[0][1] = 0.0f;
- m[1][0] = 0.0f; m[1][1] =    y;
+Matrix2& Matrix2::Scaling(_float x, _float y) {
+	m[0][0] = x;
+	m[0][1] = 0.0f;
+	m[1][0] = 0.0f;
+	m[1][1] = y;
 
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::Scaling( const Vector2& vector )
-{
- return Scaling( vector.x, vector.y );
+Matrix2& Matrix2::Scaling(const Vector2& vector) {
+	return Scaling(vector.x, vector.y);
 }
 
-Matrix2& Matrix2::Scaling( const Vector2& vector, _float factor )
-{
- Vector2 normal( vector );
- normal.Normalize( );
+Matrix2& Matrix2::Scaling(const Vector2& vector, _float factor) {
+	Vector2 normal(vector);
+	normal.Normalize();
 
- _float k  = factor - 1.0f;
- _float xx = normal.x * normal.x;
- _float yy = normal.y * normal.y;
- _float xy = normal.x * normal.y;
+	_float k = factor - 1.0f;
+	_float xx = normal.x * normal.x;
+	_float yy = normal.y * normal.y;
+	_float xy = normal.x * normal.y;
 
- m[0][0] = 1.0f + k * xx; m[0][1] =        k * xy;
- m[1][0] =        k * xy; m[1][1] = 1.0f + k * yy;
+	m[0][0] = 1.0f + k * xx;
+	m[0][1] = k * xy;
+	m[1][0] = k * xy;
+	m[1][1] = 1.0f + k * yy;
 
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::Rotation( _float radian )
-{
- _float sincos_value[2];
- Math::SinCos( radian, sincos_value );
+Matrix2& Matrix2::Rotation(_float radian) {
+	_float sincos_value[2];
+	Math::SinCos(radian, sincos_value);
 
- m[0][0] =   sincos_value[1]; m[0][1] = sincos_value[0];
- m[1][0] = - sincos_value[0]; m[1][1] = sincos_value[1];
+	m[0][0] = sincos_value[1];
+	m[0][1] = sincos_value[0];
+	m[1][0] = -sincos_value[0];
+	m[1][1] = sincos_value[1];
 
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::ProjectX( )
-{
- m[0][0] = 1.0f; m[0][1] = 0.0f;
- m[1][0] = 0.0f; m[1][1] = 0.0f;
+Matrix2& Matrix2::ProjectX() {
+	m[0][0] = 1.0f;
+	m[0][1] = 0.0f;
+	m[1][0] = 0.0f;
+	m[1][1] = 0.0f;
 
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::ProjectY( )
-{
- m[0][0] = 0.0f; m[0][1] = 0.0f;
- m[1][0] = 0.0f; m[1][1] = 1.0f;
+Matrix2& Matrix2::ProjectY() {
+	m[0][0] = 0.0f;
+	m[0][1] = 0.0f;
+	m[1][0] = 0.0f;
+	m[1][1] = 1.0f;
 
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::Project( const Vector2& vector )
-{
- return Scaling( vector, 0.0f );
+Matrix2& Matrix2::Project(const Vector2& vector) {
+	return Scaling(vector, 0.0f);
 }
 
-Matrix2& Matrix2::RefectionX( )
-{
- m[0][0] = 1.0f; m[0][1] =  0.0f;
- m[1][0] = 0.0f; m[1][1] = -1.0f;
+Matrix2& Matrix2::RefectionX() {
+	m[0][0] = 1.0f;
+	m[0][1] = 0.0f;
+	m[1][0] = 0.0f;
+	m[1][1] = -1.0f;
 
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::RefectionY( )
-{
- m[0][0] = -1.0f; m[0][1] = 0.0f;
- m[1][0] =  0.0f; m[1][1] = 1.0f;
+Matrix2& Matrix2::RefectionY() {
+	m[0][0] = -1.0f;
+	m[0][1] = 0.0f;
+	m[1][0] = 0.0f;
+	m[1][1] = 1.0f;
 
- return *this;
+	return *this;
 }
 
-Matrix2& Matrix2::Refection( const Vector2& vector )
-{
- return Scaling( vector, -1.0f );
+Matrix2& Matrix2::Refection(const Vector2& vector) {
+	return Scaling(vector, -1.0f);
 }

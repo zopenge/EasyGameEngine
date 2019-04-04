@@ -1,17 +1,7 @@
-//! @file     Thread.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
 Lock* Thread::sThreadLock = _null;
 Thread::ThreadPtrArray* Thread::sThreads = _null;
-
-//----------------------------------------------------------------------------
-// Thread Helpful Functions Implementation
-//----------------------------------------------------------------------------
 
 // Check whether enable thread exception catch feature
 #if defined(_PLATFORM_WINDOWS_)
@@ -65,10 +55,6 @@ static int HandleException(EXCEPTION_POINTERS* exception_pointers) {
 }
 
 #endif
-
-//----------------------------------------------------------------------------
-// Thread Implementation
-//----------------------------------------------------------------------------
 
 Thread::Thread() {
 	mIsReleasing = _false;

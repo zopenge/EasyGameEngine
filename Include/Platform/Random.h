@@ -1,18 +1,10 @@
-//! @file     Random.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Random
-//----------------------------------------------------------------------------
-
-//! This class provides random value generation functions.
+/// <summary>
+/// This class provides random value generation functions.
+/// </summary>
 class Random {
 public:
 	Random();
@@ -84,7 +76,9 @@ public:
 	static _double GenNormalDistributionValue(_double min_value, _double max_value, _double expectation, _double variance);
 };
 
-// Linear Congruential Generator
+/// <summary>
+/// Linear Congruential Generator
+/// </summary>
 class LCGRandom {
 private:
 	_dword mSeed;

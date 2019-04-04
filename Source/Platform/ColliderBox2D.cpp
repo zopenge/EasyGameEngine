@@ -1,16 +1,6 @@
-//! @file     ColliderBox2D.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
 const ColliderBox2D ColliderBox2D::cNull(Vector2(0.0f, 0.0f), 0.0f, 0.0f, 0.0f);
-
-//----------------------------------------------------------------------------
-// ColliderBox2D Implementation
-//----------------------------------------------------------------------------
 
 ColliderBox2D::ColliderBox2D() {
 	EGE_INIT_ARRAY(mCorner);

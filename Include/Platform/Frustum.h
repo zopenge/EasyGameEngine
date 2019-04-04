@@ -1,17 +1,10 @@
-//! @file     Frustum.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Frustum
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The frustum.
+/// </summary>
 class Frustum {
 public:
 	//! The identity Frustum.
@@ -70,10 +63,6 @@ public:
 	//! @return A plane parallel with the near plane.
 	Plane ParallelPlane(const Vector3& point);
 };
-
-//----------------------------------------------------------------------------
-// Frustum Implementation
-//----------------------------------------------------------------------------
 
 inline _ubool Frustum::operator==(const Frustum& frustum) const {
 	return mPlanes[0] == frustum.mPlanes[0] && mPlanes[1] == frustum.mPlanes[1] && mPlanes[2] == frustum.mPlanes[2] && mPlanes[3] == frustum.mPlanes[3] && mPlanes[4] == frustum.mPlanes[4] && mPlanes[5] == frustum.mPlanes[5];

@@ -1,13 +1,4 @@
-//! @file     winPlatform.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// pthread Library Functions Declarations
-//----------------------------------------------------------------------------
 
 #if (USE_PTHREAD == 1)
 
@@ -55,10 +46,6 @@ static _void UnloadPThreadLibrary() {
 }
 
 #endif
-
-//----------------------------------------------------------------------------
-// Platform Implementation
-//----------------------------------------------------------------------------
 
 _ubool Platform::Initialize() {
 	// Make sure some structures used by APIs what must match the size

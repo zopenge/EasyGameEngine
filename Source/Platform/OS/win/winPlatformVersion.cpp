@@ -1,14 +1,4 @@
-//! @file     winPlatformVersion.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// Platform Version Implementation
-//----------------------------------------------------------------------------
 
 _dword Platform::GetFileVersionInfoSize(const _charw* filename) {
 	if (filename == _null)

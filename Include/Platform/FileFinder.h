@@ -1,17 +1,10 @@
-//! @file     FileFinder.h
-//! @author   LiCode
-//! @version  1.1.0.702
-//! @date     2011/02/15
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// FileFinder
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The file finder.
+/// </summary>
 class FileFinder {
 private:
 	//! The file finder data

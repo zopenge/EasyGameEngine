@@ -1,17 +1,10 @@
-//! @file     Precision.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Precision
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The value precision.
+/// </summary>
 class Precision {
 private:
 	_word mIntPrecision;
@@ -33,9 +26,5 @@ public:
 	WString BuildIntergerValueString(_int value) const;
 	WString BuildFloatValueString(_float value) const;
 };
-
-//----------------------------------------------------------------------------
-// Precision Implementation
-//----------------------------------------------------------------------------
 
 } // namespace EGE

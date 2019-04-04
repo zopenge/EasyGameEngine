@@ -1,16 +1,6 @@
-//! @file     Ratio.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
 Ratio Ratio::cNull;
-
-//----------------------------------------------------------------------------
-// Ratio Implementation
-//----------------------------------------------------------------------------
 
 Ratio::Ratio() {
 	scale = 1.0f;

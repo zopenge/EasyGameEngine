@@ -1,34 +1,25 @@
-//! @file     TempDir.h
-//! @author   LiCode
-//! @version  1.1.1.804
-//! @date     2011/03/10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// TempDir
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The temporary directory(create in constructor and delete it in destructor).
+/// </summary>
 class TempDir {
- private:
-  WString mDirPath;
+private:
+	WString mDirPath;
 
- public:
-  TempDir(WStringPtr root_dir);
-  TempDir(const TempDir& root_dir);
-  ~TempDir();
+public:
+	TempDir(WStringPtr root_dir);
+	TempDir(const TempDir& root_dir);
+	~TempDir();
 
- public:
-  WStringPtr GetDirPath() const;
+public:
+	WStringPtr GetDirPath() const;
 };
 
-//----------------------------------------------------------------------------
-// TempDir Implementation
-//----------------------------------------------------------------------------
+inline WStringPtr TempDir::GetDirPath() const {
+	return mDirPath;
+}
 
-inline WStringPtr TempDir::GetDirPath() const { return mDirPath; }
-
-}  // namespace EGE
+} // namespace EGE

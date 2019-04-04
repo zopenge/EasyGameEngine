@@ -1,14 +1,4 @@
-//! @file     Pipe.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// Pipe Implementation
-//----------------------------------------------------------------------------
 
 Pipe::Pipe() {
 	mIsServerProcess = _false;

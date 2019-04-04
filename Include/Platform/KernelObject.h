@@ -1,18 +1,10 @@
-//! @file     KernelObject.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// KernelObject
-//----------------------------------------------------------------------------
-
-//! This class is base class of all kernel object.
+/// <summary>
+/// This class is base class of all kernel object.
+/// </summary>
 class KernelObject {
 	NO_COPY_OPERATIONS(KernelObject)
 
@@ -45,10 +37,6 @@ public:
 	//! @return none.
 	_void Close();
 };
-
-//----------------------------------------------------------------------------
-// KernelObject Implementation
-//----------------------------------------------------------------------------
 
 KernelObject::operator _handle() const {
 	return mObjectHandle;

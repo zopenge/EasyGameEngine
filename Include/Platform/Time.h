@@ -1,17 +1,10 @@
-//! @file     Time.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Time
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The time.
+/// </summary>
 class Time : public CalendarTime {
 public:
 	//! The null time

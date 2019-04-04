@@ -1,9 +1,3 @@
-//! @file     EGE_Platform.h
-//! @author   LiCode
-//! @version  1.0.0.702
-//! @date     2011/02/15
-//! Copyright ...
-
 #pragma once
 
 // Windows Platform
@@ -52,7 +46,6 @@
 #include "Platform/Matrix3.h"
 #include "Platform/Matrix3x4.h"
 #include "Platform/Matrix4.h"
-#include "Platform/Matrix4Adjustor.h"
 #include "Platform/Transform2D.h"
 #include "Platform/Transform3D.h"
 

@@ -1,49 +1,39 @@
-//! @file     Sphere.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Sphere
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The sphere shape.
+/// </summary>
 class Sphere {
- public:
-  Vector3 mCenter;
-  _float mRadius;
+public:
+	Vector3 mCenter;
+	_float mRadius;
 
- public:
-  inline Sphere();
-  inline Sphere(const Vector3& center, _float radius);
+public:
+	inline Sphere();
+	inline Sphere(const Vector3& center, _float radius);
 
-  inline Sphere& operator*=(const Matrix4& matrix);
-  inline Sphere operator*(const Matrix4& matrix) const;
+	inline Sphere& operator*=(const Matrix4& matrix);
+	inline Sphere operator*(const Matrix4& matrix) const;
 };
 
-//----------------------------------------------------------------------------
-// Sphere Implementation
-//----------------------------------------------------------------------------
-
-Sphere::Sphere() {}
+Sphere::Sphere() {
+}
 
 Sphere::Sphere(const Vector3& center, _float radius) {
-  mCenter = center;
-  mRadius = radius;
+	mCenter = center;
+	mRadius = radius;
 }
 
 Sphere& Sphere::operator*=(const Matrix4& matrix) {
-  mCenter *= matrix;
+	mCenter *= matrix;
 
-  return *this;
+	return *this;
 }
 
 Sphere Sphere::operator*(const Matrix4& matrix) const {
-  return Sphere(mCenter * matrix, mRadius);
+	return Sphere(mCenter * matrix, mRadius);
 }
 
-}  // namespace EGE
+} // namespace EGE

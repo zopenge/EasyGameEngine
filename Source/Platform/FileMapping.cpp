@@ -1,14 +1,4 @@
-//! @file     FileMapping.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// FileMapping Implementation
-//----------------------------------------------------------------------------
 
 FileMapping::FileMapping()
     : mFileHandle(_null), mSize(0), mBuffer(_null) {

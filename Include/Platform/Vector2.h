@@ -1,9 +1,3 @@
-//! @file     Vector2.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
@@ -11,11 +5,9 @@ namespace EGE {
 class Matrix2;
 class Matrix3;
 
-//----------------------------------------------------------------------------
-// Vector2
-//----------------------------------------------------------------------------
-
-//! @export_script_class_cd("Vector2", "This class represents a 2D vector")
+/// <summary>
+/// This class represents a 2D vector.
+/// </summary>
 class Vector2 {
 public:
 	//! @export_script_property("X-component of the vector")
@@ -33,9 +25,9 @@ public:
 	//! The y-axis vector.
 	static const Vector2 cYAxis;
 	//! The maximal vector.
-	static const Vector2 cMaxVector;
+	static const Vector2 cMax;
 	//! The minimal vector.
-	static const Vector2 cMinVector;
+	static const Vector2 cMin;
 
 public:
 	//! Constructor, create a vector without sets x, y components.
@@ -237,10 +229,6 @@ public:
 	static Vector2 Clamp(const Vector2& vector, const Vector2& min,
 	                     const Vector2& max);
 };
-
-//----------------------------------------------------------------------------
-// Vector2 Implementation
-//----------------------------------------------------------------------------
 
 inline Vector2::Vector2() {
 }

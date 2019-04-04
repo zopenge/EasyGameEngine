@@ -1,14 +1,4 @@
-//! @file     PersistenceThread.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// PersistenceThread Implementation
-//----------------------------------------------------------------------------
 
 PersistenceThread::PersistenceThread() {
 	mInterval = 100;

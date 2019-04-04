@@ -1,30 +1,16 @@
-//! @file     anyPlatform.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
-namespace EGE
-{
+namespace EGE {
 
-//----------------------------------------------------------------------------
-// anyPlatform
-//----------------------------------------------------------------------------
-
-class anyPlatform
-{
+/// <summary>
+/// The any-platform.
+/// </summary>
+class anyPlatform {
 public:
- //! Initialize.
- static _ubool Initialize( );
- //! Finalize.
- static _void Finalize( );
+	//! Initialize.
+	static _ubool Initialize();
+	//! Finalize.
+	static _void Finalize();
 };
 
-//----------------------------------------------------------------------------
-// anyPlatformTime Implementation
-//----------------------------------------------------------------------------
-
-
-}
+} // namespace EGE

@@ -1,17 +1,10 @@
-//! @file     Variable.h
-//! @author   LiCode
-//! @version  1.1.0.695
-//! @date     2011/02/13
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Variable
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The variable value.
+/// </summary>
 class Variable {
 public:
 	static const Variable cNull;
@@ -237,10 +230,6 @@ public:
 	//! @return The type size.
 	static _dword GetTypeIDSize(_dword type);
 };
-
-//----------------------------------------------------------------------------
-// Variable Implementation
-//----------------------------------------------------------------------------
 
 inline Variable::Variable() {
 	mType = _TYPE_ID_UNKNOWN;

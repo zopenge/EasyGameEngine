@@ -1,18 +1,10 @@
-//! @file     FileSystem.h
-//! @author   LiCode
-//! @version  1.1.1.804
-//! @date     2011/03/10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// FileSystem
-//----------------------------------------------------------------------------
-
-//! This class represents win32 file system.
+/// <summary>
+/// This class represents win32 file system.
+/// </summary>
 class FileSystem {
 public:
 	//! Check if the specified file is existing or not.

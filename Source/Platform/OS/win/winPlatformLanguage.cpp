@@ -1,14 +1,4 @@
-//! @file     winPlatformLanguage.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// Platform-Language Implementation
-//----------------------------------------------------------------------------
 
 _ubool Platform::IsVowelInThai(_charw code) {
 	return anyPlatformLanguage::IsVowelInThai(code);

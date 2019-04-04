@@ -1,16 +1,6 @@
-//! @file     StringFormatter.h
-//! @author   LiCode
-//! @version  1.1.1.804
-//! @date     2011/03/10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
-
-//----------------------------------------------------------------------------
-// Helpful Macros
-//----------------------------------------------------------------------------
 
 #define SET_PAR_BEGIN() \
 	{                   \
@@ -20,25 +10,25 @@ namespace EGE {
 		break;        \
 		}             \
 		}
-#define SET_PAR_DO(name)                                                                \
-	SET_PAR_BEGIN()                                                                     \
-	SET_PAR_##name(1, p1)                                                               \
-	    SET_PAR_##name(2, p2)                                                           \
-	        SET_PAR_##name(3, p3)                                                       \
-	            SET_PAR_##name(4, p4)                                                   \
-	                SET_PAR_##name(5, p5)                                               \
-	                    SET_PAR_##name(6, p6)                                           \
-	                        SET_PAR_##name(7, p7)                                       \
-	                            SET_PAR_##name(8, p8)                                   \
-	                                SET_PAR_##name(9, p9)                               \
-	                                    SET_PAR_##name(10, p10)                         \
-	                                        SET_PAR_##name(11, p11)                     \
-	                                            SET_PAR_##name(12, p12)                 \
-	                                                SET_PAR_##name(13, p13)             \
-	                                                    SET_PAR_##name(14, p14)         \
-	                                                        SET_PAR_##name(15, p15)     \
-	                                                            SET_PAR_##name(16, p16) \
-	                                                                SET_PAR_END()
+#define SET_PAR_DO(name)     \
+	SET_PAR_BEGIN()          \
+	SET_PAR_##name(1, p1);   \
+	SET_PAR_##name(2, p2);   \
+	SET_PAR_##name(3, p3);   \
+	SET_PAR_##name(4, p4);   \
+	SET_PAR_##name(5, p5);   \
+	SET_PAR_##name(6, p6);   \
+	SET_PAR_##name(7, p7);   \
+	SET_PAR_##name(8, p8);   \
+	SET_PAR_##name(9, p9);   \
+	SET_PAR_##name(10, p10); \
+	SET_PAR_##name(11, p11); \
+	SET_PAR_##name(12, p12); \
+	SET_PAR_##name(13, p13); \
+	SET_PAR_##name(14, p14); \
+	SET_PAR_##name(15, p15); \
+	SET_PAR_##name(16, p16); \
+	SET_PAR_END()
 
 #define SET_PAR(n, x)            \
 	case n - 1: {                \
@@ -51,11 +41,9 @@ namespace EGE {
 #define SET_PAR_DOUBLE(n, x) SET_PAR(n, ParseFromString(x, substringbuffer))
 #define SET_PAR_STRING(n, x) SET_PAR(n, ParseFromString(x, substringbuffer))
 
-//----------------------------------------------------------------------------
-// StringFormatter
-//----------------------------------------------------------------------------
-
-//! This class provides useful functions of string format.
+/// <summary>
+/// This class provides useful functions of string format.
+/// </summary>
 class StringFormatter {
 private:
 	static _dword sUnusedInteger;
@@ -218,10 +206,6 @@ public:
 	template <typename CharType, typename StringType>
 	static _dword SearchL2R(StringType in_string, StringType sub_string, _ubool match_whole_word);
 };
-
-//----------------------------------------------------------------------------
-// StringFormatter Implementation
-//----------------------------------------------------------------------------
 
 template <>
 inline _void StringFormatter::ParseFromString<_tiny>(_tiny& value, const _chara* string, _dword radix) {

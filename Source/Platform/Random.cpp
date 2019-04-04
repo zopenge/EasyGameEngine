@@ -1,14 +1,4 @@
-//! @file     Random.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// Random Implementation
-//----------------------------------------------------------------------------
 
 Random::Random() {
 }
@@ -106,10 +96,6 @@ _double Random::GenNormalDistributionValue(_double min_value, _double max_value,
 
 	return random_value;
 }
-
-//----------------------------------------------------------------------------
-// LCGRandom Implementation
-//----------------------------------------------------------------------------
 
 LCGRandom::LCGRandom()
     : mSeed(0) {

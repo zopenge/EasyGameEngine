@@ -1,16 +1,6 @@
-//! @file     StringFormatter.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
 _dword StringFormatter::sUnusedInteger = 0;
-
-//----------------------------------------------------------------------------
-// Helpful Functions Implementation
-//----------------------------------------------------------------------------
 
 unsigned char ToHex(unsigned char x) {
 	// Thanks for sharing code: http://blog.csdn.net/gemo/article/details/8468311
@@ -80,10 +70,6 @@ static _ubool T_IsFloatPointNumber(ConstString<CharType, EncodingType> string) {
 
 	return _true;
 }
-
-//----------------------------------------------------------------------------
-// StringFormatter Implementation
-//----------------------------------------------------------------------------
 
 _ubool StringFormatter::IsIntegerNumber(AStringPtr string) {
 	return T_IsIntegerNumber(string);

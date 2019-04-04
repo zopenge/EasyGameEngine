@@ -1,16 +1,6 @@
-//! @file     MD5.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
-MD5Code MD5Code::cNull = MD5Code();
-
-//----------------------------------------------------------------------------
-// MD5Code Implementation
-//----------------------------------------------------------------------------
+MD5Code MD5Code::cNull;
 
 MD5Code::MD5Code() {
 	mCode[0] = 0;

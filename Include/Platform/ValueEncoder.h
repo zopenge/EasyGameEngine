@@ -1,18 +1,10 @@
-//! @file     ValueEncoder.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2016.08
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// ValueEncoder
-//----------------------------------------------------------------------------
-
-//! This class provides many common mathematics functions.
+/// <summary>
+/// This class provides many common mathematics functions.
+/// </summary>
 class ValueEncoder {
 private:
 	template <typename Type>
@@ -69,10 +61,6 @@ public:
 	template <typename Type>
 	static Vector4 DecodeWeight(Type code, _dword precision = -1);
 };
-
-//----------------------------------------------------------------------------
-// ValueEncoder Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type>
 inline Type ValueEncoder::EncodeFloatArray(const _float* value_ptr,

@@ -1,9 +1,3 @@
-//! @file     EGE_Template.h
-//! @author   LiCode
-//! @version  1.0
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 #if defined(_PLATFORM_WINDOWS_)

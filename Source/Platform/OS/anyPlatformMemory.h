@@ -1,25 +1,12 @@
-//! @file     anyPlatformMemory.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
-namespace EGE
-{
+namespace EGE {
 
-//----------------------------------------------------------------------------
-// anyPlatformMemory
-//----------------------------------------------------------------------------
-
-class anyPlatformMemory
-{
+/// <summary>
+/// The any-platform memory.
+/// </summary>
+class anyPlatformMemory {
 public:
 };
 
-//----------------------------------------------------------------------------
-// anyPlatformMemory Implementation
-//----------------------------------------------------------------------------
-
-}
+} // namespace EGE

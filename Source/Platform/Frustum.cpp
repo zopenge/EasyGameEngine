@@ -1,18 +1,8 @@
-//! @file     Frustum.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
 
 const Frustum Frustum::cIdentity(
     Matrix4(1.0, 0.0f, 0.0f, 0.0f, 0.0f, 1.0, 0.0f, 0.0f, 0.0f, 0.0, 1.0f, 0.0f, 0.0f, 0.0, 0.0f, 1.0f),
     Matrix4(1.0, 0.0f, 0.0f, 0.0f, 0.0f, 1.0, 0.0f, 0.0f, 0.0f, 0.0, 1.0f, 0.0f, 0.0f, 0.0, 0.0f, 1.0f));
-
-//----------------------------------------------------------------------------
-// Frustum Implementation
-//----------------------------------------------------------------------------
 
 Frustum::Frustum() {
 }

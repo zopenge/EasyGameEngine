@@ -1,9 +1,3 @@
-//! @file     EGEPlatform.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #ifndef _EGE_PLATFORM_PCH_
 #define _EGE_PLATFORM_PCH_
 

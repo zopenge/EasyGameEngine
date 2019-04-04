@@ -1,17 +1,10 @@
-//! @file     Viewport.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// Viewport
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The viewport.
+/// </summary>
 class Viewport {
 public:
 	_float x;
@@ -60,10 +53,6 @@ public:
 	//! @return The viewport rect.
 	inline RectF GetRectF() const;
 };
-
-//----------------------------------------------------------------------------
-// Viewport Implementation
-//----------------------------------------------------------------------------
 
 Viewport::Viewport() {
 }

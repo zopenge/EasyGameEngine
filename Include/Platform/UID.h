@@ -1,17 +1,10 @@
-//! @file     UID.h
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// UID128
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The 128-bits value.
+/// </summary>
 struct UID128 {
 	_dword mData1;
 	_word mData2;
@@ -46,17 +39,10 @@ struct UID128 {
 	UID128 Negation() const;
 };
 
-//----------------------------------------------------------------------------
-// UID
-//----------------------------------------------------------------------------
-
+/// <summary>
+/// The UID128 builder.
+/// </summary>
 class UID {
-public:
-	//! The standard UID128 string length
-	static const _dword cStandardUID128StringLength;
-	//! The null UID 128
-	static const UID128 cNullUID128;
-
 public:
 	//! Checks whether the given string matches the UID format (ANSI).
 	//! @param uid   The UID string.

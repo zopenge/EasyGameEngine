@@ -110,9 +110,6 @@
     <ClCompile Include="..\..\..\Source\Platform\Matrix4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Source\Platform\Matrix4Adjustor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Source\Platform\MD5.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

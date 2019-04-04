@@ -1,24 +1,10 @@
-//! @file     UID.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// UID Useful Macros
-//----------------------------------------------------------------------------
 
 // Microsecond per second ( 1s = 1000000us = 1000000000ns )
 #define NSEC100_PER_SEC 10000000
 #define USEC_PER_SEC 1000000
 #define USEC_PER_MSEC 1000
 #define NSEC_SINCE_1582 ((_qword)(0x01B21DD213814000LL))
-
-//----------------------------------------------------------------------------
-// IsHex Implementation
-//----------------------------------------------------------------------------
 
 template <typename Type>
 inline _ubool IsHex(Type c) {
@@ -30,10 +16,6 @@ inline _ubool IsHex(Type c) {
 
 	return _false;
 }
-
-//----------------------------------------------------------------------------
-// UID128 Implementation
-//----------------------------------------------------------------------------
 
 UID128::UID128() {
 	mData1 = 0;
@@ -136,9 +118,6 @@ UID128 UID128::Negation() const {
 //----------------------------------------------------------------------------
 // UID Implementation
 //----------------------------------------------------------------------------
-
-const _dword UID::cStandardUID128StringLength = 36;
-const UID128 UID::cNullUID128;
 
 _ubool UID::IsUUIDString(const _chara* uidstring) {
 	if (uidstring == _null)
@@ -267,7 +246,7 @@ UID128 UID::String2UUID(const _chara* uidstring) {
 UID128 UID::String2UUID(const _charw* uidstring) {
 	// Check the UID string format
 	if (IsUUIDString(uidstring) == _false)
-		return cNullUID128;
+		return UID128();
 
 	// The sub-string table of "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" UID string format
 	WString substring[6];

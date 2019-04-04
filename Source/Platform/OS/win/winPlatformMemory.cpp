@@ -1,14 +1,4 @@
-//! @file     winPlatformMemory.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// Platform Memory Helpful Structure Implementation
-//----------------------------------------------------------------------------
 
 //! The global memory block info
 struct GlobalMemBlockInfo {
@@ -17,10 +7,6 @@ struct GlobalMemBlockInfo {
 
 //! The total global memory allocated size in bytes
 static _dword gGlobalMemAllocatedSize = 0;
-
-//----------------------------------------------------------------------------
-// Platform Memory Implementation
-//----------------------------------------------------------------------------
 
 _chara* Platform::HeapAllocStr(const _chara* string, _handle heaphandle) {
 	_dword size = AStringPtr(string).SizeOfBytes();

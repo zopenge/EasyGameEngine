@@ -1,18 +1,10 @@
-//! @file     MutableString.h
-//! @author   LiCode
-//! @version  1.0.1.804
-//! @date     2011/03/10
-//! Copyright ...
-
 #pragma once
 
 namespace EGE {
 
-//----------------------------------------------------------------------------
-// MutableString
-//----------------------------------------------------------------------------
-
-//! This class represents a mutable null-terminated string.
+/// <summary>
+/// This class represents a mutable null-terminated string.
+/// </summary>
 template <typename CharType, Encoding CharEncoding>
 class MutableString {
 protected:
@@ -495,10 +487,6 @@ public:
 	//! @return		none.
 	MutableString& FormatByVAList(const CharType* format, _va_list arguments);
 };
-
-//----------------------------------------------------------------------------
-// MutableString Implementation
-//----------------------------------------------------------------------------
 
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>::MutableString() {

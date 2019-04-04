@@ -1,14 +1,4 @@
-//! @file     winPlatformDebugging.cpp
-//! @author   LiCode
-//! @version  1.1
-//! @date     2007.10
-//! Copyright ...
-
 #include "EGEPlatform.h"
-
-//----------------------------------------------------------------------------
-// Platform-Debugging Implementation
-//----------------------------------------------------------------------------
 
 _void Platform::AssertReport(const _charw* error, const _charw* filename, _dword linenumber) {
 	// Build the error string
