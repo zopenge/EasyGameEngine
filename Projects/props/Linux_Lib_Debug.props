@@ -1,13 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <OutDir>..\..\..\Library\linux\$(Configuration)\</OutDir>
-    <IntDir>..\..\..\Object\linux\$(Configuration)\$(ProjectName)\</IntDir>
-    <TargetName>lib$(RootNamespace)</TargetName>
-  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\..\Include;..\..\..\..\Document\Resources;..\..\..\..\Document\Resources\Protocols\google-protobuf;..\..\..\..\Document\Resources\Protocols\google-protobuf\google\protobuf\platform\windows;..\..\..\Source;..\..\..\Source\External;..\..\..\Source\External\concurrentqueue-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../Include;../../../Source;../../../Source/External;../../../Source/External/concurrentqueue-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;DEBUG;_DEBUG;_LIB;_PLATFORM_LINUX_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
