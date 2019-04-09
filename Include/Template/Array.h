@@ -467,7 +467,7 @@ Array<Type>::~Array() {
 template <typename Type>
 _void Array<Type>::Grow() {
 	// Increase the allocated size
-	mAllocedSize = Math::Max(mAllocedSize + 1, mAllocedSize * 2);
+	mAllocedSize = MAX(mAllocedSize + 1, mAllocedSize * 2);
 
 	// Create elements
 	Type* newelements = new Type[mAllocedSize];

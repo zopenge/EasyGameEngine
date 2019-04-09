@@ -113,7 +113,7 @@ _void Progression<Type>::ClearProgression() {
 template <typename Type>
 Type Progression<Type>::UpdateCurProgression(Type offset) {
 	// Update the current progression
-	mCurrentProgression = Math::Min(mCurrentProgression + offset, mMaxProgression);
+	mCurrentProgression = MIN(mCurrentProgression + offset, mMaxProgression);
 
 	return mCurrentProgression;
 }
@@ -138,7 +138,7 @@ _void Progression<Type>::SetCurProgressionPercentage(_float percentage) {
 		return;
 
 	// Fix the percentage
-	_float fixed_percentage = Math::Clamp(percentage, 0.0f, 1.0f);
+	_float fixed_percentage = CLAMP(percentage, 0.0f, 1.0f);
 
 	// Get the current progression by percentage
 	Type currentprogression = Type(_float(mMaxProgression) * fixed_percentage);

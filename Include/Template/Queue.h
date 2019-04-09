@@ -214,7 +214,7 @@ Queue<Type>::~Queue() {
 template <typename Type>
 _void Queue<Type>::Grow() {
 	// Increase the allocated size
-	_dword alloced_size = Math::Max(mAllocedSize + 1, mAllocedSize * 2);
+	_dword alloced_size = MAX(mAllocedSize + 1, mAllocedSize * 2);
 
 	Resize(alloced_size);
 }

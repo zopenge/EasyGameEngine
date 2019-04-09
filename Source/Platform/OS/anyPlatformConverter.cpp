@@ -53,10 +53,8 @@ _chara* anyPlatformConverter::ConvertLargeToString(_large value, _dword radix,
 	} else {
 #if defined(_PLATFORM_WINDOWS_)
 		::_i64toa_s(value, string, length, radix);
-#elif defined(_PLATFORM_IOS_) || defined(_PLATFORM_ANDROID_)
-		::__ege_i64toa__(value, string, radix);
 #else
-#	error "Unknown platform"
+		::__ege_i64toa__(value, string, radix);
 #endif
 	}
 
@@ -74,10 +72,8 @@ _chara* anyPlatformConverter::ConvertQwordToString(_qword value, _dword radix,
 	} else {
 #if defined(_PLATFORM_WINDOWS_)
 		::_ui64toa_s(value, string, length, radix);
-#elif defined(_PLATFORM_IOS_) || defined(_PLATFORM_ANDROID_)
-		::__ege_u64toa__(value, string, radix);
 #else
-#	error "Unknown platform"
+		::__ege_u64toa__(value, string, radix);
 #endif
 	}
 
@@ -168,10 +164,8 @@ _charw* anyPlatformConverter::ConvertLongToString(_int value, _dword radix,
 	} else {
 #if defined(_PLATFORM_WINDOWS_)
 		::_itow_s(value, string, length, radix);
-#elif defined(_PLATFORM_IOS_) || defined(_PLATFORM_ANDROID_)
-		::__ege_itow__(value, string, radix);
 #else
-#	error "Unknown platform"
+		::__ege_itow__(value, string, radix);
 #endif
 	}
 
@@ -189,10 +183,8 @@ _charw* anyPlatformConverter::ConvertDwordToString(_dword value, _dword radix,
 	} else {
 #if defined(_PLATFORM_WINDOWS_)
 		::_itow_s(value, string, length, radix);
-#elif defined(_PLATFORM_IOS_) || defined(_PLATFORM_ANDROID_)
-		::__ege_utow__(value, string, radix);
 #else
-#	error "Unknown platform"
+		::__ege_utow__(value, string, radix);
 #endif
 	}
 
@@ -210,10 +202,8 @@ _charw* anyPlatformConverter::ConvertLargeToString(_large value, _dword radix,
 	} else {
 #if defined(_PLATFORM_WINDOWS_)
 		::_i64tow_s(value, string, length, radix);
-#elif defined(_PLATFORM_IOS_) || defined(_PLATFORM_ANDROID_)
-		::__ege_i64tow__(value, string, radix);
 #else
-#	error "Unknown platform"
+		::__ege_i64tow__(value, string, radix);
 #endif
 	}
 
@@ -231,10 +221,8 @@ _charw* anyPlatformConverter::ConvertQwordToString(_qword value, _dword radix,
 	} else {
 #if defined(_PLATFORM_WINDOWS_)
 		::_ui64tow_s(value, string, length, radix);
-#elif defined(_PLATFORM_IOS_) || defined(_PLATFORM_ANDROID_)
-		::__ege_u64tow__(value, string, radix);
 #else
-#	error "Unknown platform"
+		::__ege_u64tow__(value, string, radix);
 #endif
 	}
 

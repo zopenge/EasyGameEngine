@@ -4,7 +4,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>../../../Include;../../../../Document/Resources;../../../../Document/Resources/Protocols/google-protobuf;../../../../Document/Resources/Protocols/google-protobuf/google/protobuf/platform/windows;../../../Source;../../../Source/External;../../../Source/External/concurrentqueue-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;NDEBUG;_NDEBUG;_LIB;_PLATFORM_LINUX_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>-Wno-parentheses -Wno-implicit-function-declaration -Wno-conversion -Wno-unused-variable -Wno-sign-compare -Wno-unused-local-typedefs -fshort-wchar -ffast-math %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-Wno-parentheses -Wno-conversion -Wno-unused-but-set-variable -Wno-unused-variable -Wno-sign-compare -Wno-unused-local-typedefs -fshort-wchar -ffast-math %(AdditionalOptions)</AdditionalOptions>
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Lib>

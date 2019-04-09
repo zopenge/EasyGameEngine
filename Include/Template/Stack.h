@@ -165,7 +165,7 @@ Stack<Type, Key>::~Stack() {
 template <typename Type, typename Key>
 _void Stack<Type, Key>::Grow() {
 	// Increase the allocated size
-	_dword alloced_size = Math::Max(mAllocedSize + 1, mAllocedSize * 2);
+	_dword alloced_size = MAX(mAllocedSize + 1, mAllocedSize * 2);
 
 	Resize(alloced_size);
 }

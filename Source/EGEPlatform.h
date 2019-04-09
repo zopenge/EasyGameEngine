@@ -167,6 +167,15 @@ extern "C" bool EnumAndroidResFiles(const wchar_t* sub_dir_name, void* funcpoint
 #	endif
 #	include <pthread.h>
 
+// Linux Platform
+#elif defined _PLATFORM_LINUX_
+
+// Use pthread
+#	ifndef USE_PTHREAD
+#		define USE_PTHREAD 1
+#	endif
+#	include <pthread.h>
+
 #endif
 
 #if defined(_PLATFORM_WINDOWS_)
@@ -175,7 +184,7 @@ int gettimeofday(struct timeval* tp, struct timezone* tzp);
 }
 #endif
 
-#if defined(_PLATFORM_IOS_) || defined(_PLATFORM_ANDROID_)
+#if defined(_PLATFORM_IOS_) || defined(_PLATFORM_ANDROID_) || defined(_PLATFORM_LINUX_)
 // Implementation of standard C functions
 extern "C" {
 char* __ege_itoa__(int value, char* result, int base);

@@ -271,6 +271,10 @@ extern "C" void __ege__assert(const wchar_t* error, const wchar_t* filename, uns
 #	define MIN(a, b) (((a) < (b)) ? (a) : (b))
 #endif
 
+#ifndef CLAMP
+#	define CLAMP(v, a, b) ((v < (a)) ? (a) : ((v > (b)) ? v : (b)))
+#endif
+
 // This macro is used to avoid warnings about unused variables.
 // Usually where the variables are only used in debug mode.
 #define UNUSED_VAR(x) (x) = (x)
