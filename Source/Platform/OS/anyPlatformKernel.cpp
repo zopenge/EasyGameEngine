@@ -217,14 +217,8 @@ _ubool anyPlatformKernel::ResetEvent(_handle object) {
 _void anyPlatformKernel::Sleep(_dword milliseconds) {
 #if defined(_PLATFORM_WINDOWS_)
 	::SleepEx(milliseconds, _true);
-#elif defined(_PLATFORM_ANDROID_) || defined(_PLATFORM_IOS_) || defined(_PLATFORM_CHROME_)
-#	if defined(PPAPI)
-	::SleepEx(milliseconds, _true);
-#	else
+#else
 	// milliseconds -> microseconds
 	::usleep(milliseconds * 1000);
-#	endif
-#else
-#	error "Unkonwn platform"
 #endif
 }
