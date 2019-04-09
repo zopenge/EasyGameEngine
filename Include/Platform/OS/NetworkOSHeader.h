@@ -89,6 +89,15 @@ typedef SOCKET _socket;
 //! The socket handle
 typedef void* _socket;
 
+// Linux Platform
+#elif defined(_PLATFORM_LINUX_)
+
+#	include <unistd.h>
+#	include <sys/socket.h>
+
+//! The socket handle
+typedef int _socket;
+
 #endif
 
 } // namespace EGE

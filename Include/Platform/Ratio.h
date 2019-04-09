@@ -16,15 +16,15 @@ public:
 	/// <summary>
 	/// The scale factor.
 	/// </summary>
-	_float scale;
+	_float mScale;
 	/// <summary>
 	/// The base scale factor.
 	/// </summary>
-	Vector2 baseSize;
+	Vector2 mBaseSize;
 	/// <summary>
 	/// The offset from left-top.
 	/// </summary>
-	Vector2 offset;
+	Vector2 mOffset;
 
 public:
 	/// <summary>
@@ -107,8 +107,8 @@ Vector2 Ratio::getScaledPos(const Type& pos) const {
 
 template <typename Type>
 Vector2 Ratio::getInversedScaledPos(const Type& pos) const {
-	if (scale > 0)
-		return Vector2((_float)pos.x * scale + offset.x, (_float)pos.y * scale + offset.y);
+	if (mScale > 0)
+		return Vector2((_float)pos.x * mScale + mOffset.x, (_float)pos.y * mScale + mOffset.y);
 	else
 		return Vector2(0.0f, 0.0f);
 }

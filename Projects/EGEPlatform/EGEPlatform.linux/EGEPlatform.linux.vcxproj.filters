@@ -37,6 +37,9 @@
     <Filter Include="Source Files\OS\any">
       <UniqueIdentifier>{2abc39c7-57bb-497d-9181-086cdd7676b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\External">
+      <UniqueIdentifier>{8a61f58b-c6dd-4b41-a2c7-690215cc05ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Include\EGE_Always.h">
@@ -455,6 +458,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Source\Platform\OS\anyPlatformTime.h">
       <Filter>Source Files\OS\any</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\External\auto_index_MACROS.h">
+      <Filter>Header Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Template\MemArrayPtr.h">
+      <Filter>Header Files\Template</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

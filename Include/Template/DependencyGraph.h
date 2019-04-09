@@ -84,7 +84,7 @@ public:
 				const Edge& edge = mConnectionMapIterator.GetObject().mObject2;
 
 				// Skip for the none-compatible connections
-				if (mEnumFlag != Edge::_CONNECTION_FLAG_UNKNOWN && edge.mConnectionFlag != mEnumFlag)
+				if (mEdgeFlag != Edge::_CONNECTION_FLAG_UNKNOWN && edge.mConnectionFlag != mEdgeFlag)
 					continue;
 
 				// We found the node
@@ -99,7 +99,7 @@ public:
 				const Edge& edge = mConnectionMapIterator.GetObject().mObject2;
 
 				// Skip for the none-compatible connections
-				if (mEnumFlag != Edge::_CONNECTION_FLAG_UNKNOWN && edge.mConnectionFlag != mEnumFlag)
+				if (mEdgeFlag != Edge::_CONNECTION_FLAG_UNKNOWN && edge.mConnectionFlag != mEdgeFlag)
 					continue;
 
 				// We found the node
@@ -584,7 +584,7 @@ typename DependencyGraph<Type, Edge, Key>::Iterator DependencyGraph<Type, Edge, 
 	Iterator next_it = it;
 	++next_it;
 
-	RemoveNode(it.mIteratorOfGraph.mIteratorOfMap.GetKey(), _REMOVE_FLAG_AUTO_CONNECT);
+	RemoveNode(it.mIteratorOfGraph.mIteratorOfMap.GetKey(), _true);
 
 	return next_it;
 }
@@ -665,7 +665,7 @@ _ubool DependencyGraph<Type, Edge, Key>::RemoveNode(const Key& key, _ubool auto_
 			TGraphNodeType* node = it.GetGraphNode();
 			EGE_ASSERT(node != _null);
 
-			if (RemoveNode(node->GetElement().GetKey(), flag) == _false)
+			if (RemoveNode(node->GetElement().GetKey(), auto_connect) == _false)
 				return _false;
 		}
 

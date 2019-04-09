@@ -90,6 +90,7 @@
     <ClInclude Include="..\..\..\Include\EGE_Struct.h" />
     <ClInclude Include="..\..\..\Include\EGE_Template.h" />
     <ClInclude Include="..\..\..\Include\EGE_Typedef.h" />
+    <ClInclude Include="..\..\..\Include\External\auto_index_MACROS.h" />
     <ClInclude Include="..\..\..\Include\Platform\Bounds.h" />
     <ClInclude Include="..\..\..\Include\Platform\Box.h" />
     <ClInclude Include="..\..\..\Include\Platform\CallStackFrame.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="..\..\..\Include\Template\Line.h" />
     <ClInclude Include="..\..\..\Include\Template\Link.h" />
     <ClInclude Include="..\..\..\Include\Template\Map.h" />
+    <ClInclude Include="..\..\..\Include\Template\MemArrayPtr.h" />
     <ClInclude Include="..\..\..\Include\Template\MemPtr.h" />
     <ClInclude Include="..\..\..\Include\Template\MemSegmentPtr.h" />
     <ClInclude Include="..\..\..\Include\Template\MutableString.h" />

@@ -56,7 +56,7 @@ typedef _qword _thread_id;
 //!	The thread return type
 #if defined _PLATFORM_WINDOWS_
 typedef _dword _thread_ret;
-#elif defined(_PLATFORM_IOS_) || defined(_PLATFORM_ANDROID_)
+#elif defined(_PLATFORM_IOS_) || defined(_PLATFORM_ANDROID_) || defined(_PLATFORM_LINUX_)
 typedef void* _thread_ret;
 #endif
 

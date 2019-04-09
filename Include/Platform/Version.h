@@ -123,37 +123,34 @@ Version::Version(UStringPtr versionstring) {
 }
 
 Version::Version(WStringPtr versionstring) {
-	_charw string_buffer[1024];
-	SafeCopyString(string_buffer, versionstring.CStr());
-
 	// Split the version string
-	_charw* substrings[4];
-	_dword number = StringFormatter::SplitString<_charw>(string_buffer, substrings, L".", _null);
+	WStringArray substrings;
+	_dword number = StringFormatter::SplitString(versionstring, substrings, L".", L"");
 
 	// The [major, minor, modified, buildnumber] format
 	if (number == 4) {
-		mMajor = Platform::ConvertStringToLong(substrings[0], 10) & _MAX_MAJOR_NUMBER;
-		mMinor = Platform::ConvertStringToLong(substrings[1], 10) & _MAX_MINOR_NUMBER;
-		mModified = Platform::ConvertStringToLong(substrings[2], 10) & _MAX_MODIFIED_NUMBER;
-		mBuildNumber = Platform::ConvertStringToLong(substrings[3], 10) & _MAX_BUILD_NUMBER;
+		mMajor = substrings[0].ToLong(10) & _MAX_MAJOR_NUMBER;
+		mMinor = substrings[1].ToLong(10) & _MAX_MINOR_NUMBER;
+		mModified = substrings[2].ToLong(10) & _MAX_MODIFIED_NUMBER;
+		mBuildNumber = substrings[3].ToLong(10) & _MAX_BUILD_NUMBER;
 	}
 	// The [major, minor, modified] format
 	else if (number == 3) {
-		mMajor = Platform::ConvertStringToLong(substrings[0], 10) & _MAX_MAJOR_NUMBER;
-		mMinor = Platform::ConvertStringToLong(substrings[1], 10) & _MAX_MINOR_NUMBER;
-		mModified = Platform::ConvertStringToLong(substrings[2], 10) & _MAX_MODIFIED_NUMBER;
+		mMajor = substrings[0].ToLong(10) & _MAX_MAJOR_NUMBER;
+		mMinor = substrings[1].ToLong(10) & _MAX_MINOR_NUMBER;
+		mModified = substrings[2].ToLong(10) & _MAX_MODIFIED_NUMBER;
 		mBuildNumber = 0;
 	}
 	// The [major, minor] format
 	else if (number == 2) {
-		mMajor = Platform::ConvertStringToLong(substrings[0], 10) & _MAX_MAJOR_NUMBER;
-		mMinor = Platform::ConvertStringToLong(substrings[1], 10) & _MAX_MINOR_NUMBER;
+		mMajor = substrings[0].ToLong(10) & _MAX_MAJOR_NUMBER;
+		mMinor = substrings[1].ToLong(10) & _MAX_MINOR_NUMBER;
 		mModified = 0;
 		mBuildNumber = 0;
 	}
 	// The [major] format
 	else if (number == 1) {
-		mMajor = Platform::ConvertStringToLong(substrings[0], 10) & _MAX_MAJOR_NUMBER;
+		mMajor = substrings[0].ToLong(10) & _MAX_MAJOR_NUMBER;
 		mMinor = 0;
 		mModified = 0;
 		mBuildNumber = 0;

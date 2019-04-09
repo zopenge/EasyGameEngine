@@ -49,7 +49,7 @@ static _void UnloadPThreadLibrary() {
 
 _ubool Platform::Initialize() {
 	// Make sure some structures used by APIs what must match the size
-	STATIC_ASSERT(sizeof(POINT) == sizeof(PointI), "We convert POINT structure by pointer, so the size must match");
+	EGE_STATIC_ASSERT(sizeof(POINT) == sizeof(PointI), "We convert POINT structure by pointer, so the size must match");
 
 	// Initialize the CRT debug mode
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);

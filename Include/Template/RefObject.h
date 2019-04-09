@@ -15,7 +15,7 @@ protected:
 	    : mRefCount(1) {
 	}
 	virtual ~RefObject() {
-		_DEFAULT_ASSERT(mRefCount == 1);
+		EGE_ASSERT(mRefCount == 1);
 	}
 
 public:

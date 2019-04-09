@@ -4,6 +4,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>../../../Include;../../../Source;../../../Source/External;../../../Source/External/concurrentqueue-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;DEBUG;_DEBUG;_LIB;_PLATFORM_LINUX_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>-Wno-parentheses -Wno-implicit-function-declaration -Wno-conversion -Wno-unused-variable -Wno-sign-compare -Wno-unused-local-typedefs -fshort-wchar -ffast-math %(AdditionalOptions)</AdditionalOptions>
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
     <Lib>

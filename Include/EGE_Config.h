@@ -60,9 +60,10 @@
 #	define _DEFAULT_ASSERT(x) ((x) ? (void)0 : __assert(#    x, _LINENUMBER, _FILENAME_A))
 #	define _DEFAULT_ASSERT_WITH_DETAIL(x, linenumber, filename) ((x) ? (void)0 : __assert(#    x, linenumber, filename))
 
-// Unknown platform
+// Linux platform
+#elif defined(_PLATFORM_LINUX_)
 #else
-#	error "Unknown platform, We only support Win32/IOS/Android platforms"
+#	error "Unknown platform, We only support Win32/Linux/IOS/Android platforms"
 #endif
 
 // #pragma - output string when compile
@@ -184,12 +185,12 @@ extern "C" void __ege__assert(const wchar_t* error, const wchar_t* filename, uns
 // Static Assert
 #if _STATIC_ASSERT_ENABLE_ == 1
 #	ifdef _PLATFORM_IOS_
-#		define STATIC_ASSERT(B, T) _Static_assert(B, T)
+#		define EGE_STATIC_ASSERT(B, T) _Static_assert(B, T)
 #	else
-#		define STATIC_ASSERT(B, T) static_assert(B, T)
+#		define EGE_STATIC_ASSERT(B, T) static_assert(B, T)
 #	endif
 #else
-#	define STATIC_ASSERT(B, T)
+#	define EGE_STATIC_ASSERT(B, T)
 #endif
 
 // Assert
@@ -505,14 +506,11 @@ public:                                    \
 #	define INTERLOCKED_DEC(x) InterlockedDecrement(&x)
 #	define INTERLOCKED_ADD(x, v) InterlockedExchangeAdd(&x, v)
 #	define INTERLOCKED_SUB(x, v) InterlockedExchangeSubtract(&x, v)
-// GCC Atom
-#elif defined(_GCC_ATOM_)
+#else
 #	define INTERLOCKED_INC(x) __sync_add_and_fetch(&x, 1)
 #	define INTERLOCKED_DEC(x) __sync_sub_and_fetch(&x, 1)
 #	define INTERLOCKED_ADD(x, v) __sync_add_and_fetch(&x, v)
 #	define INTERLOCKED_SUB(x, v) __sync_sub_and_fetch(&x, v)
-#else
-#	error "Unknown Platform ATOM"
 #endif
 
 //!	Memory operations.
@@ -527,7 +525,7 @@ public:                                    \
 
 // Here we make sure the 'wchar_t' is 2 bytes
 #ifdef _DEBUG
-STATIC_ASSERT(sizeof(wchar_t) == 2, "We use UTF-16 as wchar_t, not UTF-32");
+EGE_STATIC_ASSERT(sizeof(wchar_t) == 2, "We use UTF-16 as wchar_t, not UTF-32");
 #endif
 
 // The memory operations

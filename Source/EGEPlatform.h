@@ -213,18 +213,18 @@ wchar_t* __ege_u64tow__(unsigned long long value, wchar_t* result, int base);
 #include "EGE_Always.h"
 
 // Any-OS Files
-#include "OS/anyPlatform.h"
-#include "OS/anyPlatformCPU.h"
-#include "OS/anyPlatformConverter.h"
-#include "OS/anyPlatformEndian.h"
-#include "OS/anyPlatformIO.h"
-#include "OS/anyPlatformKernel.h"
-#include "OS/anyPlatformLanguage.h"
-#include "OS/anyPlatformMemory.h"
-#include "OS/anyPlatformNetwork.h"
-#include "OS/anyPlatformProcess.h"
-#include "OS/anyPlatformString.h"
-#include "OS/anyPlatformTime.h"
+#include "Platform/OS/anyPlatform.h"
+#include "Platform/OS/anyPlatformCPU.h"
+#include "Platform/OS/anyPlatformConverter.h"
+#include "Platform/OS/anyPlatformEndian.h"
+#include "Platform/OS/anyPlatformIO.h"
+#include "Platform/OS/anyPlatformKernel.h"
+#include "Platform/OS/anyPlatformLanguage.h"
+#include "Platform/OS/anyPlatformMemory.h"
+#include "Platform/OS/anyPlatformNetwork.h"
+#include "Platform/OS/anyPlatformProcess.h"
+#include "Platform/OS/anyPlatformString.h"
+#include "Platform/OS/anyPlatformTime.h"
 
 // IOS Platform
 #if defined _PLATFORM_IOS_

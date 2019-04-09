@@ -84,22 +84,20 @@ void _ege_free(void* pointer, const char* filename, int linenumber) {
 }
 
 void* _ege_malloc(size_t size, const char* filename, int linenumber) {
-	return EGE::Memory::GetInstance().Alloc(size, filename, linenumber);
+	return EGE::Memory::GetInstance().Alloc((_dword)size, filename, linenumber);
 }
 
-void* _ege_calloc(size_t number, size_t size, const char* filename,
-                  int linenumber) {
-	EGE::_void* buffer =
-	    EGE::Memory::GetInstance().Alloc(number * size, filename, linenumber);
-	if (buffer != _null) EGE_MEM_SET(buffer, 0, number * size);
+void* _ege_calloc(size_t number, size_t size, const char* filename, int linenumber) {
+	EGE::_void* buffer = EGE::Memory::GetInstance().Alloc((_dword)(number * size), filename, linenumber);
+	if (buffer != _null) {
+		EGE_MEM_SET(buffer, 0, number * size);
+	}
 
 	return buffer;
 }
 
-void* _ege_realloc(void* pointer, size_t size, const char* filename,
-                   int linenumber) {
-	return EGE::Memory::GetInstance().Realloc(pointer, size, filename,
-	                                          linenumber);
+void* _ege_realloc(void* pointer, size_t size, const char* filename, int linenumber) {
+	return EGE::Memory::GetInstance().Realloc(pointer, (_dword)size, filename, linenumber);
 }
 
 #	endif
@@ -112,8 +110,7 @@ void* operator new(size_t size) {
 }
 
 void* operator new(size_t size, const char* filename, int linenumber) {
-	return EGE::Memory::GetInstance().Alloc((EGE::_dword)size, filename,
-	                                        linenumber);
+	return EGE::Memory::GetInstance().Alloc((EGE::_dword)size, filename, linenumber);
 }
 
 void* operator new[](size_t size) {
@@ -121,8 +118,7 @@ void* operator new[](size_t size) {
 }
 
 void* operator new[](size_t size, const char* filename, int linenumber) {
-	return EGE::Memory::GetInstance().Alloc((EGE::_dword)size, filename,
-	                                        linenumber);
+	return EGE::Memory::GetInstance().Alloc((EGE::_dword)size, filename, linenumber);
 }
 
 void operator delete(void* pointer) {

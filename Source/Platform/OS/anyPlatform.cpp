@@ -120,22 +120,22 @@ struct lconv* localeconv() {
 //----------------------------------------------------------------------------
 
 _ubool anyPlatform::Initialize() {
-	STATIC_ASSERT(sizeof(_chara) == 1, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_charw) == 2, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_tiny) == 1, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_short) == 2, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_int) == 4, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_byte) == 1, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_word) == 2, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_dword) == 4, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_long) == 4 || sizeof(_long) == 8, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_large) == 8, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_qword) == 8, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_float) == 4, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_double) == 8, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_boolean) == 1, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_dword) == 4, "Basic data type size check");
-	STATIC_ASSERT(sizeof(_ubool) == 4, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_chara) == 1, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_charw) == 2, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_tiny) == 1, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_short) == 2, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_int) == 4, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_byte) == 1, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_word) == 2, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_dword) == 4, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_long) == 4 || sizeof(_long) == 8, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_large) == 8, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_qword) == 8, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_float) == 4, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_double) == 8, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_boolean) == 1, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_dword) == 4, "Basic data type size check");
+	EGE_STATIC_ASSERT(sizeof(_ubool) == 4, "Basic data type size check");
 
 	// Get the main thread ID ( the main thread ID could be changed by system, so we need to update it)
 	gMainThreadID = Platform::GetCurrentThreadID();
