@@ -21,65 +21,83 @@
 #endif
 
 // Here are some extern functions you should implement it for template class usage
-#ifdef __cplusplus
-extern "C" {
-#endif
+namespace EGE {
 
-EGE::_int compareString(const EGE::_chara* string1, const EGE::_chara* string2, EGE::_ubool ignorecase);
-EGE::_dword stringLength(const EGE::_chara* string);
-EGE::_boolean convertStringToBool(const EGE::_chara* string);
-EGE::_int convertStringToLong(const EGE::_chara* string, EGE::_dword radix);
-EGE::_dword convertStringToDword(const EGE::_chara* string, EGE::_dword radix);
-EGE::_large convertStringToLarge(const EGE::_chara* string, EGE::_dword radix);
-EGE::_qword convertStringToQword(const EGE::_chara* string, EGE::_dword radix);
-EGE::_float convertStringToFloat(const EGE::_chara* string);
-EGE::_double convertStringToDouble(const EGE::_chara* string);
-EGE::_dword searchL2R(const EGE::_chara* string, EGE::_chara character, EGE::_ubool ignorecase);
-EGE::_dword searchR2L(const EGE::_chara* string, EGE::_chara character, EGE::_ubool ignorecase);
-EGE::_ubool compareWildcard(const EGE::_chara* string, const EGE::_chara* matchstring, EGE::_ubool ignorecase);
-EGE::_ubool isBlank(const EGE::_chara* string);
-EGE::_ubool isFullpath(const EGE::_chara* path);
-EGE::_chara* lowercaseString(EGE::_chara* string, EGE::_dword number);
-EGE::_chara* uppercaseString(EGE::_chara* string, EGE::_dword number);
-EGE::_chara* trimStringLeft(EGE::_chara* string, EGE::_dword& stringlength, EGE::_chara character, EGE::_ubool ignorecase);
-EGE::_chara* trimStringRight(EGE::_chara* string, EGE::_dword& stringlength, EGE::_chara character, EGE::_ubool ignorecase);
-EGE::_chara* trimStringBoth(EGE::_chara* string, EGE::_dword& stringlength, EGE::_chara character, EGE::_ubool ignorecase);
-EGE::_dword ansiToUtf16(EGE::_charw* buffer, EGE::_dword size, const EGE::_chara* string, EGE::_dword number);
-EGE::_dword utf16ToAnsi(EGE::_chara* buffer, EGE::_dword size, const EGE::_charw* string, EGE::_dword number);
-EGE::_dword utf8ToUtf16(EGE::_charw* buffer, EGE::_dword size, const EGE::_chara* string, EGE::_dword number);
-EGE::_dword utf16ToUtf8(EGE::_chara* buffer, EGE::_dword size, const EGE::_charw* string, EGE::_dword number);
-EGE::_dword getFormatStringLength(const EGE::_chara* format, EGE::_va_list arguments);
-EGE::_chara* formatStringByVAList(EGE::_chara* buffer, EGE::_dword size, const EGE::_chara* format, EGE::_va_list arguments);
+class TemplateExternal {
+public:
+	static _int CompareString(const _chara* string1, const _chara* string2, _ubool ignorecase = _false);
+	static _dword StringLength(const _chara* string);
+	static _chara* ConvertLongToString(_int value, _dword radix, _chara* string, _dword length);
+	static _chara* ConvertDwordToString(_dword value, _dword radix, _chara* string, _dword length);
+	static _chara* ConvertLargeToString(_large value, _dword radix, _chara* string, _dword length);
+	static _chara* ConvertQwordToString(_qword value, _dword radix, _chara* string, _dword length);
+	static _chara* ConvertFloatToString(_float value, _chara* string, _dword length, _dword precision = 6);
+	static _chara* ConvertDoubleToString(_double value, _chara* string, _dword length, _dword precision = 15);
+	static _ubool ConvertStringToBool(const _chara* string);
+	static _int ConvertStringToLong(const _chara* string, _dword radix);
+	static _dword ConvertStringToDword(const _chara* string, _dword radix);
+	static _large ConvertStringToLarge(const _chara* string, _dword radix);
+	static _qword ConvertStringToQword(const _chara* string, _dword radix);
+	static _float ConvertStringToFloat(const _chara* string);
+	static _double ConvertStringToDouble(const _chara* string);
+	static _dword SearchL2R(const _chara* string, _chara character, _ubool ignorecase = _false);
+	static _dword SearchL2R(const _chara* string, const _chara* substring, _ubool ignorecase = _false, _dword* endindex = _null);
+	static _dword SearchR2L(const _chara* string, _chara character, _ubool ignorecase = _false);
+	static _dword SearchR2L(const _chara* string, const _chara* substring, _ubool ignorecase = _false, _dword* endindex = _null);
+	static _ubool CompareWildcard(const _chara* string, const _chara* matchstring, _ubool ignorecase = _false);
+	static _ubool IsBlank(const _chara* string);
+	static _ubool IsFullpath(const _chara* path);
+	static _chara* LowercaseString(_chara* string, _dword number);
+	static _chara* UppercaseString(_chara* string, _dword number);
+	static _chara* TrimStringLeft(_chara* string, _dword& stringlength, _chara character, _ubool ignorecase = _false);
+	static _chara* TrimStringRight(_chara* string, _dword& stringlength, _chara character, _ubool ignorecase = _false);
+	static _chara* TrimStringBoth(_chara* string, _dword& stringlength, _chara character, _ubool ignorecase = _false);
+	static _chara* TrimStringLeft(_chara* string, _dword& stringlength, const _chara* charset, _ubool ignorecase = _false);
+	static _chara* TrimStringRight(_chara* string, _dword& stringlength, const _chara* charset, _ubool ignorecase = _false);
+	static _chara* TrimStringBoth(_chara* string, _dword& stringlength, const _chara* charset, _ubool ignorecase = _false);
+	static _dword GetFormatStringLength(const _chara* format, _va_list arguments);
+	static _chara* FormatStringByVAList(_chara* buffer, _dword size, const _chara* format, _va_list arguments);
 
-EGE::_int compareString(const EGE::_charw* string1, const EGE::_charw* string2, EGE::_ubool ignorecase);
-EGE::_dword stringLength(const EGE::_charw* string);
-EGE::_boolean convertStringToBool(const EGE::_charw* string);
-EGE::_int convertStringToLong(const EGE::_charw* string, EGE::_dword radix);
-EGE::_dword convertStringToDword(const EGE::_charw* string, EGE::_dword radix);
-EGE::_large convertStringToLarge(const EGE::_charw* string, EGE::_dword radix);
-EGE::_qword convertStringToQword(const EGE::_charw* string, EGE::_dword radix);
-EGE::_float convertStringToFloat(const EGE::_charw* string);
-EGE::_double convertStringToDouble(const EGE::_charw* string);
-EGE::_dword searchL2R(const EGE::_charw* string, EGE::_charw character, EGE::_ubool ignorecase);
-EGE::_dword searchR2L(const EGE::_charw* string, EGE::_charw character, EGE::_ubool ignorecase);
-EGE::_ubool compareWildcard(const EGE::_charw* string, const EGE::_charw* matchstring, EGE::_ubool ignorecase);
-EGE::_ubool isBlank(const EGE::_charw* string);
-EGE::_ubool isFullpath(const EGE::_charw* path);
-EGE::_charw* lowercaseString(EGE::_charw* string, EGE::_dword number);
-EGE::_charw* uppercaseString(EGE::_charw* string, EGE::_dword number);
-EGE::_charw* trimStringLeft(EGE::_charw* string, EGE::_dword& stringlength, EGE::_charw character, EGE::_ubool ignorecase);
-EGE::_charw* trimStringRight(EGE::_charw* string, EGE::_dword& stringlength, EGE::_charw character, EGE::_ubool ignorecase);
-EGE::_charw* trimStringBoth(EGE::_charw* string, EGE::_dword& stringlength, EGE::_charw character, EGE::_ubool ignorecase);
-EGE::_dword ansiToUtf16(EGE::_charw* buffer, EGE::_dword size, const EGE::_charw* string, EGE::_dword number);
-EGE::_dword utf16ToAnsi(EGE::_charw* buffer, EGE::_dword size, const EGE::_charw* string, EGE::_dword number);
-EGE::_dword utf8ToUtf16(EGE::_charw* buffer, EGE::_dword size, const EGE::_charw* string, EGE::_dword number);
-EGE::_dword utf16ToUtf8(EGE::_charw* buffer, EGE::_dword size, const EGE::_charw* string, EGE::_dword number);
-EGE::_dword getFormatStringLength(const EGE::_charw* format, EGE::_va_list arguments);
-EGE::_charw* formatStringByVAList(EGE::_charw* buffer, EGE::_dword size, const EGE::_charw* format, EGE::_va_list arguments);
+	static _int CompareString(const _charw* string1, const _charw* string2, _ubool ignorecase = _false);
+	static _dword StringLength(const _charw* string);
+	static _charw* ConvertLongToString(_int value, _dword radix, _charw* string, _dword length);
+	static _charw* ConvertDwordToString(_dword value, _dword radix, _charw* string, _dword length);
+	static _charw* ConvertLargeToString(_large value, _dword radix, _charw* string, _dword length);
+	static _charw* ConvertQwordToString(_qword value, _dword radix, _charw* string, _dword length);
+	static _charw* ConvertFloatToString(_float value, _charw* string, _dword length, _dword precision = 6);
+	static _charw* ConvertDoubleToString(_double value, _charw* string, _dword length, _dword precision = 15);
+	static _ubool ConvertStringToBool(const _charw* string);
+	static _int ConvertStringToLong(const _charw* string, _dword radix);
+	static _dword ConvertStringToDword(const _charw* string, _dword radix);
+	static _large ConvertStringToLarge(const _charw* string, _dword radix);
+	static _qword ConvertStringToQword(const _charw* string, _dword radix);
+	static _float ConvertStringToFloat(const _charw* string);
+	static _double ConvertStringToDouble(const _charw* string);
+	static _dword SearchL2R(const _charw* string, _charw character, _ubool ignorecase = _false);
+	static _dword SearchL2R(const _charw* string, const _charw* substring, _ubool ignorecase = _false, _dword* endindex = _null);
+	static _dword SearchR2L(const _charw* string, _charw character, _ubool ignorecase = _false);
+	static _dword SearchR2L(const _charw* string, const _charw* substring, _ubool ignorecase = _false, _dword* endindex = _null);
+	static _ubool CompareWildcard(const _charw* string, const _charw* matchstring, _ubool ignorecase = _false);
+	static _ubool IsBlank(const _charw* string);
+	static _ubool IsFullpath(const _charw* path);
+	static _charw* LowercaseString(_charw* string, _dword number);
+	static _charw* UppercaseString(_charw* string, _dword number);
+	static _charw* TrimStringLeft(_charw* string, _dword& stringlength, _charw character, _ubool ignorecase = _false);
+	static _charw* TrimStringRight(_charw* string, _dword& stringlength, _charw character, _ubool ignorecase = _false);
+	static _charw* TrimStringBoth(_charw* string, _dword& stringlength, _charw character, _ubool ignorecase = _false);
+	static _charw* TrimStringLeft(_charw* string, _dword& stringlength, const _charw* charset, _ubool ignorecase = _false);
+	static _charw* TrimStringRight(_charw* string, _dword& stringlength, const _charw* charset, _ubool ignorecase = _false);
+	static _charw* TrimStringBoth(_charw* string, _dword& stringlength, const _charw* charset, _ubool ignorecase = _false);
+	static _dword GetFormatStringLength(const _charw* format, _va_list arguments);
+	static _charw* FormatStringByVAList(_charw* buffer, _dword size, const _charw* format, _va_list arguments);
 
-#ifdef __cplusplus
-}
-#endif
+	static _dword AnsiToUtf16(_charw* buffer, _dword size, const _chara* string, _dword number = -1);
+	static _dword Utf16ToAnsi(_chara* buffer, _dword size, const _charw* string, _dword number = -1);
+	static _dword Utf8ToUtf16(_charw* buffer, _dword size, const _chara* string, _dword number = -1);
+	static _dword Utf16ToUtf8(_chara* buffer, _dword size, const _charw* string, _dword number = -1);
+};
+
+} // namespace EGE
 
 // Base Template Files
 #include "Template/Compare.h"

@@ -75,213 +75,281 @@ const QwordParams4 QwordParams4::cNull(0, 0, 0, 0);
 // External Template Functions Implementation
 //----------------------------------------------------------------------------
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+namespace EGE {
 
-_int compareString(const _chara* string1, const _chara* string2, _ubool ignorecase) {
+_int TemplateExternal::CompareString(const _chara* string1, const _chara* string2, _ubool ignorecase) {
 	return Platform::CompareString(string1, string2, ignorecase);
 }
 
-_dword stringLength(const _chara* string) {
+_dword TemplateExternal::StringLength(const _chara* string) {
 	return Platform::StringLength(string);
 }
 
-_boolean convertStringToBool(const _chara* string) {
+_chara* TemplateExternal::ConvertLongToString(_int value, _dword radix, _chara* string, _dword length) {
+	return Platform::ConvertLongToString(value, radix, string, length);
+}
+
+_chara* TemplateExternal::ConvertDwordToString(_dword value, _dword radix, _chara* string, _dword length) {
+	return Platform::ConvertDwordToString(value, radix, string, length);
+}
+
+_chara* TemplateExternal::ConvertLargeToString(_large value, _dword radix, _chara* string, _dword length) {
+	return Platform::ConvertLargeToString(value, radix, string, length);
+}
+
+_chara* TemplateExternal::ConvertQwordToString(_qword value, _dword radix, _chara* string, _dword length) {
+	return Platform::ConvertQwordToString(value, radix, string, length);
+}
+
+_chara* TemplateExternal::ConvertFloatToString(_float value, _chara* string, _dword length, _dword precision) {
+	return Platform::ConvertFloatToString(value, string, length, precision);
+}
+
+_chara* TemplateExternal::ConvertDoubleToString(_double value, _chara* string, _dword length, _dword precision) {
+	return Platform::ConvertDoubleToString(value, string, length, precision);
+}
+
+_ubool TemplateExternal::ConvertStringToBool(const _chara* string) {
 	return Platform::ConvertStringToBool(string);
 }
 
-_int convertStringToLong(const _chara* string, _dword radix) {
+_int TemplateExternal::ConvertStringToLong(const _chara* string, _dword radix) {
 	return Platform::ConvertStringToLong(string, radix);
 }
 
-_dword convertStringToDword(const _chara* string, _dword radix) {
+_dword TemplateExternal::ConvertStringToDword(const _chara* string, _dword radix) {
 	return Platform::ConvertStringToDword(string, radix);
 }
 
-_large convertStringToLarge(const _chara* string, _dword radix) {
+_large TemplateExternal::ConvertStringToLarge(const _chara* string, _dword radix) {
 	return Platform::ConvertStringToLarge(string, radix);
 }
 
-_qword convertStringToQword(const _chara* string, _dword radix) {
+_qword TemplateExternal::ConvertStringToQword(const _chara* string, _dword radix) {
 	return Platform::ConvertStringToQword(string, radix);
 }
 
-_float convertStringToFloat(const _chara* string) {
+_float TemplateExternal::ConvertStringToFloat(const _chara* string) {
 	return Platform::ConvertStringToFloat(string);
 }
 
-_double convertStringToDouble(const _chara* string) {
-	return Platform::ConveconvertStringToDouble(string);
+_double TemplateExternal::ConvertStringToDouble(const _chara* string) {
+	return Platform::ConvertStringToDouble(string);
 }
 
-_dword searchL2R(const _chara* string, _chara character, _ubool ignorecase) {
+_dword TemplateExternal::SearchL2R(const _chara* string, _chara character, _ubool ignorecase) {
 	return Platform::SearchL2R(string, character, ignorecase);
 }
 
-_dword searchR2L(const _chara* string, _chara character, _ubool ignorecase) {
+_dword TemplateExternal::SearchL2R(const _chara* string, const _chara* substring, _ubool ignorecase, _dword* endindex) {
+	return Platform::SearchL2R(string, substring, ignorecase, endindex);
+}
+
+_dword TemplateExternal::SearchR2L(const _chara* string, _chara character, _ubool ignorecase) {
 	return Platform::SearchR2L(string, character, ignorecase);
 }
 
-_ubool compareWildcard(const _chara* string, const _chara* matchstring, _ubool ignorecase) {
+_dword TemplateExternal::SearchR2L(const _chara* string, const _chara* substring, _ubool ignorecase, _dword* startindex) {
+	return Platform::SearchR2L(string, substring, ignorecase, startindex);
+}
+
+_ubool TemplateExternal::CompareWildcard(const _chara* string, const _chara* matchstring, _ubool ignorecase) {
 	return Platform::CompareWildcard(string, matchstring, ignorecase);
 }
 
-_ubool isBlank(const _chara* string) {
+_ubool TemplateExternal::IsBlank(const _chara* string) {
 	return Platform::IsBlank(string);
 }
 
-_ubool isFullpath(const _chara* path) {
-	return Platform::IsFullpath(string);
+_ubool TemplateExternal::IsFullpath(const _chara* path) {
+	return Platform::IsFullpath(path);
 }
 
-_chara* lowercaseString(_chara* string, _dword number) {
+_chara* TemplateExternal::LowercaseString(_chara* string, _dword number) {
 	return Platform::LowercaseString(string, number);
 }
 
-_chara* uppercaseString(_chara* string, _dword number) {
+_chara* TemplateExternal::UppercaseString(_chara* string, _dword number) {
 	return Platform::UppercaseString(string, number);
 }
 
-_chara* trimStringLeft(_chara* string, _dword& stringlength, _chara character, _ubool ignorecase) {
-	return Platform::TrimStringLeft(string, stringLength, character, ignorecase);
+_chara* TemplateExternal::TrimStringLeft(_chara* string, _dword& stringlength, _chara character, _ubool ignorecase) {
+	return Platform::TrimStringLeft(string, stringlength, character, ignorecase);
 }
 
-_chara* trimStringRight(_chara* string, _dword& stringlength, _chara character, _ubool ignorecase) {
-	return Platform::TrimStringRight(string, stringLength, character, ignorecase);
+_chara* TemplateExternal::TrimStringRight(_chara* string, _dword& stringlength, _chara character, _ubool ignorecase) {
+	return Platform::TrimStringRight(string, stringlength, character, ignorecase);
 }
 
-_chara* trimStringBoth(_chara* string, _dword& stringlength, _chara character, _ubool ignorecase) {
-	return Platform::TrimStringBoth(string, stringLength, character, ignorecase);
+_chara* TemplateExternal::TrimStringBoth(_chara* string, _dword& stringlength, _chara character, _ubool ignorecase) {
+	return Platform::TrimStringBoth(string, stringlength, character, ignorecase);
 }
 
-_dword ansiToUtf16(_charw* buffer, _dword size, const _chara* string, _dword number) {
-	return Platform::AnsiToUtf16(buffer, size, string, number);
+_chara* TemplateExternal::TrimStringLeft(_chara* string, _dword& stringlength, const _chara* charset, _ubool ignorecase) {
+	return Platform::TrimStringLeft(string, stringlength, charset, ignorecase);
 }
 
-_dword utf16ToAnsi(_chara* buffer, _dword size, const _charw* string, _dword number) {
-	return Platform::Utf16ToAnsi(buffer, size, string, number);
+_chara* TemplateExternal::TrimStringRight(_chara* string, _dword& stringlength, const _chara* charset, _ubool ignorecase) {
+	return Platform::TrimStringRight(string, stringlength, charset, ignorecase);
 }
 
-_dword utf8ToUtf16(_charw* buffer, _dword size, const _chara* string, _dword number) {
-	return Platform::Utf8ToUtf16(buffer, size, string, number);
+_chara* TemplateExternal::TrimStringBoth(_chara* string, _dword& stringlength, const _chara* charset, _ubool ignorecase) {
+	return Platform::TrimStringBoth(string, stringlength, charset, ignorecase);
 }
 
-_dword utf16ToUtf8(_chara* buffer, _dword size, const _charw* string, _dword number) {
-	return Platform::Utf16ToUtf8(buffer, size, string, number);
-}
-
-_dword getFormatStringLength(const _chara* format, _va_list arguments) {
+_dword TemplateExternal::GetFormatStringLength(const _chara* format, _va_list arguments) {
 	return Platform::GetFormatStringLength(format, arguments);
 }
 
-_chara* formatStringByVAList(_chara* buffer, _dword size, const _chara* format, _va_list arguments) {
+_chara* TemplateExternal::FormatStringByVAList(_chara* buffer, _dword size, const _chara* format, _va_list arguments) {
 	return Platform::FormatStringByVAList(buffer, size, format, arguments);
 }
 
-_int compareString(const _charw* string1, const _charw* string2, _ubool ignorecase) {
+_int TemplateExternal::CompareString(const _charw* string1, const _charw* string2, _ubool ignorecase) {
 	return Platform::CompareString(string1, string2, ignorecase);
 }
 
-_dword stringLength(const _charw* string) {
+_dword TemplateExternal::StringLength(const _charw* string) {
 	return Platform::StringLength(string);
 }
 
-_boolean convertStringToBool(const _charw* string) {
+_charw* TemplateExternal::ConvertLongToString(_int value, _dword radix, _charw* string, _dword length) {
+	return Platform::ConvertLongToString(value, radix, string, length);
+}
+
+_charw* TemplateExternal::ConvertDwordToString(_dword value, _dword radix, _charw* string, _dword length) {
+	return Platform::ConvertDwordToString(value, radix, string, length);
+}
+
+_charw* TemplateExternal::ConvertLargeToString(_large value, _dword radix, _charw* string, _dword length) {
+	return Platform::ConvertLargeToString(value, radix, string, length);
+}
+
+_charw* TemplateExternal::ConvertQwordToString(_qword value, _dword radix, _charw* string, _dword length) {
+	return Platform::ConvertQwordToString(value, radix, string, length);
+}
+
+_charw* TemplateExternal::ConvertFloatToString(_float value, _charw* string, _dword length, _dword precision) {
+	return Platform::ConvertFloatToString(value, string, length, precision);
+}
+
+_charw* TemplateExternal::ConvertDoubleToString(_double value, _charw* string, _dword length, _dword precision) {
+	return Platform::ConvertDoubleToString(value, string, length, precision);
+}
+
+_ubool TemplateExternal::ConvertStringToBool(const _charw* string) {
 	return Platform::ConvertStringToBool(string);
 }
 
-_int convertStringToLong(const _charw* string, _dword radix) {
+_int TemplateExternal::ConvertStringToLong(const _charw* string, _dword radix) {
 	return Platform::ConvertStringToLong(string, radix);
 }
 
-_dword convertStringToDword(const _charw* string, _dword radix) {
+_dword TemplateExternal::ConvertStringToDword(const _charw* string, _dword radix) {
 	return Platform::ConvertStringToDword(string, radix);
 }
 
-_large convertStringToLarge(const _charw* string, _dword radix) {
+_large TemplateExternal::ConvertStringToLarge(const _charw* string, _dword radix) {
 	return Platform::ConvertStringToLarge(string, radix);
 }
 
-_qword convertStringToQword(const _charw* string, _dword radix) {
+_qword TemplateExternal::ConvertStringToQword(const _charw* string, _dword radix) {
 	return Platform::ConvertStringToQword(string, radix);
 }
 
-_float convertStringToFloat(const _charw* string) {
+_float TemplateExternal::ConvertStringToFloat(const _charw* string) {
 	return Platform::ConvertStringToFloat(string);
 }
 
-_double convertStringToDouble(const _charw* string) {
-	return Platform::ConveconvertStringToDouble(string);
+_double TemplateExternal::ConvertStringToDouble(const _charw* string) {
+	return Platform::ConvertStringToDouble(string);
 }
 
-_dword searchL2R(const _charw* string, _charw character, _ubool ignorecase) {
+_dword TemplateExternal::SearchL2R(const _charw* string, _charw character, _ubool ignorecase) {
 	return Platform::SearchL2R(string, character, ignorecase);
 }
 
-_dword searchR2L(const _charw* string, _charw character, _ubool ignorecase) {
+_dword TemplateExternal::SearchL2R(const _charw* string, const _charw* substring, _ubool ignorecase, _dword* endindex) {
+	return Platform::SearchL2R(string, substring, ignorecase, endindex);
+}
+
+_dword TemplateExternal::SearchR2L(const _charw* string, _charw character, _ubool ignorecase) {
 	return Platform::SearchR2L(string, character, ignorecase);
 }
 
-_ubool compareWildcard(const _charw* string, const _charw* matchstring, _ubool ignorecase) {
+_dword TemplateExternal::SearchR2L(const _charw* string, const _charw* substring, _ubool ignorecase, _dword* startindex) {
+	return Platform::SearchR2L(string, substring, ignorecase, startindex);
+}
+
+_ubool TemplateExternal::CompareWildcard(const _charw* string, const _charw* matchstring, _ubool ignorecase) {
 	return Platform::CompareWildcard(string, matchstring, ignorecase);
 }
 
-_ubool isBlank(const _charw* string) {
+_ubool TemplateExternal::IsBlank(const _charw* string) {
 	return Platform::IsBlank(string);
 }
 
-_ubool isFullpath(const _charw* path) {
-	return Platform::IsFullpath(string);
+_ubool TemplateExternal::IsFullpath(const _charw* path) {
+	return Platform::IsFullpath(path);
 }
 
-_charw* lowercaseString(_charw* string, _dword number) {
+_charw* TemplateExternal::LowercaseString(_charw* string, _dword number) {
 	return Platform::LowercaseString(string, number);
 }
 
-_charw* uppercaseString(_charw* string, _dword number) {
+_charw* TemplateExternal::UppercaseString(_charw* string, _dword number) {
 	return Platform::UppercaseString(string, number);
 }
 
-_charw* trimStringLeft(_charw* string, _dword& stringlength, _charw character, _ubool ignorecase) {
-	return Platform::TrimStringLeft(string, stringLength, character, ignorecase);
+_charw* TemplateExternal::TrimStringLeft(_charw* string, _dword& stringlength, _charw character, _ubool ignorecase) {
+	return Platform::TrimStringLeft(string, stringlength, character, ignorecase);
 }
 
-_charw* trimStringRight(_charw* string, _dword& stringlength, _charw character, _ubool ignorecase) {
-	return Platform::TrimStringRight(string, stringLength, character, ignorecase);
+_charw* TemplateExternal::TrimStringRight(_charw* string, _dword& stringlength, _charw character, _ubool ignorecase) {
+	return Platform::TrimStringRight(string, stringlength, character, ignorecase);
 }
 
-_charw* trimStringBoth(_charw* string, _dword& stringlength, _charw character, _ubool ignorecase) {
-	return Platform::TrimStringBoth(string, stringLength, character, ignorecase);
+_charw* TemplateExternal::TrimStringBoth(_charw* string, _dword& stringlength, _charw character, _ubool ignorecase) {
+	return Platform::TrimStringBoth(string, stringlength, character, ignorecase);
 }
 
-_dword ansiToUtf16(_charw* buffer, _dword size, const _charw* string, _dword number) {
-	return Platform::AnsiToUtf16(buffer, size, string, number);
+_charw* TemplateExternal::TrimStringLeft(_charw* string, _dword& stringlength, const _charw* charset, _ubool ignorecase) {
+	return Platform::TrimStringLeft(string, stringlength, charset, ignorecase);
 }
 
-_dword utf16ToAnsi(_charw* buffer, _dword size, const _charw* string, _dword number) {
-	return Platform::Utf16ToAnsi(buffer, size, string, number);
+_charw* TemplateExternal::TrimStringRight(_charw* string, _dword& stringlength, const _charw* charset, _ubool ignorecase) {
+	return Platform::TrimStringRight(string, stringlength, charset, ignorecase);
 }
 
-_dword utf8ToUtf16(_charw* buffer, _dword size, const _charw* string, _dword number) {
-	return Platform::Utf8ToUtf16(buffer, size, string, number);
+_charw* TemplateExternal::TrimStringBoth(_charw* string, _dword& stringlength, const _charw* charset, _ubool ignorecase) {
+	return Platform::TrimStringBoth(string, stringlength, charset, ignorecase);
 }
 
-_dword utf16ToUtf8(_charw* buffer, _dword size, const _charw* string, _dword number) {
-	return Platform::Utf16ToUtf8(buffer, size, string, number);
-}
-
-_dword getFormatStringLength(const _charw* format, _va_list arguments) {
+_dword TemplateExternal::GetFormatStringLength(const _charw* format, _va_list arguments) {
 	return Platform::GetFormatStringLength(format, arguments);
 }
 
-_charw* formatStringByVAList(_charw* buffer, _dword size, const _charw* format, _va_list arguments) {
+_charw* TemplateExternal::FormatStringByVAList(_charw* buffer, _dword size, const _charw* format, _va_list arguments) {
 	return Platform::FormatStringByVAList(buffer, size, format, arguments);
 }
 
-#ifdef __cplusplus
+_dword TemplateExternal::AnsiToUtf16(_charw* buffer, _dword size, const _chara* string, _dword number) {
+	return Platform::AnsiToUtf16(buffer, size, string, number);
 }
-#endif
+
+_dword TemplateExternal::Utf16ToAnsi(_chara* buffer, _dword size, const _charw* string, _dword number) {
+	return Platform::Utf16ToAnsi(buffer, size, string, number);
+}
+
+_dword TemplateExternal::Utf8ToUtf16(_charw* buffer, _dword size, const _chara* string, _dword number) {
+	return Platform::Utf8ToUtf16(buffer, size, string, number);
+}
+
+_dword TemplateExternal::Utf16ToUtf8(_chara* buffer, _dword size, const _charw* string, _dword number) {
+	return Platform::Utf16ToUtf8(buffer, size, string, number);
+}
+
+} // namespace EGE
 
 //----------------------------------------------------------------------------
 // Memory Overload Implementation

@@ -136,8 +136,7 @@ public:
 	//! @param vector  The vector to compare with.
 	//! @param margin  The margin that allows some error.
 	//! @return True if they are identical, false otherwise.
-	_ubool Equal(const Vector2& vector,
-	             _float margin = Math::cFloatEpsilon) const;
+	_ubool Equal(const Vector2& vector, _float margin = Math::cFloatEpsilon) const;
 
 	//! Make the current vector absolute, that all coordinates are nonnegative.
 	//! @param none
@@ -148,12 +147,10 @@ public:
 	//! @return The normalized vector.
 	Vector2& Normalize();
 
-	//! Make the current vector normalized by bounding box, that x, y, z is from 0
-	//! ~ 1
+	//! Make the current vector normalized by bounding box, that x, y, z is from 0 ~ 1
 	//! @param none
 	//! @return The normalized vector.
-	Vector2& NormalizeByBoundingBox(const Vector2& bounding_min,
-	                                const Vector2& bounding_max);
+	Vector2& NormalizeByBoundingBox(const Vector2& bounding_min, const Vector2& bounding_max);
 
 	//! @export_script_method("Calculates vector magnitude")
 	//! @param none
@@ -226,8 +223,7 @@ public:
 	//! @param min   Minimal value of the range.
 	//! @param max   Maximal value of the range.
 	//! @return The clamped value.
-	static Vector2 Clamp(const Vector2& vector, const Vector2& min,
-	                     const Vector2& max);
+	static Vector2 Clamp(const Vector2& vector, const Vector2& min, const Vector2& max);
 };
 
 inline Vector2::Vector2() {
@@ -361,8 +357,7 @@ inline Vector2& Vector2::Normalize() {
 	return *this;
 }
 
-inline Vector2& Vector2::NormalizeByBoundingBox(const Vector2& bounding_min,
-                                                const Vector2& bounding_max) {
+inline Vector2& Vector2::NormalizeByBoundingBox(const Vector2& bounding_min, const Vector2& bounding_max) {
 	Vector2 bounding_size = bounding_max - bounding_min;
 
 	x = bounding_size.x == 0.0f ? 0.0f : ((x - bounding_min.x) / bounding_size.x);
@@ -405,8 +400,7 @@ inline Vector2 Vector2::Max(const Vector2& vector1, const Vector2& vector2) {
 	return Vector2(x, y);
 }
 
-inline Vector2 Vector2::Clamp(const Vector2& vector, const Vector2& min,
-                              const Vector2& max) {
+inline Vector2 Vector2::Clamp(const Vector2& vector, const Vector2& min, const Vector2& max) {
 	_float x = Math::Clamp(vector.x, min.x, max.x);
 	_float y = Math::Clamp(vector.x, min.y, max.y);
 	return Vector2(x, y);

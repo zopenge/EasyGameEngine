@@ -3,15 +3,15 @@
 Ratio Ratio::cNull;
 
 Ratio::Ratio() {
-	scale = 1.0f;
-	baseSize = PointF::cZeroPoint;
-	offset = PointF::cZeroPoint;
+	mScale = 1.0f;
+	mBaseSize = PointF::cZeroPoint;
+	mOffset = PointF::cZeroPoint;
 }
 
 Ratio::Ratio(const Ratio& ratio) {
-	scale = ratio.scale;
-	baseSize = ratio.baseSize;
-	offset = ratio.offset;
+	mScale = ratio.mScale;
+	mBaseSize = ratio.mBaseSize;
+	mOffset = ratio.mOffset;
 }
 
 Ratio::Ratio(const Vector2& size) {
@@ -23,26 +23,26 @@ Ratio::Ratio(_float width, _float height) {
 }
 
 _ubool Ratio::operator==(const Ratio& ratio) const {
-	if (Math::Equal(scale, ratio.scale) == _false)
+	if (!Math::Equal(mScale, ratio.mScale))
 		return _false;
 
-	if (baseSize != ratio.baseSize)
+	if (!mBaseSize.Equal(ratio.mBaseSize))
 		return _false;
 
-	if (offset != ratio.offset)
+	if (!mOffset.Equal(ratio.mOffset))
 		return _false;
 
 	return _true;
 }
 
 _ubool Ratio::operator!=(const Ratio& ratio) const {
-	if (Math::Equal(scale, ratio.scale) == _false)
+	if (!Math::Equal(mScale, ratio.mScale))
 		return _true;
 
-	if (baseSize != ratio.baseSize)
+	if (!mBaseSize.Equal(ratio.mBaseSize))
 		return _true;
 
-	if (offset != ratio.offset)
+	if (!mOffset.Equal(ratio.mOffset))
 		return _true;
 
 	return _false;
@@ -51,29 +51,29 @@ _ubool Ratio::operator!=(const Ratio& ratio) const {
 _void Ratio::Init(_float width, _float height) {
 	height = Math::Max<_float>(1.0f, height);
 
-	scale = 1.0f;
-	baseSize = PointF(width, height);
-	offset = PointF::cZeroPoint;
+	mScale = 1.0f;
+	mBaseSize = PointF(width, height);
+	mOffset = PointF::cZeroPoint;
 
 	UpdateSize(width, height);
 }
 
 Vector2 Ratio::UpdateSize(_float width, _float height) {
-	_float ratiow = width / baseSize.x;
-	_float ratioh = height / baseSize.y;
+	_float ratiow = width / mBaseSize.x;
+	_float ratioh = height / mBaseSize.y;
 
-	if (height > baseSize.y * ratiow) {
-		scale = ratiow;
-		offset.x = 0;
-		offset.y = (height - baseSize.y * ratiow) / 2.0f;
+	if (height > mBaseSize.y * ratiow) {
+		mScale = ratiow;
+		mOffset.x = 0;
+		mOffset.y = (height - mBaseSize.y * ratiow) / 2.0f;
 
-		return PointF(width, baseSize.y * ratiow);
+		return Vector2(width, mBaseSize.y * ratiow);
 	} else {
-		scale = ratioh;
-		offset.x = (width - baseSize.x * ratioh) / 2.0f;
-		offset.y = 0;
+		mScale = ratioh;
+		mOffset.x = (width - mBaseSize.x * ratioh) / 2.0f;
+		mOffset.y = 0;
 
-		return PointF(baseSize.x * ratioh, height);
+		return Vector2(mBaseSize.x * ratioh, height);
 	}
 }
 
@@ -83,11 +83,11 @@ PointU Ratio::UpdateSize(_dword width, _dword height) {
 }
 
 Vector2 Ratio::GetBaseSize() const {
-	return Vector2(baseSize.x, baseSize.y);
+	return mBaseSize;
 }
 
 Vector2 Ratio::GetOffset() const {
-	return Vector2(offset.x, offset.y);
+	return mOffset;
 }
 
 PointU Ratio::FixSizeU(const PointU& size) const {

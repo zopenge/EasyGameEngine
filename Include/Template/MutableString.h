@@ -509,7 +509,7 @@ MutableString<CharType, CharEncoding>::MutableString(const CharType* string) {
 		mSize = 0;
 	} else {
 		// Get the string length
-		mLength = stringLength(string);
+		mLength = TemplateExternal::StringLength(string);
 
 		// Create and copy the string buffer
 		CreateStringBuffer(string);
@@ -628,7 +628,7 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::op
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::operator=(const CharType* string) {
 	// Get the string length
-	mLength = stringLength(string);
+	mLength = TemplateExternal::StringLength(string);
 
 	// It's empty string
 	if (mLength == 0) {
@@ -748,7 +748,7 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::op
 	if (string == _null || *string == 0)
 		return *this;
 
-	AppendStringBuffer(string, stringLength(string));
+	AppendStringBuffer(string, TemplateExternal::StringLength(string));
 
 	return *this;
 }
@@ -787,32 +787,32 @@ const CharType& MutableString<CharType, CharEncoding>::operator[](IndexType inde
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::operator==(ConstStringType string) const {
-	return compareString(this->mString, string.CStr()) == 0;
+	return TemplateExternal::CompareString(this->mString, string.CStr()) == 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::operator!=(ConstStringType string) const {
-	return compareString(this->mString, string.CStr()) != 0;
+	return TemplateExternal::CompareString(this->mString, string.CStr()) != 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::operator>(ConstStringType string) const {
-	return compareString(this->mString, string.CStr()) > 0;
+	return TemplateExternal::CompareString(this->mString, string.CStr()) > 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::operator<(ConstStringType string) const {
-	return compareString(this->mString, string.CStr()) < 0;
+	return TemplateExternal::CompareString(this->mString, string.CStr()) < 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::operator>=(ConstStringType string) const {
-	return compareString(this->mString, string.CStr()) >= 0;
+	return TemplateExternal::CompareString(this->mString, string.CStr()) >= 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::operator<=(ConstStringType string) const {
-	return compareString(this->mString, string.CStr()) <= 0;
+	return TemplateExternal::CompareString(this->mString, string.CStr()) <= 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -820,7 +820,7 @@ _ubool MutableString<CharType, CharEncoding>::operator==(const MutableString& st
 	if (mLength != string.GetLength())
 		return _false;
 
-	return compareString(this->mString, string.CStr()) == 0;
+	return TemplateExternal::CompareString(this->mString, string.CStr()) == 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -828,27 +828,27 @@ _ubool MutableString<CharType, CharEncoding>::operator!=(const MutableString& st
 	if (mLength != string.GetLength())
 		return _true;
 
-	return compareString(this->mString, string.CStr()) != 0;
+	return TemplateExternal::CompareString(this->mString, string.CStr()) != 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::operator>(const MutableString& string) const {
-	return compareString(this->mString, string.CStr()) > 0;
+	return TemplateExternal::CompareString(this->mString, string.CStr()) > 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::operator<(const MutableString& string) const {
-	return compareString(this->mString, string.CStr()) < 0;
+	return TemplateExternal::CompareString(this->mString, string.CStr()) < 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::operator>=(const MutableString& string) const {
-	return compareString(this->mString, string.CStr()) >= 0;
+	return TemplateExternal::CompareString(this->mString, string.CStr()) >= 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::operator<=(const MutableString& string) const {
-	return compareString(this->mString, string.CStr()) <= 0;
+	return TemplateExternal::CompareString(this->mString, string.CStr()) <= 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -868,52 +868,52 @@ const CharType* MutableString<CharType, CharEncoding>::CStr() const {
 
 template <typename CharType, Encoding CharEncoding>
 _boolean MutableString<CharType, CharEncoding>::ToBool() const {
-	return convertStringToBool(mString);
+	return TemplateExternal::ConvertStringToBool(mString);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _int MutableString<CharType, CharEncoding>::ToLong(_dword radix) const {
-	return convertStringToLong(mString, radix);
+	return TemplateExternal::ConvertStringToLong(mString, radix);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _dword MutableString<CharType, CharEncoding>::ToDword(_dword radix) const {
-	return convertStringToDword(mString, radix);
+	return TemplateExternal::ConvertStringToDword(mString, radix);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _large MutableString<CharType, CharEncoding>::ToLarge(_dword radix) const {
-	return convertStringToLarge(mString, radix);
+	return TemplateExternal::ConvertStringToLarge(mString, radix);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _qword MutableString<CharType, CharEncoding>::ToQword(_dword radix) const {
-	return convertStringToQword(mString, radix);
+	return TemplateExternal::ConvertStringToQword(mString, radix);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _float MutableString<CharType, CharEncoding>::ToFloat() const {
-	return convertStringToFloat(mString);
+	return TemplateExternal::ConvertStringToFloat(mString);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _double MutableString<CharType, CharEncoding>::ToDouble() const {
-	return convertStringToDouble(mString);
+	return TemplateExternal::ConvertStringToDouble(mString);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::StartsWith(CharType character, _ubool ignorecase) const {
-	return searchL2R(mString, character, ignorecase) == 0;
+	return TemplateExternal::SearchL2R(mString, character, ignorecase) == 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::StartsWith(const ConstStringType& string, _ubool ignorecase) const {
-	return searchL2R(mString, string.CStr(), ignorecase, _null) == 0;
+	return TemplateExternal::SearchL2R(mString, string.CStr(), ignorecase, _null) == 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::EndsWith(CharType character, _ubool ignorecase) const {
-	return searchR2L(mString, character, ignorecase) == (this->GetLength() - 1);
+	return TemplateExternal::SearchR2L(mString, character, ignorecase) == (this->GetLength() - 1);
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -929,42 +929,42 @@ _ubool MutableString<CharType, CharEncoding>::EndsWith(const ConstStringType& st
 	if (length2 == length1)
 		return *this == string;
 
-	return searchR2L(mString, string.CStr(), ignorecase, _null) == (length1 - length2);
+	return TemplateExternal::SearchR2L(mString, string.CStr(), ignorecase, _null) == (length1 - length2);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _dword MutableString<CharType, CharEncoding>::SearchL2R(CharType character, _ubool ignorecase) const {
-	return searchL2R(mString, character);
+	return TemplateExternal::SearchL2R(mString, character);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _dword MutableString<CharType, CharEncoding>::SearchR2L(CharType character, _ubool ignorecase) const {
-	return searchR2L(mString, character);
+	return TemplateExternal::SearchR2L(mString, character);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _dword MutableString<CharType, CharEncoding>::SearchL2R(const ConstStringType& string, _ubool ignorecase, _dword* endindex) const {
-	return searchL2R(mString, string.CStr(), ignorecase, endindex);
+	return TemplateExternal::SearchL2R(mString, string.CStr(), ignorecase, endindex);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _dword MutableString<CharType, CharEncoding>::SearchR2L(const ConstStringType& string, _ubool ignorecase, _dword* startindex) const {
-	return searchR2L(mString, string.CStr(), ignorecase, startindex);
+	return TemplateExternal::SearchR2L(mString, string.CStr(), ignorecase, startindex);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::IsEqual(const ConstStringType& string, _ubool ignorecase) const {
-	return compareString(mString, string.CStr(), ignorecase) == 0;
+	return TemplateExternal::CompareString(mString, string.CStr(), ignorecase) == 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _int MutableString<CharType, CharEncoding>::Compare(const ConstStringType& string, _ubool ignorecase) const {
-	return compareString(mString, string.CStr(), ignorecase);
+	return TemplateExternal::CompareString(mString, string.CStr(), ignorecase);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::CompareWildcard(const ConstStringType& string, _ubool ignorecase) const {
-	return compareWildcard(mString, string.CStr(), ignorecase);
+	return TemplateExternal::CompareWildcard(mString, string.CStr(), ignorecase);
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -974,12 +974,12 @@ _ubool MutableString<CharType, CharEncoding>::IsEmpty() const {
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::IsBlank() const {
-	return isBlank(mString);
+	return TemplateExternal::IsBlank(mString);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool MutableString<CharType, CharEncoding>::IsFullpath() const {
-	return isFullpath(mString);
+	return TemplateExternal::IsFullpath(mString);
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -1195,8 +1195,8 @@ _ubool MutableString<CharType, CharEncoding>::Replace(ConstStringType srcstring,
 	_ubool replaced = _false;
 
 	// Get the sub-string length
-	_dword srcstringlength = stringLength(srcstring);
-	_dword desstringlength = stringLength(desstring);
+	_dword srcstringlength = TemplateExternal::StringLength(srcstring);
+	_dword desstringlength = TemplateExternal::StringLength(desstring);
 
 	// The start index of substring
 	_dword startindex = 0;
@@ -1278,7 +1278,7 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::Co
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::Lowercase() {
 	if (mLength > 0)
-		lowercaseString(this->mString);
+		TemplateExternal::LowercaseString(this->mString);
 
 	return *this;
 }
@@ -1286,49 +1286,49 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::Lo
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::Uppercase() {
 	if (mLength > 0)
-		uppercaseString(this->mString);
+		TemplateExternal::UppercaseString(this->mString);
 
 	return *this;
 }
 
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::TrimLeft(CharType character) {
-	trimStringLeft(this->mString, mLength, character);
+	TemplateExternal::TrimStringLeft(this->mString, mLength, character);
 
 	return *this;
 }
 
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::TrimRight(CharType character) {
-	trimStringRight(this->mString, mLength, character);
+	TemplateExternal::TrimStringRight(this->mString, mLength, character);
 
 	return *this;
 }
 
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::TrimBoth(CharType character) {
-	trimStringBoth(this->mString, mLength, character);
+	TemplateExternal::TrimStringBoth(this->mString, mLength, character);
 
 	return *this;
 }
 
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::TrimLeft(ConstStringType charset) {
-	trimStringLeft(this->mString, mLength, charset.CStr());
+	TemplateExternal::TrimStringLeft(this->mString, mLength, charset.CStr());
 
 	return *this;
 }
 
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::TrimRight(ConstStringType charset) {
-	trimStringRight(this->mString, mLength, charset.CStr());
+	TemplateExternal::TrimStringRight(this->mString, mLength, charset.CStr());
 
 	return *this;
 }
 
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::TrimBoth(ConstStringType charset) {
-	trimStringBoth(this->mString, mLength, charset.CStr());
+	TemplateExternal::TrimStringBoth(this->mString, mLength, charset.CStr());
 
 	return *this;
 }
@@ -1388,7 +1388,7 @@ MutableString<CharType, CharEncoding> MutableString<CharType, CharEncoding>::Rig
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::FromValue(_int value, _dword radix) {
 	CharType string[1024];
-	convertLongToString(value, radix, string, 1024);
+	TemplateExternal::ConvertLongToString(value, radix, string, 1024);
 
 	CopyString(string);
 
@@ -1398,7 +1398,7 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::Fr
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::FromValue(_dword value, _dword radix) {
 	CharType string[1024];
-	convertDwordToString(value, radix, string, 1024);
+	TemplateExternal::ConvertDwordToString(value, radix, string, 1024);
 
 	CopyString(string);
 
@@ -1408,7 +1408,7 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::Fr
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::FromValue(_large value, _dword radix) {
 	CharType string[1024];
-	convertLargeToString(value, radix, string, 1024);
+	TemplateExternal::ConvertLargeToString(value, radix, string, 1024);
 
 	CopyString(string);
 
@@ -1418,7 +1418,7 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::Fr
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::FromValue(_qword value, _dword radix) {
 	CharType string[1024];
-	convertQwordToString(value, radix, string, 1024);
+	TemplateExternal::ConvertQwordToString(value, radix, string, 1024);
 
 	CopyString(string);
 
@@ -1428,7 +1428,7 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::Fr
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::FromValue(_float value, _dword precision) {
 	CharType string[1024];
-	convertFloatToString(value, string, 1024, precision);
+	TemplateExternal::ConvertFloatToString(value, string, 1024, precision);
 
 	CopyString(string);
 
@@ -1438,7 +1438,7 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::Fr
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::FromValue(_double value, _dword precision) {
 	CharType string[1024];
-	convertDoubleToString(value, string, 1024, precision);
+	TemplateExternal::ConvertDoubleToString(value, string, 1024, precision);
 
 	CopyString(string);
 
@@ -1468,7 +1468,7 @@ MutableString<_chara, Encoding::Ansi>& MutableString<_chara, Encoding::Ansi>::Fr
 
 		case Encoding::Utf8: {
 			// Get the UNICODE string ansi_string_size in bytes
-			_dword utf16_string_size = utf8ToUtf16(_null, 0, (const _chara*)string, -1);
+			_dword utf16_string_size = TemplateExternal::Utf8ToUtf16(_null, 0, (const _chara*)string, -1);
 			if (utf16_string_size > 0) {
 				// Convert to number of characters of UNICODE
 				utf16_string_size /= sizeof(_charw);
@@ -1478,7 +1478,7 @@ MutableString<_chara, Encoding::Ansi>& MutableString<_chara, Encoding::Ansi>::Fr
 
 				// Convert UTF-8 string to UNICODE
 				MemArrayPtr<_charw> string_unicode(size);
-				utf8ToUtf16(string_unicode, size, (const _chara*)string, utf16_string_size);
+				TemplateExternal::Utf8ToUtf16(string_unicode, size, (const _chara*)string, utf16_string_size);
 
 				// Import from UNICODE string
 				return FromString(Encoding::Utf16, (const _charw*)string_unicode);
@@ -1487,7 +1487,7 @@ MutableString<_chara, Encoding::Ansi>& MutableString<_chara, Encoding::Ansi>::Fr
 
 		case Encoding::Utf16: {
 			// Get the ANSI string size in bytes
-			_dword ansi_string_size = utf16ToAnsi(_null, 0, (const _charw*)string, -1);
+			_dword ansi_string_size = TemplateExternal::Utf16ToAnsi(_null, 0, (const _charw*)string, -1);
 			if (ansi_string_size > 0) {
 				mLength = ansi_string_size;
 
@@ -1499,7 +1499,7 @@ MutableString<_chara, Encoding::Ansi>& MutableString<_chara, Encoding::Ansi>::Fr
 					Resize(size);
 
 				// Convert UNICODE string to ANSI
-				utf16ToAnsi((_chara*)this->mString, size, (const _charw*)string, ansi_string_size);
+				TemplateExternal::Utf16ToAnsi((_chara*)this->mString, size, (const _charw*)string, ansi_string_size);
 			}
 		} break;
 
@@ -1523,7 +1523,7 @@ MutableString<_chara, Encoding::Utf8>& MutableString<_chara, Encoding::Utf8>::Fr
 	switch (encode) {
 		case Encoding::Ansi: {
 			// Get the UNICODE string size in bytes
-			_dword utf16_string_size = ansiToUtf16(_null, 0, (const _chara*)string);
+			_dword utf16_string_size = TemplateExternal::AnsiToUtf16(_null, 0, (const _chara*)string);
 			if (utf16_string_size > 0) {
 				// Convert to number of characters of UNICODE
 				utf16_string_size /= sizeof(_charw);
@@ -1533,7 +1533,7 @@ MutableString<_chara, Encoding::Utf8>& MutableString<_chara, Encoding::Utf8>::Fr
 
 				// Convert ANSI string to UNICODE
 				MemArrayPtr<_charw> string_unicode(size);
-				ansiToUtf16(string_unicode, size, (const _chara*)string, utf16_string_size);
+				TemplateExternal::AnsiToUtf16(string_unicode, size, (const _chara*)string, utf16_string_size);
 
 				// Import from UNICODE string
 				return FromString(Encoding::Utf16, (const _charw*)string_unicode);
@@ -1546,7 +1546,7 @@ MutableString<_chara, Encoding::Utf8>& MutableString<_chara, Encoding::Utf8>::Fr
 
 		case Encoding::Utf16: {
 			// Get the UTF-8 string size in bytes
-			_dword utf8_string_size = utf16ToUtf8(_null, 0, (const _charw*)string, -1);
+			_dword utf8_string_size = TemplateExternal::Utf16ToUtf8(_null, 0, (const _charw*)string, -1);
 			if (utf8_string_size > 0) {
 				mLength = utf8_string_size;
 
@@ -1558,7 +1558,7 @@ MutableString<_chara, Encoding::Utf8>& MutableString<_chara, Encoding::Utf8>::Fr
 					Resize(size);
 
 				// Convert UNICODE string to UTF-8
-				utf16ToUtf8((_chara*)this->mString, size, (const _charw*)string, utf8_string_size);
+				TemplateExternal::Utf16ToUtf8((_chara*)this->mString, size, (const _charw*)string, utf8_string_size);
 			}
 		} break;
 
@@ -1582,7 +1582,7 @@ MutableString<_charw, Encoding::Utf16>& MutableString<_charw, Encoding::Utf16>::
 	switch (encode) {
 		case Encoding::Ansi: {
 			// Get the UNICODE string size in bytes
-			_dword utf16_string_size = ansiToUtf16(_null, 0, (const _chara*)string, -1);
+			_dword utf16_string_size = TemplateExternal::AnsiToUtf16(_null, 0, (const _chara*)string, -1);
 			if (utf16_string_size > 0) {
 				// Convert to number of characters of UNICODE
 				mLength = utf16_string_size / sizeof(_charw);
@@ -1595,13 +1595,13 @@ MutableString<_charw, Encoding::Utf16>& MutableString<_charw, Encoding::Utf16>::
 					Resize(size);
 
 				// Convert ANSI string to UNICODE
-				ansiToUtf16((_charw*)this->mString, size, (const _chara*)string, utf16_string_size);
+				TemplateExternal::AnsiToUtf16((_charw*)this->mString, size, (const _chara*)string, utf16_string_size);
 			}
 		} break;
 
 		case Encoding::Utf8: {
 			// Get the UNICODE string size in bytes
-			_dword utf16_string_size = utf8ToUtf16(_null, 0, (const _chara*)string, -1);
+			_dword utf16_string_size = TemplateExternal::Utf8ToUtf16(_null, 0, (const _chara*)string, -1);
 			if (utf16_string_size > 0) {
 				// Convert to number of characters of UNICODE
 				mLength = (utf16_string_size / sizeof(_charw));
@@ -1614,7 +1614,7 @@ MutableString<_charw, Encoding::Utf16>& MutableString<_charw, Encoding::Utf16>::
 					Resize(size);
 
 				// Convert UTF-8 string to UNICODE
-				utf8ToUtf16((_charw*)this->mString, size, (const _chara*)string, utf16_string_size);
+				TemplateExternal::Utf8ToUtf16((_charw*)this->mString, size, (const _chara*)string, utf16_string_size);
 			}
 		} break;
 
@@ -1640,7 +1640,7 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::Fo
 
 template <typename CharType, Encoding CharEncoding>
 MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::FormatByVAList(const CharType* format, _va_list arguments) {
-	mLength = getFormatStringLength(format, arguments);
+	mLength = TemplateExternal::GetFormatStringLength(format, arguments);
 
 	// Create more memory if necessary
 	if (mSize < mLength + 1) {
@@ -1658,7 +1658,7 @@ MutableString<CharType, CharEncoding>& MutableString<CharType, CharEncoding>::Fo
 	}
 
 	// Format string
-	formatStringByVAList(this->mString, mSize, format, arguments);
+	TemplateExternal::FormatStringByVAList(this->mString, mSize, format, arguments);
 
 	// Set null-terminated
 	this->mString[mLength] = 0;
