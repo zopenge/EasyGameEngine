@@ -20,6 +20,67 @@
 #	include <string.h> /* For memset() */
 #endif
 
+// Here are some extern functions you should implement it for template class usage
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+EGE::_int compareString(const EGE::_chara* string1, const EGE::_chara* string2, EGE::_ubool ignorecase);
+EGE::_dword stringLength(const EGE::_chara* string);
+EGE::_boolean convertStringToBool(const EGE::_chara* string);
+EGE::_int convertStringToLong(const EGE::_chara* string, EGE::_dword radix);
+EGE::_dword convertStringToDword(const EGE::_chara* string, EGE::_dword radix);
+EGE::_large convertStringToLarge(const EGE::_chara* string, EGE::_dword radix);
+EGE::_qword convertStringToQword(const EGE::_chara* string, EGE::_dword radix);
+EGE::_float convertStringToFloat(const EGE::_chara* string);
+EGE::_double convertStringToDouble(const EGE::_chara* string);
+EGE::_dword searchL2R(const EGE::_chara* string, EGE::_chara character, EGE::_ubool ignorecase);
+EGE::_dword searchR2L(const EGE::_chara* string, EGE::_chara character, EGE::_ubool ignorecase);
+EGE::_ubool compareWildcard(const EGE::_chara* string, const EGE::_chara* matchstring, EGE::_ubool ignorecase);
+EGE::_ubool isBlank(const EGE::_chara* string);
+EGE::_ubool isFullpath(const EGE::_chara* path);
+EGE::_chara* lowercaseString(EGE::_chara* string, EGE::_dword number);
+EGE::_chara* uppercaseString(EGE::_chara* string, EGE::_dword number);
+EGE::_chara* trimStringLeft(EGE::_chara* string, EGE::_dword& stringlength, EGE::_chara character, EGE::_ubool ignorecase);
+EGE::_chara* trimStringRight(EGE::_chara* string, EGE::_dword& stringlength, EGE::_chara character, EGE::_ubool ignorecase);
+EGE::_chara* trimStringBoth(EGE::_chara* string, EGE::_dword& stringlength, EGE::_chara character, EGE::_ubool ignorecase);
+EGE::_dword ansiToUtf16(EGE::_charw* buffer, EGE::_dword size, const EGE::_chara* string, EGE::_dword number);
+EGE::_dword utf16ToAnsi(EGE::_chara* buffer, EGE::_dword size, const EGE::_charw* string, EGE::_dword number);
+EGE::_dword utf8ToUtf16(EGE::_charw* buffer, EGE::_dword size, const EGE::_chara* string, EGE::_dword number);
+EGE::_dword utf16ToUtf8(EGE::_chara* buffer, EGE::_dword size, const EGE::_charw* string, EGE::_dword number);
+EGE::_dword getFormatStringLength(const EGE::_chara* format, EGE::_va_list arguments);
+EGE::_chara* formatStringByVAList(EGE::_chara* buffer, EGE::_dword size, const EGE::_chara* format, EGE::_va_list arguments);
+
+EGE::_int compareString(const EGE::_charw* string1, const EGE::_charw* string2, EGE::_ubool ignorecase);
+EGE::_dword stringLength(const EGE::_charw* string);
+EGE::_boolean convertStringToBool(const EGE::_charw* string);
+EGE::_int convertStringToLong(const EGE::_charw* string, EGE::_dword radix);
+EGE::_dword convertStringToDword(const EGE::_charw* string, EGE::_dword radix);
+EGE::_large convertStringToLarge(const EGE::_charw* string, EGE::_dword radix);
+EGE::_qword convertStringToQword(const EGE::_charw* string, EGE::_dword radix);
+EGE::_float convertStringToFloat(const EGE::_charw* string);
+EGE::_double convertStringToDouble(const EGE::_charw* string);
+EGE::_dword searchL2R(const EGE::_charw* string, EGE::_charw character, EGE::_ubool ignorecase);
+EGE::_dword searchR2L(const EGE::_charw* string, EGE::_charw character, EGE::_ubool ignorecase);
+EGE::_ubool compareWildcard(const EGE::_charw* string, const EGE::_charw* matchstring, EGE::_ubool ignorecase);
+EGE::_ubool isBlank(const EGE::_charw* string);
+EGE::_ubool isFullpath(const EGE::_charw* path);
+EGE::_charw* lowercaseString(EGE::_charw* string, EGE::_dword number);
+EGE::_charw* uppercaseString(EGE::_charw* string, EGE::_dword number);
+EGE::_charw* trimStringLeft(EGE::_charw* string, EGE::_dword& stringlength, EGE::_charw character, EGE::_ubool ignorecase);
+EGE::_charw* trimStringRight(EGE::_charw* string, EGE::_dword& stringlength, EGE::_charw character, EGE::_ubool ignorecase);
+EGE::_charw* trimStringBoth(EGE::_charw* string, EGE::_dword& stringlength, EGE::_charw character, EGE::_ubool ignorecase);
+EGE::_dword ansiToUtf16(EGE::_charw* buffer, EGE::_dword size, const EGE::_charw* string, EGE::_dword number);
+EGE::_dword utf16ToAnsi(EGE::_charw* buffer, EGE::_dword size, const EGE::_charw* string, EGE::_dword number);
+EGE::_dword utf8ToUtf16(EGE::_charw* buffer, EGE::_dword size, const EGE::_charw* string, EGE::_dword number);
+EGE::_dword utf16ToUtf8(EGE::_charw* buffer, EGE::_dword size, const EGE::_charw* string, EGE::_dword number);
+EGE::_dword getFormatStringLength(const EGE::_charw* format, EGE::_va_list arguments);
+EGE::_charw* formatStringByVAList(EGE::_charw* buffer, EGE::_dword size, const EGE::_charw* format, EGE::_va_list arguments);
+
+#ifdef __cplusplus
+}
+#endif
+
 // Base Template Files
 #include "Template/Compare.h"
 #include "Template/CountOf.h"

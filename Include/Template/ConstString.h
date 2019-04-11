@@ -280,62 +280,62 @@ CharType ConstString<CharType, CharEncoding>::operator[](IndexType index) const 
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::operator==(const CharType* string) const {
-	return Platform::CompareString(mString, string) == 0;
+	return compareString(mString, string) == 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::operator!=(const CharType* string) const {
-	return Platform::CompareString(mString, string) != 0;
+	return compareString(mString, string) != 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::operator>(const CharType* string) const {
-	return Platform::CompareString(mString, string) > 0;
+	return compareString(mString, string) > 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::operator<(const CharType* string) const {
-	return Platform::CompareString(mString, string) < 0;
+	return compareString(mString, string) < 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::operator>=(const CharType* string) const {
-	return Platform::CompareString(mString, string) >= 0;
+	return compareString(mString, string) >= 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::operator<=(const CharType* string) const {
-	return Platform::CompareString(mString, string) <= 0;
+	return compareString(mString, string) <= 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::operator==(const ConstString& string) const {
-	return Platform::CompareString(mString, string.CStr()) == 0;
+	return compareString(mString, string.CStr()) == 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::operator!=(const ConstString& string) const {
-	return Platform::CompareString(mString, string.CStr()) != 0;
+	return compareString(mString, string.CStr()) != 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::operator>(const ConstString& string) const {
-	return Platform::CompareString(mString, string.CStr()) > 0;
+	return compareString(mString, string.CStr()) > 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::operator<(const ConstString& string) const {
-	return Platform::CompareString(mString, string.CStr()) < 0;
+	return compareString(mString, string.CStr()) < 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::operator>=(const ConstString& string) const {
-	return Platform::CompareString(mString, string.CStr()) >= 0;
+	return compareString(mString, string.CStr()) >= 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::operator<=(const ConstString& string) const {
-	return Platform::CompareString(mString, string.CStr()) <= 0;
+	return compareString(mString, string.CStr()) <= 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -355,12 +355,12 @@ _dword ConstString<CharType, CharEncoding>::GetID() const {
 
 template <typename CharType, Encoding CharEncoding>
 _dword ConstString<CharType, CharEncoding>::GetLength() const {
-	return Platform::StringLength(mString);
+	return stringLength(mString);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _dword ConstString<CharType, CharEncoding>::SizeOfBytes() const {
-	return (Platform::StringLength(mString) + 1) * sizeof(CharType);
+	return (stringLength(mString) + 1) * sizeof(CharType);
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -375,52 +375,52 @@ ConstString<CharType, CharEncoding> ConstString<CharType, CharEncoding>::SubStri
 
 template <typename CharType, Encoding CharEncoding>
 _boolean ConstString<CharType, CharEncoding>::ToBool() const {
-	return Platform::ConvertStringToBool(mString);
+	return convertStringToBool(mString);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _int ConstString<CharType, CharEncoding>::ToLong(_dword radix) const {
-	return Platform::ConvertStringToLong(mString, radix);
+	return convertStringToLong(mString, radix);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _dword ConstString<CharType, CharEncoding>::ToDword(_dword radix) const {
-	return Platform::ConvertStringToDword(mString, radix);
+	return convertStringToDword(mString, radix);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _large ConstString<CharType, CharEncoding>::ToLarge(_dword radix) const {
-	return Platform::ConvertStringToLarge(mString, radix);
+	return convertStringToLarge(mString, radix);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _qword ConstString<CharType, CharEncoding>::ToQword(_dword radix) const {
-	return Platform::ConvertStringToQword(mString, radix);
+	return convertStringToQword(mString, radix);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _float ConstString<CharType, CharEncoding>::ToFloat() const {
-	return Platform::ConvertStringToFloat(mString);
+	return convertStringToFloat(mString);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _double ConstString<CharType, CharEncoding>::ToDouble() const {
-	return Platform::ConvertStringToDouble(mString);
+	return convertStringToDouble(mString);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::StartsWith(CharType character, _ubool ignorecase) const {
-	return Platform::SearchL2R(mString, character, ignorecase) == 0;
+	return searchL2R(mString, character, ignorecase) == 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::StartsWith(const ConstString& string, _ubool ignorecase) const {
-	return Platform::SearchL2R(mString, string.CStr(), ignorecase, _null) == 0;
+	return searchL2R(mString, string.CStr(), ignorecase, _null) == 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::EndsWith(CharType character, _ubool ignorecase) const {
-	return Platform::SearchR2L(mString, character, ignorecase) == (this->GetLength() - 1);
+	return searchR2L(mString, character, ignorecase) == (this->GetLength() - 1);
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -436,42 +436,42 @@ _ubool ConstString<CharType, CharEncoding>::EndsWith(const ConstString& string, 
 	if (length2 == length1)
 		return *this == string;
 
-	return Platform::SearchR2L(mString, string.CStr(), ignorecase, _null) == (length1 - length2);
+	return searchR2L(mString, string.CStr(), ignorecase, _null) == (length1 - length2);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _dword ConstString<CharType, CharEncoding>::SearchL2R(CharType character, _ubool ignorecase) const {
-	return Platform::SearchL2R(mString, character);
+	return searchL2R(mString, character);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _dword ConstString<CharType, CharEncoding>::SearchR2L(CharType character, _ubool ignorecase) const {
-	return Platform::SearchR2L(mString, character);
+	return searchR2L(mString, character);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _dword ConstString<CharType, CharEncoding>::SearchL2R(const ConstString& string, _ubool ignorecase, _dword* endindex) const {
-	return Platform::SearchL2R(mString, string.CStr(), ignorecase, endindex);
+	return searchL2R(mString, string.CStr(), ignorecase, endindex);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _dword ConstString<CharType, CharEncoding>::SearchR2L(const ConstString& string, _ubool ignorecase, _dword* startindex) const {
-	return Platform::SearchR2L(mString, string.CStr(), ignorecase, startindex);
+	return searchR2L(mString, string.CStr(), ignorecase, startindex);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::IsEqual(const ConstString& string, _ubool ignorecase) const {
-	return Platform::CompareString(mString, string.CStr(), ignorecase) == 0;
+	return compareString(mString, string.CStr(), ignorecase) == 0;
 }
 
 template <typename CharType, Encoding CharEncoding>
 _int ConstString<CharType, CharEncoding>::Compare(const ConstString& string, _ubool ignorecase) const {
-	return Platform::CompareString(mString, string.CStr(), ignorecase);
+	return compareString(mString, string.CStr(), ignorecase);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::CompareWildcard(const ConstString& string, _ubool ignorecase) const {
-	return Platform::CompareWildcard(mString, string.CStr(), ignorecase);
+	return compareWildcard(mString, string.CStr(), ignorecase);
 }
 
 template <typename CharType, Encoding CharEncoding>
@@ -481,12 +481,12 @@ _ubool ConstString<CharType, CharEncoding>::IsEmpty() const {
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::IsBlank() const {
-	return Platform::IsBlank(mString);
+	return isBlank(mString);
 }
 
 template <typename CharType, Encoding CharEncoding>
 _ubool ConstString<CharType, CharEncoding>::IsFullpath() const {
-	return Platform::IsFullpath(mString);
+	return isFullpath(mString);
 }
 
 } // namespace EGE
