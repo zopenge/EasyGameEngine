@@ -619,7 +619,9 @@ MAX_RELEASE_CHECK_RATE   default: 4095 unless not HAVE_MMAP
 #ifndef HAVE_MREMAP
 #ifdef linux
 #define HAVE_MREMAP 1
+#ifndef _GNU_SOURCE
 #define _GNU_SOURCE /* Turns on mremap() definition */
+#endif
 #else   /* linux */
 #define HAVE_MREMAP 0
 #endif  /* linux */
@@ -1167,9 +1169,6 @@ void  dlmalloc_stats(void);
   p = malloc(n);
   assert(malloc_usable_size(p) >= 256);
 */
-#ifdef _PLATFORM_ANDROID_
-#define dlmalloc_usable_size   malloc_usable_size
-#endif
 size_t dlmalloc_usable_size(void*);
 
 
@@ -1641,7 +1640,7 @@ static int dev_zero_fd = -1; /* Cached file descriptor for /dev/zero. */
 
 static FORCEINLINE void* posix_mmap(size_t size) {
   void* baseaddress = 0;
-  void* ptr = 0;
+  void* ptr = MFAIL;
   int flags = MMAP_FLAGS, fd = -1;
 #ifndef MAP_ANONYMOUS
   if (dev_zero_fd < 0)
@@ -1659,7 +1658,7 @@ static FORCEINLINE void* posix_mmap(size_t size) {
   if(largepagesize && size >= largepagesize && !(size & (largepagesize-1)))
     ptr = mmap(baseaddress, size, MMAP_PROT, flags|MMAP_FLAGS_LARGEPAGE, fd, 0);
 #endif
-  if (!ptr) {
+  if (MFAIL==ptr) {
     ptr = mmap(baseaddress, size, MMAP_PROT, flags, fd, 0);
   }
 #if DEBUG && 0
@@ -1688,7 +1687,7 @@ static FORCEINLINE void* posix_direct_mmap(size_t size) {
 #if DEBUG && 0
   printf("Direct mmap returns %p size %u\n", ptr, (unsigned)size);
 #endif
-  return (ptr != 0)? ptr: MFAIL;
+  return ptr;
 }
 
 #define MMAP_DEFAULT(s)                     posix_mmap(s)
@@ -2232,7 +2231,7 @@ static MLOCK_T malloc_global_mutex = PTHREAD_MUTEX_INITIALIZER;
 /* skipped internal declaration from pthread.h */
 #ifdef linux
 #ifndef PTHREAD_MUTEX_RECURSIVE
-extern int pthread_mutexattr_setkind_np __P ((pthread_mutexattr_t *__attr,
+extern "C" int pthread_mutexattr_setkind_np __P ((pthread_mutexattr_t *__attr,
 					   int __kind));
 #define PTHREAD_MUTEX_RECURSIVE PTHREAD_MUTEX_RECURSIVE_NP
 #define pthread_mutexattr_settype(x,y) pthread_mutexattr_setkind_np(x,y)
@@ -3365,14 +3364,31 @@ static int init_mparams(void) {
 #endif /* WIN32 */
 #ifdef ENABLE_LARGE_PAGES
 #ifndef WIN32
-    { /* gethugepagesize() is part of the portable libhugetlbfs
-      (http://sourceforge.net/projects/libhugetlbfs/). However we
-      want to avoid requiring a dependency on that library if
-      possible, so if it's in our process then great and if not
-      then that's okay too. */
-      gethugepagesize_t gethugepagesize_ = (gethugepagesize_t) dlsym(RTLD_DEFAULT, "gethugepagesize");
-      if(gethugepagesize_)
-        largepagesize = gethugepagesize_();
+    {
+      int ih=open("/proc/meminfo", O_RDONLY);
+      if(-1!=ih)
+      {
+        char buffer[4096], *hugepagesize, *hugepages;
+        buffer[read(ih, buffer, sizeof(buffer)-1)]=0;
+        close(ih);
+        hugepagesize=strstr(buffer, "Hugepagesize:");
+        hugepages=strstr(buffer, "HugePages_Total:");
+        if(hugepagesize && hugepages)
+        {
+          unsigned _hugepages=0, _hugepagesize=0;
+          while((*++hugepagesize!=' '));
+          while((*++hugepages!=' '));
+          while((*++hugepagesize==' '));
+          while((*++hugepages==' '));
+          sscanf(hugepagesize, "%u", &_hugepagesize);
+          sscanf(hugepages, "%u", &_hugepages);
+#if DEBUG
+          printf("Hugepages=%u, size=%u\n", _hugepages, _hugepagesize);
+#endif
+          if(_hugepages && _hugepagesize)
+            largepagesize = ((size_t)_hugepagesize)*1024;
+        }
+      }
     }
 #else /* WIN32 */
     { 
