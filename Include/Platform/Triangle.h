@@ -13,8 +13,7 @@ public:
 
 public:
 	inline Triangle();
-	inline Triangle(const Vector3& vector1, const Vector3& vector2,
-	                const Vector3& vector3);
+	inline Triangle(const Vector3& vector1, const Vector3& vector2, const Vector3& vector3);
 
 	inline Triangle& operator*=(const Matrix4& matrix);
 	inline Triangle operator*(const Matrix4& matrix) const;
@@ -25,8 +24,7 @@ public:
 Triangle::Triangle() {
 }
 
-Triangle::Triangle(const Vector3& vector1, const Vector3& vector2,
-                   const Vector3& vector3)
+Triangle::Triangle(const Vector3& vector1, const Vector3& vector2, const Vector3& vector3)
     : mVector1(vector1), mVector2(vector2), mVector3(vector3) {
 }
 
