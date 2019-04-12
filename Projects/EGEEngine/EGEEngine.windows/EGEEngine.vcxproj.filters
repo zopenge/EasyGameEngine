@@ -114,9 +114,6 @@
     <Filter Include="Source Files\Image\Filter">
       <UniqueIdentifier>{baa28c38-8ae1-4cc9-bba3-1312872c3e80}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{befc65c6-309e-4edd-a1d8-e923b8ee1d71}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\StringTable">
       <UniqueIdentifier>{bc8a34f4-7cce-43e9-aa02-29bb47c8107d}</UniqueIdentifier>
     </Filter>
@@ -548,9 +545,6 @@
     <ClCompile Include="..\..\..\Source\Engine\Font\FontFaceFNT.cpp">
       <Filter>Source Files\Font</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Source\External\cJSON\cJSON.cpp">
-      <Filter>SDK Files\cJSON</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Source\External\libaes\oaes_base64.cpp">
       <Filter>SDK Files\libaes</Filter>
     </ClCompile>
@@ -674,6 +668,9 @@
     <ClCompile Include="..\..\..\Source\Engine\EngineSerialization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Source\External\cJSON\cJSON.c">
+      <Filter>SDK Files\cJSON</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\Source\Engine\ModuleManager.h">
@@ -750,9 +747,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Source\Engine\Stream\MemStreamWriter.h">
       <Filter>Source Files\Stream</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Source\Engine\EngineVersion.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Source\EGEEngine.h">
       <Filter>Library Files</Filter>
@@ -1042,14 +1036,8 @@
     <ClInclude Include="..\..\..\Source\Engine\Image\Filter\Resize.h">
       <Filter>Source Files\Image\Filter</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Source\Engine\EngineSDKFiles.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Source\Engine\Platform\win\UI\winEditBox.h">
       <Filter>Source Files\Platform\win\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Source\Engine\FileParser\ASTCFile.h">
       <Filter>Source Files\FileParser</Filter>
@@ -1149,9 +1137,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Source\Engine\Resource\ResCaches.h">
       <Filter>Source Files\Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\EngineSerialization.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\IClonableObject.h">
       <Filter>Interface Files</Filter>
@@ -1684,6 +1669,9 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\Resource\IResLoaderFactory.h">
       <Filter>Interface Files\Resource</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Source\Engine\EngineSDKFiles.h">
+      <Filter>SDK Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Source\Engine\Application\ios\NSApplication.mm">
@@ -1695,10 +1683,5 @@
     <None Include="..\..\..\Source\Engine\Application\ios\NSUIViewController.mm">
       <Filter>Source Files\Application\ios</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="EGEEngine.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>

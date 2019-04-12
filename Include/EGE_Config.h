@@ -148,9 +148,6 @@
 #	endif
 #endif
 
-// The import function declaration
-#define DEFINE_IMPORT_FUNC(Type, Name, ParameterTypesAndNames) extern "C" Type Name ParameterTypesAndNames;
-
 //----------------------------------------------------------------------------
 // Predefine Types
 //----------------------------------------------------------------------------
@@ -389,12 +386,10 @@ public:                                    \
 	}
 
 // Define a referenced interface object type
-#define REF_OBJECT_DECL(c) \
-	class c;               \
-	REF_OBJECT_WITHOUT_CLASS_DECL(c)
-#define REF_OBJECT_WITHOUT_CLASS_DECL(c) \
-	typedef PassRefPtr<c> c##PassRef;    \
-	typedef RefPtr<c> c##Ref;            \
+#define REF_OBJECT_DECL(c)            \
+	class c;                          \
+	typedef PassRefPtr<c> c##PassRef; \
+	typedef RefPtr<c> c##Ref;         \
 	typedef RefOwner<c> c##RefOwner
 
 // Value combination

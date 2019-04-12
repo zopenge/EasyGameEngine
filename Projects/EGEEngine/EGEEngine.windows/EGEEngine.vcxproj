@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="DebugStatic|Win32">
-      <Configuration>DebugStatic</Configuration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="ReleaseStatic|Win32">
-      <Configuration>ReleaseStatic</Configuration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
@@ -22,18 +22,18 @@
     <SccProvider>
     </SccProvider>
     <Keyword>Win32Proj</Keyword>
-    <ProjectName>EGEEngine-windows</ProjectName>
+    <ProjectName>EGEEngine.windows</ProjectName>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <CLRSupport>false</CLRSupport>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <CLRSupport>false</CLRSupport>
@@ -42,25 +42,25 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\Win32_Lib_Release.props" />
   </ImportGroup>
-  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" Label="PropertySheets">
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\Win32_Lib_Debug.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'" />
-    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
-    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" />
-    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\..\Source\External\pcre;..\..\..\Source\External\freetype\include;..\..\..\Source\External\libxml2\include;..\..\..\Source\External\gumbo-parser\src;..\..\..\Source\External\tinyxml2;..\..\..\Source\External\cJSON;..\..\..\Source\External\zlib;..\..\..\Source\External\libzip\include\platform\windows;..\..\..\Source\External\libzip\include;..\..\..\Source\External\ziputils;..\..\..\Source\External\libpng;..\..\..\Source\External\libwebp\src;..\..\..\Source\External\libjpeg;..\..\..\Source\External\libgif\include;..\..\..\Source\External\libwebm\include;..\..\..\Source\External\libwebm\src;..\..\..\Source\External\libogg\include;..\..\..\Source\External\libvorbis\include;..\..\..\Source\External\libcsv;..\..\..\Source\External\libspeex\include;..\..\..\Source\External\google-breakpad;..\..\..\Source\External\google-breakpad\common\windows;..\..\..\Source\External\curl\include;..\..\..\Source\External\libdes;..\..\..\Source\External\libaes;..\..\..\Source\External\lib7z;..\..\..\Source\External\libflac\include;..\..\..\Source\External\xlslib\src;..\..\..\Source\External\xlslib\build\msvc2010;..\..\..\Source\External\libxls\include;..\..\..\Source\External\google-protobuf\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -77,7 +77,7 @@
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>..\..\..\Source\External\pcre;..\..\..\Source\External\freetype\include;..\..\..\Source\External\libxml2\include;..\..\..\Source\External\gumbo-parser\src;..\..\..\Source\External\tinyxml2;..\..\..\Source\External\cJSON;..\..\..\Source\External\zlib;..\..\..\Source\External\libzip\include\platform\windows;..\..\..\Source\External\libzip\include;..\..\..\Source\External\ziputils;..\..\..\Source\External\libpng;..\..\..\Source\External\libwebp\src;..\..\..\Source\External\libjpeg;..\..\..\Source\External\libgif\include;..\..\..\Source\External\libwebm\include;..\..\..\Source\External\libwebm\src;..\..\..\Source\External\libogg\include;..\..\..\Source\External\libvorbis\include;..\..\..\Source\External\libcsv;..\..\..\Source\External\libspeex\include;..\..\..\Source\External\google-breakpad;..\..\..\Source\External\google-breakpad\common\windows;..\..\..\Source\External\curl\include;..\..\..\Source\External\libdes;..\..\..\Source\External\libaes;..\..\..\Source\External\lib7z;..\..\..\Source\External\libflac\include;..\..\..\Source\External\xlslib\src;..\..\..\Source\External\xlslib\build\msvc2010;..\..\..\Source\External\libxls\include;..\..\..\Source\External\google-protobuf\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -101,8 +101,8 @@
     <ClCompile Include="..\..\..\Source\Engine\Allocator\RingAllocator.cpp" />
     <ClCompile Include="..\..\..\Source\Engine\Allocator\StdAllocator.cpp" />
     <ClCompile Include="..\..\..\Source\Engine\Application\ios\iosViewBasedApp.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\Engine\Application\win\winApp.cpp" />
     <ClCompile Include="..\..\..\Source\Engine\Application\win\winConsoleApp.cpp" />
@@ -191,7 +191,6 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\ICrypto.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\IDecryptor.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\IEncryptor.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\EngineSerialization.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IASTCFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBaseFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBinaryFile.h" />
@@ -368,7 +367,6 @@
     <ClInclude Include="..\..\..\Source\Engine\Stream\PEResStreamReader.h" />
     <ClInclude Include="..\..\..\Source\Engine\Stream\PEResStreamWriter.h" />
     <ClInclude Include="..\..\..\Source\Engine\StringTable\StringTable.h" />
-    <ClInclude Include="resource.h" />
     <ClCompile Include="..\..\..\Source\Engine\Layout\MeasurableObject.cpp" />
     <ClCompile Include="..\..\..\Source\Engine\Logger\Logger.cpp" />
     <ClCompile Include="..\..\..\Source\Engine\Manifest\ManifestFileManager.cpp" />
@@ -391,29 +389,33 @@
     <ClCompile Include="..\..\..\Source\Engine\Stream\PEResStreamReader.cpp" />
     <ClCompile Include="..\..\..\Source\Engine\Stream\PEResStreamWriter.cpp" />
     <ClCompile Include="..\..\..\Source\Engine\StringTable\StringTable.cpp" />
+    <ClCompile Include="..\..\..\Source\External\cJSON\cJSON.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\..\..\Source\External\libaes\oaes_base64.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\libaes\oaes_lib.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\libdes\des.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\tinyxml2\tinyxml2.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\ziputils\LiteUnzip.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\ziputils\LiteZip.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClInclude Include="..\..\..\Source\Engine\Allocator\StdAllocator.h" />
     <ClInclude Include="..\..\..\Source\Engine\Archive\FileArchive.h" />
@@ -490,17 +492,13 @@
     <ClCompile Include="..\..\..\Source\Engine\Stream\MemStreamReader.cpp" />
     <ClCompile Include="..\..\..\Source\Engine\Stream\MemStreamWriter.cpp" />
     <ClCompile Include="..\..\..\Source\EGEEngine.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">Create</PrecompiledHeader>
-      <CompileAs Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">Default</CompileAs>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Default</CompileAs>
     </ClCompile>
     <ClCompile Include="..\..\..\Source\External\libcsv\libcsv.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Source\External\cJSON\cJSON.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugStatic|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseStatic|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -594,7 +592,6 @@
     <ClInclude Include="..\..\..\Source\Engine\Stream\FileStreamWriter.h" />
     <ClInclude Include="..\..\..\Source\Engine\Stream\MemStreamReader.h" />
     <ClInclude Include="..\..\..\Source\Engine\Stream\MemStreamWriter.h" />
-    <ClInclude Include="..\..\..\Source\Engine\EngineVersion.h" />
     <ClInclude Include="..\..\..\Source\EGEEngine.h" />
     <ClInclude Include="..\..\..\Source\External\libaes\oaes_base64.h" />
     <ClInclude Include="..\..\..\Source\External\libaes\oaes_common.h" />
@@ -611,9 +608,6 @@
     <None Include="..\..\..\Source\Engine\Application\ios\NSApplication.mm" />
     <None Include="..\..\..\Source\Engine\Application\ios\NSUIView.mm" />
     <None Include="..\..\..\Source\Engine\Application\ios\NSUIViewController.mm" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="EGEEngine.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
