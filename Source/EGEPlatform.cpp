@@ -349,6 +349,14 @@ _dword TemplateExternal::Utf16ToUtf8(_chara* buffer, _dword size, const _charw* 
 	return Platform::Utf16ToUtf8(buffer, size, string, number);
 }
 
+_dword TemplateExternal::BuildFromString(const _chara* string, _dword oldcrc) {
+	return CRC::BuildFromString(string, oldcrc);
+}
+
+_dword TemplateExternal::BuildFromString(const _charw* string, _dword oldcrc) {
+	return CRC::BuildFromString(string, oldcrc);
+}
+
 } // namespace EGE
 
 //----------------------------------------------------------------------------

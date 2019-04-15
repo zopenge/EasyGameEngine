@@ -95,6 +95,9 @@ public:
 	static _dword Utf16ToAnsi(_chara* buffer, _dword size, const _charw* string, _dword number = -1);
 	static _dword Utf8ToUtf16(_charw* buffer, _dword size, const _chara* string, _dword number = -1);
 	static _dword Utf16ToUtf8(_chara* buffer, _dword size, const _charw* string, _dword number = -1);
+
+	static _dword BuildFromString(const _chara* string, _dword oldcrc = 0);
+	static _dword BuildFromString(const _charw* string, _dword oldcrc = 0);
 };
 
 } // namespace EGE

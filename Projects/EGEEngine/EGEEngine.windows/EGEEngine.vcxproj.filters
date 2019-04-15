@@ -144,107 +144,110 @@
     <Filter Include="Source Files\Resource">
       <UniqueIdentifier>{15d02d49-3cde-46fd-9f83-bbf7c955eaa3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files">
+    <Filter Include="Header Files\Interface">
       <UniqueIdentifier>{23bdfc1d-f06b-4744-a9cc-f0f6c83cb486}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Allocator">
+    <Filter Include="Header Files\Interface\Engine">
+      <UniqueIdentifier>{29772752-bf3e-4011-a7e0-226524b78f3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface\Engine\Allocator">
       <UniqueIdentifier>{b9de4ffc-4ee0-449f-bb21-07f1bdbf57f6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Animation">
+    <Filter Include="Header Files\Interface\Engine\Animation">
       <UniqueIdentifier>{3dc03a1f-25c5-4188-acbc-ea750276b0b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Application">
+    <Filter Include="Header Files\Interface\Engine\Application">
       <UniqueIdentifier>{b37c015e-e04a-4c81-b477-e1b3b9076b40}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Archive">
+    <Filter Include="Header Files\Interface\Engine\Archive">
       <UniqueIdentifier>{28e82694-8963-48dd-9ea7-0525afd29c4f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Buffer">
+    <Filter Include="Header Files\Interface\Engine\Buffer">
       <UniqueIdentifier>{53314df9-67d1-48f3-9fb5-887ca427f2ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Compression">
+    <Filter Include="Header Files\Interface\Engine\Compression">
       <UniqueIdentifier>{beed3417-bd06-4db9-b020-b8cb2461e3ad}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Decoder">
+    <Filter Include="Header Files\Interface\Engine\Decoder">
       <UniqueIdentifier>{590a6c22-1674-4117-b304-9b28ed26c802}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Device">
+    <Filter Include="Header Files\Interface\Engine\Device">
       <UniqueIdentifier>{1484155f-0ff7-4ff8-b0b5-f4257be0ceb5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Encryption">
+    <Filter Include="Header Files\Interface\Engine\Encryption">
       <UniqueIdentifier>{74ec7fc1-9e97-4cb0-b823-d8f5ce6c54fc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\File">
+    <Filter Include="Header Files\Interface\Engine\File">
       <UniqueIdentifier>{ef389367-9a9c-42be-8e48-3a1e1981ac91}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\FileParser">
+    <Filter Include="Header Files\Interface\Engine\FileParser">
       <UniqueIdentifier>{06b71870-748b-44d3-9bb1-caa2ab248b07}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Font">
+    <Filter Include="Header Files\Interface\Engine\Font">
       <UniqueIdentifier>{796eb910-e156-4cee-8a17-9f41c69cb982}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Image">
+    <Filter Include="Header Files\Interface\Engine\Image">
       <UniqueIdentifier>{f8bc9922-8188-47ac-b489-06a02b3ce3ca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Layout">
+    <Filter Include="Header Files\Interface\Engine\Layout">
       <UniqueIdentifier>{86b10f23-2243-4e32-bc30-5cc80939d786}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Logger">
+    <Filter Include="Header Files\Interface\Engine\Logger">
       <UniqueIdentifier>{87343721-dd66-43bb-962f-50152b85364c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Manifest">
+    <Filter Include="Header Files\Interface\Engine\Manifest">
       <UniqueIdentifier>{198a0044-58af-4c1a-b98d-5315b7f66e24}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Math">
+    <Filter Include="Header Files\Interface\Engine\Math">
       <UniqueIdentifier>{bc561cf1-157a-4c33-a17b-5f7f6293d11c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Parser">
+    <Filter Include="Header Files\Interface\Engine\Parser">
       <UniqueIdentifier>{d14b3084-0760-4075-967c-ec89303ff8c6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Platform">
+    <Filter Include="Header Files\Interface\Engine\Platform">
       <UniqueIdentifier>{7aea67b4-6a55-40a3-8169-3707b9d7ceaf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Properties">
-      <UniqueIdentifier>{32d9a6ab-009c-4236-8b4d-976990757c9b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Interface Files\ProtoBuf">
-      <UniqueIdentifier>{21aceccd-eb29-4cdf-8b01-bc36d1fbef9b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Interface Files\Recorder">
-      <UniqueIdentifier>{ff229e9e-9dbe-4f3f-a14b-fe356139d2fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Interface Files\Resource">
-      <UniqueIdentifier>{4926cbb8-659f-4b4a-adf7-55d552b5c2b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Interface Files\Serialization">
-      <UniqueIdentifier>{c52e50ba-48bf-4813-b779-1f0eb5456ab0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Interface Files\Stream">
-      <UniqueIdentifier>{5b36ba27-5770-470f-b5bf-f1f9a567143d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Interface Files\StringTable">
-      <UniqueIdentifier>{1c7b2dfd-ec66-468e-aff5-623423074977}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Interface Files\Thread">
-      <UniqueIdentifier>{6ff5edc3-95b5-41d5-aa70-f97e85833d9a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Interface Files\Transaction">
-      <UniqueIdentifier>{f19d774e-40a5-433d-9910-c39b4d3bd2cd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Interface Files\Platform\UI">
+    <Filter Include="Header Files\Interface\Engine\Platform\UI">
       <UniqueIdentifier>{bc580a23-017a-40e0-babb-51321afde82c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Platform\Network">
+    <Filter Include="Header Files\Interface\Engine\Platform\Network">
       <UniqueIdentifier>{ae4ac94a-29bf-4f27-ba32-c998ecaf80c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Platform\Kernel">
+    <Filter Include="Header Files\Interface\Engine\Platform\Kernel">
       <UniqueIdentifier>{201f0ffe-0308-48e2-942a-6676891eb786}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Platform\SensorManager">
+    <Filter Include="Header Files\Interface\Engine\Platform\SensorManager">
       <UniqueIdentifier>{dcc8f824-4e7e-448d-9ac7-141c69a9979d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Interface Files\Platform\Controller">
+    <Filter Include="Header Files\Interface\Engine\Platform\Controller">
       <UniqueIdentifier>{1488bbd4-ffd9-4b7d-a000-fb5eca199336}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface\Engine\Properties">
+      <UniqueIdentifier>{32d9a6ab-009c-4236-8b4d-976990757c9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface\Engine\ProtoBuf">
+      <UniqueIdentifier>{21aceccd-eb29-4cdf-8b01-bc36d1fbef9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface\Engine\Recorder">
+      <UniqueIdentifier>{ff229e9e-9dbe-4f3f-a14b-fe356139d2fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface\Engine\Resource">
+      <UniqueIdentifier>{4926cbb8-659f-4b4a-adf7-55d552b5c2b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface\Engine\Serialization">
+      <UniqueIdentifier>{c52e50ba-48bf-4813-b779-1f0eb5456ab0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface\Engine\Stream">
+      <UniqueIdentifier>{5b36ba27-5770-470f-b5bf-f1f9a567143d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface\Engine\StringTable">
+      <UniqueIdentifier>{1c7b2dfd-ec66-468e-aff5-623423074977}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface\Engine\Thread">
+      <UniqueIdentifier>{6ff5edc3-95b5-41d5-aa70-f97e85833d9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface\Engine\Transaction">
+      <UniqueIdentifier>{f19d774e-40a5-433d-9910-c39b4d3bd2cd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1138,539 +1141,539 @@
     <ClInclude Include="..\..\..\Source\Engine\Resource\ResCaches.h">
       <Filter>Source Files\Resource</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IClonableObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IConnection.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ICopyableObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IEventHooker.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IGarbageCollector.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IIDObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IInterfaceFactory.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IInvoker.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IMeasurableObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IModule.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IModuleManager.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IObjectState.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IObservable.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IObserver.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IProcessor.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITask.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITColorObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITEnable.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITFlagsObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITickableObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITimeoutObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITimerObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITIterator.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITNameObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITObjectTree.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITPowerable.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITPriorityObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITScrollableObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITShowableObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITTagNameObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITUserDataObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ITVersionable.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\IWithLastErrorObject.h">
-      <Filter>Interface Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IAllocator.h">
-      <Filter>Interface Files\Allocator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IBufferAllocator.h">
-      <Filter>Interface Files\Allocator</Filter>
+      <Filter>Header Files\Interface\Engine\Allocator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\ILinearAllocator.h">
-      <Filter>Interface Files\Allocator</Filter>
+      <Filter>Header Files\Interface\Engine\Allocator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IOffsetAllocator.h">
-      <Filter>Interface Files\Allocator</Filter>
+      <Filter>Header Files\Interface\Engine\Allocator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IRangeAllocator.h">
-      <Filter>Interface Files\Allocator</Filter>
+      <Filter>Header Files\Interface\Engine\Allocator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IRingAllocator.h">
-      <Filter>Interface Files\Allocator</Filter>
+      <Filter>Header Files\Interface\Engine\Allocator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IStackAllocator.h">
-      <Filter>Interface Files\Allocator</Filter>
+      <Filter>Header Files\Interface\Engine\Allocator</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationController.h">
-      <Filter>Interface Files\Animation</Filter>
+      <Filter>Header Files\Interface\Engine\Animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationInfo.h">
-      <Filter>Interface Files\Animation</Filter>
+      <Filter>Header Files\Interface\Engine\Animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationKeyFrame.h">
-      <Filter>Interface Files\Animation</Filter>
+      <Filter>Header Files\Interface\Engine\Animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationKeyFrames.h">
-      <Filter>Interface Files\Animation</Filter>
+      <Filter>Header Files\Interface\Engine\Animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationPlayer.h">
-      <Filter>Interface Files\Animation</Filter>
+      <Filter>Header Files\Interface\Engine\Animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationTrack.h">
-      <Filter>Interface Files\Animation</Filter>
+      <Filter>Header Files\Interface\Engine\Animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationUpdater.h">
-      <Filter>Interface Files\Animation</Filter>
+      <Filter>Header Files\Interface\Engine\Animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\ITAnimationInfo.h">
-      <Filter>Interface Files\Animation</Filter>
+      <Filter>Header Files\Interface\Engine\Animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\ITAnimationUpdater.h">
-      <Filter>Interface Files\Animation</Filter>
+      <Filter>Header Files\Interface\Engine\Animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Application\IAppDelegate.h">
-      <Filter>Interface Files\Application</Filter>
+      <Filter>Header Files\Interface\Engine\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Application\IApplication.h">
-      <Filter>Interface Files\Application</Filter>
+      <Filter>Header Files\Interface\Engine\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Application\IConsoleApp.h">
-      <Filter>Interface Files\Application</Filter>
+      <Filter>Header Files\Interface\Engine\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Application\IViewBasedApp.h">
-      <Filter>Interface Files\Application</Filter>
+      <Filter>Header Files\Interface\Engine\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Archive\IArchive.h">
-      <Filter>Interface Files\Archive</Filter>
+      <Filter>Header Files\Interface\Engine\Archive</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Buffer\IBuffer.h">
-      <Filter>Interface Files\Buffer</Filter>
+      <Filter>Header Files\Interface\Engine\Buffer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Buffer\ICacheBuffer.h">
-      <Filter>Interface Files\Buffer</Filter>
+      <Filter>Header Files\Interface\Engine\Buffer</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Compression\ICompressionDecoder.h">
-      <Filter>Interface Files\Compression</Filter>
+      <Filter>Header Files\Interface\Engine\Compression</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Compression\ICompressionEncoder.h">
-      <Filter>Interface Files\Compression</Filter>
+      <Filter>Header Files\Interface\Engine\Compression</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Decoder\IAudioDecoder.h">
-      <Filter>Interface Files\Decoder</Filter>
+      <Filter>Header Files\Interface\Engine\Decoder</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Decoder\IDecoder.h">
-      <Filter>Interface Files\Decoder</Filter>
+      <Filter>Header Files\Interface\Engine\Decoder</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Decoder\IMediaDecoder.h">
-      <Filter>Interface Files\Decoder</Filter>
+      <Filter>Header Files\Interface\Engine\Decoder</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Device\IDeviceObject.h">
-      <Filter>Interface Files\Device</Filter>
+      <Filter>Header Files\Interface\Engine\Device</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Device\IDeviceObjectIterator.h">
-      <Filter>Interface Files\Device</Filter>
+      <Filter>Header Files\Interface\Engine\Device</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\ICrypto.h">
-      <Filter>Interface Files\Encryption</Filter>
+      <Filter>Header Files\Interface\Engine\Encryption</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\IDecryptor.h">
-      <Filter>Interface Files\Encryption</Filter>
+      <Filter>Header Files\Interface\Engine\Encryption</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\IEncryptor.h">
-      <Filter>Interface Files\Encryption</Filter>
+      <Filter>Header Files\Interface\Engine\Encryption</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\File\IFileCopier.h">
-      <Filter>Interface Files\File</Filter>
+      <Filter>Header Files\Interface\Engine\File</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\File\IFileWriter.h">
-      <Filter>Interface Files\File</Filter>
+      <Filter>Header Files\Interface\Engine\File</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IASTCFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBaseFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBinaryFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBMPFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ICompressedTexFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ICSVFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IDDSFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IFLACFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IFNTFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IGeometryFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IGIFFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IGLSLFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IHTMLFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IImageFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IJPGFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IKTXFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IManifestFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IMarkupLangFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IMediaFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IMIDIFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IOGGFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPKMFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPNGFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPSDFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPVRTexFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IShaderFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ISoundFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ISpeexFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IStreamingPCMFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ITGAFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ITXTFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IWAVFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IWEBMFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IWEBPFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IXLSFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IZIPFile.h">
-      <Filter>Interface Files\FileParser</Filter>
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Font\IFontFace.h">
-      <Filter>Interface Files\Font</Filter>
+      <Filter>Header Files\Interface\Engine\Font</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Image\IImageFiller.h">
-      <Filter>Interface Files\Image</Filter>
+      <Filter>Header Files\Interface\Engine\Image</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Image\IImageProcessor.h">
-      <Filter>Interface Files\Image</Filter>
+      <Filter>Header Files\Interface\Engine\Image</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Layout\IAligner.h">
-      <Filter>Interface Files\Layout</Filter>
+      <Filter>Header Files\Interface\Engine\Layout</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Logger\ILogger.h">
-      <Filter>Interface Files\Logger</Filter>
+      <Filter>Header Files\Interface\Engine\Logger</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Manifest\IManifestFileManager.h">
-      <Filter>Interface Files\Manifest</Filter>
+      <Filter>Header Files\Interface\Engine\Manifest</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Math\IInterpolator.h">
-      <Filter>Interface Files\Math</Filter>
+      <Filter>Header Files\Interface\Engine\Math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Math\IMD5ChecksumBuilder.h">
-      <Filter>Interface Files\Math</Filter>
+      <Filter>Header Files\Interface\Engine\Math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Math\IProjectileObject.h">
-      <Filter>Interface Files\Math</Filter>
+      <Filter>Header Files\Interface\Engine\Math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Parser\ICommandLineParser.h">
-      <Filter>Interface Files\Parser</Filter>
+      <Filter>Header Files\Interface\Engine\Parser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Parser\IFormula.h">
-      <Filter>Interface Files\Parser</Filter>
+      <Filter>Header Files\Interface\Engine\Parser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Parser\IRegularExpression.h">
-      <Filter>Interface Files\Parser</Filter>
+      <Filter>Header Files\Interface\Engine\Parser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\ProtoBuf\IProtoBufProcessor.h">
-      <Filter>Interface Files\ProtoBuf</Filter>
+      <Filter>Header Files\Interface\Engine\ProtoBuf</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IActionRecord.h">
-      <Filter>Interface Files\Recorder</Filter>
+      <Filter>Header Files\Interface\Engine\Recorder</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IActionRecorder.h">
-      <Filter>Interface Files\Recorder</Filter>
+      <Filter>Header Files\Interface\Engine\Recorder</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IInputRecorder.h">
-      <Filter>Interface Files\Recorder</Filter>
+      <Filter>Header Files\Interface\Engine\Recorder</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IInputRecordTrace.h">
-      <Filter>Interface Files\Recorder</Filter>
+      <Filter>Header Files\Interface\Engine\Recorder</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IOperationRecorder.h">
-      <Filter>Interface Files\Recorder</Filter>
+      <Filter>Header Files\Interface\Engine\Recorder</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IOperationRecordPerformer.h">
-      <Filter>Interface Files\Recorder</Filter>
+      <Filter>Header Files\Interface\Engine\Recorder</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Resource\IResLoader.h">
-      <Filter>Interface Files\Resource</Filter>
+      <Filter>Header Files\Interface\Engine\Resource</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Resource\IResObject.h">
-      <Filter>Interface Files\Resource</Filter>
+      <Filter>Header Files\Interface\Engine\Resource</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Serialization\ISerializable.h">
-      <Filter>Interface Files\Serialization</Filter>
+      <Filter>Header Files\Interface\Engine\Serialization</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Serialization\ISerializableNode.h">
-      <Filter>Interface Files\Serialization</Filter>
+      <Filter>Header Files\Interface\Engine\Serialization</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Serialization\ISerializableNodeWalker.h">
-      <Filter>Interface Files\Serialization</Filter>
+      <Filter>Header Files\Interface\Engine\Serialization</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Serialization\ISerializer.h">
-      <Filter>Interface Files\Serialization</Filter>
+      <Filter>Header Files\Interface\Engine\Serialization</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IBitStream.h">
-      <Filter>Interface Files\Stream</Filter>
+      <Filter>Header Files\Interface\Engine\Stream</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IBitStreamReader.h">
-      <Filter>Interface Files\Stream</Filter>
+      <Filter>Header Files\Interface\Engine\Stream</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IBitStreamWriter.h">
-      <Filter>Interface Files\Stream</Filter>
+      <Filter>Header Files\Interface\Engine\Stream</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IFileStream.h">
-      <Filter>Interface Files\Stream</Filter>
+      <Filter>Header Files\Interface\Engine\Stream</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IFileStreamReader.h">
-      <Filter>Interface Files\Stream</Filter>
+      <Filter>Header Files\Interface\Engine\Stream</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IFileStreamWriter.h">
-      <Filter>Interface Files\Stream</Filter>
+      <Filter>Header Files\Interface\Engine\Stream</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IStream.h">
-      <Filter>Interface Files\Stream</Filter>
+      <Filter>Header Files\Interface\Engine\Stream</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IStreamProcessor.h">
-      <Filter>Interface Files\Stream</Filter>
+      <Filter>Header Files\Interface\Engine\Stream</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IStreamReader.h">
-      <Filter>Interface Files\Stream</Filter>
+      <Filter>Header Files\Interface\Engine\Stream</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IStreamWriter.h">
-      <Filter>Interface Files\Stream</Filter>
+      <Filter>Header Files\Interface\Engine\Stream</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\StringTable\IStringTable.h">
-      <Filter>Interface Files\StringTable</Filter>
+      <Filter>Header Files\Interface\Engine\StringTable</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\StringTable\StringObj.h">
-      <Filter>Interface Files\StringTable</Filter>
+      <Filter>Header Files\Interface\Engine\StringTable</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Thread\IThreadObject.h">
-      <Filter>Interface Files\Thread</Filter>
+      <Filter>Header Files\Interface\Engine\Thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Thread\IThreadPool.h">
-      <Filter>Interface Files\Thread</Filter>
+      <Filter>Header Files\Interface\Engine\Thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Thread\IThreadTask.h">
-      <Filter>Interface Files\Thread</Filter>
+      <Filter>Header Files\Interface\Engine\Thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Thread\IThreadTaskSet.h">
-      <Filter>Interface Files\Thread</Filter>
+      <Filter>Header Files\Interface\Engine\Thread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Transaction\ITransaction.h">
-      <Filter>Interface Files\Transaction</Filter>
+      <Filter>Header Files\Interface\Engine\Transaction</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Transaction\ITransactionManager.h">
-      <Filter>Interface Files\Transaction</Filter>
+      <Filter>Header Files\Interface\Engine\Transaction</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IAndroidPlatform.h">
-      <Filter>Interface Files\Platform</Filter>
+      <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IChromePlatform.h">
-      <Filter>Interface Files\Platform</Filter>
+      <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IIOSPlatform.h">
-      <Filter>Interface Files\Platform</Filter>
+      <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IMenu.h">
-      <Filter>Interface Files\Platform</Filter>
+      <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\INetFirewall.h">
-      <Filter>Interface Files\Platform</Filter>
+      <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IPlatform.h">
-      <Filter>Interface Files\Platform</Filter>
+      <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IProcessDebugger.h">
-      <Filter>Interface Files\Platform</Filter>
+      <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IPurchase.h">
-      <Filter>Interface Files\Platform</Filter>
+      <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IRegistry.h">
-      <Filter>Interface Files\Platform</Filter>
+      <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IShell.h">
-      <Filter>Interface Files\Platform</Filter>
+      <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IWindowsPlatform.h">
-      <Filter>Interface Files\Platform</Filter>
+      <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IWinPlatform.h">
-      <Filter>Interface Files\Platform</Filter>
+      <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Properties\IProperties.h">
-      <Filter>Interface Files\Properties</Filter>
+      <Filter>Header Files\Interface\Engine\Properties</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Properties\IPropertiesMehods.h">
-      <Filter>Interface Files\Properties</Filter>
+      <Filter>Header Files\Interface\Engine\Properties</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Network\IBluetooth.h">
-      <Filter>Interface Files\Platform\Network</Filter>
+      <Filter>Header Files\Interface\Engine\Platform\Network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Network\INet.h">
-      <Filter>Interface Files\Platform\Network</Filter>
+      <Filter>Header Files\Interface\Engine\Platform\Network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Network\INetFirewall.h">
-      <Filter>Interface Files\Platform\Network</Filter>
+      <Filter>Header Files\Interface\Engine\Platform\Network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Kernel\IKeychain.h">
-      <Filter>Interface Files\Platform\Kernel</Filter>
+      <Filter>Header Files\Interface\Engine\Platform\Kernel</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Kernel\IProcessDebugger.h">
-      <Filter>Interface Files\Platform\Kernel</Filter>
+      <Filter>Header Files\Interface\Engine\Platform\Kernel</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Kernel\IRegistry.h">
-      <Filter>Interface Files\Platform\Kernel</Filter>
+      <Filter>Header Files\Interface\Engine\Platform\Kernel</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Kernel\IShell.h">
-      <Filter>Interface Files\Platform\Kernel</Filter>
+      <Filter>Header Files\Interface\Engine\Platform\Kernel</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\SensorManager\ISensorManager.h">
-      <Filter>Interface Files\Platform\SensorManager</Filter>
+      <Filter>Header Files\Interface\Engine\Platform\SensorManager</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Controller\IJoystick.h">
-      <Filter>Interface Files\Platform\Controller</Filter>
+      <Filter>Header Files\Interface\Engine\Platform\Controller</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\UI\IEditBox.h">
-      <Filter>Interface Files\Platform\UI</Filter>
+      <Filter>Header Files\Interface\Engine\Platform\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\UI\IMenu.h">
-      <Filter>Interface Files\Platform\UI</Filter>
+      <Filter>Header Files\Interface\Engine\Platform\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\UI\IMessageBox.h">
-      <Filter>Interface Files\Platform\UI</Filter>
+      <Filter>Header Files\Interface\Engine\Platform\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\UI\IWebView.h">
-      <Filter>Interface Files\Platform\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\EGE_Engine.h">
-      <Filter>Interface Files</Filter>
+      <Filter>Header Files\Interface\Engine\Platform\UI</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Resource\IResLoaderFactory.h">
-      <Filter>Interface Files\Resource</Filter>
+      <Filter>Header Files\Interface\Engine\Resource</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Source\Engine\EngineSDKFiles.h">
       <Filter>SDK Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\EGE_Engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IClonableObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IConnection.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ICopyableObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IEventHooker.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IGarbageCollector.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IIDObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IInterfaceFactory.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IInvoker.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IMeasurableObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IModule.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IModuleManager.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IObjectState.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IObservable.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IObserver.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IProcessor.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITask.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITColorObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITEnable.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITFlagsObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITickableObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITimeoutObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITimerObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITIterator.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITNameObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITObjectTree.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITPowerable.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITPriorityObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITScrollableObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITShowableObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITTagNameObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITUserDataObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\ITVersionable.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IWithLastErrorObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\EngineConst.h">
+      <Filter>Header Files\Interface\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
