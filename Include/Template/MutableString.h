@@ -858,7 +858,7 @@ Encoding MutableString<CharType, CharEncoding>::GetEncodeType() const {
 
 template <typename CharType, Encoding CharEncoding>
 _dword MutableString<CharType, CharEncoding>::GetID() const {
-	return CRC::BuildFromString(mString);
+	return TemplateExternal::BuildFromString(mString);
 }
 
 template <typename CharType, Encoding CharEncoding>

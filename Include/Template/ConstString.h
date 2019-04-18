@@ -350,7 +350,7 @@ Encoding ConstString<CharType, CharEncoding>::GetEncodeType() const {
 
 template <typename CharType, Encoding CharEncoding>
 _dword ConstString<CharType, CharEncoding>::GetID() const {
-	return CRC::BuildFromString(mString);
+	return TemplateExternal::BuildFromString(mString);
 }
 
 template <typename CharType, Encoding CharEncoding>

@@ -44,11 +44,11 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\Win32_Lib_Release.props" />
+    <Import Project="..\..\props\Win32_Lib_Release.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\Win32_Lib_Debug.props" />
+    <Import Project="..\..\props\Win32_Lib_Debug.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
@@ -159,7 +159,6 @@
     <ClCompile Include="..\..\..\Source\Engine\Layout\AlignerObjectLine.cpp" />
     <ClInclude Include="..\..\..\Include\EGE_Engine.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IAllocator.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IBufferAllocator.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\ILinearAllocator.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IOffsetAllocator.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IRangeAllocator.h" />
@@ -191,6 +190,7 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\ICrypto.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\IDecryptor.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\IEncryptor.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\EngineConst.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IASTCFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBaseFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBinaryFile.h" />

@@ -50,51 +50,25 @@ _dword CRC::BuildFromBuffer(const _byte* buffer, _dword size, _dword oldcrc) {
 	return ~crc;
 }
 
-_dword CRC::BuildFromString(const _chara* string, Flag flag, _dword oldcrc) {
+_dword CRC::BuildFromString(const _chara* string, _dword oldcrc) {
 	if (string == _null)
 		return 0;
 
 	_dword crc = ~oldcrc;
-
-	// Lowercase string
-	if (flag == Flag::Lowercase) {
-		for (_dword i = 0; string[i] != 0; i++)
-			crc = BUILD_CRC(EGE_TO_LOWER(string[i]), crc);
-	}
-	// Uppercase string
-	else if (flag == Flag::Uppercase) {
-		for (_dword i = 0; string[i] != 0; i++)
-			crc = BUILD_CRC(EGE_TO_UPPER(string[i]), crc);
-	}
-	// Normal string
-	else {
-		for (_dword i = 0; string[i] != 0; i++)
-			crc = BUILD_CRC(string[i], crc);
+	for (_dword i = 0; string[i] != 0; i++) {
+		crc = BUILD_CRC(string[i], crc);
 	}
 
 	return ~crc;
 }
 
-_dword CRC::BuildFromString(const _charw* string, Flag flag, _dword oldcrc) {
+_dword CRC::BuildFromString(const _charw* string, _dword oldcrc) {
 	if (string == _null)
 		return 0;
 
 	_dword crc = ~oldcrc;
-
-	// Lowercase string
-	if (flag == Flag::Lowercase) {
-		for (_dword i = 0; string[i] != 0; i++)
-			crc = BUILD_CRC(EGE_TO_LOWER(string[i]), crc);
-	}
-	// Uppercase string
-	else if (flag == Flag::Uppercase) {
-		for (_dword i = 0; string[i] != 0; i++)
-			crc = BUILD_CRC(EGE_TO_UPPER(string[i]), crc);
-	}
-	// Normal string
-	else {
-		for (_dword i = 0; string[i] != 0; i++)
-			crc = BUILD_CRC(string[i], crc);
+	for (_dword i = 0; string[i] != 0; i++) {
+		crc = BUILD_CRC(string[i], crc);
 	}
 
 	return ~crc;
