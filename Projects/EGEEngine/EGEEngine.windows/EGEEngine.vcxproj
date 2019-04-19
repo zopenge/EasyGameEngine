@@ -159,10 +159,6 @@
     <ClCompile Include="..\..\..\Source\Engine\Layout\AlignerObjectLine.cpp" />
     <ClInclude Include="..\..\..\Include\EGE_Engine.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IAllocator.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\ILinearAllocator.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IOffsetAllocator.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IRangeAllocator.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IRingAllocator.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IStackAllocator.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationController.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationInfo.h" />

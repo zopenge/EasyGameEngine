@@ -3,21 +3,22 @@
 namespace EGE {
 
 /// <summary>
-/// The collision result of polygons.
-/// </summary>
-struct PolygonCollisionResult {
-	// Are the polygons going to intersect forward in time?
-	_ubool mWillIntersect;
-	// Are the polygons currently intersecting?
-	_ubool mIntersect;
-	// The translation to apply to the first polygon to push the polygons apart.
-	Vector2 mMinimumTranslationVector;
-};
-
-/// <summary>
 /// The intersection.
 /// </summary>
 class Intersection {
+public:
+	/// <summary>
+	/// The collision result of polygons.
+	/// </summary>
+	struct PolygonCollisionResult {
+		// Are the polygons going to intersect forward in time?
+		_ubool mWillIntersect;
+		// Are the polygons currently intersecting?
+		_ubool mIntersect;
+		// The translation to apply to the first polygon to push the polygons apart.
+		Vector2 mMinimumTranslationVector;
+	};
+
 public:
 	//! Rectangle VS rectangle.
 	//! @param lt   The left-top position.

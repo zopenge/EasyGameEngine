@@ -3,12 +3,6 @@
 namespace EGE {
 
 /// <summary>
-/// The base event data.
-/// </summary>
-struct BaseEventData {
-};
-
-/// <summary>
 /// The observable object.
 /// </summary>
 class IObservable : public IObject {

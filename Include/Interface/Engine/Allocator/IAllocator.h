@@ -42,6 +42,10 @@ public:
 	//!	@param		buffer	The buffer data.
 	//!	@return		The address of allocated memory block.
 	virtual _byte* ReAlloc(_void* pointer, _dword size, const _byte* buffer) PURE;
+	//!	Reserve buffer.
+	//!	@param		pointer	The address of allocated memory block.
+	//!	@return		none.
+	virtual _void Reserve(_void* pointer) PURE;
 	//!	Free.
 	//!	@param		pointer	The address of allocated memory block.
 	//!	@return		none.
@@ -53,7 +57,7 @@ public:
 };
 
 /// <summary>
-/// The class to allocate and auto free in function.
+/// The class to allocate from common allocator and auto free in function.
 /// </summary>
 template <typename Type>
 struct AllocatedOwner {

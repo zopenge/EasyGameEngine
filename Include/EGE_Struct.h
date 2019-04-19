@@ -3,6 +3,17 @@
 namespace EGE {
 
 /// <summary>
+/// The base event data.
+/// </summary>
+struct BaseEventData {
+	_ubool mStopPropagation;
+
+	BaseEventData() {
+		mStopPropagation = false;
+	}
+};
+
+/// <summary>
 /// The (OS, Operation System) data.
 /// </summary>
 struct OSData {
