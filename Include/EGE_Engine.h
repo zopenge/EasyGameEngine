@@ -280,12 +280,8 @@ DEFINE_IMPORT_FUNC(EGE::_void, EGE_Tick, (EGE::_dword limited_elapse, EGE::_dwor
 DEFINE_IMPORT_FUNC(EGE::_void, EGE_Finalize, ())
 
 // Engine Common Files
-#include "Interface/Engine/StringTable/StringObj.h"
-
-// Engine global files
-#include "Interface/Engine/EngineEvents.h"
-#include "Interface/Engine/EngineGlobals.h"
-using namespace EGE::EngineEvents;
+#include "Interface/Engine/EngineConst.h"
+#include "Interface/Engine/EngineStruct.h"
 
 // Base Template Interface Files
 #include "Interface/Engine/ITColorObject.h"
@@ -449,6 +445,10 @@ using namespace EGE::EngineEvents;
 //----------------------------------------------------------------------------
 
 namespace EGE {
+
+typedef TStringObj<_chara, Encoding::Ansi> AStringObj;
+typedef TStringObj<_chara, Encoding::Utf8> UStringObj;
+typedef TStringObj<_charw, Encoding::Utf16> WStringObj;
 
 typedef Array<AStringObj> AStringObjArray;
 typedef Array<UStringObj> UStringObjArray;

@@ -6,6 +6,7 @@ namespace EGE {
 /// The base event data.
 /// </summary>
 struct BaseEventData {
+	//!	True indicates to stop event propagation.
 	_ubool mStopPropagation;
 
 	BaseEventData() {
