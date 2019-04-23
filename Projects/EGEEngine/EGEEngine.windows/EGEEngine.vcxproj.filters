@@ -1663,6 +1663,9 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\EngineConst.h">
       <Filter>Header Files\Interface\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IPlayer.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Source\Engine\Application\ios\NSApplication.mm">

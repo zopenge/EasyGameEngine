@@ -243,6 +243,7 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\IObjectState.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\IObservable.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\IObserver.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IPlayer.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\IProcessor.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\ITask.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\ITColorObject.h" />
