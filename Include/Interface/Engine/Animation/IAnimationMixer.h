@@ -3,9 +3,9 @@
 namespace EGE {
 
 /// <summary>
-/// The animation track.
+/// The animation mixer.
 /// </summary>
-class IAnimationTrack : public IObject {
+class IAnimationController : public IObject {
 public:
 };
 

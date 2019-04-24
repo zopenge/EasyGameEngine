@@ -1147,43 +1147,16 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\Allocator\IStackAllocator.h">
       <Filter>Header Files\Interface\Engine\Allocator</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationController.h">
-      <Filter>Header Files\Interface\Engine\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationInfo.h">
-      <Filter>Header Files\Interface\Engine\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationKeyFrame.h">
-      <Filter>Header Files\Interface\Engine\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationKeyFrames.h">
-      <Filter>Header Files\Interface\Engine\Animation</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationPlayer.h">
       <Filter>Header Files\Interface\Engine\Animation</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationTrack.h">
       <Filter>Header Files\Interface\Engine\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationUpdater.h">
-      <Filter>Header Files\Interface\Engine\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\ITAnimationInfo.h">
-      <Filter>Header Files\Interface\Engine\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\ITAnimationUpdater.h">
-      <Filter>Header Files\Interface\Engine\Animation</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Application\IAppDelegate.h">
       <Filter>Header Files\Interface\Engine\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Application\IApplication.h">
-      <Filter>Header Files\Interface\Engine\Application</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Application\IConsoleApp.h">
-      <Filter>Header Files\Interface\Engine\Application</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Application\IViewBasedApp.h">
       <Filter>Header Files\Interface\Engine\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Archive\IArchive.h">
@@ -1665,6 +1638,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\IPlayer.h">
       <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationClip.h">
+      <Filter>Header Files\Interface\Engine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Animation\IAnimationMixer.h">
+      <Filter>Header Files\Interface\Engine\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Application\IViewBasedApplication.h">
+      <Filter>Header Files\Interface\Engine\Application</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

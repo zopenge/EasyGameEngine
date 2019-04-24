@@ -3,9 +3,9 @@
 namespace EGE {
 
 /// <summary>
-/// The animation track.
+/// The animation clip of key frames.
 /// </summary>
-class IAnimationTrack : public IObject {
+class IAnimationClip : public IObject {
 public:
 };
 

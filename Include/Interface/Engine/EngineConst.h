@@ -3,6 +3,14 @@
 namespace EGE {
 
 /// <summary>
+/// The application creation flag.
+/// </summary>
+enum class _CREATION_FLAG {
+	_CF_OVERLAPPED,
+	_CF_POPUP,
+};
+
+/// <summary>
 /// The process state.
 /// </summary>
 enum class ProcessState {
