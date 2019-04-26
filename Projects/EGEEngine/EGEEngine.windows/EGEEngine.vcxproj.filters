@@ -165,15 +165,6 @@
     <Filter Include="Header Files\Interface\Engine\Buffer">
       <UniqueIdentifier>{53314df9-67d1-48f3-9fb5-887ca427f2ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Interface\Engine\Compression">
-      <UniqueIdentifier>{beed3417-bd06-4db9-b020-b8cb2461e3ad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interface\Engine\Decoder">
-      <UniqueIdentifier>{590a6c22-1674-4117-b304-9b28ed26c802}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interface\Engine\Device">
-      <UniqueIdentifier>{1484155f-0ff7-4ff8-b0b5-f4257be0ceb5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Interface\Engine\Encryption">
       <UniqueIdentifier>{74ec7fc1-9e97-4cb0-b823-d8f5ce6c54fc}</UniqueIdentifier>
     </Filter>
@@ -248,6 +239,9 @@
     </Filter>
     <Filter Include="Header Files\Interface\Engine\Transaction">
       <UniqueIdentifier>{f19d774e-40a5-433d-9910-c39b4d3bd2cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface\Engine\Codec">
+      <UniqueIdentifier>{3fd98108-b169-4533-bf7e-bd959ecfd9d9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1168,27 +1162,6 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\Buffer\ICacheBuffer.h">
       <Filter>Header Files\Interface\Engine\Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Compression\ICompressionDecoder.h">
-      <Filter>Header Files\Interface\Engine\Compression</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Compression\ICompressionEncoder.h">
-      <Filter>Header Files\Interface\Engine\Compression</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Decoder\IAudioDecoder.h">
-      <Filter>Header Files\Interface\Engine\Decoder</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Decoder\IDecoder.h">
-      <Filter>Header Files\Interface\Engine\Decoder</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Decoder\IMediaDecoder.h">
-      <Filter>Header Files\Interface\Engine\Decoder</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Device\IDeviceObject.h">
-      <Filter>Header Files\Interface\Engine\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Device\IDeviceObjectIterator.h">
-      <Filter>Header Files\Interface\Engine\Device</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\ICrypto.h">
       <Filter>Header Files\Interface\Engine\Encryption</Filter>
     </ClInclude>
@@ -1647,6 +1620,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Application\IViewBasedApplication.h">
       <Filter>Header Files\Interface\Engine\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Codec\IDecoder.h">
+      <Filter>Header Files\Interface\Engine\Codec</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

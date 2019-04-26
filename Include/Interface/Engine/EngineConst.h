@@ -3,11 +3,14 @@
 namespace EGE {
 
 /// <summary>
-/// The application creation flag.
+/// The orientation mode.
 /// </summary>
-enum class _CREATION_FLAG {
-	_CF_OVERLAPPED,
-	_CF_POPUP,
+enum class OrientationMode {
+	Unknown,
+	Any, //! Any type
+	Port, //! Portrait
+	Land, //! Landscape
+	Square, //!	Square
 };
 
 /// <summary>
