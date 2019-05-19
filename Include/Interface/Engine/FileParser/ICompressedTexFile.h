@@ -6,39 +6,35 @@
 
 #pragma once
 
-namespace EGE
-{
+namespace EGE {
 
 //----------------------------------------------------------------------------
 // ICompressedTexFile
 //----------------------------------------------------------------------------
 
-class ICompressedTexFile : public IImageFile
-{
+class ICompressedTexFile : public IImageFile {
 public:
 	//!	The texture info
-	struct TextureInfo
-	{
+	struct TextureInfo {
 		//!	The mipmaps number.
-		_dword			mMipmapsNumber;
+		_dword mMipmapsNumber;
 		//!	The compressed internal format, when not equal to 0 then indicates it's compressed texture.
-		_dword			mCompressedInternalFormat;
+		_dword mCompressedInternalFormat;
 		//!	The uncompressed internal format
-		_dword			mUncompressedInternalFormat;
+		_dword mUncompressedInternalFormat;
 		//!	The data type
-		_dword			mDataType;
+		_dword mDataType;
 
 		//!	The compressed pixel format
-		_PIXEL_FORMAT	mCompressedPixelFormat;
+		_PIXEL_FORMAT mCompressedPixelFormat;
 
-		TextureInfo( )
-		{
-			mMipmapsNumber				= 0;
-			mCompressedInternalFormat	= 0;
-			mUncompressedInternalFormat	= 0;
-			mDataType					= 0;
+		TextureInfo() {
+			mMipmapsNumber = 0;
+			mCompressedInternalFormat = 0;
+			mUncompressedInternalFormat = 0;
+			mDataType = 0;
 
-			mCompressedPixelFormat		= _PF_UNKNOWN;
+			mCompressedPixelFormat = _PF_UNKNOWN;
 		}
 	};
 
@@ -46,7 +42,7 @@ public:
 	//!	Get the texture info.
 	//!	@param		none.
 	//!	@return		The texture info.
-	virtual const TextureInfo& GetTextureInfo( ) const PURE;
+	virtual const TextureInfo& GetTextureInfo() const PURE;
 
 	//!	Get the mipmaps pixel buffer data.
 	//!	@param		mip_index	The mipmaps index.
@@ -54,12 +50,12 @@ public:
 	//!	@param		height		The height in pixel.
 	//!	@param		image_size	The image size in bytes.
 	//!	@return		The compressed buffer data.
-	virtual const _byte* GetMipmapsPixelBufferData( _dword mip_index, _dword* width, _dword* height, _dword* image_size ) const PURE;
+	virtual const _byte* GetMipmapsPixelBufferData(_dword mip_index, _dword* width, _dword* height, _dword* image_size) const PURE;
 
 	//!	Decode the image pixel.
 	//!	@param		none.
 	//!	@return		The image pixel buffer.
-	virtual const _byte* DecodeImagePixel( ) PURE;
+	virtual const _byte* DecodeImagePixel() PURE;
 };
 
-}
+} // namespace EGE

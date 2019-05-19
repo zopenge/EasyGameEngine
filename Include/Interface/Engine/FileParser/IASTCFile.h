@@ -1,21 +1,13 @@
-//! @file     IASTCFile.h
-//! @author   LiCode
-//! @version  1.0.0.613
-//! @date     2011/01/17
-//! Copyright 2009-2010 LiCode's Union.
-
 #pragma once
 
-namespace EGE
-{
+namespace EGE {
 
-//----------------------------------------------------------------------------
-// IASTCFile
-//----------------------------------------------------------------------------
-
-class IASTCFile : public ICompressedTexFile
-{
+/// <summary>
+/// Adaptive Scalable Texture Compression (ASTC) is a lossy block-based texture compression algorithm.
+/// @see https://en.wikipedia.org/wiki/Adaptive_Scalable_Texture_Compression
+/// </summary>
+class IASTCFile : public ICompressedTexFile {
 public:
 };
 
-}
+} // namespace EGE

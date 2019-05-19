@@ -165,9 +165,6 @@
     <Filter Include="Header Files\Interface\Engine\Buffer">
       <UniqueIdentifier>{53314df9-67d1-48f3-9fb5-887ca427f2ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Interface\Engine\Encryption">
-      <UniqueIdentifier>{74ec7fc1-9e97-4cb0-b823-d8f5ce6c54fc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Interface\Engine\File">
       <UniqueIdentifier>{ef389367-9a9c-42be-8e48-3a1e1981ac91}</UniqueIdentifier>
     </Filter>
@@ -1162,15 +1159,6 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\Buffer\ICacheBuffer.h">
       <Filter>Header Files\Interface\Engine\Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\ICrypto.h">
-      <Filter>Header Files\Interface\Engine\Encryption</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\IDecryptor.h">
-      <Filter>Header Files\Interface\Engine\Encryption</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Encryption\IEncryptor.h">
-      <Filter>Header Files\Interface\Engine\Encryption</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\File\IFileCopier.h">
       <Filter>Header Files\Interface\Engine\File</Filter>
     </ClInclude>
@@ -1622,6 +1610,9 @@
       <Filter>Header Files\Interface\Engine\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Codec\IDecoder.h">
+      <Filter>Header Files\Interface\Engine\Codec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Codec\ICodec.h">
       <Filter>Header Files\Interface\Engine\Codec</Filter>
     </ClInclude>
   </ItemGroup>

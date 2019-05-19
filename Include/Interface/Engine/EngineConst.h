@@ -131,51 +131,6 @@ enum class AudioFormat {
 	STEREO16,
 };
 
-//!	The file Type
-enum _FILE_FORMAT {
-	_FF_UNKNOWN, //! Unknown file format
-
-	// Common Files
-	_FF_CSV, //! The Comma Separated Values text file
-	_FF_XML, //! The eXtensible Markup Language
-	_FF_HTML, //! The HyperText Markup Language
-	_FF_JSON, //! The JavaScript Object Notation
-	_FF_GEOMETRY, //! The graphic geometry file in XML format
-	_FF_MANIFEST, //! The manifest text in XML format
-	_FF_ZIP, //! The zip compressed file format
-	_FF_7Z, //! The 7z compressed file format
-	_FF_PACKAGE, //!	The package file format
-	_FF_BXML, //! The binary XML file format
-	_FF_FNT, //! The *.fnt file format
-
-	// Image Files
-	_FF_IMAGE_BEGIN,
-	_FF_PSD, //! The photoshop image file format
-	_FF_BMP, //! The bitmap image file format
-	_FF_JPG, //! The JPEG compression image file format
-	_FF_GIF, //! The Graphics Interchange Format.
-	_FF_PNG, //! The Portable Network Graphics file format
-	_FF_ASTC, //! The Adaptive Scalable Texture Compression (ASTC) file format
-	_FF_DDS, //! The Microsoft DirectDraw Surface file format
-	_FF_TGA, //! The TGA image file format
-	_FF_PVR_TEX, //!	The PowerVR Texture
-	_FF_KTX, //!	The Khronos Texture (http://www.khronos.org/opengles/sdk/tools/KTX/)
-	_FF_PKM, //!	The ETC compression texture (http://code.google.com/p/grafx2/wiki/PKMSpec)
-	_FF_WEBP, //!	The WebP image file (http://zh.wikipedia.org/zh-cn/WebP)
-	_FF_WEBM, //!	The WebM stream file.
-	_FF_IMAGE_END,
-
-	// Sound Files
-	_FF_SOUND_BEGIN,
-	_FF_OGG, //! The oggVorbis sound file format
-	_FF_WAV, //! The Waveform Audio File Format (WAVE, or more commonly known as WAV due to its filename extension)
-	_FF_FLAC, //! Free Lossless Audio Codec
-	_FF_MIDI, //! The MIDI Audio File Format
-	_FF_SPEEX, //! The Speex is a patent-free audio compression format designed for speech and also a free software speech codec that may be used on VoIP applications and podcasts
-	_FF_STREAMING_PCM, //!	The streaming PCM sound file
-	_FF_SOUND_END,
-};
-
 //!	The font face load flags
 enum _FONT_FACE_LOAD_FLAGS {
 	_FONT_FACE_LOAD_DEFAULT = 0,
