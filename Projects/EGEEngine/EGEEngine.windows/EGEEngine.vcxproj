@@ -174,18 +174,13 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\Codec\IDecoder.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\EngineConst.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IASTCFile.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBaseFile.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBinaryFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBMPFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ICompressedTexFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ICSVFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IDDSFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IFLACFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IFNTFile.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IGeometryFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IGIFFile.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IGLSLFile.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IHTMLFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IImageFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IJPGFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IKTXFile.h" />
@@ -209,8 +204,6 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IWEBPFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IXLSFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IZIPFile.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\File\IFileCopier.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\File\IFileWriter.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\Font\IFontFace.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\IClonableObject.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\IConnection.h" />

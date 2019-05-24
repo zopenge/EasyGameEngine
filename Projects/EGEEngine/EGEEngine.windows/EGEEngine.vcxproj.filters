@@ -165,9 +165,6 @@
     <Filter Include="Header Files\Interface\Engine\Buffer">
       <UniqueIdentifier>{53314df9-67d1-48f3-9fb5-887ca427f2ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Interface\Engine\File">
-      <UniqueIdentifier>{ef389367-9a9c-42be-8e48-3a1e1981ac91}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Interface\Engine\FileParser">
       <UniqueIdentifier>{06b71870-748b-44d3-9bb1-caa2ab248b07}</UniqueIdentifier>
     </Filter>
@@ -1159,19 +1156,7 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\Buffer\ICacheBuffer.h">
       <Filter>Header Files\Interface\Engine\Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\File\IFileCopier.h">
-      <Filter>Header Files\Interface\Engine\File</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\File\IFileWriter.h">
-      <Filter>Header Files\Interface\Engine\File</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IASTCFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBaseFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBinaryFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBMPFile.h">
@@ -1192,16 +1177,7 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IFNTFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IGeometryFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IGIFFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IGLSLFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IHTMLFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IImageFile.h">
