@@ -12,7 +12,7 @@ PersistenceThread::~PersistenceThread() {
 	Close();
 }
 
-_dword PersistenceThread::OnRunThread(const QwordParams2& parameters) {
+_dword PersistenceThread::OnRunThread(const QwordParams2& params) {
 	_dword index = 0;
 
 	while (IsReleasing() == _false && mMaxUpdatersNumber != 0) {
@@ -57,7 +57,7 @@ _dword PersistenceThread::OnRunThread(const QwordParams2& parameters) {
 	return EXIT_SUCCESS;
 }
 
-_void PersistenceThread::OnCloseThread(_dword exitcode, const QwordParams2& parameters) {
+_void PersistenceThread::OnCloseThread(_dword exitcode, const QwordParams2& params) {
 }
 
 _dword PersistenceThread::GetInterval() const {
@@ -115,14 +115,14 @@ _ubool PersistenceThread::Resume() {
 	return _true;
 }
 
-_ubool PersistenceThread::AddUpdaterFunc(OnUpdateFunction func, const QwordParams2& parameters) {
+_ubool PersistenceThread::AddUpdaterFunc(OnUpdateFunction func, const QwordParams2& params) {
 	if (mCurUpdatersNumber >= mMaxUpdatersNumber)
 		return _false;
 
 	// Add the updater info
 	for (_dword i = 0; i < mMaxUpdatersNumber; i++) {
 		if (mUpdaters[i].IsNull()) {
-			mUpdaters[i].Init(func, parameters);
+			mUpdaters[i].Init(func, params);
 			break;
 		}
 	}

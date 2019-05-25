@@ -391,12 +391,12 @@ public:
 	//!	Create the markup language serializable node by the first child element of root.
 	//!	@param		file			The markup language file.
 	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateMarkupLangSerializableNode(IMarkupLangFile* file) PURE;
+	virtual ISerializableNodePassRef CreateMarkupLangSerializableNode(IMarkupFile* file) PURE;
 	//!	Create the markup language serializable node by the first child element of root.
 	//!	@param		element			The markup language element.
 	//!	@param		file			The markup language file.
 	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateMarkupLangSerializableNode(IMarkupLangElement* element, IMarkupLangFile* file) PURE;
+	virtual ISerializableNodePassRef CreateMarkupLangSerializableNode(IMarkupElement* element, IMarkupFile* file) PURE;
 
 	//!	Create the network firewall interface.
 	//!	@param		none.
@@ -513,7 +513,7 @@ public:
 	//!	Create the BXML file.
 	//!	@param		markup_file	The markup file.
 	//!	@return		The markup language file interface.
-	virtual IMarkupLangFilePassRef CreateBXMLFile(IMarkupLangFile* markup_file) PURE;
+	virtual IMarkupLangFilePassRef CreateBXMLFile(IMarkupFile* markup_file) PURE;
 	//!	Create the JSON file.
 	//!	@param		none.
 	//!	@return		The markup language file interface.

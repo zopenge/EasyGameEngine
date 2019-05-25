@@ -312,7 +312,7 @@ _ubool PVRTexFile::Create( _dword width, _dword height, _PIXEL_FORMAT pixelforma
 	return _true;
 }
 
-const IPVRTexFile::PVRTexHeaderInfo& PVRTexFile::GetPVRTexHeader( ) const
+const IPVRTCFile::PVRTexHeaderInfo& PVRTexFile::GetPVRTexHeader( ) const
 {
 	return mHeaderInfo;
 }

@@ -17,15 +17,15 @@ class MarkupLangElementIterator : public INTERFACE_OBJECT_IMPL( IMarkupLangEleme
 {
 private:
 	//!	The current element
-	IMarkupLangElement*	mCurElement;
+	IMarkupElement*	mCurElement;
 
 public:
-	MarkupLangElementIterator( IMarkupLangElement* element );
+	MarkupLangElementIterator( IMarkupElement* element );
 	virtual ~MarkupLangElementIterator( );
 
 // IIterator Interface
 public:
-	virtual IMarkupLangElement*	GetObject( ) override;
+	virtual IMarkupElement*	GetObject( ) override;
 	virtual _ubool				HasObject( ) const override;
 
 	virtual _ubool				MovePrev( ) override;

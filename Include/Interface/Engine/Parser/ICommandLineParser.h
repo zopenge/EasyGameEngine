@@ -148,7 +148,7 @@ public:
 	//!	Get the command line string.
 	//!	@param		startindex	The start argument index.
 	//!	@return		The command line string.
-	virtual WStringR GetString( _dword startindex = 0 ) const PURE;
+	virtual WString GetString( _dword startindex = 0 ) const PURE;
 
 	//!	Check the argument is existing or not.
 	//!	@param		name		The optional argument name.
@@ -179,7 +179,7 @@ public:
 	//!	@param		keyname		The key name.
 	//!	@param		ignorecase	True indicates case insensitive.
 	//! @return		The argument string.
-	virtual WStringR GetArgumentStringByKeyName( WStringPtr keyname, _ubool ignorecase = _true ) const PURE;
+	virtual WString GetArgumentStringByKeyName( WStringPtr keyname, _ubool ignorecase = _true ) const PURE;
 
 	//!	Begin to get arguments.
 	//!	@param		startindex	The start argument index.

@@ -13,10 +13,10 @@ namespace EGE
 // JSONAttribute
 //----------------------------------------------------------------------------
 
-class JSONAttribute : public INTERFACE_MARKUP_LANG_ATTRIBUTE_IMPL( IMarkupLangAttribute )
+class JSONAttribute : public INTERFACE_MARKUP_LANG_ATTRIBUTE_IMPL( IMarkupAttribute )
 {
 private:
-	typedef INTERFACE_MARKUP_LANG_ATTRIBUTE_IMPL( IMarkupLangAttribute ) BaseClass;
+	typedef INTERFACE_MARKUP_LANG_ATTRIBUTE_IMPL( IMarkupAttribute ) BaseClass;
 
 private:
 	//!	The JSON attribute
@@ -40,19 +40,19 @@ public:
 	JSONAttribute( cJSON* json_attribute );
 	virtual ~JSONAttribute( );
 	
-// IMarkupLangAttribute Interface
+// IMarkupAttribute Interface
 public:
-	virtual WStringR	GetName( _ubool with_prefix = _false ) const override;
+	virtual WString	GetName( _ubool with_prefix = _false ) const override;
 };
 
 //----------------------------------------------------------------------------
 // JSONElement
 //----------------------------------------------------------------------------
 
-class JSONElement : public INTERFACE_MARKUP_LANG_ELEMENT_IMPL( IMarkupLangElement )
+class JSONElement : public INTERFACE_MARKUP_LANG_ELEMENT_IMPL( IMarkupElement )
 {
 private:
-	typedef INTERFACE_MARKUP_LANG_ELEMENT_IMPL( IMarkupLangElement ) BaseClass;
+	typedef INTERFACE_MARKUP_LANG_ELEMENT_IMPL( IMarkupElement ) BaseClass;
 
 private:
 	typedef Map< JSONAttribute*, WString > JSONAttributesMap;
@@ -75,7 +75,7 @@ private:
 
 // TMarkupLangElement Interface
 private:
-    virtual IMarkupLangElementIteratorPassRef OnCreateElementIterator( IMarkupLangElement* element ) override;
+    virtual IMarkupLangElementIteratorPassRef OnCreateElementIterator( IMarkupElement* element ) override;
 
 public:
 	JSONElement( cJSON* json_element, JSONElement* parent, JSONElement* prev, JSONElement* next );
@@ -85,31 +85,31 @@ public:
 	//!	Free JSON element.
 	_void FreeJSONElement( );
 
-// IMarkupLangElement Interface
+// IMarkupElement Interface
 public:
 	virtual _ubool					IsArrayObject( ) const override;
 
 	virtual _ubool					SetName( WStringPtr name ) override;
-	virtual WStringR				GetName( ) const override;
+	virtual WString				GetName( ) const override;
 
-	virtual IMarkupLangElement*		InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj ) override;
-	virtual IMarkupLangElement*		InsertChildElementW( WStringPtr name, WStringPtr text, _ubool is_array_obj ) override;
+	virtual IMarkupElement*		InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj ) override;
+	virtual IMarkupElement*		InsertChildElementW( WStringPtr name, WStringPtr text, _ubool is_array_obj ) override;
 
-	virtual IMarkupLangElement*		InsertChildArrayObj( WStringPtr name ) override;
-	virtual IMarkupLangElement*		AppendElementOfArrayObj( ) override;
-	virtual _dword					AppendElementOfArrayObj( IMarkupLangElement* element ) override;
+	virtual IMarkupElement*		InsertChildArrayObj( WStringPtr name ) override;
+	virtual IMarkupElement*		AppendElementOfArrayObj( ) override;
+	virtual _dword					AppendElementOfArrayObj( IMarkupElement* element ) override;
 	virtual _dword					AppendValueUOfArrayObj( _dword value ) override;
 	virtual _dword					AppendValueIOfArrayObj( _int value ) override;
 	virtual _dword					AppendValueFOfArrayObj( _float value ) override;
 	virtual _dword					AppendValueDOfArrayObj( _double value ) override;
 	virtual _dword					GetSubElementsNumber( ) const override;
-	virtual IMarkupLangElement*		GetSubElementByIndex( _dword index ) const override;
+	virtual IMarkupElement*		GetSubElementByIndex( _dword index ) const override;
 
 	virtual _dword					GetAttributesNumber( ) const override;
-	virtual IMarkupLangAttribute*	GetAttributeByIndex( _dword index ) const override;
+	virtual IMarkupAttribute*	GetAttributeByIndex( _dword index ) const override;
 
 	virtual _ubool					HasAttribute( WStringPtr name, _ubool ignorecase = _false ) const override;
-	virtual IMarkupLangAttribute*	SearchAttribute( WStringPtr name, _ubool ignorecase = _false ) const override;
+	virtual IMarkupAttribute*	SearchAttribute( WStringPtr name, _ubool ignorecase = _false ) const override;
 
 	virtual _dword					GetValueU( ) const override;
 	virtual _int					GetValueI( ) const override;
@@ -124,9 +124,9 @@ public:
 	virtual _ubool					GetText( AString& text ) const override;
 	virtual _ubool					GetText( UString& text ) const override;
 	virtual _ubool					GetText( WString& text ) const override;
-	virtual AStringR				GetTextA( ) const override;
-	virtual UStringR				GetTextU( ) const override;
-	virtual WStringR				GetTextW( ) const override;
+	virtual AString				GetTextA( ) const override;
+	virtual UString				GetTextU( ) const override;
+	virtual WString				GetTextW( ) const override;
 	virtual _ubool					SetText( AStringPtr text ) override;
 	virtual _ubool					SetText( UStringPtr text ) override;
 	virtual _ubool					SetText( WStringPtr text ) override;
@@ -139,18 +139,18 @@ public:
 	virtual _ubool 					SetAttributeString( WStringPtr name, UStringPtr string ) override;
 	virtual _ubool 					SetAttributeString( WStringPtr name, WStringPtr string ) override;
 
-	virtual WStringR				DumpToString( ) const override;
-	virtual WStringR				DumpToSchemaString( ) const override;
+	virtual WString				DumpToString( ) const override;
+	virtual WString				DumpToSchemaString( ) const override;
 };
 
 //----------------------------------------------------------------------------
 // JSONFile
 //----------------------------------------------------------------------------
 
-class JSONFile : public TBaseFile< IMarkupLangFile >
+class JSONFile : public TBaseFile< IMarkupFile >
 {
 private:
-	typedef TBaseFile< IMarkupLangFile > BaseClass;
+	typedef TBaseFile< IMarkupFile > BaseClass;
 
 private:
 	//!	The JSON root element
@@ -181,11 +181,11 @@ public:
 
 	virtual _ubool					SaveToStream( IStreamWriter* stream_writer, _dword flags ) const override;
 
-// IMarkupLangFile Interface
+// IMarkupFile Interface
 public:
-	virtual IMarkupLangDeclaration*	GetDeclaration( ) override;
+	virtual IMarkupDeclaration*	GetDeclaration( ) override;
 
-	virtual IMarkupLangElement*		GetRootElement( ) override;
+	virtual IMarkupElement*		GetRootElement( ) override;
 
 	virtual _ubool					SchemaValidate( WStringPtr filename ) override;
 	virtual _ubool					SchemaValidate( IStreamReader* stream_reader ) override;

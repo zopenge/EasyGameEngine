@@ -200,7 +200,7 @@ _ubool ManifestDir::BuildFastAccessItems( )
 	return _true;
 }
 
-WStringR ManifestDir::GetPath( ) const
+WString ManifestDir::GetPath( ) const
 {
 	if ( mParentObject == _null )
 		return mName;
@@ -874,7 +874,7 @@ _ubool ManifestFile::SaveToStream( IStreamWriter* stream_writer, _dword flags ) 
 		return _false;
 
 	// Build the root node
-	IMarkupLangElement* xml_root_node = xml_file->GetRootElement( );
+	IMarkupElement* xml_root_node = xml_file->GetRootElement( );
 	if ( xml_root_node == _null )
 		return _false;
 

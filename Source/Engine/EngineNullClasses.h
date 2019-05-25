@@ -156,7 +156,7 @@ public:
 // IProtoBufSender Interface
 public:
 	virtual _void	Send( const _byte* buffer, _dword size ) { }
-	virtual _ubool	Post( AStringPtr url_name, const AStringArray& header_list, const _byte* buffer, _dword size, const QwordParameters4& parameters ) { return _false; }
+	virtual _ubool	Post( AStringPtr url_name, const AStringArray& header_list, const _byte* buffer, _dword size, const QwordParameters4& params ) { return _false; }
 };
 
 //----------------------------------------------------------------------------

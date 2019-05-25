@@ -57,22 +57,22 @@ public:
 
 	virtual const PlatformDeviceInfo&	GetDeviceInfo( ) override;
 
-	virtual WStringR					GetIMSI( ) const override;
+	virtual WString					GetIMSI( ) const override;
 
 	virtual _ubool						CleanTempDirectory( ) override;
-	virtual WStringR					GetTempDirectory( ) const override;
+	virtual WString					GetTempDirectory( ) const override;
 	virtual _ubool						CreateTempFileInTempDirectory( WStringPtr relative_path, WStringPtr extension_name, const _byte* buffer, _dword size, WString& filename ) override;
 
-	virtual WStringR					GetAbsoluteDirectory( WStringPtr path ) override;
+	virtual WString					GetAbsoluteDirectory( WStringPtr path ) override;
 
 	virtual _void						SetCurrentDirectory( WStringPtr path ) override;
-	virtual WStringR					GetCurrentDirectory( ) const override;
+	virtual WString					GetCurrentDirectory( ) const override;
 	virtual _void						SetDocumentDirectory( WStringPtr path ) override;
-	virtual WStringR					GetDocumentDirectory( ) const override;
+	virtual WString					GetDocumentDirectory( ) const override;
 	virtual _void						SetInternalDirectory( WStringPtr path ) override;
-	virtual WStringR					GetInternalDirectory( ) const override;
+	virtual WString					GetInternalDirectory( ) const override;
 	virtual _void						SetExternalDirectory( WStringPtr path ) override;
-	virtual WStringR					GetExternalDirectory( ) const override;
+	virtual WString					GetExternalDirectory( ) const override;
 
 	virtual _ubool						IsSameFile( WStringPtr filename_1, WStringPtr filename_2 ) const override;
 
@@ -247,7 +247,7 @@ const PlatformDeviceInfo& TPlatform< Type >::GetDeviceInfo( )
 }
 
 template< typename Type >
-WStringR TPlatform< Type >::GetIMSI( ) const
+WString TPlatform< Type >::GetIMSI( ) const
 {
 	return WString( L"" );
 }
@@ -285,7 +285,7 @@ _ubool TPlatform< Type >::CleanTempDirectory( )
 }
 
 template< typename Type >
-WStringR TPlatform< Type >::GetTempDirectory( ) const
+WString TPlatform< Type >::GetTempDirectory( ) const
 {
 	_charw path[1024];
 	Platform::GetDocumentPathInDomains( path, 1024 );
@@ -310,7 +310,7 @@ _ubool TPlatform< Type >::CreateTempFileInTempDirectory( WStringPtr relative_pat
 }
 
 template< typename Type >
-WStringR TPlatform< Type >::GetAbsoluteDirectory( WStringPtr path )
+WString TPlatform< Type >::GetAbsoluteDirectory( WStringPtr path )
 {
 	_charw abs_path[1024]; abs_path[0] = 0;
 	if ( Platform::GetAbsoluteDirectory( path.Str( ), abs_path, 1024 ) == _false )
@@ -329,7 +329,7 @@ _void TPlatform< Type >::SetCurrentDirectory( WStringPtr path )
 }
 
 template< typename Type >
-WStringR TPlatform< Type >::GetCurrentDirectory( ) const
+WString TPlatform< Type >::GetCurrentDirectory( ) const
 {
 	_charw path[1024]; path[0] = 0;
 	Platform::GetCurrentDirectory( path, 1024 );
@@ -347,7 +347,7 @@ _void TPlatform< Type >::SetDocumentDirectory( WStringPtr path )
 }
 
 template< typename Type >
-WStringR TPlatform< Type >::GetDocumentDirectory( ) const
+WString TPlatform< Type >::GetDocumentDirectory( ) const
 {
 	if ( mCustomDocumentDirectory.IsEmpty( ) )
 	{
@@ -370,7 +370,7 @@ _void TPlatform< Type >::SetInternalDirectory( WStringPtr path )
 }
 
 template< typename Type >
-WStringR TPlatform< Type >::GetInternalDirectory( ) const
+WString TPlatform< Type >::GetInternalDirectory( ) const
 {
 	if ( mCustomInternalDirectory.IsEmpty( ) )
 	{
@@ -393,7 +393,7 @@ _void TPlatform< Type >::SetExternalDirectory( WStringPtr path )
 }
 
 template< typename Type >
-WStringR TPlatform< Type >::GetExternalDirectory( ) const
+WString TPlatform< Type >::GetExternalDirectory( ) const
 {
 	if ( mCustomExternalDirectory.IsEmpty( ) )
 	{

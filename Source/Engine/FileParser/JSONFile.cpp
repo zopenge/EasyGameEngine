@@ -19,7 +19,7 @@ JSONAttribute::~JSONAttribute( )
 {
 }
 
-WStringR JSONAttribute::GetName( _ubool with_prefix ) const
+WString JSONAttribute::GetName( _ubool with_prefix ) const
 {
 	return WString( ).FromString( _ENCODING_UTF8, mJSONAttribute->string );
 }
@@ -275,7 +275,7 @@ _void JSONElement::UpdateAttribute( WStringPtr name, cJSON* json_value )
 		::cJSON_ReplaceItemInObject( mJSONElement, name_ansi.Str( ), json_value );
 }
 
-IMarkupLangElementIteratorPassRef JSONElement::OnCreateElementIterator( IMarkupLangElement* element )
+IMarkupLangElementIteratorPassRef JSONElement::OnCreateElementIterator( IMarkupElement* element )
 {
     return new MarkupLangElementIterator( element );
 }
@@ -300,12 +300,12 @@ _ubool JSONElement::SetName( WStringPtr name )
 	return _false;
 }
 
-WStringR JSONElement::GetName( ) const
+WString JSONElement::GetName( ) const
 {
 	return WString( ).FromString( _ENCODING_ANSI, (const _chara*)mJSONElement->string );
 }
 
-IMarkupLangElement* JSONElement::InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj )
+IMarkupElement* JSONElement::InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj )
 {
 	// Create JSON object
 	cJSON* json_object = is_array_obj ? ::cJSON_CreateArray( ) : ::cJSON_CreateObject( );
@@ -332,12 +332,12 @@ IMarkupLangElement* JSONElement::InsertChildElementU( WStringPtr name, UStringPt
 	}
 }
 
-IMarkupLangElement* JSONElement::InsertChildElementW( WStringPtr name, WStringPtr text, _ubool is_array_obj )
+IMarkupElement* JSONElement::InsertChildElementW( WStringPtr name, WStringPtr text, _ubool is_array_obj )
 {
 	return InsertChildElementU( name, UString( ).FromString( text ), is_array_obj );
 }
 
-IMarkupLangElement*	JSONElement::InsertChildArrayObj( WStringPtr name )
+IMarkupElement*	JSONElement::InsertChildArrayObj( WStringPtr name )
 {
 	// Create JSON array object 
 	cJSON* json_object = ::cJSON_CreateArray( );
@@ -364,7 +364,7 @@ IMarkupLangElement*	JSONElement::InsertChildArrayObj( WStringPtr name )
 	}
 }
 
-IMarkupLangElement* JSONElement::AppendElementOfArrayObj( )
+IMarkupElement* JSONElement::AppendElementOfArrayObj( )
 {
 	// Create JSON object 
 	cJSON* json_object = ::cJSON_CreateObject( );
@@ -382,7 +382,7 @@ IMarkupLangElement* JSONElement::AppendElementOfArrayObj( )
 		return _null;
 }
 
-_dword JSONElement::AppendElementOfArrayObj( IMarkupLangElement* element )
+_dword JSONElement::AppendElementOfArrayObj( IMarkupElement* element )
 {
 	if ( element == _null )
 		return -1;
@@ -407,7 +407,7 @@ _dword JSONElement::AppendElementOfArrayObj( IMarkupLangElement* element )
 
 _dword JSONElement::AppendValueUOfArrayObj( _dword value )
 {
-	IMarkupLangElement* element = AppendElementOfArrayObj( );
+	IMarkupElement* element = AppendElementOfArrayObj( );
 	if ( element == _null )
 		return -1;
 
@@ -418,7 +418,7 @@ _dword JSONElement::AppendValueUOfArrayObj( _dword value )
 
 _dword JSONElement::AppendValueIOfArrayObj( _int value )
 {
-	IMarkupLangElement* element = AppendElementOfArrayObj( );
+	IMarkupElement* element = AppendElementOfArrayObj( );
 	if ( element == _null )
 		return -1;
 
@@ -429,7 +429,7 @@ _dword JSONElement::AppendValueIOfArrayObj( _int value )
 
 _dword JSONElement::AppendValueFOfArrayObj( _float value )
 {
-	IMarkupLangElement* element = AppendElementOfArrayObj( );
+	IMarkupElement* element = AppendElementOfArrayObj( );
 	if ( element == _null )
 		return -1;
 
@@ -440,7 +440,7 @@ _dword JSONElement::AppendValueFOfArrayObj( _float value )
 
 _dword JSONElement::AppendValueDOfArrayObj( _double value )
 {
-	IMarkupLangElement* element = AppendElementOfArrayObj( );
+	IMarkupElement* element = AppendElementOfArrayObj( );
 	if ( element == _null )
 		return -1;
 
@@ -454,7 +454,7 @@ _dword JSONElement::GetSubElementsNumber( ) const
 	return mJSONSubElements.Number( );
 }
 
-IMarkupLangElement* JSONElement::GetSubElementByIndex( _dword index ) const
+IMarkupElement* JSONElement::GetSubElementByIndex( _dword index ) const
 {
 	if ( index >= mJSONSubElements.Number( ) )
 		return _null;
@@ -467,7 +467,7 @@ _dword JSONElement::GetAttributesNumber( ) const
 	return mJSONAttributes.Number( );
 }
 
-IMarkupLangAttribute* JSONElement::GetAttributeByIndex( _dword index ) const
+IMarkupAttribute* JSONElement::GetAttributeByIndex( _dword index ) const
 {
 	if ( mJSONAttributes.Number( ) == 0 )
 		return _null;
@@ -503,7 +503,7 @@ _ubool JSONElement::HasAttribute( WStringPtr name, _ubool ignorecase ) const
 	return _false;
 }
 
-IMarkupLangAttribute* JSONElement::SearchAttribute( WStringPtr name, _ubool ignorecase ) const 
+IMarkupAttribute* JSONElement::SearchAttribute( WStringPtr name, _ubool ignorecase ) const 
 {
 	if ( ignorecase )
 	{
@@ -522,7 +522,7 @@ IMarkupLangAttribute* JSONElement::SearchAttribute( WStringPtr name, _ubool igno
 	{
 		const JSONAttribute* const* attribute = mJSONAttributes.Search( name );
 		if ( attribute != _null )
-			return (IMarkupLangAttribute*)*attribute;
+			return (IMarkupAttribute*)*attribute;
 	}
 
 	return _null;
@@ -648,7 +648,7 @@ _ubool JSONElement::GetText( WString& text ) const
 	return _true;
 }
 
-AStringR JSONElement::GetTextA( ) const
+AString JSONElement::GetTextA( ) const
 {
 	AString text;
 	if ( GetText( text ) == _false )
@@ -657,7 +657,7 @@ AStringR JSONElement::GetTextA( ) const
 	return text;
 }
 
-UStringR JSONElement::GetTextU( ) const
+UString JSONElement::GetTextU( ) const
 {
 	UString text;
 	if ( GetText( text ) == _false )
@@ -666,7 +666,7 @@ UStringR JSONElement::GetTextU( ) const
 	return text;
 }
 
-WStringR JSONElement::GetTextW( ) const
+WString JSONElement::GetTextW( ) const
 {
 	WString text;
 	if ( GetText( text ) == _false )
@@ -769,7 +769,7 @@ _ubool JSONElement::SetAttributeString( WStringPtr name, WStringPtr string )
 	return SetAttributeString( name, UString( ).FromString( string ) );
 }
 
-WStringR JSONElement::DumpToString( ) const
+WString JSONElement::DumpToString( ) const
 {
 	_chara* json_string = ::cJSON_Print( mJSONElement );
 	EGE_ASSERT( json_string != _null );
@@ -782,7 +782,7 @@ WStringR JSONElement::DumpToString( ) const
 	return json_string_utf16;
 }
 
-WStringR JSONElement::DumpToSchemaString( ) const
+WString JSONElement::DumpToSchemaString( ) const
 {
 	return WString( L"" );
 }
@@ -906,13 +906,13 @@ _ubool JSONFile::SaveToStream( IStreamWriter* stream_writer, _dword flags ) cons
 	return _true;
 }
 
-IMarkupLangDeclaration*	JSONFile::GetDeclaration( )
+IMarkupDeclaration*	JSONFile::GetDeclaration( )
 {
 	// Not support for this yet
 	return _null;
 }
 
-IMarkupLangElement*	JSONFile::GetRootElement( )
+IMarkupElement*	JSONFile::GetRootElement( )
 {
 	if ( mRootElement == _null )
 		mRootElement = new JSONElement( cJSON_CreateObject( ), _null, _null, _null );

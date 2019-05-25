@@ -140,7 +140,7 @@ const AStringObj& StringTable::GetRefString( AStringPtr string )
 	return TGetRefString< AStringObjMap, AStringObj, AStringPtr, _chara >( mAStringObjRefMap, string );
 }
 
-const AStringObj& StringTable::GetRefString( const AStringR& string )
+const AStringObj& StringTable::GetRefString( const AString& string )
 {
 	return TGetRefString< AStringObjMap, AStringObj, AString, _chara >( mAStringObjRefMap, string );
 }
@@ -170,7 +170,7 @@ const UStringObj& StringTable::GetRefString( UStringPtr string )
 	return TGetRefString< UStringObjMap, UStringObj, UStringPtr, _chara >( mUStringObjRefMap, string );
 }
 
-const UStringObj& StringTable::GetRefString( const UStringR& string )
+const UStringObj& StringTable::GetRefString( const UString& string )
 {
 	return TGetRefString< UStringObjMap, UStringObj, UString, _chara >( mUStringObjRefMap, string );
 }
@@ -200,7 +200,7 @@ const WStringObj& StringTable::GetRefString( WStringPtr string )
 	return TGetRefString< WStringObjMap, WStringObj, WStringPtr, _charw >( mWStringObjRefMap, string );
 }
 
-const WStringObj& StringTable::GetRefString( const WStringR& string )
+const WStringObj& StringTable::GetRefString( const WString& string )
 {
 	return TGetRefString< WStringObjMap, WStringObj, WString, _charw >( mWStringObjRefMap, string );
 }

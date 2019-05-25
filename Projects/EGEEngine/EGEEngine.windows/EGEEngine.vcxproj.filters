@@ -1195,34 +1195,10 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IMarkupLangFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IMediaFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IMIDIFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IOGGFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPKMFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPNGFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPSDFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPVRTexFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IShaderFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ISoundFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ISpeexFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IStreamingPCMFile.h">
@@ -1590,6 +1566,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Codec\ICodec.h">
       <Filter>Header Files\Interface\Engine\Codec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPVRTCFile.h">
+      <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

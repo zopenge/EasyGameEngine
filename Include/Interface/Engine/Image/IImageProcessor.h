@@ -19,9 +19,9 @@ public:
 	//!	Check whether it's transparent pixel.
 	//!	@param		x			The x position.
 	//!	@param		y			The y position.
-	//!	@param		parameters	The user defined parameters.	
+	//!	@param		params	The user defined params.	
 	//!	@return		True indicates it's transparent, otherwise indicates opaque. 
-	typedef _ubool (*OnIsTransparentPixel)( _int x, _int y, const QwordParameters2& parameters );
+	typedef _ubool (*OnIsTransparentPixel)( _int x, _int y, const QwordParameters2& params );
 
 public:
 	//!	Scale image file.
@@ -147,9 +147,9 @@ public:
 	//!	@param		position			The start position.
 	//!	@param		rect				The opaque region of image.
 	//!	@param		funcpointer			The transparent check function pointer.
-	//!	@param		parameters			The user defined parameters.	
+	//!	@param		params			The user defined params.	
 	//! @return		True indicates success, false indicates failure.
-	virtual _ubool GetOpaqueRegion( const PointI& size, const PointI& position, RectI& rect, OnIsTransparentPixel funcpointer, const QwordParameters2& parameters ) const PURE;
+	virtual _ubool GetOpaqueRegion( const PointI& size, const PointI& position, RectI& rect, OnIsTransparentPixel funcpointer, const QwordParameters2& params ) const PURE;
 };
 
 }

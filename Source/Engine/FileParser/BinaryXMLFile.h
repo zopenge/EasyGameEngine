@@ -74,7 +74,7 @@ public:
 // BinaryXMLAttribute
 //----------------------------------------------------------------------------
 
-class BinaryXMLAttribute : public IMarkupLangAttribute
+class BinaryXMLAttribute : public IMarkupAttribute
 {
 private:
 	//!	The XML name
@@ -97,9 +97,9 @@ public:
 	//!	Get the value type.
 	_dword GetValueType( ) const;
 
-// IMarkupLangAttribute Interface
+// IMarkupAttribute Interface
 public:
-	virtual WStringR	GetName( _ubool with_prefix = _false ) const override;
+	virtual WString	GetName( _ubool with_prefix = _false ) const override;
 
 	virtual _ubool		SetBool( _ubool value ) override;
 	virtual _ubool		SetLong( _int value ) override;
@@ -119,8 +119,8 @@ public:
 	virtual _qword		GetQword( ) const override;
 	virtual _float		GetFloat( ) const override;
 	virtual _double		GetDouble( ) const override;
-	virtual UStringR	GetStringU( ) const override;
-	virtual WStringR	GetStringW( ) const override;
+	virtual UString	GetStringU( ) const override;
+	virtual WString	GetStringW( ) const override;
 	virtual MD5Code		GetMD5Code( ) const override;
 	virtual Color		GetColor( ) const override;
 	virtual Version		GetVersion( ) const override;
@@ -130,7 +130,7 @@ public:
 // BinaryXMLElement
 //----------------------------------------------------------------------------
 
-class BinaryXMLElement : public IMarkupLangElement
+class BinaryXMLElement : public IMarkupElement
 {
 public:
 	//!	The attribute info
@@ -203,66 +203,66 @@ public:
 	//!	Load from stream.
 	_ubool LoadFromStream( IStreamReader* stream_reader, BinaryXMLFile* xml_file );
 
-// IMarkupLangElement Interface
+// IMarkupElement Interface
 public:
 	virtual _ubool								IsArrayObject( ) const override;
 
 	virtual _dword								GetDepth( ) const override;
 
 	virtual _ubool								SetName( WStringPtr name ) override;
-	virtual WStringR							GetName( ) const override;
+	virtual WString							GetName( ) const override;
 
 	virtual _dword								GetChildElementNumber( ) const override;
-	virtual IMarkupLangElement*					GetChildElementByIndex( _dword index ) const override;
-	virtual IMarkupLangElement*					GetChildElementByName( WStringPtr name, _ubool ignorecase = _false ) const override;
-	virtual IMarkupLangElement*					GetChildElementByText( WStringPtr text, _ubool ignorecase = _false ) const override;
+	virtual IMarkupElement*					GetChildElementByIndex( _dword index ) const override;
+	virtual IMarkupElement*					GetChildElementByName( WStringPtr name, _ubool ignorecase = _false ) const override;
+	virtual IMarkupElement*					GetChildElementByText( WStringPtr text, _ubool ignorecase = _false ) const override;
 
 	virtual _ubool								HasChildElement( WStringPtr name, _ubool ignorecase = _false ) const override;
 	virtual _ubool								GetChildElementTextByName( WStringPtr name, UString& text, _ubool ignorecase = _false ) const override;
 	virtual _ubool								GetChildElementTextByName( WStringPtr name, WString& text, _ubool ignorecase = _false ) const override;
-	virtual UStringR							GetChildElementTextByNameU( WStringPtr name, _ubool ignorecase = _false ) const override;
-	virtual WStringR							GetChildElementTextByNameW( WStringPtr name, _ubool ignorecase = _false ) const override;
+	virtual UString							GetChildElementTextByNameU( WStringPtr name, _ubool ignorecase = _false ) const override;
+	virtual WString							GetChildElementTextByNameW( WStringPtr name, _ubool ignorecase = _false ) const override;
 
-	virtual IMarkupLangElement*					GetFirstChildElement( ) const override;
-	virtual IMarkupLangElement*					GetLastChildElement( ) const override;
-	virtual IMarkupLangElement*					GetParentElement( ) const override;
-	virtual IMarkupLangElement*					GetPrevElement( ) const override;
-	virtual IMarkupLangElement*					GetNextElement( ) const override;
-	virtual IMarkupLangElement*					GetHeadElement( ) const override;
-	virtual IMarkupLangElement*					GetTailElement( ) const override;
+	virtual IMarkupElement*					GetFirstChildElement( ) const override;
+	virtual IMarkupElement*					GetLastChildElement( ) const override;
+	virtual IMarkupElement*					GetParentElement( ) const override;
+	virtual IMarkupElement*					GetPrevElement( ) const override;
+	virtual IMarkupElement*					GetNextElement( ) const override;
+	virtual IMarkupElement*					GetHeadElement( ) const override;
+	virtual IMarkupElement*					GetTailElement( ) const override;
 
-	virtual IMarkupLangElement*					GetPrevElementByName( WStringPtr name, _ubool ignorecase = _false ) const override;
-	virtual IMarkupLangElement*					GetNextElementByName( WStringPtr name, _ubool ignorecase = _false ) const override;
+	virtual IMarkupElement*					GetPrevElementByName( WStringPtr name, _ubool ignorecase = _false ) const override;
+	virtual IMarkupElement*					GetNextElementByName( WStringPtr name, _ubool ignorecase = _false ) const override;
 
-	virtual IMarkupLangElement*					InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj ) override;
-	virtual IMarkupLangElement*					InsertChildElementW( WStringPtr name, WStringPtr text, _ubool is_array_obj ) override;
-	virtual IMarkupLangElement*					InsertChildElement( const IMarkupLangElement* element, _ubool all_child ) override;
-	virtual IMarkupLangElement*					InsertNextElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj ) override;
-	virtual IMarkupLangElement*					InsertNextElementW( WStringPtr name, WStringPtr text, _ubool is_array_obj ) override;
-	virtual IMarkupLangElement*					InsertNextElement( const IMarkupLangElement* element, _ubool all_child ) override;
+	virtual IMarkupElement*					InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj ) override;
+	virtual IMarkupElement*					InsertChildElementW( WStringPtr name, WStringPtr text, _ubool is_array_obj ) override;
+	virtual IMarkupElement*					InsertChildElement( const IMarkupElement* element, _ubool all_child ) override;
+	virtual IMarkupElement*					InsertNextElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj ) override;
+	virtual IMarkupElement*					InsertNextElementW( WStringPtr name, WStringPtr text, _ubool is_array_obj ) override;
+	virtual IMarkupElement*					InsertNextElement( const IMarkupElement* element, _ubool all_child ) override;
 
-	virtual IMarkupLangElement*					InsertChildArrayObj( WStringPtr name ) override;
-	virtual IMarkupLangElement*					AppendElementOfArrayObj( ) override;
-	virtual _dword								AppendElementOfArrayObj( IMarkupLangElement* element ) override;
+	virtual IMarkupElement*					InsertChildArrayObj( WStringPtr name ) override;
+	virtual IMarkupElement*					AppendElementOfArrayObj( ) override;
+	virtual _dword								AppendElementOfArrayObj( IMarkupElement* element ) override;
 	virtual _dword								AppendValueUOfArrayObj( _dword value ) override;
 	virtual _dword								AppendValueIOfArrayObj( _int value ) override;
 	virtual _dword								AppendValueFOfArrayObj( _float value ) override;
 	virtual _dword								AppendValueDOfArrayObj( _double value ) override;
 	virtual _dword								GetSubElementsNumber( ) const override;
-	virtual IMarkupLangElement*					GetSubElementByIndex( _dword index ) const override;
+	virtual IMarkupElement*					GetSubElementByIndex( _dword index ) const override;
 
 	virtual _void								Remove( ) override;
-	virtual _void								RemoveElement( IMarkupLangElement* element ) override;
+	virtual _void								RemoveElement( IMarkupElement* element ) override;
 	virtual IMarkupLangElementIteratorPassRef	RemoveElement( IMarkupLangElementIterator* it ) override;
 
 	virtual IMarkupLangElementIteratorPassRef	CreateSelfElementIterator( ) override;
 	virtual IMarkupLangElementIteratorPassRef	CreateChildElementIterator( WStringPtr name, _ubool recursive = _false ) override;
 
 	virtual _dword								GetAttributesNumber( ) const override;
-	virtual IMarkupLangAttribute*				GetAttributeByIndex( _dword index ) const override;
+	virtual IMarkupAttribute*				GetAttributeByIndex( _dword index ) const override;
 
 	virtual _ubool								HasAttribute( WStringPtr name, _ubool ignorecase = _false ) const override;
-	virtual IMarkupLangAttribute*				SearchAttribute( WStringPtr name, _ubool ignorecase = _false ) const override;
+	virtual IMarkupAttribute*				SearchAttribute( WStringPtr name, _ubool ignorecase = _false ) const override;
 
 	virtual _dword								GetValueU( ) const override;
 	virtual _int								GetValueI( ) const override;
@@ -277,9 +277,9 @@ public:
 	virtual _ubool								GetText( AString& text ) const override;
 	virtual _ubool								GetText( UString& text ) const override;
 	virtual _ubool								GetText( WString& text ) const override;
-	virtual AStringR							GetTextA( ) const override;
-	virtual UStringR							GetTextU( ) const override;
-	virtual WStringR							GetTextW( ) const override;
+	virtual AString							GetTextA( ) const override;
+	virtual UString							GetTextU( ) const override;
+	virtual WString							GetTextW( ) const override;
 	virtual _ubool								SetText( AStringPtr text ) override;
 	virtual _ubool								SetText( UStringPtr text ) override;
 	virtual _ubool								SetText( WStringPtr text ) override;
@@ -308,21 +308,21 @@ public:
 	virtual _ubool								SetAttributeColor( WStringPtr name, const Color& color ) override;
 	virtual _ubool								SetAttributeVersion( WStringPtr name, const Version& version ) override;
 
-	virtual WStringR							DumpToString( ) const override;
-	virtual WStringR							DumpToSchemaString( ) const override;
+	virtual WString							DumpToString( ) const override;
+	virtual WString							DumpToSchemaString( ) const override;
 };
 
 //----------------------------------------------------------------------------
 // BinaryXMLFileDeclaration
 //----------------------------------------------------------------------------
 
-class BinaryXMLFileDeclaration : public IMarkupLangDeclaration
+class BinaryXMLFileDeclaration : public IMarkupDeclaration
 {
 public:
 	BinaryXMLFileDeclaration( );
 	virtual ~BinaryXMLFileDeclaration( );
 
-// IMarkupLangDeclaration Interface
+// IMarkupDeclaration Interface
 public:
 	virtual _void			SetVersion( const Version& version ) override;
 	virtual const Version&	GetVersion( ) const override;
@@ -335,7 +335,7 @@ public:
 // BinaryXMLFile
 //----------------------------------------------------------------------------
 
-class BinaryXMLFile : public TBaseFile< IMarkupLangFile >
+class BinaryXMLFile : public TBaseFile< IMarkupFile >
 {
 public:
 	//!	The binary xml file ID
@@ -372,7 +372,7 @@ private:
 	};
 
 private:
-	typedef TBaseFile< IMarkupLangFile > BaseClass;
+	typedef TBaseFile< IMarkupFile > BaseClass;
 
 private:
 	//!	The header info
@@ -404,9 +404,9 @@ private:
 	struct AttributeInfo
 	{
 		_REGULAR_EXPRESSION_TYPE	mType;
-		IMarkupLangAttribute*		mAttribute;
+		IMarkupAttribute*		mAttribute;
 
-		operator IMarkupLangAttribute* ( ) const
+		operator IMarkupAttribute* ( ) const
 			{ return mAttribute; }
 
 		AttributeInfo( )
@@ -414,7 +414,7 @@ private:
 			mType		= _RET_STRING;
 			mAttribute	= _null;
 		}
-		AttributeInfo( _REGULAR_EXPRESSION_TYPE type, IMarkupLangAttribute* attribute )
+		AttributeInfo( _REGULAR_EXPRESSION_TYPE type, IMarkupAttribute* attribute )
 		{
 			mType		= type;
 			mAttribute	= attribute;
@@ -425,16 +425,16 @@ private:
 	//!	The element info
 	struct ElementInfo
 	{
-		IMarkupLangElement*	mElement;
+		IMarkupElement*	mElement;
 
-		operator IMarkupLangElement* ( ) const
+		operator IMarkupElement* ( ) const
 			{ return mElement; }
 
 		ElementInfo( )
 		{
 			mElement = _null;
 		}
-		ElementInfo( IMarkupLangElement* element )
+		ElementInfo( IMarkupElement* element )
 		{
 			mElement = element;
 		}
@@ -483,9 +483,9 @@ private:
 	//!	Write index into stream.
 	_ubool WriteIndex2Stream( IStreamWriter* stream_writer, _INDEX_MODE index_mode, _int index ) const;
 	//!	Write attribute index into stream.
-	_ubool WriteAttributeIndex2Stream( IStreamWriter* stream_writer, const HeaderInfo& header_info, IMarkupLangAttribute* attribute, const AttributeArray& xml_attributes ) const;
+	_ubool WriteAttributeIndex2Stream( IStreamWriter* stream_writer, const HeaderInfo& header_info, IMarkupAttribute* attribute, const AttributeArray& xml_attributes ) const;
 	//!	Write element index into stream.
-	_ubool WriteElementIndex2Stream( IStreamWriter* stream_writer, const HeaderInfo& header_info, IMarkupLangElement* element, const ElementArray& xml_elements ) const;
+	_ubool WriteElementIndex2Stream( IStreamWriter* stream_writer, const HeaderInfo& header_info, IMarkupElement* element, const ElementArray& xml_elements ) const;
 	//!	Write string index into stream.
 	_ubool WriteStringIndexIntoStream( IStreamWriter* stream_writer, const HeaderInfo& header_info, const BinaryXMLStringTableWriter& string_table, WStringPtr string ) const;
 
@@ -502,7 +502,7 @@ private:
 	_INDEX_MODE GetIndexMode( _dword number ) const;
 
 	//!	Build pools from markup file.
-	_ubool BuildPoolsFromMarkupFile( IMarkupLangElement* element, BinaryXMLStringTableWriter& string_table, ElementArray& xml_elements, AttributeArray& xml_attributes, IRegularExpressionRef regular_expressions[] );
+	_ubool BuildPoolsFromMarkupFile( IMarkupElement* element, BinaryXMLStringTableWriter& string_table, ElementArray& xml_elements, AttributeArray& xml_attributes, IRegularExpressionRef regular_expressions[] );
 	//!	Build header info.
 	_ubool BuildHeaderInfo( HeaderInfo& header_info, const BinaryXMLStringTableWriter& string_table, const ElementArray& xml_elements, const AttributeArray& xml_attributes ) const;
 
@@ -515,7 +515,7 @@ public:
 
 public:
 	//!	Load from markup file.
-	_ubool LoadFromMarkupFile( IMarkupLangFile* markup_file );
+	_ubool LoadFromMarkupFile( IMarkupFile* markup_file );
 
 	//!	Read the attribute index from stream.
 	_int ReadAttributeIndexFromStream( IStreamReader* stream_reader );
@@ -541,11 +541,11 @@ public:
 
 	virtual _ubool					SaveToStream( IStreamWriter* stream_writer, _dword flags ) const override;
 
-// IMarkupLangFile Interface
+// IMarkupFile Interface
 public:
-	virtual IMarkupLangDeclaration*	GetDeclaration( ) override;
+	virtual IMarkupDeclaration*	GetDeclaration( ) override;
 
-	virtual IMarkupLangElement*		GetRootElement( ) override;
+	virtual IMarkupElement*		GetRootElement( ) override;
 
 	virtual _ubool					SchemaValidate( WStringPtr filename ) override;
 	virtual _ubool					SchemaValidate( IStreamReader* stream_reader ) override;

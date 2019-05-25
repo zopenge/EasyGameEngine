@@ -215,7 +215,7 @@ public:
 public:
 	virtual IGeometryMeshChunkRef	GetMeshChunk( ) override;
 
-	virtual WStringR				DumpToXMLString( ) const override;
+	virtual WString				DumpToXMLString( ) const override;
 };
 
 }

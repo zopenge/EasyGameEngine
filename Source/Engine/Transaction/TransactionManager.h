@@ -36,7 +36,7 @@ public:
 
 	virtual _dword	GetThreadNumber( ) const override;
 
-	virtual _ubool	AddTransaction( ITransaction* transaction, ITransaction* depend, _dword features, _dword timeout = -1, const QwordParameters2& parameters = QwordParameters2::cNull ) override;
+	virtual _ubool	AddTransaction( ITransaction* transaction, ITransaction* depend, _dword features, _dword timeout = -1, const QwordParameters2& params = QwordParameters2::cNull ) override;
 };
 
 }

@@ -199,7 +199,7 @@ _ubool Library::LoadResourceFromMemory(_dword virtualaddress, const _byte* base,
 	return _true;
 }
 
-_ubool Library::Load(const _byte* buffer, _dword size, OnLoadDependentDLL funcpointer, const QwordParams2& parameters) {
+_ubool Library::Load(const _byte* buffer, _dword size, OnLoadDependentDLL funcpointer, const QwordParams2& params) {
 	if (buffer == _null)
 		return _false;
 
@@ -343,7 +343,7 @@ _ubool Library::Load(const _byte* buffer, _dword size, OnLoadDependentDLL funcpo
 		if (dll == _null) {
 			// Invoke the load dependence DLL callback function
 			if (funcpointer != _null)
-				dll = (HMODULE)(*funcpointer)(name, parameters);
+				dll = (HMODULE)(*funcpointer)(name, params);
 
 			// If the user didn't handle the DLL then we load it in the normal way
 			dll = Platform::LoadLibrary(name);

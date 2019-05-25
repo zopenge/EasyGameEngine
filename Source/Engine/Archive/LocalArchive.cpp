@@ -54,7 +54,7 @@ _ubool LocalArchive::RefreshFile( WStringPtr dir, const FileInfo& file_info )
 	return _true;
 }
 
-WStringR LocalArchive::GetAbsoluteFileName( WStringPtr res_name ) const
+WString LocalArchive::GetAbsoluteFileName( WStringPtr res_name ) const
 {
 	// Get the extension name
 	WStringObj extension_name = Path::GetExtension( res_name );
@@ -77,7 +77,7 @@ WStringR LocalArchive::GetAbsoluteFileName( WStringPtr res_name ) const
 	return Path::BuildFilePath( file_cache_info->mRootPath, file_cache_info->mResRelativePath );
 }
 
-WStringR LocalArchive::GetRelativeFileName( WStringPtr res_name ) const
+WString LocalArchive::GetRelativeFileName( WStringPtr res_name ) const
 {
 	// Get the extension name
 	WStringObj extension_name = Path::GetExtension( res_name );
@@ -153,7 +153,7 @@ WStringPtr LocalArchive::GetPath( ) const
 	return L"";
 }
 
-WStringR LocalArchive::GetResourceAbsolutePath( WStringPtr res_name ) const
+WString LocalArchive::GetResourceAbsolutePath( WStringPtr res_name ) const
 {
 	WString relative_path = BaseClass::GetResourceAbsolutePath( res_name );
 	if ( relative_path.IsEmpty( ) == _false )
@@ -162,7 +162,7 @@ WStringR LocalArchive::GetResourceAbsolutePath( WStringPtr res_name ) const
 	return GetAbsoluteFileName( res_name );
 }
 
-WStringR LocalArchive::GetResourceRelativePath( WStringPtr res_name ) const
+WString LocalArchive::GetResourceRelativePath( WStringPtr res_name ) const
 {
 	WString relative_path = BaseClass::GetResourceRelativePath( res_name );
 	if ( relative_path.IsEmpty( ) == _false )

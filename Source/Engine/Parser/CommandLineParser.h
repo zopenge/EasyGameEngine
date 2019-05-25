@@ -97,7 +97,7 @@ public:
 	virtual _void			Initialize( _dword argc, const _chara* argn[], const _chara* argv[] ) override;
 	virtual _void			Initialize( _dword argc, const _charw* argn[], const _charw* argv[] ) override;
 
-	virtual WStringR		GetString( _dword startindex = 0 ) const override;
+	virtual WString		GetString( _dword startindex = 0 ) const override;
 
 	virtual _ubool			HasArgument( WStringPtr name, _ubool ignorecase = _true ) const override;
 
@@ -105,7 +105,7 @@ public:
 	virtual const ArgData*	GetArgumentByIndex( _dword index ) const override;
 	virtual const ArgData*	GetArgumentByKeyName( WStringPtr keyname, _ubool ignorecase = _true ) const override;
 	virtual _int			GetArgumentValueByKeyName( WStringPtr keyname, _dword radix, _ubool ignorecase = _true ) const override;
-	virtual WStringR		GetArgumentStringByKeyName( WStringPtr keyname, _ubool ignorecase = _true ) const override;
+	virtual WString		GetArgumentStringByKeyName( WStringPtr keyname, _ubool ignorecase = _true ) const override;
 
 	virtual _ubool			BeginGettingArguments( _dword startindex ) override;
 	virtual const ArgData*	GetArgument( ) override;

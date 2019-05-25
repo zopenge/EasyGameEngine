@@ -10,8 +10,8 @@ Timer::Timer() {
 Timer::~Timer() {
 }
 
-_void Timer::RegisterOverdueFunc(OnOverdue funcpointer, const QwordParams2& parameters) {
-	mOverdueFunc.Init(funcpointer, parameters);
+_void Timer::RegisterOverdueFunc(OnOverdue funcpointer, const QwordParams2& params) {
+	mOverdueFunc.Init(funcpointer, params);
 }
 
 _void Timer::Init(_dword interval_time) {

@@ -17,9 +17,9 @@ class MarkupLangSerializableNode : public INTERFACE_SERIALIZABLE_NODE_IMPL( ISer
 {
 private:
 	//!	The initial markup element
-	IMarkupLangElement*	mInitialElement;
+	IMarkupElement*	mInitialElement;
 	//!	The current markup element
-	IMarkupLangElement*	mCurElement;
+	IMarkupElement*	mCurElement;
 	//!	The markup file
 	IMarkupLangFileRef	mMarkupFile;
 
@@ -46,7 +46,7 @@ private:
 	virtual _ubool	OnSetPropertyValue( WStringPtr name, _double value ) override;
 
 public:
-	MarkupLangSerializableNode( IMarkupLangElement* node, IMarkupLangFile* file );
+	MarkupLangSerializableNode( IMarkupElement* node, IMarkupFile* file );
 	virtual ~MarkupLangSerializableNode( );
 
 // IObject Interface
@@ -57,13 +57,13 @@ public:
 public:
 	virtual _ubool							IsArrayObject( ) const override;
 
-	virtual IMarkupLangElement*				GetMarkupLangElement( ) override;
-	virtual const IMarkupLangElement*		GetMarkupLangElement( ) const override;
+	virtual IMarkupElement*				GetMarkupLangElement( ) override;
+	virtual const IMarkupElement*		GetMarkupLangElement( ) const override;
 
-	virtual IMarkupLangFile*				GetMarkupLangFile( ) override;
-	virtual const IMarkupLangFile*			GetMarkupLangFile( ) const override;
+	virtual IMarkupFile*				GetMarkupLangFile( ) override;
+	virtual const IMarkupFile*			GetMarkupLangFile( ) const override;
 
-	virtual WStringR						GetNodeName( ) const override;
+	virtual WString						GetNodeName( ) const override;
 	virtual _ubool							SetNodeName( WStringPtr name ) override;
 
 	virtual _ubool							HasObject( ) const override;
@@ -90,8 +90,8 @@ public:
 	virtual ISerializableNodePassRef		GetHeadNode( ) override;
 	virtual ISerializableNodePassRef		GetTailNode( ) override;
 
-	virtual WStringR						GetChildTextByNameW( WStringPtr name ) override;
-	virtual WStringR						GetChildValueByNameW( WStringPtr name, WStringPtr attribute_name ) override;
+	virtual WString						GetChildTextByNameW( WStringPtr name ) override;
+	virtual WString						GetChildValueByNameW( WStringPtr name, WStringPtr attribute_name ) override;
 	virtual ISerializableNodePassRef		GetChildNodeByName( WStringPtr name ) override;
 	virtual ISerializableNodePassRef		GetChildNodeByIndex( _dword index ) override;
 
@@ -110,9 +110,9 @@ public:
 	virtual _float							GetValueF( ) const override;
 	virtual _double							GetValueD( ) const override;
 
-	virtual AStringR						GetTextA( ) const override;
-	virtual UStringR						GetTextU( ) const override;
-	virtual WStringR						GetTextW( ) const override;
+	virtual AString						GetTextA( ) const override;
+	virtual UString						GetTextU( ) const override;
+	virtual WString						GetTextW( ) const override;
 	virtual _void							SetText( AStringPtr text ) override;
 	virtual _void							SetText( UStringPtr text ) override;
 	virtual _void							SetText( WStringPtr text ) override;
@@ -127,8 +127,8 @@ public:
 	virtual _ubool							MoveNext( ) override;
 	virtual _ubool							MoveNext( WStringPtr name ) override;
 
-	virtual WStringR						DumpToString( ) const override;
-	virtual WStringR						DumpToSchemaString( ) const override;
+	virtual WString						DumpToString( ) const override;
+	virtual WString						DumpToSchemaString( ) const override;
 };
 
 }

@@ -18,9 +18,9 @@ class ISerializer : public IObject
 public:
 	//!	The enumeration value query callback function.
 	//!	@param		name			The enumeration name.
-	//!	@param		parameters		The user defined parameters.
+	//!	@param		params		The user defined params.
 	//!	@return		The enumeration value.
-	typedef _dword (*OnQueryEnumValue)( WStringPtr name, const VoidParameters2& parameters );
+	typedef _dword (*OnQueryEnumValue)( WStringPtr name, const VoidParameters2& params );
 
 public:
 	//!	Query properties.
@@ -41,7 +41,7 @@ public:
 	virtual _ubool Read( ISerializableNode* node, Vector3& vector ) const PURE;
 	virtual _ubool Read( ISerializableNode* node, Color& color ) const PURE;
 	virtual _ubool ReadFlag( ISerializableNode* node, WStringPtr name, FlagsObject& flags, _dword flag ) const PURE;
-	virtual _ubool ReadEnum( ISerializableNode* node, WStringPtr name, _dword& value, OnQueryEnumValue funcpointer, const VoidParameters2& parameters = VoidParameters2::cNull ) const PURE;
+	virtual _ubool ReadEnum( ISerializableNode* node, WStringPtr name, _dword& value, OnQueryEnumValue funcpointer, const VoidParameters2& params = VoidParameters2::cNull ) const PURE;
 
 	//!	Write properties.
 	virtual _ubool Write( ISerializableNode* node, WStringPtr name, _long value ) const PURE;

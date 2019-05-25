@@ -321,17 +321,17 @@ _MEDIA_TYPE WEBMFileTrack::GetType( ) const
 	return _MEDIA_TYPE_UNKNOWN;
 }
 
-WStringR WEBMFileTrack::GetName( ) const
+WString WEBMFileTrack::GetName( ) const
 {
 	return WString( ).FromString( _ENCODING_UTF8, mTrack->GetNameAsUTF8( ) );
 }
 
-WStringR WEBMFileTrack::GetCodecName( ) const
+WString WEBMFileTrack::GetCodecName( ) const
 {
 	return WString( ).FromString( _ENCODING_UTF8, mTrack->GetCodecNameAsUTF8( ) );
 }
 
-WStringR WEBMFileTrack::GetCodecID( ) const
+WString WEBMFileTrack::GetCodecID( ) const
 {
 	return WString( ).FromString( _ENCODING_ANSI, mTrack->GetCodecId( ) );
 }

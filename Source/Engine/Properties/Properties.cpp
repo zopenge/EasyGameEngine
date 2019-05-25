@@ -37,7 +37,7 @@ inline const Variable& Properties::SetPropertyValue< WStringObj, WStringPtr >( c
 }
 
 template<>
-inline const Variable& Properties::SetPropertyValue< WStringR, WStringPtr >( const WStringR& name, WStringPtr value )
+inline const Variable& Properties::SetPropertyValue< WString, WStringPtr >( const WString& name, WStringPtr value )
 {
 	Variable& property_value = mPropertiesWithName[(const WString&)name];
 	property_value.SetString( GetStringTable( )->GetRefString( value ).Str( ) );
@@ -178,7 +178,7 @@ const Variable& Properties::SetProperty( WStringPtr name, WStringPtr value )
 	return SetPropertyValue( name, value );
 }
 
-const Variable& Properties::SetProperty( WStringPtr name, const WStringR& value )
+const Variable& Properties::SetProperty( WStringPtr name, const WString& value )
 {
 	WString value_string = value;
 
@@ -307,7 +307,7 @@ const Variable& Properties::SetProperty( const WStringObj& name, WStringPtr valu
 	return SetPropertyValue( name, value );
 }
 
-const Variable& Properties::SetProperty( const WStringObj& name, const WStringR& value )
+const Variable& Properties::SetProperty( const WStringObj& name, const WString& value )
 {
 	WString value_string = value;
 
@@ -319,34 +319,34 @@ const Variable& Properties::SetProperty( const WStringObj& name, const Variable&
 	return SetPropertyValue( name, value );
 }
 
-const Variable& Properties::SetProperty( const WStringR& name, _int value )
+const Variable& Properties::SetProperty( const WString& name, _int value )
 {
 	return SetPropertyValue( name, value );
 }
 
-const Variable& Properties::SetProperty( const WStringR& name, _dword value )
+const Variable& Properties::SetProperty( const WString& name, _dword value )
 {
 	return SetPropertyValue( name, value );
 }
 
-const Variable& Properties::SetProperty( const WStringR& name, _float value )
+const Variable& Properties::SetProperty( const WString& name, _float value )
 {
 	return SetPropertyValue( name, value );
 }
 
-const Variable& Properties::SetProperty( const WStringR& name, WStringPtr value )
+const Variable& Properties::SetProperty( const WString& name, WStringPtr value )
 {
 	return SetPropertyValue( name, value );
 }
 
-const Variable& Properties::SetProperty( const WStringR& name, const WStringR& value )
+const Variable& Properties::SetProperty( const WString& name, const WString& value )
 {
 	WString value_string = value;
 
 	return SetPropertyValue( name, value_string );
 }
 
-const Variable& Properties::SetProperty( const WStringR& name, const Variable& value )
+const Variable& Properties::SetProperty( const WString& name, const Variable& value )
 {
 	return SetPropertyValue( name, value );
 }

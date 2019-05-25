@@ -19,7 +19,7 @@ public:
 	//!	Send buffer.
 	//!	@param		buffer		The buffer data.
 	//!	@param		size		The buffer size in bytes.
-	//!	@param		parameters	The user defined parameters.
+	//!	@param		params	The user defined params.
 	//!	@return		none.
 	virtual _void Send( const _byte* buffer, _dword size ) PURE;
 	//!	Post with user defined HTTP header list.
@@ -27,9 +27,9 @@ public:
 	//!	@param		header_list		The HTTP header list.
 	//!	@param		buffer			The buffer data.
 	//!	@param		size			The buffer size in bytes.
-	//!	@param		parameters		The user defined parameters.
+	//!	@param		params		The user defined params.
 	//! @return		True indicates success, false indicates failure.
-	virtual _ubool Post( AStringPtr url_name, const AStringArray& header_list, const _byte* buffer, _dword size, const QwordParameters4& parameters ) PURE;
+	virtual _ubool Post( AStringPtr url_name, const AStringArray& header_list, const _byte* buffer, _dword size, const QwordParameters4& params ) PURE;
 };
 
 //----------------------------------------------------------------------------
@@ -162,18 +162,18 @@ public:
 	//!	@param		url_name	The sub url name.
 	//!	@param		header_list	The HTTP header list.
 	//!	@param		id			The message ID.
-	//!	@param		parameters	The user defined parameters.
+	//!	@param		params	The user defined params.
 	//! @return		True indicates success, false indicates failure.
-	virtual _ubool PostBuffer( AStringPtr url_name, const AStringArray& header_list, _dword id, const QwordParameters4& parameters ) PURE;
+	virtual _ubool PostBuffer( AStringPtr url_name, const AStringArray& header_list, _dword id, const QwordParameters4& params ) PURE;
 	//!	Post message into buffer.
 	//!	@param		url_name	The sub url name.
 	//!	@param		header_list	The HTTP header list.
 	//!	@param		id			The message ID.
 	//!	@param		buffer		The buffer data.
 	//!	@param		size		The buffer size in bytes.
-	//!	@param		parameters	The user defined parameters.
+	//!	@param		params	The user defined params.
 	//! @return		True indicates success, false indicates failure.
-	virtual _ubool PostBuffer( AStringPtr url_name, const AStringArray& header_list, _dword id, const _byte* buffer, _dword size, const QwordParameters4& parameters ) PURE;
+	virtual _ubool PostBuffer( AStringPtr url_name, const AStringArray& header_list, _dword id, const _byte* buffer, _dword size, const QwordParameters4& params ) PURE;
 };
 
 //----------------------------------------------------------------------------

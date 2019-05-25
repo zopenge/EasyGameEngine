@@ -23,7 +23,7 @@ FileCopierThread::~FileCopierThread( )
 	EGE_DELETE_ARRAY( mBuffer );
 }
 
-_dword FileCopierThread::OnRunThread( const QwordParameters2& parameters )
+_dword FileCopierThread::OnRunThread( const QwordParameters2& params )
 {
 	while ( IsReleasing( ) == _false )
 	{
@@ -65,7 +65,7 @@ _dword FileCopierThread::OnRunThread( const QwordParameters2& parameters )
 	return 0;
 }
 
-_void FileCopierThread::OnCloseThread( _dword exitcode, const QwordParameters2& parameters )
+_void FileCopierThread::OnCloseThread( _dword exitcode, const QwordParameters2& params )
 {
 	EGE_DELETE_ARRAY( mBuffer );
 

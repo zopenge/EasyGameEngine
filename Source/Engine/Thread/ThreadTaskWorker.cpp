@@ -34,9 +34,9 @@ ThreadTaskWorker::~ThreadTaskWorker( )
 	BaseClass::Close( );
 }
 
-_dword ThreadTaskWorker::OnRunThread( const QwordParameters2& parameters )
+_dword ThreadTaskWorker::OnRunThread( const QwordParameters2& params )
 {
-	ThreadTaskWorker* _self = (ThreadTaskWorker*) parameters[0];
+	ThreadTaskWorker* _self = (ThreadTaskWorker*) params[0];
 	EGE_ASSERT( _self != _null );
 
 	while ( _true )
@@ -76,7 +76,7 @@ _dword ThreadTaskWorker::OnRunThread( const QwordParameters2& parameters )
 	return EXIT_SUCCESS;
 }
 
-_void ThreadTaskWorker::OnCloseThread( _dword exitcode, const QwordParameters2& parameters )
+_void ThreadTaskWorker::OnCloseThread( _dword exitcode, const QwordParameters2& params )
 {
 
 }

@@ -13,14 +13,14 @@ namespace EGE
 // PVRTexFile
 //----------------------------------------------------------------------------
 
-class PVRTexFile : public INTERFACE_COMPRESSEDTEXFILE_IMPL( IPVRTexFile )
+class PVRTexFile : public INTERFACE_COMPRESSEDTEXFILE_IMPL( IPVRTCFile )
 {
 public:
 	//!	The KTX file ID
 	enum { _FILE_ID = EGE_ID( 'P', 'V', 'R', 3 ) };
 
 private:
-	typedef INTERFACE_COMPRESSEDTEXFILE_IMPL( IPVRTexFile ) BaseClass;
+	typedef INTERFACE_COMPRESSEDTEXFILE_IMPL( IPVRTCFile ) BaseClass;
 
 private:
 	//!	The header info
@@ -70,7 +70,7 @@ public:
 public:
 	virtual _ubool					Create( _dword width, _dword height, _PIXEL_FORMAT pixelformat, const _byte* pixelbuffer = _null ) override;
 
-// IPVRTexFile Interface
+// IPVRTCFile Interface
 public:
 	virtual const PVRTexHeaderInfo&	GetPVRTexHeader( ) const override;
 };

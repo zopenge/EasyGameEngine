@@ -39,8 +39,8 @@ public:
 
 	virtual _void						WriteBuffer( _dword id ) override;
 	virtual _void						WriteBuffer( _dword id, const _byte* buffer, _dword size ) override;
-	virtual _ubool						PostBuffer( AStringPtr url_name, const AStringArray& header_list, _dword id, const QwordParameters4& parameters ) override;
-	virtual _ubool						PostBuffer( AStringPtr url_name, const AStringArray& header_list, _dword id, const _byte* buffer, _dword size, const QwordParameters4& parameters ) override;
+	virtual _ubool						PostBuffer( AStringPtr url_name, const AStringArray& header_list, _dword id, const QwordParameters4& params ) override;
+	virtual _ubool						PostBuffer( AStringPtr url_name, const AStringArray& header_list, _dword id, const _byte* buffer, _dword size, const QwordParameters4& params ) override;
 };
 
 }

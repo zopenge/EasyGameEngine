@@ -356,7 +356,7 @@ _dword BinaryXMLAttribute::GetValueType( ) const
 	return mAttributeValue.GetTypeID( );
 }
 
-WStringR BinaryXMLAttribute::GetName( _ubool with_prefix ) const
+WString BinaryXMLAttribute::GetName( _ubool with_prefix ) const
 {
 	return mAttributeName;
 }
@@ -446,13 +446,13 @@ _double BinaryXMLAttribute::GetDouble( ) const
 	return (_double)mAttributeValue;
 }
 
-UStringR BinaryXMLAttribute::GetStringU( ) const
+UString BinaryXMLAttribute::GetStringU( ) const
 {
 	WString string = mAttributeValue.ToString( );
 	return UString( ).FromString( string );
 }
 
-WStringR BinaryXMLAttribute::GetStringW( ) const
+WString BinaryXMLAttribute::GetStringW( ) const
 {
 	WString string = mAttributeValue.ToString( );
 	return string;
@@ -727,7 +727,7 @@ _dword BinaryXMLElement::GetDepth( ) const
 {
 	_dword depth = 0;
 
-	const IMarkupLangElement* parent = mParentElement;
+	const IMarkupElement* parent = mParentElement;
 	while ( parent != _null )
 	{
 		depth ++;
@@ -743,7 +743,7 @@ _ubool BinaryXMLElement::SetName( WStringPtr name )
 	return _false;
 }
 
-WStringR BinaryXMLElement::GetName( ) const
+WString BinaryXMLElement::GetName( ) const
 {
 	return mElementName;
 }
@@ -751,15 +751,15 @@ WStringR BinaryXMLElement::GetName( ) const
 _dword BinaryXMLElement::GetChildElementNumber( ) const
 {
 	_dword number = 0;
-	for ( IMarkupLangElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
+	for ( IMarkupElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
 		number ++;
 
 	return number;
 }
 
-IMarkupLangElement* BinaryXMLElement::GetChildElementByIndex( _dword index ) const
+IMarkupElement* BinaryXMLElement::GetChildElementByIndex( _dword index ) const
 {
-	for ( IMarkupLangElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ), index -- )
+	for ( IMarkupElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ), index -- )
 	{
 		if ( index == 0 )
 			return child;
@@ -768,9 +768,9 @@ IMarkupLangElement* BinaryXMLElement::GetChildElementByIndex( _dword index ) con
 	return _null;
 }
 
-IMarkupLangElement* BinaryXMLElement::GetChildElementByName( WStringPtr name, _ubool ignorecase ) const
+IMarkupElement* BinaryXMLElement::GetChildElementByName( WStringPtr name, _ubool ignorecase ) const
 {
-	for ( IMarkupLangElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
+	for ( IMarkupElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
 	{
 		WString child_name = child->GetName( );
 
@@ -781,9 +781,9 @@ IMarkupLangElement* BinaryXMLElement::GetChildElementByName( WStringPtr name, _u
 	return _null;
 }
 
-IMarkupLangElement* BinaryXMLElement::GetChildElementByText( WStringPtr text, _ubool ignorecase ) const
+IMarkupElement* BinaryXMLElement::GetChildElementByText( WStringPtr text, _ubool ignorecase ) const
 {
-	for ( IMarkupLangElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
+	for ( IMarkupElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
 	{
 		WString child_text = child->GetTextW( );
 
@@ -796,7 +796,7 @@ IMarkupLangElement* BinaryXMLElement::GetChildElementByText( WStringPtr text, _u
 
 _ubool BinaryXMLElement::HasChildElement( WStringPtr name, _ubool ignorecase ) const
 {
-	for ( IMarkupLangElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
+	for ( IMarkupElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
 	{
 		WString child_name = child->GetName( );
 
@@ -809,7 +809,7 @@ _ubool BinaryXMLElement::HasChildElement( WStringPtr name, _ubool ignorecase ) c
 
 _ubool BinaryXMLElement::GetChildElementTextByName( WStringPtr name, UString& text, _ubool ignorecase ) const
 {
-	for ( IMarkupLangElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
+	for ( IMarkupElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
 	{
 		WString child_name = child->GetName( );
 
@@ -826,7 +826,7 @@ _ubool BinaryXMLElement::GetChildElementTextByName( WStringPtr name, UString& te
 
 _ubool BinaryXMLElement::GetChildElementTextByName( WStringPtr name, WString& text, _ubool ignorecase ) const
 {
-	for ( IMarkupLangElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
+	for ( IMarkupElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
 	{
 		WString child_name = child->GetName( );
 
@@ -841,9 +841,9 @@ _ubool BinaryXMLElement::GetChildElementTextByName( WStringPtr name, WString& te
 	return _false;
 }
 
-UStringR BinaryXMLElement::GetChildElementTextByNameU( WStringPtr name, _ubool ignorecase ) const
+UString BinaryXMLElement::GetChildElementTextByNameU( WStringPtr name, _ubool ignorecase ) const
 {
-	for ( const IMarkupLangElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
+	for ( const IMarkupElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
 	{
 		WString child_name = child->GetName( );
 
@@ -856,9 +856,9 @@ UStringR BinaryXMLElement::GetChildElementTextByNameU( WStringPtr name, _ubool i
 	return UString( "" );
 }
 
-WStringR BinaryXMLElement::GetChildElementTextByNameW( WStringPtr name, _ubool ignorecase ) const
+WString BinaryXMLElement::GetChildElementTextByNameW( WStringPtr name, _ubool ignorecase ) const
 {
-	for ( IMarkupLangElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
+	for ( IMarkupElement* child = mFirstChildElement; child != _null; child = child->GetNextElement( ) )
 	{
 		WString child_name = child->GetName( );
 
@@ -871,32 +871,32 @@ WStringR BinaryXMLElement::GetChildElementTextByNameW( WStringPtr name, _ubool i
 	return WString( L"" );
 }
 
-IMarkupLangElement* BinaryXMLElement::GetFirstChildElement( ) const
+IMarkupElement* BinaryXMLElement::GetFirstChildElement( ) const
 {
 	return mFirstChildElement;
 }
 
-IMarkupLangElement* BinaryXMLElement::GetLastChildElement( ) const
+IMarkupElement* BinaryXMLElement::GetLastChildElement( ) const
 {
 	return mLastChildElement;
 }
 
-IMarkupLangElement* BinaryXMLElement::GetParentElement( ) const
+IMarkupElement* BinaryXMLElement::GetParentElement( ) const
 {
 	return mParentElement;
 }
 
-IMarkupLangElement* BinaryXMLElement::GetPrevElement( ) const
+IMarkupElement* BinaryXMLElement::GetPrevElement( ) const
 {
 	return mPrevElement;
 }
 
-IMarkupLangElement* BinaryXMLElement::GetNextElement( ) const
+IMarkupElement* BinaryXMLElement::GetNextElement( ) const
 {
 	return mNextElement;
 }
 
-IMarkupLangElement* BinaryXMLElement::GetHeadElement( ) const
+IMarkupElement* BinaryXMLElement::GetHeadElement( ) const
 {
 	BinaryXMLElement* head_element = mPrevElement;
 	if ( head_element == _null )
@@ -908,7 +908,7 @@ IMarkupLangElement* BinaryXMLElement::GetHeadElement( ) const
 	return head_element;
 }
 
-IMarkupLangElement* BinaryXMLElement::GetTailElement( ) const
+IMarkupElement* BinaryXMLElement::GetTailElement( ) const
 {
 	BinaryXMLElement* tail_element = mNextElement;
 	if ( tail_element == _null )
@@ -920,9 +920,9 @@ IMarkupLangElement* BinaryXMLElement::GetTailElement( ) const
 	return tail_element;
 }
 
-IMarkupLangElement* BinaryXMLElement::GetPrevElementByName( WStringPtr name, _ubool ignorecase ) const
+IMarkupElement* BinaryXMLElement::GetPrevElementByName( WStringPtr name, _ubool ignorecase ) const
 {
-	for ( IMarkupLangElement* prev = mPrevElement; prev != _null; prev = prev->GetPrevElement( ) )
+	for ( IMarkupElement* prev = mPrevElement; prev != _null; prev = prev->GetPrevElement( ) )
 	{
 		WString prev_name = prev->GetName( );
 
@@ -935,9 +935,9 @@ IMarkupLangElement* BinaryXMLElement::GetPrevElementByName( WStringPtr name, _ub
 	return _null;
 }
 
-IMarkupLangElement* BinaryXMLElement::GetNextElementByName( WStringPtr name, _ubool ignorecase ) const
+IMarkupElement* BinaryXMLElement::GetNextElementByName( WStringPtr name, _ubool ignorecase ) const
 {
-	for ( IMarkupLangElement* next = mNextElement; next != _null; next = next->GetNextElement( ) )
+	for ( IMarkupElement* next = mNextElement; next != _null; next = next->GetNextElement( ) )
 	{
 		WString next_name = next->GetName( );
 
@@ -950,47 +950,47 @@ IMarkupLangElement* BinaryXMLElement::GetNextElementByName( WStringPtr name, _ub
 	return _null;
 }
 
-IMarkupLangElement* BinaryXMLElement::InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj )
+IMarkupElement* BinaryXMLElement::InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj )
 {
 	return _null;
 }
 
-IMarkupLangElement* BinaryXMLElement::InsertChildElementW( WStringPtr name, WStringPtr text, _ubool is_array_obj )
+IMarkupElement* BinaryXMLElement::InsertChildElementW( WStringPtr name, WStringPtr text, _ubool is_array_obj )
 {
 	return _null;
 }
 
-IMarkupLangElement* BinaryXMLElement::InsertChildElement( const IMarkupLangElement* element, _ubool all_child )
+IMarkupElement* BinaryXMLElement::InsertChildElement( const IMarkupElement* element, _ubool all_child )
 {
 	return _null;
 }
 
-IMarkupLangElement* BinaryXMLElement::InsertNextElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj )
+IMarkupElement* BinaryXMLElement::InsertNextElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj )
 {
 	return _null;
 }
 
-IMarkupLangElement* BinaryXMLElement::InsertNextElementW( WStringPtr name, WStringPtr text, _ubool is_array_obj )
+IMarkupElement* BinaryXMLElement::InsertNextElementW( WStringPtr name, WStringPtr text, _ubool is_array_obj )
 {
 	return _null;
 }
 
-IMarkupLangElement* BinaryXMLElement::InsertNextElement( const IMarkupLangElement* element, _ubool all_child )
+IMarkupElement* BinaryXMLElement::InsertNextElement( const IMarkupElement* element, _ubool all_child )
 {
 	return _null;
 }
 
-IMarkupLangElement* BinaryXMLElement::InsertChildArrayObj( WStringPtr name )
+IMarkupElement* BinaryXMLElement::InsertChildArrayObj( WStringPtr name )
 {
 	return _null;
 }
 
-IMarkupLangElement* BinaryXMLElement::AppendElementOfArrayObj( )
+IMarkupElement* BinaryXMLElement::AppendElementOfArrayObj( )
 {
 	return _null;
 }
 
-_dword BinaryXMLElement::AppendElementOfArrayObj( IMarkupLangElement* element )
+_dword BinaryXMLElement::AppendElementOfArrayObj( IMarkupElement* element )
 {
 	return -1;
 }
@@ -1020,7 +1020,7 @@ _dword BinaryXMLElement::GetSubElementsNumber( ) const
 	return 0;
 }
 
-IMarkupLangElement* BinaryXMLElement::GetSubElementByIndex( _dword index ) const
+IMarkupElement* BinaryXMLElement::GetSubElementByIndex( _dword index ) const
 {
 	return _null;
 }
@@ -1030,7 +1030,7 @@ _void BinaryXMLElement::Remove( )
 
 }
 
-_void BinaryXMLElement::RemoveElement( IMarkupLangElement* element )
+_void BinaryXMLElement::RemoveElement( IMarkupElement* element )
 {
 
 }
@@ -1055,7 +1055,7 @@ _dword BinaryXMLElement::GetAttributesNumber( ) const
 	return mAttributes.Number( );
 }
 
-IMarkupLangAttribute* BinaryXMLElement::GetAttributeByIndex( _dword index ) const
+IMarkupAttribute* BinaryXMLElement::GetAttributeByIndex( _dword index ) const
 {
 	if ( index >= mAttributes.Number( ) )
 		return _null;
@@ -1084,7 +1084,7 @@ _ubool BinaryXMLElement::HasAttribute( WStringPtr name, _ubool ignorecase ) cons
 	return _false;
 }
 
-IMarkupLangAttribute* BinaryXMLElement::SearchAttribute( WStringPtr name, _ubool ignorecase ) const
+IMarkupAttribute* BinaryXMLElement::SearchAttribute( WStringPtr name, _ubool ignorecase ) const
 {
 	if ( ignorecase )
 	{
@@ -1169,17 +1169,17 @@ _ubool BinaryXMLElement::GetText( WString& text ) const
 	return _true;
 }
 
-AStringR BinaryXMLElement::GetTextA( ) const
+AString BinaryXMLElement::GetTextA( ) const
 {
 	return AString( ).FromString( mElementText );
 }
 
-UStringR BinaryXMLElement::GetTextU( ) const
+UString BinaryXMLElement::GetTextU( ) const
 {
 	return UString( ).FromString( mElementText );
 }
 
-WStringR BinaryXMLElement::GetTextW( ) const
+WString BinaryXMLElement::GetTextW( ) const
 {
 	return mElementText;
 }
@@ -1201,7 +1201,7 @@ _ubool BinaryXMLElement::SetText( WStringPtr text )
 
 _ubool BinaryXMLElement::GetAttributeBool( WStringPtr name, _ubool& value, _ubool ignorecase ) const
 {
-	IMarkupLangAttribute* attribute = SearchAttribute( name, ignorecase );
+	IMarkupAttribute* attribute = SearchAttribute( name, ignorecase );
 	if ( attribute == _null )
 		return _false;
 
@@ -1212,7 +1212,7 @@ _ubool BinaryXMLElement::GetAttributeBool( WStringPtr name, _ubool& value, _uboo
 
 _ubool BinaryXMLElement::GetAttributeLong( WStringPtr name, _int& value, _ubool ignorecase ) const
 {
-	IMarkupLangAttribute* attribute = SearchAttribute( name, ignorecase );
+	IMarkupAttribute* attribute = SearchAttribute( name, ignorecase );
 	if ( attribute == _null )
 		return _false;
 
@@ -1223,7 +1223,7 @@ _ubool BinaryXMLElement::GetAttributeLong( WStringPtr name, _int& value, _ubool 
 
 _ubool BinaryXMLElement::GetAttributeDword( WStringPtr name, _dword& value, _ubool ignorecase ) const
 {
-	IMarkupLangAttribute* attribute = SearchAttribute( name, ignorecase );
+	IMarkupAttribute* attribute = SearchAttribute( name, ignorecase );
 	if ( attribute == _null )
 		return _false;
 
@@ -1234,7 +1234,7 @@ _ubool BinaryXMLElement::GetAttributeDword( WStringPtr name, _dword& value, _ubo
 
 _ubool BinaryXMLElement::GetAttributeLarge( WStringPtr name, _large& value, _ubool ignorecase ) const
 {
-	IMarkupLangAttribute* attribute = SearchAttribute( name, ignorecase );
+	IMarkupAttribute* attribute = SearchAttribute( name, ignorecase );
 	if ( attribute == _null )
 		return _false;
 
@@ -1245,7 +1245,7 @@ _ubool BinaryXMLElement::GetAttributeLarge( WStringPtr name, _large& value, _ubo
 
 _ubool BinaryXMLElement::GetAttributeQword( WStringPtr name, _qword& value, _ubool ignorecase ) const
 {
-	IMarkupLangAttribute* attribute = SearchAttribute( name, ignorecase );
+	IMarkupAttribute* attribute = SearchAttribute( name, ignorecase );
 	if ( attribute == _null )
 		return _false;
 
@@ -1256,7 +1256,7 @@ _ubool BinaryXMLElement::GetAttributeQword( WStringPtr name, _qword& value, _ubo
 
 _ubool BinaryXMLElement::GetAttributeDouble( WStringPtr name, _double& value, _ubool ignorecase ) const
 {
-	IMarkupLangAttribute* attribute = SearchAttribute( name, ignorecase );
+	IMarkupAttribute* attribute = SearchAttribute( name, ignorecase );
 	if ( attribute == _null )
 		return _false;
 
@@ -1267,7 +1267,7 @@ _ubool BinaryXMLElement::GetAttributeDouble( WStringPtr name, _double& value, _u
 
 _ubool BinaryXMLElement::GetAttributeString( WStringPtr name, UString& string, _ubool ignorecase ) const
 {
-	IMarkupLangAttribute* attribute = SearchAttribute( name, ignorecase );
+	IMarkupAttribute* attribute = SearchAttribute( name, ignorecase );
 	if ( attribute == _null )
 		return _false;
 
@@ -1278,7 +1278,7 @@ _ubool BinaryXMLElement::GetAttributeString( WStringPtr name, UString& string, _
 
 _ubool BinaryXMLElement::GetAttributeString( WStringPtr name, WString& string, _ubool ignorecase ) const
 {
-	IMarkupLangAttribute* attribute = SearchAttribute( name, ignorecase );
+	IMarkupAttribute* attribute = SearchAttribute( name, ignorecase );
 	if ( attribute == _null )
 		return _false;
 
@@ -1289,7 +1289,7 @@ _ubool BinaryXMLElement::GetAttributeString( WStringPtr name, WString& string, _
 
 _ubool BinaryXMLElement::GetAttributeMD5Code( WStringPtr name, MD5Code& value, _ubool ignorecase ) const
 {
-	IMarkupLangAttribute* attribute = SearchAttribute( name, ignorecase );
+	IMarkupAttribute* attribute = SearchAttribute( name, ignorecase );
 	if ( attribute == _null )
 		return _false;
 
@@ -1300,7 +1300,7 @@ _ubool BinaryXMLElement::GetAttributeMD5Code( WStringPtr name, MD5Code& value, _
 
 _ubool BinaryXMLElement::GetAttributeColor( WStringPtr name, Color& color, _ubool ignorecase ) const
 {
-	IMarkupLangAttribute* attribute = SearchAttribute( name, ignorecase );
+	IMarkupAttribute* attribute = SearchAttribute( name, ignorecase );
 	if ( attribute == _null )
 		return _false;
 
@@ -1311,7 +1311,7 @@ _ubool BinaryXMLElement::GetAttributeColor( WStringPtr name, Color& color, _uboo
 
 _ubool BinaryXMLElement::GetAttributeVersion( WStringPtr name, Version& version, _ubool ignorecase ) const
 {
-	IMarkupLangAttribute* attribute = SearchAttribute( name, ignorecase );
+	IMarkupAttribute* attribute = SearchAttribute( name, ignorecase );
 	if ( attribute == _null )
 		return _false;
 
@@ -1375,7 +1375,7 @@ _ubool BinaryXMLElement::SetAttributeVersion( WStringPtr name, const Version& ve
 	return _false;
 }
 
-WStringR BinaryXMLElement::DumpToString( ) const
+WString BinaryXMLElement::DumpToString( ) const
 {
 	WString string;
 	if ( DumpToString( this, string ) == _false )
@@ -1384,7 +1384,7 @@ WStringR BinaryXMLElement::DumpToString( ) const
 	return string;
 }
 
-WStringR BinaryXMLElement::DumpToSchemaString( ) const
+WString BinaryXMLElement::DumpToSchemaString( ) const
 {
 	return WString( L"" );
 }
@@ -1563,7 +1563,7 @@ _ubool BinaryXMLFile::WriteIndex2Stream( IStreamWriter* stream_writer, _INDEX_MO
 	return _true;
 }
 
-_ubool BinaryXMLFile::WriteAttributeIndex2Stream( IStreamWriter* stream_writer, const HeaderInfo& header_info, IMarkupLangAttribute* attribute, const AttributeArray& xml_attributes ) const
+_ubool BinaryXMLFile::WriteAttributeIndex2Stream( IStreamWriter* stream_writer, const HeaderInfo& header_info, IMarkupAttribute* attribute, const AttributeArray& xml_attributes ) const
 {
 	_int index = -1;
 
@@ -1582,7 +1582,7 @@ _ubool BinaryXMLFile::WriteAttributeIndex2Stream( IStreamWriter* stream_writer, 
 	return _true;
 }
 
-_ubool BinaryXMLFile::WriteElementIndex2Stream( IStreamWriter* stream_writer, const HeaderInfo& header_info, IMarkupLangElement* element, const ElementArray& xml_elements ) const
+_ubool BinaryXMLFile::WriteElementIndex2Stream( IStreamWriter* stream_writer, const HeaderInfo& header_info, IMarkupElement* element, const ElementArray& xml_elements ) const
 {
 	_int index = -1;
 
@@ -1786,7 +1786,7 @@ _ubool BinaryXMLFile::WriteElements2Stream( IStreamWriter* stream_writer, const 
 
 	for ( _dword i = 0; i < xml_elements.Number( ); i ++ )
 	{
-		const IMarkupLangElement* element = xml_elements[i].mElement;
+		const IMarkupElement* element = xml_elements[i].mElement;
 		EGE_ASSERT( element != _null );
 
 		// Write the element name index
@@ -1851,7 +1851,7 @@ BinaryXMLFile::_INDEX_MODE BinaryXMLFile::GetIndexMode( _dword number ) const
 		return _INDEX_32_BITS;
 }
 
-_ubool BinaryXMLFile::BuildPoolsFromMarkupFile( IMarkupLangElement* element, BinaryXMLStringTableWriter& string_table, ElementArray& xml_elements, AttributeArray& xml_attributes, IRegularExpressionRef regular_expressions[] )
+_ubool BinaryXMLFile::BuildPoolsFromMarkupFile( IMarkupElement* element, BinaryXMLStringTableWriter& string_table, ElementArray& xml_elements, AttributeArray& xml_attributes, IRegularExpressionRef regular_expressions[] )
 {
 	while ( element != _null )
 	{
@@ -1865,7 +1865,7 @@ _ubool BinaryXMLFile::BuildPoolsFromMarkupFile( IMarkupLangElement* element, Bin
 		// Update attributes
 		for ( _dword i = 0; i < element->GetAttributesNumber( ); i ++ )
 		{
-			IMarkupLangAttribute* attribute = element->GetAttributeByIndex( i );
+			IMarkupAttribute* attribute = element->GetAttributeByIndex( i );
 			EGE_ASSERT( attribute != _null );
 
 			// Get the attribute name
@@ -1893,7 +1893,7 @@ _ubool BinaryXMLFile::BuildPoolsFromMarkupFile( IMarkupLangElement* element, Bin
 		xml_elements.InsertAscending( ElementInfo( element ) );
 
 		// Continue to walk child elements
-		IMarkupLangElement* child_element = element->GetFirstChildElement( );
+		IMarkupElement* child_element = element->GetFirstChildElement( );
 		if ( child_element != _null )
 		{
 			if ( BuildPoolsFromMarkupFile( child_element, string_table, xml_elements, xml_attributes, regular_expressions ) == _false )
@@ -1970,7 +1970,7 @@ _int BinaryXMLFile::ReadIndexFromStream( _INDEX_MODE index_mode, IStreamReader* 
 	return feedback_index;
 }
 
-_ubool BinaryXMLFile::LoadFromMarkupFile( IMarkupLangFile* markup_file )
+_ubool BinaryXMLFile::LoadFromMarkupFile( IMarkupFile* markup_file )
 {
 	if ( markup_file == _null )
 		return _false;
@@ -2118,12 +2118,12 @@ _ubool BinaryXMLFile::SaveToStream( IStreamWriter* stream_writer, _dword flags )
 	return _true;
 }
 
-IMarkupLangDeclaration* BinaryXMLFile::GetDeclaration( )
+IMarkupDeclaration* BinaryXMLFile::GetDeclaration( )
 {
 	return &mDeclaration;
 }
 
-IMarkupLangElement* BinaryXMLFile::GetRootElement( )
+IMarkupElement* BinaryXMLFile::GetRootElement( )
 {
 	return mRootElement;
 }

@@ -42,9 +42,9 @@ public:
 class IJ2CString : public IObject
 {
 public:
-	virtual AStringR ToStringA( ) const PURE;
-	virtual UStringR ToStringU( ) const PURE;
-	virtual WStringR ToStringW( ) const PURE;
+	virtual AString ToStringA( ) const PURE;
+	virtual UString ToStringU( ) const PURE;
+	virtual WString ToStringW( ) const PURE;
 };
 
 //----------------------------------------------------------------------------
@@ -82,7 +82,7 @@ public:
 	//!	Convert array to HEX string.
 	//!	@param		buffer		The array buffer.
 	//!	@return		The HEX string.
-	virtual AStringR ByteArray2HexString( jbyteArray buffer ) PURE;
+	virtual AString ByteArray2HexString( jbyteArray buffer ) PURE;
 
 	// Create JNI object.
 	//!	@param		path		The class path.
@@ -103,15 +103,15 @@ public:
 	//!	Convert J->C string.
 	//!	@param		string		The J string.
 	//!	@return		The string.
-	virtual AStringR ToStringA( jstring string ) PURE;
+	virtual AString ToStringA( jstring string ) PURE;
 	//!	Convert J->C string.
 	//!	@param		string		The J string.
 	//!	@return		The string.
-	virtual UStringR ToStringU( jstring string ) PURE;
+	virtual UString ToStringU( jstring string ) PURE;
 	//!	Convert J->C string.
 	//!	@param		string		The J string.
 	//!	@return		The string.
-	virtual WStringR ToStringW( jstring string ) PURE;
+	virtual WString ToStringW( jstring string ) PURE;
 	//!	Create J->C string.
 	//!	@param		string		The J string.
 	//!	@return		The J->C array interface.
@@ -161,7 +161,7 @@ public:
 	//!	Get signature.
 	//!	@param		none.
 	//!	@return		The signature.
-	virtual AStringR GetSignature( ) PURE;
+	virtual AString GetSignature( ) PURE;
 };
 
 }

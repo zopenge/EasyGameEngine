@@ -34,7 +34,7 @@ HTMLAttribute::~HTMLAttribute( )
 {
 }
 
-WStringR HTMLAttribute::GetName( _ubool with_prefix ) const
+WString HTMLAttribute::GetName( _ubool with_prefix ) const
 {
 	return WString( L"" );
 }
@@ -126,7 +126,7 @@ HTMLElement::~HTMLElement( )
 {
 }
 
-IMarkupLangElementIteratorPassRef HTMLElement::OnCreateElementIterator( IMarkupLangElement* element )
+IMarkupLangElementIteratorPassRef HTMLElement::OnCreateElementIterator( IMarkupElement* element )
 {
     return _null;
 }
@@ -136,22 +136,22 @@ _ubool HTMLElement::SetName( WStringPtr name )
 	return _true;
 }
 
-WStringR HTMLElement::GetName( ) const
+WString HTMLElement::GetName( ) const
 {
 	return WString( L"" );
 }
 
-IMarkupLangElement* HTMLElement::InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj )
+IMarkupElement* HTMLElement::InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj )
 {
 	return _null;
 }
 
-IMarkupLangElement* HTMLElement::InsertNextElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj )
+IMarkupElement* HTMLElement::InsertNextElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj )
 {
 	return _null;
 }
 
-_void HTMLElement::RemoveElement( IMarkupLangElement* element )
+_void HTMLElement::RemoveElement( IMarkupElement* element )
 {
 }
 
@@ -165,7 +165,7 @@ _ubool HTMLElement::HasAttribute( WStringPtr name, _ubool ignorecase ) const
 	return _false;
 }
 
-IMarkupLangAttribute* HTMLElement::SearchAttribute( WStringPtr name, _ubool ignorecase ) const
+IMarkupAttribute* HTMLElement::SearchAttribute( WStringPtr name, _ubool ignorecase ) const
 {
 	return _null;
 }
@@ -208,7 +208,7 @@ _ubool HTMLElement::GetText( WString& text ) const
 	return _true;
 }
 
-UStringR HTMLElement::GetTextU( ) const
+UString HTMLElement::GetTextU( ) const
 {
 	UString text;
 	if ( GetText( text ) == _false )
@@ -217,7 +217,7 @@ UStringR HTMLElement::GetTextU( ) const
 	return text;
 }
 
-WStringR HTMLElement::GetTextW( ) const
+WString HTMLElement::GetTextW( ) const
 {
 	WString text;
 	if ( GetText( text ) == _false )
@@ -250,12 +250,12 @@ _ubool HTMLElement::SetAttributeString( WStringPtr name, WStringPtr string )
 	return SetAttributeString( name, string_utf8 );
 }
 
-WStringR HTMLElement::DumpToString( ) const
+WString HTMLElement::DumpToString( ) const
 {
 	return L"";
 }
 
-WStringR HTMLElement::DumpToSchemaString( ) const
+WString HTMLElement::DumpToSchemaString( ) const
 {
 	return WString( L"" );
 }
@@ -335,12 +335,12 @@ _ubool HTMLFile::SaveToStream( IStreamWriter* stream_writer, _dword flags ) cons
 	return _false;
 }
 
-IMarkupLangDeclaration* HTMLFile::GetDeclaration( )
+IMarkupDeclaration* HTMLFile::GetDeclaration( )
 {
 	return _null;
 }
 
-IMarkupLangElement* HTMLFile::GetRootElement( )
+IMarkupElement* HTMLFile::GetRootElement( )
 {
 	return _null;
 }

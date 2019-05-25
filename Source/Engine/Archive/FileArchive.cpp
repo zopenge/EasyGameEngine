@@ -66,7 +66,7 @@ IStreamReaderPassRef FileArchive::LoadResourceByPath( WStringPtr file_name )
 	return file_stream_reader;
 }
 
-_ubool FileArchive::EnumResources( OnWalkItem walk_item_func, WStringPtr path, WStringPtr filter, _dword flags, _dword depth, const QwordParameters2& parameters ) const
+_ubool FileArchive::EnumResources( OnWalkItem walk_item_func, WStringPtr path, WStringPtr filter, _dword flags, _dword depth, const QwordParameters2& params ) const
 {
 	if ( walk_item_func == _null )
 		return _false;
@@ -80,7 +80,7 @@ _ubool FileArchive::EnumResources( OnWalkItem walk_item_func, WStringPtr path, W
 	FileInfo file_info;
 	while ( file_finder.Walk( file_info, filter, flags, depth ) )
 	{
-		if ( (*walk_item_func)( file_info, parameters ) == _false )
+		if ( (*walk_item_func)( file_info, params ) == _false )
 			break;
 	}
 

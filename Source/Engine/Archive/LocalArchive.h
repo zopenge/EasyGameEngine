@@ -44,9 +44,9 @@ private:
 	_ubool RefreshFile( WStringPtr dir, const FileInfo& file_info );
 
 	//!	Get absolute file name.
-	WStringR GetAbsoluteFileName( WStringPtr res_name ) const;
+	WString GetAbsoluteFileName( WStringPtr res_name ) const;
 	//!	Get relative file name.
-	WStringR GetRelativeFileName( WStringPtr res_name ) const;
+	WString GetRelativeFileName( WStringPtr res_name ) const;
 
 public:
 	LocalArchive( );
@@ -61,8 +61,8 @@ public:
 public:
 	virtual WStringPtr				GetPath( ) const override;
 
-	virtual WStringR				GetResourceAbsolutePath( WStringPtr res_name ) const override;
-	virtual WStringR				GetResourceRelativePath( WStringPtr res_name ) const override;
+	virtual WString				GetResourceAbsolutePath( WStringPtr res_name ) const override;
+	virtual WString				GetResourceRelativePath( WStringPtr res_name ) const override;
 
 	virtual IStreamReaderPassRef	LoadResourceByName( WStringPtr res_name ) override;
 

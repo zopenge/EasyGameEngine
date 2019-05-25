@@ -173,11 +173,11 @@ _float Thread::GetCPUUsage(_dword timenow) {
 	return Platform::GetThreadCPUUsage(mObjectHandle, timenow, mLastThreadTime, mLastSampleTime, mLastSampleDelta);
 }
 
-_ubool Thread::Create(_dword priority, _ubool suspend, WStringPtr name, const QwordParams2& parameters) {
+_ubool Thread::Create(_dword priority, _ubool suspend, WStringPtr name, const QwordParams2& params) {
 	Close();
 
-	// Set the parameters
-	mParams = parameters;
+	// Set the params
+	mParams = params;
 
 	// Set the thread name
 	mThreadName = name;

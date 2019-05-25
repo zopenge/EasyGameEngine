@@ -885,7 +885,7 @@ _ubool ImageProcessor::GetOpaqueRegion( const BitmapInfoReadOnly& image_info, Re
 	return _true;
 }
 
-_ubool ImageProcessor::GetOpaqueRegion( const PointI& size, const PointI& position, RectI& rect, OnIsTransparentPixel funcpointer, const QwordParameters2& parameters ) const
+_ubool ImageProcessor::GetOpaqueRegion( const PointI& size, const PointI& position, RectI& rect, OnIsTransparentPixel funcpointer, const QwordParameters2& params ) const
 {
 	if ( size.x == 0 || size.y == 0 )
 		return _false;
@@ -895,7 +895,7 @@ _ubool ImageProcessor::GetOpaqueRegion( const PointI& size, const PointI& positi
 
 	// Initialize callback function
 	CallbackFunc< OnIsTransparentPixel, _ubool, QwordParameters2 > is_transparent_pixel_func;
-	is_transparent_pixel_func.Init( funcpointer, parameters );
+	is_transparent_pixel_func.Init( funcpointer, params );
 
 	// If the start position is transparent then skip it
 	if ( is_transparent_pixel_func.InvokeR( position.x, position.y ) )

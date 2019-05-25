@@ -78,21 +78,21 @@ public:
 
 	virtual const AStringObj&	GetRefString( const ARawString& string ) override;
 	virtual const AStringObj&	GetRefString( AStringPtr string ) override;
-	virtual const AStringObj&	GetRefString( const AStringR& string ) override;
+	virtual const AStringObj&	GetRefString( const AString& string ) override;
 	virtual const AStringObj&	SearchRefAStringByID( _dword id ) const override;
 	virtual const AStringObj&	SearchRefString( const ARawString& string ) const override;
 	virtual const AStringObj&	SearchRefString( AStringPtr string ) const override;
 
 	virtual const UStringObj&	GetRefString( const URawString& string ) override;
 	virtual const UStringObj&	GetRefString( UStringPtr string ) override;
-	virtual const UStringObj&	GetRefString( const UStringR& string ) override;
+	virtual const UStringObj&	GetRefString( const UString& string ) override;
 	virtual const UStringObj&	SearchRefUStringByID( _dword id ) const override;
 	virtual const UStringObj&	SearchRefString( const URawString& string ) const override;
 	virtual const UStringObj&	SearchRefString( UStringPtr string ) const override;
 
 	virtual const WStringObj&	GetRefString( const WRawString& string ) override;
 	virtual const WStringObj&	GetRefString( WStringPtr string ) override;
-	virtual const WStringObj&	GetRefString( const WStringR& string ) override;
+	virtual const WStringObj&	GetRefString( const WString& string ) override;
 	virtual const WStringObj&	SearchRefWStringByID( _dword id ) const override;
 	virtual const WStringObj&	SearchRefString( const WRawString& string ) const override;
 	virtual const WStringObj&	SearchRefString( WStringPtr string ) const override;

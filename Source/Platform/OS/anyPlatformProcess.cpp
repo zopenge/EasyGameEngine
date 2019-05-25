@@ -131,7 +131,7 @@ _handle anyPlatformProcess::CreateThread(
 	_pthread_attr_init(&attr);
 	_pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
 
-	// Set attribute parameters
+	// Set attribute params
 	// Processes scheduled under one of the real-time policies (SCHED_FIFO,
 	// SCHED_RR) have a sched_priority value in the range 1 (low) to 99 (high).
 	// (As the numbers imply, real-time threads always have higher priority than

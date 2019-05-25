@@ -882,7 +882,7 @@ ISerializableNodePassRef InterfaceFactory::CreateMarkupLangSerializableNode( ISt
 	return CreateMarkupLangSerializableNode( markup_lang_file );
 }
 
-ISerializableNodePassRef InterfaceFactory::CreateMarkupLangSerializableNode( IMarkupLangFile* file )
+ISerializableNodePassRef InterfaceFactory::CreateMarkupLangSerializableNode( IMarkupFile* file )
 {
 	if ( file == _null )
 	{
@@ -891,7 +891,7 @@ ISerializableNodePassRef InterfaceFactory::CreateMarkupLangSerializableNode( IMa
 	}
 
 	// Get the root element
-	IMarkupLangElement* root_element = file->GetRootElement( );
+	IMarkupElement* root_element = file->GetRootElement( );
 	if ( root_element == _null )
 		return _null;
 
@@ -899,7 +899,7 @@ ISerializableNodePassRef InterfaceFactory::CreateMarkupLangSerializableNode( IMa
 	return new MarkupLangSerializableNode( root_element, file );
 }
 
-ISerializableNodePassRef InterfaceFactory::CreateMarkupLangSerializableNode( IMarkupLangElement* element, IMarkupLangFile* file )
+ISerializableNodePassRef InterfaceFactory::CreateMarkupLangSerializableNode( IMarkupElement* element, IMarkupFile* file )
 {
 	if ( element == _null )
 	{
@@ -1288,7 +1288,7 @@ IMarkupLangFilePassRef InterfaceFactory::CreateXMLFile( WStringPtr root_name, _E
 	xml_file->InitXMLDocument( );
 
 	// Get the declaration
-	IMarkupLangDeclaration* declaration = xml_file->GetDeclaration( );
+	IMarkupDeclaration* declaration = xml_file->GetDeclaration( );
 	if ( declaration == _null )
 		{ EGE_RELEASE( xml_file ); return _null; }
 
@@ -1309,7 +1309,7 @@ IMarkupLangFilePassRef InterfaceFactory::CreateXMLFile( const ISerializableNode*
 		return _null;
 
 	// Get the XML element
-	const IMarkupLangElement* xml_element = node->GetMarkupLangElement( );
+	const IMarkupElement* xml_element = node->GetMarkupLangElement( );
 	if ( xml_element == _null )
 		return _null;
 
@@ -1322,14 +1322,14 @@ IMarkupLangFilePassRef InterfaceFactory::CreateXMLFile( const ISerializableNode*
 		return _null;
 
 	// Get the root of element
-	IMarkupLangElement* root_element = xml_file->GetRootElement( );
+	IMarkupElement* root_element = xml_file->GetRootElement( );
 	if ( root_element == _null )
 		return _null;
 
 	// Set all attributes of root element
 	for ( _dword i = 0; i < xml_element->GetAttributesNumber( ); i ++ )
 	{
-		IMarkupLangAttribute* attribute = xml_element->GetAttributeByIndex( i );
+		IMarkupAttribute* attribute = xml_element->GetAttributeByIndex( i );
 		EGE_ASSERT( attribute != _null );
 
 		WString attribute_name	= attribute->GetName( );
@@ -1340,7 +1340,7 @@ IMarkupLangFilePassRef InterfaceFactory::CreateXMLFile( const ISerializableNode*
 	}
 
 	// Insert all childs to root
-	const IMarkupLangElement* child_element = xml_element->GetFirstChildElement( );
+	const IMarkupElement* child_element = xml_element->GetFirstChildElement( );
 	for ( ; child_element != _null; child_element = child_element->GetNextElement( ) )
 	{
 		if ( root_element->InsertChildElement( child_element, _true ) == _null )
@@ -1350,7 +1350,7 @@ IMarkupLangFilePassRef InterfaceFactory::CreateXMLFile( const ISerializableNode*
 	return xml_file;
 }
 
-IMarkupLangFilePassRef InterfaceFactory::CreateBXMLFile( IMarkupLangFile* markup_file )
+IMarkupLangFilePassRef InterfaceFactory::CreateBXMLFile( IMarkupFile* markup_file )
 {
 	if ( markup_file == _null )
 		return _null;
@@ -1537,9 +1537,9 @@ IGeometryFilePassRef InterfaceFactory::ParseGeometryFile( IStreamReader* stream_
 IMarkupLangFilePassRef InterfaceFactory::ParseXMLFile( IStreamReader* stream_reader )
 {
 	if ( this->GetCommonFileTypeFromStream( stream_reader ) == _FF_BXML )
-		return ParseStreamFile< BinaryXMLFile, IMarkupLangFile >( stream_reader );	
+		return ParseStreamFile< BinaryXMLFile, IMarkupFile >( stream_reader );	
 
-	return ParseStreamFile< XMLFile, IMarkupLangFile >( stream_reader );
+	return ParseStreamFile< XMLFile, IMarkupFile >( stream_reader );
 }
 
 IMarkupLangFilePassRef InterfaceFactory::ParseXMLFile( IStreamReader* stream_reader, _ENCRYPTION encryption_type, AStringPtr encryption_key )
@@ -1582,7 +1582,7 @@ IHTMLFilePassRef InterfaceFactory::ParseHTMLFile( IStreamReader* stream_reader )
 
 IMarkupLangFilePassRef InterfaceFactory::ParseJSONFile( IStreamReader* stream_reader )
 {
-	return ParseStreamFile< JSONFile, IMarkupLangFile >( stream_reader );
+	return ParseStreamFile< JSONFile, IMarkupFile >( stream_reader );
 }
 
 IMarkupLangFilePassRef InterfaceFactory::ParseJSONFile( AStringPtr string )

@@ -135,7 +135,7 @@ _ubool ManifestFileManager::HasResource( WStringPtr res_name ) const
 	return _true;
 }
 
-WStringR ManifestFileManager::GetRelativePath( WStringPtr res_name ) const
+WString ManifestFileManager::GetRelativePath( WStringPtr res_name ) const
 {
 	// Find the item info
 	const ItemInfo* item_info = GetItemInfo( res_name, _null );
@@ -146,7 +146,7 @@ WStringR ManifestFileManager::GetRelativePath( WStringPtr res_name ) const
 	return Path::BuildFilePath( item_info->mDirectory.Str( ), item_info->mResName.Str( ) );
 }
 
-WStringR ManifestFileManager::GetRelativePath( WStringPtr res_name, Version& version ) const
+WString ManifestFileManager::GetRelativePath( WStringPtr res_name, Version& version ) const
 {
 	// Find the item info
 	const ItemInfo* item_info = GetItemInfo( res_name, &version );
@@ -157,7 +157,7 @@ WStringR ManifestFileManager::GetRelativePath( WStringPtr res_name, Version& ver
 	return Path::BuildFilePath( item_info->mDirectory.Str( ), item_info->mResName.Str( ) );
 }
 
-WStringR ManifestFileManager::GetRelativePath( WStringPtr res_name, Version& version, MD5Code& md5_code ) const
+WString ManifestFileManager::GetRelativePath( WStringPtr res_name, Version& version, MD5Code& md5_code ) const
 {
 	// Find the item info
 	const ItemInfo* item_info = GetItemInfo( res_name, &version );

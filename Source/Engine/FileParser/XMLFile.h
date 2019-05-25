@@ -19,10 +19,10 @@ typedef tinyxml2::XMLDocument*	xmlDocPtr;
 // XMLAttribute
 //----------------------------------------------------------------------------
 
-class XMLAttribute : public INTERFACE_MARKUP_LANG_ATTRIBUTE_IMPL( IMarkupLangAttribute )
+class XMLAttribute : public INTERFACE_MARKUP_LANG_ATTRIBUTE_IMPL( IMarkupAttribute )
 {
 private:
-	typedef INTERFACE_MARKUP_LANG_ATTRIBUTE_IMPL( IMarkupLangAttribute ) BaseClass;
+	typedef INTERFACE_MARKUP_LANG_ATTRIBUTE_IMPL( IMarkupAttribute ) BaseClass;
 
 private:
 	//!	The XML attribute
@@ -46,19 +46,19 @@ public:
 	XMLAttribute( xmlAttrPtr xml_attribute );
 	virtual ~XMLAttribute( );
 	
-// IMarkupLangAttribute Interface
+// IMarkupAttribute Interface
 public:
-	virtual WStringR	GetName( _ubool with_prefix = _false ) const override;
+	virtual WString	GetName( _ubool with_prefix = _false ) const override;
 };
 
 //----------------------------------------------------------------------------
 // XMLElement
 //----------------------------------------------------------------------------
 
-class XMLElement : public INTERFACE_MARKUP_LANG_ELEMENT_IMPL( IMarkupLangElement )
+class XMLElement : public INTERFACE_MARKUP_LANG_ELEMENT_IMPL( IMarkupElement )
 {
 private:
-	typedef INTERFACE_MARKUP_LANG_ELEMENT_IMPL( IMarkupLangElement ) BaseClass;
+	typedef INTERFACE_MARKUP_LANG_ELEMENT_IMPL( IMarkupElement ) BaseClass;
 
 private:
 	typedef Map< XMLAttribute*, WString > XMLAttributesMap;
@@ -79,28 +79,28 @@ private:
 
 // TMarkupLangElement Interface
 private:
-    virtual IMarkupLangElementIteratorPassRef OnCreateElementIterator( IMarkupLangElement* element ) override;
+    virtual IMarkupLangElementIteratorPassRef OnCreateElementIterator( IMarkupElement* element ) override;
 
 public:
 	XMLElement( xmlDocPtr xml_doc, xmlNodePtr xml_element, XMLElement* parent, XMLElement* prev, XMLElement* next );
 	virtual ~XMLElement( );
 
-// IMarkupLangElement Interface
+// IMarkupElement Interface
 public:
 	virtual _ubool								SetName( WStringPtr name ) override;
-	virtual WStringR							GetName( ) const override;
+	virtual WString							GetName( ) const override;
 
-	virtual IMarkupLangElement*					InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj ) override;
-	virtual IMarkupLangElement*					InsertNextElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj ) override;
+	virtual IMarkupElement*					InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj ) override;
+	virtual IMarkupElement*					InsertNextElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj ) override;
 
-	virtual _void								RemoveElement( IMarkupLangElement* element ) override;
+	virtual _void								RemoveElement( IMarkupElement* element ) override;
 	virtual IMarkupLangElementIteratorPassRef	RemoveElement( IMarkupLangElementIterator* it ) override;
 
 	virtual _dword								GetAttributesNumber( ) const override;
-	virtual IMarkupLangAttribute*				GetAttributeByIndex( _dword index ) const override;
+	virtual IMarkupAttribute*				GetAttributeByIndex( _dword index ) const override;
 
 	virtual _ubool								HasAttribute( WStringPtr name, _ubool ignorecase = _false ) const override;
-	virtual IMarkupLangAttribute*				SearchAttribute( WStringPtr name, _ubool ignorecase = _false ) const override;
+	virtual IMarkupAttribute*				SearchAttribute( WStringPtr name, _ubool ignorecase = _false ) const override;
 
 	virtual _dword								GetValueU( ) const override;
 	virtual _int								GetValueI( ) const override;
@@ -115,9 +115,9 @@ public:
 	virtual _ubool								GetText( AString& text ) const override;
 	virtual _ubool								GetText( UString& text ) const override;
 	virtual _ubool								GetText( WString& text ) const override;
-	virtual AStringR							GetTextA( ) const override;
-	virtual UStringR							GetTextU( ) const override;
-	virtual WStringR							GetTextW( ) const override;
+	virtual AString							GetTextA( ) const override;
+	virtual UString							GetTextU( ) const override;
+	virtual WString							GetTextW( ) const override;
 	virtual _ubool								SetText( AStringPtr text ) override;
 	virtual _ubool								SetText( UStringPtr text ) override;
 	virtual _ubool								SetText( WStringPtr text ) override;
@@ -125,18 +125,18 @@ public:
 	virtual _ubool 								SetAttributeString( WStringPtr name, UStringPtr string ) override;
 	virtual _ubool 								SetAttributeString( WStringPtr name, WStringPtr string ) override;
 
-	virtual WStringR							DumpToString( ) const override;
-	virtual WStringR							DumpToSchemaString( ) const override;
+	virtual WString							DumpToString( ) const override;
+	virtual WString							DumpToSchemaString( ) const override;
 };
 
 //----------------------------------------------------------------------------
 // XMLFileDeclaration
 //----------------------------------------------------------------------------
 
-class XMLFileDeclaration : public INTERFACE_MARKUP_LANG_DECLARATION_IMPL( IMarkupLangDeclaration )
+class XMLFileDeclaration : public INTERFACE_MARKUP_LANG_DECLARATION_IMPL( IMarkupDeclaration )
 {
 private:
-	typedef INTERFACE_MARKUP_LANG_DECLARATION_IMPL( IMarkupLangDeclaration ) BaseClass;
+	typedef INTERFACE_MARKUP_LANG_DECLARATION_IMPL( IMarkupDeclaration ) BaseClass;
 
 private:
 	//!	The XML document
@@ -152,7 +152,7 @@ public:
 	XMLFileDeclaration( xmlDocPtr document );
 	virtual ~XMLFileDeclaration( );
 
-// IMarkupLangDeclaration Interface
+// IMarkupDeclaration Interface
 public:
 	virtual _void	SetVersion( const Version& version ) override;
 
@@ -163,10 +163,10 @@ public:
 // XMLFile
 //----------------------------------------------------------------------------
 
-class XMLFile : public TBaseFile< IMarkupLangFile >
+class XMLFile : public TBaseFile< IMarkupFile >
 {
 private:
-	typedef TBaseFile< IMarkupLangFile > BaseClass;
+	typedef TBaseFile< IMarkupFile > BaseClass;
 
 private:
 	//!	The XML document
@@ -225,11 +225,11 @@ public:
 
 	virtual _ubool					SaveToStream( IStreamWriter* stream_writer, _dword flags ) const override;
 
-// IMarkupLangFile Interface
+// IMarkupFile Interface
 public:
-	virtual IMarkupLangDeclaration*	GetDeclaration( ) override;
+	virtual IMarkupDeclaration*	GetDeclaration( ) override;
 
-	virtual IMarkupLangElement*		GetRootElement( ) override;
+	virtual IMarkupElement*		GetRootElement( ) override;
 
 	virtual _ubool					SchemaValidate( WStringPtr filename ) override;
 	virtual _ubool					SchemaValidate( IStreamReader* stream_reader ) override;

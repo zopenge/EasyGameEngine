@@ -39,9 +39,9 @@ public:
 	HTMLAttribute( GumboAttribute* gumbo_attribute );
 	virtual ~HTMLAttribute( );
 	
-// IMarkupLangAttribute Interface
+// IMarkupAttribute Interface
 public:
-	virtual WStringR	GetName( _ubool with_prefix = _false ) const override;
+	virtual WString	GetName( _ubool with_prefix = _false ) const override;
 };
 
 //----------------------------------------------------------------------------
@@ -65,25 +65,25 @@ private:
 
 // TMarkupLangElement Interface
 private:
-    virtual IMarkupLangElementIteratorPassRef OnCreateElementIterator( IMarkupLangElement* element ) override;
+    virtual IMarkupLangElementIteratorPassRef OnCreateElementIterator( IMarkupElement* element ) override;
 
 public:
 	HTMLElement( GumboElement* gumbo_element, HTMLElement* parent, HTMLElement* prev, HTMLElement* next );
 	virtual ~HTMLElement( );
 
-// IMarkupLangElement Interface
+// IMarkupElement Interface
 public:
 	virtual _ubool								SetName( WStringPtr name ) override;
-	virtual WStringR							GetName( ) const override;
+	virtual WString							GetName( ) const override;
 
-	virtual IMarkupLangElement*					InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj ) override;
-	virtual IMarkupLangElement*					InsertNextElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj ) override;
+	virtual IMarkupElement*					InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj ) override;
+	virtual IMarkupElement*					InsertNextElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj ) override;
 
-	virtual _void								RemoveElement( IMarkupLangElement* element ) override;
+	virtual _void								RemoveElement( IMarkupElement* element ) override;
 	virtual IMarkupLangElementIteratorPassRef	RemoveElement( IMarkupLangElementIterator* it ) override;
 
 	virtual _ubool								HasAttribute( WStringPtr name, _ubool ignorecase = _false ) const override;
-	virtual IMarkupLangAttribute*				SearchAttribute( WStringPtr name, _ubool ignorecase = _false ) const override;
+	virtual IMarkupAttribute*				SearchAttribute( WStringPtr name, _ubool ignorecase = _false ) const override;
 
 	virtual _dword								GetValueU( ) const override;
 	virtual _int								GetValueI( ) const override;
@@ -92,16 +92,16 @@ public:
 
 	virtual _ubool								GetText( UString& text ) const override;
 	virtual _ubool								GetText( WString& text ) const override;
-	virtual UStringR							GetTextU( ) const override;
-	virtual WStringR							GetTextW( ) const override;
+	virtual UString							GetTextU( ) const override;
+	virtual WString							GetTextW( ) const override;
 	virtual _ubool								SetText( UStringPtr text ) override;
 	virtual _ubool								SetText( WStringPtr text ) override;
 
 	virtual _ubool 								SetAttributeString( WStringPtr name, UStringPtr string ) override;
 	virtual _ubool 								SetAttributeString( WStringPtr name, WStringPtr string ) override;
 
-	virtual WStringR							DumpToString( ) const override;
-	virtual WStringR							DumpToSchemaString( ) const override;
+	virtual WString							DumpToString( ) const override;
+	virtual WString							DumpToSchemaString( ) const override;
 };
 
 //----------------------------------------------------------------------------
@@ -138,11 +138,11 @@ public:
 
 	virtual _ubool					SaveToStream( IStreamWriter* stream_writer, _dword flags ) const override;
 
-// IMarkupLangFile Interface
+// IMarkupFile Interface
 public:
-	virtual IMarkupLangDeclaration*	GetDeclaration( ) override;
+	virtual IMarkupDeclaration*	GetDeclaration( ) override;
 
-	virtual IMarkupLangElement*		GetRootElement( ) override;
+	virtual IMarkupElement*		GetRootElement( ) override;
 
 	virtual _ubool					SchemaValidate( WStringPtr filename ) override;
 	virtual _ubool					SchemaValidate( IStreamReader* stream_reader ) override;

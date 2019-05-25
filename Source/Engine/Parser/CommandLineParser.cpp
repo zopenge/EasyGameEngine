@@ -354,7 +354,7 @@ _void CommandLineParser::Initialize( _dword argc, const _charw* argn[], const _c
 	Initialize( cmdlinestring );
 }
 
-WStringR CommandLineParser::GetString( _dword startindex ) const
+WString CommandLineParser::GetString( _dword startindex ) const
 {
 	_charw string[4096]; string[0] = 0;
 
@@ -451,7 +451,7 @@ _int CommandLineParser::GetArgumentValueByKeyName( WStringPtr keyname, _dword ra
 	return arg_data->GetValue( radix );
 }
 
-WStringR CommandLineParser::GetArgumentStringByKeyName( WStringPtr keyname, _ubool ignorecase ) const
+WString CommandLineParser::GetArgumentStringByKeyName( WStringPtr keyname, _ubool ignorecase ) const
 {
 	const ArgData* arg_data = GetArgumentByKeyName( keyname, ignorecase );
 	if ( arg_data == _null )

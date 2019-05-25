@@ -146,7 +146,7 @@ _void ProtoBufProcessor::WriteBuffer( _dword id, const _byte* buffer, _dword siz
 	mSender->Send( msg_buf, processed_size );
 }
 
-_ubool ProtoBufProcessor::PostBuffer( AStringPtr url_name, const AStringArray& header_list, _dword id, const QwordParameters4& parameters )
+_ubool ProtoBufProcessor::PostBuffer( AStringPtr url_name, const AStringArray& header_list, _dword id, const QwordParameters4& params )
 {
 	// Encode message info
 	MemArrayPtr< _byte > msg_buf;
@@ -155,10 +155,10 @@ _ubool ProtoBufProcessor::PostBuffer( AStringPtr url_name, const AStringArray& h
 		return _false;
 
 	// Post it
-	return mSender->Post( url_name, header_list, msg_buf, processed_size, parameters );
+	return mSender->Post( url_name, header_list, msg_buf, processed_size, params );
 }
 
-_ubool ProtoBufProcessor::PostBuffer( AStringPtr url_name, const AStringArray& header_list, _dword id, const _byte* buffer, _dword size, const QwordParameters4& parameters )
+_ubool ProtoBufProcessor::PostBuffer( AStringPtr url_name, const AStringArray& header_list, _dword id, const _byte* buffer, _dword size, const QwordParameters4& params )
 {
 	if ( buffer == _null || size == 0 )
 		return _false;
@@ -170,5 +170,5 @@ _ubool ProtoBufProcessor::PostBuffer( AStringPtr url_name, const AStringArray& h
 		return _false;
 
 	// Post it
-	return mSender->Post( url_name, header_list, msg_buf, processed_size, parameters );
+	return mSender->Post( url_name, header_list, msg_buf, processed_size, params );
 }

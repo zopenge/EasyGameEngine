@@ -56,7 +56,7 @@ public:
 	//!	Get the (IMSI£ºInternational Mobile Subscriber Identification Number) info.
 	//!	@param		none.
 	//!	@return		The IMSI string.
-	virtual WStringR GetIMSI( ) const PURE;
+	virtual WString GetIMSI( ) const PURE;
 
 	//!	Get the current process memory size.
 	//!	@param		none.
@@ -75,7 +75,7 @@ public:
 	//!	Get the temporary directory.
 	//!	@param		none.
 	//!	@return		The temporary directory.
-	virtual WStringR GetTempDirectory( ) const PURE;
+	virtual WString GetTempDirectory( ) const PURE;
 	//!	Create temporary file in temporary directory.
 	//!	@param		relative_path	The relative path of temporary directory.
 	//!	@param		extension_name	The extension name of unique file.
@@ -87,7 +87,7 @@ public:
 	//!	Set the absolute directory.
 	//!	@param		path	The directory.
 	//!	@return		The absolute directory.
-	virtual WStringR GetAbsoluteDirectory( WStringPtr path ) PURE;
+	virtual WString GetAbsoluteDirectory( WStringPtr path ) PURE;
 
 	//!	Set the current directory.
 	//!	@param		path	The current directory.
@@ -96,7 +96,7 @@ public:
 	//!	Get the current directory.
 	//!	@param		none.
 	//!	@return		The current directory.
-	virtual WStringR GetCurrentDirectory( ) const PURE;
+	virtual WString GetCurrentDirectory( ) const PURE;
 	//!	Set the document directory.
 	//!	@param		path	The document directory.
 	//!	@return		none.
@@ -104,7 +104,7 @@ public:
 	//!	Get the document directory.
 	//!	@param		none.
 	//!	@return		The document directory.
-	virtual WStringR GetDocumentDirectory( ) const PURE;
+	virtual WString GetDocumentDirectory( ) const PURE;
 	//!	Set the internal directory.
 	//!	@param		path	The internal directory.
 	//!	@return		none.
@@ -112,7 +112,7 @@ public:
 	//!	Get the internal directory.
 	//!	@param		none.
 	//!	@return		The internal directory.
-	virtual WStringR GetInternalDirectory( ) const PURE;
+	virtual WString GetInternalDirectory( ) const PURE;
 	//!	Set the external directory.
 	//!	@param		path	The external directory.
 	//!	@return		none.
@@ -120,7 +120,7 @@ public:
 	//!	Get the external directory.
 	//!	@param		none.
 	//!	@return		The external directory.
-	virtual WStringR GetExternalDirectory( ) const PURE;
+	virtual WString GetExternalDirectory( ) const PURE;
 
 	//!	Check whether it's same file.
 	//!	@param		filename_1			The first file name.

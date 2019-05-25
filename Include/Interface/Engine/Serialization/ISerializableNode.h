@@ -9,7 +9,7 @@
 namespace EGE
 {
 
-class IMarkupLangElement;
+class IMarkupElement;
 
 //----------------------------------------------------------------------------
 // ISerializableNode
@@ -37,28 +37,28 @@ public:
 	//!	@remark		This node must be created by markup language file.
 	//!	@param		none.
 	//!	@return		The markup language node interface.
-	virtual IMarkupLangElement* GetMarkupLangElement( ) PURE;
+	virtual IMarkupElement* GetMarkupLangElement( ) PURE;
 	//!	Get the markup language node.
 	//!	@remark		This node must be created by markup language file.
 	//!	@param		none.
 	//!	@return		The markup language node interface.
-	virtual const IMarkupLangElement* GetMarkupLangElement( ) const PURE;
+	virtual const IMarkupElement* GetMarkupLangElement( ) const PURE;
 
 	//!	Get the markup language file.
 	//!	@remark		This node must be created by markup language file.
 	//!	@param		none.
 	//!	@return		The markup language file interface.
-	virtual IMarkupLangFile* GetMarkupLangFile( ) PURE;
+	virtual IMarkupFile* GetMarkupLangFile( ) PURE;
 	//!	Get the markup language file.
 	//!	@remark		This node must be created by markup language file.
 	//!	@param		none.
 	//!	@return		The markup language file interface.
-	virtual const IMarkupLangFile* GetMarkupLangFile( ) const PURE;
+	virtual const IMarkupFile* GetMarkupLangFile( ) const PURE;
 
 	//!	Get the node name.
 	//!	@param		none.
 	//!	@return		The node name.
-	virtual WStringR GetNodeName( ) const PURE;
+	virtual WString GetNodeName( ) const PURE;
 	//!	Set the node name.
 	//!	@param		name			The node name.
 	//!	@return		none.
@@ -153,12 +153,12 @@ public:
 	//!	Get child node's text by name.
 	//!	@param		name	The child name.
 	//!	@return		The child node's text.
-	virtual WStringR GetChildTextByNameW( WStringPtr name ) PURE;
+	virtual WString GetChildTextByNameW( WStringPtr name ) PURE;
 	//!	Get child node's text by name.
 	//!	@param		name			The child name.
 	//!	@param		attribute_name	The attribute name.
 	//!	@return		The child node's text.
-	virtual WStringR GetChildValueByNameW( WStringPtr name, WStringPtr attribute_name ) PURE;
+	virtual WString GetChildValueByNameW( WStringPtr name, WStringPtr attribute_name ) PURE;
 	//!	Get child node by name.
 	//!	@param		name	The child name.
 	//!	@return		The serializable node.
@@ -225,15 +225,15 @@ public:
 	//!	Get the node's text.
 	//!	@param		none.
 	//! @return		The text.
-	virtual AStringR GetTextA( ) const PURE;
+	virtual AString GetTextA( ) const PURE;
 	//!	Get the node's text.
 	//!	@param		none.
 	//! @return		The text.
-	virtual UStringR GetTextU( ) const PURE;
+	virtual UString GetTextU( ) const PURE;
 	//!	Get the node's text.
 	//!	@param		none.
 	//! @return		The text.
-	virtual WStringR GetTextW( ) const PURE;
+	virtual WString GetTextW( ) const PURE;
 	//!	Set the node's text.
 	//!	@param		text	The text.
 	//! @return		none.
@@ -336,9 +336,9 @@ public:
 	virtual _ubool Write( WStringPtr name, AStringPtr value ) PURE;
 	virtual _ubool Write( WStringPtr name, UStringPtr value ) PURE;
 	virtual _ubool Write( WStringPtr name, WStringPtr value ) PURE;
-	virtual _ubool Write( WStringPtr name, const AStringR& value ) PURE;
-	virtual _ubool Write( WStringPtr name, const UStringR& value ) PURE;
-	virtual _ubool Write( WStringPtr name, const WStringR& value ) PURE;
+	virtual _ubool Write( WStringPtr name, const AString& value ) PURE;
+	virtual _ubool Write( WStringPtr name, const UString& value ) PURE;
+	virtual _ubool Write( WStringPtr name, const WString& value ) PURE;
 	virtual _ubool Write( WStringPtr name, const AStringObj& value ) PURE;
 	virtual _ubool Write( WStringPtr name, const UStringObj& value ) PURE;
 	virtual _ubool Write( WStringPtr name, const WStringObj& value ) PURE;
@@ -362,11 +362,11 @@ public:
 	//!	Dump to string.
 	//!	@param		none.
 	//!	@return		The formatted string contains all child nodes.
-	virtual WStringR DumpToString( ) const PURE;
+	virtual WString DumpToString( ) const PURE;
 	//!	Dump to schema string.
 	//!	@param		none.
 	//!	@return		The schema string contains all child nodes.
-	virtual WStringR DumpToSchemaString( ) const PURE;
+	virtual WString DumpToSchemaString( ) const PURE;
 
 public:
 	//!	Read properties.

@@ -67,7 +67,7 @@ REF_OBJECT_DECL(IPSDFile);
 REF_OBJECT_DECL(ITGAFile);
 REF_OBJECT_DECL(ICompressedTexFile);
 REF_OBJECT_DECL(IASTCFile);
-REF_OBJECT_DECL(IPVRTexFile);
+REF_OBJECT_DECL(IPVRTCFile);
 REF_OBJECT_DECL(IKTXFile);
 REF_OBJECT_DECL(IWEBPFile);
 REF_OBJECT_DECL(IWEBMFile);
@@ -89,7 +89,7 @@ REF_OBJECT_DECL(ISoundFile);
 REF_OBJECT_DECL(ISoundFileWriter);
 REF_OBJECT_DECL(IZIPFile);
 REF_OBJECT_DECL(IMarkupLangElementIterator);
-REF_OBJECT_DECL(IMarkupLangFile);
+REF_OBJECT_DECL(IMarkupFile);
 REF_OBJECT_DECL(IHTMLFile);
 REF_OBJECT_DECL(IGeometryMeshChunk);
 REF_OBJECT_DECL(IGeometryFile);
@@ -355,13 +355,13 @@ DEFINE_IMPORT_FUNC(EGE::_void, EGE_Finalize, ())
 #include "Interface/Engine/FileParser/IKTXFile.h"
 #include "Interface/Engine/FileParser/IMIDIFile.h"
 #include "Interface/Engine/FileParser/IManifestFile.h"
-#include "Interface/Engine/FileParser/IMarkupLangFile.h"
+#include "Interface/Engine/FileParser/IMarkupFile.h"
 #include "Interface/Engine/FileParser/IMediaFile.h"
 #include "Interface/Engine/FileParser/IOGGFile.h"
 #include "Interface/Engine/FileParser/IPKMFile.h"
 #include "Interface/Engine/FileParser/IPNGFile.h"
 #include "Interface/Engine/FileParser/IPSDFile.h"
-#include "Interface/Engine/FileParser/IPVRTexFile.h"
+#include "Interface/Engine/FileParser/IPVRTCFile.h"
 #include "Interface/Engine/FileParser/ISoundFile.h"
 #include "Interface/Engine/FileParser/ISpeexFile.h"
 #include "Interface/Engine/FileParser/IStreamingPCMFile.h"
@@ -573,7 +573,7 @@ inline TStringObj<_chara, _ENCODING_ANSI>::TStringObj(AStringPtr string) {
 }
 
 template <>
-inline TStringObj<_chara, _ENCODING_ANSI>::TStringObj(const AStringR& string) {
+inline TStringObj<_chara, _ENCODING_ANSI>::TStringObj(const AString& string) {
 	*this = GetStringTable()->GetRefString(string);
 }
 
@@ -583,7 +583,7 @@ inline TStringObj<_chara, _ENCODING_UTF8>::TStringObj(UStringPtr string) {
 }
 
 template <>
-inline TStringObj<_chara, _ENCODING_UTF8>::TStringObj(const UStringR& string) {
+inline TStringObj<_chara, _ENCODING_UTF8>::TStringObj(const UString& string) {
 	*this = GetStringTable()->GetRefString(string);
 }
 
@@ -598,7 +598,7 @@ inline TStringObj<_charw, _ENCODING_UTF16>::TStringObj(WStringPtr string) {
 }
 
 template <>
-inline TStringObj<_charw, _ENCODING_UTF16>::TStringObj(const WStringR& string) {
+inline TStringObj<_charw, _ENCODING_UTF16>::TStringObj(const WString& string) {
 	*this = GetStringTable()->GetRefString(string);
 }
 
@@ -623,7 +623,7 @@ inline TStringObj<_chara, _ENCODING_ANSI>& TStringObj<_chara, _ENCODING_ANSI>::o
 }
 
 template <>
-inline TStringObj<_chara, _ENCODING_ANSI>& TStringObj<_chara, _ENCODING_ANSI>::operator=(const AStringR& string) {
+inline TStringObj<_chara, _ENCODING_ANSI>& TStringObj<_chara, _ENCODING_ANSI>::operator=(const AString& string) {
 	const AStringObj& string_obj = GetStringTable()->GetRefString(string);
 
 	mID = string_obj.mID;
@@ -643,7 +643,7 @@ inline TStringObj<_chara, _ENCODING_UTF8>& TStringObj<_chara, _ENCODING_UTF8>::o
 }
 
 template <>
-inline TStringObj<_chara, _ENCODING_UTF8>& TStringObj<_chara, _ENCODING_UTF8>::operator=(const UStringR& string) {
+inline TStringObj<_chara, _ENCODING_UTF8>& TStringObj<_chara, _ENCODING_UTF8>::operator=(const UString& string) {
 	const UStringObj& string_obj = GetStringTable()->GetRefString(string);
 
 	mID = string_obj.mID;
@@ -673,7 +673,7 @@ inline TStringObj<_charw, _ENCODING_UTF16>& TStringObj<_charw, _ENCODING_UTF16>:
 }
 
 template <>
-inline TStringObj<_charw, _ENCODING_UTF16>& TStringObj<_charw, _ENCODING_UTF16>::operator=(const WStringR& string) {
+inline TStringObj<_charw, _ENCODING_UTF16>& TStringObj<_charw, _ENCODING_UTF16>::operator=(const WString& string) {
 	const WStringObj& string_obj = GetStringTable()->GetRefString(string);
 
 	mID = string_obj.mID;

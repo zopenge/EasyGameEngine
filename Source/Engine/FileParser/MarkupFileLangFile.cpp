@@ -10,7 +10,7 @@
 // MarkupLangElementIterator Implementation
 //----------------------------------------------------------------------------
 
-MarkupLangElementIterator::MarkupLangElementIterator( IMarkupLangElement* element ) 
+MarkupLangElementIterator::MarkupLangElementIterator( IMarkupElement* element ) 
 	: mCurElement( element )
 {
 
@@ -21,7 +21,7 @@ MarkupLangElementIterator::~MarkupLangElementIterator( )
 
 }
 
-IMarkupLangElement*	MarkupLangElementIterator::GetObject( )
+IMarkupElement*	MarkupLangElementIterator::GetObject( )
 {
 	return mCurElement;
 }
@@ -37,7 +37,7 @@ _ubool MarkupLangElementIterator::MovePrev( )
 		return _false;
 
 	// Find the XML element with the same name
-	for ( IMarkupLangElement* xml_element = mCurElement->GetPrevElement( ); xml_element != _null; xml_element = xml_element->GetPrevElement( ) )
+	for ( IMarkupElement* xml_element = mCurElement->GetPrevElement( ); xml_element != _null; xml_element = xml_element->GetPrevElement( ) )
 	{
 		if ( xml_element->GetName( ) == mCurElement->GetName( ) )
 		{
@@ -57,7 +57,7 @@ _ubool MarkupLangElementIterator::MoveNext( )
 		return _false;
 
 	// Find the XML element with the same name
-	for ( IMarkupLangElement* xml_element = mCurElement->GetNextElement( ); xml_element != _null; xml_element = xml_element->GetNextElement( ) )
+	for ( IMarkupElement* xml_element = mCurElement->GetNextElement( ); xml_element != _null; xml_element = xml_element->GetNextElement( ) )
 	{
 		if ( xml_element->GetName( ) == mCurElement->GetName( ) )
 		{

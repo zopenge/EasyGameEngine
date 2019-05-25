@@ -47,18 +47,18 @@ public:
 	//!	@param		res_name	The resource name.
 	//!	@param		version		The resource for manifest version.
 	//!	@return		The relative path in manifest file.
-	virtual WStringR GetRelativePath( WStringPtr res_name ) const PURE;
+	virtual WString GetRelativePath( WStringPtr res_name ) const PURE;
 	//!	Get the resource relative path in manifest file.
 	//!	@param		res_name	The resource name.
 	//!	@param		version		The resource for manifest version.
 	//!	@return		The relative path in manifest file.
-	virtual WStringR GetRelativePath( WStringPtr res_name, Version& version ) const PURE;
+	virtual WString GetRelativePath( WStringPtr res_name, Version& version ) const PURE;
 	//!	Get the resource relative path in manifest file.
 	//!	@param		res_name	The resource name.
 	//!	@param		version		The resource for manifest version.
 	//!	@param		md5_code	The resource MD5 code.
 	//!	@return		The relative path in manifest file.
-	virtual WStringR GetRelativePath( WStringPtr res_name, Version& version, MD5Code& md5_code ) const PURE;
+	virtual WString GetRelativePath( WStringPtr res_name, Version& version, MD5Code& md5_code ) const PURE;
 
 	//!	Get the MD5 code by resource name.
 	//!	@param		res_name	The resource name.

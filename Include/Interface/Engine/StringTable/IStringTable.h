@@ -48,7 +48,7 @@ public:
 	//!	@remark		If the string is not referenced object then will auto-create it.
 	//!	@param		string		The string.
 	//!	@return		The referenced string object wrapper.
-	virtual const AStringObj& GetRefString( const AStringR& string ) PURE;
+	virtual const AStringObj& GetRefString( const AString& string ) PURE;
 	//!	Search the referenced string object.
 	//!	@param		id			The string id.
 	//!	@return		The referenced string object wrapper.
@@ -76,7 +76,7 @@ public:
 	//!	@remark		If the string is not referenced object then will auto-create it.
 	//!	@param		string		The string.
 	//!	@return		The referenced string object wrapper.
-	virtual const UStringObj& GetRefString( const UStringR& string ) PURE;
+	virtual const UStringObj& GetRefString( const UString& string ) PURE;
 	//!	Search the referenced string object.
 	//!	@param		id			The string id.
 	//!	@return		The referenced string object wrapper.
@@ -104,7 +104,7 @@ public:
 	//!	@remark		If the string is not referenced object then will auto-create it.
 	//!	@param		string		The string.
 	//!	@return		The referenced string object wrapper.
-	virtual const WStringObj& GetRefString( const WStringR& string ) PURE;
+	virtual const WStringObj& GetRefString( const WString& string ) PURE;
 	//!	Search the referenced string object.
 	//!	@param		id			The string id.
 	//!	@return		The referenced string object wrapper.

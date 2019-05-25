@@ -19,7 +19,7 @@ XMLAttribute::~XMLAttribute( )
 {
 }
 
-WStringR XMLAttribute::GetName( _ubool with_prefix ) const
+WString XMLAttribute::GetName( _ubool with_prefix ) const
 {
 	// Get the attribute key name
 #ifdef _USE_TINY_XML2_
@@ -255,7 +255,7 @@ _int XMLElement::OnXMLOutputWriteFunc( _void* context, const _chara* buffer, _in
 	return len;
 }
 
-IMarkupLangElementIteratorPassRef XMLElement::OnCreateElementIterator( IMarkupLangElement* element )
+IMarkupLangElementIteratorPassRef XMLElement::OnCreateElementIterator( IMarkupElement* element )
 {
     return new MarkupLangElementIterator( element );
 }
@@ -274,7 +274,7 @@ _ubool XMLElement::SetName( WStringPtr name )
 	return _true;
 }
 
-WStringR XMLElement::GetName( ) const
+WString XMLElement::GetName( ) const
 {
 	// Get the XML name
 	WString name;
@@ -287,7 +287,7 @@ WStringR XMLElement::GetName( ) const
 	return name;
 }
 
-IMarkupLangElement* XMLElement::InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj )
+IMarkupElement* XMLElement::InsertChildElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj )
 {
 	// Get the name in UTF-8 mode
 	UString name_utf8;
@@ -325,7 +325,7 @@ IMarkupLangElement* XMLElement::InsertChildElementU( WStringPtr name, UStringPtr
 	}
 }
 
-IMarkupLangElement* XMLElement::InsertNextElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj )
+IMarkupElement* XMLElement::InsertNextElementU( WStringPtr name, UStringPtr text, _ubool is_array_obj )
 {
 	// Get the name in UTF-8 mode
 	UString name_utf8;
@@ -361,7 +361,7 @@ IMarkupLangElement* XMLElement::InsertNextElementU( WStringPtr name, UStringPtr 
 	return mNextElement;
 }
 
-_void XMLElement::RemoveElement( IMarkupLangElement* element )
+_void XMLElement::RemoveElement( IMarkupElement* element )
 {
 	XMLElement* xml_element = static_cast< XMLElement* >( element );
 	if ( xml_element == _null )
@@ -382,12 +382,12 @@ IMarkupLangElementIteratorPassRef XMLElement::RemoveElement( IMarkupLangElementI
 	if ( it == _null )
 		return _null;
 
-	IMarkupLangElement* markup_lang_element = it->GetObject( );
+	IMarkupElement* markup_lang_element = it->GetObject( );
 	if ( markup_lang_element == _null )
 		return _null;
 
 	// Get the next element
-	IMarkupLangElement* next_xml_element = markup_lang_element->GetNextElement( );
+	IMarkupElement* next_xml_element = markup_lang_element->GetNextElement( );
 
 	RemoveElement( markup_lang_element );
 
@@ -400,7 +400,7 @@ _dword XMLElement::GetAttributesNumber( ) const
 	return mXMLAttributes.Number( );
 }
 
-IMarkupLangAttribute* XMLElement::GetAttributeByIndex( _dword index ) const
+IMarkupAttribute* XMLElement::GetAttributeByIndex( _dword index ) const
 {
 	if ( mXMLAttributes.Number( ) == 0 )
 		return _null;
@@ -420,7 +420,7 @@ _ubool XMLElement::HasAttribute( WStringPtr name, _ubool ignorecase ) const
 		return mXMLAttributes.HasKey( name );
 }
 
-IMarkupLangAttribute* XMLElement::SearchAttribute( WStringPtr name, _ubool ignorecase ) const
+IMarkupAttribute* XMLElement::SearchAttribute( WStringPtr name, _ubool ignorecase ) const
 {
 	if ( ignorecase )
 	{
@@ -557,7 +557,7 @@ _ubool XMLElement::GetText( WString& text ) const
 	return _true;
 }
 
-AStringR XMLElement::GetTextA( ) const
+AString XMLElement::GetTextA( ) const
 {
 	AString text;
 	if ( GetText( text ) == _false )
@@ -566,7 +566,7 @@ AStringR XMLElement::GetTextA( ) const
 	return text;
 }
 
-UStringR XMLElement::GetTextU( ) const
+UString XMLElement::GetTextU( ) const
 {
 	UString text;
 	if ( GetText( text ) == _false )
@@ -575,7 +575,7 @@ UStringR XMLElement::GetTextU( ) const
 	return text;
 }
 
-WStringR XMLElement::GetTextW( ) const
+WString XMLElement::GetTextW( ) const
 {
 	WString text;
 	if ( GetText( text ) == _false )
@@ -696,7 +696,7 @@ _ubool XMLElement::SetAttributeString( WStringPtr name, WStringPtr string )
 	return SetAttributeString( name, string_utf8 );
 }
 
-WStringR XMLElement::DumpToString( ) const
+WString XMLElement::DumpToString( ) const
 {
 #ifdef _USE_TINY_XML2_
 	tinyxml2::XMLPrinter tiny_printer;
@@ -725,7 +725,7 @@ WStringR XMLElement::DumpToString( ) const
 #endif
 }
 
-WStringR XMLElement::DumpToSchemaString( ) const
+WString XMLElement::DumpToSchemaString( ) const
 {
 	return WString( L"" );
 }
@@ -1154,12 +1154,12 @@ _ubool XMLFile::SaveToStream( IStreamWriter* stream_writer, _dword flags ) const
 #endif
 }
 
-IMarkupLangDeclaration* XMLFile::GetDeclaration( )
+IMarkupDeclaration* XMLFile::GetDeclaration( )
 {
 	return mDeclaration;
 }
 
-IMarkupLangElement* XMLFile::GetRootElement( )
+IMarkupElement* XMLFile::GetRootElement( )
 {
 	return mRootElement;
 }

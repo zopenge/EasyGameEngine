@@ -10,7 +10,7 @@
 // MarkupLangSerializableNode Implementation
 //----------------------------------------------------------------------------
 
-MarkupLangSerializableNode::MarkupLangSerializableNode( IMarkupLangElement* node, IMarkupLangFile* file ) 
+MarkupLangSerializableNode::MarkupLangSerializableNode( IMarkupElement* node, IMarkupFile* file ) 
 {
 	EGE_ASSERT( node != _null );
 	EGE_ASSERT( file != _null );
@@ -142,27 +142,27 @@ _ubool MarkupLangSerializableNode::IsArrayObject( ) const
 	return mCurElement->IsArrayObject( );
 }
 
-IMarkupLangElement* MarkupLangSerializableNode::GetMarkupLangElement( )
+IMarkupElement* MarkupLangSerializableNode::GetMarkupLangElement( )
 {
 	return mCurElement;
 }
 
-const IMarkupLangElement* MarkupLangSerializableNode::GetMarkupLangElement( ) const
+const IMarkupElement* MarkupLangSerializableNode::GetMarkupLangElement( ) const
 {
 	return mCurElement;
 }
 
-IMarkupLangFile* MarkupLangSerializableNode::GetMarkupLangFile( )
+IMarkupFile* MarkupLangSerializableNode::GetMarkupLangFile( )
 {
 	return mMarkupFile;
 }
 
-const IMarkupLangFile* MarkupLangSerializableNode::GetMarkupLangFile( ) const
+const IMarkupFile* MarkupLangSerializableNode::GetMarkupLangFile( ) const
 {
 	return mMarkupFile;
 }
 
-WStringR MarkupLangSerializableNode::GetNodeName( ) const
+WString MarkupLangSerializableNode::GetNodeName( ) const
 {
 	return mCurElement->GetName( );
 }
@@ -191,7 +191,7 @@ _dword MarkupLangSerializableNode::GetChildNodesNumber( WStringPtr name ) const
 {
 	_dword number = 0;
 
-	IMarkupLangElement* element = mCurElement->GetChildElementByName( name, _false );
+	IMarkupElement* element = mCurElement->GetChildElementByName( name, _false );
 	for ( ; element != _null; element = element->GetNextElementByName( name, _false ) )
 		number ++;
 
@@ -233,7 +233,7 @@ _dword MarkupLangSerializableNode::GetSubElementsNumber( ) const
 
 ISerializableNodePassRef MarkupLangSerializableNode::GetSubElementByIndex( _dword index )
 {
-	IMarkupLangElement* element = mCurElement->GetSubElementByIndex( index );
+	IMarkupElement* element = mCurElement->GetSubElementByIndex( index );
 	if ( element == _null )
 		return _null;
 
@@ -242,7 +242,7 @@ ISerializableNodePassRef MarkupLangSerializableNode::GetSubElementByIndex( _dwor
 
 ISerializableNodePassRef MarkupLangSerializableNode::GetParentNode( )
 {
-	IMarkupLangElement* element = mCurElement->GetParentElement( );
+	IMarkupElement* element = mCurElement->GetParentElement( );
 	if ( element == _null )
 		return _null;
 
@@ -251,7 +251,7 @@ ISerializableNodePassRef MarkupLangSerializableNode::GetParentNode( )
 
 ISerializableNodePassRef MarkupLangSerializableNode::GetFirstChildNode( )
 {
-	IMarkupLangElement* element = mCurElement->GetFirstChildElement( );
+	IMarkupElement* element = mCurElement->GetFirstChildElement( );
 	if ( element == _null )
 		return _null;
 
@@ -260,7 +260,7 @@ ISerializableNodePassRef MarkupLangSerializableNode::GetFirstChildNode( )
 
 ISerializableNodePassRef MarkupLangSerializableNode::GetLastChildNode( )
 {
-	IMarkupLangElement* element = mCurElement->GetLastChildElement( );
+	IMarkupElement* element = mCurElement->GetLastChildElement( );
 	if ( element == _null )
 		return _null;
 
@@ -269,7 +269,7 @@ ISerializableNodePassRef MarkupLangSerializableNode::GetLastChildNode( )
 
 ISerializableNodePassRef MarkupLangSerializableNode::GetPrevNode( )
 {
-	IMarkupLangElement* element = mCurElement->GetPrevElement( );
+	IMarkupElement* element = mCurElement->GetPrevElement( );
 	if ( element == _null )
 		return _null;
 
@@ -278,7 +278,7 @@ ISerializableNodePassRef MarkupLangSerializableNode::GetPrevNode( )
 
 ISerializableNodePassRef MarkupLangSerializableNode::GetPrevNode( WStringPtr name, _ubool ignorecase )
 {
-	IMarkupLangElement* element = mCurElement->GetPrevElementByName( name, ignorecase );
+	IMarkupElement* element = mCurElement->GetPrevElementByName( name, ignorecase );
 	if ( element == _null )
 		return _null;
 
@@ -287,7 +287,7 @@ ISerializableNodePassRef MarkupLangSerializableNode::GetPrevNode( WStringPtr nam
 
 ISerializableNodePassRef MarkupLangSerializableNode::GetNextNode( )
 {
-	IMarkupLangElement* element = mCurElement->GetNextElement( );
+	IMarkupElement* element = mCurElement->GetNextElement( );
 	if ( element == _null )
 		return _null;
 
@@ -296,7 +296,7 @@ ISerializableNodePassRef MarkupLangSerializableNode::GetNextNode( )
 
 ISerializableNodePassRef MarkupLangSerializableNode::GetNextNode( WStringPtr name, _ubool ignorecase )
 {
-	IMarkupLangElement* element = mCurElement->GetNextElementByName( name, ignorecase );
+	IMarkupElement* element = mCurElement->GetNextElementByName( name, ignorecase );
 	if ( element == _null )
 		return _null;
 
@@ -305,7 +305,7 @@ ISerializableNodePassRef MarkupLangSerializableNode::GetNextNode( WStringPtr nam
 
 ISerializableNodePassRef MarkupLangSerializableNode::GetHeadNode( )
 {
-	IMarkupLangElement* element = mCurElement->GetHeadElement( );
+	IMarkupElement* element = mCurElement->GetHeadElement( );
 	if ( element == _null )
 		return _null;
 
@@ -314,14 +314,14 @@ ISerializableNodePassRef MarkupLangSerializableNode::GetHeadNode( )
 
 ISerializableNodePassRef MarkupLangSerializableNode::GetTailNode( )
 {
-	IMarkupLangElement* element = mCurElement->GetTailElement( );
+	IMarkupElement* element = mCurElement->GetTailElement( );
 	if ( element == _null )
 		return _null;
 
 	return new MarkupLangSerializableNode( element, mMarkupFile );
 }
 
-WStringR MarkupLangSerializableNode::GetChildTextByNameW( WStringPtr name )
+WString MarkupLangSerializableNode::GetChildTextByNameW( WStringPtr name )
 {
 	ISerializableNodeRef node = GetChildNodeByName( name );
 	if ( node.IsNull( ) )
@@ -330,7 +330,7 @@ WStringR MarkupLangSerializableNode::GetChildTextByNameW( WStringPtr name )
 	return node->GetTextW( );
 }
 
-WStringR MarkupLangSerializableNode::GetChildValueByNameW( WStringPtr name, WStringPtr attribute_name )
+WString MarkupLangSerializableNode::GetChildValueByNameW( WStringPtr name, WStringPtr attribute_name )
 {
 	ISerializableNodeRef node = GetChildNodeByName( name );
 	if ( node.IsNull( ) )
@@ -347,7 +347,7 @@ ISerializableNodePassRef MarkupLangSerializableNode::GetChildNodeByName( WString
 {
 	EGE_ASSERT( mCurElement != _null );
 
-	IMarkupLangElement* element = mCurElement->GetChildElementByName( name, _false );
+	IMarkupElement* element = mCurElement->GetChildElementByName( name, _false );
 	if ( element == _null )
 		return _null;
 
@@ -356,7 +356,7 @@ ISerializableNodePassRef MarkupLangSerializableNode::GetChildNodeByName( WString
 
 ISerializableNodePassRef MarkupLangSerializableNode::GetChildNodeByIndex( _dword index )
 {
-	IMarkupLangElement* element = mCurElement->GetChildElementByIndex( index );
+	IMarkupElement* element = mCurElement->GetChildElementByIndex( index );
 	if ( element == _null )
 		return _null;
 
@@ -370,7 +370,7 @@ ISerializableNodePassRef MarkupLangSerializableNode::InsertChildNode( WStringPtr
 
 ISerializableNodePassRef MarkupLangSerializableNode::InsertChildNode( WStringPtr name, WStringPtr text, _ubool is_array_obj )
 {
-	IMarkupLangElement* element = mCurElement->InsertChildElementW( name, text, is_array_obj );
+	IMarkupElement* element = mCurElement->InsertChildElementW( name, text, is_array_obj );
 	if ( element == _null )
 		return _null;
 
@@ -384,7 +384,7 @@ ISerializableNodePassRef MarkupLangSerializableNode::InsertBrotherNode( WStringP
 
 ISerializableNodePassRef MarkupLangSerializableNode::InsertBrotherNode( WStringPtr name, WStringPtr text, _ubool is_array_obj )
 {
-	IMarkupLangElement* element = mCurElement->InsertNextElementW( name, text, is_array_obj );
+	IMarkupElement* element = mCurElement->InsertNextElementW( name, text, is_array_obj );
 	if ( element == _null )
 		return _null;
 
@@ -396,7 +396,7 @@ ISerializableNodePassRef MarkupLangSerializableNode::InsertChildNode( ISerializa
 	if ( node == _null )
 		return _null;
 
-	IMarkupLangElement* element = mCurElement->InsertChildElement( node->GetMarkupLangElement( ), recursive );
+	IMarkupElement* element = mCurElement->InsertChildElement( node->GetMarkupLangElement( ), recursive );
 	if ( element == _null )
 		return _null;
 
@@ -408,7 +408,7 @@ ISerializableNodePassRef MarkupLangSerializableNode::InsertBrotherNode( ISeriali
 	if ( node == _null )
 		return _null;
 
-	IMarkupLangElement* element = mCurElement->InsertNextElement( node->GetMarkupLangElement( ), recursive );
+	IMarkupElement* element = mCurElement->InsertNextElement( node->GetMarkupLangElement( ), recursive );
 	if ( element == _null )
 		return _null;
 
@@ -440,17 +440,17 @@ _double MarkupLangSerializableNode::GetValueD( ) const
 	return mCurElement->GetValueD( );
 }
 
-AStringR MarkupLangSerializableNode::GetTextA( ) const
+AString MarkupLangSerializableNode::GetTextA( ) const
 {
 	return mCurElement->GetTextA( );
 }
 
-UStringR MarkupLangSerializableNode::GetTextU( ) const
+UString MarkupLangSerializableNode::GetTextU( ) const
 {
 	return mCurElement->GetTextU( );
 }
 
-WStringR MarkupLangSerializableNode::GetTextW( ) const
+WString MarkupLangSerializableNode::GetTextW( ) const
 {
 	return mCurElement->GetTextW( );
 }
@@ -526,12 +526,12 @@ _ubool MarkupLangSerializableNode::MoveNext( WStringPtr name )
 	return _true;
 }
 
-WStringR MarkupLangSerializableNode::DumpToString( ) const
+WString MarkupLangSerializableNode::DumpToString( ) const
 {
 	return mCurElement->DumpToString( );
 }
 
-WStringR MarkupLangSerializableNode::DumpToSchemaString( ) const
+WString MarkupLangSerializableNode::DumpToSchemaString( ) const
 {
 	return mCurElement->DumpToSchemaString( );
 }

@@ -87,10 +87,10 @@ public:
 // IMediaFileTrack Interface
 public:
 	virtual _MEDIA_TYPE	GetType( ) const override;
-	virtual WStringR	GetName( ) const override;
+	virtual WString	GetName( ) const override;
 
-	virtual WStringR	GetCodecName( ) const override;
-	virtual WStringR	GetCodecID( ) const override;
+	virtual WString	GetCodecName( ) const override;
+	virtual WString	GetCodecID( ) const override;
 
 	virtual _void		Reset( ) override;
 	virtual _ubool		PopulateSample( IMediaFileNotifier* notifier ) override;
@@ -127,10 +127,10 @@ protected:
 // IMediaFileTrack Interface
 public:
 	virtual _MEDIA_TYPE	GetType( ) const { return mTrack->GetType( ); }
-	virtual WStringR	GetName( ) const { return mTrack->GetName( ); }
+	virtual WString	GetName( ) const { return mTrack->GetName( ); }
 
-	virtual WStringR	GetCodecName( ) const { return mTrack->GetCodecName( ); }
-	virtual WStringR	GetCodecID( ) const { return mTrack->GetCodecID( ); }
+	virtual WString	GetCodecName( ) const { return mTrack->GetCodecName( ); }
+	virtual WString	GetCodecID( ) const { return mTrack->GetCodecID( ); }
 
 	virtual _void		Reset( ) { mTrack->Reset( ); }
 	virtual _ubool		PopulateSample( IMediaFileNotifier* notifier ) { return mTrack->PopulateSample( notifier ); }

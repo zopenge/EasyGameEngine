@@ -3,7 +3,7 @@
 namespace EGE {
 
 /// <summary>
-/// The parameters.
+/// The params.
 /// </summary>
 template <typename Type, _dword MaxNumber>
 class Params {

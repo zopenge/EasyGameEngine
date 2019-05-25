@@ -1268,7 +1268,7 @@ IGeometryMeshChunkRef GeometryFile::GetMeshChunk( )
 	return mMeshChunk;
 }
 
-WStringR GeometryFile::DumpToXMLString( ) const
+WString GeometryFile::DumpToXMLString( ) const
 {
 	IMarkupLangFileRef xmlfile = GetInterfaceFactory( )->CreateXMLFile( L"root", _ENCODING_UTF8 );
 	if ( xmlfile.IsNull( ) )

@@ -54,7 +54,7 @@ public:
 
 	virtual _ubool				GetTransparentLayer( const BitmapInfoReadOnly& image_info, BitArray< 1 >& transparent_layer ) const override;
 	virtual _ubool				GetOpaqueRegion( const BitmapInfoReadOnly& image_info, RectI& rect ) const override;
-	virtual _ubool				GetOpaqueRegion( const PointI& size, const PointI& position, RectI& rect, OnIsTransparentPixel funcpointer, const QwordParameters2& parameters ) const override;
+	virtual _ubool				GetOpaqueRegion( const PointI& size, const PointI& position, RectI& rect, OnIsTransparentPixel funcpointer, const QwordParameters2& params ) const override;
 };
 
 //----------------------------------------------------------------------------

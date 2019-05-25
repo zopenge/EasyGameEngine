@@ -31,7 +31,7 @@ public:
 public:
 	virtual _void		Connect( ) override;
 
-	virtual AStringR	GetRemoteDeviceAddress( ) override;
+	virtual AString	GetRemoteDeviceAddress( ) override;
 
 	virtual _dword		GetAvailableBytes( ) override;
 

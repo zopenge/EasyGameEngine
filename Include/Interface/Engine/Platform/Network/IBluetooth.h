@@ -24,7 +24,7 @@ public:
 	//!	Get remote device address.
 	//!	@param		none.
 	//!	@return		The remote device address.
-	virtual AStringR GetRemoteDeviceAddress( ) PURE;
+	virtual AString GetRemoteDeviceAddress( ) PURE;
 
 	//!	Get the available bytes what can recv.
 	//!	@param		none.

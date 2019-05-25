@@ -40,7 +40,7 @@ _void winBluetoothSocket::Connect( )
 {
 }
 
-AStringR winBluetoothSocket::GetRemoteDeviceAddress( )
+AString winBluetoothSocket::GetRemoteDeviceAddress( )
 {
 	return AString( "" );
 }

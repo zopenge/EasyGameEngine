@@ -182,8 +182,8 @@ public:
 	virtual ISerializableNodePassRef			CreateMarkupLangSerializableNode( UStringPtr string ) override;
 	virtual ISerializableNodePassRef			CreateMarkupLangSerializableNode( WStringPtr string ) override;
 	virtual ISerializableNodePassRef			CreateMarkupLangSerializableNode( IStreamReader* stream_reader ) override;
-	virtual ISerializableNodePassRef			CreateMarkupLangSerializableNode( IMarkupLangFile* file ) override;
-	virtual ISerializableNodePassRef			CreateMarkupLangSerializableNode( IMarkupLangElement* element, IMarkupLangFile* file ) override;
+	virtual ISerializableNodePassRef			CreateMarkupLangSerializableNode( IMarkupFile* file ) override;
+	virtual ISerializableNodePassRef			CreateMarkupLangSerializableNode( IMarkupElement* element, IMarkupFile* file ) override;
 
 	virtual INetFirewallPassRef					CreateNetFirewall( ) override;
 	virtual IShellPassRef						CreateShell( ) override;
@@ -212,7 +212,7 @@ public:
 	virtual IMarkupLangFilePassRef 				CreateXMLFile( ) override;
 	virtual IMarkupLangFilePassRef				CreateXMLFile( WStringPtr root_name, _ENCODING encoding = _ENCODING_UTF8, const Version& version = Version::cInitial ) override;
 	virtual IMarkupLangFilePassRef				CreateXMLFile( const ISerializableNode* node, _ENCODING encoding = _ENCODING_UTF8, const Version& version = Version::cInitial ) override;
-	virtual IMarkupLangFilePassRef				CreateBXMLFile( IMarkupLangFile* markup_file ) override;
+	virtual IMarkupLangFilePassRef				CreateBXMLFile( IMarkupFile* markup_file ) override;
 	virtual IMarkupLangFilePassRef				CreateJSONFile( ) override;
 	virtual IManifestFilePassRef				CreateManifestFile( ) override;
 	virtual IGeometryFilePassRef				CreateGeometryFile( ) override;

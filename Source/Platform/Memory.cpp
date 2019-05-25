@@ -84,8 +84,8 @@ Memory::Memory() {
 Memory::~Memory() {
 }
 
-_void Memory::OnOutputStringCallback(_dword id, const _byte* address, const MemoryAllocation& allocation, const QwordParams2& parameters) {
-	File* file = (File*)parameters[0];
+_void Memory::OnOutputStringCallback(_dword id, const _byte* address, const MemoryAllocation& allocation, const QwordParams2& params) {
+	File* file = (File*)params[0];
 
 	// The temporary string buffer
 	_chara tempstringbuffer[4096];
@@ -196,7 +196,7 @@ _ubool Memory::IsEnableFullCallstackCheck(_dword line_number,
 
 _void Memory::DumpAllocations(_dword min_size, OnOutputString funcpointer,
                               const AllocationLink& allocations,
-                              const QwordParams2& parameters) {
+                              const QwordParams2& params) {
 	// No any memory blocks
 	if (allocations.Number() == 0) return;
 
@@ -212,13 +212,13 @@ _void Memory::DumpAllocations(_dword min_size, OnOutputString funcpointer,
 		EGE_ASSERT(address != _null);
 
 		// Dump allocation info
-		(*funcpointer)(id, address, allocation, parameters);
+		(*funcpointer)(id, address, allocation, params);
 	}
 }
 
 _void Memory::DumpAllocations(_dword min_size, OnOutputString funcpointer,
                               const BlockAllocationArray& allocations,
-                              const QwordParams2& parameters) {
+                              const QwordParams2& params) {
 	// No any memory blocks
 	if (allocations.Number() == 0) return;
 
@@ -238,7 +238,7 @@ _void Memory::DumpAllocations(_dword min_size, OnOutputString funcpointer,
 		mem_allocation.mSrcFileLines = _null;
 
 		// Dump allocation info
-		(*funcpointer)(i + 1, _null, mem_allocation, parameters);
+		(*funcpointer)(i + 1, _null, mem_allocation, params);
 	}
 }
 
@@ -603,9 +603,9 @@ _ubool Memory::IsReferencedBuffer(_void* buffer) {
 }
 
 _void Memory::Dump(_dword min_size, OnOutputString funcpointer,
-                   const QwordParams2& parameters) {
-	DumpAllocations(min_size, funcpointer, mMemoryAllocation, parameters);
-	DumpAllocations(min_size, funcpointer, mBlockAllocations, parameters);
+                   const QwordParams2& params) {
+	DumpAllocations(min_size, funcpointer, mMemoryAllocation, params);
+	DumpAllocations(min_size, funcpointer, mBlockAllocations, params);
 }
 
 _void Memory::DumpLeakInfo() {

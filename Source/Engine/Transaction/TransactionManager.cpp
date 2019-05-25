@@ -48,7 +48,7 @@ _dword TransactionManager::GetThreadNumber( ) const
 	return 0;
 }
 
-_ubool TransactionManager::AddTransaction( ITransaction* transaction, ITransaction* depend, _dword features, _dword timeout, const QwordParameters2& parameters )
+_ubool TransactionManager::AddTransaction( ITransaction* transaction, ITransaction* depend, _dword features, _dword timeout, const QwordParameters2& params )
 {
 	return _true;
 }

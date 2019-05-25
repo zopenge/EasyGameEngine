@@ -98,7 +98,7 @@ DEFINE_PROPERTIES_METHOD(
 DEFINE_PROPERTIES_METHOD(
 	const Variable&,
 	SetProperty,
-	(WStringPtr name, const WStringR& value),
+	(WStringPtr name, const WString& value),
 	(name, value),
 	return Variable::cNull;
 	)
@@ -316,7 +316,7 @@ DEFINE_PROPERTIES_METHOD(
 DEFINE_PROPERTIES_METHOD(
 	const Variable&,
 	SetProperty,
-	(const WStringObj& name, const WStringR& value),
+	(const WStringObj& name, const WString& value),
 	(name, value),
 	return Variable::cNull;
 	)
@@ -339,7 +339,7 @@ DEFINE_PROPERTIES_METHOD(
 DEFINE_PROPERTIES_METHOD(
 	const Variable&,
 	SetProperty,
-	(const WStringR& name, _int value),
+	(const WString& name, _int value),
 	(name, value),
 	return Variable::cNull;
 	)
@@ -350,7 +350,7 @@ DEFINE_PROPERTIES_METHOD(
 DEFINE_PROPERTIES_METHOD(
 	const Variable&,
 	SetProperty,
-	(const WStringR& name, _dword value),
+	(const WString& name, _dword value),
 	(name, value),
 	return Variable::cNull;
 	)
@@ -361,7 +361,7 @@ DEFINE_PROPERTIES_METHOD(
 DEFINE_PROPERTIES_METHOD(
 	const Variable&,
 	SetProperty,
-	(const WStringR& name, _float value),
+	(const WString& name, _float value),
 	(name, value),
 	return Variable::cNull;
 	)
@@ -372,7 +372,7 @@ DEFINE_PROPERTIES_METHOD(
 DEFINE_PROPERTIES_METHOD(
 	const Variable&,
 	SetProperty,
-	(const WStringR& name, WStringPtr value),
+	(const WString& name, WStringPtr value),
 	(name, value),
 	return Variable::cNull;
 	)
@@ -383,7 +383,7 @@ DEFINE_PROPERTIES_METHOD(
 DEFINE_PROPERTIES_METHOD(
 	const Variable&,
 	SetProperty,
-	(const WStringR& name, const WStringR& value),
+	(const WString& name, const WString& value),
 	(name, value),
 	return Variable::cNull;
 	)
@@ -394,7 +394,7 @@ DEFINE_PROPERTIES_METHOD(
 DEFINE_PROPERTIES_METHOD(
 	const Variable&,
 	SetProperty,
-	(const WStringR& name, const Variable& value),
+	(const WString& name, const Variable& value),
 	(name, value),
 	return Variable::cNull;
 	)

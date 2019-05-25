@@ -186,16 +186,9 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IKTXFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IManifestFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IMarkupLangFile.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IMediaFile.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IMIDIFile.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IOGGFile.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPKMFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPNGFile.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPSDFile.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPVRTexFile.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IShaderFile.h" />
+    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPVRTCFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ISoundFile.h" />
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ISpeexFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IStreamingPCMFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ITGAFile.h" />
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ITXTFile.h" />

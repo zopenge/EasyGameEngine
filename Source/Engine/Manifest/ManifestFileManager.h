@@ -75,9 +75,9 @@ public:
 
 	virtual _ubool			HasResource( WStringPtr res_name ) const override;
 
-	virtual WStringR		GetRelativePath( WStringPtr res_name ) const override;
-	virtual WStringR		GetRelativePath( WStringPtr res_name, Version& version ) const override;
-	virtual WStringR		GetRelativePath( WStringPtr res_name, Version& version, MD5Code& md5_code ) const override;
+	virtual WString		GetRelativePath( WStringPtr res_name ) const override;
+	virtual WString		GetRelativePath( WStringPtr res_name, Version& version ) const override;
+	virtual WString		GetRelativePath( WStringPtr res_name, Version& version, MD5Code& md5_code ) const override;
 
 	virtual const MD5Code&	GetMD5Code( WStringPtr res_name ) const override;
 };

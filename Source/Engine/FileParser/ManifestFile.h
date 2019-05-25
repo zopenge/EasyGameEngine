@@ -77,7 +77,7 @@ public:
 
 // IManifestDir Interface
 public:
-	virtual WStringR					GetPath( ) const override;
+	virtual WString					GetPath( ) const override;
 
 	virtual _dword						GetNumberOfSubItems( ) const override;
 	virtual const ManifestItemInfo*		GetSubItemByIndex( _dword index ) const override;

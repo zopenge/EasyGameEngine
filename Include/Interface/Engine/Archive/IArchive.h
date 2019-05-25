@@ -9,9 +9,9 @@ class IArchive : public IObject {
 public:
 	//!	When walk directory/file.
 	//!	@param		item_info	The item info.
-	//!	@param		parameters	The user defined parameters.
+	//!	@param		params	The user defined params.
 	//!	@return		True indicates continue to enumerate, false indicates break it.
-	typedef _ubool (*OnWalkItem)(const FileData& item_info, const QwordParams2& parameters);
+	typedef _ubool (*OnWalkItem)(const FileData& item_info, const QwordParams2& params);
 
 public:
 	//!	Get archive's path.
@@ -60,9 +60,9 @@ public:
 	//!	@param		path			The relative directory path.
 	//! @param		filter			The extension name filter.
 	//!	@param		depth			The enumeration depth.
-	//!	@param		parameters		The user defined parameters.
+	//!	@param		params		The user defined params.
 	//! @return		True indicates success, false indicates failure.
-	virtual _ubool EnumResources(OnWalkItem walk_item_func, WStringPtr path, WStringPtr filter = L"", _dword depth = -1, const QwordParams2& parameters = QwordParams2::cNull) const PURE;
+	virtual _ubool EnumResources(OnWalkItem walk_item_func, WStringPtr path, WStringPtr filter = L"", _dword depth = -1, const QwordParams2& params = QwordParams2::cNull) const PURE;
 };
 
 } // namespace EGE

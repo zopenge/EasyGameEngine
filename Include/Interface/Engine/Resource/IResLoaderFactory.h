@@ -19,7 +19,7 @@ public:
 	//!	Check whether it's HTTP/HTTPs protocol.
 	virtual _ubool IsHTTPProtocol( WStringPtr url ) const PURE;
 	//!	Get the HTTP URL.
-	virtual WStringR GetHTTPURL( WStringPtr url ) const PURE;
+	virtual WString GetHTTPURL( WStringPtr url ) const PURE;
 
 	//!	Create HTTP archive.
 	//!	@param		remote_path		The remote path.
