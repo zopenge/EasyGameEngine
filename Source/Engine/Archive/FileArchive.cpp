@@ -66,7 +66,7 @@ IStreamReaderPassRef FileArchive::LoadResourceByPath( WStringPtr file_name )
 	return file_stream_reader;
 }
 
-_ubool FileArchive::EnumResources( OnWalkItem walk_item_func, WStringPtr path, WStringPtr filter, _dword flags, _dword depth, const QwordParameters2& params ) const
+_ubool FileArchive::EnumResources( OnWalkItem walk_item_func, WStringPtr path, WStringPtr filter, _dword flags, _dword depth, const QwordParams2& params ) const
 {
 	if ( walk_item_func == _null )
 		return _false;

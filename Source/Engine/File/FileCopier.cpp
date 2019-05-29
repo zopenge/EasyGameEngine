@@ -23,7 +23,7 @@ FileCopierThread::~FileCopierThread( )
 	EGE_DELETE_ARRAY( mBuffer );
 }
 
-_dword FileCopierThread::OnRunThread( const QwordParameters2& params )
+_dword FileCopierThread::OnRunThread( const QwordParams2& params )
 {
 	while ( IsReleasing( ) == _false )
 	{
@@ -65,7 +65,7 @@ _dword FileCopierThread::OnRunThread( const QwordParameters2& params )
 	return 0;
 }
 
-_void FileCopierThread::OnCloseThread( _dword exitcode, const QwordParameters2& params )
+_void FileCopierThread::OnCloseThread( _dword exitcode, const QwordParams2& params )
 {
 	EGE_DELETE_ARRAY( mBuffer );
 
@@ -107,7 +107,7 @@ _ubool FileCopierThread::Start( _dword read_chunk_size, const MD5Code& md5_code,
 	mBuffer			= new _byte[ read_chunk_size ];
 	mFileName		= filepath;
 	
-	if ( Create( 0, _false, L"FileCopierThread", QwordParameters2::cNull ) == _false )
+	if ( Create( 0, _false, L"FileCopierThread", QwordParams2::cNull ) == _false )
 	{
 		WLOG_ERROR_1( L"Create '%s' thread of file copier failed", filepath.Str( ) );
 		return _false;

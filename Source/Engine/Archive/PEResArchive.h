@@ -24,7 +24,7 @@ private:
 	{
 		PEResArchive*		mArchive;
 		OnWalkItem			mWalkItemFunc;
-		QwordParameters2	mParameters;
+		QwordParams2	mParameters;
 	};
 
 private:
@@ -59,7 +59,7 @@ public:
 	virtual _ubool					HasResourceByPath( WStringPtr file_name ) const override;
 	virtual IStreamReaderPassRef	LoadResourceByPath( WStringPtr file_name ) override;
 
-	virtual _ubool					EnumResources( OnWalkItem walk_item_func, WStringPtr path, WStringPtr filter = L"", _dword flags = 0, _dword depth = -1, const QwordParameters2& params = QwordParameters2::cNull ) const override;
+	virtual _ubool					EnumResources( OnWalkItem walk_item_func, WStringPtr path, WStringPtr filter = L"", _dword flags = 0, _dword depth = -1, const QwordParams2& params = QwordParams2::cNull ) const override;
 };
 
 //----------------------------------------------------------------------------

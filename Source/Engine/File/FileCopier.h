@@ -29,8 +29,8 @@ private:
 
 // Thread Interface
 private:
-	virtual _dword	OnRunThread( const QwordParameters2& params ) override;
-	virtual _void	OnCloseThread( _dword exitcode, const QwordParameters2& params ) override;
+	virtual _dword	OnRunThread( const QwordParams2& params ) override;
+	virtual _void	OnCloseThread( _dword exitcode, const QwordParams2& params ) override;
 
 public:
 	FileCopierThread( );

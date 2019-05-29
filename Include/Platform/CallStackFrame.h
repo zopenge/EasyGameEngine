@@ -11,13 +11,13 @@ private:
 
 private:
 	//! Create an callstack frame and insert it to tail ( ANSI mode ).
-	//! @param linenumber		The line number.
+	//! @param linenumber	The line number.
 	//! @param funcname		The function name.
 	//! @param filename		The file name.
 	//! @return none.
 	_void Create(_dword linenumber, const _chara* funcname, const _chara* filename);
 	//! Create an callstack frame and insert it to tail ( UNICODE mode ).
-	//! @param linenumber		The line number.
+	//! @param linenumber	The line number.
 	//! @param funcname		The function name.
 	//! @param filename		The file name.
 	//! @return none.

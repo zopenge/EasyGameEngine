@@ -41,26 +41,26 @@ public:
 	//!	@param		char_code	The character code in UTF-16.
 	//!	@param		params	The user defined params.
 	//!	@return		True indicates it's valid character, otherwise it's invalid character.
-	typedef _ubool (*OnCheckCharacter)( _charw char_code, const QwordParameters2& params );
+	typedef _ubool (*OnCheckCharacter)( _charw char_code, const QwordParams2& params );
 
 	//!	When handle event.
 	//!	@param		type		The event type, @see IEditBox::_EVENT_TYPE.
 	//!	@return		string		The edit box string.
 	//!	@param		params	The user defined params.
 	//! @return		True indicates success, false indicates failure.
-	typedef _ubool (*OnHandleEvent)( _EVENT_TYPE type, UStringPtr string, const QwordParameters2& params );
+	typedef _ubool (*OnHandleEvent)( _EVENT_TYPE type, UStringPtr string, const QwordParams2& params );
 
 public:
 	//!	Set the check character callback function.
 	//!	@param		funcpointer	The function pointer.
 	//!	@param		params	The user defined params.
 	//!	@return		none.
-	virtual _void SetCheckCharacterFunc( OnCheckCharacter funcpointer, const QwordParameters2& params ) PURE;
+	virtual _void SetCheckCharacterFunc( OnCheckCharacter funcpointer, const QwordParams2& params ) PURE;
 	//!	Set the handle event callback function.
 	//!	@param		funcpointer	The function pointer.
 	//!	@param		params	The user defined params.
 	//!	@return		none.
-	virtual _void SetHandleEventFunc( OnHandleEvent funcpointer, const QwordParameters2& params ) PURE;
+	virtual _void SetHandleEventFunc( OnHandleEvent funcpointer, const QwordParams2& params ) PURE;
 
 	//!	Open with initial text in UTF-8 format.
 	//!	@param		input_type		The input type.

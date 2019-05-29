@@ -132,6 +132,14 @@ enum class AudioFormat {
 };
 
 /// <summary>
+/// The align type.
+/// </summary>
+enum class AlignType {
+	Horz,
+	Vert,
+};
+
+/// /// <summary>
 /// The image filler type.
 /// </summary>
 enum class ImageFillerType {
@@ -143,49 +151,50 @@ enum class ImageFillerType {
 /// <summary>
 /// The lerp type.
 /// </summary>
-enum class LerpType {
-	Linear,
-	SineIn,
-	SineOut,
-	SineInOut,
-	SineOutIn,
-	QuadIn,
-	QuadOut,
-	QuadInOut,
-	QuadOutIn,
-	CubicIn,
-	CubicOut,
-	CubicInOut,
-	CubicOutIn,
-	QuartIn,
-	QuartOut,
-	QuartInOut,
-	QuartOutIn,
-	QuintIn,
-	QuintOut,
-	QuintInOut,
-	QuintOutIn,
-	ExpoIn,
-	ExpoOut,
-	ExpoInOut,
-	ExpoOutIn,
-	CircIn,
-	CircOut,
-	CircInOut,
-	CircOutIn,
-	ElasticIn,
-	ElasticOut,
-	ElasticInOut,
-	ElasticOutIn,
-	BackIn,
-	BackOut,
-	BackInOut,
-	BackOutIn,
-	BounceIn,
-	BounceOut,
-	BounceInOut,
-	BounceOutIn,
-};
+namespace LerpType {
+typedef _float (*OnLerp)(_float);
+OnLerp Linear = (OnLerp) Interpolation::Linear;
+OnLerp SineIn = (OnLerp) Interpolation::SineIn;
+OnLerp SineOut = (OnLerp) Interpolation::SineOut;
+OnLerp SineInOut = (OnLerp) Interpolation::SineInOut;
+OnLerp SineOutIn = (OnLerp) Interpolation::SineOutIn;
+OnLerp QuadIn = (OnLerp) Interpolation::QuadIn;
+OnLerp QuadOut = (OnLerp) Interpolation::QuadOut;
+OnLerp QuadInOut = (OnLerp) Interpolation::QuadInOut;
+OnLerp QuadOutIn = (OnLerp) Interpolation::QuadOutIn;
+OnLerp CubicIn = (OnLerp) Interpolation::CubicIn;
+OnLerp CubicOut = (OnLerp) Interpolation::CubicOut;
+OnLerp CubicInOut = (OnLerp) Interpolation::CubicInOut;
+OnLerp CubicOutIn = (OnLerp) Interpolation::CubicOutIn;
+OnLerp QuartIn = (OnLerp) Interpolation::QuartIn;
+OnLerp QuartOut = (OnLerp) Interpolation::QuartOut;
+OnLerp QuartInOut = (OnLerp) Interpolation::QuartInOut;
+OnLerp QuartOutIn = (OnLerp) Interpolation::QuartOutIn;
+OnLerp QuintIn = (OnLerp) Interpolation::QuintIn;
+OnLerp QuintOut = (OnLerp) Interpolation::QuintOut;
+OnLerp QuintInOut = (OnLerp) Interpolation::QuintInOut;
+OnLerp QuintOutIn = (OnLerp) Interpolation::QuintOutIn;
+OnLerp ExpoIn = (OnLerp) Interpolation::ExpoIn;
+OnLerp ExpoOut = (OnLerp) Interpolation::ExpoOut;
+OnLerp ExpoInOut = (OnLerp) Interpolation::ExpoInOut;
+OnLerp ExpoOutIn = (OnLerp) Interpolation::ExpoOutIn;
+OnLerp CircIn = (OnLerp) Interpolation::CircIn;
+OnLerp CircOut = (OnLerp) Interpolation::CircOut;
+OnLerp CircInOut = (OnLerp) Interpolation::CircInOut;
+OnLerp CircOutIn = (OnLerp) Interpolation::CircOutIn;
+OnLerp ElasticIn = (OnLerp) Interpolation::ElasticIn;
+OnLerp ElasticOut = (OnLerp) Interpolation::ElasticOut;
+OnLerp ElasticInOut = (OnLerp) Interpolation::ElasticInOut;
+OnLerp ElasticOutIn = (OnLerp) Interpolation::ElasticOutIn;
+OnLerp BackIn = (OnLerp) Interpolation::BackIn;
+OnLerp BackOut = (OnLerp) Interpolation::BackOut;
+OnLerp BackInOut = (OnLerp) Interpolation::BackInOut;
+OnLerp BackOutIn = (OnLerp) Interpolation::BackOutIn;
+OnLerp BounceIn = (OnLerp) Interpolation::BounceIn;
+OnLerp BounceOut = (OnLerp) Interpolation::BounceOut;
+OnLerp BounceInOut = (OnLerp) Interpolation::BounceInOut;
+OnLerp BounceOutIn = (OnLerp) Interpolation::BounceOutIn;
+} // namespace LerpType
 
 /// <summary>
 /// The font style.
@@ -195,137 +204,5 @@ static unsigned int Bold = 1 << 0;
 static unsigned int Italic = 1 << 1;
 static unsigned int Underline = 1 << 2;
 } // namespace FontStyle
-
-/// <summary>
-/// The base font face code data.
-/// </summary>
-struct BaseFontFaceCodeData {
-	_charw mCode;
-
-	_short mCharWidth;
-	_short mCharHeight;
-	_short mMaxCharWidth;
-	_short mMaxCharHeight;
-
-	_short mAdvanceX;
-	_short mBearingY;
-	_short mOffsetX;
-	_short mOffsetY;
-
-	_short mAscender;
-	_short mDescender;
-	_short mBaseLine;
-
-	BaseFontFaceCodeData() {
-		mCode = 0;
-
-		mCharWidth = 0;
-		mCharHeight = 0;
-		mMaxCharWidth = 0;
-		mMaxCharHeight = 0;
-
-		mAdvanceX = 0;
-		mBearingY = 0;
-		mOffsetX = 0;
-		mOffsetY = 0;
-
-		mAscender = 0;
-		mDescender = 0;
-		mBaseLine = 0;
-	}
-};
-
-/// <summary>
-/// The font face code with bitmap pixel buffer data.
-/// </summary>
-struct FontFaceCodeData : public BaseFontFaceCodeData {
-	_short mBitmapLeft;
-	_short mBitmapTop;
-	_short mBitmapWidth;
-	_short mBitmapHeight;
-	const _byte* mBitmapBuffer;
-
-	FontFaceCodeData() {
-		mBitmapLeft = 0;
-		mBitmapTop = 0;
-		mBitmapWidth = 0;
-		mBitmapHeight = 0;
-		mBitmapBuffer = _null;
-	}
-
-	FontFaceCodeData& operator=(const FontFaceCodeData& info) {
-		mCharWidth = info.mCharWidth;
-		mCharHeight = info.mCharHeight;
-		mMaxCharWidth = info.mMaxCharWidth;
-		mMaxCharHeight = info.mMaxCharHeight;
-
-		mAdvanceX = info.mAdvanceX;
-		mBearingY = info.mBearingY;
-		mOffsetX = info.mOffsetX;
-		mOffsetY = info.mOffsetY;
-
-		mAscender = info.mAscender;
-		mDescender = info.mDescender;
-
-		return *this;
-	}
-};
-
-/// <summary>
-/// The manifest item data.
-/// </summary>
-struct ManifestItemData {
-	//!	The item name
-	WString mName;
-	//!	The item MD5 checksum code
-	MD5Code mMD5Code;
-
-	//!	Use the name as key
-	operator WStringPtr() const {
-		return mName;
-	}
-
-	_ubool operator==(const ManifestItemInfo& item_info) const {
-		if (mName != item_info.mName)
-			return _false;
-
-		if (mMD5Code != item_info.mMD5Code)
-			return _false;
-
-		return _true;
-	}
-
-	_ubool operator!=(const ManifestItemInfo& item_info) const {
-		if (mName != item_info.mName)
-			return _true;
-
-		if (mMD5Code != item_info.mMD5Code)
-			return _true;
-
-		return _false;
-	}
-
-	ManifestItemData() {
-	}
-};
-typedef Array<ManifestItemData> ManifestItemDataArray;
-
-//!	The platform device info
-struct PlatformDeviceInfo {
-	//!	The advertising identifier
-	WString mAdvertisingIdentifier;
-	//!	The identifier for vendor
-	WString mIdentifierForVendor;
-	//!	The device name
-	WString mDeviceName;
-	//!	The model name.
-	WString mModelName;
-	//!	The system name
-	WString mSystemName;
-	//!	The system version
-	WString mSystemVersion;
-	//! hardware unique ID
-	WString mHardwareUniqueID;
-};
 
 } // namespace EGE

@@ -47,7 +47,7 @@ public:
 	//!	@param		timeout			The timeout of task in milliseconds.
 	//!	@param		params		The user defined params.
 	//! @return		True indicates success false indicates failure.
-	virtual _ubool AddTransaction( ITransaction* transaction, ITransaction* depend, _dword features, _dword timeout = -1, const QwordParameters2& params = QwordParameters2::cNull ) PURE;
+	virtual _ubool AddTransaction( ITransaction* transaction, ITransaction* depend, _dword features, _dword timeout = -1, const QwordParams2& params = QwordParams2::cNull ) PURE;
 };
 
 }

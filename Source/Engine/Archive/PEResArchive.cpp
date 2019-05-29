@@ -132,7 +132,7 @@ IStreamReaderPassRef PEResArchive::LoadResourceByPath( WStringPtr file_name )
 	return pe_res_stream_reader;
 }
 
-_ubool PEResArchive::EnumResources( OnWalkItem walk_item_func, WStringPtr path, WStringPtr filter, _dword flags, _dword depth, const QwordParameters2& params ) const
+_ubool PEResArchive::EnumResources( OnWalkItem walk_item_func, WStringPtr path, WStringPtr filter, _dword flags, _dword depth, const QwordParams2& params ) const
 {
 	// We do not support path
 	if ( path.IsEmpty( ) == _false )

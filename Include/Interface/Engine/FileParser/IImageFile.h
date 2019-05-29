@@ -7,6 +7,11 @@ namespace EGE {
 /// </summary>
 class IImageFile : public ISerializable {
 public:
+	//!	Get the background color.
+	//!	@param		none.
+	//!	@return		The background color.
+	virtual const Color& GetBackgroundColor() const PURE;
+
 	//!	Get the image width.
 	//!	@param		none.
 	//!	@return		The image width.
@@ -28,6 +33,11 @@ public:
 	//!	@param		none.
 	//!	@return		The image pixel format.
 	virtual PixelFormat GetPixelFormat() const PURE;
+	//!	Set the image pixel format.
+	//!	@param		format	The image pixel format.
+	//!	@return		True indicates successful, otherwise indicates failure.
+	virtual _ubool SetPixelFormat(PixelFormat format) PURE;
+
 	//!	Get pixel size in bytes.
 	//!	@param		none.
 	//!	@return		The pixel size in bytes.
@@ -48,6 +58,29 @@ public:
 	//!	@param		layer		The transparent layer.
 	//!	@return		True indicates successful, otherwise indicates failure.
 	virtual _ubool GetTransparentLayer(OneBitArray& layer) const PURE;
+	//!	Get the minimal region for opaque testing.
+	//!	@param		rect				The opaque region of image.
+	//! @return		True indicates success, false indicates failure.
+	virtual _ubool GetOpaqueRegion(RectU& rect) const PURE;
+
+	//!	Flip image.
+	//!	@param		none.
+	//! @return		True indicates success, false indicates failure.
+	virtual _ubool Flip() const PURE;
+	//!	Scale image.
+	//!	@param		filter	The filter type.
+	//!	@param		scale	The scale factor.
+	//!	@param		image	The image file.
+	//!	@return		True indicates successful, otherwise indicates failure.
+	virtual _ubool Scale(ImageFilterType filter, const Vector2& scale) PURE;
+	//!	Blur image.
+	//!	@param		factor		The blur factor.
+	//!	@return		True indicates successful, otherwise indicates failure.
+	virtual _ubool Blur(_float factor) PURE;
+	//!	Stroke image.
+	//!	@param		borderSize	The border size.
+	//!	@return		True indicates successful, otherwise indicates failure.
+	virtual _ubool Stroke(const PointU& border_size) PURE;
 };
 
 } // namespace EGE

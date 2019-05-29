@@ -171,20 +171,11 @@
     <Filter Include="Header Files\Interface\Engine\Font">
       <UniqueIdentifier>{796eb910-e156-4cee-8a17-9f41c69cb982}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Interface\Engine\Image">
-      <UniqueIdentifier>{f8bc9922-8188-47ac-b489-06a02b3ce3ca}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Interface\Engine\Layout">
       <UniqueIdentifier>{86b10f23-2243-4e32-bc30-5cc80939d786}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Interface\Engine\Logger">
       <UniqueIdentifier>{87343721-dd66-43bb-962f-50152b85364c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interface\Engine\Manifest">
-      <UniqueIdentifier>{198a0044-58af-4c1a-b98d-5315b7f66e24}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interface\Engine\Math">
-      <UniqueIdentifier>{bc561cf1-157a-4c33-a17b-5f7f6293d11c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Interface\Engine\Parser">
       <UniqueIdentifier>{d14b3084-0760-4075-967c-ec89303ff8c6}</UniqueIdentifier>
@@ -1159,9 +1150,6 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IASTCFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IBMPFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ICompressedTexFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
@@ -1171,19 +1159,10 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IDDSFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IFLACFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IFNTFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IGIFFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IImageFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IJPGFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IKTXFile.h">
@@ -1195,31 +1174,10 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IMarkupLangFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPNGFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ISoundFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IStreamingPCMFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ITGAFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\ITXTFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IWAVFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IWEBMFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IWEBPFile.h">
-      <Filter>Header Files\Interface\Engine\FileParser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IXLSFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IZIPFile.h">
@@ -1228,29 +1186,8 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\Font\IFontFace.h">
       <Filter>Header Files\Interface\Engine\Font</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Image\IImageFiller.h">
-      <Filter>Header Files\Interface\Engine\Image</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Image\IImageProcessor.h">
-      <Filter>Header Files\Interface\Engine\Image</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Layout\IAligner.h">
-      <Filter>Header Files\Interface\Engine\Layout</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Logger\ILogger.h">
       <Filter>Header Files\Interface\Engine\Logger</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Manifest\IManifestFileManager.h">
-      <Filter>Header Files\Interface\Engine\Manifest</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Math\IInterpolator.h">
-      <Filter>Header Files\Interface\Engine\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Math\IMD5ChecksumBuilder.h">
-      <Filter>Header Files\Interface\Engine\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Math\IProjectileObject.h">
-      <Filter>Header Files\Interface\Engine\Math</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Parser\ICommandLineParser.h">
       <Filter>Header Files\Interface\Engine\Parser</Filter>
@@ -1569,6 +1506,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\FileParser\IPVRTCFile.h">
       <Filter>Header Files\Interface\Engine\FileParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\EngineStruct.h">
+      <Filter>Header Files\Interface\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Layout\IFiller.h">
+      <Filter>Header Files\Interface\Engine\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Layout\ILayouter.h">
+      <Filter>Header Files\Interface\Engine\Layout</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
