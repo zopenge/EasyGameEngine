@@ -1,24 +1,12 @@
-//! @file     IIOSPlatform.h
-//! @author   LiCode
-//! @version  1.0.0.547
-//! @date     2011/01/07
-//! Copyright ...
-
 #pragma once
 
-namespace EGE
-{
+namespace EGE {
 
-//----------------------------------------------------------------------------
-// IIOSPlatform
-//----------------------------------------------------------------------------
-
-class IIOSPlatform : public IPlatform
-{
+/// <summary>
+/// The IOS platform interface.
+/// </summary>
+class IIOSPlatform : public IPlatform {
 public:
-    virtual IIAPManagerPassRef      CreateIAPManager( ) PURE;
-    
-    virtual _void                   RegisterForPushNotification( ) PURE;
 };
 
-}
+} // namespace EGE

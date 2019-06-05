@@ -1,21 +1,16 @@
-//! @file     IFileStreamWriter.h
-//! @author   LiCode
-//! @version  1.0.0.613
-//! @date     2011/01/17
-//! Copyright 2009-2010 LiCode's Union.
-
 #pragma once
 
-namespace EGE
-{
+namespace EGE {
 
-//----------------------------------------------------------------------------
-// IFileStreamWriter
-//----------------------------------------------------------------------------
-
-class IFileStreamWriter : public IFileStream< IStreamWriter >
-{
+/// <summary>
+/// The file stream writer interface.
+/// </summary>
+class IFileStreamWriter : public IStreamWriter {
 public:
+	//!	Get the file name.
+	//!	@param		none.
+	//!	@return		The file name.
+	virtual WStringPtr GetFileName() const PURE;
 };
 
-}
+} // namespace EGE

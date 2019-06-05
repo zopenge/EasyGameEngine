@@ -183,35 +183,11 @@
     <Filter Include="Header Files\Interface\Engine\Platform">
       <UniqueIdentifier>{7aea67b4-6a55-40a3-8169-3707b9d7ceaf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Interface\Engine\Platform\UI">
-      <UniqueIdentifier>{bc580a23-017a-40e0-babb-51321afde82c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Interface\Engine\Platform\Network">
       <UniqueIdentifier>{ae4ac94a-29bf-4f27-ba32-c998ecaf80c5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Interface\Engine\Platform\Kernel">
       <UniqueIdentifier>{201f0ffe-0308-48e2-942a-6676891eb786}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interface\Engine\Platform\SensorManager">
-      <UniqueIdentifier>{dcc8f824-4e7e-448d-9ac7-141c69a9979d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interface\Engine\Platform\Controller">
-      <UniqueIdentifier>{1488bbd4-ffd9-4b7d-a000-fb5eca199336}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interface\Engine\Properties">
-      <UniqueIdentifier>{32d9a6ab-009c-4236-8b4d-976990757c9b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interface\Engine\ProtoBuf">
-      <UniqueIdentifier>{21aceccd-eb29-4cdf-8b01-bc36d1fbef9b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interface\Engine\Recorder">
-      <UniqueIdentifier>{ff229e9e-9dbe-4f3f-a14b-fe356139d2fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interface\Engine\Resource">
-      <UniqueIdentifier>{4926cbb8-659f-4b4a-adf7-55d552b5c2b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interface\Engine\Serialization">
-      <UniqueIdentifier>{c52e50ba-48bf-4813-b779-1f0eb5456ab0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Interface\Engine\Stream">
       <UniqueIdentifier>{5b36ba27-5770-470f-b5bf-f1f9a567143d}</UniqueIdentifier>
@@ -1198,55 +1174,10 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\Parser\IRegularExpression.h">
       <Filter>Header Files\Interface\Engine\Parser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\ProtoBuf\IProtoBufProcessor.h">
-      <Filter>Header Files\Interface\Engine\ProtoBuf</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IActionRecord.h">
-      <Filter>Header Files\Interface\Engine\Recorder</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IActionRecorder.h">
-      <Filter>Header Files\Interface\Engine\Recorder</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IInputRecorder.h">
-      <Filter>Header Files\Interface\Engine\Recorder</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IInputRecordTrace.h">
-      <Filter>Header Files\Interface\Engine\Recorder</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IOperationRecorder.h">
-      <Filter>Header Files\Interface\Engine\Recorder</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Recorder\IOperationRecordPerformer.h">
-      <Filter>Header Files\Interface\Engine\Recorder</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Resource\IResLoader.h">
-      <Filter>Header Files\Interface\Engine\Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Resource\IResObject.h">
-      <Filter>Header Files\Interface\Engine\Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Serialization\ISerializable.h">
-      <Filter>Header Files\Interface\Engine\Serialization</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Serialization\ISerializableNode.h">
-      <Filter>Header Files\Interface\Engine\Serialization</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Serialization\ISerializableNodeWalker.h">
-      <Filter>Header Files\Interface\Engine\Serialization</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Serialization\ISerializer.h">
-      <Filter>Header Files\Interface\Engine\Serialization</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IBitStream.h">
-      <Filter>Header Files\Interface\Engine\Stream</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IBitStreamReader.h">
       <Filter>Header Files\Interface\Engine\Stream</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IBitStreamWriter.h">
-      <Filter>Header Files\Interface\Engine\Stream</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IFileStream.h">
       <Filter>Header Files\Interface\Engine\Stream</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Stream\IFileStreamReader.h">
@@ -1294,86 +1225,17 @@
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IAndroidPlatform.h">
       <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IChromePlatform.h">
-      <Filter>Header Files\Interface\Engine\Platform</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IIOSPlatform.h">
-      <Filter>Header Files\Interface\Engine\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IMenu.h">
-      <Filter>Header Files\Interface\Engine\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\INetFirewall.h">
       <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IPlatform.h">
       <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IProcessDebugger.h">
-      <Filter>Header Files\Interface\Engine\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IPurchase.h">
-      <Filter>Header Files\Interface\Engine\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IRegistry.h">
-      <Filter>Header Files\Interface\Engine\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IShell.h">
-      <Filter>Header Files\Interface\Engine\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IWindowsPlatform.h">
-      <Filter>Header Files\Interface\Engine\Platform</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\IWinPlatform.h">
       <Filter>Header Files\Interface\Engine\Platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Properties\IProperties.h">
-      <Filter>Header Files\Interface\Engine\Properties</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Properties\IPropertiesMehods.h">
-      <Filter>Header Files\Interface\Engine\Properties</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Network\IBluetooth.h">
-      <Filter>Header Files\Interface\Engine\Platform\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Network\INet.h">
-      <Filter>Header Files\Interface\Engine\Platform\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Network\INetFirewall.h">
-      <Filter>Header Files\Interface\Engine\Platform\Network</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Kernel\IKeychain.h">
-      <Filter>Header Files\Interface\Engine\Platform\Kernel</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Kernel\IProcessDebugger.h">
       <Filter>Header Files\Interface\Engine\Platform\Kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Kernel\IRegistry.h">
-      <Filter>Header Files\Interface\Engine\Platform\Kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Kernel\IShell.h">
-      <Filter>Header Files\Interface\Engine\Platform\Kernel</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\SensorManager\ISensorManager.h">
-      <Filter>Header Files\Interface\Engine\Platform\SensorManager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Controller\IJoystick.h">
-      <Filter>Header Files\Interface\Engine\Platform\Controller</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\UI\IEditBox.h">
-      <Filter>Header Files\Interface\Engine\Platform\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\UI\IMenu.h">
-      <Filter>Header Files\Interface\Engine\Platform\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\UI\IMessageBox.h">
-      <Filter>Header Files\Interface\Engine\Platform\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\UI\IWebView.h">
-      <Filter>Header Files\Interface\Engine\Platform\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Include\Interface\Engine\Resource\IResLoaderFactory.h">
-      <Filter>Header Files\Interface\Engine\Resource</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Source\Engine\EngineSDKFiles.h">
       <Filter>SDK Files</Filter>
@@ -1515,6 +1377,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Include\Interface\Engine\Layout\ILayouter.h">
       <Filter>Header Files\Interface\Engine\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\Platform\Network\INetwork.h">
+      <Filter>Header Files\Interface\Engine\Platform\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Interface\Engine\IResourceObject.h">
+      <Filter>Header Files\Interface\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
