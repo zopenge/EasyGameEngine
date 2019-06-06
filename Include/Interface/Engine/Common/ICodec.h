@@ -12,11 +12,6 @@ public:
 	//! @return		True indicates success, false indicates failure.
 	virtual _ubool SetKey(AStringPtr key) PURE;
 
-	//!	Process string.
-	//!	@param		src_string	The source string.
-	//! @return		True indicates success, false indicates failure.
-	virtual _ubool ProcessString(AStringPtr src_string) PURE;
-
 	//!	Process buffer.
 	//!	@param		size	The buffer size.
 	//!	@param		buffer	The buffer data.

@@ -3,6 +3,15 @@
 namespace EGE {
 
 /// <summary>
+/// The log type.
+/// </summary>
+enum class LogType {
+	Debug,
+	Warn,
+	Error
+};
+
+/// <summary>
 /// The orientation mode.
 /// </summary>
 enum class OrientationMode {
@@ -153,47 +162,47 @@ enum class ImageFillerType {
 /// </summary>
 namespace LerpType {
 typedef _float (*OnLerp)(_float);
-OnLerp Linear = (OnLerp) Interpolation::Linear;
-OnLerp SineIn = (OnLerp) Interpolation::SineIn;
-OnLerp SineOut = (OnLerp) Interpolation::SineOut;
-OnLerp SineInOut = (OnLerp) Interpolation::SineInOut;
-OnLerp SineOutIn = (OnLerp) Interpolation::SineOutIn;
-OnLerp QuadIn = (OnLerp) Interpolation::QuadIn;
-OnLerp QuadOut = (OnLerp) Interpolation::QuadOut;
-OnLerp QuadInOut = (OnLerp) Interpolation::QuadInOut;
-OnLerp QuadOutIn = (OnLerp) Interpolation::QuadOutIn;
-OnLerp CubicIn = (OnLerp) Interpolation::CubicIn;
-OnLerp CubicOut = (OnLerp) Interpolation::CubicOut;
-OnLerp CubicInOut = (OnLerp) Interpolation::CubicInOut;
-OnLerp CubicOutIn = (OnLerp) Interpolation::CubicOutIn;
-OnLerp QuartIn = (OnLerp) Interpolation::QuartIn;
-OnLerp QuartOut = (OnLerp) Interpolation::QuartOut;
-OnLerp QuartInOut = (OnLerp) Interpolation::QuartInOut;
-OnLerp QuartOutIn = (OnLerp) Interpolation::QuartOutIn;
-OnLerp QuintIn = (OnLerp) Interpolation::QuintIn;
-OnLerp QuintOut = (OnLerp) Interpolation::QuintOut;
-OnLerp QuintInOut = (OnLerp) Interpolation::QuintInOut;
-OnLerp QuintOutIn = (OnLerp) Interpolation::QuintOutIn;
-OnLerp ExpoIn = (OnLerp) Interpolation::ExpoIn;
-OnLerp ExpoOut = (OnLerp) Interpolation::ExpoOut;
-OnLerp ExpoInOut = (OnLerp) Interpolation::ExpoInOut;
-OnLerp ExpoOutIn = (OnLerp) Interpolation::ExpoOutIn;
-OnLerp CircIn = (OnLerp) Interpolation::CircIn;
-OnLerp CircOut = (OnLerp) Interpolation::CircOut;
-OnLerp CircInOut = (OnLerp) Interpolation::CircInOut;
-OnLerp CircOutIn = (OnLerp) Interpolation::CircOutIn;
-OnLerp ElasticIn = (OnLerp) Interpolation::ElasticIn;
-OnLerp ElasticOut = (OnLerp) Interpolation::ElasticOut;
-OnLerp ElasticInOut = (OnLerp) Interpolation::ElasticInOut;
-OnLerp ElasticOutIn = (OnLerp) Interpolation::ElasticOutIn;
-OnLerp BackIn = (OnLerp) Interpolation::BackIn;
-OnLerp BackOut = (OnLerp) Interpolation::BackOut;
-OnLerp BackInOut = (OnLerp) Interpolation::BackInOut;
-OnLerp BackOutIn = (OnLerp) Interpolation::BackOutIn;
-OnLerp BounceIn = (OnLerp) Interpolation::BounceIn;
-OnLerp BounceOut = (OnLerp) Interpolation::BounceOut;
-OnLerp BounceInOut = (OnLerp) Interpolation::BounceInOut;
-OnLerp BounceOutIn = (OnLerp) Interpolation::BounceOutIn;
+OnLerp Linear = (OnLerp)Interpolation::Linear;
+OnLerp SineIn = (OnLerp)Interpolation::SineIn;
+OnLerp SineOut = (OnLerp)Interpolation::SineOut;
+OnLerp SineInOut = (OnLerp)Interpolation::SineInOut;
+OnLerp SineOutIn = (OnLerp)Interpolation::SineOutIn;
+OnLerp QuadIn = (OnLerp)Interpolation::QuadIn;
+OnLerp QuadOut = (OnLerp)Interpolation::QuadOut;
+OnLerp QuadInOut = (OnLerp)Interpolation::QuadInOut;
+OnLerp QuadOutIn = (OnLerp)Interpolation::QuadOutIn;
+OnLerp CubicIn = (OnLerp)Interpolation::CubicIn;
+OnLerp CubicOut = (OnLerp)Interpolation::CubicOut;
+OnLerp CubicInOut = (OnLerp)Interpolation::CubicInOut;
+OnLerp CubicOutIn = (OnLerp)Interpolation::CubicOutIn;
+OnLerp QuartIn = (OnLerp)Interpolation::QuartIn;
+OnLerp QuartOut = (OnLerp)Interpolation::QuartOut;
+OnLerp QuartInOut = (OnLerp)Interpolation::QuartInOut;
+OnLerp QuartOutIn = (OnLerp)Interpolation::QuartOutIn;
+OnLerp QuintIn = (OnLerp)Interpolation::QuintIn;
+OnLerp QuintOut = (OnLerp)Interpolation::QuintOut;
+OnLerp QuintInOut = (OnLerp)Interpolation::QuintInOut;
+OnLerp QuintOutIn = (OnLerp)Interpolation::QuintOutIn;
+OnLerp ExpoIn = (OnLerp)Interpolation::ExpoIn;
+OnLerp ExpoOut = (OnLerp)Interpolation::ExpoOut;
+OnLerp ExpoInOut = (OnLerp)Interpolation::ExpoInOut;
+OnLerp ExpoOutIn = (OnLerp)Interpolation::ExpoOutIn;
+OnLerp CircIn = (OnLerp)Interpolation::CircIn;
+OnLerp CircOut = (OnLerp)Interpolation::CircOut;
+OnLerp CircInOut = (OnLerp)Interpolation::CircInOut;
+OnLerp CircOutIn = (OnLerp)Interpolation::CircOutIn;
+OnLerp ElasticIn = (OnLerp)Interpolation::ElasticIn;
+OnLerp ElasticOut = (OnLerp)Interpolation::ElasticOut;
+OnLerp ElasticInOut = (OnLerp)Interpolation::ElasticInOut;
+OnLerp ElasticOutIn = (OnLerp)Interpolation::ElasticOutIn;
+OnLerp BackIn = (OnLerp)Interpolation::BackIn;
+OnLerp BackOut = (OnLerp)Interpolation::BackOut;
+OnLerp BackInOut = (OnLerp)Interpolation::BackInOut;
+OnLerp BackOutIn = (OnLerp)Interpolation::BackOutIn;
+OnLerp BounceIn = (OnLerp)Interpolation::BounceIn;
+OnLerp BounceOut = (OnLerp)Interpolation::BounceOut;
+OnLerp BounceInOut = (OnLerp)Interpolation::BounceInOut;
+OnLerp BounceOutIn = (OnLerp)Interpolation::BounceOutIn;
 } // namespace LerpType
 
 /// <summary>

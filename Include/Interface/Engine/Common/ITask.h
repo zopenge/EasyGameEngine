@@ -1,4 +1,4 @@
-//! @file     IProcessor.h
+//! @file     ITask.h
 //! @author   LiCode
 //! @version  1.0.0.613
 //! @date     2011/01/17
@@ -10,13 +10,29 @@ namespace EGE
 {
 
 //----------------------------------------------------------------------------
-// IProcessor
+// ITask
 //----------------------------------------------------------------------------
 
-template< typename Type >
-class IProcessor : public Type
+class ITask : public ITFlagsObject< IObservable >
 {
 public:
+	//!	The flags of task
+	enum _FLAGS
+	{
+		_FLAG_AUTO_START = 1 << 0, //! Enable auto-start feature
+		_FLAG_KEEP_ALIVE = 1 << 1, //! Keep the group alive even though all tasks finished
+	};
+
+public:
+	//!	Set the last error ID.
+	//!	@param		errorid		The last error ID of task.
+	//! @return		none.
+	virtual _void SetLastErrorID( _dword errorid ) PURE;
+	//!	Get the last error ID.
+	//!	@param		none.
+	//! @return		The last error ID of task.
+	virtual _dword GetLastErrorID( ) const PURE;
+
 	//!	Get the state.
 	//!	@param		none.
 	//! @return		The state of task.

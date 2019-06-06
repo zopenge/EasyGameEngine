@@ -75,32 +75,6 @@ public:
 	//!	@param		data		The value data.
 	//! @return		The actual processed bytes, 0 indicates nothing to be processed.
 	virtual _dword ReadDouble(_double& data) PURE;
-
-	//!	Read string stream in ANSI.
-	//!	@param		string		The string.
-	//! @return		The actual processed bytes, 0 indicates nothing to be processed.
-	virtual _dword ReadString(AString& string) PURE;
-	//!	Read string stream in UTF-8.
-	//!	@param		string		The string.
-	//! @return		The actual processed bytes, 0 indicates nothing to be processed.
-	virtual _dword ReadString(UString& string) PURE;
-	//!	Read string stream in UTF-16.
-	//!	@param		string		The string.
-	//! @return		The actual processed bytes, 0 indicates nothing to be processed.
-	virtual _dword ReadString(WString& string) PURE;
-
-	//!	Read the single line string in ANSI mode.
-	//!	@param		string		The string.
-	//! @return		The actual processed bytes, 0 indicates nothing to be processed.
-	virtual _dword ReadLine(AString& string) PURE;
-	//!	Read the single line string in UTF-8 mode.
-	//!	@param		string		The string.
-	//! @return		The actual processed bytes, 0 indicates nothing to be processed.
-	virtual _dword ReadLine(UString& string) PURE;
-	//!	Read the single line string in UTF-16 mode.
-	//!	@param		string		The string.
-	//! @return		The actual processed bytes, 0 indicates nothing to be processed.
-	virtual _dword ReadLine(WString& string) PURE;
 };
 
 } // namespace EGE

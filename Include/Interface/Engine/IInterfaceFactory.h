@@ -29,30 +29,18 @@ public:
 	//!	@return		none.
 	virtual _void RegisterObjectCreationFunc(WStringPtr name, OnObjectCreateCallback func_pointer) PURE;
 
-	//!	Create file copier.
-	//!	@param		none.
-	//!	@return		The file copier.
-	virtual IFileCopierPassRef CreateFileCopier() PURE;
-
 	//!	Create file archive.
 	//!	@param		path	The directory path.
 	//!	@return		The archive.
 	virtual IArchivePassRef CreateFileArchive(WStringPtr path) PURE;
 	//!	Create memory archive.
-	//!	@param		name			The archive name.
 	//!	@param		stream_reader	The stream reader.
-	//!	@param		password		The password of archive.
 	//!	@return		The archive.
-	virtual IArchivePassRef CreateMemArchive(WStringPtr name, IStreamReader* stream_reader, WStringPtr password = L"") PURE;
+	virtual IArchivePassRef CreateMemArchive(IStreamReader* stream_reader) PURE;
 	//!	Create PE-Res archive.
 	//!	@param		module_name		The module name.
 	//!	@return		The archive.
 	virtual IArchivePassRef CreatePEResArchive(WStringPtr module_name) PURE;
-
-	//!	Create string table.
-	//!	@param		none.
-	//!	@return		The string table.
-	virtual IStringTablePassRef CreateStringTable() PURE;
 
 	//!	Create font face.
 	//!	@param		stream_reader	The stream reader.
@@ -60,70 +48,19 @@ public:
 	virtual IFontFacePassRef CreateFontFace(IStreamReader* stream_reader) PURE;
 
 	//!	Create image filler.
-	//!	@param		type			The image filler type.
-	//!	@param		size			The image filler size in pixel.
-	//!	@param		space			The space size between images in pixel.
+	//!	@param		type	The image filler type.
+	//!	@param		size	The image filler size in pixel.
 	//!	@return		The image filler interface.
-	virtual IImageFillerPassRef CreateImageFiller(_IMAGE_FILLTER_TYPE type, const PointU& size, const PointU& space = PointU::cZeroPoint) PURE;
+	virtual IImageFillerPassRef CreateImageFiller(ImageFillerType type, const PointU& size) PURE;
+	//!	Create layouter.
+	//!	@param		none.
+	//!	@return		The layouter interface.
+	virtual ILayouterPassRef CreateLayouter() PURE;
 
 	//!	Create regular expression.
 	//!	@param		pattern			The pattern string.
 	//!	@return		The regular expression interface.
 	virtual IRegularExpressionPassRef CreateRegularExpression(WStringPtr pattern) PURE;
-
-	//!	Build the MD5 code from file.
-	//!	@param		filename		The file name.
-	//!	@param		md5_code		The MD5 code.
-	//! @return		True indicates success, false indicates failure.
-	virtual _ubool BuildMD5CodeFromFile(WStringPtr filename, MD5Code& md5_code) PURE;
-	//!	Build the MD5 code from stream.
-	//!	@param		stream_reader	The stream reader.
-	//!	@param		md5_code		The MD5 code.
-	//! @return		True indicates success, false indicates failure.
-	virtual _ubool BuildMD5CodeFromStream(IStreamReader* stream_reader, MD5Code& md5_code) PURE;
-	//!	Build the MD5 code from string.
-	//!	@param		string			The string.
-	//! @return		The MD5 code.
-	virtual MD5Code BuildMD5CodeFromString(AStringPtr string) PURE;
-	//!	Build the MD5 code from string.
-	//!	@param		string			The string.
-	//! @return		The MD5 code.
-	virtual MD5Code BuildMD5CodeFromString(WStringPtr string) PURE;
-	//!	Create MD5 checksum builder.
-	//!	@param		chunk_size		The temporary chunk buffer size to read from stream.
-	//!	@return		The MD5 checksum builder interface.
-	virtual IMD5ChecksumBuilderPassRef CreateMD5ChecksumBuilder(_dword chunk_size = 640 KB) PURE;
-
-	//!	Create projectile object.
-	//!	@param		position		The start position.
-	//!	@param		direction		The start direction.
-	//!	@param		target			The target position.
-	//!	@param		speed			The speed per-second.
-	//!	@param		height_rate		The rate will affect the height(Z-Position) of projectile object.
-	//!	@return		The projectile object interface.
-	virtual IProjectileObjectPassRef CreateProjectileObjectBySpeed(const Vector3& position, const Vector3& direction, const Vector3& target, _float speed, _float height_rate = 1.0f) PURE;
-	//!	Create projectile object.
-	//!	@param		position		The start position.
-	//!	@param		direction		The start direction.
-	//!	@param		target			The target position.
-	//!	@param		duration		The duration in milliseconds.
-	//!	@param		height_rate		The rate will affect the height(Z-Position) of projectile object.
-	//!	@return		The projectile object interface.
-	virtual IProjectileObjectPassRef CreateProjectileObjectByDuration(const Vector3& position, const Vector3& direction, const Vector3& target, _dword duration, _float height_rate = 1.0f) PURE;
-
-	//!	Create interpolator.
-	//! @param		interpolator_type	The type.
-	//!	@return		The interpolator interface.
-	virtual IInterpolatorPassRef CreateInterpolator(_INTERPOLATOR_TYPE interpolator_type) PURE;
-
-	//!	Create measurable object.
-	//!	@param		size		The size.
-	//!	@return		The measure object.
-	virtual IMeasurableObjectPassRef CreateMeasurableObj(const Vector2& size) PURE;
-	//!	Create aligner.
-	//!	@param		none.
-	//!	@return		The aligner interface.
-	virtual IAlignerPassRef CreateAligner() PURE;
 
 	//!	Create command line parser.
 	//!	@param		cmdline			The command line string.
@@ -132,56 +69,25 @@ public:
 	//!	Create command line parser.
 	//!	@param		cmdline			The command line string.
 	//!	@return		The command line parser interface.
-	virtual ICommandLineParserPassRef CreateCommandLineParser(AStringPtr cmdline) PURE;
-	//!	Create command line parser.
-	//!	@param		cmdline			The command line string.
-	//!	@return		The command line parser interface.
 	virtual ICommandLineParserPassRef CreateCommandLineParser(WStringPtr cmdline) PURE;
 	//!	Create command line parser.
-	//!	@param		argc			The argument number.
-	//!	@param		argv			The arguments.
+	//!	@param		cmdline			The command line strings with keys and values.
 	//!	@return		The command line parser interface.
-	virtual ICommandLineParserPassRef CreateCommandLineParser(_dword argc, const _chara* argv[]) PURE;
+	virtual ICommandLineParserPassRef CreateCommandLineParser(const WStringArray& cmdlines) PURE;
 	//!	Create command line parser.
-	//!	@param		argc			The argument number.
-	//!	@param		argv			The arguments.
+	//!	@param		keys		The command line keys.
+	//!	@param		values		The command line values.
 	//!	@return		The command line parser interface.
-	virtual ICommandLineParserPassRef CreateCommandLineParser(_dword argc, const _charw* argv[]) PURE;
-	//!	Create command line parser.
-	//!	@param		argc			The argument number.
-	//!	@param		argn			The argument names.
-	//!	@param		argv			The argument values.
-	//!	@return		The command line parser interface.
-	virtual ICommandLineParserPassRef CreateCommandLineParser(_dword argc, const _chara* argn[], const _chara* argv[]) PURE;
-	//!	Create command line parser.
-	//!	@param		argc			The argument number.
-	//!	@param		argn			The argument names.
-	//!	@param		argv			The argument values.
-	//!	@return		The command line parser interface.
-	virtual ICommandLineParserPassRef CreateCommandLineParser(_dword argc, const _charw* argn[], const _charw* argv[]) PURE;
-
-	//!	Create properties.
-	//!	@param		none.
-	//!	@return		The properties interface.
-	virtual IPropertiesPassRef CreateProperties() PURE;
-
-	//!	Create protobuf message processor.
-	//!	@param		none.
-	//!	@return		The protobuf message processor.
-	virtual IProtoBufMessageProcessorPassRef CreateProtoBufMessageProcessor() PURE;
-	//!	Create protobuf processor.
-	//!	@param		none.
-	//!	@return		The protobuf processor.
-	virtual IProtoBufProcessorPassRef CreateProtoBufProcessor() PURE;
+	virtual ICommandLineParserPassRef CreateCommandLineParser(const WStringArray& keys, const WStringArray& values) PURE;
 
 	//!	Create logger.
 	//!	@param		none.
 	//!	@return		The logger interface.
 	virtual ILoggerPassRef CreateLogger() PURE;
 	//!	Create file logger.
-	//!	@param		app_name		The application name.
+	//!	@param		fileName	The file name.
 	//!	@return		The logger interface.
-	virtual ILoggerPassRef CreateFileLogger(WStringPtr app_name) PURE;
+	virtual ILoggerPassRef CreateFileLogger(WStringPtr fileName) PURE;
 
 	//!	Create standard allocator.
 	//!	@param		arrange_size	The arrange size in bytes.
@@ -193,37 +99,17 @@ public:
 	//!	@param		arrange_size	The arrange size in bytes.
 	//!	@return		The memory allocator.
 	virtual IAllocatorPassRef CreateMemAllocator(_dword page_size, _dword min_chunk_size = 1 KB, _dword arrange_size = 4) PURE;
-	//!	Create stack allocator.
-	//!	@param		size			The buffer size.
-	//!	@param		arrange_size	The arrange size in bytes.
-	//!	@return		The stack allocator.
-	virtual IStackAllocatorPassRef CreateStackAllocator(_dword size, _dword arrange_size = 4) PURE;
-	//!	Create ring allocator.
-	//!	@param		size			The buffer size.
-	//!	@param		arrange_size	The arrange size in bytes.
-	//!	@return		The ring allocator.
-	virtual IRingAllocatorPassRef CreateRingAllocator(_dword size, _dword arrange_size = 4) PURE;
 	//!	Create linear allocator.
 	//!	@param		buffer			The buffer data.
 	//!	@param		size			The buffer size.
 	//!	@param		arrange_size	The arrange size in bytes.
 	//!	@return		The linear allocator.
-	virtual ILinearAllocatorPassRef CreateLinearAllocator(_byte* buffer, _dword size, _dword arrange_size = 4) PURE;
-	//!	Create range allocator.
-	//!	@param		size			The range size.
+	virtual IAllocatorPassRef CreateLinearAllocator(_byte* buffer, _dword size, _dword arrange_size = 4) PURE;
+	//!	Create stack allocator.
+	//!	@param		size			The buffer size.
 	//!	@param		arrange_size	The arrange size in bytes.
-	//!	@return		The range allocator.
-	virtual IRangeAllocatorPassRef CreateRangeAllocator(_dword size, _dword arrange_size = 4) PURE;
-	//!	Create buffer allocator.
-	//!	@param		size			The max buffer size.
-	//!	@param		arrange_size	The arrange size in bytes.
-	//!	@return		The range allocator.
-	virtual IBufferAllocatorPassRef CreateBufferAllocator(_dword size, _dword arrange_size = 4) PURE;
-	//!	Create offset allocator.
-	//!	@param		size			The range size.
-	//!	@param		arrange_size	The arrange size in bytes.
-	//!	@return		The offset allocator.
-	virtual IOffsetAllocatorPassRef CreateOffsetAllocator(_dword size, _dword arrange_size = 4) PURE;
+	//!	@return		The stack allocator.
+	virtual IStackAllocatorPassRef CreateStackAllocator(_dword size, _dword arrange_size = 4) PURE;
 
 	//!	Create cache buffer.
 	//!	@param		buffer_size		The buffer size in bytes.
@@ -234,9 +120,8 @@ public:
 	//!	Create memory stream reader.
 	//!	@param		buffer			The buffer data.
 	//!	@param		size			The buffer size.
-	//!	@param		share_mode		True indicates use the share mode.
 	//!	@return		The stream reader.
-	virtual IStreamReaderPassRef CreateMemStreamReader(const _byte* buffer, _dword size, _STREAM_SHARE_MODE share_mode) PURE;
+	virtual IStreamReaderPassRef CreateMemStreamReader(const _byte* buffer, _dword size) PURE;
 	//!	Create memory stream writer.
 	//!	@param		none.
 	//!	@return		The stream writer.
@@ -255,31 +140,18 @@ public:
 	//!	@param		size			The buffer size.
 	//!	@param		share_mode		True indicates use the share mode.
 	//!	@return		The stream writer.
-	virtual IStreamWriterPassRef CreateMemStreamWriter(_byte* buffer, _dword size, _STREAM_SHARE_MODE share_mode) PURE;
+	virtual IStreamWriterPassRef CreateMemStreamWriter(_byte* buffer, _dword size) PURE;
 
 	//!	Create bit stream reader.
 	//!	@param		buffer			The buffer data.
 	//!	@param		size			The buffer size.
 	//!	@param		share_mode		True indicates use the share mode.
 	//!	@return		The stream reader.
-	virtual IStreamReaderPassRef CreateBitStreamReader(const _byte* buffer, _dword size, _STREAM_SHARE_MODE share_mode) PURE;
+	virtual IStreamReaderPassRef CreateBitStreamReader(const _byte* buffer, _dword size) PURE;
 	//!	Create bit stream writer.
 	//!	@param		size			The initial buffer size.
 	//!	@return		The stream writer.
 	virtual IStreamWriterPassRef CreateBitStreamWriter(_dword size) PURE;
-
-	//!	Create (ANSI) string stream reader.
-	//!	@param		string			The string.
-	//!	@return		The stream reader.
-	virtual IStreamReaderPassRef CreateAStringStreamReader(AStringPtr string) PURE;
-	//!	Create (UTF-8) string stream reader.
-	//!	@param		string			The string.
-	//!	@return		The stream reader.
-	virtual IStreamReaderPassRef CreateUStringStreamReader(UStringPtr string) PURE;
-	//!	Create (UTF-16) string stream reader.
-	//!	@param		string			The string.
-	//!	@return		The stream reader.
-	virtual IStreamReaderPassRef CreateWStringStreamReader(WStringPtr string) PURE;
 
 	//!	Create file stream reader.
 	//!	@param		filename		The file name.
@@ -289,11 +161,6 @@ public:
 	//!	@param		filename		The file name.
 	//!	@return		The stream writer.
 	virtual IFileStreamWriterPassRef CreateFileStreamWriter(WStringPtr filename) PURE;
-
-	//!	Create safe stream reader.
-	//!	@param		stream_reader	The stream reader.
-	//!	@return		The stream reader.
-	virtual IStreamReaderPassRef CreateSafeStreamReader(IStreamReader* stream_reader) PURE;
 
 	//!	Create the stream writer processor.
 	//!	@param		none.
@@ -305,19 +172,10 @@ public:
 	virtual IStreamProcessorPassRef CreateStreamWriterProcessor(const MD5Code& md5_code) PURE;
 
 	//!	Create thread pool.
-	//!	@param		thread_number	The thread worker number.
+	//!	@param		thread_number	The thread worker number, 0 indicates use none threads, only run in main thread.
 	//!	@param		name			The thread pool name.
 	//!	@return		The thread pool interface.
 	virtual IThreadPoolPassRef CreateThreadPool(_dword thread_number, WStringPtr name = L"") PURE;
-	//!	Create single thread pool.
-	//!	@param		none.
-	//!	@return		The thread pool interface.
-	virtual IThreadPoolPassRef CreateSingleThreadPool() PURE;
-	//!	Create transaction manager.
-	//!	@param		thread_number	The thread worker number.
-	//!	@param		name			The thread pool name.
-	//!	@return		The transaction manager interface.
-	virtual ITransactionManagerPassRef CreateTransactionManager(_dword thread_number, WStringPtr name = L"") PURE;
 
 	//!	Create console application.
 	//!	@param		none.
@@ -325,100 +183,23 @@ public:
 	virtual IConsoleAppPassRef CreateConsoleApplication() PURE;
 
 	//!	Create view-based application.
+	//!	@param		none.
+	//!	@return		The view-based application interface.
+	virtual IViewBasedAppPassRef CreateViewBasedApplication() PURE;
+	//!	Create view-based application.
 	//!	@param		app_handle		The application what pass by specified platform and analyze by specified viewbased-application.
 	//!	@return		The view-based application interface.
-	virtual IViewBasedAppPassRef CreateViewBasedApplication(_void* app_handle) PURE;
+	virtual IViewBasedAppPassRef CreateViewBasedApplication(_handle app_handle) PURE;
 	//!	Create view-based application.
 	//!	@param		app_handle		The application what pass by specified platform and analyze by specified viewbased-application.
 	//!	@param		size			The application size.
 	//!	@return		The view-based application interface.
-	virtual IViewBasedAppPassRef CreateViewBasedApplication(_void* app_handle, const PointU& size) PURE;
-	//!	Create view-based application.
-	//!	@param		flag			The application creation flag.
-	//!	@return		The view-based application interface.
-	virtual IViewBasedAppPassRef CreateViewBasedApplication(IViewBasedApp::_CREATION_FLAG flag) PURE;
+	virtual IViewBasedAppPassRef CreateViewBasedApplication(_handle app_handle, const PointU& size) PURE;
 
-	//!	Create the XML serializable node.
-	//!	@param		none.
-	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateXMLSerializableNode() PURE;
-	//!	Create the XML serializable node (ANSI).
-	//!	@param		string			The XML format string.
-	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateXMLSerializableNode(AStringPtr string) PURE;
-	//!	Create the XML serializable node (UTF-8).
-	//!	@param		string			The XML format string.
-	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateXMLSerializableNode(UStringPtr string) PURE;
-	//!	Create the XML serializable node (UTF-16).
-	//!	@param		string			The XML format string.
-	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateXMLSerializableNode(WStringPtr string) PURE;
-
-	//!	Create the JSON serializable node.
-	//!	@param		none.
-	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateJSONSerializableNode() PURE;
-	//!	Create the JSON serializable node (ANSI).
-	//!	@param		string			The JSON format string.
-	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateJSONSerializableNode(AStringPtr string) PURE;
-	//!	Create the JSON serializable node (UTF-8).
-	//!	@param		string			The JSON format string.
-	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateJSONSerializableNode(UStringPtr string) PURE;
-	//!	Create the JSON serializable node (UTF-16).
-	//!	@param		string			The JSON format string.
-	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateJSONSerializableNode(WStringPtr string) PURE;
-
-	//!	Create the markup language serializable node (ANSI).
-	//!	@param		string			The markup language format string.
-	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateMarkupLangSerializableNode(AStringPtr string) PURE;
-	//!	Create the markup language serializable node (UTF-8).
-	//!	@param		string			The markup language format string.
-	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateMarkupLangSerializableNode(UStringPtr string) PURE;
-	//!	Create the markup language serializable node (UTF-16).
-	//!	@param		string			The markup language format string.
-	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateMarkupLangSerializableNode(WStringPtr string) PURE;
-	//!	Create the markup language serializable node.
-	//!	@param		stream_reader	The stream reader.
-	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateMarkupLangSerializableNode(IStreamReader* stream_reader) PURE;
-	//!	Create the markup language serializable node by the first child element of root.
-	//!	@param		file			The markup language file.
-	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateMarkupLangSerializableNode(IMarkupFile* file) PURE;
-	//!	Create the markup language serializable node by the first child element of root.
-	//!	@param		element			The markup language element.
-	//!	@param		file			The markup language file.
-	//!	@return		The serializable node.
-	virtual ISerializableNodePassRef CreateMarkupLangSerializableNode(IMarkupElement* element, IMarkupFile* file) PURE;
-
-	//!	Create the network firewall interface.
-	//!	@param		none.
-	//!	@return		The network firewall interface.
-	virtual INetFirewallPassRef CreateNetFirewall() PURE;
-	//!	Create the shell link interface.
-	//!	@param		none.
-	//!	@return		The shell link interface.
-	virtual IShellPassRef CreateShell() PURE;
-	//!	Create the menu interface.
-	//!	@param		popup			True indicates it's popup menu.
-	//!	@return		The menu interface.
-	virtual IMenuPassRef CreateMenu(_ubool popup) PURE;
 	//!	Create the process debugger interface.
 	//!	@param		none.
 	//!	@return		The process debugger interface.
 	virtual IProcessDebuggerPassRef CreateProcessDebugger() PURE;
-	//!	Create the registry interface.
-	//!	@param		root			The root key type.
-	//!	@param		keyname			The key name.
-	//!	@return		The registry interface.
-	virtual IRegistryPassRef CreateRegistry(IRegistry::_ROOT_KEY root, WStringPtr keyname) PURE;
 
 	//!	Create the compression encoder.
 	//!	@param		type			The compression type.
