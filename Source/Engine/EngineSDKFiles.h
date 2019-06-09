@@ -37,9 +37,6 @@
 
 #endif
 
-// Protocol Files
-#include "google/protobuf/message.h"
-
 // Pcre SDK
 #define PCRE_EXP_DEFN
 #define PCRE_EXP_DATA_DEFN
@@ -73,32 +70,11 @@ extern "C" {
 #define _USE_LIBZIP_SDK_
 
 // ZipUtils SDK
-#if defined(_USE_LITE_ZIP_SDK_)
-#	include "LiteUnzip.h"
-#	include "LiteZip.h"
-#elif defined(_USE_LIBZIP_SDK_)
-extern "C" {
-#	include "zip.h"
-#	include "zipint.h"
-}
-#endif
+#include "LiteUnzip.h"
+#include "LiteZip.h"
 
-// We always use tinyxml2 as XML lib, the libxml2 seems crash in multiple-threads mode
-#define _USE_TINY_XML2_
-
-// libxml2/tinyxml2 SDK
-#ifdef _USE_TINY_XML2_
-#	include "tinyxml2.h"
-#else
-#	include "libxml/parser.h"
-#	include "libxml/tree.h"
-#	include "libxml/xmlschemas.h"
-#endif
-
-// gumbo-parser SDK
-#ifndef _EGE_DISABLE_HTML_FILE_
-#	include "gumbo.h"
-#endif
+// tinyxml2 SDK
+#include "tinyxml2.h"
 
 // cJSON SDK
 #include "cJSON.h"

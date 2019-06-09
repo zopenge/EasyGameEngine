@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <OutDir>..\..\..\..\..\Library\</OutDir>
+    <IntDir>..\..\..\..\..\Object\win32\$(Configuration)\$(ProjectName)\</IntDir>
+    <TargetName>lib$(RootNamespace)</TargetName>
+    <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\..\..\..\..\Include;..\..\..\..\..\..\Document\Resources;..\..\..\..\..\Source;..\..\..\..\..\Source\External;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG;_DEBUG;_EGE_DLL;_DLL;WIN32;_WIN32;_PLATFORM_WINDOWS_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)$(ProjectName)_d.$(Platform).dll</OutputFile>
+      <ImportLibrary>$(OutDir)$(ProjectName)_d.$(Platform).lib</ImportLibrary>
+      <IgnoreSpecificDefaultLibraries>LIBCMTD.LIB;LIBCMT.LIB;MSVCRT.LIB;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>
