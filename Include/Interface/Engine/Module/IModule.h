@@ -38,7 +38,7 @@ public:
 	//!	@param		file_name	The optional file name.
 	//!	@param		line_number	The optional line number in file.
 	//!	@return		none.
-	virtual _void OutputString(_LOG type, WStringPtr string, WStringPtr file_name = L"", _dword line_number = 0) PURE;
+	virtual _void OutputString(LogType type, WStringPtr string, WStringPtr file_name = L"", _dword line_number = 0) PURE;
 
 	//!	Handle event.
 	//!	@param		event		The event info.

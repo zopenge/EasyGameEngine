@@ -50,6 +50,13 @@ public:
 	virtual jobject ToJMapObject() const PURE;
 };
 
+// JAVA<->C/++ bridge elements declarations
+REF_OBJECT_DECL(IJ2CArray);
+REF_OBJECT_DECL(IC2JArray);
+REF_OBJECT_DECL(IJ2CString);
+REF_OBJECT_DECL(IC2JString);
+REF_OBJECT_DECL(IC2JStringMap);
+
 /// <summary>
 /// The android platform interface.
 /// </summary>

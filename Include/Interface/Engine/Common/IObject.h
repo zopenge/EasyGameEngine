@@ -51,4 +51,60 @@ public:
 	}
 };
 
+/// <summary>
+/// The template class for implement IObject interface.
+/// </summary>
+template <typename Type>
+class TObject : public Type {
+protected:
+	_dword mRefCount;
+
+protected:
+	TObject()
+	    : mRefCount(1) {
+	}
+	virtual ~TObject() {
+		EGE_ASSERT(mRefCount == 1 || mRefCount == 0);
+	}
+
+	// IObject Interface
+public:
+	virtual IObject* CloneTo(_ubool standalone) const {
+		EGE_ASSERT2(0, L"Please implement it in the inherit class");
+
+		return _null;
+	}
+
+	virtual _void Tick(_dword elapse) {
+	}
+
+	virtual _void DeleteThis() {
+		delete this;
+	}
+
+	virtual _void Uninitialize() {
+	}
+
+	virtual _dword GetRefCount() const {
+		return mRefCount;
+	}
+
+	virtual _dword AddRef() {
+		return INTERLOCKED_INC(mRefCount);
+	}
+
+	virtual _dword Release() {
+		if (INTERLOCKED_DEC(mRefCount) == 0) {
+			GetGarbageCollector()->AddObject(static_cast<IObject*>(this));
+			return 0;
+		} else {
+			return mRefCount;
+		}
+	}
+};
+
+#ifndef INTERFACE_OBJECT_IMPL
+#	define INTERFACE_OBJECT_IMPL(x) EGE::TObject<x>
+#endif
+
 } // namespace EGE

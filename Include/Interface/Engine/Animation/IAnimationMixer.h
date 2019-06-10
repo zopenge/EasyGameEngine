@@ -5,7 +5,7 @@ namespace EGE {
 /// <summary>
 /// The animation mixer.
 /// </summary>
-class IAnimationController : public IObject {
+class IAnimationMixer : public IObject {
 public:
 };
 
