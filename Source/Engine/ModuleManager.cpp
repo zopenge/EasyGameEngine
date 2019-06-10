@@ -6,15 +6,6 @@
 
 #include "EGEEngine.h"
 
-#ifdef _PLATFORM_CHROME_
-
-extern "C" _void ProcessChromeEvent( EventBase& event )
-{
-	GetModuleManager( )->ProcessEvent( event );
-}
-
-#endif
-
 //----------------------------------------------------------------------------
 // ModuleManager Implementation
 //----------------------------------------------------------------------------

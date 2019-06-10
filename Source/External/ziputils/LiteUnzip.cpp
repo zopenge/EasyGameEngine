@@ -43,7 +43,7 @@
 #endif
 
 // Not implemented in Bionic.
-#if defined(_PLATFORM_ANDROID_) || defined(_PLATFORM_CHROME_)
+#if defined(_PLATFORM_ANDROID_)
 int futimes(int fd, const struct timeval tv[2]) { return 0; }
 #endif
 

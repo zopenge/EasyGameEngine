@@ -88,14 +88,6 @@ _ubool ZIPFile::BuildItemsFromZIP( )
 #if defined(_PLATFORM_WINDOWS_)
 		if ( ze.Attributes & FILE_ATTRIBUTE_DIRECTORY )
 			continue;
-#elif defined(_PLATFORM_CHROME_)
-#ifdef NACL
-		if ( ze.Attributes & S_IFDIR )
-			continue;
-#else
-		if ( ze.Attributes & FILE_ATTRIBUTE_DIRECTORY )
-			continue;
-#endif
 #endif
 
 		// Get the file name

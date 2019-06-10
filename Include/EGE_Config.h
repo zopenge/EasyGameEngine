@@ -42,14 +42,6 @@
 #	define _DEFAULT_ASSERT(x) ((x) ? (void)0 : __assert(#    x, _FILENAME_A, _LINENUMBER))
 #	define _DEFAULT_ASSERT_WITH_DETAIL(x, linenumber, filename) ((x) ? (void)0 : __assert(#    x, filename, linenumber))
 
-// OSX platform
-#elif defined(_PLATFORM_OSX_)
-#	define _USE_STANDARD_ASSERT_ // Ignore to use EGE's assert
-#	define _USE_STANDARD_MEM_OPERATOR_ // Ignore to use EGE's memory operation
-#	define _USE_STANDARD_MALLOC_OPERATOR_ // Ignore to use EGE's malloc/free ... memory operation
-
-#	define _DEFAULT_ASSERT(x) ((x) ? (void)0 : __assert(#    x, _FILENAME_A, _LINENUMBER))
-#	define _DEFAULT_ASSERT_WITH_DETAIL(x, linenumber, filename) ((x) ? (void)0 : __assert(#    x, filename, linenumber))
 // Android platform
 #elif defined(_PLATFORM_ANDROID_)
 #	define _USE_STANDARD_ASSERT_ // Ignore to use EGE's assert
@@ -495,7 +487,7 @@ public:                                    \
 // Atom Platform Detection
 #if defined(_PLATFORM_WINDOWS_)
 #	define _WINDOWS_ATOM_
-#elif defined(_PLATFORM_ANDROID_) || defined(_PLATFORM_IOS_) || defined(_PLATFORM_OSX_)
+#elif defined(_PLATFORM_ANDROID_) || defined(_PLATFORM_IOS_)
 #	define _GCC_ATOM_
 #endif
 

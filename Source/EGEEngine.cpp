@@ -16,8 +16,6 @@ EGE::stdErrorStreamPipe* sstdErrorStreamPipe = _null;
 #endif
 #if defined(_PLATFORM_ANDROID_)
 EGE::androidViewBasedApp gAndroidViewbasedApp;
-#elif defined(_PLATFORM_CHROME_)
-EGE::chromeViewBasedApp gChromeViewbasedApp;
 #endif
 
 // The global variables
@@ -96,38 +94,6 @@ EGE_INTERNAL IControllerManager* GetIOSControllerManager() {
 	return &sIOSControllerManager;
 }
 
-#elif defined _PLATFORM_OSX_
-
-#	undef GetOSXPlatform
-EGE_INTERNAL IOSXPlatform* GetOSXPlatform() {
-	static osxPlatform sOSXPlatform;
-	return &sOSXPlatform;
-}
-
-#	undef GetOSXBluetoothAdapter
-EGE_INTERNAL IBluetoothAdapter* GetOSXBluetoothAdapter() {
-	static osxBluetoothAdapter sOSXBluetoothAdapter;
-	return &sOSXBluetoothAdapter;
-}
-
-#	undef GetOSXNet
-EGE_INTERNAL INet* GetOSXNet() {
-	static osxNet sOSXNet;
-	return &sOSXNet;
-}
-
-#	undef GetOSXSensorManager
-EGE_INTERNAL ISensorManager* GetOSXSensorManager() {
-	static osxSensorManager sOSXSensorManager;
-	return &sOSXSensorManager;
-}
-
-#	undef GetOSXControllerManager
-EGE_INTERNAL IControllerManager* GetOSXControllerManager() {
-	static osxControllerManager sOSXControllerManager;
-	return &sOSXControllerManager;
-}
-
 #elif defined _PLATFORM_ANDROID_
 
 #	undef GetAndroidPlatform
@@ -158,38 +124,6 @@ EGE_INTERNAL ISensorManager* GetAndroidSensorManager() {
 EGE_INTERNAL IControllerManager* GetAndroidControllerManager() {
 	static androidControllerManager sAndroidControllerManager;
 	return &sAndroidControllerManager;
-}
-
-#elif defined _PLATFORM_CHROME_
-
-#	undef GetChromePlatform
-EGE_INTERNAL IChromePlatform* GetChromePlatform() {
-	static chromePlatform sChromePlatform;
-	return &sChromePlatform;
-}
-
-#	undef GetChromeBluetoothAdapter
-EGE_INTERNAL IBluetoothAdapter* GetChromeBluetoothAdapter() {
-	static chromeBluetoothAdapter sChromeBluetoothAdapter;
-	return &sChromeBluetoothAdapter;
-}
-
-#	undef GetChromeNet
-EGE_INTERNAL INet* GetChromeNet() {
-	static chromeNet sChromeNet;
-	return &sChromeNet;
-}
-
-#	undef GetChromeSensorManager
-EGE_INTERNAL ISensorManager* GetChromeSensorManager() {
-	static chromeSensorManager sChromeSensorManager;
-	return &sChromeSensorManager;
-}
-
-#	undef GetChromeControllerManager
-EGE_INTERNAL IControllerManager* GetChromeControllerManager() {
-	static chromeControllerManager sChromeControllerManager;
-	return &sChromeControllerManager;
 }
 
 #endif

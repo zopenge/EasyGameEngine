@@ -14,11 +14,6 @@
 #		define _TARGET_OS_SIMULATOR_ 0
 #	endif
 
-// OSX Platform
-#elif defined _PLATFORM_OSX_
-
-#	define _TARGET_OS_SIMULATOR_ 0
-
 // Android Platform
 #elif defined _PLATFORM_ANDROID_
 
@@ -54,7 +49,6 @@
 #	else
 #		define _PLATFORM_ARCH_32 1
 #	endif
-#elif defined(_PLATFORM_OSX_)
 #elif defined(_PLATFORM_WINDOWS_)
 #	if defined(_WIN64)
 #		define _PLATFORM_ARCH_64 1

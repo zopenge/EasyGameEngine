@@ -6,9 +6,6 @@
 // IOS Platform
 #elif defined _PLATFORM_IOS_
 
-// OSX Platform
-#elif defined _PLATFORM_OSX_
-
 // Android Platform
 #elif defined _PLATFORM_ANDROID_
 

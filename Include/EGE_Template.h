@@ -8,10 +8,6 @@
 // Standard C-RunTime Files
 #	include <memory.h>
 #	include <stdio.h>
-#elif defined(_PLATFORM_OSX_)
-// Standard C-RunTime Files
-#	include <memory.h>
-#	include <stdio.h>
 #elif defined(_PLATFORM_ANDROID_)
 // Standard C-RunTime Files
 #	include <memory.h>

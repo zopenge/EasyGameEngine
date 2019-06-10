@@ -67,9 +67,6 @@
 // Pass the 'libtiff' compile error when typedef the 'int64/uint64' types
 #	define __xlc__
 
-// OSX Platform
-#elif defined _PLATFORM_OSX_
-
 // Android Platform
 #elif defined _PLATFORM_ANDROID_
 
@@ -91,14 +88,6 @@
 
 // android-ndk-profiler Files
 #	include "prof.h"
-
-// Chrome Platform
-#elif defined _PLATFORM_CHROME_
-
-// NACL Files
-#	ifdef NACL
-#		include <sys/stat.h>
-#	endif
 
 // Unknown Platform
 #else
@@ -310,9 +299,6 @@ extern EGE::IModuleManager* gModuleManager;
 #		import "Engine/Platform/ios/UI/WebView/NSWebView.h"
 #	endif
 
-// OSX Platform
-#elif defined _PLATFORM_OSX_
-
 // Android Platform
 #elif defined _PLATFORM_ANDROID_
 
@@ -341,30 +327,6 @@ using namespace EGE::AndroidMessages;
 #		define z_const
 #	endif
 
-// Chrome Platform
-#elif defined _PLATFORM_CHROME_
-
-#	include "Engine/Application/chrome/chromeMessages.h"
-using namespace EGE::ChromeMessages;
-
-#	include "Engine/Application/chrome/chromeAppThread.h"
-#	include "Engine/Application/chrome/chromeViewBasedApp.h"
-
-#	include "Engine/Platform/chrome/UI/chromeEditBox.h"
-#	include "Engine/Platform/chrome/UI/chromeWebView.h"
-#	include "Engine/Platform/chrome/Network/chromeBluetooth.h"
-#	include "Engine/Platform/chrome/Network/chromeNet.h"
-#	include "Engine/Platform/chrome/SensorManager/chromeSensorManager.h"
-#	include "Engine/Platform/chrome/Controller/chromeJoystick.h"
-#	include "Engine/Platform/chrome/Controller/chromeControllerManager.h"
-#	include "Engine/Platform/chrome/chromeModule.h"
-#	include "Engine/Platform/chrome/chromePlatform.h"
-
-// External functions
-EGE_EXTERNAL {
-	PP_CompletionCallback GetAsyncCompletionCallback(EventBase & event, PP_Resource res);
-}
-
 #endif
 
 // The global variables
@@ -377,8 +339,6 @@ extern EGE::stdErrorStreamPipe* sstdErrorStreamPipe;
 #endif
 #if defined(_PLATFORM_ANDROID_)
 extern EGE::androidViewBasedApp gAndroidViewbasedApp;
-#elif defined(_PLATFORM_CHROME_)
-extern EGE::chromeViewBasedApp gChromeViewbasedApp;
 #endif
 
 // Using namespace here to prevent some name conflict
@@ -412,8 +372,6 @@ using namespace EGE;
 #	pragma comment(lib, "libprotobuf.lib")
 
 #elif defined _PLATFORM_IOS_
-
-#elif defined _PLATFORM_OSX_
 
 #endif
 

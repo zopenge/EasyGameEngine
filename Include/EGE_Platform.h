@@ -11,9 +11,6 @@
 
 #	include "Platform/OS/ios/IOSHeaders.h"
 
-// OSX Platform
-#elif defined _PLATFORM_OSX_
-
 // Android Platform
 #elif defined _PLATFORM_ANDROID_
 
@@ -122,9 +119,6 @@ typedef Array<Line3D> Line3DArray;
 #	endif
 
 #	include "Platform/OS/ios/IOSPlatform.h"
-
-// OSX Platform
-#elif defined _PLATFORM_OSX_
 
 // Android Platform
 #elif defined _PLATFORM_ANDROID_

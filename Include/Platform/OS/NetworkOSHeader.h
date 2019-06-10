@@ -83,12 +83,6 @@ typedef SOCKET _socket;
 //! The socket handle
 typedef SOCKET _socket;
 
-// OSX Platform
-#elif defined(_PLATFORM_OSX_)
-
-//! The socket handle
-typedef void* _socket;
-
 // Linux Platform
 #elif defined(_PLATFORM_LINUX_)
 

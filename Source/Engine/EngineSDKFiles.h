@@ -1,9 +1,7 @@
 #pragma once
 
 // Enable/Disable google-break-pad SDK: http://code.google.com/p/google-breakpad/
-#if defined(_PLATFORM_OSX_)
-#	define USE_GOOGLE_BREAK_PAD 0
-#elif defined(_PLATFORM_WINDOWS_) || defined(_PLATFORM_ANDROID_) || defined(_PLATFORM_IOS_)
+#if defined(_PLATFORM_WINDOWS_) || defined(_PLATFORM_ANDROID_) || defined(_PLATFORM_IOS_)
 #	if (_PLATFORM_ARCH_64 == 1)
 #		define USE_GOOGLE_BREAK_PAD 1
 // SigCatch : http://stackoverflow.com/questions/1083154/how-can-i-catch-sigsegv-segmentation-fault-and-get-a-stack-trace-under-jni-on

@@ -156,17 +156,6 @@ extern "C" bool IsAndroidDebuggerPresent();
 // Enumerate resource files.
 extern "C" bool EnumAndroidResFiles(const wchar_t* sub_dir_name, void* funcpointer, void* parameter);
 
-// OSX Platform
-#elif defined _PLATFORM_OSX_
-
-// Use static library to link pthread SDK
-#	define PTW32_STATIC_LIB
-// Use pthread
-#	ifndef USE_PTHREAD
-#		define USE_PTHREAD 1
-#	endif
-#	include <pthread.h>
-
 // Linux Platform
 #elif defined _PLATFORM_LINUX_
 
