@@ -1,1 +1,0 @@
-%EGE_DIR%Document\Platform\Windows\Framework.CSharp\TlbExp.exe %1

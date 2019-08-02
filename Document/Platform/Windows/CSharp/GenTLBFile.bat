@@ -1,0 +1,1 @@
+%~dp0TlbExp.exe %1
